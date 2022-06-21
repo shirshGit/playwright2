@@ -2,7 +2,7 @@ import { LoginPageObjects } from "@objects/LoginPageObjects";
 import { WebActions } from "@lib/WebActions";
 import type { Page } from 'playwright';
 import {testConfig} from '../../testConfig';
-import { BrowserContext, expect } from '@playwright/test';
+import { BrowserContext, expect, TestInfo } from '@playwright/test';
 
 let webActions: WebActions;
 const ENV = process.env.ENV;
@@ -33,6 +33,7 @@ export class LoginPage {
        await webActions.enterElementText(this.loginPageObjects.CP_EMAIL_FIELD, testConfig.cpun);
        await webActions.enterElementText(this.loginPageObjects.CP_PASSWORD_FIELD, testConfig.cppwd);
        await webActions.clickElement(this.loginPageObjects.CP_LOGIN_BTN);
+       await webActions.waitForPageNavigation('networkidle');
        
    }
 
@@ -65,5 +66,11 @@ export class LoginPage {
 
    async openDivisionList(): Promise<void> {
        await webActions.clickElement('div[data-testid = "division-section-root-div"]');
+   }
+
+   async takescreen(testInfo : TestInfo)
+   {
+       var screenshotname = testInfo.title + '.png';
+       await this.page.screenshot({path: screenshotname, fullPage: true});
    }
 }

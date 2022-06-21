@@ -6,7 +6,11 @@
   "author": "sgiri",
   "license": "MIT",
   "scripts": {
-    "test:single:chrome": "npx playwright test /tests/functional/control_center/CreateNewSyntheticProduct.test.ts --project=Chrome --workers=1",
+    "test:single:chrome": "npx playwright test /tests/functional/control_center/VerifyFolderSettingsInheritedFromProduct.test.ts --project=Chrome --workers=1",
+    "test:single:chrome2": "npx playwright test /tests/functional/control_center/VerifyUserCantDeactivateFolder.test.ts --project=Chrome --workers=1",
+    "test:single:chrome3": "npx playwright test /tests/functional/control_center/VerifyLocationBladeOpensOnFolderOrTestCraetion.test.ts --project=Chrome --workers=1",
+    "test:single:chromesmoke": "npx playwright test /tests/functional/control_center/ --project=ChromeSmoke --workers=1",
+    
     "test:single:edge": "npx playwright test /tests/functional/catchpointEndpointDB.test.ts --project=Edge --workers=1",
     "test:single:firefox": "npx playwright test /tests/functional/catchpointEndpointDB.test.ts --project=Firefox --workers=1",
     "test:single:chromeTimeCapture": "npx playwright test /tests/functional/catchointSampleTestForTimeComapre.test.ts --project=Chrome --workers=1"

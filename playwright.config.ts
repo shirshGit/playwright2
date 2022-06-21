@@ -10,6 +10,7 @@ const ENV = process.env.ENV;
 
 const config: PlaywrightTestConfig = {
 
+
   //Global Setup to run before all tests
   globalSetup: `./global-setup`,
 
@@ -17,10 +18,11 @@ const config: PlaywrightTestConfig = {
   globalTeardown: `./global-teardown`,
 
   //sets timeout for each test case
-  timeout: 60000,
+  timeout: 120000,
 
   //number of retries if test case fails
-  //retries: 0,
+  retries: 1,
+
 
   //Reporters
   reporter: [[`./CustomReporterConfig.ts`], [`experimental-allure-playwright`], [`html`, { outputFolder: 'html-report', open: 'never' }]],
@@ -45,7 +47,45 @@ const config: PlaywrightTestConfig = {
         //Browser height and width
         //viewport: { width: 1500, height: 730 },
 
-        viewport: { width: 1500, height: 750 },
+        viewport: { width: 1200, height: 600 },
+        
+        ignoreHTTPSErrors: true,
+
+        //Enable File Downloads in Chrome
+        //acceptDownloads: true,
+
+        //Artifacts
+        //screenshot: `only-on-failure`,
+        video: `retain-on-failure`,
+        trace: `retain-on-failure`,
+
+        //Slows down execution by ms
+        launchOptions: {
+          slowMo: 0
+        }
+      },
+      //grep: [new RegExp("@Smoke")]
+    },
+    {
+      name: `ChromeSmoke`,
+      //testMatch: [`CreateNewSyntheticProduct.test.ts`],
+      use: {
+        // Configure the browser to use.
+        browserName: `chromium`,
+
+        //Chrome Browser Config
+        channel: `chrome`,
+
+        //Picks Base Url based on User input
+        baseURL: testConfig[process.env.ENV],
+
+        //Browser Mode
+        headless: false,
+
+        //Browser height and width
+        //viewport: { width: 1500, height: 730 },
+
+        viewport: { width: 1200, height: 600 },
         
         ignoreHTTPSErrors: true,
 
@@ -62,9 +102,8 @@ const config: PlaywrightTestConfig = {
           slowMo: 0
         }
       },
-      //grep: [new RegExp("@Smoke")]
+      grep: [new RegExp("@Smoke")]
     },
-
     {
       name: `Firefox`,
       use: {

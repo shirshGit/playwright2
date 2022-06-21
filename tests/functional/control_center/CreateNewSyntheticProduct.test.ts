@@ -1,19 +1,17 @@
 import test from '@lib/BaseTest';
-import { WebActions } from '@lib/WebActions';
-import { ControlCenter } from '@objects/ControlCenter';
 
 
-test.beforeEach(async ({ loginPage }) => {
+test.beforeEach(async ({ baseClass }) => {
 });
 
 
-test("@Smoke @SyntheticControlCenter Create a Synthetic Product in CC", async ({ page, syntheticControlCenter }) => {
+test("@Smoke @SyntheticControlCenter Create a Synthetic Product in CC", async ({ page,baseClass, syntheticControlCenter }) => {
   await syntheticControlCenter.navigateToSyntheticCCFromSideNavigation();
   await syntheticControlCenter.goToNewProductCreate();
-  let productName: string = await syntheticControlCenter.randomProductName(5);
+  let productName: string = await syntheticControlCenter.randomItemName(5);
   await syntheticControlCenter.createAProductWithBasicSettings(productName, 'Dallas-Linux IPV4 / IPV6');
   await syntheticControlCenter.verifyIfSearchProductFound(productName);
-  await syntheticControlCenter.deleteProduct(productName);
+  await syntheticControlCenter.deleteItemFromThreeDotMenu(productName);
 
 });
 

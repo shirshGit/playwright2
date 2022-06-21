@@ -1,11 +1,12 @@
 import * as fs from 'fs';
 import * as CryptoJS from 'crypto-js';
 import type { Page } from 'playwright';
-import { Browser, BrowserContext, expect } from '@playwright/test';
+import { Browser, BrowserContext, expect, TestInfo } from '@playwright/test';
 import { Workbook } from 'exceljs';
 import { testConfig } from '../testConfig';
 import * as path from 'path';
 import { ControlCenter } from '@objects/ControlCenter';
+import { TestResult } from '@playwright/test/reporter';
 
 const waitForElement = testConfig.waitTimeForElement;
 
@@ -79,6 +80,28 @@ export class WebActions {
         await this.page.fill(locator, text);
     }
 
+    async clearTextField(locator:string){
+        this.page.evaluate(function(locator) {
+            let x:HTMLElement = this.page.$(locator);
+            x.setAttribute('value','b');
+            x.innerText = 'c';
+            x.textContent = 'd';
+            x.setAttribute("value", "e");
+        })
+
+        // const element = await this.page.$(locator);
+
+        // await element.evaluate((ele:HTMLElement) => {
+        //     ele.setAttribute('value', '');
+        // })
+        // await this.page.evaluate((o) => {
+        //     o.element.setAttribute('value','');
+        // })
+        // await this.page.evaluate(function(locator){
+        //     var ele = $x('')
+        // })
+    }
+
     async dragAndDrop(dragElementLocator: string, dropElementLocator: string): Promise<void> {
         await this.waitForElementAttached(dragElementLocator);
         await this.waitForElementAttached(dropElementLocator);
@@ -93,7 +116,13 @@ export class WebActions {
 
     async getTextFromWebElements(locator: string): Promise<string[]> {
         await this.waitForElementAttached(locator);
-        return this.page.$$eval(locator, elements => elements.map(item => item.textContent.trim()));
+        return this.page.$$eval(locator, elements => elements.map(item => (item as HTMLElement).innerText));
+    }
+
+    async getTextFromWebElementsUsingSelector(element:string){
+        const elements = this.page.locator(element);
+        const texts = elements.evaluateAll(list => list.map(loc => (loc as HTMLElement).innerText))
+        return texts;
     }
 
     async downloadFile(locator: string): Promise<string> {
@@ -188,6 +217,25 @@ export class WebActions {
         }
     }
 
+    async getNoOfElementsPresentInPage(locator:string) {
+        let noOfElements = await (await this.page.$$(locator)).length;
+        let totalCount:number = +noOfElements.toString();
+        return totalCount;
+    }
+
+    async verifyElementIsPresentInPage(locator: string): Promise<boolean> {
+        let noOfElements = await (await this.page.$$(locator)).length;
+        let totalCount:number = +noOfElements.toString();
+        let noZero = 0;
+
+        if(totalCount > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     async verifyElementIsPresent(locator: string): Promise<void> {
         await expect(this.page.locator(locator)).toBeGreaterThan(0);
     }
@@ -220,4 +268,19 @@ export class WebActions {
         }
         return result;
     }
+
+   async getElementAttributeValue(selector: string, attribute: string): Promise<string>{
+        const attributeVal = await (await this.page.$(selector)).getAttribute(attribute);
+        return attributeVal;
+   }
+
+   async hoverOnElement(element: string){
+       await this.page.hover(element, {force:true});
+   }
+
+   async takeFullPageScreenShot(testInfo : TestInfo)
+   {
+       var screenshotname = './test-results/' + testInfo.title + '.png';
+       await this.page.screenshot({path: screenshotname, fullPage: true});
+   }
 }

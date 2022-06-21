@@ -3,5 +3,5 @@ export const testConfig = {
     stage: `https://portalstage.catchpoint.com/ui/Symphony/`,
     cpun:`qaautomationxclient-clientadministrator@catchpoint.com`,
     cppwd : `Password123!`,
-    waitTimeForElement : 5000
+    waitTimeForElement : 50000
 }
