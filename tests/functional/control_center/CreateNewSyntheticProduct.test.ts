@@ -8,6 +8,9 @@ let data = new DataForEnv();
 test.beforeEach(async ({ baseTestUtil }) => {
 });
 
+/*
+  CP-30507 : Verify User can create a product with all settings and configuration using Control Center
+*/
 
 test("@Smoke @SyntheticControlCenter Create a Synthetic Product in CC", async ({ page, verification, syntheticControlCenter }) => {
   await syntheticControlCenter.navigateToSyntheticCCFromSideNavigation();
@@ -21,6 +24,9 @@ test("@Smoke @SyntheticControlCenter Create a Synthetic Product in CC", async ({
 
 });
 
+/*
+  CP-6801 : Verify all existing Test data webhook is displayed in Product detail blade
+*/
 
 test("@Smoke @SyntheticControlCenter Verify all existing Test data webhook is displayed in Product detail blade", async ({ page, verification, syntheticControlCenter }) => {
   var webhookToSelect = 'DNDCookieTestWebhook';
