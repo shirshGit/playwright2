@@ -25,7 +25,7 @@ const config: PlaywrightTestConfig = {
 
 
   //Reporters
-  reporter: [[`./CustomReporterConfig.ts`], [`experimental-allure-playwright`], [`html`, { outputFolder: 'html-report', open: 'never' }]],
+  reporter: [[`./CustomReporterConfig.ts`], [`experimental-allure-playwright`], [`html`, { outputFolder: 'html-report', open: 'never' }], ['junit', {outputFile: 'resultJunit.xml'}]],
 
   projects: [
     {

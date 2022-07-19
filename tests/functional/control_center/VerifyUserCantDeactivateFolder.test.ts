@@ -1,14 +1,16 @@
 import test from '@lib/BaseTest';
+import { ControlCenter } from '@objects/ControlCenter';
 
+let cc = new ControlCenter();
 
-test.beforeEach(async ({ baseClass }) => {
+test.beforeEach(async ({ baseTestUtil }) => {
 });
 
 
 /*
     //CP-16588:Verify When User tried to Deactivate Folder ,then user should get an Error Messa
 */
-test("@Smoke @SyntheticControlCenter Verify User Cant Deactivate Folder", async ({ page, syntheticControlCenter }) => {
+test("@Smoke @SyntheticControlCenter Verify User Cant Deactivate Folder", async ({ page,verification, syntheticControlCenter }) => {
     await syntheticControlCenter.navigateToSyntheticCCFromSideNavigation();
     await syntheticControlCenter.goToNewProductCreate();
     let productName: string = await syntheticControlCenter.randomItemName(5);
@@ -17,7 +19,8 @@ test("@Smoke @SyntheticControlCenter Verify User Cant Deactivate Folder", async 
     let folderName : string = await syntheticControlCenter.randomItemName(5);
     await syntheticControlCenter.goToNewFolderCreate();
     await syntheticControlCenter.createAFolderWithInheritedSettings(folderName);
-    await syntheticControlCenter.verifyDeactivateButtonDisabledForSelectedIteam(folderName);
+    await syntheticControlCenter.checkTheSearchedItem(folderName);
+    await verification.verifyAttributeValueOfLocatorDoesnotMatch(cc.DEACTIVATE_BUTTON_IN_CONTAINER,'class', 'IconButton_selected','Folder Deactivate button is enable');
 
     await syntheticControlCenter.deleteItemFromThreeDotMenu(folderName);
     await syntheticControlCenter.deleteItemFromThreeDotMenu(productName);

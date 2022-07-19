@@ -7,7 +7,7 @@ import { WebActions } from "./WebActions";
 let webActions: WebActions;
 let loginPage : LoginPage;
 
-export class BaseClass {
+export class BaseTestUtility {
     readonly page: Page;
 
     constructor(page: Page) {

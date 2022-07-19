@@ -121,12 +121,12 @@ export class SyntheticControlCenter{
         await webActions.clickElement(this.ccSynthetic.SAVE_BUTTON);
     }
 
-    async verifyDeactivateButtonDisabledForSelectedIteam(folderName : string){
+    async checkTheSearchedItem(folderName : string){
         await this.searchItem(folderName);
         await webActions.clickElement(this.ccSynthetic.FIRST_ROW_CHECKBOX_SELECTION);
-        let classValue = await webActions.getElementAttributeValue(this.ccSynthetic.DEACTIVATE_BUTTON_IN_CONTAINER, 'class');
-        expect(classValue.toString().includes('IconButton_selected')).toBeFalsy();
-        //await webActions.enterElementText()
+        // let classValue = await webActions.getElementAttributeValue(this.ccSynthetic.DEACTIVATE_BUTTON_IN_CONTAINER, 'class');
+        // expect(classValue.toString().includes('IconButton_selected')).toBeFalsy();
+        // //await webActions.enterElementText()
     }
 
     async delay(time : number){

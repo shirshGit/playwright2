@@ -3,6 +3,7 @@ import { WebActions } from "@lib/WebActions";
 import type { Page } from 'playwright';
 import {testConfig} from '../../testConfig';
 import { BrowserContext, expect, TestInfo } from '@playwright/test';
+import { HomePage } from "@objects/HomePage";
 
 let webActions: WebActions;
 const ENV = process.env.ENV;
@@ -16,6 +17,7 @@ export class LoginPage {
     }
 
     loginPageObjects = new LoginPageObjects();
+    homePage = new HomePage();
 
     async navigateToCPUrl(): Promise<void>{
 
@@ -33,8 +35,8 @@ export class LoginPage {
        await webActions.enterElementText(this.loginPageObjects.CP_EMAIL_FIELD, testConfig.cpun);
        await webActions.enterElementText(this.loginPageObjects.CP_PASSWORD_FIELD, testConfig.cppwd);
        await webActions.clickElement(this.loginPageObjects.CP_LOGIN_BTN);
-       await webActions.waitForPageNavigation('networkidle');
-       
+       //await webActions.waitForPageNavigation('domcontentloaded');
+       await webActions.waitForElementAttached(this.homePage.DASHBOARD_DROPDOWN_LABEL);
    }
 
    async openInstantTest(): Promise<void>{

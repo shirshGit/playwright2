@@ -9,6 +9,7 @@ import { ControlCenter } from '@objects/ControlCenter';
 import { TestResult } from '@playwright/test/reporter';
 
 const waitForElement = testConfig.waitTimeForElement;
+const waitForPageLoad = testConfig.waitTimeForPageLoad;
 
 export class WebActions {
     readonly page: Page;
@@ -37,13 +38,13 @@ export class WebActions {
     async waitForPageNavigation(event: string): Promise<void> {
         switch (event.toLowerCase()) {
             case `networkidle`:
-                await this.page.waitForNavigation({ waitUntil: `networkidle`, timeout: waitForElement });
+                await this.page.waitForNavigation({ waitUntil: `networkidle`, timeout: waitForPageLoad });
                 break;
             case `load`:
-                await this.page.waitForNavigation({ waitUntil: `load`, timeout: waitForElement });
+                await this.page.waitForNavigation({ waitUntil: `load`, timeout: waitForPageLoad });
                 break;
             case `domcontentloaded`:
-                await this.page.waitForNavigation({ waitUntil: `domcontentloaded`, timeout: waitForElement });
+                await this.page.waitForNavigation({ waitUntil: `domcontentloaded`, timeout: waitForPageLoad });
         }
     }
 

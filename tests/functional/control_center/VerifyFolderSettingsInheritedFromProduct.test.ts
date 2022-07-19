@@ -3,13 +3,13 @@ import { ControlCenter } from '@objects/ControlCenter';
 import { expect } from '@playwright/test';
 
 
-test.beforeEach(async ({ baseClass }) => {
+test.beforeEach(async ({ baseTestUtil }) => {
 });
 
 /*
     CP-6805:Verify Parent's settings should be Inherited to the folder
 */
-test('@Smoke @SyntheticControlCenter Verify Parents settings should be Inherited to the folder',async({page, syntheticControlCenter}) => {
+test('@Smoke @SyntheticControlCenter Verify Parents settings should be Inherited to the folder',async({page, verification, syntheticControlCenter}) => {
     let controlCenter = new ControlCenter();
     await syntheticControlCenter.navigateToSyntheticCCFromSideNavigation();
     await syntheticControlCenter.goToNewProductCreate();
@@ -30,7 +30,8 @@ test('@Smoke @SyntheticControlCenter Verify Parents settings should be Inherited
     await syntheticControlCenter.clickOnCollapsableItem(controlCenter.COLLAPSIBLE_ADVANCE_SETTINGS_LOCATOR);
     var getAdvncStngsOptnsForFolders = await syntheticControlCenter.getElementTextFromElements(controlCenter.COMMON_LOCATOR_FOR_ALL_ADVNC_SETTINGS);
     console.log(getAdvncStngsOptnsForFolders);
-    getAdvncStngsOptnsForProducts.forEach(val => expect(getAdvncStngsOptnsForFolders.includes(val)).toBeTruthy());
+    await verification.verifyTwoSetOfTextsOfElements(getAdvncStngsOptnsForProducts, getAdvncStngsOptnsForFolders);
+    //getAdvncStngsOptnsForProducts.forEach(val => expect(getAdvncStngsOptnsForFolders.includes(val)).toBeTruthy());
     await syntheticControlCenter.closePropertiesBlade();
 
     await syntheticControlCenter.deleteItemFromThreeDotMenu(folderName);

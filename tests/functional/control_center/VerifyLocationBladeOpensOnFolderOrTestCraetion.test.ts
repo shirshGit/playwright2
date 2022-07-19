@@ -6,7 +6,7 @@ import { TestStatus } from '@playwright/test/reporter';
 
 let cc = new ControlCenter();
 
-test.beforeEach(async ({ baseClass }) => {
+test.beforeEach(async ({ baseTestUtil }) => {
 });
 
 /*
@@ -16,6 +16,7 @@ test('@Smoke @SyntheticControlCenter Verify When user selects Folder on create b
     
     await syntheticControlCenter.navigateToSyntheticCCFromSideNavigation();
     await syntheticControlCenter.goToNewFolderCreate();
+    await syntheticControlCenter.delay(3000);
 
     //Verifying If Test Blade is Present.
     await verification.verifyIfElementIsPresent(cc.SYNTHETIC_LOCATION_BLADE_TITILE, 'Test Location Blade Title Not Present');
