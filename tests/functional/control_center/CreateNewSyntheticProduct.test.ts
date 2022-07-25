@@ -2,7 +2,6 @@ import test from '@lib/BaseTest';
 import { DataForEnv } from '@lib/DataForEnvironment';
 import { ControlCenter } from '@objects/ControlCenter';
 
-let cc = new ControlCenter();
 let data = new DataForEnv();
 
 test.beforeEach(async ({ baseTestUtil }) => {
@@ -12,15 +11,15 @@ test.beforeEach(async ({ baseTestUtil }) => {
   CP-30507 : Verify User can create a product with all settings and configuration using Control Center
 */
 
-test("@Smoke @SyntheticControlCenter Create a Synthetic Product in CC", async ({ page, verification, syntheticControlCenter }) => {
-  await syntheticControlCenter.navigateToSyntheticCCFromSideNavigation();
-  await syntheticControlCenter.goToNewProductCreate();
-  let productName: string = await syntheticControlCenter.randomItemName(5);
+test("@Smoke @SyntheticControlCenter Create a Synthetic Product in CC", async ({verification, syntheticProductDetailPage, sideNavigationBar  }) => {
+  await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
+  await syntheticProductDetailPage.goToNewProductCreate();
+  let productName: string = await syntheticProductDetailPage.randomItemName(5);
   let nodeName = await data.getValueOfTheParameter('node');
-  await syntheticControlCenter.createAProductWithBasicSettings(productName, nodeName);
-  await syntheticControlCenter.searchItem(productName);
-  await verification.verifySoftAssertForTextOfAnElement(cc.FIRST_ROW_SEARCH_RESULT, productName, 'Product is not found');
-  await syntheticControlCenter.deleteItemFromThreeDotMenu(productName);
+  await syntheticProductDetailPage.createAProductWithBasicSettings(productName, nodeName);
+  await syntheticProductDetailPage.searchItem(productName);
+  await verification.verifySoftAssertForTextOfAnElement(syntheticProductDetailPage.firstRowSearchResult, productName, 'Product is not found');
+  await syntheticProductDetailPage.deleteItemFromThreeDotMenu(productName);
 
 });
 
@@ -28,14 +27,14 @@ test("@Smoke @SyntheticControlCenter Create a Synthetic Product in CC", async ({
   CP-6801 : Verify all existing Test data webhook is displayed in Product detail blade
 */
 
-test("@Smoke @SyntheticControlCenter Verify all existing Test data webhook is displayed in Product detail blade", async ({ page, verification, syntheticControlCenter }) => {
+test("@Smoke @SyntheticControlCenter Verify all existing Test data webhook is displayed in Product detail blade", async ({ page, verification, syntheticProductDetailPage, sideNavigationBar }) => {
   var webhookToSelect = 'DNDCookieTestWebhook';
-  await syntheticControlCenter.navigateToSyntheticCCFromSideNavigation();
-  await syntheticControlCenter.goToNewProductCreate();
-  await syntheticControlCenter.selectTestDataWebhookDuringItemCreation(webhookToSelect);
-  await verification.verifySoftAssertForTextOfAnElement(cc.GET_SELECTED_WEBHOOK_TEXT, webhookToSelect, 'Choosen Webhook is not selected');
-  await syntheticControlCenter.clickOnToogleButtonForTestDataWebhook();
-  await verification.verifyElementIsNotPresent(cc.NEW_DATAWEBHOOK_DROPDOWN, 'Test Data Webhook DD is present', false);
+  await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
+  await syntheticProductDetailPage.goToNewProductCreate();
+  await syntheticProductDetailPage.selectTestDataWebhookDuringItemCreation(webhookToSelect);
+  await verification.verifySoftAssertForTextOfAnElement(syntheticProductDetailPage.getSelectedWebhookText, webhookToSelect, 'Choosen Webhook is not selected');
+  await syntheticProductDetailPage.clickOnToogleButtonForTestDataWebhook();
+  await verification.verifyElementIsNotPresent(syntheticProductDetailPage.newDataWebhookDropdown, 'Test Data Webhook DD is present', false);
 
 });
 

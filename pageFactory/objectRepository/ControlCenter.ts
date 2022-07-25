@@ -1,6 +1,6 @@
 export class ControlCenter{
     NEW_ITEM_CREATION = '//button[text()="New"]';
-    NEW_PRODUCT_ITEM = '//p[text()="Product"]';
+    NEW_PRODUCT_ITEM = '//p[text()="Product"]'; 
     NEW_FOLDER_ITEM = '//p[text()="Folder"]';
     PRODUCT_NAME_FIELD = '#name-input';
     ADD_NODES_FIELD = '//input[contains(@placeholder ,"Add Node")]';
@@ -25,6 +25,7 @@ export class ControlCenter{
     APPLY_BUTTON = '//button[@data-testid="primary-button"]//span[text()="Apply"]';
     INCREASE_PING_COUNT_TEXT_BOX = '//div[text()="Increase Ping Count"]//input';
     INCREASE_HOP_FAILURE_COUNT = '//div[text()="Increase Failure Hop Count"]//input';
+    
     MQTT_SUBNET_CLIENTID_TXT_BOX = '//div[text()="MQTT Client ID"]//input';
     EDNS_SUBNET_TXT_BOX = '//div[text()="EDNS Subnet"]//input';
     VIEWPORT_WIDTH_TXT_BOX = 'input#widthTextbox';
