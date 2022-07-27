@@ -1,9 +1,12 @@
 import test from '@lib/BaseTest';
+import { DataForEnv } from '@lib/DataForEnvironment';
 import { ControlCenter } from '@objects/ControlCenter';
 import { expect } from '@playwright/test';
 
+let data = new DataForEnv();
 
 test.beforeEach(async ({ baseTestUtil }) => {
+    
 });
 
 /*
@@ -13,7 +16,7 @@ test('@Smoke @SyntheticControlCenter Verify Parents settings should be Inherited
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
     await syntheticProductDetailPage.goToNewProductCreate();
     let productName: string = await syntheticProductDetailPage.randomItemName(5);
-    let nodeName: string = 'Dallas-Linux IPV4 / IPV6';
+    let nodeName: string = await data.getValueOfTheParameter('node');;
     await syntheticProductDetailPage.createProductWithAllAdvanceSettings(productName, nodeName);
     await syntheticProductDetailPage.delay(1000);
     await syntheticProductDetailPage.clickSaveButton();

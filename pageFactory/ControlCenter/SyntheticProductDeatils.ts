@@ -18,7 +18,6 @@ export class SyntheticProductDetailPage extends SyntheticDetailPage {
      //#region This for properties of Product Detail Page
 
      private _productNameField = '#name-input';
-     //private _commonLocatorForTestDataWebhook = (text: string) => { return `//span[text()="${text}"]` };
      private _addNodeField = '//input[contains(@placeholder ,"Add Node")]';
      private _testDataWebhookToogleButton = '//button[@id = "test-webhook-toggle"]';
      private _newDataWebhookDropdown = '//span[text() = "New Webhook"]';
@@ -32,7 +31,6 @@ export class SyntheticProductDetailPage extends SyntheticDetailPage {
      }
 
      public get commonLocatorForTestDataWebhook() {
-          //return this._commonLocatorForTestDataWebhook;
           return (text: string) => { return `//span[text()="${text}"]` };
      }
 
@@ -56,10 +54,6 @@ export class SyntheticProductDetailPage extends SyntheticDetailPage {
           return this._addAdvanceSettingsTitle;
      }
 
-    
-
-    
-
 
      //#endregion
 
@@ -81,12 +75,24 @@ export class SyntheticProductDetailPage extends SyntheticDetailPage {
           await webActions.clickElement(this.testDataWebhookToogleButton);
      }
 
+     async enableTestDataWebhookTootgleButton() {
+          var toogleBtnCheck = await webActions.getElementAttributeValue(this.testDataWebhookToogleButton, "aria-checked");
+          if (toogleBtnCheck === 'false') {
+               await webActions.clickElement(this.testDataWebhookToogleButton);
+          }
+     }
+
+     async disableTestDataWebhookTootgleButton() {
+          var toogleBtnCheck = await webActions.getElementAttributeValue(this.testDataWebhookToogleButton, 'aria-checked');
+          if (toogleBtnCheck === 'true') {
+               await webActions.clickElement(this.testDataWebhookToogleButton);
+          }
+     }
+
      async selectTestDataWebhookDuringItemCreation(webhookName: string) {
-          await webActions.clickElement(this.testDataWebhookToogleButton);
+          //await webActions.clickElement(this.testDataWebhookToogleButton);
           await webActions.clickElement(this.newDataWebhookDropdown);
-          //await this.commonLocatorForTestDataWebhook(webhookName);
           await webActions.clickElement(this.commonLocatorForTestDataWebhook(webhookName));
-          //await webActions.clickElement(this.ccSynthetic.COMMON_LOCATOR_DATA_WEBHOOK_SELECTION(webhookName));
      }
 
      async createProductWithAllAdvanceSettings(productName: string, nodeName: string) {

@@ -5,7 +5,7 @@ import { WebActions } from "./WebActions";
 
 
 let webActions: WebActions;
-let loginPage : LoginPage;
+let loginPage: LoginPage;
 
 export class BaseTestUtility {
     readonly page: Page;
@@ -15,27 +15,24 @@ export class BaseTestUtility {
         webActions = new WebActions(this.page);
         loginPage = new LoginPage(this.page);
     }
-     
-    
 
-    async beforeEveryTest(){
-        //let loginPage = new LoginPage(this.page);
+
+
+    async beforeEveryTest() {
         await loginPage.navigateToCPUrl();
         await loginPage.loginToCP();
     }
 
-    async fullPageScreenShot(testInfo : TestInfo){
-        //testInfo.expectedStatus = 'failed';
-        //let testResult : TestResult;
-        
-        if(testInfo.status.toString() === 'failed' || testInfo.errors.length >0)
-        {
+    async fullPageScreenShot(testInfo: TestInfo) {
+
+        if (testInfo.status.toString() === 'failed' || testInfo.errors.length > 0) {
             await webActions.takeFullPageScreenShot(testInfo);
         }
-        
+
     }
 
-    
-
-
+    async randomItemName(noOfChars: number) {
+        var name = await webActions.generateRandomText(noOfChars);
+        return 'AutomationUI_Delete' + name;
+    }
 }

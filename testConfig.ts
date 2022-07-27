@@ -22,4 +22,5 @@ export const testConfig = {
     cppwd : `Password123!`,
     waitTimeForElement : 5000,
     waitTimeForPageLoad : 20000,
+    password: 'Test',
 }

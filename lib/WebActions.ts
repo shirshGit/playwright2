@@ -13,7 +13,6 @@ const waitForPageLoad = testConfig.waitTimeForPageLoad;
 
 export class WebActions {
     readonly page: Page;
-    ccSynthetic = new ControlCenter();
 
     constructor(page: Page) {
         this.page = page;
@@ -23,13 +22,13 @@ export class WebActions {
         this.page.goto(url);
     }
 
-    // async decipherPassword(): Promise<string> {
-    //     const key = `SECRET`;
-    //     //ENCRYPT
-    //     // const cipher = CryptoJS.AES.encrypt('demouat',key);
-    //     // console.log(cipher.toString());
-    //     return CryptoJS.AES.decrypt(testConfig.password, key).toString(CryptoJS.enc.Utf8);
-    // }
+    async decipherPassword(): Promise<string> {
+        const key = `SECRET`;
+        //ENCRYPT
+        // const cipher = CryptoJS.AES.encrypt('demouat',key);
+        // console.log(cipher.toString());
+        return CryptoJS.AES.decrypt(testConfig.password, key).toString(CryptoJS.enc.Utf8);
+    }
 
     async waitForElementAttached(locator: string): Promise<void> {
         await this.page.waitForSelector(locator, {});
@@ -59,9 +58,8 @@ export class WebActions {
         await this.page.click(locator);
     }
 
-    async selectLocatorContainsText(locator : string, text : string){
-        //locator = this.ccSynthetic.COMMON_LOCATOR_DATA_WEBHOOK_SELECTION;
-        await this.page.locator(locator, {hasText : text}).click();
+    async selectLocatorContainsText(locator: string, text: string) {
+        await this.page.locator(locator, { hasText: text }).click();
     }
 
     async clickElementJS(locator: string): Promise<void> {
@@ -81,26 +79,14 @@ export class WebActions {
         await this.page.fill(locator, text);
     }
 
-    async clearTextField(locator:string){
-        this.page.evaluate(function(locator) {
-            let x:HTMLElement = this.page.$(locator);
-            x.setAttribute('value','b');
+    async clearTextField(locator: string) {
+        this.page.evaluate(function (locator) {
+            let x: HTMLElement = this.page.$(locator);
+            x.setAttribute('value', 'b');
             x.innerText = 'c';
             x.textContent = 'd';
             x.setAttribute("value", "e");
         })
-
-        // const element = await this.page.$(locator);
-
-        // await element.evaluate((ele:HTMLElement) => {
-        //     ele.setAttribute('value', '');
-        // })
-        // await this.page.evaluate((o) => {
-        //     o.element.setAttribute('value','');
-        // })
-        // await this.page.evaluate(function(locator){
-        //     var ele = $x('')
-        // })
     }
 
     async dragAndDrop(dragElementLocator: string, dropElementLocator: string): Promise<void> {
@@ -120,7 +106,7 @@ export class WebActions {
         return this.page.$$eval(locator, elements => elements.map(item => (item as HTMLElement).innerText));
     }
 
-    async getTextFromWebElementsUsingSelector(element:string){
+    async getTextFromWebElementsUsingSelector(element: string) {
         const elements = this.page.locator(element);
         const texts = elements.evaluateAll(list => list.map(loc => (loc as HTMLElement).innerText))
         return texts;
@@ -139,8 +125,8 @@ export class WebActions {
         this.page.press(locator, key);
     }
 
-    async onlyKeyPress(key: string): Promise<void>{
-        this.page.keyboard.press("Enter", {delay: 500});
+    async onlyKeyPress(key: string): Promise<void> {
+        this.page.keyboard.press("Enter", { delay: 500 });
     }
 
     async readDataFromExcel(fileName: string, sheetName: string, rowNum: number, cellNum: number): Promise<string> {
@@ -164,7 +150,6 @@ export class WebActions {
 
     async verifyElementText(locator: string, text: string): Promise<void> {
         await this.waitForElementAttached(locator);
-        //await this.page.pause();
         const textValue = await this.page.textContent(locator);
         expect(textValue.trim()).toBe(text);
     }
@@ -210,29 +195,29 @@ export class WebActions {
 
     async verifyElementIsNotPresent(locator: string): Promise<boolean> {
         let noOfElements = await this.page.locator(locator).count;
-        if(noOfElements.toString()== '0'){
+        if (noOfElements.toString() == '0') {
             return true;
         }
-        else{
+        else {
             return false;
         }
     }
 
-    async getNoOfElementsPresentInPage(locator:string) {
+    async getNoOfElementsPresentInPage(locator: string) {
         let noOfElements = await (await this.page.$$(locator)).length;
-        let totalCount:number = +noOfElements.toString();
+        let totalCount: number = +noOfElements.toString();
         return totalCount;
     }
 
     async verifyElementIsPresentInPage(locator: string): Promise<boolean> {
         let noOfElements = await (await this.page.$$(locator)).length;
-        let totalCount:number = +noOfElements.toString();
+        let totalCount: number = +noOfElements.toString();
         let noZero = 0;
 
-        if(totalCount > 0){
+        if (totalCount > 0) {
             return true;
         }
-        else{
+        else {
             return false;
         }
     }
@@ -249,17 +234,17 @@ export class WebActions {
         expect(expectedValue.trim(), `${errorMessage}`).toBe(actualValue);
     }
 
-    async newWindowHandle(context: BrowserContext, locator: string){
+    async newWindowHandle(context: BrowserContext, locator: string) {
         const [newWindow] = await Promise.all([
             context.waitForEvent("page"),
             await this.page.click(locator)
         ])
-    
+
         await newWindow.waitForLoadState("load");
         return newWindow;
-       }
+    }
 
-    async generateRandomText(noOfChars : number): Promise<string> {
+    async generateRandomText(noOfChars: number): Promise<string> {
         var result = '';
         var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         var charactersLength = characters.length;
@@ -270,18 +255,17 @@ export class WebActions {
         return result;
     }
 
-   async getElementAttributeValue(selector: string, attribute: string): Promise<string>{
+    async getElementAttributeValue(selector: string, attribute: string): Promise<string> {
         const attributeVal = await (await this.page.$(selector)).getAttribute(attribute);
         return attributeVal;
-   }
+    }
 
-   async hoverOnElement(element: string){
-       await this.page.hover(element, {force:true});
-   }
+    async hoverOnElement(element: string) {
+        await this.page.hover(element, { force: true });
+    }
 
-   async takeFullPageScreenShot(testInfo : TestInfo)
-   {
-       var screenshotname = './test-results/' + testInfo.title + '.png';
-       await this.page.screenshot({path: screenshotname, fullPage: true});
-   }
+    async takeFullPageScreenShot(testInfo: TestInfo) {
+        var screenshotname = './test-results/' + testInfo.title + '.png';
+        await this.page.screenshot({ path: screenshotname, fullPage: true });
+    }
 }

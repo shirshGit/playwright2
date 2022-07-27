@@ -1,6 +1,7 @@
 import test from '@lib/BaseTest';
 import { DataForEnv } from '@lib/DataForEnvironment';
 import { ControlCenter } from '@objects/ControlCenter';
+import { SyntheticControlCenter } from '@pages/SyntheticControlCenter';
 
 let data = new DataForEnv();
 
@@ -11,10 +12,11 @@ test.beforeEach(async ({ baseTestUtil }) => {
   CP-30507 : Verify User can create a product with all settings and configuration using Control Center
 */
 
-test("@Smoke @SyntheticControlCenter Create a Synthetic Product in CC", async ({verification, syntheticProductDetailPage, sideNavigationBar  }) => {
+test.skip("@Smoke @SyntheticControlCenter Create a Synthetic Product in CC", async ({baseTestUtil, verification, syntheticProductDetailPage, sideNavigationBar  }) => {
   await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
   await syntheticProductDetailPage.goToNewProductCreate();
-  let productName: string = await syntheticProductDetailPage.randomItemName(5);
+  let productName: string = await baseTestUtil.randomItemName(5);
+  //let productName: string = await syntheticProductDetailPage.randomItemName(5);
   let nodeName = await data.getValueOfTheParameter('node');
   await syntheticProductDetailPage.createAProductWithBasicSettings(productName, nodeName);
   await syntheticProductDetailPage.searchItem(productName);
@@ -31,10 +33,13 @@ test("@Smoke @SyntheticControlCenter Verify all existing Test data webhook is di
   var webhookToSelect = 'DNDCookieTestWebhook';
   await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
   await syntheticProductDetailPage.goToNewProductCreate();
+  await syntheticProductDetailPage.delay(3000);
+  await syntheticProductDetailPage.enableTestDataWebhookTootgleButton();
   await syntheticProductDetailPage.selectTestDataWebhookDuringItemCreation(webhookToSelect);
   await verification.verifySoftAssertForTextOfAnElement(syntheticProductDetailPage.getSelectedWebhookText, webhookToSelect, 'Choosen Webhook is not selected');
-  await syntheticProductDetailPage.clickOnToogleButtonForTestDataWebhook();
-  await verification.verifyElementIsNotPresent(syntheticProductDetailPage.newDataWebhookDropdown, 'Test Data Webhook DD is present', false);
+  //await syntheticProductDetailPage.clickOnToogleButtonForTestDataWebhook();
+  await syntheticProductDetailPage.disableTestDataWebhookTootgleButton();
+  await verification.verifyElementIsNotPresent(syntheticProductDetailPage.newDataWebhookDropdown, 'Test Data Webhook Dropdown is present', false);
 
 });
 
