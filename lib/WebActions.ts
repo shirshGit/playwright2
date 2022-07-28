@@ -47,11 +47,7 @@ export class WebActions {
         }
     }
 
-    async delay(time: number): Promise<void> {
-        return new Promise(function (resolve) {
-            setTimeout(resolve, time);
-        });
-    }
+   
 
     async clickElement(locator: string): Promise<void> {
         await this.waitForElementAttached(locator);
@@ -68,7 +64,6 @@ export class WebActions {
     }
 
     async boundingBoxClickElement(locator: string): Promise<void> {
-        await this.delay(1000);
         const elementHandle = await this.page.$(locator);
         const box = await elementHandle.boundingBox();
         await this.page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
@@ -224,14 +219,6 @@ export class WebActions {
 
     async verifyElementIsPresent(locator: string): Promise<void> {
         await expect(this.page.locator(locator)).toBeGreaterThan(0);
-    }
-
-    async expectToBeTrue(status: boolean, errorMessage: string): Promise<void> {
-        expect(status, `${errorMessage}`).toBe(true);
-    }
-
-    async expectToBeValue(expectedValue: string, actualValue: string, errorMessage: string): Promise<void> {
-        expect(expectedValue.trim(), `${errorMessage}`).toBe(actualValue);
     }
 
     async newWindowHandle(context: BrowserContext, locator: string) {

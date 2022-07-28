@@ -1,7 +1,9 @@
 import { WebActions } from "@lib/WebActions";
+import { Utility } from "@util/Utility";
 import { Page } from "playwright";
 
 let webActions: WebActions;
+let util : Utility
 
 export class SynControlCenterPage {
     readonly page: Page;
@@ -9,6 +11,7 @@ export class SynControlCenterPage {
     constructor(page: Page) {
         this.page = page;
         webActions = new WebActions(this.page);
+        util = new Utility();
     }
 
     //#region This region is for getter
@@ -98,14 +101,9 @@ export class SynControlCenterPage {
 
     }
 
-    async randomItemName(noOfChars: number) {
-        var name = await webActions.generateRandomText(noOfChars);
-        return 'AutomationUI_Delete' + name;
-    }
-
     async searchItem(item: string) {
         await webActions.enterElementText(this.searchBox, item);
-        await webActions.delay(1000);
+        await util.delay(1000);
         await webActions.clickElement(this.searchBox);
         await webActions.keyPress(this.searchBox, 'Enter')
         await webActions.onlyKeyPress('Enter');
@@ -115,7 +113,7 @@ export class SynControlCenterPage {
         const [searchItem] = await Promise.all([
             this.searchItem(productName)
         ]);
-        await webActions.delay(2000);
+        await util.delay(2000);
         await webActions.hoverOnElement(this.threeDotMenuOfSearchedItem);
         await webActions.clickElement(this.threeDotMenuOfSearchedItem);
         await webActions.clickElement(this.deleteOptionAfterThreeDotMenu);
@@ -126,7 +124,7 @@ export class SynControlCenterPage {
         const [searchItem] = await Promise.all([
             this.searchItem(productName)
         ]);
-        await webActions.delay(2000);
+        await util.delay(2000);
         await webActions.clickElement(this.firstRowCheckBoxOfContainer);
         await webActions.clickElement(this.deleteBtn);
         await webActions.clickElement(this.popUpDeleteBtn);
@@ -143,14 +141,10 @@ export class SynControlCenterPage {
         await webActions.clickElement(this.firstRowCheckBoxOfContainer);
     }
 
-    async delay(time: number) {
-        await webActions.delay(time);
-    }
-
     async openPropertiesOfSerachedItem(item: string) {
         await webActions.hoverOnElement(this.searchBox);
         await this.searchItem(item);
-        await webActions.delay(2000);
+        await util.delay(2000);
         await webActions.hoverOnElement(this.threeDotMenuOfSearchedItem);
         await webActions.clickElement(this.threeDotMenuOfSearchedItem);
         await webActions.clickElement(this.propertiesAfterThreeDotMenu);

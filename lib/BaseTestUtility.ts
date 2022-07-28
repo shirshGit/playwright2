@@ -31,8 +31,4 @@ export class BaseTestUtility {
 
     }
 
-    async randomItemName(noOfChars: number) {
-        var name = await webActions.generateRandomText(noOfChars);
-        return 'AutomationUI_Delete' + name;
-    }
 }

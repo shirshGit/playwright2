@@ -9,6 +9,7 @@
       "@verification/*":["testverification/*"],
       "@testData/*":["resources/*"],
       "@pageobjects/*" : ["pageFactory/*"],
+      "@util/*" : ["utility/*"],
     }                                         
   }
 }

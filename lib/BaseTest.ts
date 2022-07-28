@@ -12,6 +12,8 @@ import { SyntheticFolderDetailPage } from '@pageobjects/ControlCenter/SyntheticF
 import { SynControlCenterPage } from '@pageobjects/ControlCenter/SyntheticControlCenter';
 import { SyntheticLocationBlade } from '@pageobjects/ControlCenter/SyntheticLocationBlade';
 import { SyntheticDetailPage } from '@pageobjects/ControlCenter/SyntheticDetailsPage';
+import { Utility } from '@util/Utility';
+
 
 
 
@@ -28,6 +30,7 @@ const test = baseTest.extend<{
     syntheticProductDetailPage: SyntheticProductDetailPage;
     syntheticFolderDetailPage: SyntheticFolderDetailPage;
     synLocationBlade: SyntheticLocationBlade;
+    util: Utility;
 
 
 }>({
@@ -70,6 +73,9 @@ const test = baseTest.extend<{
     },
     syntheticDetailsPage: async ({ page }, use) => {
         await use(new SyntheticDetailPage(page));
+    },
+    util: async ({},use) => {
+        await use(new Utility());
     },
 
 
