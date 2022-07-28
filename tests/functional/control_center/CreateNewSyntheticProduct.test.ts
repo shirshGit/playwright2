@@ -16,7 +16,6 @@ test.skip("@Smoke @SyntheticControlCenter Create a Synthetic Product in CC", asy
   await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
   await syntheticProductDetailPage.goToNewProductCreate();
   let productName: string = await baseTestUtil.randomItemName(5);
-  //let productName: string = await syntheticProductDetailPage.randomItemName(5);
   let nodeName = await data.getValueOfTheParameter('node');
   await syntheticProductDetailPage.createAProductWithBasicSettings(productName, nodeName);
   await syntheticProductDetailPage.searchItem(productName);
@@ -34,11 +33,10 @@ test("@Smoke @SyntheticControlCenter Verify all existing Test data webhook is di
   await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
   await syntheticProductDetailPage.goToNewProductCreate();
   await syntheticProductDetailPage.delay(3000);
-  await syntheticProductDetailPage.enableTestDataWebhookTootgleButton();
+  await syntheticProductDetailPage.enableTestDataWebhookToggleButton();
   await syntheticProductDetailPage.selectTestDataWebhookDuringItemCreation(webhookToSelect);
   await verification.verifySoftAssertForTextOfAnElement(syntheticProductDetailPage.getSelectedWebhookText, webhookToSelect, 'Choosen Webhook is not selected');
-  //await syntheticProductDetailPage.clickOnToogleButtonForTestDataWebhook();
-  await syntheticProductDetailPage.disableTestDataWebhookTootgleButton();
+  await syntheticProductDetailPage.disableTestDataWebhookToggleButton();
   await verification.verifyElementIsNotPresent(syntheticProductDetailPage.newDataWebhookDropdown, 'Test Data Webhook Dropdown is present', false);
 
 });

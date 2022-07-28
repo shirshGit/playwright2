@@ -75,14 +75,14 @@ export class SyntheticProductDetailPage extends SyntheticDetailPage {
           await webActions.clickElement(this.testDataWebhookToogleButton);
      }
 
-     async enableTestDataWebhookTootgleButton() {
+     async enableTestDataWebhookToggleButton() {
           var toogleBtnCheck = await webActions.getElementAttributeValue(this.testDataWebhookToogleButton, "aria-checked");
           if (toogleBtnCheck === 'false') {
                await webActions.clickElement(this.testDataWebhookToogleButton);
           }
      }
 
-     async disableTestDataWebhookTootgleButton() {
+     async disableTestDataWebhookToggleButton() {
           var toogleBtnCheck = await webActions.getElementAttributeValue(this.testDataWebhookToogleButton, 'aria-checked');
           if (toogleBtnCheck === 'true') {
                await webActions.clickElement(this.testDataWebhookToogleButton);

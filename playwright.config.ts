@@ -21,7 +21,7 @@ const config: PlaywrightTestConfig = {
   timeout: 180000,
 
   //number of retries if test case fails
-  retries: 0,
+  retries: 1,
 
 
   //Reporters
@@ -57,7 +57,7 @@ const config: PlaywrightTestConfig = {
         //Artifacts
         //screenshot: `only-on-failure`,
         video: `retain-on-failure`,
-        trace: `retain-on-failure`,
+        //trace: `retain-on-failure`,
 
         //Slows down execution by ms
         launchOptions: {
