@@ -15,7 +15,7 @@ test.beforeEach(async ({ baseTestUtil }) => {
 test("@Smoke @SyntheticControlCenter Create a Synthetic Product in CC", async ({baseTestUtil, verification, syntheticProductDetailPage, sideNavigationBar, util  }) => {
   await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
   await syntheticProductDetailPage.goToNewProductCreate();
-  let productName: string = await util.generateRandomText(5);
+  let productName: string = 'Automation_Delete_UI' + await util.generateRandomText(5);
   let nodeName = await data.getValueOfTheParameter('node');
   await syntheticProductDetailPage.createAProductWithBasicSettings(productName, nodeName);
   await syntheticProductDetailPage.searchItem(productName);

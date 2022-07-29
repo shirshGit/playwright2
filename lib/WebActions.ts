@@ -160,27 +160,10 @@ export class WebActions {
         await newWindow.close();
     }
 
-    async verifyElementContainsText(locator: string, text: string): Promise<void> {
-        await this.waitForElementAttached(locator);
-        await expect(this.page.locator(locator)).toContainText(text);
-    }
-
     async verifyJSElementValue(locator: string, text: string): Promise<void> {
         await this.waitForElementAttached(locator);
         const textValue = await this.page.$eval(locator, (element: HTMLInputElement) => element.value);
         expect(textValue.trim()).toBe(text);
-    }
-
-    async verifyElementAttribute(locator: string, attribute: string, value: string): Promise<void> {
-        await this.waitForElementAttached(locator);
-        const textValue = await this.page.getAttribute(locator, attribute);
-        expect(textValue.trim()).toBe(value);
-    }
-
-    async verifySoftElementAttribute(locator: string, attribute: string, value: string): Promise<void> {
-        await this.waitForElementAttached(locator);
-        const textValue = await this.page.getAttribute(locator, attribute);
-        expect.soft(textValue.trim()).toBe(value);
     }
 
     async verifyElementIsDisplayedWithErrorMessage(locator: string, errorMessage: string): Promise<void> {
@@ -188,33 +171,10 @@ export class WebActions {
             .catch(() => { throw new Error(`${errorMessage}`); });
     }
 
-    async verifyElementIsNotPresent(locator: string): Promise<boolean> {
-        let noOfElements = await this.page.locator(locator).count;
-        if (noOfElements.toString() == '0') {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-
     async getNoOfElementsPresentInPage(locator: string) {
         let noOfElements = await (await this.page.$$(locator)).length;
         let totalCount: number = +noOfElements.toString();
         return totalCount;
-    }
-
-    async verifyElementIsPresentInPage(locator: string): Promise<boolean> {
-        let noOfElements = await (await this.page.$$(locator)).length;
-        let totalCount: number = +noOfElements.toString();
-        let noZero = 0;
-
-        if (totalCount > 0) {
-            return true;
-        }
-        else {
-            return false;
-        }
     }
 
     async verifyElementIsPresent(locator: string): Promise<void> {
