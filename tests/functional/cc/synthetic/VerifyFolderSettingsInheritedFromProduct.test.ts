@@ -15,7 +15,7 @@ test.beforeEach(async ({ baseTestUtil }) => {
 test('@Smoke @SyntheticControlCenter Verify Parents settings should be Inherited to the folder',async({util, sideNavigationBar, syntheticProductDetailPage, syntheticFolderDetailPage, verification}) => {
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
     await syntheticProductDetailPage.goToNewProductCreate();
-    let productName: string = 'Delete_Product_UI' + await util.generateRandomText(5);
+    let productName: string = 'Automation_Delete_UI' + await util.generateRandomText(5);
     let nodeName: string = await data.getValueOfTheParameter('node');;
     await syntheticProductDetailPage.createProductWithAllAdvanceSettings(productName, nodeName);
     await util.delay(1000);
@@ -25,7 +25,7 @@ test('@Smoke @SyntheticControlCenter Verify Parents settings should be Inherited
     console.log(getAdvncStngsOptnsForProducts);
     await syntheticProductDetailPage.closePropertiesBlade();
     await syntheticProductDetailPage.clickOnSearchedItemInCC(productName);
-    let folderName : string = 'Delete_Folder_UI' + await util.generateRandomText(5);
+    let folderName : string = 'Automation_Delete_UI' + await util.generateRandomText(5);
     await syntheticFolderDetailPage.goToNewFolderCreate();
     await syntheticFolderDetailPage.createAFolderWithInheritedSettings(folderName);
     await syntheticFolderDetailPage.openPropertiesOfSerachedItem(folderName);
