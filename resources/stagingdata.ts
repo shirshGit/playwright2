@@ -1,4 +1,6 @@
 export const stagedata = {
-    'node' : 'Dallas-Linux IPV4 / IPV6',
+    'node' : 'Boston - Verizon - ST',
+    'alertRecipientName' : 'Client Admin DoNotDelete',
+    'productForJunkItems' : 'Selenium',
     
 }

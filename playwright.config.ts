@@ -21,7 +21,7 @@ const config: PlaywrightTestConfig = {
   timeout: 180000,
 
   //number of retries if test case fails
-  retries: 1,
+  retries: 0,
 
 
   //Reporters

@@ -67,10 +67,6 @@ export class SyntheticProductDetailPage extends SyntheticDetailPage {
           await webActions.clickElement(this.saveButton);
      }
 
-     async clickSaveButton() {
-          await webActions.clickElement(this.saveButton);
-     }
-
      async clickOnToogleButtonForTestDataWebhook() {
           await webActions.clickElement(this.testDataWebhookToogleButton);
      }

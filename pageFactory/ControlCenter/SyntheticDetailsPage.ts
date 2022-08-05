@@ -34,7 +34,8 @@ export class SyntheticDetailPage extends SynControlCenterPage {
     private _viewportLenghthTextbox = 'input#heightTextbox';
     private _collapsibleAdvanceSettingsLocator = '//span[(contains(@class,"CollapsibleContainer_clickable")) and (text() = "Advanced Settings")]';
     private _chkBoxForAllAdvanceSettings = '//div[@data-testid = "advancedsettingsblade"]//span//div[@data-automationid = "DetailsRowCheck"]//i[@data-icon-name="StatusCircleCheckmark"]';
-
+    private _alertRecipientsTextBox = '//div[@data-testid = "recipient-autocomplete-picker"]//input';
+    private _alertReceipientSuggestedContacts = '//div[@aria-label = "Suggested Contacts"]//span[contains(@class, "AutoCompletePillPicker_suggestionItem")]//b';
 
 
     public get saveButton() {
@@ -89,6 +90,14 @@ export class SyntheticDetailPage extends SynControlCenterPage {
         return this._chkBoxForAllAdvanceSettings;
     }
 
+    public get alertRecipientsTextBox() {
+        return this._alertRecipientsTextBox;
+    }
+
+    public get alertReceipientSuggestedContacts() {
+        return this._alertReceipientSuggestedContacts;
+    }
+
 
     //#endregion
 
@@ -97,7 +106,20 @@ export class SyntheticDetailPage extends SynControlCenterPage {
 
     async closePropertiesBlade() {
         await webActions.clickElement(this.propertiesBladeCancelButton);
-   }
+    }
+
+    async clickSaveButton() {
+        await webActions.clickElement(this.saveButton);
+    }
+
+    async typeRecipientsNameInAlertReceipientBox(name: string) {
+        await webActions.enterElementText(this.alertRecipientsTextBox, name);
+    }
+
+    async getSuggestedContactsForAlertRecipients(element: string) {
+        var elementsText = await webActions.getTextFromWebElements(element);
+        return elementsText;
+    }
 
 
     //#endregion
