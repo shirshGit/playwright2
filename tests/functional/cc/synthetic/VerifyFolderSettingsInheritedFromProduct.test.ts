@@ -18,8 +18,8 @@ test('@Smoke @SyntheticControlCenter Verify Parents settings should be Inherited
     let productName: string = 'Automation_Delete_UI' + await util.generateRandomText(5);
     let nodeName: string = await data.getValueOfTheParameter('node');;
     await syntheticProductDetailPage.createProductWithAllAdvanceSettings(productName, nodeName);
-    await util.delay(1000);
     await syntheticProductDetailPage.clickSaveButton();
+    await util.delay(2000);   
     await syntheticProductDetailPage.openPropertiesOfSerachedItem(productName);
     var getAdvncStngsOptnsForProducts = await syntheticProductDetailPage.getElementTextFromElementsFromProductProperties(syntheticFolderDetailPage.locatorForAllAdvanceSettingsInDetailPage);
     console.log(getAdvncStngsOptnsForProducts);

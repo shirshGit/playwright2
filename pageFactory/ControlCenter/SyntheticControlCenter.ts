@@ -29,6 +29,8 @@ export class SynControlCenterPage {
     private _threeDotMenuOfSearchedItem = '//div[@data-testid="icon-menu-cell"]//i';
     private _propertiesAfterThreeDotMenu = '//i[@data-icon-name="properties"]';
     private _deleteOptionAfterThreeDotMenu = '//i[@data-icon-name="delete"]';
+    private _webChromeTest = '//p[text() = "Web"]/../../..//p[text() = "Chrome"]';
+    private _pendoCloseForNewFeature = '//button[contains(@id, "pendo-close-guide")]';
 
 
 
@@ -84,7 +86,13 @@ export class SynControlCenterPage {
         return this._newFolderItem;
     }
 
+    public get webChromeTest(){
+        return this._webChromeTest;
+    }
 
+    public get pendoCloseForNewFeature(){
+        return this._pendoCloseForNewFeature;
+    }
 
 
     //#endregion
@@ -102,6 +110,8 @@ export class SynControlCenterPage {
     }
 
     async searchItem(item: string) {
+        await webActions.waitForElementAttached(this.searchBox);
+        await webActions.clickElement(this.searchBox);
         await webActions.enterElementText(this.searchBox, item);
         await util.delay(1000);
         await webActions.clickElement(this.searchBox);
@@ -151,7 +161,7 @@ export class SynControlCenterPage {
     }
 
     async getElementTextFromElements(element: string) {
-        var elementsText = webActions.getTextFromWebElements(element);
+        var elementsText =await webActions.getTextFromWebElements(element);
         return elementsText;
     }
 
@@ -164,7 +174,30 @@ export class SynControlCenterPage {
         return noOFElements;
     }
 
+    async goToNewFolderCreate() {
+        await webActions.clickElement(this.newItemCreation);
+        await webActions.clickElement(this.newFolderItem);
 
+    }
+
+    async goToNewWebChromeTestCreate() {
+        await webActions.clickElement(this.newItemCreation);
+        await webActions.clickElement(this.webChromeTest);
+
+    }
+
+    async searchByLabel(label : string){
+        let searchByLabel = '/label:' + label;
+        await this.searchItem(searchByLabel);
+    }
+
+    async pendoCloseIfPopsup(){
+        let pendoElementCount = await webActions.getNoOfElementsPresentInPage(this.pendoCloseForNewFeature);
+        if(+pendoElementCount > 0)
+        {
+            await webActions.clickElement(this.pendoCloseForNewFeature);
+        }
+    }
 
     //#endregion
 

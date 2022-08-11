@@ -30,7 +30,9 @@ export class SideNavBar{
     //#endregion
 
     async navigateToSyntheticCCFromSideNavigation(){
+        await webActions.waitForElementAttached(this.sideNavControlCenter);
         await webActions.clickElement(this.sideNavControlCenter)
+        await webActions.waitForElementAttached(this.sideNavCCTest);
         await webActions.clickElement(this.sideNavCCTest);
     }
 

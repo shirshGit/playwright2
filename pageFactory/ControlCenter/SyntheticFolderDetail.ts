@@ -31,11 +31,6 @@ export class SyntheticFolderDetailPage extends SyntheticDetailPage {
 
     //#region This region is to have the functions
 
-    async goToNewFolderCreate() {
-        await webActions.clickElement(this.newItemCreation);
-        await webActions.clickElement(this.newFolderItem);
-
-    }
 
     async createAFolderWithInheritedSettings(folderName: string) {
         await webActions.enterElementText(this.folderNameField, folderName);

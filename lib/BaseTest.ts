@@ -13,6 +13,7 @@ import { SynControlCenterPage } from '@pageobjects/ControlCenter/SyntheticContro
 import { SyntheticLocationBlade } from '@pageobjects/ControlCenter/SyntheticLocationBlade';
 import { SyntheticDetailPage } from '@pageobjects/ControlCenter/SyntheticDetailsPage';
 import { Utility } from '@util/Utility';
+import { SyntheticTestDetailPage } from '@pageobjects/ControlCenter/SyntheticTestDetail';
 
 
 
@@ -31,6 +32,7 @@ const test = baseTest.extend<{
     syntheticFolderDetailPage: SyntheticFolderDetailPage;
     synLocationBlade: SyntheticLocationBlade;
     util: Utility;
+    syntheticTestDetailPage: SyntheticTestDetailPage;
 
 
 }>({
@@ -76,6 +78,9 @@ const test = baseTest.extend<{
     },
     util: async ({},use) => {
         await use(new Utility());
+    },
+    syntheticTestDetailPage: async ({ page }, use) => {
+        await use(new SyntheticTestDetailPage(page));
     },
 
 
