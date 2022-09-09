@@ -31,9 +31,10 @@ export class SynControlCenterPage {
     private _deleteOptionAfterThreeDotMenu = '//i[@data-icon-name="delete"]';
     private _webChromeTest = '//p[text() = "Web"]/../../..//p[text() = "Chrome"]';
     private _pendoCloseForNewFeature = '//button[contains(@id, "pendo-close-guide")]';
-
-
-
+    private _targetScheduletab = '//div[@id="#targeting_and_scheduling"]';
+    private _cancelTestDetailPage = '//span[text()="Cancel"]';
+    private _cancelSearchedText = '//i[@data-icon-name="Clear"]/div';
+    private _closeTestDetailPage = '//div[@data-testid="cancel-icon"]';
     public get newItemCreation() {
         return this._newItemCreation;
     }
@@ -85,16 +86,17 @@ export class SynControlCenterPage {
     public get newFolderItem() {
         return this._newFolderItem;
     }
-
     public get webChromeTest(){
         return this._webChromeTest;
     }
-
     public get pendoCloseForNewFeature(){
         return this._pendoCloseForNewFeature;
     }
-
-
+    public get cancelTestDetailPage(){
+        return this._cancelTestDetailPage;
+    }
+    
+   
     //#endregion
 
     //#region This region is to have the functions
@@ -117,6 +119,7 @@ export class SynControlCenterPage {
         await webActions.clickElement(this.searchBox);
         await webActions.keyPress(this.searchBox, 'Enter')
         await webActions.onlyKeyPress('Enter');
+        
     }
 
     async deleteItemFromThreeDotMenu(productName: string) {
@@ -198,6 +201,21 @@ export class SynControlCenterPage {
             await webActions.clickElement(this.pendoCloseForNewFeature);
         }
     }
+
+    async clickCancelTestPropertyButton(){
+        await webActions.clickElement(this.cancelTestDetailPage);
+    }
+
+    async cancelSearchedText(){
+        await webActions.clickElement(this._cancelSearchedText);
+    }
+
+    async closeTestPropertyPage(){
+        await webActions.clickElement(this._closeTestDetailPage);
+    }
+
+    
+
 
     //#endregion
 

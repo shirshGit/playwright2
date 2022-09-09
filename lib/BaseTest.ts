@@ -14,9 +14,7 @@ import { SyntheticLocationBlade } from '@pageobjects/ControlCenter/SyntheticLoca
 import { SyntheticDetailPage } from '@pageobjects/ControlCenter/SyntheticDetailsPage';
 import { Utility } from '@util/Utility';
 import { SyntheticTestDetailPage } from '@pageobjects/ControlCenter/SyntheticTestDetail';
-
-
-
+import { TestUtility } from '@util/TestUtility';
 
 const test = baseTest.extend<{
     baseTestUtil: BaseTestUtility;
@@ -33,7 +31,7 @@ const test = baseTest.extend<{
     synLocationBlade: SyntheticLocationBlade;
     util: Utility;
     syntheticTestDetailPage: SyntheticTestDetailPage;
-
+    testUtilility : TestUtility;
 
 }>({
     baseTestUtil: async ({ page }, use, testInfo: TestInfo) => {
@@ -42,7 +40,8 @@ const test = baseTest.extend<{
         await use(base);
         await base.fullPageScreenShot(testInfo);
     },
-    loginPage: async ({ page }, use, testInfo) => {
+
+     loginPage: async ({ page }, use, testInfo) => {
         let login = new LoginPage(page);
         await use(login);
     },
@@ -82,7 +81,13 @@ const test = baseTest.extend<{
     syntheticTestDetailPage: async ({ page }, use) => {
         await use(new SyntheticTestDetailPage(page));
     },
+    testUtilility : async ({ page }, use) => {
+        await use(new TestUtility());
+    },
 
+  
+
+   
 
 });
 
