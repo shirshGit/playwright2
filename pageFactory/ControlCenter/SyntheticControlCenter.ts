@@ -31,6 +31,9 @@ export class SynControlCenterPage {
     private _deleteOptionAfterThreeDotMenu = '//i[@data-icon-name="delete"]';
     private _webChromeTest = '//p[text() = "Web"]/../../..//p[text() = "Chrome"]';
     private _pendoCloseForNewFeature = '//button[contains(@id, "pendo-close-guide")]';
+    private _rumInMasterTestBlade = '//span[text()="RUM"]';
+    private _testsInMasterTestBlade = '//span[text()="Tests"]';
+    private _closeMasterTestBlade = '//div[@data-testid="cancel-icon"]';
 
 
 
@@ -94,6 +97,17 @@ export class SynControlCenterPage {
         return this._pendoCloseForNewFeature;
     }
 
+    public get rumFromMasterTestBlade(){
+        return this._rumInMasterTestBlade;
+    }
+
+    public get testFromMasterTestBlade(){
+        return this._testsInMasterTestBlade;
+    }
+
+    public get closeMasterTestBlade(){
+        return this._closeMasterTestBlade;
+    }
 
     //#endregion
 
@@ -107,6 +121,10 @@ export class SynControlCenterPage {
         await webActions.clickElement(this.newItemCreation);
         await webActions.clickElement(this.newProductItem);
 
+    }
+
+    async clickOnNewItemCreation(){
+        await webActions.clickElement(this.newItemCreation);
     }
 
     async searchItem(item: string) {
@@ -197,6 +215,11 @@ export class SynControlCenterPage {
         {
             await webActions.clickElement(this.pendoCloseForNewFeature);
         }
+    }
+
+    async closeMasterTestsBlade() {
+        await webActions.clickElement(this.closeMasterTestBlade);
+
     }
 
     //#endregion

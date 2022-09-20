@@ -13,7 +13,8 @@
     "test:single:chromesmoke": "npx playwright test /tests/functional/cc/synthetic/ --project=ChromeSmoke --workers=1",
     "test:single:edge": "npx playwright test /tests/functional/catchpointEndpointDB.test.ts --project=Edge --workers=1",
     "test:single:firefox": "npx playwright test /tests/functional/catchpointEndpointDB.test.ts --project=Firefox --workers=1",
-    "test:single:chromeTimeCapture": "npx playwright test /tests/functional/catchointSampleTestForTimeComapre.test.ts --project=Chrome --workers=1"
+    "test:single:chromeTimeCapture": "npx playwright test /tests/functional/catchointSampleTestForTimeComapre.test.ts --project=Chrome --workers=1",
+    "test:single:RumDefect": "npx playwright test /tests/functional/cc/rum/ProductionDefect/RumProductionDefect.test.ts --project=Chrome --workers=1"
   },
   "dependencies": {
     "@playwright/test": "^1.23.0",
