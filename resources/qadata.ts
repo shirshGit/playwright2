@@ -4,6 +4,7 @@ export const qadata = {
     'productForJunkItems' : 'Selenium',
     'url' : 'https://www.google.com',
     'testID' : '254759',
-    'testListPageUrl' : 'https://qaportal.catchpoint.com/ui/Symphony/ControlCenter/Tests'
+    'testListPageUrl' : 'https://qaportal.catchpoint.com/ui/Symphony/ControlCenter/Tests',
+    'productForCoapyTest' : 'ProductForCopyScenariosDoNotDelete'
 
 }

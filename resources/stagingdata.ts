@@ -4,6 +4,7 @@ export const stagedata = {
     'productForJunkItems' : 'Selenium',
     'url' : 'https://www.google.com',
     'testID' : '238827',
-    'testListPageUrl' : 'https://portalstage.catchpoint.com/ui/Symphony/ControlCenter/Tests'
+    'testListPageUrl' : 'https://portalstage.catchpoint.com/ui/Symphony/ControlCenter/Tests',
+    'productForCoapyTest' : 'ProductForCopyScenariosDoNotDelete'
     
 }

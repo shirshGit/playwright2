@@ -36,7 +36,7 @@ export class SyntheticDetailPage extends SynControlCenterPage {
     private _chkBoxForAllAdvanceSettings = '//div[@data-testid = "advancedsettingsblade"]//span//div[@data-automationid = "DetailsRowCheck"]//i[@data-icon-name="StatusCircleCheckmark"]';
     private _alertRecipientsTextBox = '//div[@data-testid = "recipient-autocomplete-picker"]//input';
     private _alertReceipientSuggestedContacts = '//div[@aria-label = "Suggested Contacts"]//span[contains(@class, "AutoCompletePillPicker_suggestionItem")]//b';
-
+    //(//label[contains(@class,"ms-ChoiceField-field is-checked field")])[1]
 
     public get saveButton() {
         return this._saveButton;
@@ -120,6 +120,8 @@ export class SyntheticDetailPage extends SynControlCenterPage {
         var elementsText = await webActions.getTextFromWebElements(element);
         return elementsText;
     }
+
+    
 
 
     //#endregion

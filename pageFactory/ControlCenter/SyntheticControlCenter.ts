@@ -3,10 +3,11 @@ import { Utility } from "@util/Utility";
 import { Page } from "playwright";
 
 let webActions: WebActions;
-let util : Utility
+let util: Utility
 
 export class SynControlCenterPage {
     readonly page: Page;
+
 
     constructor(page: Page) {
         this.page = page;
@@ -35,8 +36,18 @@ export class SynControlCenterPage {
     private _cancelTestDetailPage = '//span[text()="Cancel"]';
     private _cancelSearchedText = '//i[@data-icon-name="Clear"]/div';
     private _closeTestDetailPage = '//div[@data-testid="cancel-icon"]';
+    private _copyOptionInThreeDotMenu = '//ul[contains(@class,"ms-ContextualMenu-list is-open")]//span[text()="Copy"]';
+    private _copyButtonInTestPropertyBlade = '//button[@type="button"]//span[text()="Copy"]';
+    private _syntheticTestLocationTextAfterClickingOnCopy = '//div[contains(@class,"ms-Panel-main")]//span[text()="Tests Location"]';
+    private _locationOfItem = '(//span[contains(@class,"ms-Breadcrumb-item")]/div[contains(@class,"ms-TooltipHost")])[2]';
+
+
     public get newItemCreation() {
         return this._newItemCreation;
+    }
+
+    public get threeDotMenuItems() {
+        return (text: string) => { return `//ul[contains(@class,"ms-ContextualMenu-list is-open")]//span[text()="${text}"]` };
     }
 
     public get searchBox() {
@@ -83,20 +94,40 @@ export class SynControlCenterPage {
         return this._deleteOptionAfterThreeDotMenu;
     }
 
+    public get copyOptionInThreeDotMenu() {
+        return this._copyOptionInThreeDotMenu;
+    }
+
     public get newFolderItem() {
         return this._newFolderItem;
     }
-    public get webChromeTest(){
+    public get webChromeTest() {
         return this._webChromeTest;
     }
-    public get pendoCloseForNewFeature(){
+    public get pendoCloseForNewFeature() {
         return this._pendoCloseForNewFeature;
     }
-    public get cancelTestDetailPage(){
+    public get cancelTestDetailPage() {
         return this._cancelTestDetailPage;
     }
-    
-   
+    public get copyButtonInTestPropertyBlade() {
+        return this._copyButtonInTestPropertyBlade;
+    }
+
+    public get testLocationTextAfterClickingOnCopyInThreeDotMenu() {
+        return this._syntheticTestLocationTextAfterClickingOnCopy;
+    }
+
+    public get getItemLocation() {
+        return this._locationOfItem;
+    }
+
+    public get selectProductForTestLocation() {
+        return (text: string) => { return `(//span[text()="${text}"])[2]` };
+    }
+
+
+
     //#endregion
 
     //#region This region is to have the functions
@@ -119,7 +150,7 @@ export class SynControlCenterPage {
         await webActions.clickElement(this.searchBox);
         await webActions.keyPress(this.searchBox, 'Enter')
         await webActions.onlyKeyPress('Enter');
-        
+
     }
 
     async deleteItemFromThreeDotMenu(productName: string) {
@@ -131,6 +162,17 @@ export class SynControlCenterPage {
         await webActions.clickElement(this.threeDotMenuOfSearchedItem);
         await webActions.clickElement(this.deleteOptionAfterThreeDotMenu);
         await webActions.clickElement(this.popUpDeleteBtn);
+    }
+
+    async copyItemFromThreeDotMenu(itemName: string, destinationProductID: string) {
+        const [searchItem] = await Promise.all([
+            this.searchItem(itemName)
+        ]);
+        await util.delay(2000);
+        await webActions.hoverOnElement(this.threeDotMenuOfSearchedItem);
+        await webActions.clickElement(this.threeDotMenuOfSearchedItem);
+        await webActions.clickElement(this.copyOptionInThreeDotMenu);
+        await this.selectProductFromTestLocationForCopyTest(destinationProductID);
     }
 
     async deleteItemFromTableContainerBar(productName: string) {
@@ -164,7 +206,7 @@ export class SynControlCenterPage {
     }
 
     async getElementTextFromElements(element: string) {
-        var elementsText =await webActions.getTextFromWebElements(element);
+        var elementsText = await webActions.getTextFromWebElements(element);
         return elementsText;
     }
 
@@ -189,32 +231,64 @@ export class SynControlCenterPage {
 
     }
 
-    async searchByLabel(label : string){
+    async searchByLabel(label: string) {
         let searchByLabel = '/label:' + label;
         await this.searchItem(searchByLabel);
     }
 
-    async pendoCloseIfPopsup(){
+    async pendoCloseIfPopsup() {
         let pendoElementCount = await webActions.getNoOfElementsPresentInPage(this.pendoCloseForNewFeature);
-        if(+pendoElementCount > 0)
-        {
+        if (+pendoElementCount > 0) {
             await webActions.clickElement(this.pendoCloseForNewFeature);
         }
     }
 
-    async clickCancelTestPropertyButton(){
+    async clickCancelTestPropertyButton() {
         await webActions.clickElement(this.cancelTestDetailPage);
     }
 
-    async cancelSearchedText(){
+    async cancelSearchedText() {
         await webActions.clickElement(this._cancelSearchedText);
     }
 
-    async closeTestPropertyPage(){
+    async closeTestPropertyPage() {
         await webActions.clickElement(this._closeTestDetailPage);
     }
 
-    
+    async selectProductFromTestLocationForCopyTest(productName: string) {
+        let xpath = await this.selectProductForTestLocation(productName);
+        await webActions.clickElement(xpath);
+        await webActions.clickElement(this.copyButtonInTestPropertyBlade);
+    }
+
+    async searchAndClickOnThreeDotMenu(itemName: string) {
+        const [searchItem] = await Promise.all([
+            this.searchItem(itemName)
+        ]);
+        await util.delay(2000);
+        await webActions.hoverOnElement(this.threeDotMenuOfSearchedItem);
+        await webActions.clickElement(this.threeDotMenuOfSearchedItem);
+    }
+
+    async threeDotMenuItem(itemName: string) {
+        return this.threeDotMenuItems(itemName);;
+
+    }
+
+    async searchAndClickOnThreeDotMenuAndCopy(itemName: string) {
+        await this.searchAndClickOnThreeDotMenu(itemName);
+        await webActions.clickElement(this.copyOptionInThreeDotMenu);
+    }
+
+    async fetchItemLocation() {
+        let enddate = await webActions.getElementAttributeValue(this.getItemLocation, 'value');
+        return enddate;
+    }
+
+
+
+
+
 
 
     //#endregion

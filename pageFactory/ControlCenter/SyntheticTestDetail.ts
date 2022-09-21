@@ -21,6 +21,7 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
     private _targetUrlInput = '#target-url-input';
     private  _startDate = '//div[@data-testid="datepicker"]/div[1]/input[@data-testid="date-input"]';
     private _endDate = '(//div[@data-testid="datepicker"]//input)[3]';
+    //private _threeDotMenuItem = '//span[text()="Copy"]'
 
     public get alertOverrideToogleBtn() {
         return this._alertOverrideToogleBtn;
@@ -45,6 +46,13 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
     public get endDateValue(){
         return this._endDate;
     }
+
+    public get getTestName(){
+        return this._testNameField;
+    }
+
+
+    
     //#endregion
 
     //#region This region is to have the functions
@@ -111,5 +119,27 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
         let date4 =await util.getCCTestDetailPageDateFormate(date3);
         return date4;
     }
+
+    async fetchInheritProperty() {
+        let startdate = await webActions.getElementAttributeValue(this.startDateValue,'value');
+        return startdate;
+    }
+
+    async getClassPropertyOfInheritedCheckBox(index : number){
+        let xpath = '(//label[contains(@class,"ms-ChoiceField-field is-checked field")])['+index+']';
+        await util.delay(2000);
+        let inhertiText = await webActions.getElementAttributeValue(xpath,'class');
+        return inhertiText;
+    }
+
+    async fetchTestName(){
+        let testName = await webActions.getElementAttributeValue(this.getTestName,'value');
+        return testName;
+    }
+
+    
+
+    
+   
     //#endregion
 }
