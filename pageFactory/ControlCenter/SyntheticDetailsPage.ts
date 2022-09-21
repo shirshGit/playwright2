@@ -21,7 +21,7 @@ export class SyntheticDetailPage extends SynControlCenterPage {
 
     //#region This region is for properties
 
-    private _saveButton = '//span[text()="Save"]';
+    private _saveButton = '//button[@id="primary-button"]';
     private _propertiesBladeCancelButton = '//div[@data-testid="cancel-icon"]';
     private _locatorForAllAdvanceSettingsInDetailPage = 'div[class*="AdvancedSettingsCells_container"]';
     private _locatorToGetSeletedNodes = '//div[contains(@class, "NodeRow__StyledNameRow")]';
@@ -107,7 +107,7 @@ export class SyntheticDetailPage extends SynControlCenterPage {
     async closePropertiesBlade() {
         await webActions.clickElement(this.propertiesBladeCancelButton);
     }
-
+    
     async clickSaveButton() {
         await webActions.clickElement(this.saveButton);
     }

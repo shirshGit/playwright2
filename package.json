@@ -15,7 +15,7 @@
     "test:single:firefox": "npx playwright test /tests/functional/catchpointEndpointDB.test.ts --project=Firefox --workers=1",
     "test:single:chromeTimeCapture": "npx playwright test /tests/functional/catchointSampleTestForTimeComapre.test.ts --project=Chrome --workers=1",
     "test:single:ProductionDefect": "npx playwright test /tests/functional/cc/synthetic/ProductionDefect/CCProductionDefect.test.ts --project=Chrome --workers=1"
- },
+  },
   "dependencies": {
     "@playwright/test": "^1.23.0",
     "@types/adm-zip": "^0.5.0",

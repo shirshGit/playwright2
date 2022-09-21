@@ -111,5 +111,8 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
         let date4 =await util.getCCTestDetailPageDateFormate(date3);
         return date4;
     }
+
+    
+
     //#endregion
 }
