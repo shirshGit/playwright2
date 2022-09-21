@@ -16,7 +16,6 @@ test("ABleToViewRUMTestTemplateOptionInMasterCreateBlade  @ProductionDefect@Synt
     let userroleName2 = await data.getValueOfTheParameter('userroleName2');
     let email = await data.getValueOfTheParameter('userrole9');
     let password = await data.getValueOfTheParameter('password');
-    let contactSearch = 'userrole9';
     //search and click contact
     await contactDetailsPage.clickOnFirstSearchedItemInContactPage(email);
     //chnage and apply system access
@@ -46,7 +45,6 @@ test("ABleToViewRUMTestTemplateOptionInMasterCreateBlade  @ProductionDefect@Synt
     await contactDetailsPage.selectGivenUserrole(userroleName2);
     //logout
     await loginPage.logOutFromBrowser();
-    //await page.route('**', route => route.continue());
     //login with changed system access contact
     await loginPage.loginWithOtherContact(email, password);
     await page.reload();
