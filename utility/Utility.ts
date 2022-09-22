@@ -1,8 +1,8 @@
 import { WebActions } from "@lib/WebActions";
 import { Page } from "playwright";
-export class Utility{
-    
-    
+export class Utility {
+
+
     async generateRandomText(noOfChars: number): Promise<string> {
         var result = '';
         var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
@@ -31,18 +31,26 @@ export class Utility{
             setTimeout(resolve, time);
         });
     }
+
     
-    //this method will retuen date in the formate "Sep 07, 2022"
-    async getCCTestDetailPageDateFormate(date1 : number ){
-         let date2 = new Date(date1).toLocaleString('en-us',{month:'short', day: 'numeric', year:'numeric'});
-         return date2;
+    async getDate(date: number, format: string = '') {
+        let getDate;
+        if (format === 'mmm dd yyyy') {
+            //following date formate can be used for explorer,control center, WPT {e.g. "Sep 07, 2022"}
+            getDate = new Date(date).toLocaleString('en-us', { month: 'short', day: 'numeric', year: 'numeric' });
+        }
+        else {
+            //following date formate can be used for smartboard, Records {e.g. "9/21/2022"}
+            getDate = new Date(date).toLocaleString('en-us', { month: 'numeric', day: 'numeric', year: 'numeric' });
+        }
+        return getDate;
     }
 
-    async getTodaysDate(){
-        let date1 =new Date().toUTCString();
+    async getTodaysDate() {
+        let date1 = new Date().toUTCString();
         let date2 = new Date(date1);
         return date2;
     }
 
-    
+
 }
