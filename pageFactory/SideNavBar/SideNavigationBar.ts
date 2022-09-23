@@ -1,4 +1,5 @@
 import { WebActions } from "@lib/WebActions";
+import { Utility } from "@util/Utility";
 import { Page } from "playwright";
 
 let webActions: WebActions;
@@ -16,6 +17,10 @@ export class SideNavBar{
     //#region This region is for locators as Property
     private _sideNavControlCenter = '#controlcentersection';
     private _sideNavCCTest = '//button/a[text()="Tests"]';
+    private _sideNavAnalytics = '#analysissection';
+    private _sideNavExplorer = '//a[text()="Explorer"]';
+    private _homesection = '#homesection';
+    private _dashboard = '//a[text()="Dashboard"]';
 
 
 
@@ -27,6 +32,22 @@ export class SideNavBar{
         return this._sideNavCCTest;
     }
 
+    public get sideNavAnalytics(){
+        return this._sideNavAnalytics;
+    }
+
+    public get sideNavExplorer(){
+        return this._sideNavExplorer;
+    }
+
+    public get sideNavHome(){
+        return this._homesection;
+    }
+
+    public get sideNavDashboard(){
+        return this._dashboard;
+    }
+
     //#endregion
 
     async navigateToSyntheticCCFromSideNavigation(){
@@ -34,6 +55,20 @@ export class SideNavBar{
         await webActions.clickElement(this.sideNavControlCenter)
         await webActions.waitForElementAttached(this.sideNavCCTest);
         await webActions.clickElement(this.sideNavCCTest);
+    }
+
+    async navigateToExplorerFromSideNavigation(){
+        await webActions.waitForElementAttached(this.sideNavAnalytics);
+        await webActions.clickElement(this.sideNavAnalytics)
+        await webActions.waitForElementAttached(this.sideNavExplorer);
+        await webActions.clickElement(this.sideNavExplorer);
+    }
+
+    async navigateToDashboardFromSideNavigation(){
+        await webActions.waitForElementAttached(this.sideNavHome);
+        await webActions.clickElement(this.sideNavHome)
+        await webActions.waitForElementAttached(this.sideNavDashboard);
+        await webActions.clickElement(this.sideNavDashboard);
     }
 
 

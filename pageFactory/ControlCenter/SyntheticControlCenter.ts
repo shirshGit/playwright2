@@ -106,7 +106,7 @@ export class SynControlCenterPage {
         return this._closeItemDetailPage;
     }
 
-    public get getStatusText() {
+    public get getStatus() {
         return this._statusText;
     }
 
