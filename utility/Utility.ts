@@ -45,7 +45,7 @@ export class Utility {
             //following date formate can be used for smartboard, Records {e.g. "9/21/2022"}
             getDateInFormat = new Date(setDate).toLocaleString('en-us', { month: 'numeric', day: 'numeric', year: 'numeric' });
         }
-        return getDate;
+        return getDateInFormat;
     }
 
     async getTodaysDate() {
