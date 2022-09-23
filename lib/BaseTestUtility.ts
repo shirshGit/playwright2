@@ -31,4 +31,10 @@ export class BaseTestUtility {
 
     }
 
+    async getUrl() {
+        let url = await webActions.getCurrentPageUrl();
+        return url;
+    }
+
+    
 }
