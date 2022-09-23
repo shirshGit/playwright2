@@ -1,25 +1,24 @@
 import test from "@lib/BaseTest"
 import { DataForEnv } from "@lib/DataForEnvironment";
-import { SyntheticDetailPage } from "@pageobjects/ControlCenter/SyntheticDetailsPage";
 
 let data = new DataForEnv();
 
 /*
-    CP-12790 : Bug 123222 Able to View RUM ,Test Template Options in Master create blade though
+    CP-12790 : Bug 123222 Able to View RUM ,Test Template Options in Master create blade though we dont have permission
 */
 
 
-test("ABleToViewRUMTestTemplateOptionInMasterCreateBlade  @ProductionDefect@SyntheticControlCenter", async ({ baseTestUtil, contactDetailsPage, sideNavigationBar, loginPage, synCCPage, util, page, verification }) => {
+test("AbleToViewRUMTestTemplateOptionInMasterCreateBlade  @ProductionDefect@SyntheticControlCenter", async ({ contactsPage, contactDetailsPage, sideNavigationBar, loginPage, synCCPage, util, page, verification }) => {
     //navigate to contacts page
     await sideNavigationBar.navigateToContactPageFromSideNavigation();
-    let userroleName = await data.getValueOfTheParameter('userroleName');
+    let userroleName1 = await data.getValueOfTheParameter('userroleName1');
     let userroleName2 = await data.getValueOfTheParameter('userroleName2');
     let email = await data.getValueOfTheParameter('userrole9');
     let password = await data.getValueOfTheParameter('password');
     //search and click contact
-    await contactDetailsPage.clickOnFirstSearchedItemInContactPage(email);
+    await contactsPage.clickOnFirstSearchedItemInContactPage(email);
     //chnage and apply system access
-    await contactDetailsPage.selectGivenUserrole(userroleName);
+    await contactDetailsPage.selectGivenUserrole(userroleName1);
     //logout
     await loginPage.logOutFromBrowser();
     //login with changed system access contact
@@ -40,7 +39,7 @@ test("ABleToViewRUMTestTemplateOptionInMasterCreateBlade  @ProductionDefect@Synt
     //navigate to contacts page
     await sideNavigationBar.navigateToContactPageFromSideNavigation();
     //search and click contact
-    await contactDetailsPage.clickOnFirstSearchedItemInContactPage(email);
+    await contactsPage.clickOnFirstSearchedItemInContactPage(email);
     //change and apply system access
     await contactDetailsPage.selectGivenUserrole(userroleName2);
     //logout

@@ -14,7 +14,9 @@ import { SyntheticLocationBlade } from '@pageobjects/ControlCenter/SyntheticLoca
 import { SyntheticDetailPage } from '@pageobjects/ControlCenter/SyntheticDetailsPage';
 import { Utility } from '@util/Utility';
 import { SyntheticTestDetailPage } from '@pageobjects/ControlCenter/SyntheticTestDetail';
-import { ContactDetailsPage } from '@pageobjects/ControlCenter/ContactsDetailPage';
+import { ContactDetailsPage } from '@pageobjects/Contacts/ContactsDetailPage';
+import { ContactsPage } from '@pageobjects/Contacts/ContactsPage';
+
 
 
 
@@ -35,6 +37,7 @@ const test = baseTest.extend<{
     util: Utility;
     syntheticTestDetailPage: SyntheticTestDetailPage;
     contactDetailsPage: ContactDetailsPage;
+    contactsPage : ContactsPage;
 
 
 }>({
@@ -86,6 +89,9 @@ const test = baseTest.extend<{
     },
     contactDetailsPage: async ({ page }, use) => {
         await use(new ContactDetailsPage(page));
+    },
+    contactsPage: async ({ page }, use) => {
+        await use(new ContactsPage(page));
     },
 
 
