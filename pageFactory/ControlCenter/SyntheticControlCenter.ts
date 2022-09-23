@@ -214,9 +214,8 @@ export class SynControlCenterPage {
         await webActions.clickElement(this._closeTestDetailPage);
     }
 
+
     
-
-
     //#endregion
 
 }

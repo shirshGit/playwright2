@@ -104,14 +104,7 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
         return enddate;
     }
 
-    //this method will retuen date in the formate "Sep 07, 2022"
-    async getDate(addDays : number = null ){
-        let getDate = await util.getTodaysDate();
-        let setDate= getDate.setDate(getDate.getDate() + addDays); //number  of days to add, e.x. 15 days
-        let date =await util.getDate(setDate,'mmm dd yyyy');
-        return date;
-    }
-
+   
     
     //#endregion
 }
