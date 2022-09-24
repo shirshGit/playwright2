@@ -33,6 +33,7 @@ const test = baseTest.extend<{
     syntheticFolderDetailPage: SyntheticFolderDetailPage;
     synLocationBlade: SyntheticLocationBlade;
     util: Utility;
+    testUtilility : TestUtility;
     syntheticTestDetailPage: SyntheticTestDetailPage;
     contactDetailsPage: ContactDetailsPage;
     contactsPage : ContactsPage;
@@ -44,6 +45,8 @@ const test = baseTest.extend<{
         await use(base);
         await base.fullPageScreenShot(testInfo);
     },
+       
+    loginPage: async ({ page }, use, testInfo) => {
         let login = new LoginPage(page);
         await use(login);
     },
