@@ -32,10 +32,10 @@ export class Utility {
         });
     }
 
-    async getDate(addDays : number, format: string = '') {
 
+    async getDate(addDays: number, format: string = '') {
         let getDate = await this.getTodaysDate();
-        let setDate= getDate.setDate(getDate.getDate() + (addDays)); 
+        let setDate = getDate.setDate(getDate.getDate() + (addDays));
         let getDateInFormat;
         if (format === 'mmm dd yyyy') {
             //following date formate can be used for explorer,control center, WPT {e.g. "Sep 07, 2022"}
@@ -49,9 +49,9 @@ export class Utility {
     }
 
     async getTodaysDate() {
-        let date1 = new Date().toUTCString();
-        let date2 = new Date(date1);
-        return date2;
+        let getDate = new Date().toUTCString();
+        let setDate = new Date(getDate);
+        return setDate;
     }
 
 

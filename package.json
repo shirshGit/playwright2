@@ -17,8 +17,11 @@
     "test:single:ManipulatingURLShowsSomeRandomTest": "npx playwright test /tests/functional/cc/syntheticDefects/ManipulatingURLShowsSomeRandomTest.test.ts --project=Chrome --workers=1",
     "test:single:CheckStartDateBeforeAndAfterSaveingTest": "npx playwright test /tests/functional/cc/syntheticDefects/CheckStartDateBeforeAndAfterSaveingTest.test.ts --project=Chrome --workers=1",
     "test:single:CheckEndDateAfterSavingTest": "npx playwright test /tests/functional/cc/syntheticDefects/CheckEndDateAfterSavingTest.test.ts --project=Chrome --workers=1",
-    "test:single:TestStatusValidation": "npx playwright test /tests/functional/cc/synthetic/TestStatusValidation.test.ts --project=Chrome --workers=1"
-  },
+    "test:single:TestStatusValidation": "npx playwright test /tests/functional/cc/synthetic/TestStatusValidation.test.ts --project=Chrome --workers=1",
+    "test:single:TestURLValidation": "npx playwright test /tests/functional/cc/synthetic/TestURLValidation.test.ts --project=Chrome --workers=1",
+    "test:single:TestPropertiesDateValidation": "npx playwright test /tests/functional/cc/synthetic/TestPropertiesDateValidation.test.ts --project=Chrome --workers=1"
+   },
+   
   "dependencies": {
     "@playwright/test": "^1.23.0",
     "@types/adm-zip": "^0.5.0",

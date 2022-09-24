@@ -33,7 +33,6 @@ test("ActiveTestsAreChangingToInactiveOnceWehenRefreshPage  @ProductionDefect@Sy
     await util.delay(4000);
     await page.reload();
     //navigate to dashboard page
-    await util.delay(2000);
     await sideNavigationBar.navigateToDashboardFromSideNavigation();
     //navigate to cc page
     await util.delay(2000);

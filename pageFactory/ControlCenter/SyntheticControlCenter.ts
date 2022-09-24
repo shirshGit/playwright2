@@ -233,8 +233,6 @@ export class SynControlCenterPage {
 
 
 
-
-
     //#endregion
 
 }
