@@ -14,6 +14,9 @@
     "test:single:edge": "npx playwright test /tests/functional/catchpointEndpointDB.test.ts --project=Edge --workers=1",
     "test:single:firefox": "npx playwright test /tests/functional/catchpointEndpointDB.test.ts --project=Firefox --workers=1",
     "test:single:chromeTimeCapture": "npx playwright test /tests/functional/catchointSampleTestForTimeComapre.test.ts --project=Chrome --workers=1",
+    "test:single:TestURLValidation": "npx playwright test /tests/functional/cc/synthetic/TestURLValidation.test.ts --project=Chrome --workers=1",
+    "test:single:TestPropertiesDateValidation": "npx playwright test /tests/functional/cc/synthetic/TestPropertiesDateValidation.test.ts --project=Chrome --workers=1"
+   },
     "test:single:AbleToViewRUMTestTemplateOptionInMasterCreateBlade": "npx playwright test /tests/functional/cc/rumDefects/AbleToViewRUMTestTemplateOptionInMasterCreateBlade.test.ts --project=Chrome --workers=1"
   },
   "dependencies": {

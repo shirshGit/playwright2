@@ -32,24 +32,26 @@ export class Utility {
         });
     }
 
-    
-    async getDate(date: number, format: string = '') {
-        let getDate;
+
+    async getDate(addDays: number, format: string = '') {
+        let getDate = await this.getTodaysDate();
+        let setDate = getDate.setDate(getDate.getDate() + (addDays));
+        let getDateInFormat;
         if (format === 'mmm dd yyyy') {
             //following date formate can be used for explorer,control center, WPT {e.g. "Sep 07, 2022"}
-            getDate = new Date(date).toLocaleString('en-us', { month: 'short', day: 'numeric', year: 'numeric' });
+            getDateInFormat = new Date(setDate).toLocaleString('en-us', { month: 'short', day: 'numeric', year: 'numeric' });
         }
         else {
             //following date formate can be used for smartboard, Records {e.g. "9/21/2022"}
-            getDate = new Date(date).toLocaleString('en-us', { month: 'numeric', day: 'numeric', year: 'numeric' });
+            getDateInFormat = new Date(setDate).toLocaleString('en-us', { month: 'numeric', day: 'numeric', year: 'numeric' });
         }
-        return getDate;
+        return getDateInFormat;
     }
 
     async getTodaysDate() {
-        let date1 = new Date().toUTCString();
-        let date2 = new Date(date1);
-        return date2;
+        let getDate = new Date().toUTCString();
+        let setDate = new Date(getDate);
+        return setDate;
     }
 
 
