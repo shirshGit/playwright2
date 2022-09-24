@@ -14,11 +14,9 @@ import { SyntheticLocationBlade } from '@pageobjects/ControlCenter/SyntheticLoca
 import { SyntheticDetailPage } from '@pageobjects/ControlCenter/SyntheticDetailsPage';
 import { Utility } from '@util/Utility';
 import { SyntheticTestDetailPage } from '@pageobjects/ControlCenter/SyntheticTestDetail';
+import { TestUtility } from '@util/TestUtility';
 import { ContactDetailsPage } from '@pageobjects/Contacts/ContactsDetailPage';
 import { ContactsPage } from '@pageobjects/Contacts/ContactsPage';
-
-
-
 
 
 const test = baseTest.extend<{
@@ -39,7 +37,6 @@ const test = baseTest.extend<{
     contactDetailsPage: ContactDetailsPage;
     contactsPage : ContactsPage;
 
-
 }>({
     baseTestUtil: async ({ page }, use, testInfo: TestInfo) => {
         let base = new BaseTestUtility(page);
@@ -47,7 +44,6 @@ const test = baseTest.extend<{
         await use(base);
         await base.fullPageScreenShot(testInfo);
     },
-    loginPage: async ({ page }, use, testInfo) => {
         let login = new LoginPage(page);
         await use(login);
     },
@@ -87,6 +83,9 @@ const test = baseTest.extend<{
     syntheticTestDetailPage: async ({ page }, use) => {
         await use(new SyntheticTestDetailPage(page));
     },
+    testUtilility : async ({ page }, use) => {
+        await use(new TestUtility());
+    },
     contactDetailsPage: async ({ page }, use) => {
         await use(new ContactDetailsPage(page));
     },
@@ -94,6 +93,9 @@ const test = baseTest.extend<{
         await use(new ContactsPage(page));
     },
 
+  
+
+   
 
 });
 

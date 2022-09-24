@@ -204,4 +204,9 @@ export class WebActions {
         var screenshotname = './test-results/' + testInfo.title + '.png';
         await this.page.screenshot({ path: screenshotname, fullPage: true });
     }
+
+    async getCurrentPageUrl() {
+        let url = await this.page.url();
+        return url;
+    }
 }
