@@ -73,17 +73,8 @@ export class WebActions {
         await this.waitForElementAttached(locator);
         await this.page.fill(locator, text);
     }
-
-    async clearTextField(locator: string) {
-        this.page.evaluate(function (locator) {
-            let x: HTMLElement = this.page.$(locator);
-            x.setAttribute('value', 'b');
-            x.innerText = 'c';
-            x.textContent = 'd';
-            x.setAttribute("value", "e");
-        })
-    }
-
+    
+    
     async dragAndDrop(dragElementLocator: string, dropElementLocator: string): Promise<void> {
         await this.waitForElementAttached(dragElementLocator);
         await this.waitForElementAttached(dropElementLocator);
@@ -208,5 +199,16 @@ export class WebActions {
     async getCurrentPageUrl() {
         let url = await this.page.url();
         return url;
+    }
+
+    async clearTextByBtnPress(loc : string){
+        await this.clickElement(loc);
+        await this.page.locator(loc).press("Control+KeyA");
+        await this.page.locator(loc).press("Backspace");
+    }
+
+    async clearTextField(loc : string){
+        await this.clickElement(loc);
+        await this.enterElementText(loc,'');
     }
 }

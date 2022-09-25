@@ -104,6 +104,9 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
         return enddate;
     }
 
+    
+    
+
    
     
     //#endregion

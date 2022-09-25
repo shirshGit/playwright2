@@ -1,5 +1,6 @@
 import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
+import { ListenOptions } from "net";
 import { Page } from "playwright";
 import { UserrolePage } from "./UserrolePage";
 
@@ -56,6 +57,7 @@ export class UserroleDetailPage extends UserrolePage {
         return this._firstCheckBox;
     }
 
+   
     
 
     //#endregion
@@ -87,6 +89,21 @@ export class UserroleDetailPage extends UserrolePage {
         await webActions.clickElement(this.searchBoxInDetailPage);
         await webActions.keyPress(this.searchBoxInDetailPage, 'Enter')
         await webActions.onlyKeyPress('Enter');
+    }
+
+    async createUserrole(userroleName : string , permissions : string[]){
+        await webActions.clickElement(this.createIcon);
+        await util.delay(2000);
+        await webActions.waitForElementAttached(this.nameInputField);
+        await webActions.clickElement(this.nameInputField);
+        await webActions.enterElementText(this.searchBoxInDetailPage, userroleName);
+        for (let index = 0; index < permissions.length; index++) {
+            const element = permissions[index];
+            await this.searchPermissionsInDetailPage(element);
+            await webActions.clickElement(this.firstCheckBox);
+        }
+        webActions.clickElement(this.applyButtonInpropertiesPage);
+
     }
 
 

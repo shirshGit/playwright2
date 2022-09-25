@@ -21,7 +21,7 @@ export class SyntheticDetailPage extends SynControlCenterPage {
 
     //#region This region is for properties
 
-    private _saveButton = '//span[text()="Save"]';
+    private _saveButton = '//button[@id="primary-button"]';
     private _propertiesBladeCancelButton = '//div[@data-testid="cancel-icon"]';
     private _locatorForAllAdvanceSettingsInDetailPage = 'div[class*="AdvancedSettingsCells_container"]';
     private _locatorToGetSeletedNodes = '//div[contains(@class, "NodeRow__StyledNameRow")]';
@@ -39,7 +39,7 @@ export class SyntheticDetailPage extends SynControlCenterPage {
     private _cancelItemDetailPage = '//span[text()="Cancel"]';
     private _rumInMasterTestBlade = '//span[text()="RUM"]';
     private _testsInMasterTestBlade = '//span[text()="Tests"]';
-    private _closeMasterTestBlade = '//div[@data-testid="cancel-icon"]';
+    
     
 
     public get saveButton() {
@@ -110,10 +110,7 @@ export class SyntheticDetailPage extends SynControlCenterPage {
         return this._testsInMasterTestBlade;
     }
 
-    public get closeItemPropertiesBlade() {
-        return this._closeMasterTestBlade;
-    }
-
+   
     public get cancelItemDetailPage() {
         return this._cancelItemDetailPage;
     }
@@ -128,7 +125,7 @@ export class SyntheticDetailPage extends SynControlCenterPage {
     async closePropertiesBlade() {
         await webActions.clickElement(this.propertiesBladeCancelButton);
     }
-
+    
     async clickSaveButton() {
         await webActions.clickElement(this.saveButton);
     }
@@ -142,12 +139,8 @@ export class SyntheticDetailPage extends SynControlCenterPage {
         return elementsText;
     }
 
-      async clickCancelItemPropertyButton() {
+      async CancelButton() {
         await webActions.clickElement(this.cancelItemDetailPage);
-    }
-
-    async cancelSearchedText() {
-        await webActions.clickElement(this.cancelSearchText);
     }
 
     async closeItemPropertyPage() {

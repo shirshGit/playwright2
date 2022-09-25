@@ -31,10 +31,9 @@ export class SynControlCenterPage {
     private _deleteOptionAfterThreeDotMenu = '//i[@data-icon-name="delete"]';
     private _webChromeTest = '//p[text() = "Web"]/../../..//p[text() = "Chrome"]';
     private _pendoCloseForNewFeature = '//button[contains(@id, "pendo-close-guide")]';
-    private _rumInMasterTestBlade = '//span[text()="RUM"]';
-    private _testsInMasterTestBlade = '//span[text()="Tests"]';
-    private _closeMasterTestBlade = '//div[@data-testid="cancel-icon"]';
-
+    private _closeMasterBlade = '//div[@data-testid="cancel-icon"]';
+    private _cancelSearchedText = '//i[@data-icon-name="Clear"]';
+    private _statusOfFirstItem = '//div[@data-automation-key="Status_4"]';
 
 
     public get newItemCreation() {
@@ -97,18 +96,20 @@ export class SynControlCenterPage {
         return this._pendoCloseForNewFeature;
     }
 
-    public get rumFromMasterTestBlade(){
-        return this._rumInMasterTestBlade;
+    public get closeItemPropertiesBlade() {
+        return this._closeMasterBlade;
     }
 
-    public get testFromMasterTestBlade(){
-        return this._testsInMasterTestBlade;
+    public get cancelSearchedItem() {
+        return this._cancelSearchedText;
     }
 
-    public get closeMasterTestBlade(){
-        return this._closeMasterTestBlade;
+    public get statusOfFirstItem(){
+        return this._statusOfFirstItem;
     }
 
+
+   
     //#endregion
 
     //#region This region is to have the functions
@@ -217,11 +218,20 @@ export class SynControlCenterPage {
         }
     }
 
-    async closeMasterTestsBlade() {
-        await webActions.clickElement(this.closeMasterTestBlade);
+    async closePropertyPage() {
+        await webActions.clickElement(this.closeItemPropertiesBlade);
 
     }
 
+    async cancelSearchedText() {
+        await webActions.clickElement(this.cancelSearchedItem);
+    }
+
+    async clearTextField(loc : string){
+        await webActions.clearTextByBtnPress(loc);
+    }
+
+   
     //#endregion
 
 }
