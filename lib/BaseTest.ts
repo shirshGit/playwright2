@@ -35,7 +35,7 @@ const test = baseTest.extend<{
     syntheticFolderDetailPage: SyntheticFolderDetailPage;
     synLocationBlade: SyntheticLocationBlade;
     util: Utility;
-    testUtilility : TestUtility;
+    testUtility : TestUtility;
     syntheticTestDetailPage: SyntheticTestDetailPage;
     contactDetailsPage: ContactDetailsPage;
     contactsPage : ContactsPage;
@@ -90,7 +90,7 @@ const test = baseTest.extend<{
     syntheticTestDetailPage: async ({ page }, use) => {
         await use(new SyntheticTestDetailPage(page));
     },
-    testUtilility : async ({ page }, use) => {
+    testUtility : async ({ page }, use) => {
         await use(new TestUtility());
     },
     contactDetailsPage: async ({ page }, use) => {
