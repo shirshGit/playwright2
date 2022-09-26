@@ -10,10 +10,10 @@ test.beforeEach(async ({ baseTestUtil }) => {
 CP-12776 : Bug 125031 Active Tests are Changing to Inactive once wehe refresh the Page
 */
 
-test("ActiveTestsAreChangingToInactiveOnceWehenRefreshPage  @ProductionDefect@SyntheticControlCenter", async ({ page, verification, syntheticTestDetailPage, sideNavigationBar, testUtilility,synCCPage, util, baseTestUtil }) => {
+test("ActiveTestsAreChangingToInactiveOnceWehenRefreshPage  @ProductionDefect@SyntheticControlCenter", async ({ page, verification, syntheticTestDetailPage, sideNavigationBar, testUtility,synCCPage, util, baseTestUtil }) => {
 
     let prodForTestCreate = await data.getValueOfTheParameter('productForJunkItems');
-    let testName = await testUtilility.getTestName();
+    let testName = await testUtility.getTestName();
     let url = await data.getValueOfTheParameter('url');
     let endDate = await util.getDate(2,'mmm dd yyyy');
     //navigate to cc

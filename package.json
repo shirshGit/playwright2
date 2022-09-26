@@ -16,6 +16,7 @@
     "test:single:chromeTimeCapture": "npx playwright test /tests/functional/catchointSampleTestForTimeComapre.test.ts --project=Chrome --workers=1",
     "test:single:TestURLValidation": "npx playwright test /tests/functional/cc/synthetic/TestURLValidation.test.ts --project=Chrome --workers=1",
     "test:single:TestPropertiesDateValidation": "npx playwright test /tests/functional/cc/synthetic/TestPropertiesDateValidation.test.ts --project=Chrome --workers=1",
+    "test:single:TestStatusValidation": "npx playwright test /tests/functional/cc/synthetic/TestStatusValidation.test.ts --project=Chrome --workers=1",
     "test:single:UserrolePermissionValidation": "npx playwright test /tests/functional/cc/rum/UserrolePermissionValidation.test.ts --project=Chrome --workers=1"
   },
   "dependencies": {
