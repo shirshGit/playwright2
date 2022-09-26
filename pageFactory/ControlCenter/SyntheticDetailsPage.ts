@@ -21,7 +21,7 @@ export class SyntheticDetailPage extends SynControlCenterPage {
 
     //#region This region is for properties
 
-    private _saveButton = '//span[text()="Save"]';
+    private _saveButton = '//button[@id="primary-button"]';
     private _propertiesBladeCancelButton = '//div[@data-testid="cancel-icon"]';
     private _locatorForAllAdvanceSettingsInDetailPage = 'div[class*="AdvancedSettingsCells_container"]';
     private _locatorToGetSeletedNodes = '//div[contains(@class, "NodeRow__StyledNameRow")]';
@@ -36,7 +36,11 @@ export class SyntheticDetailPage extends SynControlCenterPage {
     private _chkBoxForAllAdvanceSettings = '//div[@data-testid = "advancedsettingsblade"]//span//div[@data-automationid = "DetailsRowCheck"]//i[@data-icon-name="StatusCircleCheckmark"]';
     private _alertRecipientsTextBox = '//div[@data-testid = "recipient-autocomplete-picker"]//input';
     private _alertReceipientSuggestedContacts = '//div[@aria-label = "Suggested Contacts"]//span[contains(@class, "AutoCompletePillPicker_suggestionItem")]//b';
-    //(//label[contains(@class,"ms-ChoiceField-field is-checked field")])[1]
+    private _cancelItemDetailPage = '//span[text()="Cancel"]';
+    private _rumInMasterTestBlade = '//span[text()="RUM"]';
+    private _testsInMasterTestBlade = '//span[text()="Tests"]';
+    
+    
 
     public get saveButton() {
         return this._saveButton;
@@ -98,6 +102,20 @@ export class SyntheticDetailPage extends SynControlCenterPage {
         return this._alertReceipientSuggestedContacts;
     }
 
+    public get rumFromMasterTestBlade() {
+        return this._rumInMasterTestBlade;
+    }
+
+    public get testFromMasterTestBlade() {
+        return this._testsInMasterTestBlade;
+    }
+
+   
+    public get cancelItemDetailPage() {
+        return this._cancelItemDetailPage;
+    }
+
+
 
     //#endregion
 
@@ -107,7 +125,7 @@ export class SyntheticDetailPage extends SynControlCenterPage {
     async closePropertiesBlade() {
         await webActions.clickElement(this.propertiesBladeCancelButton);
     }
-
+    
     async clickSaveButton() {
         await webActions.clickElement(this.saveButton);
     }
@@ -121,7 +139,13 @@ export class SyntheticDetailPage extends SynControlCenterPage {
         return elementsText;
     }
 
-    
+      async CancelButton() {
+        await webActions.clickElement(this.cancelItemDetailPage);
+    }
+
+    async closeItemPropertyPage() {
+        await webActions.clickElement(this.closeItemPropertiesBlade);
+    }
 
 
     //#endregion

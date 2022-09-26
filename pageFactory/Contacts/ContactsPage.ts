@@ -6,7 +6,7 @@ import { LoginPageObjects } from "@objects/LoginPageObjects";
 let webActions: WebActions;
 let util: Utility
 
-export class ContactDetailsPage {
+export class ContactsPage {
     readonly page: Page;
     loginPageObjects = new LoginPageObjects();
 
@@ -20,10 +20,6 @@ export class ContactDetailsPage {
 
     private _searchBox = '//input[@data-testid="contact-search-box"]';
     private _firstRowSearchResult = '//div[@data-automation-key="First Name_0"]';
-    private _systemAccessDropDown = '(//i[@data-icon-name="chevronDark"])[1]';
-    private _userrole = '//span[contains(text(), "OnlyMangeTestPermission")]'
-    private _cancelContactPropertyPage = '//div[@data-testid="cancel-icon"]';
-    private _applyButtonOnconatctPropertyPage = '//span[text()="Apply"]';
 
 
 
@@ -32,25 +28,10 @@ export class ContactDetailsPage {
         return this._searchBox;
     }
 
-    public get systemAcessDropDown() {
-        return this._systemAccessDropDown
-    }
-
     public get firstRowSearchResult() {
         return this._firstRowSearchResult
     }
 
-    public get selectUserrole() {
-        return (text: string) => { return `//span[text()="${text}"]` };
-    }
-
-    public get cancelContactPropertyPage() {
-        return this._cancelContactPropertyPage
-    }
-
-    public get applyButton() {
-        return this._applyButtonOnconatctPropertyPage;
-    }
 
     //#endregion
 
@@ -71,24 +52,7 @@ export class ContactDetailsPage {
         await webActions.onlyKeyPress('Enter');
     }
 
-    async clickOnSystemAcessDropDown() {
-        await webActions.clickElement(this.systemAcessDropDown);
-    }
 
-    async cancelContactsPropertyPage() {
-        await webActions.clickElement(this.cancelContactPropertyPage);
-    }
-
-    async selectGivenUserrole(userroleName: string) {
-        await this.clickOnSystemAcessDropDown();
-        let xpath = this.selectUserrole(userroleName);
-        await webActions.clickElement(xpath);
-        await this.clickOnApplyButton();
-    }
-
-    async clickOnApplyButton() {
-        await webActions.clickElement(this.applyButton);
-    }
 
 
 

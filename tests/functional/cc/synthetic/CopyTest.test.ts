@@ -7,10 +7,10 @@ let data = new DataForEnv();
     CP-16894 : Verify Settings should be Inherited
 */
 
-test.skip("AfterCopyATestProductSettingsShouldBeInheritedInTest @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar,util,testUtilility,synCCPage, verification}) => {
+test.skip("AfterCopyATestProductSettingsShouldBeInheritedInTest @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
     let prodForTestCreate = await data.getValueOfTheParameter('productForJunkItems');
     let prodForCopyTest = await data.getValueOfTheParameter('productForCoapyTest');
-    let testName = await testUtilility.getTestName();
+    let testName = await testUtility.getTestName();
     let url = await data.getValueOfTheParameter('url');
     //navigate to cc test page
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
@@ -43,7 +43,7 @@ test.skip("AfterCopyATestProductSettingsShouldBeInheritedInTest @SyntheticContro
     CP-4391 : Verify 'Copy' option is available in menu for indivudual test
 */
 
-test("CopyOptionShouldBeAvailableInMenuForIndividualTest @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar,util,testUtilility,synCCPage, verification}) => {
+test("CopyOptionShouldBeAvailableInMenuForIndividualTest @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
     let testId = await data.getValueOfTheParameter('testID');
     //navigate to cc test page
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
@@ -57,7 +57,7 @@ test("CopyOptionShouldBeAvailableInMenuForIndividualTest @SyntheticControlCenter
 /*
     CP-4392 : Verify clicking on 'Copy' will open a blade to the user with the tree structure 
 */
-test("AfterClickingOnCopyTestLocationBladeShouldOpen @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar,util,testUtilility,synCCPage, verification}) => {
+test("AfterClickingOnCopyTestLocationBladeShouldOpen @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
     let testId = await data.getValueOfTheParameter('testID');
     //navigate to cc test page
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
@@ -71,10 +71,10 @@ test("AfterClickingOnCopyTestLocationBladeShouldOpen @SyntheticControlCenter", a
 /*
     CP-4393 : Verify User is able to pick up/select location on synthetic tests location
 */
-test("UserIsAbleToSelectLocationOnSyntheticTestLocation @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar,util,testUtilility,synCCPage, verification}) => {
+test("UserIsAbleToSelectLocationOnSyntheticTestLocation @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
     let prodForTestCreate = await data.getValueOfTheParameter('productForJunkItems');
     let prodForCopyTest = await data.getValueOfTheParameter('productForCoapyTest');
-    let testName = await testUtilility.getTestName();
+    let testName = await testUtility.getTestName();
     let url = await data.getValueOfTheParameter('url');
     //navigate to cc test page
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
@@ -102,10 +102,10 @@ test("UserIsAbleToSelectLocationOnSyntheticTestLocation @SyntheticControlCenter"
 /*
     CP-4394 : Verify test name of copied test 
 */
-test("VeriftTestNameOfCopyTest @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar,util,testUtilility,synCCPage, verification}) => {
+test("VeriftTestNameOfCopyTest @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
     let prodForTestCreate = await data.getValueOfTheParameter('productForJunkItems');
     let prodForCopyTest = await data.getValueOfTheParameter('productForCoapyTest');
-    let testName = await testUtilility.getTestName();
+    let testName = await testUtility.getTestName();
     let url = await data.getValueOfTheParameter('url');
     //navigate to cc test page
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();

@@ -12,10 +12,10 @@ test.beforeEach(async ({ baseTestUtil }) => {
   CP-12527 : Bug 127422: Start Date on Safari is not pre-populated and on save uses the UTC Time
 */
 
-test("CheckStartDateBeforeAndAfterSaveingTest  @ProductionDefect@SyntheticControlCenter", async ({ verification, syntheticTestDetailPage, sideNavigationBar, testUtilility, util }) => {
+test("CheckStartDateBeforeAndAfterSaveingTest  @ProductionDefect@SyntheticControlCenter", async ({ verification, syntheticTestDetailPage, sideNavigationBar,synCCPage, testUtility, util }) => {
 
     let prodForTestCreate = await data.getValueOfTheParameter('productForJunkItems');
-    let testName = await testUtilility.getTestName();
+    let testName = await testUtility.getTestName();
     let url = await data.getValueOfTheParameter('url');
     //navigate to cc test page
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
@@ -34,7 +34,7 @@ test("CheckStartDateBeforeAndAfterSaveingTest  @ProductionDefect@SyntheticContro
     //validation of start date 
     await verification.verifySoftAssertTrue(startDateBeforeSavingTest === startDateAfterSavingTest, 'Start date before saving test and start date after saving test is not equal.');
     //cancel test property page by click on cancel button
-    await syntheticTestDetailPage.clickCancelTestPropertyButton();
+    await syntheticTestDetailPage.closeItemPropertyPage();
     await util.delay(1000);
     //delete test
     await syntheticTestDetailPage.deleteItemFromThreeDotMenu(testName);
@@ -48,10 +48,10 @@ test("CheckStartDateBeforeAndAfterSaveingTest  @ProductionDefect@SyntheticContro
  CP-12529 :Bug 130312: CC: Safari: To Date is not getting saved
 */
 
-test("CheckEndDateAfterSavingTest  @ProductionDefect@SyntheticControlCenter", async ({ verification, syntheticTestDetailPage, sideNavigationBar, testUtilility, util }) => {
+test("CheckEndDateAfterSavingTest  @ProductionDefect@SyntheticControlCenter", async ({ verification, syntheticTestDetailPage, sideNavigationBar, testUtility,synCCPage, util }) => {
 
     let prodForTestCreate = await data.getValueOfTheParameter('productForJunkItems');
-    let testName = await testUtilility.getTestName();
+    let testName = await testUtility.getTestName();
     let url = await data.getValueOfTheParameter('url');
     let endDate = await util.getDate(2,'mmm dd yyyy');
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
@@ -68,7 +68,7 @@ test("CheckEndDateAfterSavingTest  @ProductionDefect@SyntheticControlCenter", as
     //validation
     await verification.verifySoftAssertTrue(endDateAfterSavingDate === endDate.toLocaleString(), 'end date which is provided while creating test is not same after saving test.');
     //close test property page by clicking on cross icon
-    await syntheticTestDetailPage.closeTestPropertyPage();
+    await syntheticTestDetailPage.closeItemPropertyPage();
     await util.delay(1000);
     //delete test
     await syntheticTestDetailPage.deleteItemFromThreeDotMenu(testName);

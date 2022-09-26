@@ -1,11 +1,8 @@
 import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
 import { Page } from "playwright";
-//import { SyntheticLocationBlade } from "@pageobjects/ControlCenter/SyntheticLocationBlade";
-
 let webActions: WebActions;
 let util: Utility
-//let synLocation : SyntheticLocationBlade;
 
 export class SynControlCenterPage {
     readonly page: Page;
@@ -16,7 +13,6 @@ export class SynControlCenterPage {
         this.page = page;
         webActions = new WebActions(this.page);
         util = new Utility();
-        //synLocation = new SyntheticLocationBlade(this.page);
     }
 
     //#region This region is for getter
@@ -48,6 +44,12 @@ export class SynControlCenterPage {
     private _moveButtonInTestLocationBlade = '//button[@type="button"]//span[text()="Move"]';
     private _divisionLevelDDInRootSection = '//div[contains(@class,"DivisionComboBox_divisionSelector")]//div[@id="chevron-down-icon"]';
     private _clientLevelInDivisionDropDown = '//div[contains(@class,"ms-Callout ms-Dropdown-callout")]//span[text()="Client Level"]';
+    private _closeMasterBlade = '//div[@data-testid="cancel-icon"]';
+    private _statusOfFirstItem = '//div[@data-automation-key="Status_4"]';
+    private _getItemLocation = '//div[contains(@class,"BasicPropertySection_")]//div[@data-automation-id="visibleContent"]';
+    private _testLocationTextIntestLocationBlade = '//span[text()="Tests Location"]';
+    private _getItemselectedInDivisionDD = '//div[contains(@class,"ms-Callout-main")]//span[text()="Client Level"]';
+    
     public get newItemCreation() {
         return this._newItemCreation;
     }
@@ -107,10 +109,12 @@ export class SynControlCenterPage {
     public get newFolderItem() {
         return this._newFolderItem;
     }
-    public get webChromeTest() {
+
+    public get webChromeTest(){
         return this._webChromeTest;
     }
-    public get pendoCloseForNewFeature() {
+
+    public get pendoCloseForNewFeature(){
         return this._pendoCloseForNewFeature;
     }
     public get cancelTestDetailPage() {
@@ -120,18 +124,21 @@ export class SynControlCenterPage {
         return this._copyButtonInTestLocationBlade;
     }
 
-    public get testLocationTextAfterClickingOnCopyInThreeDotMenu() {
-        return this._syntheticTestLocationTextAfterClickingOnCopy;
+    public get closeItemPropertiesBlade() {
+        return this._closeMasterBlade;
     }
 
-    public get getItemLocation() {
-        return this._locationOfItem;
+    public get cancelSearchedItem() {
+        return this._cancelSearchedText;
     }
 
-    public get getItemSelectedInDivDropDown(){
-        return this._clientLevelInDivisionDropDown;
+    public get statusOfFirstItem(){
+        return this._statusOfFirstItem;
     }
 
+    public get getItemLocation(){
+        return this._getItemLocation;
+    }
    
 
     public get moveButtonInHeaderSection(){
@@ -146,10 +153,21 @@ export class SynControlCenterPage {
         return this._divisionLevelDDInRootSection;
     }
     
+
     public get selectProductForTestLocation() {
         return (text: string) => { return `(//span[text()="${text}"])[2]` };
     }
 
+    public get testLocationTextAfterClickingOnCopyInThreeDotMenu(){
+        return this.testLocationTextAfterClickingOnCopyInThreeDotMenu;
+    }
+
+    public get getItemSelectedInDivDropDown(){
+        return this._getItemselectedInDivisionDD;
+    }
+
+    
+   
     //#endregion
 
     //#region This region is to have the functions
@@ -180,7 +198,6 @@ export class SynControlCenterPage {
         await webActions.clickElement(this.searchBox);
         await webActions.keyPress(this.searchBox, 'Enter')
         await webActions.onlyKeyPress('Enter');
-
     }
 
     async deleteItemFromThreeDotMenu(productName: string) {
@@ -278,8 +295,8 @@ export class SynControlCenterPage {
         await webActions.clickElement(this.cancelTestDetailPage);
     }
 
-    async cancelSearchedText() {
-        await webActions.clickElement(this._cancelSearchedText);
+    async clearTextField(loc : string){
+        await webActions.clearTextByBtnPress(loc);
     }
 
     async closeTestPropertyPage() {
@@ -312,6 +329,10 @@ export class SynControlCenterPage {
         return enddate;
     }
 
+    async closePropertyPage(){
+        await webActions.clickElement(this._closeMasterBlade);
+    }
+
     async moveSelectedItem(itemName : string ,product : string){
         await this.checkTheSearchedItem(itemName);
         await webActions.clickElement(this.moveButtonInHeaderSection);
@@ -321,6 +342,10 @@ export class SynControlCenterPage {
     async clickDivisionDropDown(){
         await webActions.clickElement(this.clickOnDivisionDropDown);
 
+    }
+
+    async clickOnNewItemCreation(){
+        return this.newItemCreation;
     }
 
 

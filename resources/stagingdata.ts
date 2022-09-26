@@ -5,8 +5,8 @@ export const stagedata = {
     'url' : 'https://www.google.com', //for creating items e.g synthetic test,endpoint test.
     'testID' : '240905', // used for automation scripts where test are not being created.
     'testListPageUrl' : 'https://portalstage.catchpoint.com/ui/Symphony/ControlCenter/Tests', //for validation of synthetic cc page.
-    'productForCoapyTest' : 'ProductForCopyScenariosDoNotDelete'
-    'userroleName' : 'OnlyManageTestPermission',
+    'productForCoapyTest' : 'ProductForCopyScenariosDoNotDelete',
+    'userroleName1' : 'OnlyManageTestPermission',
     'userroleName2' : 'OnlyManageRumAndTestTemplatePermission',
     'userrole9' : 'userrole9_DoNOTDeleteqaautomationxclient-clientadministrator@catchpoint.com',
     'password' : 'Password123!',

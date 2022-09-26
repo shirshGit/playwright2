@@ -1,4 +1,5 @@
 import { WebActions } from "@lib/WebActions";
+import { Utility } from "@util/Utility";
 import { Page } from "playwright";
 
 let webActions: WebActions;
@@ -16,6 +17,10 @@ export class SideNavBar{
     //#region This region is for locators as Property
     private _sideNavControlCenter = '#controlcentersection';
     private _sideNavCCTest = '//button/a[text()="Tests"]';
+    private _sideNavAnalytics = '#analysissection';
+    private _sideNavExplorer = '//a[text()="Explorer"]';
+    private _homesection = '#homesection';
+    private _dashboard = '//a[text()="Dashboard"]';
     private _sideNavSettings = '//i[@data-icon-name="settingsSiteNav"]';
     private _sideNavUserrole = '//a[text()="User Roles"]';
     private _sideNavContact = '#contactsection';
@@ -32,11 +37,27 @@ export class SideNavBar{
         return this._sideNavCCTest;
     }
 
+    public get sideNavAnalytics(){
+        return this._sideNavAnalytics;
+    }
+
     public get sideNavSettingsTest(){
         return this._sideNavSettings;
     }
 
-    public get sideNavUserroleTest(){
+    public get sideNavExplorer(){
+        return this._sideNavExplorer;
+    }
+
+    public get sideNavHome(){
+        return this._homesection;
+    }
+
+    public get sideNavDashboard(){
+        return this._dashboard;
+    }
+    
+    public get sideNavUserrole(){
         return this._sideNavUserrole;
     }
 
@@ -61,12 +82,26 @@ export class SideNavBar{
         await webActions.clickElement(this.sideNavCCTest);
     }
 
+    async navigateToExplorerFromSideNavigation(){
+        await webActions.waitForElementAttached(this.sideNavAnalytics);
+        await webActions.clickElement(this.sideNavAnalytics)
+        await webActions.waitForElementAttached(this.sideNavExplorer);
+        await webActions.clickElement(this.sideNavExplorer);
+    }
     async navigateToUserrolePageFromSideNavigation(){
         await webActions.waitForElementAttached(this.sideNavSettingsTest);
         await webActions.clickElement(this.sideNavSettingsTest)
-        await webActions.waitForElementAttached(this.sideNavUserroleTest);
-        await webActions.clickElement(this.sideNavUserroleTest);
+        await webActions.waitForElementAttached(this.sideNavUserrole);
+        await webActions.clickElement(this.sideNavUserrole);
     }
+
+    async navigateToDashboardFromSideNavigation(){
+        await webActions.waitForElementAttached(this.sideNavHome);
+        await webActions.clickElement(this.sideNavHome)
+        await webActions.waitForElementAttached(this.sideNavDashboard);
+        await webActions.clickElement(this.sideNavDashboard);
+    }
+
 
     async navigateToContactPageFromSideNavigation(){
         await webActions.waitForElementAttached(this.sideNavContactTest);

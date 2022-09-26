@@ -45,6 +45,7 @@ export class SyntheticFolderDetailPage extends SyntheticDetailPage {
         var elementsText = webActions.getTextFromWebElements(element);
         return elementsText;
     }
+    
 
     async closeFolderPropertiesBlade() {
         await webActions.clickElement(this.propertiesBladeCancelButton);
