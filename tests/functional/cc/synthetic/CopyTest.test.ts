@@ -62,7 +62,7 @@ test("AfterClickingOnCopyTestLocationBladeShouldOpen @SyntheticControlCenter", a
     //navigate to cc test page
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
     //search and click on three dot menu  
-    await synCCPage.searchAndClickOnThreeDotMenuAndCopy(testId);
+    await synCCPage.clickCopyButtonFromThreeDotMenu(testId);
     //validation for Tests Location 
     await verification.verifySoftAssertForTextOfAnElement(synCCPage.testLocationTextAfterClickingOnCopyInThreeDotMenu ,'Tests Location' ,"Tests Location is not present");
     

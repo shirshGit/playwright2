@@ -29,6 +29,17 @@ export class SyntheticLocationBlade extends SynControlCenterPage {
         return this._syntheticLocationBladeNavItemheader;
     }
 
+    public get selectProductForTestLocation() {
+        return (text: string) => { return `(//span[text()="${text}"])[2]` };
+    }
+
     //#endregion
+
+    async selectProductFromTestLocationBlade(productName: string) {
+        let xpath = await this.selectProductForTestLocation(productName);
+        await webActions.clickElement(xpath);
+        await webActions.clickElement(this.copyButtonInTestPropertyBlade);
+    }
+
 
 }

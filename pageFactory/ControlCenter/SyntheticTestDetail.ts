@@ -112,13 +112,8 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
         return enddate;
     }
 
-    //this method will retuen date in the formate "Sep 07, 2022"
-    async EndDateAndStartDateForTestDetailPage(addDays : number = null ){
-        let date2 = await util.getTodaysDate();
-        let date3= date2.setDate(date2.getDate() + addDays); //number  of days to add, e.x. 15 days
-        let date4 =await util.getCCTestDetailPageDateFormate(date3);
-        return date4;
-    }
+   
+    
 
     async fetchInheritProperty() {
         let startdate = await webActions.getElementAttributeValue(this.startDateValue,'value');

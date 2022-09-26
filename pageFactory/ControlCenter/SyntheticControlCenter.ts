@@ -1,9 +1,11 @@
 import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
 import { Page } from "playwright";
+import { SyntheticLocationBlade } from "./SyntheticLocationBlade";
 
 let webActions: WebActions;
 let util: Utility
+let synLocation : SyntheticLocationBlade;
 
 export class SynControlCenterPage {
     readonly page: Page;
@@ -37,11 +39,13 @@ export class SynControlCenterPage {
     private _cancelSearchedText = '//i[@data-icon-name="Clear"]/div';
     private _closeTestDetailPage = '//div[@data-testid="cancel-icon"]';
     private _copyOptionInThreeDotMenu = '//ul[contains(@class,"ms-ContextualMenu-list is-open")]//span[text()="Copy"]';
-    private _copyButtonInTestPropertyBlade = '//button[@type="button"]//span[text()="Copy"]';
+    private _copyButtonInTestLocationBlade = '//button[@type="button"]//span[text()="Copy"]';
     private _syntheticTestLocationTextAfterClickingOnCopy = '//div[contains(@class,"ms-Panel-main")]//span[text()="Tests Location"]';
     private _locationOfItem = '(//span[contains(@class,"ms-Breadcrumb-item")]/div[contains(@class,"ms-TooltipHost")])[2]';
-
-
+    private _moveButtonInHeaderSection = '//button[text()="Move"]';
+    private _moveButtonInTestLocationBlade = '//button[@type="button"]//span[text()="Move"]';
+    private _divisionLevelDDInRootSection = '//div[contains(@class,"DivisionComboBox_divisionSelector")]//div[@id="chevron-down-icon"]';
+    private _clientLevelInDivisionDropDown = '//div[contains(@class,"ms-Callout ms-Dropdown-callout")]//span[text()="Client Level"]';
     public get newItemCreation() {
         return this._newItemCreation;
     }
@@ -110,8 +114,8 @@ export class SynControlCenterPage {
     public get cancelTestDetailPage() {
         return this._cancelTestDetailPage;
     }
-    public get copyButtonInTestPropertyBlade() {
-        return this._copyButtonInTestPropertyBlade;
+    public get copyButtonInTestLocationBlade() {
+        return this._copyButtonInTestLocationBlade;
     }
 
     public get testLocationTextAfterClickingOnCopyInThreeDotMenu() {
@@ -122,8 +126,22 @@ export class SynControlCenterPage {
         return this._locationOfItem;
     }
 
-    public get selectProductForTestLocation() {
-        return (text: string) => { return `(//span[text()="${text}"])[2]` };
+    public get getItemSelectedInDivDropDown(){
+        return this._clientLevelInDivisionDropDown;
+    }
+
+   
+
+    public get moveButtonInHeaderSection(){
+        return this._moveButtonInHeaderSection;
+    }
+
+    public get moveButtonInTestLocationBlade(){
+        return this._moveButtonInTestLocationBlade;
+    }
+
+    public get clickOnDivisionDropDown(){
+        return this._divisionLevelDDInRootSection;
     }
 
 
@@ -172,7 +190,8 @@ export class SynControlCenterPage {
         await webActions.hoverOnElement(this.threeDotMenuOfSearchedItem);
         await webActions.clickElement(this.threeDotMenuOfSearchedItem);
         await webActions.clickElement(this.copyOptionInThreeDotMenu);
-        await this.selectProductFromTestLocationForCopyTest(destinationProductID);
+        await synLocation.selectProductFromTestLocationBlade(destinationProductID);
+        await webActions.clickElement(this.copyButtonInTestLocationBlade);
     }
 
     async deleteItemFromTableContainerBar(productName: string) {
@@ -255,12 +274,7 @@ export class SynControlCenterPage {
         await webActions.clickElement(this._closeTestDetailPage);
     }
 
-    async selectProductFromTestLocationForCopyTest(productName: string) {
-        let xpath = await this.selectProductForTestLocation(productName);
-        await webActions.clickElement(xpath);
-        await webActions.clickElement(this.copyButtonInTestPropertyBlade);
-    }
-
+    
     async searchAndClickOnThreeDotMenu(itemName: string) {
         const [searchItem] = await Promise.all([
             this.searchItem(itemName)
@@ -271,11 +285,12 @@ export class SynControlCenterPage {
     }
 
     async threeDotMenuItem(itemName: string) {
-        return this.threeDotMenuItems(itemName);;
+        let xpath = this.threeDotMenuItems(itemName);
+        return xpath;
 
     }
 
-    async searchAndClickOnThreeDotMenuAndCopy(itemName: string) {
+    async clickCopyButtonFromThreeDotMenu(itemName: string) {
         await this.searchAndClickOnThreeDotMenu(itemName);
         await webActions.clickElement(this.copyOptionInThreeDotMenu);
     }
@@ -283,6 +298,18 @@ export class SynControlCenterPage {
     async fetchItemLocation() {
         let enddate = await webActions.getElementAttributeValue(this.getItemLocation, 'value');
         return enddate;
+    }
+
+    async moveSelectedItem(itemName : string ,product : string){
+        await this.checkTheSearchedItem(itemName);
+        await webActions.clickElement(this.moveButtonInHeaderSection);
+        await synLocation.selectProductFromTestLocationBlade(product);
+        await webActions.clickElement(this.moveButtonInTestLocationBlade);
+    }
+
+    async clickDivisionDropDown(){
+        await webActions.clickElement(this.clickOnDivisionDropDown);
+
     }
 
 
