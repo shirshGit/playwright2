@@ -4,10 +4,10 @@ import { expect, Page } from "@playwright/test";
 
 let data = new DataForEnv();
 /*
-    CP-8430 : Verify tests are moved
+    CP-34475 : Verify "Client Level" should be selected by default under Division dropdown
 */
 
-test("VerifyMoveTestInOtherDestination @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage,page, sideNavigationBar,util,testUtilility,synCCPage, verification}) => {
+test("VerifyClientLevel @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage,page, sideNavigationBar,util,testUtilility,synCCPage, verification}) => {
     let prodForTestCreate = await data.getValueOfTheParameter('productForJunkItems');
     let prodForMoveTest = await data.getValueOfTheParameter('productForCoapyTest');
     let testName = await testUtilility.getTestName();

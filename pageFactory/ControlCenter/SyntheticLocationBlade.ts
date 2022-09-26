@@ -38,7 +38,7 @@ export class SyntheticLocationBlade extends SynControlCenterPage {
     async selectProductFromTestLocationBlade(productName: string) {
         let xpath = await this.selectProductForTestLocation(productName);
         await webActions.clickElement(xpath);
-        await webActions.clickElement(this.copyButtonInTestPropertyBlade);
+        //await webActions.clickElement(this.copyButtonInTestPropertyBlade);
     }
 
 

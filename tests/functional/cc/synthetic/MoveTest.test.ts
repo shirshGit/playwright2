@@ -25,6 +25,10 @@ test("VerifyMoveTestInOtherDestination @SyntheticControlCenter", async({baseTest
     await synCCPage.clickOnSearchedItemInCC(testName);
     //validation for Tests Location 
     await verification.verifySoftAssertForTextOfAnElement(synCCPage.getItemLocation , prodForMoveTest,"Tests Location is not moved to selected location.");
+    //close test property page by clicking on cross icon
+    await syntheticTestDetailPage.closeTestPropertyPage();
+    //delete test
+    await syntheticTestDetailPage.deleteItemFromThreeDotMenu(testName);
     
 })
 

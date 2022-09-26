@@ -1,20 +1,22 @@
 import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
 import { Page } from "playwright";
-import { SyntheticLocationBlade } from "./SyntheticLocationBlade";
+//import { SyntheticLocationBlade } from "@pageobjects/ControlCenter/SyntheticLocationBlade";
 
 let webActions: WebActions;
 let util: Utility
-let synLocation : SyntheticLocationBlade;
+//let synLocation : SyntheticLocationBlade;
 
 export class SynControlCenterPage {
     readonly page: Page;
+    
 
 
     constructor(page: Page) {
         this.page = page;
         webActions = new WebActions(this.page);
         util = new Utility();
+        //synLocation = new SyntheticLocationBlade(this.page);
     }
 
     //#region This region is for getter
@@ -143,12 +145,22 @@ export class SynControlCenterPage {
     public get clickOnDivisionDropDown(){
         return this._divisionLevelDDInRootSection;
     }
-
-
+    
+    public get selectProductForTestLocation() {
+        return (text: string) => { return `(//span[text()="${text}"])[2]` };
+    }
 
     //#endregion
 
     //#region This region is to have the functions
+
+    
+
+    async selectProductFromTestLocationBlade(productName: string) {
+        let xpath = await this.selectProductForTestLocation(productName);
+        await webActions.clickElement(xpath);
+        await webActions.clickElement(this.moveButtonInTestLocationBlade);
+    }
 
     async navigateToSyntheticCC() {
         await webActions.navigateToURL(`ControlCenter/Tests`);
@@ -190,7 +202,7 @@ export class SynControlCenterPage {
         await webActions.hoverOnElement(this.threeDotMenuOfSearchedItem);
         await webActions.clickElement(this.threeDotMenuOfSearchedItem);
         await webActions.clickElement(this.copyOptionInThreeDotMenu);
-        await synLocation.selectProductFromTestLocationBlade(destinationProductID);
+        //await synLocation.selectProductFromTestLocationBlade(destinationProductID);
         await webActions.clickElement(this.copyButtonInTestLocationBlade);
     }
 
@@ -303,8 +315,7 @@ export class SynControlCenterPage {
     async moveSelectedItem(itemName : string ,product : string){
         await this.checkTheSearchedItem(itemName);
         await webActions.clickElement(this.moveButtonInHeaderSection);
-        await synLocation.selectProductFromTestLocationBlade(product);
-        await webActions.clickElement(this.moveButtonInTestLocationBlade);
+        await this.selectProductFromTestLocationBlade(product);
     }
 
     async clickDivisionDropDown(){
