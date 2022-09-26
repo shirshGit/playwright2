@@ -15,6 +15,7 @@ import { SyntheticDetailPage } from '@pageobjects/ControlCenter/SyntheticDetails
 import { Utility } from '@util/Utility';
 import { SyntheticTestDetailPage } from '@pageobjects/ControlCenter/SyntheticTestDetail';
 import { TestUtility } from '@util/TestUtility';
+import { ContactDetailsPage } from '@pageobjects/ControlCenter/ContactsDetailPage';
 
 const test = baseTest.extend<{
     baseTestUtil: BaseTestUtility;
@@ -31,6 +32,26 @@ const test = baseTest.extend<{
     synLocationBlade: SyntheticLocationBlade;
     util: Utility;
     syntheticTestDetailPage: SyntheticTestDetailPage;
+
+
+
+
+const test = baseTest.extend<{
+    baseTestUtil: BaseTestUtility;
+    loginPage: LoginPage;
+    instantTabWindow: NewTabInstatntTest;
+    endpointControlCenter: EndpointCC;
+    syntheticControlCenter: SyntheticControlCenter;
+    verification: Verification;
+    sideNavigationBar: SideNavBar;
+    synCCPage: SynControlCenterPage;
+    syntheticDetailsPage: SyntheticDetailPage;
+    syntheticProductDetailPage: SyntheticProductDetailPage;
+    syntheticFolderDetailPage: SyntheticFolderDetailPage;
+    synLocationBlade: SyntheticLocationBlade;
+    util: Utility;
+    syntheticTestDetailPage: SyntheticTestDetailPage;
+    contactDetailsPage: ContactDetailsPage;
     testUtilility : TestUtility;
 
 }>({
@@ -83,6 +104,9 @@ const test = baseTest.extend<{
     },
     testUtilility : async ({ page }, use) => {
         await use(new TestUtility());
+    },
+    contactDetailsPage: async ({ page }, use) => {
+        await use(new ContactDetailsPage(page));
     },
 
   
