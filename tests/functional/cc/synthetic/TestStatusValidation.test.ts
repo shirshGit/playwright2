@@ -11,7 +11,7 @@ CP-12776 : Bug 125031 Active Tests are Changing to Inactive once wehe refresh th
 */
 
 test("ActiveTestsAreChangingToInactiveOnceWehenRefreshPage  @ProductionDefect@SyntheticControlCenter", async ({ page, verification, syntheticTestDetailPage, sideNavigationBar, testUtilility,synCCPage, util, baseTestUtil }) => {
-
+  
     let prodForTestCreate = await data.getValueOfTheParameter('productForJunkItems');
     let testName = await testUtilility.getTestName();
     let url = await data.getValueOfTheParameter('url');
@@ -22,7 +22,7 @@ test("ActiveTestsAreChangingToInactiveOnceWehenRefreshPage  @ProductionDefect@Sy
     await syntheticTestDetailPage.createTestWithEndDate(prodForTestCreate, testName, url, endDate);
     //save test
     await syntheticTestDetailPage.clickSaveButton();
-    await util.delay(500);
+    await util.delay(2000);
     //search and click created test
     await synCCPage.clickOnSearchedItemInCC(testName);
     //clear end date
@@ -30,12 +30,12 @@ test("ActiveTestsAreChangingToInactiveOnceWehenRefreshPage  @ProductionDefect@Sy
     //click on save
     await syntheticTestDetailPage.clickSaveButton();
     //reload page
-    await util.delay(4000);
+    await util.delay(3000);
     await page.reload();
+    await synCCPage.waitForItemPresentInMasterBlade('Selenium');
     //navigate to dashboard page
     await sideNavigationBar.navigateToDashboardFromSideNavigation();
     //navigate to cc page
-    await util.delay(2000);
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
     //search and click created test
     await syntheticTestDetailPage.clickOnSearchedItemInCC(testName);

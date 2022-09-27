@@ -3,6 +3,7 @@ import { Utility } from "@util/Utility";
 import { Page } from "playwright";
 
 let webActions: WebActions;
+let util :Utility;
 
 export class SideNavBar{
 

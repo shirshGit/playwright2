@@ -35,8 +35,8 @@ export class SynControlCenterPage {
     private _cancelItemDetailPage = '//span[text()="Cancel"]';
     private _cancelSearchedText = '//i[@data-icon-name="Clear"]/div';
     private _closeItemDetailPage = '//div[@data-testid="cancel-icon"]';
-    private _statusText = '//label[text()="Active"]';
-
+    private _statusInTestPropertyPage = '(//label[@id="toggle-stateText"])[1]';
+    
     public get newItemCreation() {
         return this._newItemCreation;
     }
@@ -107,9 +107,12 @@ export class SynControlCenterPage {
     }
 
     public get getStatus() {
-        return this._statusText;
+        return this._statusInTestPropertyPage;
     }
 
+    public get itemInMasterBlade(){
+        return (text: string) => { return `//span[text()="${text}"]` }; 
+    }
 
     //#endregion
 
@@ -229,6 +232,10 @@ export class SynControlCenterPage {
 
     async clearTextField(loc: string) {
         await webActions.clearTextField(loc);
+    }
+
+    async waitForItemPresentInMasterBlade(item : string){
+        await webActions.waitForElementAttached(this.itemInMasterBlade(item));
     }
 
 
