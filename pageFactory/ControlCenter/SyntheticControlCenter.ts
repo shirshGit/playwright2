@@ -3,7 +3,7 @@ import { Utility } from "@util/Utility";
 import { Page } from "playwright";
 
 let webActions: WebActions;
-let util : Utility
+let util: Utility
 
 export class SynControlCenterPage {
     readonly page: Page;
@@ -32,9 +32,11 @@ export class SynControlCenterPage {
     private _webChromeTest = '//p[text() = "Web"]/../../..//p[text() = "Chrome"]';
     private _pendoCloseForNewFeature = '//button[contains(@id, "pendo-close-guide")]';
     private _targetScheduletab = '//div[@id="#targeting_and_scheduling"]';
-    private _cancelTestDetailPage = '//span[text()="Cancel"]';
+    private _cancelItemDetailPage = '//span[text()="Cancel"]';
     private _cancelSearchedText = '//i[@data-icon-name="Clear"]/div';
-    private _closeTestDetailPage = '//div[@data-testid="cancel-icon"]';
+    private _closeItemDetailPage = '//div[@data-testid="cancel-icon"]';
+    private _statusInTestPropertyPage = '(//label[@id="toggle-stateText"])[1]';
+    
     public get newItemCreation() {
         return this._newItemCreation;
     }
@@ -86,17 +88,32 @@ export class SynControlCenterPage {
     public get newFolderItem() {
         return this._newFolderItem;
     }
-    public get webChromeTest(){
+    public get webChromeTest() {
         return this._webChromeTest;
     }
-    public get pendoCloseForNewFeature(){
+    public get pendoCloseForNewFeature() {
         return this._pendoCloseForNewFeature;
     }
-    public get cancelTestDetailPage(){
-        return this._cancelTestDetailPage;
+    public get cancelItemDetailPage() {
+        return this._cancelItemDetailPage;
     }
-    
-   
+
+    public get cancelSearchText() {
+        return this._cancelSearchedText;
+    }
+
+    public get closeItemPropertyPage() {
+        return this._closeItemDetailPage;
+    }
+
+    public get getStatus() {
+        return this._statusInTestPropertyPage;
+    }
+
+    public get itemInMasterBlade(){
+        return (text: string) => { return `//span[text()="${text}"]` }; 
+    }
+
     //#endregion
 
     //#region This region is to have the functions
@@ -119,7 +136,7 @@ export class SynControlCenterPage {
         await webActions.clickElement(this.searchBox);
         await webActions.keyPress(this.searchBox, 'Enter')
         await webActions.onlyKeyPress('Enter');
-        
+
     }
 
     async deleteItemFromThreeDotMenu(productName: string) {
@@ -164,7 +181,7 @@ export class SynControlCenterPage {
     }
 
     async getElementTextFromElements(element: string) {
-        var elementsText =await webActions.getTextFromWebElements(element);
+        var elementsText = await webActions.getTextFromWebElements(element);
         return elementsText;
     }
 
@@ -189,33 +206,40 @@ export class SynControlCenterPage {
 
     }
 
-    async searchByLabel(label : string){
+    async searchByLabel(label: string) {
         let searchByLabel = '/label:' + label;
         await this.searchItem(searchByLabel);
     }
 
-    async pendoCloseIfPopsup(){
+    async pendoCloseIfPopsup() {
         let pendoElementCount = await webActions.getNoOfElementsPresentInPage(this.pendoCloseForNewFeature);
-        if(+pendoElementCount > 0)
-        {
+        if (+pendoElementCount > 0) {
             await webActions.clickElement(this.pendoCloseForNewFeature);
         }
     }
 
-    async clickCancelTestPropertyButton(){
-        await webActions.clickElement(this.cancelTestDetailPage);
+    async clickCancelPropertyButton() {
+        await webActions.clickElement(this.cancelItemDetailPage);
     }
 
-    async cancelSearchedText(){
-        await webActions.clickElement(this._cancelSearchedText);
+    async cancelSearchedText() {
+        await webActions.clickElement(this.cancelSearchText);
     }
 
-    async closeTestPropertyPage(){
-        await webActions.clickElement(this._closeTestDetailPage);
+    async closePropertyPage() {
+        await webActions.clickElement(this.closeItemPropertyPage);
+    }
+
+    async clearTextField(loc: string) {
+        await webActions.clearTextField(loc);
+    }
+
+    async waitForItemPresentInMasterBlade(item : string){
+        await webActions.waitForElementAttached(this.itemInMasterBlade(item));
     }
 
 
-    
+
     //#endregion
 
 }
