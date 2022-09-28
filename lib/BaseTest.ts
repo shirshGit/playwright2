@@ -15,6 +15,10 @@ import { SyntheticDetailPage } from '@pageobjects/ControlCenter/SyntheticDetails
 import { Utility } from '@util/Utility';
 import { SyntheticTestDetailPage } from '@pageobjects/ControlCenter/SyntheticTestDetail';
 import { TestUtility } from '@util/TestUtility';
+import { ContactDetailsPage } from '@pageobjects/Contacts/ContactsDetailPage';
+import { ContactsPage } from '@pageobjects/Contacts/ContactsPage';
+import { UserrolePage } from '@pageobjects/Userrole/UserrolePage';
+import { UserroleDetailPage } from '@pageobjects/Userrole/UserroleDetailPage';
 
 const test = baseTest.extend<{
     baseTestUtil: BaseTestUtility;
@@ -31,7 +35,11 @@ const test = baseTest.extend<{
     synLocationBlade: SyntheticLocationBlade;
     util: Utility;
     syntheticTestDetailPage: SyntheticTestDetailPage;
-    testUtilility : TestUtility;
+    testUtility : TestUtility;
+    contactDetailsPage: ContactDetailsPage;
+    contactsPage : ContactsPage;
+    userrolePage: UserrolePage;
+    userroleDetailPage : UserroleDetailPage;
 
 }>({
     baseTestUtil: async ({ page }, use, testInfo: TestInfo) => {
@@ -81,9 +89,22 @@ const test = baseTest.extend<{
     syntheticTestDetailPage: async ({ page }, use) => {
         await use(new SyntheticTestDetailPage(page));
     },
-    testUtilility : async ({ page }, use) => {
+    testUtility : async ({ page }, use) => {
         await use(new TestUtility());
     },
+    contactDetailsPage: async ({ page }, use) => {
+        await use(new ContactDetailsPage(page));
+    },
+    contactsPage: async ({ page }, use) => {
+        await use(new ContactsPage(page));
+    },
+    userroleDetailPage: async ({ page }, use) => {
+        await use(new UserroleDetailPage(page));
+    },
+    userrolePage: async ({ page }, use) => {
+        await use(new UserrolePage(page));
+    },
+  
 
   
 
