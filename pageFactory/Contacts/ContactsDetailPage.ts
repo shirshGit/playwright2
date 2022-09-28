@@ -19,7 +19,7 @@ export class ContactDetailsPage extends ContactsPage{
 
     //#region This region is for getter
 
-    private _systemAccessDropDown = '(//i[@data-icon-name="chevronDark"])[1]';
+    private _systemAccessDropDown = '(//div[@data-testid="selection-dropdown"])[1]';
     private _cancelContactPropertyPage = '//div[@data-testid="cancel-icon"]';
     private _applyButtonOnconatctPropertyPage = '//span[text()="Apply"]';
 
@@ -57,10 +57,14 @@ export class ContactDetailsPage extends ContactsPage{
     }
 
     async selectGivenUserrole(userroleName: string) {
-        await this.clickOnSystemAcessDropDown();
+        await webActions.clickElement('//div[@id="SystemAccess"]');
         let xpath = this.selectUserrole(userroleName);
         await webActions.clickElement(xpath);
         await this.clickOnApplyButton();
+    }
+
+    async abc(){
+        await webActions.clickElementJS('(//i[@data-icon-name="chevronDark"])[1]');
     }
 
     async clickOnApplyButton() {

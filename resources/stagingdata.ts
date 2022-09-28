@@ -8,6 +8,7 @@ export const stagedata = {
     'productForCoapyTest' : 'ProductForCopyScenariosDoNotDelete',
     'userroleName1' : 'OnlyManageTestPermission',
     'userroleName2' : 'OnlyManageRumAndTestTemplatePermission',
+    'userroleName3' :'DivisionLevelAccess',
     'userrole9' : 'userrole9_DoNOTDeleteqaautomationxclient-clientadministrator@catchpoint.com',
     'password' : 'Password123!',
     

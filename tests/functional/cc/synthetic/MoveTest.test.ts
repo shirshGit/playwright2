@@ -7,10 +7,10 @@ let data = new DataForEnv();
     CP-8430 : Verify tests are moved
 */
 
-test("VerifyMoveTestInOtherDestination @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage,page, sideNavigationBar,util,testUtilility,synCCPage, verification}) => {
+test("VerifyMoveTestInOtherDestination @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage,page, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
     let prodForTestCreate = await data.getValueOfTheParameter('productForJunkItems');
     let prodForMoveTest = await data.getValueOfTheParameter('productForCoapyTest');
-    let testName = await testUtilility.getTestName();
+    let testName = await testUtility.getTestName();
     let url = await data.getValueOfTheParameter('url');
     //navigate to cc test page
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();

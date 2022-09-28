@@ -32,7 +32,7 @@ export class SynControlCenterPage {
     private _deleteOptionAfterThreeDotMenu = '//i[@data-icon-name="delete"]';
     private _webChromeTest = '//p[text() = "Web"]/../../..//p[text() = "Chrome"]';
     private _pendoCloseForNewFeature = '//button[contains(@id, "pendo-close-guide")]';
-    private _targetScheduletab = '//div[@id="#targeting_and_scheduling"]';
+    private _targetScheduletab = '//div[@id="#targeting_and_scheduling"]//span[text()="Targeting & Scheduling"]';
     private _cancelTestDetailPage = '//span[text()="Cancel"]';
     private _cancelSearchedText = '//i[@data-icon-name="Clear"]/div';
     private _closeTestDetailPage = '//div[@data-testid="cancel-icon"]';
@@ -48,7 +48,9 @@ export class SynControlCenterPage {
     private _statusOfFirstItem = '//div[@data-automation-key="Status_4"]';
     private _getItemLocation = '//div[contains(@class,"BasicPropertySection_")]//div[@data-automation-id="visibleContent"]';
     private _testLocationTextIntestLocationBlade = '//span[text()="Tests Location"]';
-    private _getItemselectedInDivisionDD = '//div[contains(@class,"ms-Callout-main")]//span[text()="Client Level"]';
+    private _getDefaultItemselectedInDivisionDD = '//span[text()="Client Level"]';
+    private _rumInRootBlade = '(//div[contains(@class,"NavigationTree_navGroupText_")][normalize-space()="RUM"])[2]';
+    private _divLevelDropDown = '(//div[@data-testid="divisionSelector"]//div)[1]';
     
     public get newItemCreation() {
         return this._newItemCreation;
@@ -159,13 +161,26 @@ export class SynControlCenterPage {
     }
 
     public get testLocationTextAfterClickingOnCopyInThreeDotMenu(){
-        return this.testLocationTextAfterClickingOnCopyInThreeDotMenu;
+        return this._testLocationTextIntestLocationBlade;
     }
 
     public get getItemSelectedInDivDropDown(){
-        return this._getItemselectedInDivisionDD;
+        return this._getDefaultItemselectedInDivisionDD;
+    }
+ 
+    public get selectDivision(){
+        return (text: string) => { return `//div[contains(@class,"dropdownItemsWrapper")]//span[text()="${text}"]` };
     }
 
+    public get rumInRootBlade(){
+        return this._rumInRootBlade
+    }
+
+    public get divLevelDropdown(){
+        return this._divLevelDropDown;
+    }
+
+   
     
    
     //#endregion
@@ -344,10 +359,20 @@ export class SynControlCenterPage {
 
     }
 
-    async clickOnNewItemCreation(){
-        return this.newItemCreation;
+    async selectGivenDivisionFromDivisionDropDownInRoot(divName : string){
+        await webActions.clickElement(this.selectDivision(divName));
     }
 
+    async clickOnNewItemCreation(){
+        return webActions.clickElement(this.newItemCreation);
+    }
+
+    async clickOnRumInRootBlade(){
+        return webActions.clickElement(this.rumInRootBlade);
+
+    }
+
+   
 
 
 
