@@ -9,7 +9,7 @@ let data = new DataForEnv();
 
 test("VerifyMoveTestInOtherDestination @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage,page, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
     let prodForTestCreate = await data.getValueOfTheParameter('productForJunkItems');
-    let prodForMoveTest = await data.getValueOfTheParameter('productForCoapyTest');
+    let prodForMoveTest = await data.getValueOfTheParameter('productForCopyTest');
     let testName = await testUtility.getTestName();
     let url = await data.getValueOfTheParameter('url');
     //navigate to cc test page
@@ -24,7 +24,7 @@ test("VerifyMoveTestInOtherDestination @SyntheticControlCenter", async({baseTest
     //search test
     await synCCPage.clickOnSearchedItemInCC(testName);
     //validation for Tests Location 
-    await verification.verifySoftAssertForTextOfAnElement(synCCPage.getItemLocation , prodForMoveTest,"Tests Location is not moved to selected location.");
+    await verification.verifySoftAssertForTextOfAnElement(synCCPage.getItemLocation , prodForMoveTest,"Tests is not moved to selected location.");
     //close test property page by clicking on cross icon
     await syntheticTestDetailPage.closeTestPropertyPage();
     //delete test

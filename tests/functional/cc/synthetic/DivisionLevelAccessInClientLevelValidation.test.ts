@@ -1,6 +1,5 @@
 import test from "@lib/BaseTest"
 import { DataForEnv } from "@lib/DataForEnvironment";
-import { SyntheticDetailPage } from "@pageobjects/ControlCenter/SyntheticDetailsPage";
 
 let data = new DataForEnv();
 /*
@@ -22,7 +21,7 @@ test.skip("VerifyClientLevelShouldBeSelectedByDefaultUnderDivisionDropDown @Synt
      CP-34477 : Verify reset the dropdown to be set to "Client Level" and disable the dropdown when user click other
 */
 
-test.skip("VerifyResetDivisionDropDownToBeSetClientLevel @SyntheticControlCenter", async({baseTestUtil,syntheticTestDetailPage, contactDetailsPage,loginPage, sideNavigationBar,util,testUtility,synCCPage,contactsPage, verification}) => {
+test("VerifyResetDivisionDropDownToBeSetClientLevel @SyntheticControlCenter", async({baseTestUtil,syntheticTestDetailPage, contactDetailsPage,loginPage, sideNavigationBar,util,testUtility,synCCPage,contactsPage, verification}) => {
     
     //navigate to contacts page
     await sideNavigationBar.navigateToContactPageFromSideNavigation();
@@ -37,7 +36,7 @@ test.skip("VerifyResetDivisionDropDownToBeSetClientLevel @SyntheticControlCenter
     await loginPage.logOutFromBrowser();
     //login with changed system access contact
     await loginPage.loginWithOtherContact(email, password);
-    //await util.delay(3000);
+    await util.delay(3000);
     //navigate to CC
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
     //click on division drop down
@@ -71,7 +70,7 @@ test("VerifyDivisionDropDownIsNotPresentInTheUIWhenClientHasNoDivisionAccess @Sy
     await loginPage.logOutFromBrowser();
     //login with changed system access contact
     await loginPage.loginWithOtherContact(email, password);
-    //await util.delay(3000);
+    await util.delay(3000);
     //navigate to CC
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
     //validation for division drop down

@@ -7,11 +7,12 @@ let data = new DataForEnv();
     CP-16894 : Verify Settings should be Inherited
 */
 
-test.skip("AfterCopyATestProductSettingsShouldBeInheritedInTest @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
+test("AfterCopyATestProductSettingsShouldBeInheritedInTest @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
     let prodForTestCreate = await data.getValueOfTheParameter('productForJunkItems');
-    let prodForCopyTest = await data.getValueOfTheParameter('productForCoapyTest');
+    let prodForCopyTest = await data.getValueOfTheParameter('productForCopyTest');
     let testName = await testUtility.getTestName();
     let url = await data.getValueOfTheParameter('url');
+    let copyTestName = 'Copy of - '+testName;
     //navigate to cc test page
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
     //create web test
@@ -23,9 +24,9 @@ test.skip("AfterCopyATestProductSettingsShouldBeInheritedInTest @SyntheticContro
     await syntheticTestDetailPage.copyItemFromThreeDotMenu(testName,prodForCopyTest);
     //save test
     await syntheticTestDetailPage.clickSaveButton();
-    let copyTestName = 'Copy of - '+testName;
     //search test
     await synCCPage.clickOnSearchedItemInCC(copyTestName);
+    //validation for inherite property
     for (let index = 2; index < 6; index++) {
         let checkForInheritText = await syntheticTestDetailPage.getClassPropertyOfInheritedCheckBox(index);
         await util.delay(500);
@@ -64,7 +65,7 @@ test("AfterClickingOnCopyTestLocationBladeShouldOpen @SyntheticControlCenter", a
     //search and click on three dot menu  
     await synCCPage.clickCopyButtonFromThreeDotMenu(testId);
     //validation for Tests Location 
-    await verification.verifySoftAssertForTextOfAnElement(synCCPage.testLocationTextAfterClickingOnCopyInThreeDotMenu ,'Tests Location' ,"Tests Location is not present");
+    await verification.verifySoftAssertForTextOfAnElement(synCCPage.testLocationTextAfterClickingOnCopyInThreeDotMenu ,'Tests Location' ,"Tests Location blade is not present after clicking on copy button in three dot menu.");
     
 })
 
@@ -73,9 +74,10 @@ test("AfterClickingOnCopyTestLocationBladeShouldOpen @SyntheticControlCenter", a
 */
 test("UserIsAbleToSelectLocationOnSyntheticTestLocation @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
     let prodForTestCreate = await data.getValueOfTheParameter('productForJunkItems');
-    let prodForCopyTest = await data.getValueOfTheParameter('productForCoapyTest');
+    let prodForCopyTest = await data.getValueOfTheParameter('productForCopyTest');
     let testName = await testUtility.getTestName();
     let url = await data.getValueOfTheParameter('url');
+    let copyTestName = 'Copy of - '+testName;
     //navigate to cc test page
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
     //create web test
@@ -87,7 +89,6 @@ test("UserIsAbleToSelectLocationOnSyntheticTestLocation @SyntheticControlCenter"
     await syntheticTestDetailPage.copyItemFromThreeDotMenu(testName,prodForCopyTest);
     //save test
     await syntheticTestDetailPage.clickSaveButton();
-    let copyTestName = 'Copy of - '+testName;
     //search test
     await synCCPage.clickOnSearchedItemInCC(copyTestName);
     //validation for Tests Location 
@@ -104,9 +105,10 @@ test("UserIsAbleToSelectLocationOnSyntheticTestLocation @SyntheticControlCenter"
 */
 test("VeriftTestNameOfCopyTest @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
     let prodForTestCreate = await data.getValueOfTheParameter('productForJunkItems');
-    let prodForCopyTest = await data.getValueOfTheParameter('productForCoapyTest');
+    let prodForCopyTest = await data.getValueOfTheParameter('productForCopyTest');
     let testName = await testUtility.getTestName();
     let url = await data.getValueOfTheParameter('url');
+    let copiedTestName = 'Copy of - '+testName;
     //navigate to cc test page
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
     //create web test
@@ -118,7 +120,6 @@ test("VeriftTestNameOfCopyTest @SyntheticControlCenter", async({baseTestUtil, sy
     await syntheticTestDetailPage.copyItemFromThreeDotMenu(testName,prodForCopyTest);
     //save test
     await syntheticTestDetailPage.clickSaveButton();
-    let copiedTestName = 'Copy of - '+testName;
     //search test
     await synCCPage.clickOnSearchedItemInCC(copiedTestName);
     //get test name

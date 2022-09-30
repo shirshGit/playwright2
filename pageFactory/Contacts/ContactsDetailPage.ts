@@ -1,14 +1,13 @@
 import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
 import { Page } from "playwright";
-import { LoginPageObjects } from "@objects/LoginPageObjects";
 import { ContactsPage } from "@pageobjects/Contacts/ContactsPage";
 
 let webActions: WebActions;
 let util: Utility
 
 export class ContactDetailsPage extends ContactsPage{
-    readonly page: Page;
+    
     
 
     constructor(page: Page) {
@@ -22,6 +21,7 @@ export class ContactDetailsPage extends ContactsPage{
     private _systemAccessDropDown = '(//div[@data-testid="selection-dropdown"])[1]';
     private _cancelContactPropertyPage = '//div[@data-testid="cancel-icon"]';
     private _applyButtonOnconatctPropertyPage = '//span[text()="Apply"]';
+
 
 
 
@@ -57,16 +57,23 @@ export class ContactDetailsPage extends ContactsPage{
     }
 
     async selectGivenUserrole(userroleName: string) {
-        await webActions.clickElement('//div[@id="SystemAccess"]');
+        await webActions.clickElement(this.systemAcessDropDown);
         let xpath = this.selectUserrole(userroleName);
         await webActions.clickElement(xpath);
         await this.clickOnApplyButton();
     }
 
-    async abc(){
-        await webActions.clickElementJS('(//i[@data-icon-name="chevronDark"])[1]');
+    async ClickDiv(){
+        await webActions.clickElement('(//i[@data-icon-name="chevronDark"]/div)[1]');
     }
 
+    async clickI(){
+        await webActions.clickElement('(//i[@data-icon-name="chevronDark"])[2]');
+    }
+
+    async clickBox(){
+        await webActions.clickElement('//div[contains(text(),"System Access")]/../div/div//span[@id="Dropdown5450-option"]');
+    }
     async clickOnApplyButton() {
         await webActions.clickElement(this.applyButton);
     }

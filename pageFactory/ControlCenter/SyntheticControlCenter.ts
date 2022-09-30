@@ -51,6 +51,7 @@ export class SynControlCenterPage {
     private _getDefaultItemselectedInDivisionDD = '//span[text()="Client Level"]';
     private _rumInRootBlade = '(//div[contains(@class,"NavigationTree_navGroupText_")][normalize-space()="RUM"])[2]';
     private _divLevelDropDown = '(//div[@data-testid="divisionSelector"]//div)[1]';
+    private _closeChangeLogPage = '(//div[@data-testid="cancel-icon"])[2]';
     
     public get newItemCreation() {
         return this._newItemCreation;
@@ -180,6 +181,10 @@ export class SynControlCenterPage {
         return this._divLevelDropDown;
     }
 
+    public get closeChangeLogPage(){
+        return this._closeChangeLogPage
+    }
+
    
     
    
@@ -192,7 +197,6 @@ export class SynControlCenterPage {
     async selectProductFromTestLocationBlade(productName: string) {
         let xpath = await this.selectProductForTestLocation(productName);
         await webActions.clickElement(xpath);
-        await webActions.clickElement(this.moveButtonInTestLocationBlade);
     }
 
     async navigateToSyntheticCC() {
@@ -226,6 +230,8 @@ export class SynControlCenterPage {
         await webActions.clickElement(this.popUpDeleteBtn);
     }
 
+    
+
     async copyItemFromThreeDotMenu(itemName: string, destinationProductID: string) {
         const [searchItem] = await Promise.all([
             this.searchItem(itemName)
@@ -234,7 +240,7 @@ export class SynControlCenterPage {
         await webActions.hoverOnElement(this.threeDotMenuOfSearchedItem);
         await webActions.clickElement(this.threeDotMenuOfSearchedItem);
         await webActions.clickElement(this.copyOptionInThreeDotMenu);
-        //await synLocation.selectProductFromTestLocationBlade(destinationProductID);
+        await this.selectProductFromTestLocationBlade(destinationProductID);
         await webActions.clickElement(this.copyButtonInTestLocationBlade);
     }
 
@@ -352,6 +358,7 @@ export class SynControlCenterPage {
         await this.checkTheSearchedItem(itemName);
         await webActions.clickElement(this.moveButtonInHeaderSection);
         await this.selectProductFromTestLocationBlade(product);
+        await webActions.clickElement(this.moveButtonInTestLocationBlade);
     }
 
     async clickDivisionDropDown(){
@@ -370,6 +377,10 @@ export class SynControlCenterPage {
     async clickOnRumInRootBlade(){
         return webActions.clickElement(this.rumInRootBlade);
 
+    }
+
+    async closeChangeLogsPage(){
+        await webActions.clickElement(this.closeChangeLogPage);
     }
 
    
