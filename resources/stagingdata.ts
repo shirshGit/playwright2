@@ -9,5 +9,6 @@ export const stagedata = {
     'userroleName2' : 'OnlyManageRumAndTestTemplatePermission',// userrole with only rum and test templates permission
     'userrole9' : 'userrole9_DoNOTDeleteqaautomationxclient-clientadministrator@catchpoint.com', //contact used for automation, where assiging other userrole is required
     'password' : 'Password123!',
+    'defaultUserrole' : 'Client Administrator'//for contact default system access
     
 }

@@ -5,9 +5,10 @@ export const qadata = {
     'url' : 'https://www.google.com', //for creating items e.g synthetic test,endpoint test
     'testID' : '264592',// used for automation scripts where test are not being created.
     'testListPageUrl' : 'https://qaportal.catchpoint.com/ui/Symphony/ControlCenter/Tests', //for validation of synthetic cc page
-    'userroleName1' : 'OnlyMangeTestPermission',
-    'userroleName2' : 'OnlyManageRumAndTestTemplatePermission',
-    'userrole9' : 'userrole9_DoNOTDeleteqaautomationxclient-clientadministrator@catchpoint.com',
-    'password' : 'Password123!'
+    'userroleName1' : 'OnlyManageTestPermission',//user role with only test and test templates permission
+    'userroleName2' : 'OnlyManageRumAndTestTemplatePermission',// userrole with only rum and test templates permission
+    'userrole9' : 'userrole9_DoNOTDeleteqaautomationxclient-clientadministrator@catchpoint.com', //contact used for automation, where assiging other userrole is required
+    'password' : 'Password123!',
+    'defaultUserrole' : 'Client Administrator'//for contact default system access
 
 }

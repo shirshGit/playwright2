@@ -7,10 +7,7 @@ import { ContactsPage } from "@pageobjects/Contacts/ContactsPage";
 let webActions: WebActions;
 let util: Utility
 
-export class ContactDetailsPage extends ContactsPage{
-    readonly page: Page;
-    
-
+export class ContactDetailsPage extends ContactsPage {
     constructor(page: Page) {
         super(page);
         webActions = new WebActions(this.page);
@@ -22,9 +19,6 @@ export class ContactDetailsPage extends ContactsPage{
     private _systemAccessDropDown = '(//i[@data-icon-name="chevronDark"])[1]';
     private _cancelContactPropertyPage = '//div[@data-testid="cancel-icon"]';
     private _applyButtonOnconatctPropertyPage = '//span[text()="Apply"]';
-
-
-
 
 
     public get systemAcessDropDown() {

@@ -8,15 +8,11 @@ let webActions: WebActions;
 let util: Utility
 
 export class UserroleDetailPage extends UserrolePage {
-    readonly page: Page;
-
-
     constructor(page: Page) {
         super(page);
         webActions = new WebActions(this.page);
         util = new Utility();
     }
-
     //#region This region is for getter
 
     private _nameInputBox = '//input[contains(@class,"TextBox_detail_")]';
@@ -24,7 +20,9 @@ export class UserroleDetailPage extends UserrolePage {
     private _closeUserrolePropertyPage = '//div[@data-testid="cancel-icon"]';
     private _applyButtonOnconatctPropertyPage = '//span[text()="Apply"]';
     private _firstCheckBox = '//button//i[@data-icon-name="CircleRing"]';
-    private _cancelButton = '//span[text()="Cancel"]';
+    private _cancelButtonOnconatctPropertyPage = '//span[text()="Cancel"]';
+    private _createIcon = '//button[text()="Create"]';
+    
 
 
 
@@ -42,7 +40,7 @@ export class UserroleDetailPage extends UserrolePage {
     }
 
     public get cancelPropertiesPage() {
-        return this._cancelButton
+        return this._cancelButtonOnconatctPropertyPage
     }
 
     public get closePropertyPage() {
@@ -53,11 +51,14 @@ export class UserroleDetailPage extends UserrolePage {
         return this._applyButtonOnconatctPropertyPage;
     }
 
-    public get firstCheckBox() {
+    public get firstCheckBoxForPermissionSearch() {
         return this._firstCheckBox;
     }
 
-   
+    public get createIcon(){
+        return this._createIcon;
+    }
+
     
 
     //#endregion
@@ -69,8 +70,8 @@ export class UserroleDetailPage extends UserrolePage {
             this.searchPermissionsInDetailPage(permissions)
         ]);
         await util.delay(2000);
-        await webActions.hoverOnElement(this.firstCheckBox);
-        await webActions.clickElement(this.firstCheckBox);
+        await webActions.hoverOnElement(this.firstCheckBoxForPermissionSearch);
+        await webActions.clickElement(this.firstCheckBoxForPermissionSearch);
     }
 
     async cancelPropertyPage() {
@@ -91,19 +92,23 @@ export class UserroleDetailPage extends UserrolePage {
         await webActions.onlyKeyPress('Enter');
     }
 
-    async createUserrole(userroleName : string , permissions : string[]){
+    async createUserrole(userroleName: string, permissions: string[]) {
+        await webActions.waitForElementAttached(this.createIcon);
         await webActions.clickElement(this.createIcon);
-        await util.delay(2000);
-        await webActions.waitForElementAttached(this.nameInputField);
         await webActions.clickElement(this.nameInputField);
-        await webActions.enterElementText(this.searchBoxInDetailPage, userroleName);
+        await webActions.enterElementText(this.nameInputField, userroleName);
+        await webActions.clickElement(this.searchBoxInDetailPage);
         for (let index = 0; index < permissions.length; index++) {
             const element = permissions[index];
             await this.searchPermissionsInDetailPage(element);
-            await webActions.clickElement(this.firstCheckBox);
+            await webActions.clickElement(this.firstCheckBoxForPermissionSearch);
         }
-        webActions.clickElement(this.applyButtonInpropertiesPage);
+        await webActions.clickElement(this.applyButtonInpropertiesPage);
 
+    }
+
+    async clickOnCreate() {
+        await webActions.clickElement(this.createIcon);
     }
 
 
