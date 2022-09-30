@@ -36,7 +36,11 @@ export class SyntheticDetailPage extends SynControlCenterPage {
     private _chkBoxForAllAdvanceSettings = '//div[@data-testid = "advancedsettingsblade"]//span//div[@data-automationid = "DetailsRowCheck"]//i[@data-icon-name="StatusCircleCheckmark"]';
     private _alertRecipientsTextBox = '//div[@data-testid = "recipient-autocomplete-picker"]//input';
     private _alertReceipientSuggestedContacts = '//div[@aria-label = "Suggested Contacts"]//span[contains(@class, "AutoCompletePillPicker_suggestionItem")]//b';
-
+    private _cancelItemDetailPage = '//span[text()="Cancel"]';
+    private _rumInMasterTestBlade = '//span[text()="RUM"]';
+    private _testsInMasterTestBlade = '//span[text()="Tests"]';
+     private _changeLogButton = '//span[text()="Change Log"]/../../i'
+    
 
     public get saveButton() {
         return this._saveButton;
@@ -98,6 +102,26 @@ export class SyntheticDetailPage extends SynControlCenterPage {
         return this._alertReceipientSuggestedContacts;
     }
 
+    public get rumFromMasterTestBlade() {
+        return this._rumInMasterTestBlade;
+    }
+
+    public get testFromMasterTestBlade() {
+        return this._testsInMasterTestBlade;
+    }
+
+   
+    public get cancelItemDetailPage() {
+        return this._cancelItemDetailPage;
+    }
+
+    public get ChangeLogButton(){
+        return this._changeLogButton;
+    }
+
+    
+
+
 
     //#endregion
 
@@ -119,6 +143,22 @@ export class SyntheticDetailPage extends SynControlCenterPage {
     async getSuggestedContactsForAlertRecipients(element: string) {
         var elementsText = await webActions.getTextFromWebElements(element);
         return elementsText;
+    }
+
+      async CancelButton() {
+        await webActions.clickElement(this.cancelItemDetailPage);
+    }
+
+    async closeItemPropertyPage() {
+        await webActions.clickElement(this.closeItemPropertiesBlade);
+    }
+
+    async rumInMasterBlade(){
+        await webActions.clickElement(this.rumFromMasterTestBlade);
+    }
+
+    async clickOnChangeLogButton(){
+        await webActions.clickElement(this.ChangeLogButton);
     }
 
 
