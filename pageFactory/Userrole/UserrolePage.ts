@@ -1,41 +1,62 @@
 import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
 import { Page } from "playwright";
-import { LoginPageObjects } from "@objects/LoginPageObjects";
 
 let webActions: WebActions;
 let util: Utility
 
 export class UserrolePage {
     readonly page: Page;
-    loginPageObjects = new LoginPageObjects();
 
     constructor(page: Page) {
         this.page = page;
         webActions = new WebActions(this.page);
         util = new Utility();
     }
-
     //#region This region is for getter
 
     private _searchBox = '//div[@data-testid="userRolePage"]//input[@id="fabric-search-box"]';
-    private _firstRowSearchResult = '//div[@data-list-index="1"]';
-    private _createUserrole = '//button[text()="Create"]';
-
-
+    private _firstRowSearchCheckBoxInUserroleDetailPage = '//div[@data-list-index="1"]';
+    private _firstRowSearchCheckBoxInUserrolePage = '//a[text()="abc"]/../../../..//i[@data-icon-name="StatusCircleCheckmark"]';
+    private _deleteButtonInURPage = '//button[text()="Delete"]';
+    private _deactivateBtnInContainer = '//button[text()="Deactivate"]/..';
+    private _threeDotMenuOfSearchedItem = '//div[@data-testid="icon-menu-cell"]//i';
+    private _firstRowCheckBoxOfContainer = '//div[@data-testid = "table_row"]//i[@data-icon-name = "StatusCircleCheckmark"]'
+    private _popUpDeleteBtn = '//div[contains(@class, "DialogPopup")]//button[text()="Delete"]';
+    private _deleteOptionAfterThreeDotMenu = '//i[@data-icon-name="delete"]';
 
     public get searchBox() {
         return this._searchBox;
     }
 
-    public get firstRowSearchResult() {
-        return this._firstRowSearchResult
+    public get firstRowSearchCheckBoxInURDetailPage() {
+        return this._firstRowSearchCheckBoxInUserroleDetailPage
+    }
+    
+    public get firstRowSearchCheckBoxInURPage() {
+        return this._firstRowSearchCheckBoxInUserrolePage
     }
 
-    public get createIcon(){
-        return this._createUserrole
+    public get deleteButtonInURPage() {
+        return this._deleteButtonInURPage;
+    }
+    
+    public get threeDotMenuOfSearchedItem() {
+        return this._threeDotMenuOfSearchedItem;
     }
 
+    public get firstRowCheckBoxOfContainer() {
+        return this._firstRowCheckBoxOfContainer;
+    }
+
+    public get popUpDeleteBtn() {
+        return this._popUpDeleteBtn;
+    }
+
+    public get deleteOptionAfterThreeDotMenu() {
+        return this._deleteOptionAfterThreeDotMenu;
+    }
+  
 
     //#endregion
 
@@ -43,7 +64,7 @@ export class UserrolePage {
 
     async clickOnFirstSearchedItemInContactPage(itemName: string) {
         await this.searchItem(itemName);
-        await webActions.clickElement(this.firstRowSearchResult);
+        await webActions.clickElement(this.firstRowSearchCheckBoxInURDetailPage);
     }
 
     async searchItem(item: string) {
@@ -56,9 +77,17 @@ export class UserrolePage {
         await webActions.onlyKeyPress('Enter');
     }
 
+    async deleteItemFromTableContainerBar(userroleName: string) {
+        const [searchItem] = await Promise.all([
+            this.searchItem(userroleName)
+        ]);
+        await util.delay(2000);
+        await webActions.clickElement(this.firstRowCheckBoxOfContainer);
+        await webActions.clickElement(this.deleteButtonInURPage);
+        await webActions.clickElement(this.popUpDeleteBtn);
+    }
 
-
-
+    
 
     //#endregion
 

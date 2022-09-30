@@ -23,8 +23,8 @@ export class SideNavBar{
     private _dashboard = '//a[text()="Dashboard"]';
     private _sideNavSettings = '//i[@data-icon-name="settingsSiteNav"]';
     private _sideNavUserrole = '//a[text()="User Roles"]';
-    private _sideNavContact = '#contactsection';
-    private _sideNavContacts = '//a[text()="Contacts"]';
+    private _sideNavContactIcon = '//div[@id="contactsection"]//div';
+    private _sideNavContacts = '//a[text()="Contacts"]/..';
     private _sideNavRum = '//a[text()="RUM"]'
 
 
@@ -61,11 +61,11 @@ export class SideNavBar{
         return this._sideNavUserrole;
     }
 
-    public get sideNavContactTest(){
-        return this._sideNavContact;
+    public get sideNavContactIcon(){
+        return this._sideNavContactIcon;
     }
 
-    public get sideNavContactsTest(){
+    public get sideNavContacts(){
         return this._sideNavContacts;
     }
 
@@ -104,10 +104,10 @@ export class SideNavBar{
 
 
     async navigateToContactPageFromSideNavigation(){
-        await webActions.waitForElementAttached(this.sideNavContactTest);
-        await webActions.clickElement(this.sideNavContactTest)
-        await webActions.waitForElementAttached(this.sideNavContactsTest);
-        await webActions.clickElement(this.sideNavContactsTest);
+        await webActions.waitForElementAttached(this.sideNavContactIcon);
+        await webActions.clickElement(this.sideNavContactIcon)
+        await webActions.waitForElementAttached(this.sideNavContacts);
+        await webActions.clickElement(this.sideNavContacts);
     }
 
     async navigateToRUMFromSideNavigation(){

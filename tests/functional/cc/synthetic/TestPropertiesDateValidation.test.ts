@@ -12,7 +12,7 @@ test.beforeEach(async ({ baseTestUtil }) => {
   CP-12527 : Bug 127422: Start Date on Safari is not pre-populated and on save uses the UTC Time
 */
 
-test("CheckStartDateBeforeAndAfterSaveingTest  @ProductionDefect@SyntheticControlCenter", async ({ verification, syntheticTestDetailPage, sideNavigationBar,synCCPage, testUtility, util }) => {
+test("CheckStartDateBeforeAndAfterSaveingTest  @ProductionDefect@SyntheticControlCenter", async ({baseTestUtil, verification, syntheticTestDetailPage, sideNavigationBar,synCCPage, testUtility, util }) => {
 
     let prodForTestCreate = await data.getValueOfTheParameter('productForJunkItems');
     let testName = await testUtility.getTestName();
@@ -37,7 +37,7 @@ test("CheckStartDateBeforeAndAfterSaveingTest  @ProductionDefect@SyntheticContro
     await syntheticTestDetailPage.closeItemPropertyPage();
     await util.delay(1000);
     //delete test
-    await syntheticTestDetailPage.deleteItemFromThreeDotMenu(testName);
+    await synCCPage.deleteItemFromThreeDotMenu(testName);
 
 
   });
@@ -48,7 +48,7 @@ test("CheckStartDateBeforeAndAfterSaveingTest  @ProductionDefect@SyntheticContro
  CP-12529 :Bug 130312: CC: Safari: To Date is not getting saved
 */
 
-test("CheckEndDateAfterSavingTest  @ProductionDefect@SyntheticControlCenter", async ({ verification, syntheticTestDetailPage, sideNavigationBar, testUtility,synCCPage, util }) => {
+test("CheckEndDateAfterSavingTest  @ProductionDefect@SyntheticControlCenter", async ({ baseTestUtil,verification, syntheticTestDetailPage, sideNavigationBar, testUtility,synCCPage, util }) => {
 
     let prodForTestCreate = await data.getValueOfTheParameter('productForJunkItems');
     let testName = await testUtility.getTestName();
@@ -71,7 +71,7 @@ test("CheckEndDateAfterSavingTest  @ProductionDefect@SyntheticControlCenter", as
     await syntheticTestDetailPage.closeItemPropertyPage();
     await util.delay(1000);
     //delete test
-    await syntheticTestDetailPage.deleteItemFromThreeDotMenu(testName);
+    await synCCPage.deleteItemFromThreeDotMenu(testName);
 
   });
 

@@ -17,13 +17,9 @@ export class ContactDetailsPage extends ContactsPage{
     }
 
     //#region This region is for getter
-
-    private _systemAccessDropDown = '(//div[@data-testid="selection-dropdown"])[1]';
+    private _systemAccessDropDown = '(//i[@data-icon-name="chevronDark"])[1]';
     private _cancelContactPropertyPage = '//div[@data-testid="cancel-icon"]';
     private _applyButtonOnconatctPropertyPage = '//span[text()="Apply"]';
-
-
-
 
 
 
@@ -57,25 +53,14 @@ export class ContactDetailsPage extends ContactsPage{
     }
 
     async selectGivenUserrole(userroleName: string) {
-        await webActions.clickElement(this.systemAcessDropDown);
-        let xpath = this.selectUserrole(userroleName);
-        await webActions.clickElement(xpath);
-        await this.clickOnApplyButton();
+		await webActions.clickElement(this.systemAcessDropDown);
+       let xpath = this.selectUserrole(userroleName);
+       await webActions.clickElement(xpath);
+       await this.clickOnApplyButton();
     }
 
-    async ClickDiv(){
-        await webActions.clickElement('(//i[@data-icon-name="chevronDark"]/div)[1]');
-    }
-
-    async clickI(){
-        await webActions.clickElement('(//i[@data-icon-name="chevronDark"])[2]');
-    }
-
-    async clickBox(){
-        await webActions.clickElement('//div[contains(text(),"System Access")]/../div/div//span[@id="Dropdown5450-option"]');
-    }
     async clickOnApplyButton() {
-        await webActions.clickElement(this.applyButton);
+          await webActions.clickElement(this.applyButton);
     }
 
 

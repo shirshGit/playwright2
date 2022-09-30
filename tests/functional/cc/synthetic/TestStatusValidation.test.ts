@@ -55,7 +55,7 @@ test("ActiveTestsAreChangingToInactiveOnceWehenRefreshPage  @ProductionDefect@Sy
     //close test property page by clicking on cross icon
     await syntheticTestDetailPage.closePropertyPage();
     //delete test
-    await syntheticTestDetailPage.deleteItemFromThreeDotMenu(testName);
+    await synCCPage.deleteItemFromThreeDotMenu(testName);
   
     
   });
