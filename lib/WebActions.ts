@@ -31,7 +31,7 @@ export class WebActions {
     }
 
     async waitForElementAttached(locator: string): Promise<void> {
-        //await this.page.waitForSelector(locator);
+        await this.page.waitForSelector(locator , {});
     }
 
     async waitForPageNavigation(event: string): Promise<void> {
@@ -50,7 +50,7 @@ export class WebActions {
    
 
     async clickElement(locator: string): Promise<void> {
-        //await this.waitForElementAttached(locator);
+        await this.waitForElementAttached(locator);
         await this.page.click(locator);
     }
 

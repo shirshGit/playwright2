@@ -7,7 +7,7 @@ let data = new DataForEnv();
     CP-8430 : Verify tests are moved
 */
 
-test("VerifyMoveTestInOtherDestination @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage,page, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
+test("VerifyMoveTestInOtherLocation @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage,page, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
     let prodForTestCreate = await data.getValueOfTheParameter('productForJunkItems');
     let prodForMoveTest = await data.getValueOfTheParameter('productForCopyTest');
     let testName = await testUtility.getTestName();

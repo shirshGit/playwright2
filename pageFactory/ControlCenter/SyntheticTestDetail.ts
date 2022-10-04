@@ -202,23 +202,11 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
             const element = nodeName[index];
             await webActions.enterElementText(this.addNodeFileld, element);
             await webActions.keyPress(this.addNodeFileld, "Enter");
-            await webActions.clickElement(this.saveButton);
-
         }
 
     }
 
-    async addNode(nodeName: string) {
-        await webActions.enterElementText(this.addNodeFileld, nodeName);
-        await webActions.keyPress(this.addNodeFileld, "Enter");
-        await webActions.clickElement(this.saveButton);
-
-    }
-
-
-
-
-
+   
 
     //#endregion
 }

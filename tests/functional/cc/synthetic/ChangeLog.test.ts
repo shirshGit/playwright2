@@ -14,6 +14,7 @@ test("VerifyUserShouldSeeChangeLogOptionOnTestPropertyPage @SyntheticControlCent
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
     //search and click created test
     await syntheticTestDetailPage.clickOnSearchedItemInCC(testID);
+    await util.delay(3000);
     //validation
     await verification.verifyIfElementIsPresent(syntheticTestDetailPage.changeLog, 'Chnage log in not present in test property blade.');
 
@@ -44,13 +45,11 @@ test("VerifyChangeLogShouldCaptureCorrectDataAfterUpdate @SyntheticControlCenter
     //click on overide in target and schedule section
     await syntheticTestDetailPage.clickOverrideButtonForTargetAndSchedul();
     //add nodes in test
-    await util.delay(3000);
+    await util.delay(2000);
     await syntheticTestDetailPage.addNodesInTest(nodesName);
     //click on sub set of node and enter value
     await syntheticTestDetailPage.clickOnSubSetOfNode();
-    await util.delay(2000);
     await syntheticTestDetailPage.clickOnSubsetOfNodeInputBox();
-    await syntheticTestDetailPage.clearOnSubsetOfNodeInputBox();
     await syntheticTestDetailPage.enterValueInSubsetOfNodeInputBox('2');
     //save test
     await syntheticTestDetailPage.clickSaveButton();
