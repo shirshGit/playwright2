@@ -19,6 +19,9 @@ import { ContactDetailsPage } from '@pageobjects/Contacts/ContactsDetailPage';
 import { ContactsPage } from '@pageobjects/Contacts/ContactsPage';
 import { UserrolePage } from '@pageobjects/Userrole/UserrolePage';
 import { UserroleDetailPage } from '@pageobjects/Userrole/UserroleDetailPage';
+import { RecordsPage } from '@pageobjects/Records/RecordsPage';
+import { SourceSelectorPage } from '@pageobjects/Records/SourceSelecterPage';
+import { CharmBar } from '@pageobjects/CharmBar/CharmBar';
 
 const test = baseTest.extend<{
     baseTestUtil: BaseTestUtility;
@@ -40,6 +43,9 @@ const test = baseTest.extend<{
     contactsPage : ContactsPage;
     userrolePage: UserrolePage;
     userroleDetailPage : UserroleDetailPage;
+    recordsPage: RecordsPage;
+    sourceSelectorPage : SourceSelectorPage;
+    charmBar : CharmBar;
 
 }>({
     baseTestUtil: async ({ page }, use, testInfo: TestInfo) => {
@@ -103,6 +109,15 @@ const test = baseTest.extend<{
     },
     userrolePage: async ({ page }, use) => {
         await use(new UserrolePage(page));
+    },
+    recordsPage: async ({ page }, use) => {
+        await use(new RecordsPage(page));
+    },
+    sourceSelectorPage: async ({ page }, use) => {
+        await use(new SourceSelectorPage(page));
+    },
+    charmBar: async ({ page }, use) => {
+        await use(new CharmBar(page));
     },
   
 

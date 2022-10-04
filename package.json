@@ -19,7 +19,9 @@
     "test:single:CopyTest": "npx playwright test /tests/functional/cc/synthetic/CopyTest.test.ts --project=Chrome --workers=1",
     "test:single:MoveTest": "npx playwright test /tests/functional/cc/synthetic/MoveTest.test.ts --project=Chrome --workers=1",
     "test:single:DivisionLevelAccessInClientLevelValidation": "npx playwright test /tests/functional/cc/synthetic/DivisionLevelAccessInClientLevelValidation.test.ts --project=Chrome --workers=1",
-    "test:single:ChangeLog": "npx playwright test /tests/functional/cc/synthetic/ChangeLog.test.ts --project=Chrome --workers=1"
+    "test:single:ChangeLog": "npx playwright test /tests/functional/cc/synthetic/ChangeLog.test.ts --project=Chrome --workers=1",
+    "test:single:RecordsSourcePageValidation": "npx playwright test /tests/functional/records/RecordsSourcePageValidation.test.ts --project=Chrome --workers=1",
+    "test:single:RunInfoValidation": "npx playwright test /tests/functional/records/RunInfoValidation.test.ts --project=Chrome --workers=1"
   },
   "dependencies": {
     "@playwright/test": "^1.23.0",

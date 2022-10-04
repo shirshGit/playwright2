@@ -26,7 +26,8 @@ export class SideNavBar{
     private _sideNavUserrole = '//a[text()="User Roles"]';
     private _sideNavContactIcon = '//div[@id="contactsection"]//div';
     private _sideNavContacts = '//a[text()="Contacts"]/..';
-    private _sideNavRum = '//a[text()="RUM"]'
+    private _sideNavRum = '//a[text()="RUM"]';
+    private _sideNavRecords = '//a[text()="Records"]';
 
 
 
@@ -74,6 +75,10 @@ export class SideNavBar{
         return this._sideNavRum;
     }
 
+    public get sideNavRecordsTest(){
+        return this._sideNavRecords;
+    }
+
     //#endregion
 
     async navigateToSyntheticCCFromSideNavigation(){
@@ -116,6 +121,13 @@ export class SideNavBar{
         await webActions.clickElement(this.sideNavControlCenter)
         await webActions.waitForElementAttached(this.sideNavRUMTest);
         await webActions.clickElement(this.sideNavRUMTest);
+    }
+
+    async navigateToRecordsFromSideNavigation(){
+        await webActions.waitForElementAttached(this.sideNavAnalytics);
+        await webActions.clickElement(this.sideNavAnalytics)
+        await webActions.waitForElementAttached(this.sideNavRecordsTest);
+        await webActions.clickElement(this.sideNavRecordsTest);
     }
 
     
