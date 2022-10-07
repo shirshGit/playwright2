@@ -106,8 +106,15 @@ export class RecordsPage {
     async getRunTimeValues(){
         return await webActions.getTextFromWebElementsUsingSelector(this.getRunTime);;
     }
-     
-    
 
-    
+    async getNewWindow(context : BrowserContext,locator : string){
+        return await webActions.newWindowHandle(context,locator);
+        
+    }
+
+    async getUrl(){
+        return await webActions.getCurrentPageUrl();
+    }
+
+       
 }
