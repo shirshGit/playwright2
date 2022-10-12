@@ -1,7 +1,7 @@
 import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
-import { Page } from "playwright";
 import { ContactsPage } from "@pageobjects/Contacts/ContactsPage";
+import { Page } from "@playwright/test";
 
 let webActions: WebActions;
 let util: Utility

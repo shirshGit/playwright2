@@ -9,8 +9,9 @@ export const stagedata = {
     'IMAPTestID' : '79221', // used for records automation
     'MQTTTestID' : '79222',// used for records automation
     'NTPTestID' : '79227',// used for records automation
-    'TransactionTest' : '81406', // used for records automation
-    'TransactionTestIDWithEnforceFailureAdvanceSetting' : '81472',
+    'TransactionTestWithMultipleStepAndStepName' : '244168', // used for records automation
+    'TransactionTestWithMultipleStepWithoutStepName' : '246072',//used for records automation
+    'TransactionTestIDWithEnforceFailureAdvanceSetting' : '81472',//used for records automation
     'testListPageUrl' : 'https://portalstage.catchpoint.com/ui/Symphony/ControlCenter/Tests', //for validation of synthetic cc page.
 	 'productForCopyTest' : 'ProductForCopyScenariosDoNotDelete',//product for copy test scenarios
     'userroleName1' : 'OnlyManageTestPermission',//user role with only test and test templates permission

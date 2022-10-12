@@ -1,6 +1,5 @@
 import test from "@lib/BaseTest"
 import { DataForEnv } from "@lib/DataForEnvironment";
-import { Browser, BrowserContext, expect, TestInfo } from '@playwright/test';
 
 let data = new DataForEnv();
 

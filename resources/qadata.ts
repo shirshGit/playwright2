@@ -9,8 +9,9 @@ export const qadata = {
     'IMAPTestID' : '253432', // used for records automation
     'MQTTTestID' : '269326',// used for records automation
     'NTPTestID' : '253431',// used for records automation
-    'TransactionTest' : '211911', // used for records automation
-    'TransactionTestIDWithEnforceFailureAdvanceSetting' : '269328',
+    'TransactionTestWithMultipleStepAndStepName' : '272641', // used for records automation
+    'TransactionTestWithMultipleStepWithoutStepName' : '272642',//used for records automation
+    'TransactionTestIDWithEnforceFailureAdvanceSetting' : '269328',//used for records automation
     'testListPageUrl' : 'https://qaportal.catchpoint.com/ui/Symphony/ControlCenter/Tests', //for validation of synthetic cc page
     'productForCopyTest' : 'ProductForCopyScenariosDoNotDelete',//product for copy test scenarios
     'userroleName1' : 'OnlyManageTestPermission',//user role with only test and test templates permission
