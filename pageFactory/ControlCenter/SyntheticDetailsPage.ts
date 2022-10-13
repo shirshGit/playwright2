@@ -39,6 +39,7 @@ export class SyntheticDetailPage extends SynControlCenterPage {
     private _cancelItemDetailPage = '//span[text()="Cancel"]';
     private _rumInMasterTestBlade = '//span[text()="RUM"]';
     private _testsInMasterTestBlade = '//span[text()="Tests"]';
+    private _testTemplateInMasterBlade = '//span[text()="Test Templates"]';
     
     
 
@@ -113,6 +114,10 @@ export class SyntheticDetailPage extends SynControlCenterPage {
    
     public get cancelItemDetailPage() {
         return this._cancelItemDetailPage;
+    }
+
+    public get testTemplateInMasterBlade(){
+        return this._testTemplateInMasterBlade;
     }
 
 

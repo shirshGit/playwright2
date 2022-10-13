@@ -22,7 +22,7 @@ export class UserroleDetailPage extends UserrolePage {
     private _firstCheckBox = '//button//i[@data-icon-name="CircleRing"]';
     private _cancelButtonOnconatctPropertyPage = '//span[text()="Cancel"]';
     private _createIcon = '//button[text()="Create"]';
-    
+
 
 
 
@@ -30,10 +30,10 @@ export class UserroleDetailPage extends UserrolePage {
     public get nameInputField() {
         return this._nameInputBox
     }
+    
     public get searchBoxInDetailPage() {
         return this._searchBoxInDetailPage;
     }
-
 
     public get selectPermissions() {
         return (text: string) => { return `//span[text()="${text}"]` };
@@ -55,11 +55,11 @@ export class UserroleDetailPage extends UserrolePage {
         return this._firstCheckBox;
     }
 
-    public get createIcon(){
+    public get createIcon() {
         return this._createIcon;
     }
 
-    
+
 
     //#endregion
 

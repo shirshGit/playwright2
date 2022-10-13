@@ -34,6 +34,7 @@ export class SynControlCenterPage {
     private _closeMasterBlade = '//div[@data-testid="cancel-icon"]';
     private _cancelSearchedText = '//i[@data-icon-name="Clear"]';
     private _statusOfFirstItem = '//div[@data-automation-key="Status_4"]';
+    private _rumInRootField = '//div[contains(text(),"RUM")]';
 
 
     public get newItemCreation() {
@@ -106,6 +107,10 @@ export class SynControlCenterPage {
 
     public get statusOfFirstItem(){
         return this._statusOfFirstItem;
+    }
+
+    public get rumInRootBlade(){
+        return this._rumInRootField;
     }
 
 
@@ -229,6 +234,10 @@ export class SynControlCenterPage {
 
     async clearTextField(loc : string){
         await webActions.clearTextByBtnPress(loc);
+    }
+
+    async clickRumOnRootBlade(){
+        await webActions.clickElement(this.rumInRootBlade);
     }
 
    
