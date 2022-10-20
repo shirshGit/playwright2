@@ -22,10 +22,14 @@ import { UserroleDetailPage } from '@pageobjects/Userrole/UserroleDetailPage';
 import { RecordsPage } from '@pageobjects/Records/RecordsPage';
 import { SourceSelectorPage } from '@pageobjects/Records/SourceSelecterPage';
 import { CharmBar } from '@pageobjects/CharmBar/CharmBar';
+import { SmartboardPage } from '@pageobjects/Smartboard/SmartboardPage';
+import { SourceSelectorSmartboard } from '@pageobjects/Smartboard/SourceSelectorSmartboard';
+import { ExplorerPage} from '@pageobjects/Explorer/ExplorerPage';
+import { SourceSelectorExplorer } from '@pageobjects/Explorer/SourceSelectorExplorer';
 
-const test = baseTest.extend<{
+const test = baseTest.extend<{      
     baseTestUtil: BaseTestUtility;
-    loginPage: LoginPage;
+    loginPage: LoginPage;        
     instantTabWindow: NewTabInstatntTest;
     endpointControlCenter: EndpointCC;
     syntheticControlCenter: SyntheticControlCenter;
@@ -46,6 +50,11 @@ const test = baseTest.extend<{
     recordsPage: RecordsPage;
     sourceSelectorPage : SourceSelectorPage;
     charmBar : CharmBar;
+    smartboardPage: SmartboardPage;
+    sourceSelectorSmartboard : SourceSelectorSmartboard;
+    explorerPage : ExplorerPage;
+    sourceSelectorExplorer : SourceSelectorExplorer;
+
 
 }>({
     baseTestUtil: async ({ page }, use, testInfo: TestInfo) => {
@@ -119,6 +128,19 @@ const test = baseTest.extend<{
     charmBar: async ({ page }, use) => {
         await use(new CharmBar(page));
     },
+    smartboardPage: async ({ page }, use) => {
+        await use(new SmartboardPage(page));
+    },
+    sourceSelectorSmartboard: async ({ page }, use) => {
+        await use(new SourceSelectorSmartboard(page));
+    },
+    explorerPage: async ({ page }, use) => {
+        await use(new ExplorerPage(page));
+    },
+    sourceSelectorExplorer: async ({ page }, use) => {
+        await use(new SourceSelectorExplorer(page));
+    },
+
   
 
   

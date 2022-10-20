@@ -185,6 +185,13 @@ export class SynControlCenterPage {
         return this._closeChangeLogPage
     }
 
+
+    public get itemInThreeDotMenu() {
+        return (text: string) => { return `//span[text()="${text}"]` };
+    }
+
+
+
    
     
    
@@ -252,6 +259,16 @@ export class SynControlCenterPage {
         await webActions.clickElement(this.firstRowCheckBoxOfContainer);
         await webActions.clickElement(this.deleteBtn);
         await webActions.clickElement(this.popUpDeleteBtn);
+    }
+
+    async navigateFromThreeDotMenu(item: string, navigationFromThreeDotMenu : string) {
+        const [searchItem] = await Promise.all([
+            this.searchItem(item)
+        ]);
+        await util.delay(2000);
+        await webActions.hoverOnElement(this.threeDotMenuOfSearchedItem);
+        await webActions.clickElement(this.threeDotMenuOfSearchedItem);
+        await webActions.clickElement(this.itemInThreeDotMenu(navigationFromThreeDotMenu));
     }
 
     async clickOnSearchedItemInCC(itemName: string) {

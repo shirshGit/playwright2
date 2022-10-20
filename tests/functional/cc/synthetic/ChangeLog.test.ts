@@ -17,7 +17,6 @@ test("VerifyUserShouldSeeChangeLogOptionOnTestPropertyPage @SyntheticControlCent
     //validation
     await verification.verifyIfElementIsPresent(syntheticTestDetailPage.changeLog, 'Chnage log in not present in test property blade.');
 
-
 })
 
 

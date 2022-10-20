@@ -13,12 +13,17 @@ export const stagedata = {
     'TransactionTestWithMultipleStepWithoutStepName' : '246072',//used for records automation
     'TransactionTestIDWithEnforceFailureAdvanceSetting' : '81472',//used for records automation
     'testListPageUrl' : 'https://portalstage.catchpoint.com/ui/Symphony/ControlCenter/Tests', //for validation of synthetic cc page.
-	 'productForCopyTest' : 'ProductForCopyScenariosDoNotDelete',//product for copy test scenarios
+	'productForCopyTest' : 'ProductForCopyScenariosDoNotDelete',//product for copy test scenarios
     'userroleName1' : 'OnlyManageTestPermission',//user role with only test and test templates permission
 	'userroleName2' : 'OnlyManageRumAndTestTemplatePermission',// userrole with only rum and test templates permission
 	'userroleName3' : 'DivisionLevelAccess',//used for division level access
 	'userroleName4' : 'DoNotHaveAccessForDivision',//used for dont have access for division
 	'userrole9' : 'userrole9_DoNOTDeleteqaautomationxclient-clientadministrator@catchpoint.com', //contact used for automation, where assiging other userrole is required
 	'password' : 'Password123!',
-	'defaultUserrole' : 'Client Administrator'//for contact default system access
+	'defaultUserrole' : 'Client Administrator',//for contact default system access
+
+
+    //Explorer
+    'TransactionTestName' : 'TransactionTest',
+    'TransactionTestId' : '216885'
 }
