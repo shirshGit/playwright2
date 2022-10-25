@@ -15,7 +15,7 @@ test("VerifyUserShouldSeeChangeLogOptionOnTestPropertyPage @SyntheticControlCent
     //search and click created test
     await syntheticTestDetailPage.clickOnSearchedItemInCC(testID);
     //validation for change log option
-    await verification.verifyIfElementIsPresent(syntheticTestDetailPage.changeLog, 'Chnage log in not present in test property blade.');
+    await verification.verifyIfElementIsPresent(syntheticTestDetailPage.changeLog, 'Change log is not present in test property blade.');
 
 
 })

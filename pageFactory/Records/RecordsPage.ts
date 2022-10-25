@@ -30,81 +30,81 @@ export class RecordsPage {
     private _monitor = '//span[text()="Monitor"]/..//span[2]';
 
 
-    public get waterFallTab() {
+    public get waterFallTabLocator() {
         return this._waterFallTab;
     }
 
-    public get pingTab() {
+    public get pingTabLocator() {
         return this._pingTab
     }
 
-    public get pillDeleteButton() {
+    public get pillDeleteButtonLocator() {
         return this._pillDeleteButton
     }
 
-    public get testInSourceSelector() {
+    public get testInSourceSelectorLocator() {
         return this._testInSourceSelector;
     }
 
-    public get TestNameFromSourceBlade(){
+    public get TestNameFromSourceBladeLocator(){
         return (text: string) => { return `//span[text()="${text}"]` };
     }
 
     
-    public get getIPAddressNAValue(){
+    public get getIPAddressNAValueLocator(){
         return this._ipAddressNAValue;
     }
 
-    public get sourceButton(){
+    public get sourceButtonLocator(){
         return this._sourceButton;
     }
 
-    public get failedVerb(){
+    public get failedVerbLocator(){
         return this._filedVerbErrorBar;
     }
 
-    public get getNode(){
+    public get getNodeLocator(){
         return this._node;
     }
-    public get getNodeIP(){
+    public get getNodeIPLocator(){
         return this._nodeIP;
     }
 
-    public get getMonitor(){
+    public get getMonitorLocator(){
         return this._monitor;
     }
 
-    public get firstDataPoint(){
+    public get firstDataPointLocator(){
         return this._firstDataPoint
     }
 
-    public get getRunTime(){
+    public get getRunTimeLocator(){
         return this._runTime;
     }
 
-    public get getIPAddress(){
+    public get getIPAddressLocator(){
         return this._getIpAddressValue;
     }
     //#endregion
 
     async clickOnTestInSourceSelector(){
-        await webActions.clickElement(this.testInSourceSelector);
+        await webActions.clickElement(this.testInSourceSelectorLocator);
     }
 
     async clickOnPillDeleteButton(){
-        await webActions.clickElement(this.pillDeleteButton);
+        await webActions.clickElement(this.pillDeleteButtonLocator);
     }
 
     async clickOnSourceButton(){
-        await webActions.clickElement(this.sourceButton);
+        await webActions.clickElement(this.sourceButtonLocator);
     }
 
     async clickFirstDataPoint(){
-        await webActions.clickElement(this.firstDataPoint);
+        await webActions.clickElement(this.firstDataPointLocator);
     }
 
     async getRunTimeValues(){
-        return await webActions.getTextFromWebElementsUsingSelector(this.getRunTime);;
+        return await webActions.getTextFromWebElementsUsingSelector(this.getRunTimeLocator);
     }
 
     async getNewWindow(context : BrowserContext,locator : string){
