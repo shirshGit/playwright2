@@ -21,7 +21,7 @@ test('@Smoke @SyntheticControlCenter Verify Parents settings should be Inherited
     await syntheticProductDetailPage.clickSaveButton();
     await util.delay(2000);   
     await syntheticProductDetailPage.openPropertiesOfSerachedItem(productName);
-    var getAdvncStngsOptnsForProducts = await syntheticProductDetailPage.getElementTextFromElementsFromProductProperties(syntheticFolderDetailPage.locatorForAllAdvanceSettingsInDetailPage);
+    var getAdvncStngsOptnsForProducts = await syntheticProductDetailPage.getElementTextFromElementsFromProductProperties(syntheticFolderDetailPage.locatorForAllAdvanceSettingsInDetailPageLocator);
     console.log(getAdvncStngsOptnsForProducts);
     await syntheticProductDetailPage.closePropertiesBlade();
     await syntheticProductDetailPage.clickOnSearchedItemInCC(productName);
@@ -30,7 +30,7 @@ test('@Smoke @SyntheticControlCenter Verify Parents settings should be Inherited
     await syntheticFolderDetailPage.createAFolderWithInheritedSettings(folderName);
     await syntheticFolderDetailPage.openPropertiesOfSerachedItem(folderName);
     await syntheticFolderDetailPage.clickOnCollapsableItemAtFolderProperties(syntheticFolderDetailPage.collapsibleAdvanceSettingsLocator);
-    var getAdvncStngsOptnsForFolders = await syntheticFolderDetailPage.getElementTextFromElements(syntheticFolderDetailPage.locatorForAllAdvanceSettingsInDetailPage);
+    var getAdvncStngsOptnsForFolders = await syntheticFolderDetailPage.getElementTextFromElements(syntheticFolderDetailPage.locatorForAllAdvanceSettingsInDetailPageLocator);
     console.log(getAdvncStngsOptnsForFolders);
     await verification.verifyTwoSetOfTextsOfElements(getAdvncStngsOptnsForProducts, getAdvncStngsOptnsForFolders);
     //getAdvncStngsOptnsForProducts.forEach(val => expect(getAdvncStngsOptnsForFolders.includes(val)).toBeTruthy());

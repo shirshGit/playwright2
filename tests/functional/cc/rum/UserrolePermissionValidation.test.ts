@@ -35,7 +35,7 @@ test("AbleToViewRUMTestTemplateOptionInMasterCreateBlade  @ProductionDefect@Synt
     //click on +new button
     await synCCPage.clickOnNewItemCreation();
     //verification
-    await verification.verifyElementIsNotPresent(syntheticTestDetailPage.rumFromMasterTestBlade, "Able to see RUM in Master create blade , even though dont have permission for that.");
+    await verification.verifyElementIsNotPresent(syntheticTestDetailPage.rumFromMasterTestBladeLocator, "Able to see RUM in Master create blade , even though dont have permission for that.");
     //close master test blade
     await synCCPage.closePropertyPage();
     //logout
@@ -58,7 +58,7 @@ test("AbleToViewRUMTestTemplateOptionInMasterCreateBlade  @ProductionDefect@Synt
     //click on new button
     await synCCPage.clickOnNewItemCreation();
     verification
-    await verification.verifyElementIsNotPresent(syntheticTestDetailPage.testFromMasterTestBlade, "Able to see Tests in CC blade , even though dont have permission for that.");
+    await verification.verifyElementIsNotPresent(syntheticTestDetailPage.testFromMasterTestBladeLocator, "Able to see Tests in CC blade , even though dont have permission for that.");
     //close master test blade
     await synCCPage.closePropertyPage();
     //logout

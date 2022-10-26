@@ -30,67 +30,67 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
     private _changeLogRunOn = '//td[text()="Run On"]';
     private _changeLogRunOnValue = '//td[text()="Run On"]//following-sibling::td[1]';
 
-    public get alertOverrideToogleBtn() {
+    public get alertOverrideToogleBtnLocator() {
         return this._alertOverrideToogleBtn;
     }
 
-    public get testNameFiled() {
+    public get testNameFiledLocator() {
         return this._testNameField;
     }
 
-    public get labelInputBox() {
+    public get labelInputBoxLocator() {
         return this._labelInputBox;
     }
 
-    public get targetUrlInput() {
+    public get targetUrlInputLocator() {
         return this._targetUrlInput;
     }
 
-    public get startDateValue() {
+    public get startDateValueLocator() {
         return this._startDate;
     }
 
-    public get endDateValue() {
+    public get endDateValueLocator() {
         return this._endDate;
     }
 
-    public get getTestName() {
+    public get getTestNameLocator() {
         return this._testNameField;
     }
 
-    public get changeLog() {
+    public get changeLogLocator() {
         return this._chnageLogInTestDetailBlade;
     }
 
-    public get targetAndScheduleSection() {
+    public get targetAndScheduleSectionLocator() {
         return this._targetAndScheduleSection;
     }
 
-    public get overrideButtonInTargetAndSchedule() {
+    public get overrideButtonInTargetAndScheduleLocator() {
         return this._overrideForTargetAndSchedulPage;
     }
 
-    public get enterValueForSubSetOfNode() {
+    public get enterValueForSubSetOfNodeLocator() {
         return this._subSetOfNodeValueBox;
     }
 
-    public get subSetOfNode() {
+    public get subSetOfNodeLocator() {
         return this._subSetOfNode;
     }
 
-    public get subSetNodeTextBox() {
+    public get subSetNodeTextBoxLocator() {
         return this._subSetOfNodeValueBox;
     }
 
-    public get addNodeFileld() {
+    public get addNodeFileldLocator() {
         return this._addNodeField;
     }
 
-    public get changeLogRunOn() {
+    public get changeLogRunOnLocator() {
         return this._changeLogRunOn;
     }
 
-    public get changeLogRunOnValue() {
+    public get changeLogRunOnValueLocator() {
         return this._changeLogRunOnValue;
     }
 
@@ -110,54 +110,54 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
     async createWebChromeTestInAProdWithLabels(prodName: string, testName: string, labelKey: string, labelValue: string) {
         await this.clickOnSearchedItemInCC(prodName);
         await this.goToNewWebChromeTestCreate();
-        await webActions.enterElementText(this.testNameFiled, testName);
-        await webActions.enterElementText(this.labelInputBox, labelKey);
+        await webActions.enterElementText(this.testNameFiledLocator, testName);
+        await webActions.enterElementText(this.labelInputBoxLocator, labelKey);
         await webActions.onlyKeyPress('Enter');
-        await webActions.enterElementText(this.labelInputBox, labelValue);
+        await webActions.enterElementText(this.labelInputBoxLocator, labelValue);
         await webActions.onlyKeyPress('Enter');
-        await webActions.enterElementText(this.targetUrlInput, 'https://www.google.com');
+        await webActions.enterElementText(this.targetUrlInputLocator, 'https://www.google.com');
 
     }
 
     async alertToggleButtonToOverrideAlertSettings() {
-        await webActions.waitForElementAttached(this.alertOverrideToogleBtn);
-        var toogleBtnCheck = await webActions.getElementAttributeValue(this.alertOverrideToogleBtn, "aria-checked");
+        await webActions.waitForElementAttached(this.alertOverrideToogleBtnLocator);
+        var toogleBtnCheck = await webActions.getElementAttributeValue(this.alertOverrideToogleBtnLocator, "aria-checked");
         if (toogleBtnCheck === 'true') {
-            await webActions.clickElement(this.alertOverrideToogleBtn);
+            await webActions.clickElement(this.alertOverrideToogleBtnLocator);
         }
     }
 
     async alertToggleButtonToInheritAlertSettings() {
-        await webActions.waitForElementAttached(this.alertOverrideToogleBtn);
-        var toogleBtnCheck = await webActions.getElementAttributeValue(this.alertOverrideToogleBtn, "aria-checked");
+        await webActions.waitForElementAttached(this.alertOverrideToogleBtnLocator);
+        var toogleBtnCheck = await webActions.getElementAttributeValue(this.alertOverrideToogleBtnLocator, "aria-checked");
         if (toogleBtnCheck === 'false') {
-            await webActions.clickElement(this.alertOverrideToogleBtn);
+            await webActions.clickElement(this.alertOverrideToogleBtnLocator);
         }
     }
 
     async createWebChromeTests(prodName: string, testName: string, url: string) {
         await this.clickOnSearchedItemInCC(prodName);
         await this.goToNewWebChromeTestCreate();
-        await webActions.enterElementText(this.testNameFiled, testName);
-        await webActions.enterElementText(this.targetUrlInput, url);
+        await webActions.enterElementText(this.testNameFiledLocator, testName);
+        await webActions.enterElementText(this.targetUrlInputLocator, url);
     }
 
     async createTestWithEndDate(prodName: string, testName: string, url: string, endDate: string) {
         await this.createWebChromeTests(prodName, testName, url);
-        await webActions.enterElementText(this.endDateValue, endDate);
+        await webActions.enterElementText(this.endDateValueLocator, endDate);
     }
 
     async fetchStartDate() {
-        let startdate = await webActions.getElementAttributeValue(this.startDateValue, 'value');
+        let startdate = await webActions.getElementAttributeValue(this.startDateValueLocator, 'value');
         return startdate;
     }
 
     async fetchEndDate() {
-        let enddate = await webActions.getElementAttributeValue(this.endDateValue, 'value');
+        let enddate = await webActions.getElementAttributeValue(this.endDateValueLocator, 'value');
         return enddate;
     }
     async fetchInheritProperty() {
-        let startdate = await webActions.getElementAttributeValue(this.startDateValue, 'value');
+        let startdate = await webActions.getElementAttributeValue(this.startDateValueLocator, 'value');
         return startdate;
     }
 
@@ -169,7 +169,7 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
     }
 
     async fetchTestName() {
-        let testName = await webActions.getElementAttributeValue(this.getTestName, 'value');
+        let testName = await webActions.getElementAttributeValue(this.getTestNameLocator, 'value');
         return testName;
     }
 
@@ -182,26 +182,26 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
     }
 
     async clickOnSubSetOfNode() {
-        await webActions.clickElement(this.subSetOfNode);
+        await webActions.clickElement(this.subSetOfNodeLocator);
     }
 
     async clickOnSubsetOfNodeInputBox() {
-        await webActions.clickElement(this.subSetNodeTextBox);
+        await webActions.clickElement(this.subSetNodeTextBoxLocator);
     }
 
     async clearOnSubsetOfNodeInputBox() {
-        await webActions.clearTextField(this.subSetNodeTextBox);
+        await webActions.clearTextField(this.subSetNodeTextBoxLocator);
     }
 
     async enterValueInSubsetOfNodeInputBox(value: string) {
-        await webActions.enterElementText(this.subSetNodeTextBox, value);
+        await webActions.enterElementText(this.subSetNodeTextBoxLocator, value);
     }
 
     async addNodesInTest(nodeName: string[]) {
         for (let index = 0; index < nodeName.length; index++) {
             const element = nodeName[index];
-            await webActions.enterElementText(this.addNodeFileld, element);
-            await webActions.keyPress(this.addNodeFileld, "Enter");
+            await webActions.enterElementText(this.addNodeFileldLocator, element);
+            await webActions.keyPress(this.addNodeFileldLocator, "Enter");
         }
 
     }

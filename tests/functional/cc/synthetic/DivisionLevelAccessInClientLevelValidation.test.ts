@@ -1,19 +1,18 @@
 import test from "@lib/BaseTest"
 import { DataForEnv } from "@lib/DataForEnvironment";
 
-let data = new DataForEnv();
+
 /*
     CP-34475 : Verify "Client Level" should be selected by default under Division dropdown
 */
 
 test("VerifyClientLevelShouldBeSelectedByDefaultUnderDivisionDropDown @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage,page, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
-    
     //navigate to cc test page
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
     //click on division drop down
     await synCCPage.clickDivisionDropDown();
     //validation for division drop down 
-    await verification.verifySoftAssertForTextOfAnElement(synCCPage.getItemSelectedInDivDropDown , 'Client Level',"Client Level is not selected in division drop down.");
+    await verification.verifySoftAssertForTextOfAnElement(synCCPage.selectedItemLocatorInDivDropDown , 'Client Level',"Client Level is not selected in division drop down.");
     
 })
 
@@ -22,7 +21,7 @@ test("VerifyClientLevelShouldBeSelectedByDefaultUnderDivisionDropDown @Synthetic
 */
 
 test("VerifyResetDivisionDropDownToBeSetClientLevel @SyntheticControlCenter", async({baseTestUtil,syntheticTestDetailPage, contactDetailsPage,loginPage, sideNavigationBar,util,testUtility,synCCPage,contactsPage, verification}) => {
-    
+    let data = new DataForEnv();
     //navigate to contacts page
     await sideNavigationBar.navigateToContactPageFromSideNavigation();
     let userroleName = await data.getValueOfTheParameter('userroleName3');
@@ -47,7 +46,7 @@ test("VerifyResetDivisionDropDownToBeSetClientLevel @SyntheticControlCenter", as
     await synCCPage.clickOnRumInRootBlade();
     await util.delay(2000);
     //validation for division drop down
-    await verification.verifySoftAssertForTextOfAnElement(synCCPage.getItemSelectedInDivDropDown , 'Client Level',"Client Level is not selected in division drop down.");
+    await verification.verifySoftAssertForTextOfAnElement(synCCPage.selectedItemLocatorInDivDropDown , 'Client Level',"Client Level is not selected in division drop down.");
     
 })
 
@@ -56,7 +55,7 @@ test("VerifyResetDivisionDropDownToBeSetClientLevel @SyntheticControlCenter", as
 */
 
 test("VerifyDivisionDropDownIsNotPresentInTheUIWhenClientHasNoDivisionAccess @SyntheticControlCenter", async({baseTestUtil,syntheticTestDetailPage, contactDetailsPage,loginPage, sideNavigationBar,util,testUtility,synCCPage,contactsPage, verification}) => {
-    
+    let data = new DataForEnv();
     //navigate to contacts page
     await sideNavigationBar.navigateToContactPageFromSideNavigation();
     let userroleName = await data.getValueOfTheParameter('userroleName4');
@@ -74,7 +73,7 @@ test("VerifyDivisionDropDownIsNotPresentInTheUIWhenClientHasNoDivisionAccess @Sy
     //navigate to CC
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
     //validation for division drop down
-    await verification.verifyElementIsNotPresent(synCCPage.divLevelDropdown ,"Division Level drop down is present.");
+    await verification.verifyElementIsNotPresent(synCCPage.divLevelDropdownLocator ,"Division Level drop down is present.");
     
 })
 
