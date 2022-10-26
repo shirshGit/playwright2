@@ -15,14 +15,14 @@ export class SourceSelectorPage extends RecordsPage{
     }
 
     //#region This region is for getter
-    private _searchBox = '//input[@placeholder="Search Name, Parent, Url"]';
+    private _searchBox = '//input[@data-testid="searchText"]';
     private _firstRowSearchCheckBoxInSelectorPage = '//i[@data-icon-name="StatusCircleCheckmark"]/div';
     
-    public get searchBox() {
+    public get searchBoxLocator() {
         return this._searchBox;
     }
 
-    public get firstRowSearchCheckBoxInSelectorPage() {
+    public get firstRowSearchCheckBoxInSelectorPageLocator() {
         return this._firstRowSearchCheckBoxInSelectorPage
     }
 
@@ -33,16 +33,16 @@ export class SourceSelectorPage extends RecordsPage{
 
     async clickOnFirstSearchedItemInSelectorPage(itemName: string) {
         await this.searchItem(itemName);
-        await webActions.clickElement(this.firstRowSearchCheckBoxInSelectorPage);
+        await webActions.clickElement(this.firstRowSearchCheckBoxInSelectorPageLocator);
     }
 
     async searchItem(item: string) {
-        await webActions.waitForElementAttached(this.searchBox);
-        await webActions.clickElement(this.searchBox);
-        await webActions.enterElementText(this.searchBox, item);
+        await webActions.waitForElementAttached(this.searchBoxLocator);
+        await webActions.clickElement(this.searchBoxLocator);
+        await webActions.enterElementText(this.searchBoxLocator, item);
         await util.delay(1000);
-        await webActions.clickElement(this.searchBox);
-        await webActions.keyPress(this.searchBox, 'Enter')
+        await webActions.clickElement(this.searchBoxLocator);
+        await webActions.keyPress(this.searchBoxLocator, 'Enter')
         await webActions.onlyKeyPress('Enter');
     }
 

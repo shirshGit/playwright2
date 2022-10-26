@@ -1,5 +1,5 @@
 import { WebActions } from "@lib/WebActions";
-import { Page } from "@playwright/test";
+import { BrowserContext, Page } from "@playwright/test";
 import { Utility } from "@util/Utility";
 
 let webActions: WebActions;
@@ -28,133 +28,138 @@ export class RecordsPage {
     private _nodeIP = '//span[text()="Node IP"]/..//span[2]';
     private _firstDataPoint = '(//*[name()="circle" and contains(@class,"Chart_dot_")])[1]';
     private _monitor = '//span[text()="Monitor"]/..//span[2]';
-    
-    public get waterFallTab() {
+
+    public get waterFallTabLocator() {
         return this._waterFallTab;
     }
-
-    public get pingTab() {
+    
+    public get pingTabLocator() {
         return this._pingTab
     }
 
-    public get pillDeleteButton() {
+    public get pillDeleteButtonLocator() {
         return this._pillDeleteButton
     }
 
-    public get testInSourceSelector() {
+    public get testInSourceSelectorLocator() {
         return this._testInSourceSelector;
     }
-
-    public get TestNameFromSourceBlade(){
+    public get TestNameFromSourceBladeLocator() {
         return (text: string) => { return `//span[text()="${text}"]` };
     }
 
-    
-    public get getIPAddressNAValue(){
+    public get getIPAddressNAValueLocator() {
         return this._ipAddressNAValue;
     }
 
-    public get sourceButton(){
+    public get sourceButtonLocator() {
         return this._sourceButton;
     }
 
-    public get failedVerb(){
+    public get failedVerbLocator() {
         return this._filedVerbErrorBar;
     }
 
-    public get getNode(){
+    public get getNodeLocator() {
         return this._node;
     }
-    public get getNodeIP(){
+
+    public get getNodeIPLocator() {
         return this._nodeIP;
     }
 
-    public get getMonitor(){
+    public get getMonitorLocator() {
         return this._monitor;
     }
 
-    public get firstDataPoint(){
+    public get firstDataPointLocator() {
         return this._firstDataPoint
     }
 
-    public get getRunTime(){
+    public get getRunTimeLocator() {
         return this._runTime;
     }
 
-    public get getIPAddress(){
+    public get getIPAddressLocator() {
         return this._getIpAddressValue;
     }
 
-    public get selectStep(){
+    public get selectStepLocator() {
         return (text: string) => { return `//div[@data-list-index="${text}"]` };
     }
 
-    public get getCardValue(){
+    public get getCardValueLocator() {
         return (text: string) => { return `//div[text()="${text}"]/..//span[@data-testid="keyMetricBlockValue"]` };
     }
 
-    public get getStepName(){
-        return (text: number) => { return `(//div[@data-automation-key="Step Name_0"]//div)[${text}]`};
+    public get getStepNameLocator() {
+        return (text: number) => { return `(//div[@data-automation-key="Step Name_0"]//div)[${text}]` };
     }
 
-    public get StepNameCheckBox(){
-        return (text: number) => { return `//div[@data-item-index="${text}"]//label`};
-    }
-    //#endregion
-
-    async clickOnTestInSourceSelector(){
-        await webActions.clickElement(this.testInSourceSelector);
-    }
-
-    async clickOnPillDeleteButton(){
-        await webActions.clickElement(this.pillDeleteButton);
-    }
-
-    async clickOnSourceButton(){
-        await webActions.clickElement(this.sourceButton);
-    }
-
-    async clickFirstDataPoint(){
-        await webActions.clickElement(this.firstDataPoint);
-    }
-
-    async getRunTimeValues(){
-         await webActions.getTextFromWebElementsUsingSelector(this.getRunTime);;
-    }
-
-    async selectStepInTransactionTest(stepNumber : string){
-        let xpath = this.selectStep(stepNumber);
-         await webActions.clickElement(xpath);
+    public get StepNameCheckBoxLocator() {
+        return (text: number) => { return `//div[@data-item-index="${text}"]//label` };
     }
     
+    //#endregion
 
-    async getCardMetricsData(cardMetrics : string[]){
-        let cardMetricsValue : string[] =[];
+    async clickOnTestInSourceSelector() {
+        await webActions.clickElement(this.testInSourceSelectorLocator);
+    }
+
+    async clickOnPillDeleteButton() {
+        await webActions.clickElement(this.pillDeleteButtonLocator);
+    }
+
+    async clickOnSourceButton() {
+        await webActions.clickElement(this.sourceButtonLocator);
+    }
+
+    async clickFirstDataPoint() {
+        await webActions.clickElement(this.firstDataPointLocator);
+    }
+
+    async getRunTimeValues() {
+        return await webActions.getTextFromWebElementsUsingSelector(this.getRunTimeLocator);
+    }
+
+    async selectStepInTransactionTest(stepNumber: string) {
+        let xpath = this.selectStepLocator(stepNumber);
+        await webActions.clickElement(xpath);
+    }
+
+    async getCardMetricsData(cardMetrics: string[]) {
+        let cardMetricsValue: string[] = [];
         for (let index = 0; index < cardMetrics.length; index++) {
             const metric = cardMetrics[index];
-            let metricValue = await webActions.getElementText(this.getCardValue(metric));
+            let metricValue = await webActions.getElementText(this.getCardValueLocator(metric));
             cardMetricsValue.push(metricValue);
         }
         return cardMetricsValue;
     }
 
-    
-    async getStepsName(item : number){
-        let itemText : string[] =[];
+    async getStepName(item: number) {
+        let itemText: string[] = [];
         for (let index = 1; index <= item; index++) {
-            let xpath = this.getStepName(index);
+            let xpath = this.getStepNameLocator(index);
             let iteMText = await webActions.getElementText(xpath);
             itemText.push(iteMText);
         }
         return itemText;
     }
 
-    async getClassPropertyOfStepNameCheckBox(stepNumber: number) {
-        let inhertiText = await webActions.getElementAttributeValue(this.StepNameCheckBox(stepNumber), 'class');
+    async getClassPropertyOfStepCheckBox(stepNumber: number) {
+        let inhertiText = await webActions.getElementAttributeValue(this.StepNameCheckBoxLocator(stepNumber), 'class');
         return inhertiText;
     }
-     
-    
 
-    
+    async getNewWindow(context: BrowserContext, locator: string) {
+        return await webActions.newWindowHandle(context, locator);
+
+    }
+
+    async getUrl() {
+        return await webActions.getCurrentPageUrl();
+    }
+
+
 }

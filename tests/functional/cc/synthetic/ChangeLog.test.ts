@@ -14,8 +14,8 @@ test("VerifyUserShouldSeeChangeLogOptionOnTestPropertyPage @SyntheticControlCent
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
     //search and click created test
     await syntheticTestDetailPage.clickOnSearchedItemInCC(testID);
-    //validation
-    await verification.verifyIfElementIsPresent(syntheticTestDetailPage.changeLog, 'Chnage log in not present in test property blade.');
+    //validation for change log option
+    await verification.verifyIfElementIsPresent(syntheticTestDetailPage.changeLog, 'Change log is not present in test property blade.');
 
 
 })
@@ -48,9 +48,7 @@ test("VerifyChangeLogShouldCaptureCorrectDataAfterUpdate @SyntheticControlCenter
     await syntheticTestDetailPage.addNodesInTest(nodesName);
     //click on sub set of node and enter value
     await syntheticTestDetailPage.clickOnSubSetOfNode();
-    await util.delay(2000);
     await syntheticTestDetailPage.clickOnSubsetOfNodeInputBox();
-    await syntheticTestDetailPage.clearOnSubsetOfNodeInputBox();
     await syntheticTestDetailPage.enterValueInSubsetOfNodeInputBox('2');
     //save test
     await syntheticTestDetailPage.clickSaveButton();
@@ -59,8 +57,8 @@ test("VerifyChangeLogShouldCaptureCorrectDataAfterUpdate @SyntheticControlCenter
     await synCCPage.clickOnSearchedItemInCC(testName);
     //click on change log
     await syntheticDetailsPage.clickOnChangeLogButton();
-    await util.delay(5000);
-    //validation
+    await util.delay(6000);
+    //validation for updated field
     verification.verifySoftAssertForTextOfAnElement(syntheticTestDetailPage.changeLogRunOn, 'Run On', 'run on is not present.');
     verification.verifySoftAssertForTextOfAnElement(syntheticTestDetailPage.changeLogRunOnValue, '2', 'run on value is not present.');
     //close Change Logs Page
