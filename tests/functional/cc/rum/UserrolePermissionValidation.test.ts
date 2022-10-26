@@ -1,13 +1,14 @@
 import test from "@lib/BaseTest"
 import { DataForEnv } from "@lib/DataForEnvironment";
 
-let data = new DataForEnv();
+
 
 /*
     CP-12790 : Bug 123222 Able to View RUM ,Test Template Options in Master create blade though we dont have permission
 */
 test("VerifyManageRealUserAndTestTemplatesPermission  @ProductionDefect@SyntheticControlCenter", async ({ baseTestUtil, contactsPage, contactDetailsPage, testUtility, sideNavigationBar, loginPage, synCCPage, util, userrolePage, syntheticTestDetailPage, userroleDetailPage, page, verification }) => {
     let userroleNameForRum = await testUtility.getUserroleName();
+    let data = new DataForEnv();
     let userrole = await data.getValueOfTheParameter('defaultUserrole');
     let email = await data.getValueOfTheParameter('userrole9');
     let password = await data.getValueOfTheParameter('password');
@@ -57,6 +58,7 @@ test("VerifyManageRealUserAndTestTemplatesPermission  @ProductionDefect@Syntheti
 */
 test("VerifyManageTestPermission  @ProductionDefect@SyntheticControlCenter", async ({ baseTestUtil, contactsPage, contactDetailsPage, testUtility, sideNavigationBar, loginPage, synCCPage, util, userrolePage, syntheticTestDetailPage, userroleDetailPage, page, verification }) => {
     let userroleNameForSynthetic = await testUtility.getUserroleName();
+    let data = new DataForEnv();
     let userrole = await data.getValueOfTheParameter('defaultUserrole');
     let email = await data.getValueOfTheParameter('userrole9');
     let password = await data.getValueOfTheParameter('password');

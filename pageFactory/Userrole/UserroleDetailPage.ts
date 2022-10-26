@@ -27,35 +27,35 @@ export class UserroleDetailPage extends UserrolePage {
 
 
 
-    public get nameInputField() {
+    public get nameInputFieldLocator() {
         return this._nameInputBox
     }
     
-    public get searchBoxInDetailPage() {
+    public get searchBoxInDetailPageLocator() {
         return this._searchBoxInDetailPage;
     }
 
-    public get selectPermissions() {
+    public get selectPermissionLocator() {
         return (text: string) => { return `//span[text()="${text}"]` };
     }
 
-    public get cancelPropertiesPage() {
+    public get cancelPropertiesPageLocator() {
         return this._cancelButtonOnconatctPropertyPage
     }
 
-    public get closePropertyPage() {
+    public get closePropertyPageLocator() {
         return this._closeUserrolePropertyPage
     }
 
-    public get applyButtonInpropertiesPage() {
+    public get applyButtonInPropertiesPageLocator() {
         return this._applyButtonOnconatctPropertyPage;
     }
 
-    public get firstCheckBoxForPermissionSearch() {
+    public get firstCheckBoxForPermissionSearchLocator() {
         return this._firstCheckBox;
     }
 
-    public get createIcon() {
+    public get createIconLocator() {
         return this._createIcon;
     }
 
@@ -70,45 +70,45 @@ export class UserroleDetailPage extends UserrolePage {
             this.searchPermissionsInDetailPage(permissions)
         ]);
         await util.delay(2000);
-        await webActions.hoverOnElement(this.firstCheckBoxForPermissionSearch);
-        await webActions.clickElement(this.firstCheckBoxForPermissionSearch);
+        await webActions.hoverOnElement(this.firstCheckBoxForPermissionSearchLocator);
+        await webActions.clickElement(this.firstCheckBoxForPermissionSearchLocator);
     }
 
     async cancelPropertyPage() {
-        await webActions.clickElement(this.cancelPropertiesPage);
+        await webActions.clickElement(this.cancelPropertiesPageLocator);
     }
 
     async applyButton() {
-        await webActions.clickElement(this.applyButtonInpropertiesPage);
+        await webActions.clickElement(this.applyButtonInPropertiesPageLocator);
     }
 
     async searchPermissionsInDetailPage(Permissions: string) {
-        await webActions.waitForElementAttached(this.searchBoxInDetailPage);
-        await webActions.clickElement(this.searchBoxInDetailPage);
-        await webActions.enterElementText(this.searchBoxInDetailPage, Permissions);
+        await webActions.waitForElementAttached(this.searchBoxInDetailPageLocator);
+        await webActions.clickElement(this.searchBoxInDetailPageLocator);
+        await webActions.enterElementText(this.searchBoxInDetailPageLocator, Permissions);
         await util.delay(1000);
-        await webActions.clickElement(this.searchBoxInDetailPage);
-        await webActions.keyPress(this.searchBoxInDetailPage, 'Enter')
+        await webActions.clickElement(this.searchBoxInDetailPageLocator);
+        await webActions.keyPress(this.searchBoxInDetailPageLocator, 'Enter')
         await webActions.onlyKeyPress('Enter');
     }
 
     async createUserrole(userroleName: string, permissions: string[]) {
-        await webActions.waitForElementAttached(this.createIcon);
-        await webActions.clickElement(this.createIcon);
-        await webActions.clickElement(this.nameInputField);
-        await webActions.enterElementText(this.nameInputField, userroleName);
-        await webActions.clickElement(this.searchBoxInDetailPage);
+        await webActions.waitForElementAttached(this.createIconLocator);
+        await webActions.clickElement(this.createIconLocator);
+        await webActions.clickElement(this.nameInputFieldLocator);
+        await webActions.enterElementText(this.nameInputFieldLocator, userroleName);
+        await webActions.clickElement(this.searchBoxInDetailPageLocator);
         for (let index = 0; index < permissions.length; index++) {
             const element = permissions[index];
             await this.searchPermissionsInDetailPage(element);
-            await webActions.clickElement(this.firstCheckBoxForPermissionSearch);
+            await webActions.clickElement(this.firstCheckBoxForPermissionSearchLocator);
         }
-        await webActions.clickElement(this.applyButtonInpropertiesPage);
+        await webActions.clickElement(this.applyButtonInPropertiesPageLocator);
 
     }
 
-    async clickOnCreate() {
-        await webActions.clickElement(this.createIcon);
+    async clickOnCreateIcon() {
+        await webActions.clickElement(this.createIconLocator);
     }
 
 

@@ -21,19 +21,19 @@ export class ContactDetailsPage extends ContactsPage {
     private _applyButtonOnconatctPropertyPage = '//span[text()="Apply"]';
 
 
-    public get systemAcessDropDown() {
+    public get systemAcessDropDownLocator() {
         return this._systemAccessDropDown
     }
 
-    public get selectUserrole() {
+    public get selectUserroleLocator() {
         return (text: string) => { return `//span[text()="${text}"]` };
     }
 
-    public get cancelContactPropertyPage() {
+    public get cancelContactPropertyPageLocator() {
         return this._cancelContactPropertyPage
     }
 
-    public get applyButton() {
+    public get applyButtonLocator() {
         return this._applyButtonOnconatctPropertyPage;
     }
 
@@ -43,22 +43,22 @@ export class ContactDetailsPage extends ContactsPage {
 
 
     async clickOnSystemAcessDropDown() {
-        await webActions.clickElement(this.systemAcessDropDown);
+        await webActions.clickElement(this.systemAcessDropDownLocator);
     }
 
     async cancelContactsPropertyPage() {
-        await webActions.clickElement(this.cancelContactPropertyPage);
+        await webActions.clickElement(this.cancelContactPropertyPageLocator);
     }
 
     async selectGivenUserrole(userroleName: string) {
         await this.clickOnSystemAcessDropDown();
-        let xpath = this.selectUserrole(userroleName);
+        let xpath = this.selectUserroleLocator(userroleName);
         await webActions.clickElement(xpath);
         await this.clickOnApplyButton();
     }
 
     async clickOnApplyButton() {
-        await webActions.clickElement(this.applyButton);
+        await webActions.clickElement(this.applyButtonLocator);
     }
 
 

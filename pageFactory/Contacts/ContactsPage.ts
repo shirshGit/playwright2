@@ -24,11 +24,11 @@ export class ContactsPage {
 
 
 
-    public get searchBox() {
+    public get searchBoxLocator() {
         return this._searchBox;
     }
 
-    public get firstRowSearchResult() {
+    public get firstRowSearchResultLocator() {
         return this._firstRowSearchResult
     }
 
@@ -39,16 +39,16 @@ export class ContactsPage {
 
     async clickOnFirstSearchedItemInContactPage(itemName: string) {
         await this.searchItem(itemName);
-        await webActions.clickElement(this.firstRowSearchResult);
+        await webActions.clickElement(this.firstRowSearchResultLocator);
     }
 
     async searchItem(item: string) {
-        await webActions.waitForElementAttached(this.searchBox);
-        await webActions.clickElement(this.searchBox);
-        await webActions.enterElementText(this.searchBox, item);
+        await webActions.waitForElementAttached(this.searchBoxLocator);
+        await webActions.clickElement(this.searchBoxLocator);
+        await webActions.enterElementText(this.searchBoxLocator, item);
         await util.delay(1000);
-        await webActions.clickElement(this.searchBox);
-        await webActions.keyPress(this.searchBox, 'Enter')
+        await webActions.clickElement(this.searchBoxLocator);
+        await webActions.keyPress(this.searchBoxLocator, 'Enter')
         await webActions.onlyKeyPress('Enter');
     }
 
