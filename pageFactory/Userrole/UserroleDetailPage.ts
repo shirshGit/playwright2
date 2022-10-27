@@ -95,6 +95,7 @@ export class UserroleDetailPage extends UserrolePage {
     async createUserrole(userroleName: string, permissions: string[]) {
         await webActions.waitForElementAttached(this.createIconLocator);
         await webActions.clickElement(this.createIconLocator);
+        await util.delay(3000);
         await webActions.clickElement(this.nameInputFieldLocator);
         await webActions.enterElementText(this.nameInputFieldLocator, userroleName);
         await webActions.clickElement(this.searchBoxInDetailPageLocator);

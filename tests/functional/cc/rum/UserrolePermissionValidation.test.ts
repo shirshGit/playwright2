@@ -10,7 +10,7 @@ test("VerifyManageRealUserAndTestTemplatesPermission  @ProductionDefect@Syntheti
     let userroleNameForRum = await testUtility.getUserroleName();
     let data = new DataForEnv();
     let userrole = await data.getValueOfTheParameter('defaultUserrole');
-    let email = await data.getValueOfTheParameter('userrole9');
+    let email = await data.getValueOfTheParameter('automationContact');
     let password = await data.getValueOfTheParameter('password');
     var permissionForRum = ['Manage Real User', 'Manage Test Templates For Client'];
     //navigate to userrole page
@@ -60,7 +60,7 @@ test("VerifyManageTestPermission  @ProductionDefect@SyntheticControlCenter", asy
     let userroleNameForSynthetic = await testUtility.getUserroleName();
     let data = new DataForEnv();
     let userrole = await data.getValueOfTheParameter('defaultUserrole');
-    let email = await data.getValueOfTheParameter('userrole9');
+    let email = await data.getValueOfTheParameter('automationContact');
     let password = await data.getValueOfTheParameter('password');
     var permissionForSynthetic = ['Manage Tests'];
     //navigate to userrole page
