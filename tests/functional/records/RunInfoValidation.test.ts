@@ -11,11 +11,11 @@ test("VerifyIPAddressForTest  @Records", async ({ baseTestUtil, sideNavigationBa
     //navigate to records page
     await sideNavigationBar.navigateToRecordsFromSideNavigation();
     let data = new DataForEnv();
-    let IMAPTestID = await data.getValueOfTheParameter('imapTestID');
-    let MQTTTestID = await data.getValueOfTheParameter('mqttTestID');
-    let NTPTestID = await data.getValueOfTheParameter('ntpTestID');
+    let imapTestID = await data.getValueOfTheParameter('imapTestID');
+    let mqttTestID = await data.getValueOfTheParameter('mqttTestID');
+    let ntpTestID = await data.getValueOfTheParameter('ntpTestID');
     //search IMAP test
-    await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(IMAPTestID);
+    await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(imapTestID);
     await util.delay(3000);
     let getIPAddressOfImapTest = await recordsPage.getIPAddressValue();
     //validation for IMAP test
@@ -25,7 +25,7 @@ test("VerifyIPAddressForTest  @Records", async ({ baseTestUtil, sideNavigationBa
     //click on source button
     await recordsPage.clickOnSourceButton();
     //search MQTT test
-    await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(MQTTTestID);
+    await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(mqttTestID);
     await util.delay(3000);
     let getIPAddressOfMQTTTest = await recordsPage.getIPAddressValue();
     //validation for MQTT test
@@ -35,7 +35,7 @@ test("VerifyIPAddressForTest  @Records", async ({ baseTestUtil, sideNavigationBa
     //click on source button
     await recordsPage.clickOnSourceButton();
     //search NTP test
-    await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(NTPTestID);
+    await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(ntpTestID);
     await util.delay(3000);
     let getIPAddressOfNTPTest = await recordsPage.getIPAddressValue();
     //validation for NTP test
