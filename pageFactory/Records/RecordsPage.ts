@@ -19,8 +19,7 @@ export class RecordsPage {
     private _pingTab = '//span[text()="Ping"]';
     private _pillDeleteButton = '//div[@data-testid="pill-delete-button"]';
     private _testInSourceSelector = '//div[@data-testid="test-picker"]//div[contains(@class,"Pill_pillContent_")]';
-    private _ipAddressNAValue = '//span[text()="IP Address"]/..//span[2][text()="NA"]';
-    private _getIpAddressValue = '//span[text()="IP Address"]/..//span[2]';
+    private _ipAddressValue = '//span[@data-testid="ipAddress"]';
     private _sourceButton = '//button[text()="Source"]';
     private _filedVerbErrorBar = '//div[contains(text(),"Failed Verb")]';
     private _runTime = '//span[text()="Run Time"]/..//span[2]';
@@ -46,75 +45,80 @@ export class RecordsPage {
         return this._testInSourceSelector;
     }
 
-    public get TestNameFromSourceBladeLocator(){
+    public get TestNameFromSourceBladeLocator() {
         return (text: string) => { return `//span[text()="${text}"]` };
     }
 
-    
-    public get getIPAddressNAValueLocator(){
-        return this._ipAddressNAValue;
+
+    public get getIPAddressValueLocator() {
+        return this._ipAddressValue;
     }
 
-    public get sourceButtonLocator(){
+    public get sourceButtonLocator() {
         return this._sourceButton;
     }
 
-    public get failedVerbLocator(){
+    public get failedVerbLocator() {
         return this._filedVerbErrorBar;
     }
 
-    public get getNodeLocator(){
+    public get getNodeLocator() {
         return this._node;
     }
-    public get getNodeIPLocator(){
+    public get getNodeIPLocator() {
         return this._nodeIP;
     }
 
-    public get getMonitorLocator(){
+    public get getMonitorLocator() {
         return this._monitor;
     }
 
-    public get firstDataPointLocator(){
+    public get firstDataPointLocator() {
         return this._firstDataPoint
     }
 
-    public get getRunTimeLocator(){
+    public get getRunTimeLocator() {
         return this._runTime;
     }
 
-    public get getIPAddressLocator(){
-        return this._getIpAddressValue;
+    public get getIPAddressLocator() {
+        return this._ipAddressValue;
     }
     //#endregion
 
-    async clickOnTestInSourceSelector(){
+    async clickOnTestInSourceSelector() {
         await webActions.clickElement(this.testInSourceSelectorLocator);
     }
 
-    async clickOnPillDeleteButton(){
+    async clickOnPillDeleteButton() {
         await webActions.clickElement(this.pillDeleteButtonLocator);
     }
 
-    async clickOnSourceButton(){
+    async clickOnSourceButton() {
         await webActions.clickElement(this.sourceButtonLocator);
     }
 
-    async clickFirstDataPoint(){
+    async clickFirstDataPoint() {
         await webActions.clickElement(this.firstDataPointLocator);
     }
 
-    async getRunTimeValues(){
+    async getRunTimeValues() {
         return await webActions.getTextFromWebElementsUsingSelector(this.getRunTimeLocator);
     }
 
-    async getNewWindow(context : BrowserContext,locator : string){
-        return await webActions.newWindowHandle(context,locator);
-        
+    async getNewWindow(context: BrowserContext, locator: string) {
+        return await webActions.newWindowHandle(context, locator);
+
     }
 
-    async getUrl(){
+    async getUrl() {
         return await webActions.getCurrentPageUrl();
     }
 
-       
+    async getIPAddressValue() {
+        let ipAddressValue = await webActions.getTextFromWebElements(this.getIPAddressValueLocator);
+        return ipAddressValue;
+    }
+
+
 }

@@ -7,9 +7,6 @@ let webActions: WebActions;
 let util: Utility
 
 export class ContactDetailsPage extends ContactsPage{
-    
-    
-
     constructor(page: Page) {
         super(page);
         webActions = new WebActions(this.page);
@@ -53,7 +50,7 @@ export class ContactDetailsPage extends ContactsPage{
     }
 
     async selectGivenUserrole(userroleName: string) {
-		await webActions.clickElement(this.systemAcessDropDown);
+	   await webActions.clickElement(this.systemAcessDropDown);
        let xpath = this.selectUserrole(userroleName);
        await webActions.clickElement(xpath);
        await this.clickOnApplyButton();
