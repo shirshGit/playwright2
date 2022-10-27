@@ -10,7 +10,7 @@ import { DataForEnv } from "@lib/DataForEnvironment";
 test("VerifyUserIsAbleToSelectStep  @Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, recordsPage, page, verification }) => {
     await sideNavigationBar.navigateToRecordsFromSideNavigation();
     let data = new DataForEnv();
-    let TransactionTestID = await data.getValueOfTheParameter('TransactionTestWithMultipleStepAndStepName');
+    let TransactionTestID = await data.getValueOfTheParameter('transactionTestWithMultipleStepAndStepName');
     //enter test from source selector
     await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(TransactionTestID);
     await util.delay(3000);
@@ -35,7 +35,7 @@ test("VerifyUserIsAbleToSelectStep  @Records", async ({ baseTestUtil, sideNaviga
 test("VerifyStepsNameInTransactionTest  @Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, recordsPage, page, verification }) => {
     await sideNavigationBar.navigateToRecordsFromSideNavigation();
     let data = new DataForEnv();
-    let TransactionTestID = await data.getValueOfTheParameter('TransactionTestWithMultipleStepAndStepName');
+    let TransactionTestID = await data.getValueOfTheParameter('transactionTestWithMultipleStepAndStepName');
     //enter test from source selector
     await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(TransactionTestID);
     await util.delay(3000);
@@ -57,7 +57,7 @@ test("VerifyStepsNameInTransactionTest  @Records", async ({ baseTestUtil, sideNa
 test("VerifyStepIndexWhenUserChangeRuns  @Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, recordsPage, page, verification }) => {
     await sideNavigationBar.navigateToRecordsFromSideNavigation();
     let data = new DataForEnv();
-    let TransactionTestID = await data.getValueOfTheParameter('TransactionTestWithMultipleStepAndStepName');
+    let TransactionTestID = await data.getValueOfTheParameter('transactionTestWithMultipleStepAndStepName');
     //enter test from source selector
     await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(TransactionTestID);
     await util.delay(3000);
@@ -80,7 +80,7 @@ test("VerifyStepIndexWhenUserChangeRuns  @Records", async ({ baseTestUtil, sideN
 test("VerifyStepNameDoesNotDisplayAsBlank  @Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, recordsPage, page, verification }) => {
     await sideNavigationBar.navigateToRecordsFromSideNavigation();
     let data = new DataForEnv();
-    let TransactionTestID = await data.getValueOfTheParameter('TransactionTestWithMultipleStepWithoutStepName');
+    let TransactionTestID = await data.getValueOfTheParameter('transactionTestWithMultipleStepWithoutStepName');
     //enter test from source selector
     await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(TransactionTestID);
     await util.delay(3000);
