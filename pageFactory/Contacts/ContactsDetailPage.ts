@@ -1,13 +1,15 @@
 import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
 import { Page } from "playwright";
-import { LoginPageObjects } from "@objects/LoginPageObjects";
 import { ContactsPage } from "@pageobjects/Contacts/ContactsPage";
 
 let webActions: WebActions;
 let util: Utility
 
-export class ContactDetailsPage extends ContactsPage {
+export class ContactDetailsPage extends ContactsPage{
+    
+    
+
     constructor(page: Page) {
         super(page);
         webActions = new WebActions(this.page);
@@ -15,10 +17,10 @@ export class ContactDetailsPage extends ContactsPage {
     }
 
     //#region This region is for getter
-
     private _systemAccessDropDown = '(//i[@data-icon-name="chevronDark"])[1]';
     private _cancelContactPropertyPage = '//div[@data-testid="cancel-icon"]';
     private _applyButtonOnconatctPropertyPage = '//span[text()="Apply"]';
+
 
 
     public get systemAcessDropDownLocator() {
@@ -51,14 +53,14 @@ export class ContactDetailsPage extends ContactsPage {
     }
 
     async selectGivenUserrole(userroleName: string) {
-        await this.clickOnSystemAcessDropDown();
-        let xpath = this.selectUserroleLocator(userroleName);
-        await webActions.clickElement(xpath);
-        await this.clickOnApplyButton();
+		await webActions.clickElement(this.systemAcessDropDownLocator);
+       let xpath = this.selectUserroleLocator(userroleName);
+       await webActions.clickElement(xpath);
+       await this.clickOnApplyButton();
     }
 
     async clickOnApplyButton() {
-        await webActions.clickElement(this.applyButtonLocator);
+          await webActions.clickElement(this.applyButtonLocator);
     }
 
 

@@ -20,7 +20,6 @@ import { ContactsPage } from '@pageobjects/Contacts/ContactsPage';
 import { UserrolePage } from '@pageobjects/Userrole/UserrolePage';
 import { UserroleDetailPage } from '@pageobjects/Userrole/UserroleDetailPage';
 
-
 const test = baseTest.extend<{
     baseTestUtil: BaseTestUtility;
     loginPage: LoginPage;
@@ -35,8 +34,8 @@ const test = baseTest.extend<{
     syntheticFolderDetailPage: SyntheticFolderDetailPage;
     synLocationBlade: SyntheticLocationBlade;
     util: Utility;
-    testUtility : TestUtility;
     syntheticTestDetailPage: SyntheticTestDetailPage;
+    testUtility : TestUtility;
     contactDetailsPage: ContactDetailsPage;
     contactsPage : ContactsPage;
     userrolePage: UserrolePage;
@@ -49,8 +48,8 @@ const test = baseTest.extend<{
         await use(base);
         await base.fullPageScreenShot(testInfo);
     },
-       
-    loginPage: async ({ page }, use, testInfo) => {
+
+     loginPage: async ({ page }, use, testInfo) => {
         let login = new LoginPage(page);
         await use(login);
     },
@@ -105,6 +104,7 @@ const test = baseTest.extend<{
     userrolePage: async ({ page }, use) => {
         await use(new UserrolePage(page));
     },
+  
 
   
 

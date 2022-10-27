@@ -6,7 +6,7 @@ import { DataForEnv } from "@lib/DataForEnvironment";
 /*
     CP-12790 : Bug 123222 Able to View RUM ,Test Template Options in Master create blade though we dont have permission
 */
-test("VerifyManageRealUserAndTestTemplatesPermission  @ProductionDefect@SyntheticControlCenter", async ({ baseTestUtil, contactsPage, contactDetailsPage, testUtility, sideNavigationBar, loginPage, synCCPage, util, userrolePage, syntheticTestDetailPage, userroleDetailPage, page, verification }) => {
+test("VerifyManageRealUserAndTestTemplatesPermission  @ProductionDefect@SyntheticControlCenter", async ({ baseTestUtil, contactsPage, contactDetailsPage, testUtility, sideNavigationBar, loginPage, synCCPage, util, userrolePage, syntheticDetailsPage, userroleDetailPage, page, verification }) => {
     let userroleNameForRum = await testUtility.getUserroleName();
     let data = new DataForEnv();
     let userrole = await data.getValueOfTheParameter('defaultUserrole');
@@ -32,7 +32,7 @@ test("VerifyManageRealUserAndTestTemplatesPermission  @ProductionDefect@Syntheti
     //click on new button
     await synCCPage.clickOnNewItemCreation();
     //verification
-    await verification.verifyElementIsNotPresent(syntheticTestDetailPage.testFromMasterTestBlade, "Able to see Tests in CC blade , even though dont have permission for that.");
+    await verification.verifyElementIsNotPresent(syntheticDetailsPage.testFromMasterTestBladeLocator, "Able to see Tests in CC blade , even though dont have permission for that.");
     //close master test blade
     await synCCPage.closePropertyPage();
     //logout
@@ -56,7 +56,7 @@ test("VerifyManageRealUserAndTestTemplatesPermission  @ProductionDefect@Syntheti
 /*
     CP-39578 : VerifyManageTestPermission_Bug_123222: DES:CC: Able to View RUM ,Test Template Options in Master create blade though we disabled manage permissions for Template and RUM
 */
-test("VerifyManageTestPermission  @ProductionDefect@SyntheticControlCenter", async ({ baseTestUtil, contactsPage, contactDetailsPage, testUtility, sideNavigationBar, loginPage, synCCPage, util, userrolePage, syntheticTestDetailPage, userroleDetailPage, page, verification }) => {
+test("VerifyManageTestPermission  @ProductionDefect@SyntheticControlCenter", async ({ baseTestUtil, contactsPage, contactDetailsPage, testUtility, sideNavigationBar, loginPage, synCCPage, util, syntheticDetailsPage, syntheticTestDetailPage, userroleDetailPage, page, verification }) => {
     let userroleNameForSynthetic = await testUtility.getUserroleName();
     let data = new DataForEnv();
     let userrole = await data.getValueOfTheParameter('defaultUserrole');
@@ -83,13 +83,35 @@ test("VerifyManageTestPermission  @ProductionDefect@SyntheticControlCenter", asy
     //click on +new button
     await synCCPage.clickOnNewItemCreation();
     //verification
-    await verification.verifyElementIsNotPresent(syntheticTestDetailPage.rumFromMasterTestBlade, "Able to see RUM in Master create blade , even though dont have permission for that.");
-    await verification.verifyElementIsNotPresent(syntheticTestDetailPage.testTemplateInMasterBlade, "Able to see Test Template in Master create blade , even though dont have permission for that.");
+    await verification.verifyElementIsNotPresent(syntheticDetailsPage.rumFromMasterTestBladeLocator, "Able to see RUM in Master create blade , even though dont have permission for that.");
     //close master test blade
     await synCCPage.closePropertyPage();
     //logout
     await loginPage.logOutFromBrowser();
     //login
+    await loginPage.loginToCP();
+    //navigate to contacts page
+    await sideNavigationBar.navigateToContactPageFromSideNavigation();
+    //search and click contact
+    await contactsPage.clickOnFirstSearchedItemInContactPage(email);
+    //change and apply system access
+    await contactDetailsPage.selectGivenUserrole(userroleNameForSynthetic);
+    //logout
+    await loginPage.logOutFromBrowser();
+    //login with changed system access contact
+    await loginPage.loginWithOtherContact(email, password);
+    await page.reload();
+    //navigate to cc
+    await sideNavigationBar.navigateToRUMFromSideNavigation();
+    //click on new button
+    await synCCPage.clickOnNewItemCreation();
+    verification
+    await verification.verifyElementIsNotPresent(syntheticTestDetailPage.testFromMasterTestBladeLocator, "Able to see Tests in CC blade , even though dont have permission for that.");
+    //close master test blade
+    await synCCPage.closePropertyPage();
+    //logout
+    await loginPage.logOutFromBrowser();
+    //login to browser
     await loginPage.loginToCP();
     //navigate to contacts page
     await sideNavigationBar.navigateToContactPageFromSideNavigation();

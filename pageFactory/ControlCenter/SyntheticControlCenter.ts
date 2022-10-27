@@ -1,12 +1,13 @@
 import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
 import { Page } from "playwright";
-
 let webActions: WebActions;
-let util : Utility
+let util: Utility
 
 export class SynControlCenterPage {
     readonly page: Page;
+    
+
 
     constructor(page: Page) {
         this.page = page;
@@ -31,37 +32,56 @@ export class SynControlCenterPage {
     private _deleteOptionAfterThreeDotMenu = '//i[@data-icon-name="delete"]';
     private _webChromeTest = '//p[text() = "Web"]/../../..//p[text() = "Chrome"]';
     private _pendoCloseForNewFeature = '//button[contains(@id, "pendo-close-guide")]';
+    private _targetScheduletab = '//div[@id="#targeting_and_scheduling"]//span[text()="Targeting & Scheduling"]';
+    private _cancelTestDetailPage = '//span[text()="Cancel"]';
+    private _cancelSearchedText = '//i[@data-icon-name="Clear"]/div';
+    private _closeTestDetailPage = '//div[@data-testid="cancel-icon"]';
+    private _copyOptionInThreeDotMenu = '//ul[contains(@class,"ms-ContextualMenu-list is-open")]//span[text()="Copy"]';
+    private _copyButtonInTestLocationBlade = '//button[@type="button"]//span[text()="Copy"]';
+    private _syntheticTestLocationTextAfterClickingOnCopy = '//div[contains(@class,"ms-Panel-main")]//span[text()="Tests Location"]';
+    private _locationOfItem = '(//span[contains(@class,"ms-Breadcrumb-item")]/div[contains(@class,"ms-TooltipHost")])[2]';
+    private _moveButtonInHeaderSection = '//button[text()="Move"]';
+    private _moveButtonInTestLocationBlade = '//button[@type="button"]//span[text()="Move"]';
+    private _divisionLevelDDInRootSection = '//div[contains(@class,"DivisionComboBox_divisionSelector")]//div[@id="chevron-down-icon"]';
+    private _clientLevelInDivisionDropDown = '//div[contains(@class,"ms-Callout ms-Dropdown-callout")]//span[text()="Client Level"]';
     private _closeMasterBlade = '//div[@data-testid="cancel-icon"]';
-    private _cancelSearchedText = '//i[@data-icon-name="Clear"]';
     private _statusOfFirstItem = '//div[@data-automation-key="Status_4"]';
-    private _rumInRootField = '//div[contains(text(),"RUM")]';
-
-
-    public get newItemCreation() {
+    private _getItemLocation = '//div[contains(@class,"BasicPropertySection_")]//div[@data-automation-id="visibleContent"]';
+    private _testLocationTextIntestLocationBlade = '//span[text()="Tests Location"]';
+    private _getDefaultItemselectedInDivisionDD = '//span[text()="Client Level"]';
+    private _rumInRootBlade = '(//div[contains(@class,"NavigationTree_navGroupText_")][normalize-space()="RUM"])[2]';
+    private _divLevelDropDown = '(//div[@data-testid="divisionSelector"]//div)[1]';
+    private _closeChangeLogPage = '(//div[@data-testid="cancel-icon"])[2]';
+    
+    public get newItemCreationLocator() {
         return this._newItemCreation;
     }
 
-    public get searchBox() {
+    public get threeDotMenuItemsLocator() {
+        return (text: string) => { return `//ul[contains(@class,"ms-ContextualMenu-list is-open")]//span[text()="${text}"]` };
+    }
+
+    public get searchBoxLocator() {
         return this._searchBox;
     }
 
-    public get newProductItem() {
+    public get newProductItemLocator() {
         return this._newProductItem;
     }
 
-    public get firstRowSearchResult() {
+    public get firstRowSearchResultLocator() {
         return this._firstRowSearchResult;
     }
 
-    public get firstRowCheckBoxOfContainer() {
+    public get firstRowCheckBoxOfContainerLocator() {
         return this._firstRowCheckBoxOfContainer;
     }
 
-    public get deleteBtn() {
+    public get deleteBtnLocator() {
         return this._deleteBtn;
     }
 
-    public get popUpDeleteBtn() {
+    public get popUpDeleteBtnLocator() {
         return this._popUpDeleteBtn;
     }
 
@@ -69,77 +89,133 @@ export class SynControlCenterPage {
         return this._locatorToClickOnSearchedItem;
     }
 
-    public get deactivateBtnInContainer() {
+    public get deactivateBtnInContainerLocator() {
         return this._deactivateBtnInContainer;
     }
 
-    public get threeDotMenuOfSearchedItem() {
+    public get threeDotMenuOfSearchedItemLocator() {
         return this._threeDotMenuOfSearchedItem;
     }
 
-    public get propertiesAfterThreeDotMenu() {
+    public get propertyInThreeDotMenuLocator() {
         return this._propertiesAfterThreeDotMenu;
     }
 
-    public get deleteOptionAfterThreeDotMenu() {
+    public get deleteOptionInThreeDotMenuLocator() {
         return this._deleteOptionAfterThreeDotMenu;
     }
 
-    public get newFolderItem() {
+    public get copyOptionInThreeDotMenuLocator() {
+        return this._copyOptionInThreeDotMenu;
+    }
+
+    public get newFolderItemLocator() {
         return this._newFolderItem;
     }
 
-    public get webChromeTest(){
+    public get webChromeTestLocator(){
         return this._webChromeTest;
     }
 
-    public get pendoCloseForNewFeature(){
+    public get pendoCloseForNewFeatureLocator(){
         return this._pendoCloseForNewFeature;
     }
+    public get cancelTestDetailPageLocator() {
+        return this._cancelTestDetailPage;
+    }
+    public get copyButtonInTestLocationBladeLocator() {
+        return this._copyButtonInTestLocationBlade;
+    }
 
-    public get closeItemPropertiesBlade() {
+    public get closeItemPropertiesBladeLocator() {
         return this._closeMasterBlade;
     }
 
-    public get cancelSearchedItem() {
+    public get cancelSearchedItemLocator() {
         return this._cancelSearchedText;
     }
 
-    public get statusOfFirstItem(){
+    public get statusOfFirstItemLocator(){
         return this._statusOfFirstItem;
     }
 
-    public get rumInRootBlade(){
-        return this._rumInRootField;
+    public get getItemLocationLocator(){
+        return this._getItemLocation;
+    }
+   
+
+    public get moveButtonInHeaderSectionLocator(){
+        return this._moveButtonInHeaderSection;
     }
 
+    public get moveButtonInTestLocationBladeLocator(){
+        return this._moveButtonInTestLocationBlade;
+    }
 
+    public get clickOnDivisionDropDownLocator(){
+        return this._divisionLevelDDInRootSection;
+    }
+    
+
+    public get selectProductForTestLocationLocator() {
+        return (text: string) => { return `(//span[text()="${text}"])[2]` };
+    }
+
+    public get testLocationTextAfterClickingOnCopyInThreeDotMenuLocator(){
+        return this._testLocationTextIntestLocationBlade;
+    }
+
+    public get selectedItemLocatorInDivDropDown(){
+        return this._getDefaultItemselectedInDivisionDD;
+    }
+ 
+    public get selectDivisionLocator(){
+        return (text: string) => { return `//div[contains(@class,"dropdownItemsWrapper")]//span[text()="${text}"]` };
+    }
+
+    public get rumInRootBladeLocator(){
+        return this._rumInRootBlade
+    }
+
+    public get divLevelDropdownLocator(){
+        return this._divLevelDropDown;
+    }
+
+    public get closeChangeLogPageLocator(){
+        return this._closeChangeLogPage
+    }
+
+   
+    
    
     //#endregion
 
     //#region This region is to have the functions
+
+    
+
+    async selectProductFromTestLocationBlade(productName: string) {
+        let xpath = await this.selectProductForTestLocationLocator(productName);
+        await webActions.clickElement(xpath);
+    }
 
     async navigateToSyntheticCC() {
         await webActions.navigateToURL(`ControlCenter/Tests`);
     }
 
     async goToNewProductCreate() {
-        await webActions.clickElement(this.newItemCreation);
-        await webActions.clickElement(this.newProductItem);
+        await webActions.clickElement(this.newItemCreationLocator);
+        await webActions.clickElement(this.newProductItemLocator);
 
-    }
-
-    async clickOnNewItemCreation(){
-        await webActions.clickElement(this.newItemCreation);
     }
 
     async searchItem(item: string) {
-        await webActions.waitForElementAttached(this.searchBox);
-        await webActions.clickElement(this.searchBox);
-        await webActions.enterElementText(this.searchBox, item);
+        await webActions.waitForElementAttached(this.searchBoxLocator);
+        await webActions.clickElement(this.searchBoxLocator);
+        await webActions.enterElementText(this.searchBoxLocator, item);
         await util.delay(1000);
-        await webActions.clickElement(this.searchBox);
-        await webActions.keyPress(this.searchBox, 'Enter')
+        await webActions.clickElement(this.searchBoxLocator);
+        await webActions.keyPress(this.searchBoxLocator, 'Enter')
         await webActions.onlyKeyPress('Enter');
     }
 
@@ -148,10 +224,24 @@ export class SynControlCenterPage {
             this.searchItem(productName)
         ]);
         await util.delay(2000);
-        await webActions.hoverOnElement(this.threeDotMenuOfSearchedItem);
-        await webActions.clickElement(this.threeDotMenuOfSearchedItem);
-        await webActions.clickElement(this.deleteOptionAfterThreeDotMenu);
-        await webActions.clickElement(this.popUpDeleteBtn);
+        await webActions.hoverOnElement(this.threeDotMenuOfSearchedItemLocator);
+        await webActions.clickElement(this.threeDotMenuOfSearchedItemLocator);
+        await webActions.clickElement(this.deleteOptionInThreeDotMenuLocator);
+        await webActions.clickElement(this.popUpDeleteBtnLocator);
+    }
+
+    
+
+    async copyItemFromThreeDotMenu(itemName: string, destinationProductID: string) {
+        const [searchItem] = await Promise.all([
+            this.searchItem(itemName)
+        ]);
+        await util.delay(2000);
+        await webActions.hoverOnElement(this.threeDotMenuOfSearchedItemLocator);
+        await webActions.clickElement(this.threeDotMenuOfSearchedItemLocator);
+        await webActions.clickElement(this.copyOptionInThreeDotMenuLocator);
+        await this.selectProductFromTestLocationBlade(destinationProductID);
+        await webActions.clickElement(this.copyButtonInTestLocationBladeLocator);
     }
 
     async deleteItemFromTableContainerBar(productName: string) {
@@ -159,9 +249,9 @@ export class SynControlCenterPage {
             this.searchItem(productName)
         ]);
         await util.delay(2000);
-        await webActions.clickElement(this.firstRowCheckBoxOfContainer);
-        await webActions.clickElement(this.deleteBtn);
-        await webActions.clickElement(this.popUpDeleteBtn);
+        await webActions.clickElement(this.firstRowCheckBoxOfContainerLocator);
+        await webActions.clickElement(this.deleteBtnLocator);
+        await webActions.clickElement(this.popUpDeleteBtnLocator);
     }
 
     async clickOnSearchedItemInCC(itemName: string) {
@@ -172,20 +262,20 @@ export class SynControlCenterPage {
 
     async checkTheSearchedItem(folderName: string) {
         await this.searchItem(folderName);
-        await webActions.clickElement(this.firstRowCheckBoxOfContainer);
+        await webActions.clickElement(this.firstRowCheckBoxOfContainerLocator);
     }
 
     async openPropertiesOfSerachedItem(item: string) {
-        await webActions.hoverOnElement(this.searchBox);
+        await webActions.hoverOnElement(this.searchBoxLocator);
         await this.searchItem(item);
         await util.delay(2000);
-        await webActions.hoverOnElement(this.threeDotMenuOfSearchedItem);
-        await webActions.clickElement(this.threeDotMenuOfSearchedItem);
-        await webActions.clickElement(this.propertiesAfterThreeDotMenu);
+        await webActions.hoverOnElement(this.threeDotMenuOfSearchedItemLocator);
+        await webActions.clickElement(this.threeDotMenuOfSearchedItemLocator);
+        await webActions.clickElement(this.propertyInThreeDotMenuLocator);
     }
 
     async getElementTextFromElements(element: string) {
-        var elementsText =await webActions.getTextFromWebElements(element);
+        var elementsText = await webActions.getTextFromWebElements(element);
         return elementsText;
     }
 
@@ -199,48 +289,107 @@ export class SynControlCenterPage {
     }
 
     async goToNewFolderCreate() {
-        await webActions.clickElement(this.newItemCreation);
-        await webActions.clickElement(this.newFolderItem);
+        await webActions.clickElement(this.newItemCreationLocator);
+        await webActions.clickElement(this.newFolderItemLocator);
 
     }
 
     async goToNewWebChromeTestCreate() {
-        await webActions.clickElement(this.newItemCreation);
-        await webActions.clickElement(this.webChromeTest);
+        await webActions.clickElement(this.newItemCreationLocator);
+        await webActions.clickElement(this.webChromeTestLocator);
 
     }
 
-    async searchByLabel(label : string){
+    async searchByLabel(label: string) {
         let searchByLabel = '/label:' + label;
         await this.searchItem(searchByLabel);
     }
 
-    async pendoCloseIfPopsup(){
-        let pendoElementCount = await webActions.getNoOfElementsPresentInPage(this.pendoCloseForNewFeature);
-        if(+pendoElementCount > 0)
-        {
-            await webActions.clickElement(this.pendoCloseForNewFeature);
+    async pendoCloseIfPopsup() {
+        let pendoElementCount = await webActions.getNoOfElementsPresentInPage(this.pendoCloseForNewFeatureLocator);
+        if (+pendoElementCount > 0) {
+            await webActions.clickElement(this.pendoCloseForNewFeatureLocator);
         }
     }
 
-    async closePropertyPage() {
-        await webActions.clickElement(this.closeItemPropertiesBlade);
-
-    }
-
-    async cancelSearchedText() {
-        await webActions.clickElement(this.cancelSearchedItem);
+    async clickCancelTestPropertyButton() {
+        await webActions.clickElement(this.cancelTestDetailPageLocator);
     }
 
     async clearTextField(loc : string){
         await webActions.clearTextByBtnPress(loc);
     }
 
-    async clickRumOnRootBlade(){
-        await webActions.clickElement(this.rumInRootBlade);
+    async closeTestPropertyPage() {
+        await webActions.clickElement(this._closeTestDetailPage);
+    }
+
+    
+    async searchAndClickOnThreeDotMenu(itemName: string) {
+        const [searchItem] = await Promise.all([
+            this.searchItem(itemName)
+        ]);
+        await util.delay(2000);
+        await webActions.hoverOnElement(this.threeDotMenuOfSearchedItemLocator);
+        await webActions.clickElement(this.threeDotMenuOfSearchedItemLocator);
+    }
+
+    async getThreeDotMenuItem(itemName: string) {
+        let xpath = this.threeDotMenuItemsLocator(itemName);
+        return xpath;
+
+    }
+
+    async clickCopyButtonFromThreeDotMenu(itemName: string) {
+        await this.searchAndClickOnThreeDotMenu(itemName);
+        await webActions.clickElement(this.copyOptionInThreeDotMenuLocator);
+    }
+
+    async fetchItemLocation() {
+        let enddate = await webActions.getElementAttributeValue(this.getItemLocationLocator, 'value');
+        return enddate;
+    }
+
+    async closePropertyPage(){
+        await webActions.clickElement(this._closeMasterBlade);
+    }
+
+    async moveSelectedItem(itemName : string ,product : string){
+        await this.checkTheSearchedItem(itemName);
+        await webActions.clickElement(this.moveButtonInHeaderSectionLocator);
+        await this.selectProductFromTestLocationBlade(product);
+        await webActions.clickElement(this.moveButtonInTestLocationBladeLocator);
+    }
+
+    async clickDivisionDropDown(){
+        await webActions.clickElement(this.clickOnDivisionDropDownLocator);
+
+    }
+
+    async selectGivenDivisionFromDivisionDropDownInRoot(divName : string){
+        await webActions.clickElement(this.selectDivisionLocator(divName));
+    }
+
+    async clickOnNewItemCreation(){
+        return webActions.clickElement(this.newItemCreationLocator);
+    }
+
+    async clickOnRumInRootBlade(){
+        return webActions.clickElement(this.rumInRootBladeLocator);
+
+    }
+
+    async closeChangeLogsPage(){
+        await webActions.clickElement(this.closeChangeLogPageLocator);
     }
 
    
+
+
+
+
+
+
     //#endregion
 
 }

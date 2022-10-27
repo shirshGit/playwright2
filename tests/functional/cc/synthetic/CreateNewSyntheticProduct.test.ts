@@ -19,7 +19,7 @@ test("@Smoke @SyntheticControlCenter Create a Synthetic Product in CC", async ({
   let nodeName = await data.getValueOfTheParameter('node');
   await syntheticProductDetailPage.createAProductWithBasicSettings(productName, nodeName);
   await syntheticProductDetailPage.searchItem(productName);
-  await verification.verifySoftAssertForTextOfAnElement(syntheticProductDetailPage.firstRowSearchResult, productName, 'Product is not found');
+  await verification.verifySoftAssertForTextOfAnElement(syntheticProductDetailPage.firstRowSearchResultLocator, productName, 'Product is not found');
   await syntheticProductDetailPage.deleteItemFromThreeDotMenu(productName);
 
 });

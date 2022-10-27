@@ -1,14 +1,11 @@
 import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
 import { Page } from "playwright";
-import { LoginPageObjects } from "@objects/LoginPageObjects";
-
 let webActions: WebActions;
 let util: Utility
 
 export class ContactsPage {
     readonly page: Page;
-    loginPageObjects = new LoginPageObjects();
 
     constructor(page: Page) {
         this.page = page;

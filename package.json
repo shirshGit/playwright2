@@ -16,7 +16,10 @@
     "test:single:chromeTimeCapture": "npx playwright test /tests/functional/catchointSampleTestForTimeComapre.test.ts --project=Chrome --workers=1",
     "test:single:TestURLValidation": "npx playwright test /tests/functional/cc/synthetic/TestURLValidation.test.ts --project=Chrome --workers=1",
     "test:single:TestPropertiesDateValidation": "npx playwright test /tests/functional/cc/synthetic/TestPropertiesDateValidation.test.ts --project=Chrome --workers=1",
-    "test:single:TestStatusValidation": "npx playwright test /tests/functional/cc/synthetic/TestStatusValidation.test.ts --project=Chrome --workers=1",
+    "test:single:CopyTest": "npx playwright test /tests/functional/cc/synthetic/CopyTest.test.ts --project=Chrome --workers=1",
+    "test:single:MoveTest": "npx playwright test /tests/functional/cc/synthetic/MoveTest.test.ts --project=Chrome --workers=1",
+    "test:single:DivisionLevelAccessInClientLevelValidation": "npx playwright test /tests/functional/cc/synthetic/DivisionLevelAccessInClientLevelValidation.test.ts --project=Chrome --workers=1",
+    "test:single:ChangeLog": "npx playwright test /tests/functional/cc/synthetic/ChangeLog.test.ts --project=Chrome --workers=1",
     "test:single:UserrolePermissionValidation": "npx playwright test /tests/functional/cc/rum/UserrolePermissionValidation.test.ts --project=Chrome --workers=1"
   },
   "dependencies": {

@@ -17,18 +17,24 @@ export class SyntheticLocationBlade extends SynControlCenterPage {
     private _syntheticLocationBladeNavigationTreeTitle = 'div[class*="NavigationTree_navGroupWrapper"]';
     private _syntheticLocationBladeNavItemheader = 'div[class*="Blade_contentWithHeaderAndFooter"] div[data-testid = "navigation"] ul';
 
-    public get syntheticLocationBladeTitle() {
+    public get syntheticLocationBladeTitleLocator() {
         return this._syntheticLocationBladeTitle;
     }
 
-    public get syntheticLocationBladeNavigationTreeTitle() {
+    public get syntheticLocationBladeNavigationTreeTitleLocator() {
         return this._syntheticLocationBladeNavigationTreeTitle;
     }
 
-    public get syntheticLocationBladeNavItemheader() {
+    public get syntheticLocationBladeNavItemheaderLocator() {
         return this._syntheticLocationBladeNavItemheader;
     }
 
+    public get selectProductForTestLocationBladeLocator() {
+        return (text: string) => { return `(//span[text()="${text}"])[2]` };
+    }
+
     //#endregion
+
+    
 
 }

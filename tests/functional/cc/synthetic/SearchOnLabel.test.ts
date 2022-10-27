@@ -17,7 +17,7 @@ test("@Smoke @SyntheticControlCenter Search By label", async({baseTestUtil, synt
     await syntheticTestDetailPage.clickSaveButton();
     await util.delay(2000);
     await syntheticTestDetailPage.searchByLabel(labelVal);
-    let serrchedItems = await syntheticTestDetailPage.getElementTextFromElements(syntheticTestDetailPage.firstRowSearchResult);
+    let serrchedItems = await syntheticTestDetailPage.getElementTextFromElements(syntheticTestDetailPage.firstRowSearchResultLocator);
     await verification.verifySoftAssertTrue(serrchedItems.includes(testName), 'Created Test which includes Index is not found');
     await util.delay(1000);
     await syntheticTestDetailPage.deleteItemFromThreeDotMenu(testName);
