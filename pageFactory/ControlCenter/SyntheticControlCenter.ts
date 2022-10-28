@@ -31,13 +31,13 @@ export class SynControlCenterPage {
     private _propertiesAfterThreeDotMenu = '//i[@data-icon-name="properties"]';
     private _deleteOptionAfterThreeDotMenu = '//i[@data-icon-name="delete"]';
     private _webChromeTest = '//p[text() = "Web"]/../../..//p[text() = "Chrome"]';
+    private _transactionChromeTest = '//p[text() = "Transaction"]/../../..//p[text() = "Chrome"]';
     private _pendoCloseForNewFeature = '//button[contains(@id, "pendo-close-guide")]';
     private _targetScheduletab = '//div[@id="#targeting_and_scheduling"]//span[text()="Targeting & Scheduling"]';
     private _cancelTestDetailPage = '//span[text()="Cancel"]';
     private _cancelSearchedText = '//i[@data-icon-name="Clear"]/div';
     private _closeItemDetailPage = '//div[@data-testid="cancel-icon"]';
-    private _statusInTestPropertyPage = '(//label[@id="toggle-stateText"])[1]';
-    
+    private _statusInTestPropertyPage = '(//label[@id="toggle-stateText"])[1]';   
     private _closeTestDetailPage = '//div[@data-testid="cancel-icon"]';
     private _copyOptionInThreeDotMenu = '//ul[contains(@class,"ms-ContextualMenu-list is-open")]//span[text()="Copy"]';
     private _copyButtonInTestLocationBlade = '//button[@type="button"]//span[text()="Copy"]';
@@ -119,12 +119,19 @@ export class SynControlCenterPage {
         return this._webChromeTest;
     }
 
-    public get pendoCloseForNewFeature(){
+    public get transactionChromeTest(){
+        return this._transactionChromeTest;
+    }
+    
+
+    public get pendoCloseForNewFeature() {
         return this._pendoCloseForNewFeature;
     }
+
     public get cancelTestDetailPage() {
         return this._cancelTestDetailPage;
     }
+
     public get copyButtonInTestLocationBlade() {
         return this._copyButtonInTestLocationBlade;
     }
@@ -301,6 +308,12 @@ export class SynControlCenterPage {
     async goToNewWebChromeTestCreate() {
         await webActions.clickElement(this.newItemCreation);
         await webActions.clickElement(this.webChromeTest);
+
+    }
+
+    async goToNewTransactionChromeTestCreate() {
+        await webActions.clickElement(this.newItemCreation);
+        await webActions.clickElement(this.transactionChromeTest);
 
     }
 

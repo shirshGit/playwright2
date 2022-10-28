@@ -29,6 +29,7 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
     private _addNodeField = '//input[contains(@placeholder ,"Add Node")]';
     private _changeLogRunOn = '//td[text()="Run On"]';
     private _changeLogRunOnValue = '//td[text()="Run On"]//following-sibling::td[1]';
+    private _transactionTestScriptEditorField = '//div[@data-mode-id = "transaction"]'
 
     public get alertOverrideToogleBtn() {
         return this._alertOverrideToogleBtn;
@@ -64,6 +65,10 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
 
     public get targetAndScheduleSection() {
         return this._targetAndScheduleSection;
+    }
+
+    public get transactionTestScriptEditorField(){
+        return this._transactionTestScriptEditorField;
     }
 
     public get overrideButtonInTargetAndSchedule() {

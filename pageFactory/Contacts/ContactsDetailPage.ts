@@ -7,9 +7,7 @@ import { ContactsPage } from "@pageobjects/Contacts/ContactsPage";
 let webActions: WebActions;
 let util: Utility
 
-export class ContactDetailsPage extends ContactsPage{
-    readonly page: Page;
-    
+export class ContactDetailsPage extends ContactsPage{    
 
     constructor(page: Page) {
         super(page);
@@ -57,10 +55,13 @@ export class ContactDetailsPage extends ContactsPage{
     }
 
     async selectGivenUserrole(userroleName: string) {
-        await webActions.clickElement('//div[@id="SystemAccess"]');
-        let xpath = this.selectUserrole(userroleName);
-        await webActions.clickElement(xpath);
-        await this.clickOnApplyButton();
+        // await this.ClickDiv();
+        // let xpath = this.selectUserrole(userroleName);
+        // await webActions.clickElement(xpath);
+        // await this.clickOnApplyButton();
+        await webActions.clickElement('(//i[@data-icon-name="chevronDark"]/div)[2]');
+        //await this.page.click('(//i[@data-icon-name="chevronDark"]/div)[2]/../..');
+        //await this.page.locator('(//i[@data-icon-name="chevronDark"]/div)[2]').selectOption({index:3});
     }
 
     async abc(){
@@ -69,6 +70,18 @@ export class ContactDetailsPage extends ContactsPage{
 
     async clickOnApplyButton() {
         await webActions.clickElement(this.applyButton);
+    }
+
+    async ClickDiv() {
+        await webActions.clickElement('(//i[@data-icon-name="chevronDark"]/div)[2]');
+    }
+
+    async clickI() {
+        await webActions.clickElement('(//i[@data-icon-name="chevronDark"])[2]');
+    }
+
+    async clickBox() {
+        await webActions.clickElement('//div[contains(text(),"System Access")]/../div/div//span[@id="Dropdown5450-option"]');
     }
 
 
