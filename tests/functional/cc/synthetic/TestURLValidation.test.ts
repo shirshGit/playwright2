@@ -10,7 +10,7 @@ test.beforeEach(async ({ baseTestUtil }) => {
  CP-12697 : Bug 125438: Control Center : Manipulating URL shows some random tests 
 */
 
-test("ManipulatingURLShowsSomeRandomTest  @ProductionDefect@SyntheticControlCenter", async ({ page,verification, syntheticTestDetailPage, sideNavigationBar, testUtilility, util, baseTestUtil }) => {
+test("ManipulatingURLShowsSomeRandomTest  @ProductionDefect@SyntheticControlCenter", async ({ page,verification, syntheticTestDetailPage, sideNavigationBar, testUtility, util, baseTestUtil }) => {
 
     let testID = await data.getValueOfTheParameter('testID');
     //navigate to CC page

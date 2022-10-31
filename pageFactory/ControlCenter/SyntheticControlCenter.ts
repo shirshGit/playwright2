@@ -1,12 +1,13 @@
 import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
 import { Page } from "playwright";
-
 let webActions: WebActions;
 let util: Utility
 
 export class SynControlCenterPage {
     readonly page: Page;
+    
+
 
     constructor(page: Page) {
         this.page = page;
@@ -31,14 +32,33 @@ export class SynControlCenterPage {
     private _deleteOptionAfterThreeDotMenu = '//i[@data-icon-name="delete"]';
     private _webChromeTest = '//p[text() = "Web"]/../../..//p[text() = "Chrome"]';
     private _pendoCloseForNewFeature = '//button[contains(@id, "pendo-close-guide")]';
-    private _targetScheduletab = '//div[@id="#targeting_and_scheduling"]';
-    private _cancelItemDetailPage = '//span[text()="Cancel"]';
+    private _targetScheduletab = '//div[@id="#targeting_and_scheduling"]//span[text()="Targeting & Scheduling"]';
+    private _cancelTestDetailPage = '//span[text()="Cancel"]';
     private _cancelSearchedText = '//i[@data-icon-name="Clear"]/div';
-    private _closeItemDetailPage = '//div[@data-testid="cancel-icon"]';
-    private _statusInTestPropertyPage = '(//label[@id="toggle-stateText"])[1]';
+    private _closeTestDetailPage = '//div[@data-testid="cancel-icon"]';
+    private _copyOptionInThreeDotMenu = '//ul[contains(@class,"ms-ContextualMenu-list is-open")]//span[text()="Copy"]';
+    private _copyButtonInTestLocationBlade = '//button[@type="button"]//span[text()="Copy"]';
+    private _syntheticTestLocationTextAfterClickingOnCopy = '//div[contains(@class,"ms-Panel-main")]//span[text()="Tests Location"]';
+    private _locationOfItem = '(//span[contains(@class,"ms-Breadcrumb-item")]/div[contains(@class,"ms-TooltipHost")])[2]';
+    private _moveButtonInHeaderSection = '//button[text()="Move"]';
+    private _moveButtonInTestLocationBlade = '//button[@type="button"]//span[text()="Move"]';
+    private _divisionLevelDDInRootSection = '//div[contains(@class,"DivisionComboBox_divisionSelector")]//div[@id="chevron-down-icon"]';
+    private _clientLevelInDivisionDropDown = '//div[contains(@class,"ms-Callout ms-Dropdown-callout")]//span[text()="Client Level"]';
+    private _closeMasterBlade = '//div[@data-testid="cancel-icon"]';
+    private _statusOfFirstItem = '//div[@data-automation-key="Status_4"]';
+    private _getItemLocation = '//div[contains(@class,"BasicPropertySection_")]//div[@data-automation-id="visibleContent"]';
+    private _testLocationTextIntestLocationBlade = '//span[text()="Tests Location"]';
+    private _getDefaultItemselectedInDivisionDD = '//span[text()="Client Level"]';
+    private _rumInRootBlade = '(//div[contains(@class,"NavigationTree_navGroupText_")][normalize-space()="RUM"])[2]';
+    private _divLevelDropDown = '(//div[@data-testid="divisionSelector"]//div)[1]';
+    private _closeChangeLogPage = '(//div[@data-testid="cancel-icon"])[2]';
     
     public get newItemCreation() {
         return this._newItemCreation;
+    }
+
+    public get threeDotMenuItems() {
+        return (text: string) => { return `//ul[contains(@class,"ms-ContextualMenu-list is-open")]//span[text()="${text}"]` };
     }
 
     public get searchBox() {
@@ -85,38 +105,99 @@ export class SynControlCenterPage {
         return this._deleteOptionAfterThreeDotMenu;
     }
 
+    public get copyOptionInThreeDotMenu() {
+        return this._copyOptionInThreeDotMenu;
+    }
+
     public get newFolderItem() {
         return this._newFolderItem;
     }
-    public get webChromeTest() {
+
+    public get webChromeTest(){
         return this._webChromeTest;
     }
-    public get pendoCloseForNewFeature() {
+
+    public get pendoCloseForNewFeature(){
         return this._pendoCloseForNewFeature;
     }
-    public get cancelItemDetailPage() {
-        return this._cancelItemDetailPage;
+    public get cancelTestDetailPage() {
+        return this._cancelTestDetailPage;
+    }
+    public get copyButtonInTestLocationBlade() {
+        return this._copyButtonInTestLocationBlade;
     }
 
-    public get cancelSearchText() {
+    public get closeItemPropertiesBlade() {
+        return this._closeMasterBlade;
+    }
+
+    public get cancelSearchedItem() {
         return this._cancelSearchedText;
     }
 
-    public get closeItemPropertyPage() {
-        return this._closeItemDetailPage;
+    public get statusOfFirstItem(){
+        return this._statusOfFirstItem;
     }
 
-    public get getStatus() {
-        return this._statusInTestPropertyPage;
+    public get getItemLocation(){
+        return this._getItemLocation;
+    }
+   
+
+    public get moveButtonInHeaderSection(){
+        return this._moveButtonInHeaderSection;
     }
 
-    public get itemInMasterBlade(){
-        return (text: string) => { return `//span[text()="${text}"]` }; 
+    public get moveButtonInTestLocationBlade(){
+        return this._moveButtonInTestLocationBlade;
     }
 
+    public get clickOnDivisionDropDown(){
+        return this._divisionLevelDDInRootSection;
+    }
+    
+
+    public get selectProductForTestLocation() {
+        return (text: string) => { return `(//span[text()="${text}"])[2]` };
+    }
+
+    public get testLocationTextAfterClickingOnCopyInThreeDotMenu(){
+        return this._testLocationTextIntestLocationBlade;
+    }
+
+    public get getItemSelectedInDivDropDown(){
+        return this._getDefaultItemselectedInDivisionDD;
+    }
+ 
+    public get selectDivision(){
+        return (text: string) => { return `//div[contains(@class,"dropdownItemsWrapper")]//span[text()="${text}"]` };
+    }
+
+    public get rumInRootBlade(){
+        return this._rumInRootBlade
+    }
+
+    public get divLevelDropdown(){
+        return this._divLevelDropDown;
+    }
+
+    public get closeChangeLogPage(){
+        return this._closeChangeLogPage
+    }
+
+   
+    
+   
     //#endregion
 
     //#region This region is to have the functions
+
+    
+
+    async selectProductFromTestLocationBlade(productName: string) {
+        let xpath = await this.selectProductForTestLocation(productName);
+        await webActions.clickElement(xpath);
+    }
 
     async navigateToSyntheticCC() {
         await webActions.navigateToURL(`ControlCenter/Tests`);
@@ -136,7 +217,6 @@ export class SynControlCenterPage {
         await webActions.clickElement(this.searchBox);
         await webActions.keyPress(this.searchBox, 'Enter')
         await webActions.onlyKeyPress('Enter');
-
     }
 
     async deleteItemFromThreeDotMenu(productName: string) {
@@ -148,6 +228,20 @@ export class SynControlCenterPage {
         await webActions.clickElement(this.threeDotMenuOfSearchedItem);
         await webActions.clickElement(this.deleteOptionAfterThreeDotMenu);
         await webActions.clickElement(this.popUpDeleteBtn);
+    }
+
+    
+
+    async copyItemFromThreeDotMenu(itemName: string, destinationProductID: string) {
+        const [searchItem] = await Promise.all([
+            this.searchItem(itemName)
+        ]);
+        await util.delay(2000);
+        await webActions.hoverOnElement(this.threeDotMenuOfSearchedItem);
+        await webActions.clickElement(this.threeDotMenuOfSearchedItem);
+        await webActions.clickElement(this.copyOptionInThreeDotMenu);
+        await this.selectProductFromTestLocationBlade(destinationProductID);
+        await webActions.clickElement(this.copyButtonInTestLocationBlade);
     }
 
     async deleteItemFromTableContainerBar(productName: string) {
@@ -218,25 +312,81 @@ export class SynControlCenterPage {
         }
     }
 
-    async clickCancelPropertyButton() {
-        await webActions.clickElement(this.cancelItemDetailPage);
+    async clickCancelTestPropertyButton() {
+        await webActions.clickElement(this.cancelTestDetailPage);
     }
 
-    async cancelSearchedText() {
-        await webActions.clickElement(this.cancelSearchText);
+    async clearTextField(loc : string){
+        await webActions.clearTextByBtnPress(loc);
     }
 
-    async closePropertyPage() {
-        await webActions.clickElement(this.closeItemPropertyPage);
+    async closeTestPropertyPage() {
+        await webActions.clickElement(this._closeTestDetailPage);
     }
 
-    async clearTextField(loc: string) {
-        await webActions.clearTextField(loc);
+    
+    async searchAndClickOnThreeDotMenu(itemName: string) {
+        const [searchItem] = await Promise.all([
+            this.searchItem(itemName)
+        ]);
+        await util.delay(2000);
+        await webActions.hoverOnElement(this.threeDotMenuOfSearchedItem);
+        await webActions.clickElement(this.threeDotMenuOfSearchedItem);
     }
 
-    async waitForItemPresentInMasterBlade(item : string){
-        await webActions.waitForElementAttached(this.itemInMasterBlade(item));
+    async threeDotMenuItem(itemName: string) {
+        let xpath = this.threeDotMenuItems(itemName);
+        return xpath;
+
     }
+
+    async clickCopyButtonFromThreeDotMenu(itemName: string) {
+        await this.searchAndClickOnThreeDotMenu(itemName);
+        await webActions.clickElement(this.copyOptionInThreeDotMenu);
+    }
+
+    async fetchItemLocation() {
+        let enddate = await webActions.getElementAttributeValue(this.getItemLocation, 'value');
+        return enddate;
+    }
+
+    async closePropertyPage(){
+        await webActions.clickElement(this._closeMasterBlade);
+    }
+
+    async moveSelectedItem(itemName : string ,product : string){
+        await this.checkTheSearchedItem(itemName);
+        await webActions.clickElement(this.moveButtonInHeaderSection);
+        await this.selectProductFromTestLocationBlade(product);
+        await webActions.clickElement(this.moveButtonInTestLocationBlade);
+    }
+
+    async clickDivisionDropDown(){
+        await webActions.clickElement(this.clickOnDivisionDropDown);
+
+    }
+
+    async selectGivenDivisionFromDivisionDropDownInRoot(divName : string){
+        await webActions.clickElement(this.selectDivision(divName));
+    }
+
+    async clickOnNewItemCreation(){
+        return webActions.clickElement(this.newItemCreation);
+    }
+
+    async clickOnRumInRootBlade(){
+        return webActions.clickElement(this.rumInRootBlade);
+
+    }
+
+    async closeChangeLogsPage(){
+        await webActions.clickElement(this.closeChangeLogPage);
+    }
+
+   
+
+
+
 
 
 

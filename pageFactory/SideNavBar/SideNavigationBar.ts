@@ -22,6 +22,12 @@ export class SideNavBar{
     private _sideNavExplorer = '//a[text()="Explorer"]';
     private _homesection = '#homesection';
     private _dashboard = '//a[text()="Dashboard"]';
+    private _sideNavSettings = '//i[@data-icon-name="settingsSiteNav"]';
+    private _sideNavUserrole = '//a[text()="User Roles"]';
+    private _sideNavContactIcon = '//div[@id="contactsection"]//div';
+    private _sideNavContacts = '//a[text()="Contacts"]/..';
+    private _sideNavRum = '//a[text()="RUM"]';
+    private _sideNavRecords = '//a[text()="Records"]';
 
 
 
@@ -37,6 +43,10 @@ export class SideNavBar{
         return this._sideNavAnalytics;
     }
 
+    public get sideNavSettingsTest(){
+        return this._sideNavSettings;
+    }
+
     public get sideNavExplorer(){
         return this._sideNavExplorer;
     }
@@ -47,6 +57,26 @@ export class SideNavBar{
 
     public get sideNavDashboard(){
         return this._dashboard;
+    }
+    
+    public get sideNavUserrole(){
+        return this._sideNavUserrole;
+    }
+
+    public get sideNavContactIcon(){
+        return this._sideNavContactIcon;
+    }
+
+    public get sideNavContacts(){
+        return this._sideNavContacts;
+    }
+
+    public get sideNavRUMTest(){
+        return this._sideNavRum;
+    }
+
+    public get sideNavRecordsTest(){
+        return this._sideNavRecords;
     }
 
     //#endregion
@@ -64,6 +94,12 @@ export class SideNavBar{
         await webActions.waitForElementAttached(this.sideNavExplorer);
         await webActions.clickElement(this.sideNavExplorer);
     }
+    async navigateToUserrolePageFromSideNavigation(){
+        await webActions.waitForElementAttached(this.sideNavSettingsTest);
+        await webActions.clickElement(this.sideNavSettingsTest)
+        await webActions.waitForElementAttached(this.sideNavUserrole);
+        await webActions.clickElement(this.sideNavUserrole);
+    }
 
     async navigateToDashboardFromSideNavigation(){
         await webActions.waitForElementAttached(this.sideNavHome);
@@ -71,6 +107,30 @@ export class SideNavBar{
         await webActions.waitForElementAttached(this.sideNavDashboard);
         await webActions.clickElement(this.sideNavDashboard);
     }
+
+
+    async navigateToContactPageFromSideNavigation(){
+        await webActions.waitForElementAttached(this.sideNavContactIcon);
+        await webActions.clickElement(this.sideNavContactIcon)
+        await webActions.waitForElementAttached(this.sideNavContacts);
+        await webActions.clickElement(this.sideNavContacts);
+    }
+
+    async navigateToRUMFromSideNavigation(){
+        await webActions.waitForElementAttached(this.sideNavControlCenter);
+        await webActions.clickElement(this.sideNavControlCenter)
+        await webActions.waitForElementAttached(this.sideNavRUMTest);
+        await webActions.clickElement(this.sideNavRUMTest);
+    }
+
+    async navigateToRecordsFromSideNavigation(){
+        await webActions.waitForElementAttached(this.sideNavAnalytics);
+        await webActions.clickElement(this.sideNavAnalytics)
+        await webActions.waitForElementAttached(this.sideNavRecordsTest);
+        await webActions.clickElement(this.sideNavRecordsTest);
+    }
+
+    
 
 
 }
