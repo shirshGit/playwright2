@@ -134,10 +134,11 @@ export class WebActions {
         });
     }
 
-    async verifyElementText(locator: string, text: string): Promise<void> {
+    
+    async getElementText(locator: string): Promise <string> {
         await this.waitForElementAttached(locator);
         const textValue = await this.page.textContent(locator);
-        expect(textValue.trim()).toBe(text);
+        return textValue;
     }
 
 

@@ -18,6 +18,7 @@ export const qadata = {
 	'userRoleManageDivisionLevel' : 'DivisionLevelAccess',//used for division level access
 	'userroleDoNotHavePermissionForDivision' : 'DoNotHaveAccessForDivision',//used for do not have access for division
 	'url' : 'https://www.google.com', //for creating items e.g synthetic test,endpoint test
-
 }
+    
+    
     
