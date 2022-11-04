@@ -6,7 +6,7 @@ let data = new DataForEnv();
     CP-34475 : Verify "Client Level" should be selected by default under Division dropdown
 */
 
-test.skip("VerifyClientLevelShouldBeSelectedByDefaultUnderDivisionDropDown @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage,page, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
+test("VerifyClientLevelShouldBeSelectedByDefaultUnderDivisionDropDown @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage,page, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
     
     //navigate to cc test page
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();

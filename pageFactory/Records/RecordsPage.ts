@@ -1,6 +1,6 @@
 import { WebActions } from "@lib/WebActions";
-import { BrowserContext, Page } from "@playwright/test";
 import { Utility } from "@util/Utility";
+import { BrowserContext, Page } from "playwright";
 
 let webActions: WebActions;
 let util: Utility
@@ -19,20 +19,20 @@ export class RecordsPage {
     private _pingTab = '//span[text()="Ping"]';
     private _pillDeleteButton = '//div[@data-testid="pill-delete-button"]';
     private _testInSourceSelector = '//div[@data-testid="test-picker"]//div[contains(@class,"Pill_pillContent_")]';
-    private _ipAddressNAValue = '//span[text()="IP Address"]/..//span[2][text()="NA"]';
-    private _getIpAddressValue = '//span[text()="IP Address"]/..//span[2]';
+    private _ipAddressValue = '//span[@data-testid="ipAddress"]';
     private _sourceButton = '//button[text()="Source"]';
     private _filedVerbErrorBar = '//div[contains(text(),"Failed Verb")]';
     private _runTime = '//span[text()="Run Time"]/..//span[2]';
     private _node = '//span[text()="Node"]/..//span[2]';
     private _nodeIP = '//span[text()="Node IP"]/..//span[2]';
-    private _firstDataPoint = '(//*[name()="circle" and contains(@class,"Chart_dot_")])[1]';
+    private _firstDataPoint = '//*[name()="svg"][1]/*[name()="g"][1]/*[name()="g"][3]/*[name()="g"][2]/*[name()="circle"][1]';
     private _monitor = '//span[text()="Monitor"]/..//span[2]';
+
 
     public get waterFallTabLocator() {
         return this._waterFallTab;
     }
-    
+
     public get pingTabLocator() {
         return this._pingTab
     }
@@ -44,12 +44,14 @@ export class RecordsPage {
     public get testInSourceSelectorLocator() {
         return this._testInSourceSelector;
     }
+
     public get TestNameFromSourceBladeLocator() {
         return (text: string) => { return `//span[text()="${text}"]` };
     }
 
-    public get getIPAddressNAValueLocator() {
-        return this._ipAddressNAValue;
+
+    public get getIPAddressValueLocator() {
+        return this._ipAddressValue;
     }
 
     public get sourceButtonLocator() {
@@ -63,7 +65,6 @@ export class RecordsPage {
     public get getNodeLocator() {
         return this._node;
     }
-
     public get getNodeIPLocator() {
         return this._nodeIP;
     }
@@ -81,25 +82,24 @@ export class RecordsPage {
     }
 
     public get getIPAddressLocator() {
-        return this._getIpAddressValue;
+        return this._ipAddressValue;
     }
 
-    public get selectStepLocator() {
+    public get selectStep() {
         return (text: string) => { return `//div[@data-list-index="${text}"]` };
     }
 
-    public get getCardValueLocator() {
+    public get getCardValue() {
         return (text: string) => { return `//div[text()="${text}"]/..//span[@data-testid="keyMetricBlockValue"]` };
     }
 
-    public get getStepNameLocator() {
+    public get getStepName() {
         return (text: number) => { return `(//div[@data-automation-key="Step Name_0"]//div)[${text}]` };
     }
 
-    public get StepNameCheckBoxLocator() {
+    public get StepNameCheckBox() {
         return (text: number) => { return `//div[@data-item-index="${text}"]//label` };
     }
-    
     //#endregion
 
     async clickOnTestInSourceSelector() {
@@ -123,32 +123,34 @@ export class RecordsPage {
     }
 
     async selectStepInTransactionTest(stepNumber: string) {
-        let xpath = this.selectStepLocator(stepNumber);
+        let xpath = this.selectStep(stepNumber);
         await webActions.clickElement(xpath);
     }
+
 
     async getCardMetricsData(cardMetrics: string[]) {
         let cardMetricsValue: string[] = [];
         for (let index = 0; index < cardMetrics.length; index++) {
             const metric = cardMetrics[index];
-            let metricValue = await webActions.getElementText(this.getCardValueLocator(metric));
+            let metricValue = await webActions.getElementText(this.getCardValue(metric));
             cardMetricsValue.push(metricValue);
         }
         return cardMetricsValue;
     }
 
-    async getStepName(item: number) {
+
+    async getStepNames(item: number) {
         let itemText: string[] = [];
         for (let index = 1; index <= item; index++) {
-            let xpath = this.getStepNameLocator(index);
+            let xpath = this.getStepName(index);
             let iteMText = await webActions.getElementText(xpath);
             itemText.push(iteMText);
         }
         return itemText;
     }
 
-    async getClassPropertyOfStepCheckBox(stepNumber: number) {
-        let inhertiText = await webActions.getElementAttributeValue(this.StepNameCheckBoxLocator(stepNumber), 'class');
+    async getClassPropertyOfStepNameCheckBox(stepNumber: number) {
+        let inhertiText = await webActions.getElementAttributeValue(this.StepNameCheckBox(stepNumber), 'class');
         return inhertiText;
     }
 
@@ -161,5 +163,10 @@ export class RecordsPage {
         return await webActions.getCurrentPageUrl();
     }
 
+    async getIPAddressValue(){
+        let ipAddressValue = await webActions.getElementText(this.getIPAddressLocator);
+        return ipAddressValue;
+
+    }
 
 }
