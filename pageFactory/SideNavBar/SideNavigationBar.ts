@@ -3,6 +3,7 @@ import { Utility } from "@util/Utility";
 import { Page } from "playwright";
 
 let webActions: WebActions;
+let util :Utility;
 
 export class SideNavBar{
 
@@ -21,13 +22,13 @@ export class SideNavBar{
     private _sideNavExplorer = '//a[text()="Explorer"]';
     private _homesection = '#homesection';
     private _dashboard = '//a[text()="Dashboard"]';
-    private _sideNavSettings = '#settingssection';
+    private _sideNavSettings = '//i[@data-icon-name="settingsSiteNav"]';
     private _sideNavUserrole = '//a[text()="User Roles"]';
-    private _sideNavContactIcon = '#contactsection';
+    private _sideNavContactIcon = '//div[@id="contactsection"]//div';
     private _sideNavContacts = '//a[text()="Contacts"]/..';
-    private _sideNavRum = '//a[text()="RUM"]'
-    private _sideNavEndpoint = '//a[text()="Endpoint"]';
-    private _sideNavTestTemplate = '//a[text()="Test Templates"]';
+    private _sideNavRum = '//a[text()="RUM"]';
+    private _sideNavRecords = '//a[text()="Records"]';
+    private _testTemplate = '//a[text()="Test Templates"]'
 
 
 
@@ -43,7 +44,7 @@ export class SideNavBar{
         return this._sideNavAnalytics;
     }
 
-    public get sideNavSettings(){
+    public get sideNavSettingsTest(){
         return this._sideNavSettings;
     }
 
@@ -71,16 +72,16 @@ export class SideNavBar{
         return this._sideNavContacts;
     }
 
-    public get sideNavRUM(){
+    public get sideNavRUMTest(){
         return this._sideNavRum;
     }
 
-    public get sideNavEndpoint(){
-        return this._sideNavEndpoint;
+    public get sideNavRecordsTest(){
+        return this._sideNavRecords;
     }
 
-    public get sideNavTestTemplate(){
-        return this._sideNavTestTemplate;
+    public get sideNavTestTemplates(){
+        return this._testTemplate;
     }
 
     //#endregion
@@ -99,8 +100,8 @@ export class SideNavBar{
         await webActions.clickElement(this.sideNavExplorer);
     }
     async navigateToUserrolePageFromSideNavigation(){
-        await webActions.waitForElementAttached(this.sideNavSettings);
-        await webActions.clickElement(this.sideNavSettings)
+        await webActions.waitForElementAttached(this.sideNavSettingsTest);
+        await webActions.clickElement(this.sideNavSettingsTest)
         await webActions.waitForElementAttached(this.sideNavUserrole);
         await webActions.clickElement(this.sideNavUserrole);
     }
@@ -123,22 +124,22 @@ export class SideNavBar{
     async navigateToRUMFromSideNavigation(){
         await webActions.waitForElementAttached(this.sideNavControlCenter);
         await webActions.clickElement(this.sideNavControlCenter)
-        await webActions.waitForElementAttached(this.sideNavRUM);
-        await webActions.clickElement(this.sideNavRUM);
+        await webActions.waitForElementAttached(this.sideNavRUMTest);
+        await webActions.clickElement(this.sideNavRUMTest);
     }
 
-    async navigateToEndpointFromSideNavigation(){
-        await webActions.waitForElementAttached(this.sideNavControlCenter);
-        await webActions.clickElement(this.sideNavControlCenter)
-        await webActions.waitForElementAttached(this.sideNavEndpoint);
-        await webActions.clickElement(this.sideNavEndpoint);
+    async navigateToRecordsFromSideNavigation(){
+        await webActions.waitForElementAttached(this.sideNavAnalytics);
+        await webActions.clickElement(this.sideNavAnalytics)
+        await webActions.waitForElementAttached(this.sideNavRecordsTest);
+        await webActions.clickElement(this.sideNavRecordsTest);
     }
 
     async navigateToTestTemplateFromSideNavigation(){
         await webActions.waitForElementAttached(this.sideNavControlCenter);
         await webActions.clickElement(this.sideNavControlCenter)
-        await webActions.waitForElementAttached(this.sideNavTestTemplate);
-        await webActions.clickElement(this.sideNavTestTemplate);
+        await webActions.waitForElementAttached(this.sideNavTestTemplates);
+        await webActions.clickElement(this.sideNavTestTemplates);
     }
 
     

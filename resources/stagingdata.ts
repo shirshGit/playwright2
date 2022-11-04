@@ -20,3 +20,4 @@ export const stagedata = {
 	'url' : 'https://www.google.com', //for creating items e.g synthetic test,endpoint test.
     
 }
+
