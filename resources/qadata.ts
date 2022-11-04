@@ -19,6 +19,8 @@ export const qadata = {
     'testListPageUrl' : 'https://qaportal.catchpoint.com/ui/Symphony/ControlCenter/Tests', //for validation of synthetic cc page
     'transactionTest' : '211911', // used for records automation
     'transactionTestIDWithEnforceFailureAdvanceSetting' : '269328',//used for records automation
+    'transactionTestWithMultipleStepAndStepName' : '272641', // used for records automation
+    'transactionTestWithMultipleStepWithoutStepName' : '272642',//used for records automation
     
     'userRoleManageTests' : 'OnlyManageTestPermission',//user role with only test and test templates permission
 	'userRoleManageRumAndTestTemplate' : 'OnlyManageRumAndTestTemplatePermission',// userrole with only rum and test templates permission
@@ -29,5 +31,6 @@ export const qadata = {
     'webPingTestID' : '211914',// used for records automation
     'webPingTestIDForDivision' : '268968',// used for records automation
 }
+    
     
     

@@ -84,6 +84,22 @@ export class RecordsPage {
     public get getIPAddressLocator() {
         return this._ipAddressValue;
     }
+
+    public get selectStepLoctor() {
+        return (text: string) => { return `//div[@data-list-index="${text}"]` };
+    }
+
+    public get getCardValueLoctor() {
+        return (text: string) => { return `//div[text()="${text}"]/..//span[@data-testid="keyMetricBlockValue"]` };
+    }
+
+    public get getStepNameLoctor() {
+        return (text: number) => { return `(//div[@data-automation-key="Step Name_0"]//div)[${text}]` };
+    }
+
+    public get StepNameCheckBoxLoctor() {
+        return (text: number) => { return `//div[@data-item-index="${text}"]//label` };
+    }
     //#endregion
 
     async clickOnTestInSourceSelector() {
@@ -106,6 +122,38 @@ export class RecordsPage {
         return await webActions.getTextFromWebElementsUsingSelector(this.getRunTimeLocator);
     }
 
+    async selectStepInTransactionTest(stepNumber: string) {
+        let xpath = this.selectStepLoctor(stepNumber);
+        await webActions.clickElement(xpath);
+    }
+
+
+    async getCardMetricsData(cardMetrics: string[]) {
+        let cardMetricsValue: string[] = [];
+        for (let index = 0; index < cardMetrics.length; index++) {
+            const metric = cardMetrics[index];
+            let metricValue = await webActions.getElementText(this.getCardValueLoctor(metric));
+            cardMetricsValue.push(metricValue);
+        }
+        return cardMetricsValue;
+    }
+
+
+    async getStepNames(item: number) {
+        let itemText: string[] = [];
+        for (let index = 1; index <= item; index++) {
+            let xpath = this.getStepNameLoctor(index);
+            let iteMText = await webActions.getElementText(xpath);
+            itemText.push(iteMText);
+        }
+        return itemText;
+    }
+
+    async getClassPropertyOfStepNameCheckBox(stepNumber: number) {
+        let inhertiText = await webActions.getElementAttributeValue(this.StepNameCheckBoxLoctor(stepNumber), 'class');
+        return inhertiText;
+    }
+
     async getNewWindow(context: BrowserContext, locator: string) {
         return await webActions.newWindowHandle(context, locator);
 
@@ -115,10 +163,10 @@ export class RecordsPage {
         return await webActions.getCurrentPageUrl();
     }
 
-    async getIPAddressValue() {
-        let ipAddressValue = await webActions.getTextFromWebElements(this.getIPAddressValueLocator);
+    async getIPAddressValue(){
+        let ipAddressValue = await webActions.getElementText(this.getIPAddressLocator);
         return ipAddressValue;
-    }
 
+    }
 
 }

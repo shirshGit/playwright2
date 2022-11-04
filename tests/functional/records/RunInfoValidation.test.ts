@@ -92,34 +92,6 @@ test("VerifyFailedVerbInTransactionTest  @Records", async ({ baseTestUtil, sideN
 })
 
 /*
-    CP-6949 : Run Info Validation in Records page
-*/
-test("VerifyRunInfoInRecordsPage  @Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, recordsPage, page, verification }) => {
-    //navigate to records page
-    await sideNavigationBar.navigateToRecordsFromSideNavigation();
-    let data = new DataForEnv();
-    let testID = await data.getValueOfTheParameter('webPingTestID');
-    //search test
-    await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(testID);
-    await util.delay(3000);
-    //validation for run info
-    await verification.verifyIfElementIsPresent(recordsPage.getRunTimeLocator, 'run time is not present.');
-    await verification.verifyIfElementIsPresent(recordsPage.getNodeLocator, ' node is not present.');
-    await verification.verifyIfElementIsPresent(recordsPage.getNodeIPLocator, 'nodeIP is not present.');
-    await verification.verifyIfElementIsPresent(recordsPage.getMonitorLocator, 'monitor is not present.');
-    //click first data point
-    await recordsPage.clickFirstDataPoint();
-    await util.delay(3000);
-    //validation for run info after clicking data point
-    await verification.verifyIfElementIsPresent(recordsPage.getRunTimeLocator, 'run time is not present.');
-    await verification.verifyIfElementIsPresent(recordsPage.getNodeLocator, ' node is not present.');
-    await verification.verifyIfElementIsPresent(recordsPage.getNodeIPLocator, 'nodeIP is not present.');
-    await verification.verifyIfElementIsPresent(recordsPage.getMonitorLocator, 'monitor is not present.');
-   
-
-})
-
-/*
     CP-30549 : Verify user should able to click on source pill and navigate to properties blade in new tab
 */
 test("VerifyUserShouldAbleToClickOnSourceBlade  @Records", async ({ baseTestUtil, sideNavigationBar,context, loginPage, util,sourceSelectorPage ,recordsPage, page, verification }) => {

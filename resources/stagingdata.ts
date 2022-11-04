@@ -19,7 +19,9 @@ export const stagedata = {
     'testListPageUrl' : 'https://portalstage.catchpoint.com/ui/Symphony/ControlCenter/Tests', //for validation of synthetic cc page.
     'transactionTest' : '81406', // used for records automation
     'transactionTestIDWithEnforceFailureAdvanceSetting' : '81472',//used for records automation
-
+    'transactionTestWithMultipleStepAndStepName' : '244168', // used for records automation
+    'transactionTestWithMultipleStepWithoutStepName' : '246072',//used for records automation
+    
     'userRoleManageTests' : 'OnlyManageTestPermission',//user role with only test and test templates permission
 	'userRoleManageRumAndTestTemplate' : 'OnlyManageRumAndTestTemplatePermission',// userrole with only rum and test templates permission
 	'userRoleManageDivisionLevel' : 'DivisionLevelAccess',//used for division level access
