@@ -60,6 +60,8 @@ export class ContactDetailsPage extends ContactsPage {
         await webActions.clickElement(this.applyButtonLocator);
     }
 
+    
+
 
 
     //#endregion

@@ -105,7 +105,7 @@ test("VerifyManageTestPermission  @ProductionDefect@SyntheticControlCenter", asy
     await sideNavigationBar.navigateToRUMFromSideNavigation();
     //click on new button
     await synCCPage.clickOnNewItemCreation();
-    verification
+    //verification
     await verification.verifyElementIsNotPresent(syntheticTestDetailPage.testFromMasterTestBladeLocator, "Able to see Tests in CC blade , even though dont have permission for that.");
     //close master test blade
     await synCCPage.closePropertyPage();
