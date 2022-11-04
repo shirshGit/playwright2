@@ -26,7 +26,7 @@ test("ActiveTestsAreChangingToInactiveOnceWehenRefreshPage  @ProductionDefect@Sy
     //search and click created test
     await synCCPage.clickOnSearchedItemInCC(testName);
     //clear end date
-    await synCCPage.clearTextField(syntheticTestDetailPage.endDateValue);
+    await synCCPage.clearTextField(syntheticTestDetailPage.endDateValueLocator);
     //click on save
     await syntheticTestDetailPage.clickSaveButton();
     //reload page
@@ -51,7 +51,7 @@ test("ActiveTestsAreChangingToInactiveOnceWehenRefreshPage  @ProductionDefect@Sy
     //search test
     await syntheticTestDetailPage.clickOnSearchedItemInCC(testName);
     //validation for active status
-    await verification.verifySoftAssertForTextOfAnElement(synCCPage.statusOfFirstItem,'Active',"Test got inactive after removing end date");
+    await verification.verifySoftAssertForTextOfAnElement(synCCPage.statusOfFirstItemLocator,'Active',"Test got inactive after removing end date");
     //close test property page by clicking on cross icon
     await syntheticTestDetailPage.closePropertyPage();
     //delete test

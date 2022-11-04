@@ -1,21 +1,21 @@
 import test from "@lib/BaseTest"
 import { DataForEnv } from "@lib/DataForEnvironment";
-import { SyntheticDetailPage } from "@pageobjects/ControlCenter/SyntheticDetailsPage";
-import { expect, Page } from "@playwright/test";
 
-let data = new DataForEnv();
+
 /*
     CP-26410 : Verify user should see Change Log option on the test update properties
 */
 
 test("VerifyUserShouldSeeChangeLogOptionOnTestPropertyPage @SyntheticControlCenter", async ({ baseTestUtil, syntheticTestDetailPage, page, sideNavigationBar, util, testUtility, synCCPage, verification }) => {
+    let data = new DataForEnv();
     let testID = await data.getValueOfTheParameter('testID');
     //navigate to CC page
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
     //search and click created test
     await syntheticTestDetailPage.clickOnSearchedItemInCC(testID);
-    //validation for change log option
-    await verification.verifyIfElementIsPresent(syntheticTestDetailPage.changeLog, 'Change log is not present in test property blade.');
+    await util.delay(3000);
+    //validation
+    await verification.verifyIfElementIsPresent(syntheticTestDetailPage.changeLogLocator, 'Change log is not present in test property blade.');
 
 
 })
@@ -26,6 +26,7 @@ test("VerifyUserShouldSeeChangeLogOptionOnTestPropertyPage @SyntheticControlCent
 */
 
 test("VerifyChangeLogShouldCaptureCorrectDataAfterUpdate @SyntheticControlCenter", async ({ baseTestUtil, syntheticTestDetailPage, syntheticDetailsPage, sideNavigationBar, util, testUtility, synCCPage, verification }) => {
+    let data = new DataForEnv();
     let prodForTestCreate = await data.getValueOfTheParameter('productForJunkItems');
     let testName = await testUtility.getTestName();
     let url = await data.getValueOfTheParameter('url');
@@ -44,7 +45,7 @@ test("VerifyChangeLogShouldCaptureCorrectDataAfterUpdate @SyntheticControlCenter
     //click on overide in target and schedule section
     await syntheticTestDetailPage.clickOverrideButtonForTargetAndSchedul();
     //add nodes in test
-    await util.delay(3000);
+    await util.delay(2000);
     await syntheticTestDetailPage.addNodesInTest(nodesName);
     //click on sub set of node and enter value
     await syntheticTestDetailPage.clickOnSubSetOfNode();
@@ -57,10 +58,10 @@ test("VerifyChangeLogShouldCaptureCorrectDataAfterUpdate @SyntheticControlCenter
     await synCCPage.clickOnSearchedItemInCC(testName);
     //click on change log
     await syntheticDetailsPage.clickOnChangeLogButton();
-    await util.delay(6000);
-    //validation for updated field
-    verification.verifySoftAssertForTextOfAnElement(syntheticTestDetailPage.changeLogRunOn, 'Run On', 'run on is not present.');
-    verification.verifySoftAssertForTextOfAnElement(syntheticTestDetailPage.changeLogRunOnValue, '2', 'run on value is not present.');
+    await util.delay(5000);
+    //validation
+    verification.verifySoftAssertForTextOfAnElement(syntheticTestDetailPage.changeLogRunOnLocator, 'Run On', 'run on is not present.');
+    verification.verifySoftAssertForTextOfAnElement(syntheticTestDetailPage.changeLogRunOnValueLocator, '2', 'run on value is not present.');
     //close Change Logs Page
     await syntheticTestDetailPage.closeChangeLogsPage();
     //close test property page

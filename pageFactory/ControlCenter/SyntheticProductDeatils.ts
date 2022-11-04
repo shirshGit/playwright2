@@ -64,7 +64,7 @@ export class SyntheticProductDetailPage extends SyntheticDetailPage {
           await webActions.enterElementText(this.productNameField, productName);
           await webActions.enterElementText(this.addNodeFileld, nodeName);
           await webActions.keyPress(this.addNodeFileld, "Enter");
-          await webActions.clickElement(this.saveButton);
+          await webActions.clickElement(this.saveButtonLoctor);
      }
 
      async clickOnToogleButtonForTestDataWebhook() {
@@ -96,14 +96,14 @@ export class SyntheticProductDetailPage extends SyntheticDetailPage {
           await webActions.enterElementText(this.addNodeFileld, nodeName);
           await webActions.keyPress(this.addNodeFileld, "Enter");
           await webActions.clickElement(this.addAdvanceSettingsTitle);
-          await webActions.clickElement(this.chkBoxForAllAdvanceSettings);
-          await webActions.clickElement(this.applyBtnDetailPage);
-          await webActions.enterElementText(this.increasePingCountTxtBox, '5');
-          await webActions.enterElementText(this.increaseHopFailureCount, '10');
-          await webActions.enterElementText(this.mqttSubnetClientIdTxtBox, '8.8.8.8');
-          await webActions.enterElementText(this.ednsSubnetTxtBox, '8.8.8.8');
-          await webActions.enterElementText(this.viewportWidthTextbox, '1200');
-          await webActions.enterElementText(this.viewportLenghthTextbox, '600');
+          await webActions.clickElement(this.chkBoxForAllAdvanceSettingsLocator);
+          await webActions.clickElement(this.applyBtnDetailPageLocator);
+          await webActions.enterElementText(this.increasePingCountTxtBoxLocator, '5');
+          await webActions.enterElementText(this.increaseHopFailureCountLocator, '10');
+          await webActions.enterElementText(this.mqttSubnetClientIdTxtBoxLocator, '8.8.8.8');
+          await webActions.enterElementText(this.ednsSubnetTxtBoxLocator, '8.8.8.8');
+          await webActions.enterElementText(this.viewportWidthTextboxLocator, '1200');
+          await webActions.enterElementText(this.viewportLenghthTextboxLocator, '600');
      }
 
      async getElementTextFromElementsFromProductProperties(element : string){
