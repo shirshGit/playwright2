@@ -85,19 +85,19 @@ export class RecordsPage {
         return this._ipAddressValue;
     }
 
-    public get selectStep() {
+    public get selectStepLoctor() {
         return (text: string) => { return `//div[@data-list-index="${text}"]` };
     }
 
-    public get getCardValue() {
+    public get getCardValueLoctor() {
         return (text: string) => { return `//div[text()="${text}"]/..//span[@data-testid="keyMetricBlockValue"]` };
     }
 
-    public get getStepName() {
+    public get getStepNameLoctor() {
         return (text: number) => { return `(//div[@data-automation-key="Step Name_0"]//div)[${text}]` };
     }
 
-    public get StepNameCheckBox() {
+    public get StepNameCheckBoxLoctor() {
         return (text: number) => { return `//div[@data-item-index="${text}"]//label` };
     }
     //#endregion
@@ -123,7 +123,7 @@ export class RecordsPage {
     }
 
     async selectStepInTransactionTest(stepNumber: string) {
-        let xpath = this.selectStep(stepNumber);
+        let xpath = this.selectStepLoctor(stepNumber);
         await webActions.clickElement(xpath);
     }
 
@@ -132,7 +132,7 @@ export class RecordsPage {
         let cardMetricsValue: string[] = [];
         for (let index = 0; index < cardMetrics.length; index++) {
             const metric = cardMetrics[index];
-            let metricValue = await webActions.getElementText(this.getCardValue(metric));
+            let metricValue = await webActions.getElementText(this.getCardValueLoctor(metric));
             cardMetricsValue.push(metricValue);
         }
         return cardMetricsValue;
@@ -142,7 +142,7 @@ export class RecordsPage {
     async getStepNames(item: number) {
         let itemText: string[] = [];
         for (let index = 1; index <= item; index++) {
-            let xpath = this.getStepName(index);
+            let xpath = this.getStepNameLoctor(index);
             let iteMText = await webActions.getElementText(xpath);
             itemText.push(iteMText);
         }
@@ -150,7 +150,7 @@ export class RecordsPage {
     }
 
     async getClassPropertyOfStepNameCheckBox(stepNumber: number) {
-        let inhertiText = await webActions.getElementAttributeValue(this.StepNameCheckBox(stepNumber), 'class');
+        let inhertiText = await webActions.getElementAttributeValue(this.StepNameCheckBoxLoctor(stepNumber), 'class');
         return inhertiText;
     }
 
