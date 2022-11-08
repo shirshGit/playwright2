@@ -28,6 +28,7 @@ export class SideNavBar{
     private _sideNavContacts = '//a[text()="Contacts"]/..';
     private _sideNavRum = '//a[text()="RUM"]';
     private _sideNavRecords = '//a[text()="Records"]';
+    private _testTemplate = '//a[text()="Test Templates"]'
 
 
 
@@ -79,6 +80,10 @@ export class SideNavBar{
         return this._sideNavRecords;
     }
 
+    public get sideNavTestTemplates(){
+        return this._testTemplate;
+    }
+
     //#endregion
 
     async navigateToSyntheticCCFromSideNavigation(){
@@ -128,6 +133,13 @@ export class SideNavBar{
         await webActions.clickElement(this.sideNavAnalytics)
         await webActions.waitForElementAttached(this.sideNavRecordsTest);
         await webActions.clickElement(this.sideNavRecordsTest);
+    }
+
+    async navigateToTestTemplateFromSideNavigation(){
+        await webActions.waitForElementAttached(this.sideNavControlCenter);
+        await webActions.clickElement(this.sideNavControlCenter)
+        await webActions.waitForElementAttached(this.sideNavTestTemplates);
+        await webActions.clickElement(this.sideNavTestTemplates);
     }
 
     

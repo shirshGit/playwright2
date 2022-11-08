@@ -6,7 +6,7 @@ import { Page } from "@playwright/test";
 let webActions: WebActions;
 let util: Utility
 
-export class ContactDetailsPage extends ContactsPage{
+export class ContactDetailsPage extends ContactsPage {
     constructor(page: Page) {
         super(page);
         webActions = new WebActions(this.page);
@@ -20,19 +20,19 @@ export class ContactDetailsPage extends ContactsPage{
 
 
 
-    public get systemAcessDropDown() {
+    public get systemAcessDropDownLocator() {
         return this._systemAccessDropDown
     }
 
-    public get selectUserrole() {
+    public get selectUserroleLocator() {
         return (text: string) => { return `//span[text()="${text}"]` };
     }
 
-    public get cancelContactPropertyPage() {
+    public get cancelContactPropertyPageLocator() {
         return this._cancelContactPropertyPage
     }
 
-    public get applyButton() {
+    public get applyButtonLocator() {
         return this._applyButtonOnconatctPropertyPage;
     }
 
@@ -42,23 +42,25 @@ export class ContactDetailsPage extends ContactsPage{
 
 
     async clickOnSystemAcessDropDown() {
-        await webActions.clickElement(this.systemAcessDropDown);
+        await webActions.clickElement(this.systemAcessDropDownLocator);
     }
 
     async cancelContactsPropertyPage() {
-        await webActions.clickElement(this.cancelContactPropertyPage);
+        await webActions.clickElement(this.cancelContactPropertyPageLocator);
     }
 
     async selectGivenUserrole(userroleName: string) {
-	   await webActions.clickElement(this.systemAcessDropDown);
-       let xpath = this.selectUserrole(userroleName);
-       await webActions.clickElement(xpath);
-       await this.clickOnApplyButton();
+        await webActions.clickElement(this.systemAcessDropDownLocator);
+        let xpath = this.selectUserroleLocator(userroleName);
+        await webActions.clickElement(xpath);
+        await this.clickOnApplyButton();
     }
 
     async clickOnApplyButton() {
-          await webActions.clickElement(this.applyButton);
+        await webActions.clickElement(this.applyButtonLocator);
     }
+
+    
 
 
 

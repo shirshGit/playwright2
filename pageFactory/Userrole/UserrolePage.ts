@@ -25,35 +25,35 @@ export class UserrolePage {
     private _popUpDeleteBtn = '//div[contains(@class, "DialogPopup")]//button[text()="Delete"]';
     private _deleteOptionAfterThreeDotMenu = '//i[@data-icon-name="delete"]';
 
-    public get searchBox() {
+    public get searchBoxLocator() {
         return this._searchBox;
     }
 
-    public get firstRowSearchCheckBoxInURDetailPage() {
+    public get firstRowSearchCheckBoxInURDetailPageLocator() {
         return this._firstRowSearchCheckBoxInUserroleDetailPage
     }
     
-    public get firstRowSearchCheckBoxInURPage() {
+    public get firstRowSearchCheckBoxInUserRolePageLocator() {
         return this._firstRowSearchCheckBoxInUserrolePage
     }
 
-    public get deleteButtonInURPage() {
+    public get deleteButtonInUserRolePageLocator() {
         return this._deleteButtonInURPage;
     }
     
-    public get threeDotMenuOfSearchedItem() {
+    public get threeDotMenuOfSearchedItemLocator() {
         return this._threeDotMenuOfSearchedItem;
     }
 
-    public get firstRowCheckBoxOfContainer() {
+    public get firstRowCheckBoxLocator() {
         return this._firstRowCheckBoxOfContainer;
     }
 
-    public get popUpDeleteBtn() {
+    public get popUpDeleteBtnLocator() {
         return this._popUpDeleteBtn;
     }
 
-    public get deleteOptionAfterThreeDotMenu() {
+    public get deleteOptionAfterThreeDotMenuLocator() {
         return this._deleteOptionAfterThreeDotMenu;
     }
   
@@ -64,16 +64,16 @@ export class UserrolePage {
 
     async clickOnFirstSearchedItemInContactPage(itemName: string) {
         await this.searchItem(itemName);
-        await webActions.clickElement(this.firstRowSearchCheckBoxInURDetailPage);
+        await webActions.clickElement(this.firstRowSearchCheckBoxInURDetailPageLocator);
     }
 
     async searchItem(item: string) {
-        await webActions.waitForElementAttached(this.searchBox);
-        await webActions.clickElement(this.searchBox);
-        await webActions.enterElementText(this.searchBox, item);
+        await webActions.waitForElementAttached(this.searchBoxLocator);
+        await webActions.clickElement(this.searchBoxLocator);
+        await webActions.enterElementText(this.searchBoxLocator, item);
         await util.delay(1000);
-        await webActions.clickElement(this.searchBox);
-        await webActions.keyPress(this.searchBox, 'Enter')
+        await webActions.clickElement(this.searchBoxLocator);
+        await webActions.keyPress(this.searchBoxLocator, 'Enter')
         await webActions.onlyKeyPress('Enter');
     }
 
@@ -82,9 +82,9 @@ export class UserrolePage {
             this.searchItem(userroleName)
         ]);
         await util.delay(2000);
-        await webActions.clickElement(this.firstRowCheckBoxOfContainer);
-        await webActions.clickElement(this.deleteButtonInURPage);
-        await webActions.clickElement(this.popUpDeleteBtn);
+        await webActions.clickElement(this.firstRowCheckBoxLocator);
+        await webActions.clickElement(this.deleteButtonInUserRolePageLocator);
+        await webActions.clickElement(this.popUpDeleteBtnLocator);
     }
 
     

@@ -13,6 +13,8 @@ test("VerifyUserShouldSeeChangeLogOptionOnTestPropertyPage @SyntheticControlCent
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
     //search and click created test
     await syntheticTestDetailPage.clickOnSearchedItemInCC(testID);
+    await util.delay(3000);
+    //validation
     await verification.verifyIfElementIsPresent(syntheticTestDetailPage.changeLogLocator, 'Change log is not present in test property blade.');
 
 
@@ -56,8 +58,8 @@ test("VerifyChangeLogShouldCaptureCorrectDataAfterUpdate @SyntheticControlCenter
     await synCCPage.clickOnSearchedItemInCC(testName);
     //click on change log
     await syntheticDetailsPage.clickOnChangeLogButton();
-    await util.delay(6000);
-    //validation for updated field
+    await util.delay(5000);
+    //validation
     verification.verifySoftAssertForTextOfAnElement(syntheticTestDetailPage.changeLogRunOnLocator, 'Run On', 'run on is not present.');
     verification.verifySoftAssertForTextOfAnElement(syntheticTestDetailPage.changeLogRunOnValueLocator, '2', 'run on value is not present.');
     //close Change Logs Page
