@@ -24,8 +24,8 @@ test("VerifyResetDivisionDropDownToBeSetClientLevel @SyntheticControlCenter", as
     let data = new DataForEnv();
     //navigate to contacts page
     await sideNavigationBar.navigateToContactPageFromSideNavigation();
-    let userroleName = await data.getValueOfTheParameter('userroleName3');
-    let email = await data.getValueOfTheParameter('userrole9');
+    let userroleName = await data.getValueOfTheParameter('userRoleManageDivisionLevel');
+    let email = await data.getValueOfTheParameter('automationContact');
     let password = await data.getValueOfTheParameter('password');
     //search and click contact
     await contactsPage.clickOnFirstSearchedItemInContactPage(email);
@@ -58,8 +58,8 @@ test("VerifyDivisionDropDownIsNotPresentInTheUIWhenClientHasNoDivisionAccess @Sy
     let data = new DataForEnv();
     //navigate to contacts page
     await sideNavigationBar.navigateToContactPageFromSideNavigation();
-    let userroleName = await data.getValueOfTheParameter('userroleName4');
-    let email = await data.getValueOfTheParameter('userrole9');
+    let userroleName = await data.getValueOfTheParameter('userroleDoNotHavePermissionForDivision');
+    let email = await data.getValueOfTheParameter('automationContact');
     let password = await data.getValueOfTheParameter('password');
     //search and click contact
     await contactsPage.clickOnFirstSearchedItemInContactPage(email);

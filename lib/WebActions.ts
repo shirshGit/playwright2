@@ -134,6 +134,7 @@ export class WebActions {
         });
     }
 
+    
     async getElementText(locator: string): Promise <string> {
         await this.waitForElementAttached(locator);
         const textValue = await this.page.textContent(locator);
