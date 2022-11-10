@@ -208,7 +208,6 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
             await webActions.enterElementText(this.addNodeFileld, element);
             await webActions.keyPress(this.addNodeFileld, "Enter");
             await webActions.clickElement(this.saveButton);
-
         }
 
     }

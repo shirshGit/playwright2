@@ -31,7 +31,7 @@ test("VerifyUserIsAbleToSelectStep  @Records", async ({ baseTestUtil, sideNaviga
 /*
    CP-21631 : 117043 DES- For a transaction test which has Special characters in Step Name
 */
-test("VerifyStepsNameInTransactionTest  @Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, recordsPage, page, verification }) => {
+test("VerifyStepsNameInTransactionTest  @ProductionDefectRecords", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, recordsPage, page, verification }) => {
     await sideNavigationBar.navigateToRecordsFromSideNavigation();
     let TransactionTestID = await data.getValueOfTheParameter('TransactionTestWithMultipleStepAndStepName');
     //enter test from source selector
@@ -52,7 +52,7 @@ test("VerifyStepsNameInTransactionTest  @Records", async ({ baseTestUtil, sideNa
 /*
    CP-21637 : 117112 Step index should reset when changing runs
 */
-test("VerifyStepIndexWhenUserChangeRuns  @Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, recordsPage, page, verification }) => {
+test("VerifyStepIndexWhenUserChangeRuns  @ProductionDefectRecords", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, recordsPage, page, verification }) => {
     await sideNavigationBar.navigateToRecordsFromSideNavigation();
     let TransactionTestID = await data.getValueOfTheParameter('TransactionTestWithMultipleStepAndStepName');
     //enter test from source selector
@@ -74,7 +74,7 @@ test("VerifyStepIndexWhenUserChangeRuns  @Records", async ({ baseTestUtil, sideN
 /*
    CP-21638 : 117138 DES StepName is displayed as blank when we don't set the step Name in Transaction Test 
 */
-test("VerifyStepNameDoesNotDisplayAsBlank  @Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, recordsPage, page, verification }) => {
+test("VerifyStepNameDoesNotDisplayAsBlank  @ProductionDefectRecords@Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, recordsPage, page, verification }) => {
     await sideNavigationBar.navigateToRecordsFromSideNavigation();
     let TransactionTestID = await data.getValueOfTheParameter('TransactionTestWithMultipleStepWithoutStepName');
     //enter test from source selector

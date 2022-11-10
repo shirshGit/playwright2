@@ -66,6 +66,13 @@ export class Verification {
         await listToCompare.forEach(val => expect.soft(listToCompareWith.includes(val), `Value did not match for ${val} input`).toBeTruthy());
     }
 
+    async verifyValueIsNotNull(itemList, errorMessage : string){
+        await itemList.forEach(element =>  {
+        let value = element;
+         expect.soft((value),errorMessage).not.toBeNull();
+        });
+    }
+
 
 
 }

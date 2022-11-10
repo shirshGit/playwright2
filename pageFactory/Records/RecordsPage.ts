@@ -1,5 +1,5 @@
 import { WebActions } from "@lib/WebActions";
-import { Page } from "@playwright/test";
+import { BrowserContext, Page } from "@playwright/test";
 import { Utility } from "@util/Utility";
 
 let webActions: WebActions;
@@ -28,7 +28,7 @@ export class RecordsPage {
     private _nodeIP = '//span[text()="Node IP"]/..//span[2]';
     private _firstDataPoint = '(//*[name()="circle" and contains(@class,"Chart_dot_")])[1]';
     private _monitor = '//span[text()="Monitor"]/..//span[2]';
-    
+
     public get waterFallTab() {
         return this._waterFallTab;
     }
@@ -45,91 +45,92 @@ export class RecordsPage {
         return this._testInSourceSelector;
     }
 
-    public get TestNameFromSourceBlade(){
+    public get TestNameFromSourceBlade() {
         return (text: string) => { return `//span[text()="${text}"]` };
     }
 
-    
-    public get getIPAddressNAValue(){
+
+    public get getIPAddressNAValue() {
         return this._ipAddressNAValue;
     }
 
-    public get sourceButton(){
+    public get sourceButton() {
         return this._sourceButton;
     }
 
-    public get failedVerb(){
+    public get failedVerb() {
         return this._filedVerbErrorBar;
     }
 
-    public get getNode(){
+    public get getNode() {
         return this._node;
     }
-    public get getNodeIP(){
+    public get getNodeIP() {
         return this._nodeIP;
     }
 
-    public get getMonitor(){
+    public get getMonitor() {
         return this._monitor;
     }
 
-    public get firstDataPoint(){
+    public get firstDataPoint() {
         return this._firstDataPoint
     }
 
-    public get getRunTime(){
+    public get getRunTime() {
         return this._runTime;
     }
 
-    public get getIPAddress(){
+    public get getIPAddress() {
         return this._getIpAddressValue;
     }
 
-    public get selectStep(){
+    public get selectStep() {
         return (text: string) => { return `//div[@data-list-index="${text}"]` };
     }
 
-    public get getCardValue(){
+    public get getCardValue() {
         return (text: string) => { return `//div[text()="${text}"]/..//span[@data-testid="keyMetricBlockValue"]` };
     }
 
-    public get getStepName(){
-        return (text: number) => { return `(//div[@data-automation-key="Step Name_0"]//div)[${text}]`};
+    public get getStepName() {
+        return (text: number) => { return `(//div[@data-automation-key="Step Name_0"]//div)[${text}]` };
     }
 
-    public get StepNameCheckBox(){
-        return (text: number) => { return `//div[@data-item-index="${text}"]//label`};
+    public get StepNameCheckBox() {
+        return (text: number) => { return `//div[@data-item-index="${text}"]//label` };
     }
     //#endregion
 
-    async clickOnTestInSourceSelector(){
+    async clickOnTestInSourceSelector() {
         await webActions.clickElement(this.testInSourceSelector);
     }
 
-    async clickOnPillDeleteButton(){
+    async clickOnPillDeleteButton() {
         await webActions.clickElement(this.pillDeleteButton);
     }
 
-    async clickOnSourceButton(){
+    async clickOnSourceButton() {
         await webActions.clickElement(this.sourceButton);
     }
 
-    async clickFirstDataPoint(){
+    async clickFirstDataPoint() {
         await webActions.clickElement(this.firstDataPoint);
     }
 
-    async getRunTimeValues(){
-         await webActions.getTextFromWebElementsUsingSelector(this.getRunTime);;
+    async getRunTimeValues() {
+        let runTime = await webActions.getElementText(this.getRunTime);
+        return runTime;
     }
 
-    async selectStepInTransactionTest(stepNumber : string){
+    async selectStepInTransactionTest(stepNumber: string) {
         let xpath = this.selectStep(stepNumber);
-         await webActions.clickElement(xpath);
+        await webActions.clickElement(xpath);
     }
-    
 
-    async getCardMetricsData(cardMetrics : string[]){
-        let cardMetricsValue : string[] =[];
+
+    async getCardMetricsData(cardMetrics: string[]) {
+        let cardMetricsValue: string[] = [];
         for (let index = 0; index < cardMetrics.length; index++) {
             const metric = cardMetrics[index];
             let metricValue = await webActions.getElementText(this.getCardValue(metric));
@@ -138,9 +139,9 @@ export class RecordsPage {
         return cardMetricsValue;
     }
 
-    
-    async getStepsName(item : number){
-        let itemText : string[] =[];
+
+    async getStepsName(item: number) {
+        let itemText: string[] = [];
         for (let index = 1; index <= item; index++) {
             let xpath = this.getStepName(index);
             let iteMText = await webActions.getElementText(xpath);
@@ -153,8 +154,15 @@ export class RecordsPage {
         let inhertiText = await webActions.getElementAttributeValue(this.StepNameCheckBox(stepNumber), 'class');
         return inhertiText;
     }
-     
-    
 
-    
+    async getNewWindow(context: BrowserContext, locator: string) {
+        return await webActions.newWindowHandle(context, locator);
+
+    }
+
+    async getUrl() {
+        return await webActions.getCurrentPageUrl();
+    }
+
+
 }

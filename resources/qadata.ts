@@ -1,27 +1,39 @@
 export const qadata = {
-    'node' : 'Denver - Level3 - QA',   //for creating test
     'alertRecipientName' : 'Client Admin DoNotDelete', //for creating items which needs contact
+    'automationContact' : 'userrole9_DoNOTDeleteqaautomationxclient-clientadministrator@catchpoint.com', //contact used for automation, where assiging other userrole is required
+	
+    'defaultUserrole' : 'Client Administrator',//for contact default system access
+    
+    'imapTestID' : '276990', // used for records automation
+
+    'mqttTestID' : '276989',// used for records automation
+
+    'node' : 'Denver - Level3 - QA',   //for creating test
+    'ntpTestID' : '276988',// used for records automation
+    
     'productForJunkItems' : 'Selenium',  //for creating folder and test for automation
-    'url' : 'https://www.google.com', //for creating items e.g synthetic test,endpoint test
+    'productForCopyTest' : 'ProductForCopyScenariosDoNotDelete',//product for copy test scenarios
+    'password' : 'Password123!',
+
+    'rumAppName' : 'Automation_WebApp_DoNotEdits',//used for automation
+    
     'testID' : '264592',// used for automation scripts where test are not being created.
+    'testListPageUrl' : 'https://qaportal.catchpoint.com/ui/Symphony/ControlCenter/Tests', //for validation of synthetic cc page
+    'transactionTest' : '211911', // used for records automation
+    'transactionTestIDWithEnforceFailureAdvanceSetting' : '269328',//used for records automation
+    'transactionTestWithMultipleStepAndStepName' : '272641', // used for records automation
+    'transactionTestWithMultipleStepWithoutStepName' : '272642',//used for records automation
+    
+    'userRoleManageTests' : 'OnlyManageTestPermission',//user role with only test and test templates permission
+	'userRoleManageRumAndTestTemplate' : 'OnlyManageRumAndTestTemplatePermission',// userrole with only rum and test templates permission
+	'userRoleManageDivisionLevel' : 'DivisionLevelAccess',//used for division level access
+	'userroleDoNotHavePermissionForDivision' : 'DoNotHaveAccessForDivision',//used for do not have access for division
+	'url' : 'https://www.google.com', //for creating items e.g synthetic test,endpoint test
+    
     'webPingTestID' : '211914',// used for records automation
     'webPingTestIDForDivision' : '268968',// used for records automation
-    'IMAPTestID' : '253432', // used for records automation
-    'MQTTTestID' : '269326',// used for records automation
-    'NTPTestID' : '253431',// used for records automation
-    'TransactionTestWithMultipleStepAndStepName' : '272641', // used for records automation
-    'TransactionTestWithMultipleStepWithoutStepName' : '272642',//used for records automation
-    'TransactionTestIDWithEnforceFailureAdvanceSetting' : '269328',//used for records automation
-    'testListPageUrl' : 'https://qaportal.catchpoint.com/ui/Symphony/ControlCenter/Tests', //for validation of synthetic cc page
-    'productForCopyTest' : 'ProductForCopyScenariosDoNotDelete',//product for copy test scenarios
-    'userroleName1' : 'OnlyManageTestPermission',//user role with only test and test templates permission
-	'userroleName2' : 'OnlyManageRumAndTestTemplatePermission',// userrole with only rum and test templates permission
-	'userroleName3' : 'DivisionLevelAccess',//used for division level access
-	'userroleName4' : 'DoNotHaveAccessForDivision',//used for dont have access for division
-	'userrole9' : 'userrole9_DoNOTDeleteqaautomationxclient-clientadministrator@catchpoint.com', //contact used for automation, where assiging other userrole is required
-	'password' : 'Password123!',
-	'defaultUserrole' : 'Client Administrator'//for contact default system access
-   
-
 }
+    
+    
+    
     

@@ -17,17 +17,22 @@ export class SourceSelectorExplorer extends ExplorerPage{
     private _searchBox = '(//input[@id="fabric-search-box"])[2]';
     private _allcheckCheckBox = '//div[text()="Name"]/..//div[contains(@class,"TreeTable_checkboxCell_")]';
     private _selectButton = '//span[text()="Select"]';
+    private _clearButton = '//i[@data-icon-name="Clear"]';
     
-    public get searchBox() {
+    public get searchBoxLocator() {
         return this._searchBox;
     }
 
-    public get firstSearchedItem(){
+    public get firstSearchedItemLocator(){
         return this._allcheckCheckBox;
     }
 
-    public get selectButton(){
+    public get selectButtonLocator(){
         return this._selectButton
+    }
+
+    public get clearButtonLocator(){
+        return this._clearButton
     }
 
 
@@ -38,18 +43,28 @@ export class SourceSelectorExplorer extends ExplorerPage{
 
     async clickOnFirstSearchedItemInSelectorPage(itemId: string) {
         await this.searchItem(itemId);
-        await webActions.clickElement(this.firstSearchedItem);
-        await webActions.clickElement(this.selectButton);
+        await webActions.clickElement(this.firstSearchedItemLocator);
+        await webActions.clickElement(this.selectButtonLocator);
     }
 
     async searchItem(item: string) {
-        await webActions.waitForElementAttached(this.searchBox);
-        await webActions.clickElement(this.searchBox);
-        await webActions.enterElementText(this.searchBox, item);
+        await webActions.waitForElementAttached(this.searchBoxLocator);
+        await webActions.clickElement(this.searchBoxLocator);
+        await webActions.enterElementText(this.searchBoxLocator, item);
         await util.delay(1000);
-        await webActions.clickElement(this.searchBox);
-        await webActions.keyPress(this.searchBox, 'Enter')
+        await webActions.clickElement(this.searchBoxLocator);
+        await webActions.keyPress(this.searchBoxLocator, 'Enter')
         await webActions.onlyKeyPress('Enter');
+    }
+
+    async selectItemFromSourceSelector(listOfItem : string []){
+        for (let index = 0; index < listOfItem.length; index++) {
+            const element = listOfItem[index];
+            await this.searchItem(element);
+            await webActions.clickElement(this.firstSearchedItemLocator);
+            await webActions.clickElement(this.clearButtonLocator);
+        }
+        await webActions.clickElement(this.selectButtonLocator);
     }
 
     
