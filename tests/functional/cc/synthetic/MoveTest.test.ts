@@ -1,13 +1,13 @@
 import test from "@lib/BaseTest"
 import { DataForEnv } from "@lib/DataForEnvironment";
-import { expect, Page } from "@playwright/test";
 
-let data = new DataForEnv();
+
 /*
     CP-8430 : Verify tests are moved
 */
 
-test("VerifyMoveTestInOtherDestination @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage,page, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
+test("VerifyMoveTestInOtherLocation @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage,page, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
+    let data = new DataForEnv();
     let prodForTestCreate = await data.getValueOfTheParameter('productForJunkItems');
     let prodForMoveTest = await data.getValueOfTheParameter('productForCopyTest');
     let testName = await testUtility.getTestName();
@@ -24,7 +24,7 @@ test("VerifyMoveTestInOtherDestination @SyntheticControlCenter", async({baseTest
     //search test
     await synCCPage.clickOnSearchedItemInCC(testName);
     //validation for Tests Location 
-    await verification.verifySoftAssertForTextOfAnElement(synCCPage.getItemLocation , prodForMoveTest,"Tests is not moved to selected location.");
+    await verification.verifySoftAssertForTextOfAnElement(synCCPage.getItemLocationLocator , prodForMoveTest,"Tests is not moved to selected location.");
     //close test property page by clicking on cross icon
     await syntheticTestDetailPage.closeTestPropertyPage();
     //delete test

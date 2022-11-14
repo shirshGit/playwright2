@@ -20,7 +20,7 @@ export class ExplorerPage {
     private _recordsInThreeDotMenuInErrorTab = '//span[normalize-space()="Records"]';
     private _myAppTabInSourceSelector = '//li[text()="My Apps"]';
     private _firstDataPoint = "//*[name()='g']//*[name()='g' and contains(@transform,'translate(')]//*[name()='g' and contains(@class,'Chart_line')]//*[name()='circle'][3]";
-    private _graph = "(//div[contains(@class,'Chart_chartContainer_')]//*[name()='g' and contains(@class,'Chart_line')])[1]//*";
+    private _graph = "(//div[contains(@class,'Chart_chartContainer_')]//*[name()='g' and contains(@class,'Chart_line')])[1]";
     
     public get errorTabLocator(){
         return this._errorTab;
@@ -61,8 +61,8 @@ export class ExplorerPage {
         
     }
     async getRowWiseTimeFromErrorTab(rowNum : number){
-        let metricValue = await webActions.getElementText(this.errorTabRowWiseTimeLocator(rowNum));
-        return metricValue;
+        let time = await webActions.getElementText(this.errorTabRowWiseTimeLocator(rowNum));
+        return time;
     }
     async clickOnMyTabInSourceSelector(){
         await webActions.clickElement(this.myAppTabInSourceSelectorLocator);
@@ -70,30 +70,40 @@ export class ExplorerPage {
 
     async clickOnFirstDataPoint(){
         await util.delay(1000);
-        await webActions.waitForElementAttached(this.graphLocator);
-        let variable = await this.page.locator(this.graphLocator);
+        //await webActions.hoverOnElement(this.graphLocator);
+       // await this.page.locator(this.errorTabLocator).click({position:{x : 2 , y : 2}})
+
+
         
-        var x =  await this.page.evaluate(() => {
-            var elemRect = document.getElementsByClassName('Chart_line_4eOS7')[0].getBoundingClientRect();
+        //let variable = await this.page.locator(this.graphLocator);
+        
+        var xx =  await this.page.evaluate(() => {
+            var elemRect = document.getElementsByClassName('Chart_chartContainer_')[0].getBoundingClientRect();
             console.log(elemRect);
             return elemRect.x
         });
-        var y =  await this.page.evaluate(() => {
-            var elemRect = document.getElementsByClassName('Chart_line_4eOS7')[0].getBoundingClientRect();
+        var yy =  await this.page.evaluate(() => {
+            var elemRect = document.getElementsByClassName('Chart_chartContainer_')[0].getBoundingClientRect();
             console.log(elemRect);
             return elemRect.y;
         });
-        
+       // this.page.locator('').click({position?:{x : number  ; y : number }});
+       await this.page.locator("(//div[contains(@class,'Chart_chartContainer_')])[1]").hover({position : {x : xx, y: yy}});
+       //await this.page.locator(this.firstDataPointLocator).click({position : {x : -25, y: -25}})
 
-        //this.page.mouse.click(x,y);
-        //this.page.mouse.move(x,y)
-        //this.page.mouse.move(369.44464111328125,246.979156);
-        this.page.mouse.move(360,246);
-        this.page.mouse.dblclick(360,246);
+        await this.page.locator("(//div[contains(@class,'Chart_chartContainer_')])[1]").click({position : {x : 0, y: 0}});
+        //await this.page.locator(this.firstDataPointLocator).click({position : {x : -25, y: -25}})
+        //await this.page.locator("(//div[contains(@class,'Chart_chartContainer_')]//*[name()='svg']//*[name()='g']//*[name()='g' and contains(@transform,'translate(')]//*[name()='rect'  and contains(@class,'overlay')])[1]").click({position : {x : 0, y: 30}})
+        // //this.page.mouse.click(x,y);
+        // //this.page.mouse.move(x,y)
+        // //this.page.mouse.move(369.44464111328125,246.979156);
+        // this.page.mouse.move(360,246);
+        // this.page.mouse.dblclick(360,246);
 
-        //await webActions.hoverOnElement();
-        //await variable.click();
-        await util.delay(5000);
+
+        // //await webActions.hoverOnElement();
+        // //await variable.click();
+        // await util.delay(5000);
         //await webActions.clickElement(this.firstDataPointLocator);
     }
 

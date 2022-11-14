@@ -65,11 +65,11 @@ test("ValidationForPageViewsAndImpactValueForRumApp  @ProductionDefectRecords@Re
    //get page views value
    let pageViewsValue: string[] = await controlCenterRecords.getSessionsTabPageViewsValue(parseInt(rowCount));
    //validation
-   await verification.verifyValueIsNotNull(pageViewsValue, "getting null value");
+   await verification.verifyValueIsNotNull(pageViewsValue, "getting null value for pageview metrics");
    //get impact value
    let impactValue: string[] = await controlCenterRecords.getSessionsTabTmpactValue(parseInt(rowCount));
    //validation
-   await verification.verifyValueIsNotNull(impactValue, "getting null value");
+   await verification.verifyValueIsNotNull(impactValue, "getting null value for impact metrics");
 })
 
 /*
@@ -94,26 +94,10 @@ test("VerifyNavigationFromTileWidgetInOverviewDashboardToRecords @ProductionDefe
    //get url of records page
    let getCurrentPageUrl = await recordPage.getUrl();
    //verification for records page
-   await verification.verifySoftAssertTrue(getCurrentPageUrl.includes('catchpoint.com/ui/Symphony/Record/'), 'Not able to navigate to records page');
+   await verification.verifySoftAssertTrue(getCurrentPageUrl.includes('catchpoint.com/ui/Symphony/Record/'), 'not able to navigate to records page');
 
 })
 
-/*
-  CP-21853 : 125291 Explorer: Record blade shows NO DATA while the graph tooltip shows #n runs 
-*/
-test("VerifyRecordsBladeShowDataWhenToolTipShowsData  @ProductionDefectRecords@Records", async({baseTestUtil, sideNavigationBar, verification,util,sourceSelectorExplorer,explorerPage,explorerRecordListPage}) => {
-   let data = new DataForEnv();
-   //navigate to explorer page
-   await sideNavigationBar.navigateToExplorerFromSideNavigation();
-   let testID = await data.getValueOfTheParameter('transactionTestId');
-   //select tests from source selector
-   await sourceSelectorExplorer.clickOnFirstSearchedItemInSelectorPage(testID);
-   //click on data point
-   await explorerPage.clickOnFirstDataPoint();
-   //validation for data in record list page
-   verification.verifyIfElementIsPresent(explorerRecordListPage.firstRowLocator,'data is not present.');
-
-})
 
 
 

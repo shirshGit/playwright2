@@ -16,8 +16,8 @@ test('@Smoke @SyntheticControlCenter Verify When user selects Folder on create b
     await util.delay(3000);
 
     //Verifying If Test Blade is Present.
-    await verification.verifyIfElementIsPresent(synLocationBlade.syntheticLocationBladeTitle, 'Test Location Blade Title Not Present');
-    await verification.verifyIfElementIsPresent(synLocationBlade.syntheticLocationBladeNavigationTreeTitle, 'Test Location Navigation Blade Title Not Present');
-    await verification.verifyIfElementIsPresent(synLocationBlade.syntheticLocationBladeTitle, 'Test Location Blade Nav item header Not Present');    
+    await verification.verifyIfElementIsPresent(synLocationBlade.syntheticLocationBladeTitleLocator, 'Test Location Blade Title Not Present');
+    await verification.verifyIfElementIsPresent(synLocationBlade.syntheticLocationBladeNavigationTreeTitleLocator, 'Test Location Navigation Blade Title Not Present');
+    await verification.verifyIfElementIsPresent(synLocationBlade.syntheticLocationBladeTitleLocator, 'Test Location Blade Nav item header Not Present');    
 
 }) 

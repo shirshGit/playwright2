@@ -42,7 +42,9 @@ export class SourceSelectorExplorer extends ExplorerPage{
     //#region This region is to have the functions
 
     async clickOnFirstSearchedItemInSelectorPage(itemId: string) {
+        await util.delay(5000);
         await this.searchItem(itemId);
+        await util.delay(5000);
         await webActions.clickElement(this.firstSearchedItemLocator);
         await webActions.clickElement(this.selectButtonLocator);
     }

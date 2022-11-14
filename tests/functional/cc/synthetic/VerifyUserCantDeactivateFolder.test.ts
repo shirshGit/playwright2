@@ -22,7 +22,7 @@ test("@Smoke @SyntheticControlCenter Verify User Cant Deactivate Folder", async 
     await syntheticFolderDetailPage.goToNewFolderCreate();
     await syntheticFolderDetailPage.createAFolderWithInheritedSettings(folderName);
     await syntheticFolderDetailPage.checkTheSearchedItem(folderName);
-    await verification.verifyAttributeValueOfLocatorDoesNotMatch(syntheticFolderDetailPage.deactivateBtnInContainer,'class', 'IconButton_selected','Folder Deactivate button is enable');
+    await verification.verifyAttributeValueOfLocatorDoesNotMatch(syntheticFolderDetailPage.deactivateBtnInContainerLocator,'class', 'IconButton_selected','Folder Deactivate button is enable');
     await syntheticFolderDetailPage.deleteItemFromThreeDotMenu(folderName);
     await syntheticProductDetailPage.deleteItemFromThreeDotMenu(productName);
     

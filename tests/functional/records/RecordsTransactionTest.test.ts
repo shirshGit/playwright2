@@ -1,7 +1,7 @@
 import test from "@lib/BaseTest"
 import { DataForEnv } from "@lib/DataForEnvironment";
 
-let data = new DataForEnv();
+
 
 
 /*
@@ -9,7 +9,8 @@ let data = new DataForEnv();
 */
 test("VerifyUserIsAbleToSelectStep  @Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, recordsPage, page, verification }) => {
     await sideNavigationBar.navigateToRecordsFromSideNavigation();
-    let TransactionTestID = await data.getValueOfTheParameter('TransactionTestWithMultipleStepAndStepName');
+    let data = new DataForEnv();
+    let TransactionTestID = await data.getValueOfTheParameter('transactionTestWithMultipleStepAndStepName');
     //enter test from source selector
     await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(TransactionTestID);
     await util.delay(3000);
@@ -33,18 +34,19 @@ test("VerifyUserIsAbleToSelectStep  @Records", async ({ baseTestUtil, sideNaviga
 */
 test("VerifyStepsNameInTransactionTest  @ProductionDefectRecords", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, recordsPage, page, verification }) => {
     await sideNavigationBar.navigateToRecordsFromSideNavigation();
-    let TransactionTestID = await data.getValueOfTheParameter('TransactionTestWithMultipleStepAndStepName');
+    let data = new DataForEnv();
+    let TransactionTestID = await data.getValueOfTheParameter('transactionTestWithMultipleStepAndStepName');
     //enter test from source selector
     await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(TransactionTestID);
     await util.delay(3000);
     let stepName : string[] = ['Step1#','Step2;','Step3&'];//[these step name already define in transaction test]
-    //get steps name
-    let getStepName : string[] = await recordsPage.getStepsName(stepName.length);
-    //steps name validation
+    //get step names
+    let getStepName : string[] = await recordsPage.getStepNames(stepName.length);
+    //step names validation
     for (let index = 0; index < stepName.length; index++) {
         const element1 = stepName[index];
         const element2 = getStepName[index];
-        await verification.verifySoftAssertTrue(element1 === element2,'failed');
+        await verification.verifySoftAssertTrue(element1 === element2,'Step name is not matching.');
         
     }
 })
@@ -54,7 +56,8 @@ test("VerifyStepsNameInTransactionTest  @ProductionDefectRecords", async ({ base
 */
 test("VerifyStepIndexWhenUserChangeRuns  @ProductionDefectRecords", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, recordsPage, page, verification }) => {
     await sideNavigationBar.navigateToRecordsFromSideNavigation();
-    let TransactionTestID = await data.getValueOfTheParameter('TransactionTestWithMultipleStepAndStepName');
+    let data = new DataForEnv();
+    let TransactionTestID = await data.getValueOfTheParameter('transactionTestWithMultipleStepAndStepName');
     //enter test from source selector
     await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(TransactionTestID);
     await util.delay(3000);
@@ -67,7 +70,7 @@ test("VerifyStepIndexWhenUserChangeRuns  @ProductionDefectRecords", async ({ bas
     await recordsPage.clickFirstDataPoint();
     await util.delay(4000);
     let firstStepAfterClickingDataPoint = await recordsPage.getClassPropertyOfStepNameCheckBox(0);
-    await verification.verifySoftAssertTrue(firstStepAfterClickingDataPoint.includes('is-checked'), 'After clicking data point in transaction test first step is not selected.');
+    await verification.verifySoftAssertTrue(firstStepAfterClickingDataPoint.includes('is-checked'), 'After clicking on data point in transaction test, first step is not selected.');
     
 })
 
@@ -76,12 +79,13 @@ test("VerifyStepIndexWhenUserChangeRuns  @ProductionDefectRecords", async ({ bas
 */
 test("VerifyStepNameDoesNotDisplayAsBlank  @ProductionDefectRecords@Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, recordsPage, page, verification }) => {
     await sideNavigationBar.navigateToRecordsFromSideNavigation();
-    let TransactionTestID = await data.getValueOfTheParameter('TransactionTestWithMultipleStepWithoutStepName');
+    let data = new DataForEnv();
+    let TransactionTestID = await data.getValueOfTheParameter('transactionTestWithMultipleStepWithoutStepName');
     //enter test from source selector
     await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(TransactionTestID);
     await util.delay(3000);
     //steps name validation
-    let getStepName : string[] = await recordsPage.getStepsName(3);
+    let getStepName : string[] = await recordsPage.getStepNames(3);
     await verification.verifySoftAssertTrue(getStepName.length>0, 'Not able to see step name in transaction test.');
     
     

@@ -19,11 +19,11 @@ export class CharmBar {
     
 
     
-    public get divisionInCharmBar() {
+    public get divisionIconInCharmBarLocator() {
         return this._divisionInCharmbar;
     }
 
-    public get selectDivision() {
+    public get divisionLocator() {
         return (text: string) => { return `//div[text()="${text}"]` };
     }
 
@@ -33,8 +33,8 @@ export class CharmBar {
 
   
     async selectDivFromCharmbar(division : string){
-        await webActions.clickElement(this.divisionInCharmBar);
-        await webActions.clickElement(this.selectDivision(division));
+        await webActions.clickElement(this.divisionIconInCharmBarLocator);
+        await webActions.clickElement(this.divisionLocator(division));
     }
 
 
