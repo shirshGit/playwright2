@@ -58,18 +58,7 @@ export class SourceSelectorExplorer extends ExplorerPage{
         await webActions.keyPress(this.searchBoxLocator, 'Enter')
         await webActions.onlyKeyPress('Enter');
     }
-
-    async selectItemFromSourceSelector(listOfItem : string []){
-        for (let index = 0; index < listOfItem.length; index++) {
-            const element = listOfItem[index];
-            await this.searchItem(element);
-            await webActions.clickElement(this.firstSearchedItemLocator);
-            await webActions.clickElement(this.clearButtonLocator);
-        }
-        await webActions.clickElement(this.selectButtonLocator);
-    }
-
-    
+ 
     
     //#endregion
 

@@ -24,7 +24,7 @@ test("VerifyDataInRecordsListPageForTransactionTest  @ProductionDefectRecords@Re
 /*
    CP-21779 : DES: Selected run is not displayed in Records when we navigate from errors tab
 */
-test("VerifyNavigateFromErrorTab  @ProductionDefectRecords@Records", async ({ baseTestUtil, sideNavigationBar, context, loginPage, util, sourceSelectorExplorer, recordsPage, explorerPage, page, verification }) => {
+test("VerifyNavigationFromErrorTab  @ProductionDefectRecords@Records", async ({ baseTestUtil, sideNavigationBar, context, loginPage, util, sourceSelectorExplorer, recordsPage, explorerPage, page, verification }) => {
    let data = new DataForEnv();
    let TransactionTestID = await data.getValueOfTheParameter('transactionTestId');
    //navigate to CC page
@@ -60,7 +60,7 @@ test("ValidationForPageViewsAndImpactValueForRumApp  @ProductionDefectRecords@Re
    await synCCPage.navigateFromThreeDotMenu(appName, 'Records');
    //click on sessions in records page
    await controlCenterRecords.clickOnSessionsTab();
-   //get now of row in session tab
+   //get row count 
    let rowCount = await controlCenterRecords.getRowCount();
    //get page views value
    let pageViewsValue: string[] = await controlCenterRecords.getSessionsTabPageViewsValue(parseInt(rowCount));
