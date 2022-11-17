@@ -22,7 +22,7 @@ test("VerifyDataInRecordsListPageForTransactionTest  @ProductionDefectRecords@Re
 })
 
 /*
-   CP-21779 : DES: Selected run is not displayed in Records when we navigate from errors tab
+   CP-44053 : DES: Selected run is not displayed in Records when we navigate from errors tab
 */
 test("VerifyNavigationFromErrorTab  @ProductionDefectRecords@Records", async ({ baseTestUtil, sideNavigationBar, context, loginPage, util, sourceSelectorExplorer, recordsPage, explorerPage, page, verification }) => {
    let data = new DataForEnv();

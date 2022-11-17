@@ -14,33 +14,33 @@ export class ExplorerPage {
         util = new Utility();
     }
     //#region This region is for getter
-    
+
     private _errorTab = '//li[@data-testid="Errors"]';
     private _firstThreeDotMenuInErrorTab = '(//div[@data-testid="table_row"]//span[@data-automationid="splitbuttonprimary"])[1]//i';
     private _recordsInThreeDotMenuInErrorTab = '//span[normalize-space()="Records"]';
     private _myAppTabInSourceSelector = '//li[text()="My Apps"]';
-    
-    public get errorTabLocator(){
+
+    public get errorTabLocator() {
         return this._errorTab;
     }
-    public get firstThreeDotInErrorTabLocator(){
+    public get firstThreeDotInErrorTabLocator() {
         return this._firstThreeDotMenuInErrorTab;
     }
-    public get recordInThreeDotMenuInErrorTabLocator(){
+    public get recordInThreeDotMenuInErrorTabLocator() {
         return this._recordsInThreeDotMenuInErrorTab;
     }
-    public get errorTabRowWiseTimeLocator(){
-        return (text: number) => { return `//div[@data-item-index="${text}"]//div[@aria-colindex="3"]//div`};
+    public get errorTabRowWiseTimeLocator() {
+        return (text: number) => { return `//div[@data-item-index="${text}"]//div[@aria-colindex="3"]//div` };
     }
-    public get myAppTabInSourceSelectorLocator(){
+    public get myAppTabInSourceSelectorLocator() {
         return this._myAppTabInSourceSelector;
     }
-    
 
-   
+
+
     //#endregion
 
-    async clickOnErrorTab(){
+    async clickOnErrorTab() {
         await webActions.clickElement(this.errorTabLocator);
     }
     async clickOnFirstRowThreeDotMenu() {
@@ -48,15 +48,15 @@ export class ExplorerPage {
         await webActions.hoverOnElement(this.firstThreeDotInErrorTabLocator);
         await webActions.clickElement(this.firstThreeDotInErrorTabLocator);
     }
-    async getNewWindow(context : BrowserContext,locator : string){
-        return await webActions.newWindowHandle(context,locator);
-        
+    async getNewWindow(context: BrowserContext, locator: string) {
+        return await webActions.newWindowHandle(context, locator);
+
     }
-    async getRowWiseTimeFromErrorTab(rowNum : number){
+    async getRowWiseTimeFromErrorTab(rowNum: number) {
         let time = await webActions.getElementText(this.errorTabRowWiseTimeLocator(rowNum));
         return time;
     }
-    async clickOnMyAppInSourceSelector(){
+    async clickOnMyAppInSourceSelector() {
         await webActions.clickElement(this.myAppTabInSourceSelectorLocator);
     }
 }

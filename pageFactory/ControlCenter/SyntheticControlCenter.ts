@@ -266,8 +266,8 @@ export class SynControlCenterPage {
             this.searchItem(item)
         ]);
         await util.delay(2000);
-        await webActions.hoverOnElement(this.threeDotMenuOfSearchedItem);
-        await webActions.clickElement(this.threeDotMenuOfSearchedItem);
+        await webActions.hoverOnElement(this.threeDotMenuOfSearchedItemLocator);
+        await webActions.clickElement(this.threeDotMenuOfSearchedItemLocator);
         await webActions.clickElement(this.itemInThreeDotMenu(navigationFromThreeDotMenu));
     }
 
