@@ -22,10 +22,20 @@ import { UserroleDetailPage } from '@pageobjects/Userrole/UserroleDetailPage';
 import { RecordsPage } from '@pageobjects/Records/RecordsPage';
 import { SourceSelectorPage } from '@pageobjects/Records/SourceSelecterPage';
 import { CharmBar } from '@pageobjects/CharmBar/CharmBar';
+import { SmartboardPage } from '@pageobjects/Smartboard/SmartboardPage';
+import { SourceSelectorSmartboard } from '@pageobjects/Smartboard/SourceSelectorSmartboard';
+import { ExplorerPage} from '@pageobjects/Explorer/ExplorerPage';
+import { SourceSelectorExplorer } from '@pageobjects/Explorer/SourceSelectorExplorer';
+import {ControlCenterRecords } from'@pageobjects/ControlCenter/ControlCenterRecords';
+import { DashboardBlade } from '@pageobjects/OverviewDashboard/DashboardBlade';
+import { TestOverviewDashboard } from '@pageobjects/OverviewDashboard/TestOverviewDashboardPage';
+import { DefaultDashboardPage } from '@pageobjects/OverviewDashboard/DefaultDashboardPage';
+import { DashboardRecordListPage } from '@pageobjects/OverviewDashboard/DashboardRecordsListPage';
+import { ExplorerRecordListPage } from '@pageobjects/Explorer/ExplorerRecordListPage';
 
-const test = baseTest.extend<{
+const test = baseTest.extend<{      
     baseTestUtil: BaseTestUtility;
-    loginPage: LoginPage;
+    loginPage: LoginPage;        
     instantTabWindow: NewTabInstatntTest;
     endpointControlCenter: EndpointCC;
     syntheticControlCenter: SyntheticControlCenter;
@@ -46,6 +56,16 @@ const test = baseTest.extend<{
     recordsPage: RecordsPage;
     sourceSelectorPage : SourceSelectorPage;
     charmBar : CharmBar;
+    smartboardPage: SmartboardPage;
+    sourceSelectorSmartboard : SourceSelectorSmartboard;
+    explorerPage : ExplorerPage;
+    sourceSelectorExplorer : SourceSelectorExplorer;
+    controlCenterRecords : ControlCenterRecords;
+    dashboardBlade : DashboardBlade;
+    defaultDashboardPage : DefaultDashboardPage;
+    testOverviewDashboard : TestOverviewDashboard;
+    dashboardRecordListPage : DashboardRecordListPage;
+    explorerRecordListPage : ExplorerRecordListPage;
 
 }>({
     baseTestUtil: async ({ page }, use, testInfo: TestInfo) => {
@@ -119,6 +139,37 @@ const test = baseTest.extend<{
     charmBar: async ({ page }, use) => {
         await use(new CharmBar(page));
     },
+    smartboardPage: async ({ page }, use) => {
+        await use(new SmartboardPage(page));
+    },
+    sourceSelectorSmartboard: async ({ page }, use) => {
+        await use(new SourceSelectorSmartboard(page));
+    },
+    explorerPage: async ({ page }, use) => {
+        await use(new ExplorerPage(page));
+    },
+    sourceSelectorExplorer: async ({ page }, use) => {
+        await use(new SourceSelectorExplorer(page));
+    },
+    controlCenterRecords: async ({ page }, use) => {
+        await use(new ControlCenterRecords(page))
+    },
+    dashboardBlade: async ({ page }, use) => {
+        await use(new DashboardBlade(page));
+    },
+    defaultDashboardPage: async ({ page }, use) => {
+        await use(new DefaultDashboardPage(page));
+    },
+    testOverviewDashboard: async ({ page }, use) => {
+        await use(new TestOverviewDashboard(page))
+    },
+    dashboardRecordListPage: async ({ page }, use) => {
+        await use(new DashboardRecordListPage(page))
+    },
+    explorerRecordListPage: async ({ page }, use) => {
+        await use(new ExplorerRecordListPage(page))
+    },
+
   
 
   

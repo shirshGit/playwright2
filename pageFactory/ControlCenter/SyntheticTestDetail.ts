@@ -29,6 +29,7 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
     private _addNodeField = '//input[contains(@placeholder ,"Add Node")]';
     private _changeLogRunOn = '//td[text()="Run On"]';
     private _changeLogRunOnValue = '//td[text()="Run On"]//following-sibling::td[1]';
+    private _firstRowSearch = '//div[@data-automation-key="Run Time_1"]';
 
     public get alertOverrideToogleBtnLocator() {
         return this._alertOverrideToogleBtn;
@@ -92,6 +93,10 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
 
     public get changeLogRunOnValueLocator() {
         return this._changeLogRunOnValue;
+    }
+
+    public get firstSearchRowInRecordsListPage() {
+        return this._firstRowSearch;
     }
 
 
@@ -200,8 +205,7 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
     async addNodesInTest(nodeName: string[]) {
         for (let index = 0; index < nodeName.length; index++) {
             const element = nodeName[index];
-            await webActions.enterElementText(this.addNodeFileldLocator, element);
-            await webActions.keyPress(this.addNodeFileldLocator, "Enter");
+            await webActions.keyPress(this.addNodeFileld, "Enter");
         }
 
     }

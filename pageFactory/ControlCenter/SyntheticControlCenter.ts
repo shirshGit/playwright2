@@ -18,7 +18,7 @@ export class SynControlCenterPage {
     //#region This region is for getter
 
     private _newItemCreation: string = '//button[text()="New"]';
-    private _searchBox = '//div[@id = "callOutTarget"]//input[@id ="fabric-search-box"]';
+    private _searchBox = '//div[contains(@class,"FilterPanel_filter_")]//input[@data-testid="fabricsearchbox"]';
     private _newProductItem = '//p[text()="Product"]';
     private _newFolderItem = '//p[text()="Folder"]';
     private _firstRowSearchResult = '//div[@data-testid = "table_row"]//a';
@@ -185,6 +185,13 @@ export class SynControlCenterPage {
         return this._closeChangeLogPage
     }
 
+
+    public get itemInThreeDotMenu() {
+        return (text: string) => { return `//span[text()="${text}"]` };
+    }
+
+
+
    
     
    
@@ -252,6 +259,16 @@ export class SynControlCenterPage {
         await webActions.clickElement(this.firstRowCheckBoxOfContainerLocator);
         await webActions.clickElement(this.deleteBtnLocator);
         await webActions.clickElement(this.popUpDeleteBtnLocator);
+    }
+
+    async navigateFromThreeDotMenu(item: string, navigationFromThreeDotMenu : string) {
+        const [searchItem] = await Promise.all([
+            this.searchItem(item)
+        ]);
+        await util.delay(2000);
+        await webActions.hoverOnElement(this.threeDotMenuOfSearchedItemLocator);
+        await webActions.clickElement(this.threeDotMenuOfSearchedItemLocator);
+        await webActions.clickElement(this.itemInThreeDotMenu(navigationFromThreeDotMenu));
     }
 
     async clickOnSearchedItemInCC(itemName: string) {
