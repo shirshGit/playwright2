@@ -120,7 +120,7 @@ export class SynControlCenterPage {
         return this._webChromeTest;
     }
 
-    public get transactionChromeTest(){
+    public get transactionChromeTestLocator(){
         return this._transactionChromeTest;
     }
     
@@ -158,7 +158,7 @@ export class SynControlCenterPage {
     }
    
 
-    public get itemInMasterBlade(){
+    public get itemInMasterBladeLocator(){
         return (text: string) => { return `//span[text()="${text}"]` }; 
     }
 
@@ -183,7 +183,7 @@ export class SynControlCenterPage {
         return this._testLocationTextIntestLocationBlade;
     }
 
-    public get selectedItemLocatorInDivDropDown(){
+    public get selectedItemLocatorInDivDropDownLocator(){
         return this._getDefaultItemselectedInDivisionDD;
     }
  
@@ -337,7 +337,7 @@ export class SynControlCenterPage {
 
     async goToNewTransactionChromeTestCreate() {
         await webActions.clickElement(this.newItemCreationLocator);
-        await webActions.clickElement(this.transactionChromeTest);
+        await webActions.clickElement(this.transactionChromeTestLocator);
 
     }
 
@@ -376,7 +376,7 @@ export class SynControlCenterPage {
     }
 
     async waitForItemPresentInMasterBlade(item : string){
-        await webActions.waitForElementAttached(this.itemInMasterBlade(item));
+        await webActions.waitForElementAttached(this.itemInMasterBladeLocator(item));
     }
 
     async getThreeDotMenuItem(itemName: string) {
