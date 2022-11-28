@@ -42,47 +42,47 @@ export class SyntheticDetailPage extends SynControlCenterPage {
      private _changeLogButton = '//span[text()="Change Log"]/../../i'
     
 
-    public get saveButton() {
+    public get saveButtonLoctor() {
         return this._saveButton;
     }
 
-    public get propertiesBladeCancelButton() {
+    public get propertiesBladeCancelButtonLocator() {
         return this._propertiesBladeCancelButton;
     }
 
-    public get locatorForAllAdvanceSettingsInDetailPage() {
+    public get locatorForAllAdvanceSettingsInDetailPageLocator() {
         return this._locatorForAllAdvanceSettingsInDetailPage;
     }
 
-    public get locatorToGetSeletedNodes() {
+    public get locatorToGetSeletedNodesLocator() {
         return this._locatorToGetSeletedNodes;
     }
 
-    public get applyBtnDetailPage() {
+    public get applyBtnDetailPageLocator() {
         return this._applyBtnInDetailPage;
     }
 
-    public get increasePingCountTxtBox() {
+    public get increasePingCountTxtBoxLocator() {
         return this._increasePingCountTxtBox;
     }
 
-    public get increaseHopFailureCount() {
+    public get increaseHopFailureCountLocator() {
         return this._increaseHopFailureCount;
     }
 
-    public get mqttSubnetClientIdTxtBox() {
+    public get mqttSubnetClientIdTxtBoxLocator() {
         return this._mqttSubnetClientIdTxtBox;
     }
 
-    public get ednsSubnetTxtBox() {
+    public get ednsSubnetTxtBoxLocator() {
         return this._ednsSubnetTxtBox;
     }
 
-    public get viewportWidthTextbox() {
+    public get viewportWidthTextboxLocator() {
         return this._viewportWidthTextbox;
     }
 
-    public get viewportLenghthTextbox() {
+    public get viewportLenghthTextboxLocator() {
         return this._viewportLenghthTextbox;
     }
 
@@ -90,32 +90,32 @@ export class SyntheticDetailPage extends SynControlCenterPage {
         return this._collapsibleAdvanceSettingsLocator;
     }
 
-    public get chkBoxForAllAdvanceSettings() {
+    public get chkBoxForAllAdvanceSettingsLocator() {
         return this._chkBoxForAllAdvanceSettings;
     }
 
-    public get alertRecipientsTextBox() {
+    public get alertRecipientsTextBoxLocator() {
         return this._alertRecipientsTextBox;
     }
 
-    public get alertReceipientSuggestedContacts() {
+    public get alertReceipientSuggestedContactsLocator() {
         return this._alertReceipientSuggestedContacts;
     }
 
-    public get rumFromMasterTestBlade() {
+    public get rumFromMasterTestBladeLocator() {
         return this._rumInMasterTestBlade;
     }
 
-    public get testFromMasterTestBlade() {
+    public get testFromMasterTestBladeLocator() {
         return this._testsInMasterTestBlade;
     }
 
    
-    public get cancelItemDetailPage() {
+    public get cancelItemDetailPageLocator() {
         return this._cancelItemDetailPage;
     }
 
-    public get ChangeLogButton(){
+    public get ChangeLogButtonLocator(){
         return this._changeLogButton;
     }
 
@@ -129,15 +129,15 @@ export class SyntheticDetailPage extends SynControlCenterPage {
     //#region This region is to have common function for Product, Folder and Test detail page
 
     async closePropertiesBlade() {
-        await webActions.clickElement(this.propertiesBladeCancelButton);
+        await webActions.clickElement(this.propertiesBladeCancelButtonLocator);
     }
     
     async clickSaveButton() {
-        await webActions.clickElement(this.saveButton);
+        await webActions.clickElement(this.saveButtonLoctor);
     }
 
     async typeRecipientsNameInAlertReceipientBox(name: string) {
-        await webActions.enterElementText(this.alertRecipientsTextBox, name);
+        await webActions.enterElementText(this.alertRecipientsTextBoxLocator, name);
     }
 
     async getSuggestedContactsForAlertRecipients(element: string) {
@@ -146,19 +146,19 @@ export class SyntheticDetailPage extends SynControlCenterPage {
     }
 
       async CancelButton() {
-        await webActions.clickElement(this.cancelItemDetailPage);
+        await webActions.clickElement(this.cancelItemDetailPageLocator);
     }
 
     async closeItemPropertyPage() {
-        await webActions.clickElement(this.closeItemPropertiesBlade);
+        await webActions.clickElement(this.closeItemPropertiesBladeLocator);
     }
 
     async rumInMasterBlade(){
-        await webActions.clickElement(this.rumFromMasterTestBlade);
+        await webActions.clickElement(this.rumFromMasterTestBladeLocator);
     }
 
     async clickOnChangeLogButton(){
-        await webActions.clickElement(this.ChangeLogButton);
+        await webActions.clickElement(this.ChangeLogButtonLocator);
     }
 
 

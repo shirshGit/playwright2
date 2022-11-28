@@ -34,7 +34,7 @@ export class SyntheticFolderDetailPage extends SyntheticDetailPage {
 
     async createAFolderWithInheritedSettings(folderName: string) {
         await webActions.enterElementText(this.folderNameField, folderName);
-        await webActions.clickElement(this.saveButton);
+        await webActions.clickElement(this.saveButtonLoctor);
     }
 
     async clickOnCollapsableItemAtFolderProperties(element) {
@@ -48,7 +48,7 @@ export class SyntheticFolderDetailPage extends SyntheticDetailPage {
     
 
     async closeFolderPropertiesBlade() {
-        await webActions.clickElement(this.propertiesBladeCancelButton);
+        await webActions.clickElement(this.propertiesBladeCancelButtonLocator);
     }
 
     //#endregion

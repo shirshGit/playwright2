@@ -18,7 +18,7 @@ export class SynControlCenterPage {
     //#region This region is for getter
 
     private _newItemCreation: string = '//button[text()="New"]';
-    private _searchBox = '//div[@id = "callOutTarget"]//input[@id ="fabric-search-box"]';
+    private _searchBox = '//div[contains(@class,"FilterPanel_filter_")]//input[@data-testid="fabricsearchbox"]';
     private _newProductItem = '//p[text()="Product"]';
     private _newFolderItem = '//p[text()="Folder"]';
     private _firstRowSearchResult = '//div[@data-testid = "table_row"]//a';
@@ -54,36 +54,37 @@ export class SynControlCenterPage {
     private _getDefaultItemselectedInDivisionDD = '//span[text()="Client Level"]';
     private _rumInRootBlade = '(//div[contains(@class,"NavigationTree_navGroupText_")][normalize-space()="RUM"])[2]';
     private _divLevelDropDown = '(//div[@data-testid="divisionSelector"]//div)[1]';
+    private _closeChangeLogPage = '(//div[@data-testid="cancel-icon"])[2]';
     
-    public get newItemCreation() {
+    public get newItemCreationLocator() {
         return this._newItemCreation;
     }
 
-    public get threeDotMenuItems() {
+    public get threeDotMenuItemsLocator() {
         return (text: string) => { return `//ul[contains(@class,"ms-ContextualMenu-list is-open")]//span[text()="${text}"]` };
     }
 
-    public get searchBox() {
+    public get searchBoxLocator() {
         return this._searchBox;
     }
 
-    public get newProductItem() {
+    public get newProductItemLocator() {
         return this._newProductItem;
     }
 
-    public get firstRowSearchResult() {
+    public get firstRowSearchResultLocator() {
         return this._firstRowSearchResult;
     }
 
-    public get firstRowCheckBoxOfContainer() {
+    public get firstRowCheckBoxOfContainerLocator() {
         return this._firstRowCheckBoxOfContainer;
     }
 
-    public get deleteBtn() {
+    public get deleteBtnLocator() {
         return this._deleteBtn;
     }
 
-    public get popUpDeleteBtn() {
+    public get popUpDeleteBtnLocator() {
         return this._popUpDeleteBtn;
     }
 
@@ -91,31 +92,31 @@ export class SynControlCenterPage {
         return this._locatorToClickOnSearchedItem;
     }
 
-    public get deactivateBtnInContainer() {
+    public get deactivateBtnInContainerLocator() {
         return this._deactivateBtnInContainer;
     }
 
-    public get threeDotMenuOfSearchedItem() {
+    public get threeDotMenuOfSearchedItemLocator() {
         return this._threeDotMenuOfSearchedItem;
     }
 
-    public get propertiesAfterThreeDotMenu() {
+    public get propertyInThreeDotMenuLocator() {
         return this._propertiesAfterThreeDotMenu;
     }
 
-    public get deleteOptionAfterThreeDotMenu() {
+    public get deleteOptionInThreeDotMenuLocator() {
         return this._deleteOptionAfterThreeDotMenu;
     }
 
-    public get copyOptionInThreeDotMenu() {
+    public get copyOptionInThreeDotMenuLocator() {
         return this._copyOptionInThreeDotMenu;
     }
 
-    public get newFolderItem() {
+    public get newFolderItemLocator() {
         return this._newFolderItem;
     }
 
-    public get webChromeTest(){
+    public get webChromeTestLocator(){
         return this._webChromeTest;
     }
 
@@ -124,27 +125,27 @@ export class SynControlCenterPage {
     }
     
 
-    public get pendoCloseForNewFeature() {
+    public get pendoCloseForNewFeatureLocator(){
         return this._pendoCloseForNewFeature;
     }
 
-    public get cancelTestDetailPage() {
+    public get cancelTestDetailPageLocator() {
         return this._cancelTestDetailPage;
     }
 
-    public get copyButtonInTestLocationBlade() {
+    public get copyButtonInTestLocationBladeLocator() {
         return this._copyButtonInTestLocationBlade;
     }
 
-    public get closeItemPropertiesBlade() {
+    public get closeItemPropertiesBladeLocator() {
         return this._closeMasterBlade;
     }
 
-    public get cancelSearchedItem() {
+    public get cancelSearchedItemLocator() {
         return this._cancelSearchedText;
     }
 
-    public get statusOfFirstItem(){
+    public get statusOfFirstItemLocator(){
         return this._statusOfFirstItem;
     }
 
@@ -152,7 +153,7 @@ export class SynControlCenterPage {
         return this._statusInTestPropertyPage;
     }
     
-    public get getItemLocation(){
+    public get getItemLocationLocator(){
         return this._getItemLocation;
     }
    
@@ -160,42 +161,54 @@ export class SynControlCenterPage {
     public get itemInMasterBlade(){
         return (text: string) => { return `//span[text()="${text}"]` }; 
     }
-    public get moveButtonInHeaderSection(){
+
+    public get moveButtonInHeaderSectionLocator(){
         return this._moveButtonInHeaderSection;
     }
 
-    public get moveButtonInTestLocationBlade(){
+    public get moveButtonInTestLocationBladeLocator(){
         return this._moveButtonInTestLocationBlade;
     }
 
-    public get clickOnDivisionDropDown(){
+    public get clickOnDivisionDropDownLocator(){
         return this._divisionLevelDDInRootSection;
     }
     
 
-    public get selectProductForTestLocation() {
+    public get selectProductForTestLocationLocator() {
         return (text: string) => { return `(//span[text()="${text}"])[2]` };
     }
 
-    public get testLocationTextAfterClickingOnCopyInThreeDotMenu(){
+    public get testLocationTextAfterClickingOnCopyInThreeDotMenuLocator(){
         return this._testLocationTextIntestLocationBlade;
     }
 
-    public get getItemSelectedInDivDropDown(){
+    public get selectedItemLocatorInDivDropDown(){
         return this._getDefaultItemselectedInDivisionDD;
     }
  
-    public get selectDivision(){
+    public get selectDivisionLocator(){
         return (text: string) => { return `//div[contains(@class,"dropdownItemsWrapper")]//span[text()="${text}"]` };
     }
 
-    public get rumInRootBlade(){
+    public get rumInRootBladeLocator(){
         return this._rumInRootBlade
     }
 
-    public get divLevelDropdown(){
+    public get divLevelDropdownLocator(){
         return this._divLevelDropDown;
     }
+
+    public get closeChangeLogPageLocator(){
+        return this._closeChangeLogPage
+    }
+
+
+    public get itemInThreeDotMenu() {
+        return (text: string) => { return `//span[text()="${text}"]` };
+    }
+
+
 
    
     
@@ -207,9 +220,8 @@ export class SynControlCenterPage {
     
 
     async selectProductFromTestLocationBlade(productName: string) {
-        let xpath = await this.selectProductForTestLocation(productName);
+        let xpath = await this.selectProductForTestLocationLocator(productName);
         await webActions.clickElement(xpath);
-        await webActions.clickElement(this.moveButtonInTestLocationBlade);
     }
 
     async navigateToSyntheticCC() {
@@ -217,18 +229,18 @@ export class SynControlCenterPage {
     }
 
     async goToNewProductCreate() {
-        await webActions.clickElement(this.newItemCreation);
-        await webActions.clickElement(this.newProductItem);
+        await webActions.clickElement(this.newItemCreationLocator);
+        await webActions.clickElement(this.newProductItemLocator);
 
     }
 
     async searchItem(item: string) {
-        await webActions.waitForElementAttached(this.searchBox);
-        await webActions.clickElement(this.searchBox);
-        await webActions.enterElementText(this.searchBox, item);
+        await webActions.waitForElementAttached(this.searchBoxLocator);
+        await webActions.clickElement(this.searchBoxLocator);
+        await webActions.enterElementText(this.searchBoxLocator, item);
         await util.delay(1000);
-        await webActions.clickElement(this.searchBox);
-        await webActions.keyPress(this.searchBox, 'Enter')
+        await webActions.clickElement(this.searchBoxLocator);
+        await webActions.keyPress(this.searchBoxLocator, 'Enter')
         await webActions.onlyKeyPress('Enter');
     }
 
@@ -237,22 +249,24 @@ export class SynControlCenterPage {
             this.searchItem(productName)
         ]);
         await util.delay(2000);
-        await webActions.hoverOnElement(this.threeDotMenuOfSearchedItem);
-        await webActions.clickElement(this.threeDotMenuOfSearchedItem);
-        await webActions.clickElement(this.deleteOptionAfterThreeDotMenu);
-        await webActions.clickElement(this.popUpDeleteBtn);
+        await webActions.hoverOnElement(this.threeDotMenuOfSearchedItemLocator);
+        await webActions.clickElement(this.threeDotMenuOfSearchedItemLocator);
+        await webActions.clickElement(this.deleteOptionInThreeDotMenuLocator);
+        await webActions.clickElement(this.popUpDeleteBtnLocator);
     }
+
+    
 
     async copyItemFromThreeDotMenu(itemName: string, destinationProductID: string) {
         const [searchItem] = await Promise.all([
             this.searchItem(itemName)
         ]);
         await util.delay(2000);
-        await webActions.hoverOnElement(this.threeDotMenuOfSearchedItem);
-        await webActions.clickElement(this.threeDotMenuOfSearchedItem);
-        await webActions.clickElement(this.copyOptionInThreeDotMenu);
-        //await synLocation.selectProductFromTestLocationBlade(destinationProductID);
-        await webActions.clickElement(this.copyButtonInTestLocationBlade);
+        await webActions.hoverOnElement(this.threeDotMenuOfSearchedItemLocator);
+        await webActions.clickElement(this.threeDotMenuOfSearchedItemLocator);
+        await webActions.clickElement(this.copyOptionInThreeDotMenuLocator);
+        await this.selectProductFromTestLocationBlade(destinationProductID);
+        await webActions.clickElement(this.copyButtonInTestLocationBladeLocator);
     }
 
     async deleteItemFromTableContainerBar(productName: string) {
@@ -260,9 +274,19 @@ export class SynControlCenterPage {
             this.searchItem(productName)
         ]);
         await util.delay(2000);
-        await webActions.clickElement(this.firstRowCheckBoxOfContainer);
-        await webActions.clickElement(this.deleteBtn);
-        await webActions.clickElement(this.popUpDeleteBtn);
+        await webActions.clickElement(this.firstRowCheckBoxOfContainerLocator);
+        await webActions.clickElement(this.deleteBtnLocator);
+        await webActions.clickElement(this.popUpDeleteBtnLocator);
+    }
+
+    async navigateFromThreeDotMenu(item: string, navigationFromThreeDotMenu : string) {
+        const [searchItem] = await Promise.all([
+            this.searchItem(item)
+        ]);
+        await util.delay(2000);
+        await webActions.hoverOnElement(this.threeDotMenuOfSearchedItemLocator);
+        await webActions.clickElement(this.threeDotMenuOfSearchedItemLocator);
+        await webActions.clickElement(this.itemInThreeDotMenu(navigationFromThreeDotMenu));
     }
 
     async clickOnSearchedItemInCC(itemName: string) {
@@ -273,16 +297,16 @@ export class SynControlCenterPage {
 
     async checkTheSearchedItem(folderName: string) {
         await this.searchItem(folderName);
-        await webActions.clickElement(this.firstRowCheckBoxOfContainer);
+        await webActions.clickElement(this.firstRowCheckBoxOfContainerLocator);
     }
 
     async openPropertiesOfSerachedItem(item: string) {
-        await webActions.hoverOnElement(this.searchBox);
+        await webActions.hoverOnElement(this.searchBoxLocator);
         await this.searchItem(item);
         await util.delay(2000);
-        await webActions.hoverOnElement(this.threeDotMenuOfSearchedItem);
-        await webActions.clickElement(this.threeDotMenuOfSearchedItem);
-        await webActions.clickElement(this.propertiesAfterThreeDotMenu);
+        await webActions.hoverOnElement(this.threeDotMenuOfSearchedItemLocator);
+        await webActions.clickElement(this.threeDotMenuOfSearchedItemLocator);
+        await webActions.clickElement(this.propertyInThreeDotMenuLocator);
     }
 
     async getElementTextFromElements(element: string) {
@@ -300,19 +324,19 @@ export class SynControlCenterPage {
     }
 
     async goToNewFolderCreate() {
-        await webActions.clickElement(this.newItemCreation);
-        await webActions.clickElement(this.newFolderItem);
+        await webActions.clickElement(this.newItemCreationLocator);
+        await webActions.clickElement(this.newFolderItemLocator);
 
     }
 
     async goToNewWebChromeTestCreate() {
-        await webActions.clickElement(this.newItemCreation);
-        await webActions.clickElement(this.webChromeTest);
+        await webActions.clickElement(this.newItemCreationLocator);
+        await webActions.clickElement(this.webChromeTestLocator);
 
     }
 
     async goToNewTransactionChromeTestCreate() {
-        await webActions.clickElement(this.newItemCreation);
+        await webActions.clickElement(this.newItemCreationLocator);
         await webActions.clickElement(this.transactionChromeTest);
 
     }
@@ -323,14 +347,14 @@ export class SynControlCenterPage {
     }
 
     async pendoCloseIfPopsup() {
-        let pendoElementCount = await webActions.getNoOfElementsPresentInPage(this.pendoCloseForNewFeature);
+        let pendoElementCount = await webActions.getNoOfElementsPresentInPage(this.pendoCloseForNewFeatureLocator);
         if (+pendoElementCount > 0) {
-            await webActions.clickElement(this.pendoCloseForNewFeature);
+            await webActions.clickElement(this.pendoCloseForNewFeatureLocator);
         }
     }
 
     async clickCancelTestPropertyButton() {
-        await webActions.clickElement(this.cancelTestDetailPage);
+        await webActions.clickElement(this.cancelTestDetailPageLocator);
     }
 
     async clearTextField(loc : string){
@@ -347,15 +371,16 @@ export class SynControlCenterPage {
             this.searchItem(itemName)
         ]);
         await util.delay(2000);
-        await webActions.hoverOnElement(this.threeDotMenuOfSearchedItem);
-        await webActions.clickElement(this.threeDotMenuOfSearchedItem);
+        await webActions.hoverOnElement(this.threeDotMenuOfSearchedItemLocator);
+        await webActions.clickElement(this.threeDotMenuOfSearchedItemLocator);
     }
 
     async waitForItemPresentInMasterBlade(item : string){
         await webActions.waitForElementAttached(this.itemInMasterBlade(item));
     }
-    async threeDotMenuItem(itemName: string) {
-        let xpath = this.threeDotMenuItems(itemName);
+
+    async getThreeDotMenuItem(itemName: string) {
+        let xpath = this.threeDotMenuItemsLocator(itemName);
         return xpath;
 
     }
@@ -363,11 +388,11 @@ export class SynControlCenterPage {
 
     async clickCopyButtonFromThreeDotMenu(itemName: string) {
         await this.searchAndClickOnThreeDotMenu(itemName);
-        await webActions.clickElement(this.copyOptionInThreeDotMenu);
+        await webActions.clickElement(this.copyOptionInThreeDotMenuLocator);
     }
 
     async fetchItemLocation() {
-        let enddate = await webActions.getElementAttributeValue(this.getItemLocation, 'value');
+        let enddate = await webActions.getElementAttributeValue(this.getItemLocationLocator, 'value');
         return enddate;
     }
 
@@ -377,26 +402,31 @@ export class SynControlCenterPage {
 
     async moveSelectedItem(itemName : string ,product : string){
         await this.checkTheSearchedItem(itemName);
-        await webActions.clickElement(this.moveButtonInHeaderSection);
+        await webActions.clickElement(this.moveButtonInHeaderSectionLocator);
         await this.selectProductFromTestLocationBlade(product);
+        await webActions.clickElement(this.moveButtonInTestLocationBladeLocator);
     }
 
     async clickDivisionDropDown(){
-        await webActions.clickElement(this.clickOnDivisionDropDown);
+        await webActions.clickElement(this.clickOnDivisionDropDownLocator);
 
     }
 
     async selectGivenDivisionFromDivisionDropDownInRoot(divName : string){
-        await webActions.clickElement(this.selectDivision(divName));
+        await webActions.clickElement(this.selectDivisionLocator(divName));
     }
 
     async clickOnNewItemCreation(){
-        return webActions.clickElement(this.newItemCreation);
+        return webActions.clickElement(this.newItemCreationLocator);
     }
 
     async clickOnRumInRootBlade(){
-        return webActions.clickElement(this.rumInRootBlade);
+        return webActions.clickElement(this.rumInRootBladeLocator);
 
+    }
+
+    async closeChangeLogsPage(){
+        await webActions.clickElement(this.closeChangeLogPageLocator);
     }
 
    

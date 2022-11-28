@@ -29,7 +29,7 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
     private _addNodeField = '//input[contains(@placeholder ,"Add Node")]';
     private _changeLogRunOn = '//td[text()="Run On"]';
     private _changeLogRunOnValue = '//td[text()="Run On"]//following-sibling::td[1]';
-    private _transactionTestScriptEditorField = '//div[@data-mode-id = "transaction"]'
+    private _transactionTestScriptEditorField = '//div[@data-mode-id = "transaction"]//div[contains(@class, "monaco-scrollable-element editor-scrollable vs")]'
 
     public get alertOverrideToogleBtn() {
         return this._alertOverrideToogleBtn;
@@ -207,7 +207,7 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
             const element = nodeName[index];
             await webActions.enterElementText(this.addNodeFileld, element);
             await webActions.keyPress(this.addNodeFileld, "Enter");
-            await webActions.clickElement(this.saveButton);
+            await webActions.clickElement(this.saveButtonLoctor);
 
         }
 
@@ -216,7 +216,7 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
     async addNode(nodeName: string) {
         await webActions.enterElementText(this.addNodeFileld, nodeName);
         await webActions.keyPress(this.addNodeFileld, "Enter");
-        await webActions.clickElement(this.saveButton);
+        await webActions.clickElement(this.saveButtonLoctor);
 
     }
 

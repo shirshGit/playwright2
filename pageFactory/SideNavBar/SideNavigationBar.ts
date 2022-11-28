@@ -24,10 +24,10 @@ export class SideNavBar{
     private _dashboard = '//a[text()="Dashboard"]';
     private _sideNavSettings = '//i[@data-icon-name="settingsSiteNav"]';
     private _sideNavUserrole = '//a[text()="User Roles"]';
-    private _sideNavContact = '#contactsection';
-    private _sideNavContacts = '//a[text()="Contacts"]';
-    private _sideNavRum = '//a[text()="RUM"]'
-
+    private _sideNavContactIcon = '//div[@id="contactsection"]//div';
+    private _sideNavContacts = '//a[text()="Contacts"]/..';
+    private _sideNavRum = '//a[text()="RUM"]';
+    private _sideNavRecords = '//a[text()="Records"]';
 
 
     public get sideNavControlCenter(){
@@ -62,18 +62,23 @@ export class SideNavBar{
         return this._sideNavUserrole;
     }
 
-    public get sideNavContactTest(){
-        return this._sideNavContact;
+    public get sideNavContactIcon(){
+        return this._sideNavContactIcon;
     }
 
-    public get sideNavContactsTest(){
+    public get sideNavContacts(){
         return this._sideNavContacts;
     }
 
-    public get sideNavRUMTest(){
+    
+    public get sideNavRUM(){
         return this._sideNavRum;
     }
 
+    
+    public get sideNavRecords(){
+        return this._sideNavRecords;
+    }
     //#endregion
 
     async navigateToSyntheticCCFromSideNavigation(){
@@ -88,6 +93,13 @@ export class SideNavBar{
         await webActions.clickElement(this.sideNavAnalytics)
         await webActions.waitForElementAttached(this.sideNavExplorer);
         await webActions.clickElement(this.sideNavExplorer);
+    }
+
+    async navigateToRecordsFromSideNavigation(){
+        await webActions.waitForElementAttached(this.sideNavAnalytics);
+        await webActions.clickElement(this.sideNavAnalytics)
+        await webActions.waitForElementAttached(this.sideNavRecords);
+        await webActions.clickElement(this.sideNavRecords);
     }
     async navigateToUserrolePageFromSideNavigation(){
         await webActions.waitForElementAttached(this.sideNavSettingsTest);
@@ -105,17 +117,32 @@ export class SideNavBar{
 
 
     async navigateToContactPageFromSideNavigation(){
-        await webActions.waitForElementAttached(this.sideNavContactTest);
-        await webActions.clickElement(this.sideNavContactTest)
-        await webActions.waitForElementAttached(this.sideNavContactsTest);
-        await webActions.clickElement(this.sideNavContactsTest);
+        await webActions.waitForElementAttached(this.sideNavContactIcon);
+        await webActions.clickElement(this.sideNavContactIcon)
+        await webActions.waitForElementAttached(this.sideNavContacts);
+        await webActions.clickElement(this.sideNavContacts);
     }
 
     async navigateToRUMFromSideNavigation(){
         await webActions.waitForElementAttached(this.sideNavControlCenter);
         await webActions.clickElement(this.sideNavControlCenter)
-        await webActions.waitForElementAttached(this.sideNavRUMTest);
-        await webActions.clickElement(this.sideNavRUMTest);
+        await webActions.waitForElementAttached(this.sideNavRUM);
+        await webActions.clickElement(this.sideNavRUM);
+    }
+
+
+    async navigateToSmartboardFromSideNavigation(){
+        await webActions.waitForElementAttached(this.sideNavHome);
+        await webActions.clickElement(this.sideNavHome)
+        await webActions.waitForElementAttached(this.sideNavSmartboard);
+        await webActions.clickElement(this.sideNavSmartboard);
+    }
+
+    async navigateToTestTemplateFromSideNavigation(){
+        await webActions.waitForElementAttached(this.sideNavControlCenter);
+        await webActions.clickElement(this.sideNavControlCenter)
+        await webActions.waitForElementAttached(this.sideNavTestTemplates);
+        await webActions.clickElement(this.sideNavTestTemplates);
     }
 
     

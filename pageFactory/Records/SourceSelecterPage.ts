@@ -1,42 +1,39 @@
 import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
 import { Page } from "playwright";
+import { ContactsPage } from "@pageobjects/Contacts/ContactsPage";
+import { RecordsPage } from "./RecordsPage";
+
 let webActions: WebActions;
 let util: Utility
 
-export class ContactsPage {
-    readonly page: Page;
-
+export class SourceSelectorPage extends RecordsPage{
     constructor(page: Page) {
-        this.page = page;
+        super(page);
         webActions = new WebActions(this.page);
         util = new Utility();
     }
 
     //#region This region is for getter
-
-    private _searchBox = '//input[@data-testid="contact-search-box"]';
-    private _firstRowSearchResult = '//div[@data-automation-key="First Name_0"]';
-
-
-
-
+    private _searchBox = '//input[@data-testid="searchText"]';
+    private _firstRowSearchCheckBoxInSelectorPage = '//i[@data-icon-name="StatusCircleCheckmark"]/div';
+    
     public get searchBoxLocator() {
         return this._searchBox;
     }
 
-    public get firstRowSearchResultLocator() {
-        return this._firstRowSearchResult
+    public get firstRowSearchCheckBoxInSelectorPageLocator() {
+        return this._firstRowSearchCheckBoxInSelectorPage
     }
 
-
+  
     //#endregion
 
     //#region This region is to have the functions
 
-    async clickOnFirstSearchedItemInContactPage(itemName: string) {
+    async clickOnFirstSearchedItemInSelectorPage(itemName: string) {
         await this.searchItem(itemName);
-        await webActions.clickElement(this.firstRowSearchResultLocator);
+        await webActions.clickElement(this.firstRowSearchCheckBoxInSelectorPageLocator);
     }
 
     async searchItem(item: string) {
@@ -49,10 +46,7 @@ export class ContactsPage {
         await webActions.onlyKeyPress('Enter');
     }
 
-
-
-
-
+    
     //#endregion
 
 }

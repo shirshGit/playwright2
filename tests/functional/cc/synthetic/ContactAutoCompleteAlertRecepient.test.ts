@@ -15,6 +15,6 @@ test("@Smoke @SyntheticControlCenter Verify Contact Autocomplete For Alert Recep
     await syntheticTestDetailPage.goToNewWebChromeTestCreate();
     await syntheticTestDetailPage.alertToggleButtonToOverrideAlertSettings();
     await syntheticTestDetailPage.typeRecipientsNameInAlertReceipientBox(alertRecipientName);
-    await verification.verifySoftAssertForTextOfAnElement(syntheticTestDetailPage.alertReceipientSuggestedContacts, alertRecipientName, 'Suggested contact not matching with the Entered Receipient name');
+    await verification.verifySoftAssertForTextOfAnElement(syntheticTestDetailPage.alertReceipientSuggestedContactsLocator, alertRecipientName, 'Suggested contact not matching with the Entered Receipient name');
 
 })

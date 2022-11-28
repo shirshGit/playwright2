@@ -1,16 +1,39 @@
 export const qadata = {
-    'node' : 'Denver - Level3 - QA',   //for creating test
     'alertRecipientName' : 'Client Admin DoNotDelete', //for creating items which needs contact
+    'automationContact' : 'userrole9_DoNOTDeleteqaautomationxclient-clientadministrator@catchpoint.com', //contact used for automation, where assiging other userrole is required
+	
+    'defaultUserrole' : 'Client Administrator',//for contact default system access
+    
+    'imapTestID' : '276990', // used for records automation
+
+    'mqttTestID' : '276989',// used for records automation
+
+    'node' : 'Denver - Level3 - QA',   //for creating test
+    'ntpTestID' : '276988',// used for records automation
+    
     'productForJunkItems' : 'Selenium',  //for creating folder and test for automation
-    'url' : 'https://www.google.com', //for creating items e.g synthetic test,endpoint test
+    'productForCopyTest' : 'ProductForCopyScenariosDoNotDelete',//product for copy test scenarios
+    'password' : 'Password123!',
+
+    'rumAppName' : 'Automation_WebApp_DoNotEdits',//used for automation
+    
     'testID' : '264592',// used for automation scripts where test are not being created.
     'testListPageUrl' : 'https://qaportal.catchpoint.com/ui/Symphony/ControlCenter/Tests', //for validation of synthetic cc page
-    'productForCoapyTest' : 'ProductForCopyScenariosDoNotDelete',//product for copy test scenarios
-    'userroleName1' : 'OnlyMangeTestPermission',
-    'userroleName2' : 'OnlyManageRumAndTestTemplatePermission',
-    'userroleName3' : 'DivisionLevelAccess',
-    'userroleName4' : 'DoNotHaveAccessForDivision',
-    'userrole9' : 'userrole9_DoNOTDeleteqaautomationxclient-clientadministrator@catchpoint.com',
-    'password' : 'Password123!'
-
+    'transactionTest' : '211911', // used for records automation
+    'transactionTestIDWithEnforceFailureAdvanceSetting' : '269328',//used for records automation
+    'transactionTestWithMultipleStepAndStepName' : '272641', // used for records automation
+    'transactionTestWithMultipleStepWithoutStepName' : '272642',//used for records automation
+    
+    'userRoleManageTests' : 'OnlyManageTestPermission',//user role with only test and test templates permission
+	'userRoleManageRumAndTestTemplate' : 'OnlyManageRumAndTestTemplatePermission',// userrole with only rum and test templates permission
+	'userRoleManageDivisionLevel' : 'DivisionLevelAccess',//used for division level access
+	'userroleDoNotHavePermissionForDivision' : 'DoNotHaveAccessForDivision',//used for do not have access for division
+	'url' : 'https://www.google.com', //for creating items e.g synthetic test,endpoint test
+    
+    'webPingTestID' : '211914',// used for records automation
+    'webPingTestIDForDivision' : '268968',// used for records automation
 }
+    
+    
+    
+    

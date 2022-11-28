@@ -1,14 +1,12 @@
 import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
-import { Page } from "playwright";
-import { LoginPageObjects } from "@objects/LoginPageObjects";
 import { ContactsPage } from "@pageobjects/Contacts/ContactsPage";
+import { Page } from "@playwright/test";
 
 let webActions: WebActions;
 let util: Utility
-
-export class ContactDetailsPage extends ContactsPage{    
-
+   
+export class ContactDetailsPage extends ContactsPage {
     constructor(page: Page) {
         super(page);
         webActions = new WebActions(this.page);
@@ -16,28 +14,25 @@ export class ContactDetailsPage extends ContactsPage{
     }
 
     //#region This region is for getter
-
-    private _systemAccessDropDown = '(//div[@data-testid="selection-dropdown"])[1]';
+    private _systemAccessDropDown = '(//i[@data-icon-name="chevronDark"])[1]';
     private _cancelContactPropertyPage = '//div[@data-testid="cancel-icon"]';
     private _applyButtonOnconatctPropertyPage = '//span[text()="Apply"]';
 
 
 
-
-
-    public get systemAcessDropDown() {
+    public get systemAcessDropDownLocator() {
         return this._systemAccessDropDown
     }
 
-    public get selectUserrole() {
+    public get selectUserroleLocator() {
         return (text: string) => { return `//span[text()="${text}"]` };
     }
 
-    public get cancelContactPropertyPage() {
+    public get cancelContactPropertyPageLocator() {
         return this._cancelContactPropertyPage
     }
 
-    public get applyButton() {
+    public get applyButtonLocator() {
         return this._applyButtonOnconatctPropertyPage;
     }
 
@@ -47,34 +42,28 @@ export class ContactDetailsPage extends ContactsPage{
 
 
     async clickOnSystemAcessDropDown() {
-        await webActions.clickElement(this.systemAcessDropDown);
+        await webActions.clickElement(this.systemAcessDropDownLocator);
     }
 
     async cancelContactsPropertyPage() {
-        await webActions.clickElement(this.cancelContactPropertyPage);
+        await webActions.clickElement(this.cancelContactPropertyPageLocator);
     }
 
     async selectGivenUserrole(userroleName: string) {
-        // await this.ClickDiv();
-        // let xpath = this.selectUserrole(userroleName);
-        // await webActions.clickElement(xpath);
-        // await this.clickOnApplyButton();
-        await webActions.clickElement('(//i[@data-icon-name="chevronDark"]/div)[2]');
-        //await this.page.click('(//i[@data-icon-name="chevronDark"]/div)[2]/../..');
-        //await this.page.locator('(//i[@data-icon-name="chevronDark"]/div)[2]').selectOption({index:3});
-    }
-
-    async abc(){
-        await webActions.clickElementJS('(//i[@data-icon-name="chevronDark"])[1]');
+        await webActions.clickElement(this.systemAcessDropDownLocator);
+        let xpath = this.selectUserroleLocator(userroleName);
+        await webActions.clickElement(xpath);
+        await this.clickOnApplyButton();
     }
 
     async clickOnApplyButton() {
-        await webActions.clickElement(this.applyButton);
+        await webActions.clickElement(this.applyButtonLocator);
     }
 
     async ClickDiv() {
         await webActions.clickElement('(//i[@data-icon-name="chevronDark"]/div)[2]');
     }
+    
 
     async clickI() {
         await webActions.clickElement('(//i[@data-icon-name="chevronDark"])[2]');
@@ -83,6 +72,7 @@ export class ContactDetailsPage extends ContactsPage{
     async clickBox() {
         await webActions.clickElement('//div[contains(text(),"System Access")]/../div/div//span[@id="Dropdown5450-option"]');
     }
+
 
 
 

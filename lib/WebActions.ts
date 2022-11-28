@@ -31,7 +31,7 @@ export class WebActions {
     }
 
     async waitForElementAttached(locator: string): Promise<void> {
-        await this.page.waitForSelector(locator, {});
+        await this.page.waitForSelector(locator , {});
     }
 
     async waitForPageNavigation(event: string): Promise<void> {
@@ -134,10 +134,11 @@ export class WebActions {
         });
     }
 
-    async verifyElementText(locator: string, text: string): Promise<void> {
+    
+    async getElementText(locator: string): Promise <string> {
         await this.waitForElementAttached(locator);
         const textValue = await this.page.textContent(locator);
-        expect(textValue.trim()).toBe(text);
+        return textValue;
     }
 
 
