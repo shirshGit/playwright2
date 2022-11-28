@@ -1,4 +1,4 @@
-import { LoginPage } from "@pages/LoginPage";
+import { LoginPage } from "@pageobjects/Login/LoginPage";
 import { Page, TestInfo } from "@playwright/test";
 import { TestResult, TestStatus } from "@playwright/test/reporter";
 import { WebActions } from "./WebActions";
