@@ -13,6 +13,6 @@ test("VerifyTransactionScriptFieldIsPresent @SyntheticControlCenter", async ({ b
     let prodName = await data.getValueOfTheParameter('productForJunkItems');
     let testName = await testUtility.getTestName();
     await syntheticTestDetailPage.goToNewTransactionChromeTestCreate();
-    await verification.verifyIfElementIsPresent(syntheticTestDetailPage.transactionTestScriptEditorField, 'Transaction Editor Field Not Present');
-
+    await verification.verifyIfElementIsPresent(syntheticTestDetailPage.transactionTestScriptEditorFieldLocator, 'Transaction Editor Field Not Present');
+    
 });
