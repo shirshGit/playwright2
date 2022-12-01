@@ -29,7 +29,7 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
     private _addNodeField = '//input[contains(@placeholder ,"Add Node")]';
     private _changeLogRunOn = '//td[text()="Run On"]';
     private _changeLogRunOnValue = '//td[text()="Run On"]//following-sibling::td[1]';
-    private _firstRowSearch = '//div[@data-automation-key="Run Time_1"]';
+    private _transactionTestScriptEditorField = '//div[@data-mode-id = "transaction"]//div[contains(@class, "monaco-scrollable-element editor-scrollable vs")]'
 
     public get alertOverrideToogleBtnLocator() {
         return this._alertOverrideToogleBtn;
@@ -67,6 +67,10 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
         return this._targetAndScheduleSection;
     }
 
+    public get transactionTestScriptEditorFieldLocator(){
+        return this._transactionTestScriptEditorField;
+    }
+
     public get overrideButtonInTargetAndScheduleLocator() {
         return this._overrideForTargetAndSchedulPage;
     }
@@ -93,10 +97,6 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
 
     public get changeLogRunOnValueLocator() {
         return this._changeLogRunOnValue;
-    }
-
-    public get firstSearchRowInRecordsListPage() {
-        return this._firstRowSearch;
     }
 
 
@@ -205,14 +205,25 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
     async addNodesInTest(nodeName: string[]) {
         for (let index = 0; index < nodeName.length; index++) {
             const element = nodeName[index];
-            await webActions.keyPress(this.addNodeFileld, "Enter");
+            await webActions.enterElementText(this.addNodeFileldLocator, element);
+            await webActions.keyPress(this.addNodeFileldLocator, "Enter");
+            await webActions.clickElement(this.saveButtonLoctor);
+
         }
 
     }
 
-    
+    async addNode(nodeName: string) {
+        await webActions.enterElementText(this.addNodeFileldLocator, nodeName);
+        await webActions.keyPress(this.addNodeFileldLocator, "Enter");
+        await webActions.clickElement(this.saveButtonLoctor);
 
-   
+    }
+
+
+
+
+
 
     //#endregion
 }

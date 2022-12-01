@@ -31,10 +31,13 @@ export class SynControlCenterPage {
     private _propertiesAfterThreeDotMenu = '//i[@data-icon-name="properties"]';
     private _deleteOptionAfterThreeDotMenu = '//i[@data-icon-name="delete"]';
     private _webChromeTest = '//p[text() = "Web"]/../../..//p[text() = "Chrome"]';
+    private _transactionChromeTest = '//p[text() = "Transaction"]/../../..//p[text() = "Chrome"]';
     private _pendoCloseForNewFeature = '//button[contains(@id, "pendo-close-guide")]';
     private _targetScheduletab = '//div[@id="#targeting_and_scheduling"]//span[text()="Targeting & Scheduling"]';
     private _cancelTestDetailPage = '//span[text()="Cancel"]';
     private _cancelSearchedText = '//i[@data-icon-name="Clear"]/div';
+    private _closeItemDetailPage = '//div[@data-testid="cancel-icon"]';
+    private _statusInTestPropertyPage = '(//label[@id="toggle-stateText"])[1]';   
     private _closeTestDetailPage = '//div[@data-testid="cancel-icon"]';
     private _copyOptionInThreeDotMenu = '//ul[contains(@class,"ms-ContextualMenu-list is-open")]//span[text()="Copy"]';
     private _copyButtonInTestLocationBlade = '//button[@type="button"]//span[text()="Copy"]';
@@ -118,12 +121,19 @@ export class SynControlCenterPage {
         return this._webChromeTest;
     }
 
+    public get transactionChromeTestLocator(){
+        return this._transactionChromeTest;
+    }
+    
+
     public get pendoCloseForNewFeatureLocator(){
         return this._pendoCloseForNewFeature;
     }
+
     public get cancelTestDetailPageLocator() {
         return this._cancelTestDetailPage;
     }
+
     public get copyButtonInTestLocationBladeLocator() {
         return this._copyButtonInTestLocationBlade;
     }
@@ -140,10 +150,18 @@ export class SynControlCenterPage {
         return this._statusOfFirstItem;
     }
 
+    public get getStatus() {
+        return this._statusInTestPropertyPage;
+    }
+    
     public get getItemLocationLocator(){
         return this._getItemLocation;
     }
    
+
+    public get itemInMasterBladeLocator(){
+        return (text: string) => { return `//span[text()="${text}"]` }; 
+    }
 
     public get moveButtonInHeaderSectionLocator(){
         return this._moveButtonInHeaderSection;
@@ -166,7 +184,7 @@ export class SynControlCenterPage {
         return this._testLocationTextIntestLocationBlade;
     }
 
-    public get selectedItemLocatorInDivDropDown(){
+    public get selectedItemLocatorInDivDropDownLocator(){
         return this._getDefaultItemselectedInDivisionDD;
     }
  
@@ -320,6 +338,12 @@ export class SynControlCenterPage {
 
     }
 
+    async goToNewTransactionChromeTestCreate() {
+        await webActions.clickElement(this.newItemCreationLocator);
+        await webActions.clickElement(this.transactionChromeTestLocator);
+
+    }
+
     async searchByLabel(label: string) {
         let searchByLabel = '/label:' + label;
         await this.searchItem(searchByLabel);
@@ -354,11 +378,16 @@ export class SynControlCenterPage {
         await webActions.clickElement(this.threeDotMenuOfSearchedItemLocator);
     }
 
+    async waitForItemPresentInMasterBlade(item : string){
+        await webActions.waitForElementAttached(this.itemInMasterBladeLocator(item));
+    }
+
     async getThreeDotMenuItem(itemName: string) {
         let xpath = this.threeDotMenuItemsLocator(itemName);
         return xpath;
 
     }
+
 
     async clickCopyButtonFromThreeDotMenu(itemName: string) {
         await this.searchAndClickOnThreeDotMenu(itemName);

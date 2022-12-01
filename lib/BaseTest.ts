@@ -1,5 +1,5 @@
 import { test as baseTest, TestInfo } from '@playwright/test';
-import { LoginPage } from '@pages/LoginPage';
+import { LoginPage } from '@pageobjects/Login/LoginPage';
 import { NewTabInstatntTest } from '@pages/InstantTestNewWindow';
 import { EndpointCC } from '@pages/EndpointControlCenter';
 import { SyntheticControlCenter } from '@pages/SyntheticControlCenter';
