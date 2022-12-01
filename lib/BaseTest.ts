@@ -1,7 +1,6 @@
 import { test as baseTest, TestInfo } from '@playwright/test';
 import { LoginPage } from '@pageobjects/Login/LoginPage';
 import { NewTabInstatntTest } from '@pages/InstantTestNewWindow';
-import { EndpointCC } from '@pages/EndpointControlCenter';
 import { SyntheticControlCenter } from '@pages/SyntheticControlCenter';
 import { BaseTestUtility } from './BaseTestUtility';
 import { TestResult } from '@playwright/test/reporter';
@@ -34,12 +33,16 @@ import { DashboardRecordListPage } from '@pageobjects/OverviewDashboard/Dashboar
 import { ExplorerRecordListPage } from '@pageobjects/Explorer/ExplorerRecordListPage';
 import { EndpointOverviewDashboard } from '@pageobjects/OverviewDashboard/EndpointMonitorOverview';
 import { BGPOverviewDashboard } from '@pageobjects/OverviewDashboard/BGPOverviewDashboard';
+import { EndpointControlCenterPage } from '@pageobjects/ControlCenter/EndpointControlCenter';
+import { RumControlCenterPage } from '@pageobjects/ControlCenter/RumControlCenter';
+import { LibraryControlCenterPage } from '@pageobjects/ControlCenter/LibraryControlCenter';
+import { InstantTestPage } from '@pageobjects/InstantTest/InstantTestPage';
+import { InstantTestHistoryPage } from '@pageobjects/InstantTest/InstantTestHistory';
 
 const test = baseTest.extend<{      
     baseTestUtil: BaseTestUtility;
     loginPage: LoginPage;        
     instantTabWindow: NewTabInstatntTest;
-    endpointControlCenter: EndpointCC;
     syntheticControlCenter: SyntheticControlCenter;
     verification: Verification;
     sideNavigationBar: SideNavBar;
@@ -70,6 +73,11 @@ const test = baseTest.extend<{
     explorerRecordListPage : ExplorerRecordListPage;
     endpointOverviewDB: EndpointOverviewDashboard;
     bgpOverviewDB: BGPOverviewDashboard;
+    endpointControlCenter:EndpointControlCenterPage;
+    rumControCenter: RumControlCenterPage;
+    libraryControlCenter: LibraryControlCenterPage;
+    instantTest:InstantTestPage;
+    instantTestHistory:InstantTestHistoryPage;
 
 }>({
     baseTestUtil: async ({ page }, use, testInfo: TestInfo) => {
@@ -87,7 +95,7 @@ const test = baseTest.extend<{
         await use(new NewTabInstatntTest(page))
     },
     endpointControlCenter: async ({ page }, use) => {
-        await use(new EndpointCC(page));
+        await use(new EndpointControlCenterPage(page));
     },
     syntheticControlCenter: async ({ page }, use) => {
         await use(new SyntheticControlCenter(page));
@@ -179,8 +187,18 @@ const test = baseTest.extend<{
     bgpOverviewDB:async ({ page }, use) => {
         await use(new BGPOverviewDashboard(page))
     },
-
-  
+    rumControCenter:async ({ page }, use) => {
+        await use(new RumControlCenterPage(page))
+    },
+    libraryControlCenter:async ({ page }, use) => {
+        await use(new LibraryControlCenterPage(page))
+    },
+    instantTest:async ({ page }, use) => {
+        await use(new InstantTestPage(page))
+    },
+    instantTestHistory:async ({ page }, use) => {
+        await use(new InstantTestHistoryPage(page))
+    },
 
    
 

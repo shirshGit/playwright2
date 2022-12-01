@@ -31,6 +31,10 @@ export class SideNavBar {
     private _sideNavEndpoint = '//a[text()="Endpoint"]';
     private _sideNavSmartboard = '//a[text()="Smartboard"]';
     private _testTemplate = '//a[text()="Test Templates"]';
+    private _library = '//a[text()="Library"]';
+    private _sideNavInstantTest = '#instanttestssection';
+    private _newInstantTestSiveNav = '//a[text()="New Instant Test"]';
+    private _instantTestHistorySiveNav = '//a[text()="History"]'
 
     public get sideNavControlCenter() {
         return this._sideNavControlCenter;
@@ -94,6 +98,22 @@ export class SideNavBar {
         return this._testTemplate;
     }
 
+    public get sideNavlibraryLocator(){
+        return this._library;
+    }
+
+    public get sideNavInstantTestLocator(){
+        return this._sideNavInstantTest;
+    }
+
+    public get newInstantTestSiveNavLocator(){
+        return this._newInstantTestSiveNav;
+    }
+
+    public get instantTestHistorySiveNavLocator(){
+        return this._instantTestHistorySiveNav;
+    }
+
     //#endregion
 
     async navigateToSyntheticCCFromSideNavigation() {
@@ -110,6 +130,7 @@ export class SideNavBar {
         await webActions.clickElement(this.sideNavEndpointLocator);
     }
 
+
     async navigateToExplorerFromSideNavigation() {
         await webActions.waitForElementAttached(this.sideNavAnalytics);
         await webActions.clickElement(this.sideNavAnalytics)
@@ -123,6 +144,7 @@ export class SideNavBar {
         await webActions.waitForElementAttached(this.sideNavRecords);
         await webActions.clickElement(this.sideNavRecords);
     }
+
     async navigateToUserrolePageFromSideNavigation() {
         await webActions.waitForElementAttached(this.sideNavSettingsTest);
         await webActions.clickElement(this.sideNavSettingsTest)
@@ -167,7 +189,26 @@ export class SideNavBar {
         await webActions.clickElement(this.sideNavTestTemplates);
     }
 
+    async navigateToLibraryCCFromSideNavigation() {
+        await webActions.waitForElementAttached(this.sideNavControlCenter);
+        await webActions.clickElement(this.sideNavControlCenter)
+        await webActions.waitForElementAttached(this.sideNavlibraryLocator);
+        await webActions.clickElement(this.sideNavlibraryLocator);
+    }
 
+    async navigateToNewInstantTestFromSideNavigation() {
+        await webActions.waitForElementAttached(this.sideNavInstantTestLocator);
+        await webActions.clickElement(this.sideNavInstantTestLocator)
+        await webActions.waitForElementAttached(this.newInstantTestSiveNavLocator);
+        await webActions.clickElement(this.newInstantTestSiveNavLocator);
+    }
+
+    async navigateToInstantTestHistoryFromSideNavigation() {
+        await webActions.waitForElementAttached(this.sideNavInstantTestLocator);
+        await webActions.clickElement(this.sideNavInstantTestLocator)
+        await webActions.waitForElementAttached(this.instantTestHistorySiveNavLocator);
+        await webActions.clickElement(this.instantTestHistorySiveNavLocator);
+    }
 
 
 }
