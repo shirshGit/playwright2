@@ -21,6 +21,7 @@ export class Verification {
     }
 
     async verifyIfElementIsPresent(locator: string, errorMessage: string, isHardAssert: boolean = true) {
+        await webActions.waitForElementAttached(locator);
         let noOFElements = await webActions.getNoOfElementsPresentInPage(locator);
         if (isHardAssert) {
             this.verifyHardAssertTrue(noOFElements > 0, errorMessage);

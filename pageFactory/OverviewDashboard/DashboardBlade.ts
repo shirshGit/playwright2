@@ -19,6 +19,9 @@ export class DashboardBlade {
     private _firstTile = '(//ul[contains(@class,"Tiles_tiles_")]//li)[1]//p[contains(@class,"Tiles_name_")]';
     private _createDashboard = '//span[text()="Create Dashboard"]';
     private _createFolder = '//span[text()="Create Folder"]';
+    private _testOverview = '//span[text()="Test Overview"]';
+    private _endpointOverview = '//span[text()="Endpoint Monitoring Overview"]'
+    private _bgpOverview = '//span[text()="BGP Overview"]';
     
     public get overviewDashboardLocator(){
         return this._overviewDashboard;
@@ -42,6 +45,18 @@ export class DashboardBlade {
 
     public get createFolderLocator(){
         return this._createFolder;
+    }
+
+    public get testOverviewLocator(){
+        return this._testOverview;
+    }
+
+    public get EndpointOverviewLocator(){
+        return this._endpointOverview;
+    }
+
+    public get bgpOverviewLocator(){
+        return this._bgpOverview;
     }
 
     //#endregion
@@ -69,6 +84,19 @@ export class DashboardBlade {
 
     async clickOnCreateFolder(){
         await webActions.clickElement(this.createFolderLocator);
+    }
+
+    async clickOnTestOverviewDashboard(){
+        await webActions.clickElement(this.testOverviewLocator);
+    }
+
+
+    async clickOnEndpointOverviewDashboard(){
+        await webActions.clickElement(this.EndpointOverviewLocator);
+    }
+
+    async clickOnBGPOverviewDashboard(){
+        await webActions.clickElement(this.bgpOverviewLocator);
     }
     
 

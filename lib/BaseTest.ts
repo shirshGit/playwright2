@@ -32,6 +32,8 @@ import { TestOverviewDashboard } from '@pageobjects/OverviewDashboard/TestOvervi
 import { DefaultDashboardPage } from '@pageobjects/OverviewDashboard/DefaultDashboardPage';
 import { DashboardRecordListPage } from '@pageobjects/OverviewDashboard/DashboardRecordsListPage';
 import { ExplorerRecordListPage } from '@pageobjects/Explorer/ExplorerRecordListPage';
+import { EndpointOverviewDashboard } from '@pageobjects/OverviewDashboard/EndpointMonitorOverview';
+import { BGPOverviewDashboard } from '@pageobjects/OverviewDashboard/BGPOverviewDashboard';
 
 const test = baseTest.extend<{      
     baseTestUtil: BaseTestUtility;
@@ -66,6 +68,8 @@ const test = baseTest.extend<{
     testOverviewDashboard : TestOverviewDashboard;
     dashboardRecordListPage : DashboardRecordListPage;
     explorerRecordListPage : ExplorerRecordListPage;
+    endpointOverviewDB: EndpointOverviewDashboard;
+    bgpOverviewDB: BGPOverviewDashboard;
 
 }>({
     baseTestUtil: async ({ page }, use, testInfo: TestInfo) => {
@@ -169,8 +173,12 @@ const test = baseTest.extend<{
     explorerRecordListPage: async ({ page }, use) => {
         await use(new ExplorerRecordListPage(page))
     },
-
-  
+    endpointOverviewDB: async ({ page }, use) => {
+        await use(new EndpointOverviewDashboard(page))
+    },
+    bgpOverviewDB:async ({ page }, use) => {
+        await use(new BGPOverviewDashboard(page))
+    },
 
   
 

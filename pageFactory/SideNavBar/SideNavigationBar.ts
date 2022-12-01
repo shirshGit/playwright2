@@ -3,11 +3,11 @@ import { Utility } from "@util/Utility";
 import { Page } from "playwright";
 
 let webActions: WebActions;
-let util :Utility;
+let util: Utility;
 
-export class SideNavBar{
+export class SideNavBar {
 
-    readonly page:Page;
+    readonly page: Page;
 
     constructor(page: Page) {
         this.page = page;
@@ -28,87 +28,109 @@ export class SideNavBar{
     private _sideNavContacts = '//a[text()="Contacts"]/..';
     private _sideNavRum = '//a[text()="RUM"]';
     private _sideNavRecords = '//a[text()="Records"]';
+    private _sideNavEndpoint = '//a[text()="Endpoint"]';
+    private _sideNavSmartboard = '//a[text()="Smartboard"]';
+    private _testTemplate = '//a[text()="Test Templates"]';
 
-
-    public get sideNavControlCenter(){
+    public get sideNavControlCenter() {
         return this._sideNavControlCenter;
     }
 
-    public get sideNavCCTest(){
+    public get sideNavCCTest() {
         return this._sideNavCCTest;
     }
 
-    public get sideNavAnalytics(){
+    public get sideNavAnalytics() {
         return this._sideNavAnalytics;
     }
 
-    public get sideNavSettingsTest(){
+    public get sideNavSettingsTest() {
         return this._sideNavSettings;
     }
 
-    public get sideNavExplorer(){
+    public get sideNavExplorer() {
         return this._sideNavExplorer;
     }
 
-    public get sideNavHome(){
+    public get sideNavHome() {
         return this._homesection;
     }
 
-    public get sideNavDashboard(){
+    public get sideNavDashboard() {
         return this._dashboard;
     }
-    
-    public get sideNavUserrole(){
+
+    public get sideNavUserrole() {
         return this._sideNavUserrole;
     }
 
-    public get sideNavContactIcon(){
+    public get sideNavContactIcon() {
         return this._sideNavContactIcon;
     }
 
-    public get sideNavContacts(){
+    public get sideNavContacts() {
         return this._sideNavContacts;
     }
 
-    
-    public get sideNavRUM(){
+
+    public get sideNavRUM() {
         return this._sideNavRum;
     }
 
-    
-    public get sideNavRecords(){
+
+    public get sideNavRecords() {
         return this._sideNavRecords;
     }
+
+    public get sideNavEndpointLocator() {
+        return this._sideNavEndpoint;
+    }
+
+    public get sideNavSmartboard() {
+        return this._sideNavSmartboard;
+    }
+
+    public get sideNavTestTemplates() {
+        return this._testTemplate;
+    }
+
     //#endregion
 
-    async navigateToSyntheticCCFromSideNavigation(){
+    async navigateToSyntheticCCFromSideNavigation() {
         await webActions.waitForElementAttached(this.sideNavControlCenter);
         await webActions.clickElement(this.sideNavControlCenter)
         await webActions.waitForElementAttached(this.sideNavCCTest);
         await webActions.clickElement(this.sideNavCCTest);
     }
 
-    async navigateToExplorerFromSideNavigation(){
+    async navigateToEndpointCCFromSideNavigation() {
+        await webActions.waitForElementAttached(this.sideNavControlCenter);
+        await webActions.clickElement(this.sideNavControlCenter)
+        await webActions.waitForElementAttached(this.sideNavEndpointLocator);
+        await webActions.clickElement(this.sideNavEndpointLocator);
+    }
+
+    async navigateToExplorerFromSideNavigation() {
         await webActions.waitForElementAttached(this.sideNavAnalytics);
         await webActions.clickElement(this.sideNavAnalytics)
         await webActions.waitForElementAttached(this.sideNavExplorer);
         await webActions.clickElement(this.sideNavExplorer);
     }
 
-    async navigateToRecordsFromSideNavigation(){
+    async navigateToRecordsFromSideNavigation() {
         await webActions.waitForElementAttached(this.sideNavAnalytics);
         await webActions.clickElement(this.sideNavAnalytics)
         await webActions.waitForElementAttached(this.sideNavRecords);
         await webActions.clickElement(this.sideNavRecords);
     }
-    async navigateToUserrolePageFromSideNavigation(){
+    async navigateToUserrolePageFromSideNavigation() {
         await webActions.waitForElementAttached(this.sideNavSettingsTest);
         await webActions.clickElement(this.sideNavSettingsTest)
         await webActions.waitForElementAttached(this.sideNavUserrole);
         await webActions.clickElement(this.sideNavUserrole);
     }
 
-    async navigateToDashboardFromSideNavigation(){
+    async navigateToDashboardFromSideNavigation() {
         await webActions.waitForElementAttached(this.sideNavHome);
         await webActions.clickElement(this.sideNavHome)
         await webActions.waitForElementAttached(this.sideNavDashboard);
@@ -116,14 +138,14 @@ export class SideNavBar{
     }
 
 
-    async navigateToContactPageFromSideNavigation(){
+    async navigateToContactPageFromSideNavigation() {
         await webActions.waitForElementAttached(this.sideNavContactIcon);
         await webActions.clickElement(this.sideNavContactIcon)
         await webActions.waitForElementAttached(this.sideNavContacts);
         await webActions.clickElement(this.sideNavContacts);
     }
 
-    async navigateToRUMFromSideNavigation(){
+    async navigateToRUMFromSideNavigation() {
         await webActions.waitForElementAttached(this.sideNavControlCenter);
         await webActions.clickElement(this.sideNavControlCenter)
         await webActions.waitForElementAttached(this.sideNavRUM);
@@ -131,21 +153,21 @@ export class SideNavBar{
     }
 
 
-    async navigateToSmartboardFromSideNavigation(){
+    async navigateToSmartboardFromSideNavigation() {
         await webActions.waitForElementAttached(this.sideNavHome);
         await webActions.clickElement(this.sideNavHome)
         await webActions.waitForElementAttached(this.sideNavSmartboard);
         await webActions.clickElement(this.sideNavSmartboard);
     }
 
-    async navigateToTestTemplateFromSideNavigation(){
+    async navigateToTestTemplateFromSideNavigation() {
         await webActions.waitForElementAttached(this.sideNavControlCenter);
         await webActions.clickElement(this.sideNavControlCenter)
         await webActions.waitForElementAttached(this.sideNavTestTemplates);
         await webActions.clickElement(this.sideNavTestTemplates);
     }
 
-    
+
 
 
 }
