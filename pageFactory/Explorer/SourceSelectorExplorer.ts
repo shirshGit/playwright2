@@ -18,6 +18,10 @@ export class SourceSelectorExplorer extends ExplorerPage{
     private _allcheckCheckBox = '//div[text()="Name"]/..//div[contains(@class,"TreeTable_checkboxCell_")]';
     private _selectButton = '//span[text()="Select"]';
     private _clearButton = '//i[@data-icon-name="Clear"]';
+    private _testTab = '//li[@data-testid="Tests"]';
+    private _myAppTabInSourceSelector = '//li[text()="My Apps"]';
+    private _allCheckBoxForApp = '//div[@data-item-index="0"]//i[@data-icon-name="CircleRing"]';
+    
     
     public get searchBoxLocator() {
         return this._searchBox;
@@ -35,6 +39,20 @@ export class SourceSelectorExplorer extends ExplorerPage{
         return this._clearButton
     }
 
+    public get testTabLocator(){
+        return this._testTab;
+    }
+
+    public get myAppTabInSourceSelectorLocator() {
+        return this._myAppTabInSourceSelector;
+    }
+
+    public get allCheckLocatorForApp(){
+        return this._allCheckBoxForApp;
+
+    }
+
+   
 
   
     //#endregion
@@ -49,6 +67,14 @@ export class SourceSelectorExplorer extends ExplorerPage{
         await webActions.clickElement(this.selectButtonLocator);
     }
 
+    async clickOnFirstSearchAppInSelectorPage(itemId: string) {
+        await util.delay(2000);
+        await this.searchItem(itemId);
+        await util.delay(2000);
+        await webActions.clickElementJS(this.allCheckLocatorForApp);
+        await webActions.clickElement(this.selectButtonLocator);
+    }
+
     async searchItem(item: string) {
         await webActions.waitForElementAttached(this.searchBoxLocator);
         await webActions.clickElement(this.searchBoxLocator);
@@ -57,6 +83,10 @@ export class SourceSelectorExplorer extends ExplorerPage{
         await webActions.clickElement(this.searchBoxLocator);
         await webActions.keyPress(this.searchBoxLocator, 'Enter')
         await webActions.onlyKeyPress('Enter');
+    }
+
+    async clickOnMyAppTab(){
+        await webActions.clickElement(this.myAppTabInSourceSelectorLocator);
     }
  
     

@@ -23,7 +23,13 @@
     "test:single:RecordsSourcePageValidation": "npx playwright test /tests/functional/records/RecordsSourcePageValidation.test.ts --project=Chrome --workers=1",
     "test:single:RunInfoValidation": "npx playwright test /tests/functional/records/RunInfoValidation.test.ts --project=Chrome --workers=1",
     "test:single:RecordsTransactionTest": "npx playwright test /tests/functional/records/RecordsTransactionTest.test.ts --project=Chrome --workers=1",
-    "test:single:NavigationToRecordsPageValidation": "npx playwright test /tests/functional/records/NavigationToRecordsPageValidation.test.ts --project=Chrome --workers=1"
+    "test:single:NavigationToRecordsPageValidation": "npx playwright test /tests/functional/records/NavigationToRecordsPageValidation.test.ts --project=Chrome --workers=1",
+    "test:single:ExplorerNavigation": "npx playwright test /tests/functional/navigateDifferentPages/ExplorerNavigation.test.ts --project=Chrome --workers=1",
+    "test:single:RecordsPageNavigation": "npx playwright test /tests/functional/navigateDifferentPages/RecordsPageNavigation.test.ts --project=Chrome --workers=1",
+    "test:single:SmartboardPageNavigation": "npx playwright test /tests/functional/navigateDifferentPages/SmartboardPageNavigation.test.ts --project=Chrome --workers=1",
+    "test:single:SettingsPageNavigation": "npx playwright test /tests/functional/navigateDifferentPages/SettingsPageNavigation.test.ts --project=Chrome --workers=1",
+    "test:single:ContactPageNavigation": "npx playwright test /tests/functional/navigateDifferentPages/ContactPageNavigation.test.ts --project=Chrome --workers=1"
+    
   },
   "dependencies": {
     "@playwright/test": "^1.23.0",

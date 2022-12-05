@@ -19,10 +19,10 @@ import { ContactDetailsPage } from '@pageobjects/Contacts/ContactsDetailPage';
 import { ContactsPage } from '@pageobjects/Contacts/ContactsPage';
 import { UserrolePage } from '@pageobjects/Userrole/UserrolePage';
 import { UserroleDetailPage } from '@pageobjects/Userrole/UserroleDetailPage';
-import { RecordsPage } from '@pageobjects/Records/RecordsPage';
+import { SyntheticRecordsPage } from '@pageobjects/Records/SyntheticRecordsPage';
 import { SourceSelectorPage } from '@pageobjects/Records/SourceSelecterPage';
 import { CharmBar } from '@pageobjects/CharmBar/CharmBar';
-import { SmartboardPage } from '@pageobjects/Smartboard/SmartboardPage';
+import { SyntheticSmartboardPage } from '@pageobjects/Smartboard/SyntheticSmartboardPage';
 import { SourceSelectorSmartboard } from '@pageobjects/Smartboard/SourceSelectorSmartboard';
 import { ExplorerPage} from '@pageobjects/Explorer/ExplorerPage';
 import { SourceSelectorExplorer } from '@pageobjects/Explorer/SourceSelectorExplorer';
@@ -34,6 +34,15 @@ import { DashboardRecordListPage } from '@pageobjects/OverviewDashboard/Dashboar
 import { ExplorerRecordListPage } from '@pageobjects/Explorer/ExplorerRecordListPage';
 import { EndpointOverviewDashboard } from '@pageobjects/OverviewDashboard/EndpointMonitorOverview';
 import { BGPOverviewDashboard } from '@pageobjects/OverviewDashboard/BGPOverviewDashboard';
+import { ExplorerSyntheticDetails } from '@pageobjects/Explorer/ExplorerSyntheticDetails';
+import { ExplorerRUMDetails } from '@pageobjects/Explorer/ExplorerRUMDetails';
+import { RumRecordsPage } from '@pageobjects/Records/RumRecordsPage';
+import { NodeSmartboardPage } from '@pageobjects/Smartboard/NodeSmartboardPage';
+import { RUMSmartboardPage } from '@pageobjects/Smartboard/RUMSmartboardPage';
+import { DivisionPage } from '@pageobjects/Division/DivisionPage';
+import { IndexPage } from '@pageobjects/Indexes/IndexPage';
+import { SchedulePage } from '@pageobjects/Schedules/SchedulePage';
+import { ContactGroupPage } from '@pageobjects/Contacts/ContactGroupPage';
 
 const test = baseTest.extend<{      
     baseTestUtil: BaseTestUtility;
@@ -55,10 +64,10 @@ const test = baseTest.extend<{
     contactsPage : ContactsPage;
     userrolePage: UserrolePage;
     userroleDetailPage : UserroleDetailPage;
-    recordsPage: RecordsPage;
+    syntheticRecordsPage: SyntheticRecordsPage;
     sourceSelectorPage : SourceSelectorPage;
     charmBar : CharmBar;
-    smartboardPage: SmartboardPage;
+    syntheticSmartboardPage: SyntheticSmartboardPage;
     sourceSelectorSmartboard : SourceSelectorSmartboard;
     explorerPage : ExplorerPage;
     sourceSelectorExplorer : SourceSelectorExplorer;
@@ -70,6 +79,16 @@ const test = baseTest.extend<{
     explorerRecordListPage : ExplorerRecordListPage;
     endpointOverviewDB: EndpointOverviewDashboard;
     bgpOverviewDB: BGPOverviewDashboard;
+    explorerSyntheticDetails : ExplorerSyntheticDetails;
+    explorerRUMDetails : ExplorerRUMDetails;
+    rumRecordsPage : RumRecordsPage;
+    nodeSmartboardPage : NodeSmartboardPage;
+    rumSmartboardPage : RUMSmartboardPage;
+    divisionPage : DivisionPage;
+    indexPage : IndexPage;
+    schedulePage : SchedulePage;
+    contactGroupPage : ContactGroupPage;
+
 
 }>({
     baseTestUtil: async ({ page }, use, testInfo: TestInfo) => {
@@ -134,8 +153,8 @@ const test = baseTest.extend<{
     userrolePage: async ({ page }, use) => {
         await use(new UserrolePage(page));
     },
-    recordsPage: async ({ page }, use) => {
-        await use(new RecordsPage(page));
+    syntheticRecordsPage: async ({ page }, use) => {
+        await use(new SyntheticRecordsPage(page));
     },
     sourceSelectorPage: async ({ page }, use) => {
         await use(new SourceSelectorPage(page));
@@ -143,8 +162,8 @@ const test = baseTest.extend<{
     charmBar: async ({ page }, use) => {
         await use(new CharmBar(page));
     },
-    smartboardPage: async ({ page }, use) => {
-        await use(new SmartboardPage(page));
+    syntheticSmartboardPage: async ({ page }, use) => {
+        await use(new SyntheticSmartboardPage(page));
     },
     sourceSelectorSmartboard: async ({ page }, use) => {
         await use(new SourceSelectorSmartboard(page));
@@ -178,6 +197,34 @@ const test = baseTest.extend<{
     },
     bgpOverviewDB:async ({ page }, use) => {
         await use(new BGPOverviewDashboard(page))
+    },
+    explorerSyntheticDetails: async ({ page }, use) => {
+        await use(new ExplorerSyntheticDetails(page))
+    },
+    explorerRUMDetails:async ({ page }, use) => {
+        await use(new ExplorerRUMDetails(page))
+    },
+    rumRecordsPage:async ({ page }, use) => {
+        await use(new RumRecordsPage(page))
+    },
+    rumSmartboardPage:async ({ page }, use) => {
+        await use(new RUMSmartboardPage(page))
+    },
+    nodeSmartboardPage:async ({ page }, use) => {
+        await use(new NodeSmartboardPage(page))
+    },
+    divisionPage:async ({ page }, use) => {
+        await use(new DivisionPage(page))
+    },
+    indexPage:async ({ page }, use) => {
+        await use(new IndexPage(page))
+    },
+    schedulePage:async ({ page }, use) => {
+        await use(new SchedulePage(page))
+    },
+
+    contactGroupPage:async ({ page }, use) => {
+        await use(new ContactGroupPage(page))
     },
 
   

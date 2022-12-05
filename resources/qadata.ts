@@ -16,6 +16,7 @@ export const qadata = {
     'password' : 'Password123!',
 
     'rumAppName' : 'Automation_WebApp_DoNotEdits',//used for automation
+    'rumAppId' : '3918',
     
     'testID' : '264592',// used for automation scripts where test are not being created.
     'testListPageUrl' : 'https://qaportal.catchpoint.com/ui/Symphony/ControlCenter/Tests', //for validation of synthetic cc page

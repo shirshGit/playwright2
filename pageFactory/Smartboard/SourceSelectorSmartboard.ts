@@ -1,12 +1,12 @@
 import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
 import { Page } from "playwright";
-import { SmartboardPage } from "./SmartboardPage";
+import { SyntheticSmartboardPage } from "./SyntheticSmartboardPage";
 
 let webActions: WebActions;
 let util: Utility
 
-export class SourceSelectorSmartboard extends SmartboardPage{
+export class SourceSelectorSmartboard extends SyntheticSmartboardPage{
     constructor(page: Page) {
         super(page);
         webActions = new WebActions(this.page);
@@ -14,15 +14,29 @@ export class SourceSelectorSmartboard extends SmartboardPage{
     }
 
     //#region This region is for getter
-    private _searchBox = '//input[@placeholder="Search Name, Parent, Url"]';
+    private _searchBox = '//input[@data-testid="searchText"]';
     private _firstRowSearchCheckBoxInSelectorPage = '//i[@data-icon-name="StatusCircleCheckmark"]/div';
-    
+    private _nodeTab = '//li[text()="Nodes"]';
+    private _myAppTab = '//li[text()="My Apps"]';
+    private _testTab = '//li[text()="Tests"]';
+
     public get searchBox() {
         return this._searchBox;
     }
 
     public get firstRowSearchCheckBoxInSelectorPage() {
         return this._firstRowSearchCheckBoxInSelectorPage
+    }
+
+    public get myAppTabLocator() {
+        return this._myAppTab;
+    }
+    public get nodeTabLocator() {
+        return this._nodeTab;
+    }
+
+    public get testTabLocator() {
+        return this._testTab;
     }
 
 
@@ -44,6 +58,14 @@ export class SourceSelectorSmartboard extends SmartboardPage{
         await webActions.clickElement(this.searchBox);
         await webActions.keyPress(this.searchBox, 'Enter')
         await webActions.onlyKeyPress('Enter');
+    }
+
+    async clickOnNodeTab(){
+        await webActions.clickElement(this.nodeTabLocator);
+    }
+
+    async clickOnMyAppTab(){
+        await webActions.clickElement(this.myAppTabLocator);
     }
 
     

@@ -16,6 +16,7 @@ export const stagedata = {
     'password' : 'Password123!',
 
     'rumAppName' : 'Automation_WebApp_DoNotEdit',//used for automation
+    'rumAppId' : '59',
 
     'testID' : '240905', // used for automation scripts where test are not being created.
     'testListPageUrl' : 'https://portalstage.catchpoint.com/ui/Symphony/ControlCenter/Tests', //for validation of synthetic cc page.

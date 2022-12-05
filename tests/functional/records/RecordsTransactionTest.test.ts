@@ -7,12 +7,12 @@ import { DataForEnv } from "@lib/DataForEnvironment";
 /*
    CP-14519 : Verify whether user is able to select the step if it is transaction test 
 */
-test("VerifyUserIsAbleToSelectStep  @Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, recordsPage, page, verification }) => {
+test("VerifyUserIsAbleToSelectStep  @Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, syntheticRecordsPage: recordsPage, page, verification }) => {
     await sideNavigationBar.navigateToRecordsFromSideNavigation();
     let data = new DataForEnv();
     let TransactionTestID = await data.getValueOfTheParameter('transactionTestWithMultipleStepAndStepName');
     //enter test from source selector
-    await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(TransactionTestID);
+    await sourceSelectorPage.clickOnFirstSearchedTestInSelectorPage(TransactionTestID);
     await util.delay(3000);
     //get first step metric value
     let cardMetrics : string[] = ['# Wire Requests','Downloaded Bytes','Largest Contentful Paint (ms)','Cumulative Layout Shift'];
@@ -32,12 +32,12 @@ test("VerifyUserIsAbleToSelectStep  @Records", async ({ baseTestUtil, sideNaviga
 /*
    CP-21631 : 117043 DES- For a transaction test which has Special characters in Step Name
 */
-test("VerifyStepsNameInTransactionTest  @ProductionDefectRecords", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, recordsPage, page, verification }) => {
+test("VerifyStepsNameInTransactionTest  @ProductionDefectRecords", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, syntheticRecordsPage: recordsPage, page, verification }) => {
     await sideNavigationBar.navigateToRecordsFromSideNavigation();
     let data = new DataForEnv();
     let TransactionTestID = await data.getValueOfTheParameter('transactionTestWithMultipleStepAndStepName');
     //enter test from source selector
-    await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(TransactionTestID);
+    await sourceSelectorPage.clickOnFirstSearchedTestInSelectorPage(TransactionTestID);
     await util.delay(3000);
     let stepName : string[] = ['Step1#','Step2;','Step3&'];//[these step name already define in transaction test]
     //get step names
@@ -54,12 +54,12 @@ test("VerifyStepsNameInTransactionTest  @ProductionDefectRecords", async ({ base
 /*
    CP-21637 : 117112 Step index should reset when changing runs
 */
-test("VerifyStepIndexWhenUserChangeRuns  @ProductionDefectRecords", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, recordsPage, page, verification }) => {
+test("VerifyStepIndexWhenUserChangeRuns  @ProductionDefectRecords", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, syntheticRecordsPage: recordsPage, page, verification }) => {
     await sideNavigationBar.navigateToRecordsFromSideNavigation();
     let data = new DataForEnv();
     let TransactionTestID = await data.getValueOfTheParameter('transactionTestWithMultipleStepAndStepName');
     //enter test from source selector
-    await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(TransactionTestID);
+    await sourceSelectorPage.clickOnFirstSearchedTestInSelectorPage(TransactionTestID);
     await util.delay(3000);
     let firstStep = await recordsPage.getClassPropertyOfStepNameCheckBox(0);
     await verification.verifySoftAssertTrue(firstStep.includes('is-checked'), 'After selecting transaction test first step is not selected.');
@@ -77,12 +77,12 @@ test("VerifyStepIndexWhenUserChangeRuns  @ProductionDefectRecords", async ({ bas
 /*
    CP-21638 : 117138 DES StepName is displayed as blank when we don't set the step Name in Transaction Test 
 */
-test("VerifyStepNameDoesNotDisplayAsBlank  @ProductionDefectRecords@Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, recordsPage, page, verification }) => {
+test("VerifyStepNameDoesNotDisplayAsBlank  @ProductionDefectRecords@Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, syntheticRecordsPage: recordsPage, page, verification }) => {
     await sideNavigationBar.navigateToRecordsFromSideNavigation();
     let data = new DataForEnv();
     let TransactionTestID = await data.getValueOfTheParameter('transactionTestWithMultipleStepWithoutStepName');
     //enter test from source selector
-    await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(TransactionTestID);
+    await sourceSelectorPage.clickOnFirstSearchedTestInSelectorPage(TransactionTestID);
     await util.delay(3000);
     //steps name validation
     let getStepName : string[] = await recordsPage.getStepNames(3);

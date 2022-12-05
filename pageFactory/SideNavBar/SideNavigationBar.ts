@@ -31,6 +31,10 @@ export class SideNavBar {
     private _sideNavEndpoint = '//a[text()="Endpoint"]';
     private _sideNavSmartboard = '//a[text()="Smartboard"]';
     private _testTemplate = '//a[text()="Test Templates"]';
+    private _sideNavDivision = '//a[text()="Divisions"]';
+    private _sideNavSchedules = '//a[text()="Schedules"]';
+    private _sideNavIndexes = '//a[text()="Indexes"]';
+    private _contactGroup = '//a[text()="Contact Groups"]';
 
     public get sideNavControlCenter() {
         return this._sideNavControlCenter;
@@ -92,6 +96,22 @@ export class SideNavBar {
 
     public get sideNavTestTemplates() {
         return this._testTemplate;
+    }
+
+    public get sideNavDivisionLocator() {
+        return this._sideNavDivision;
+    }
+
+    public get sideNavSchedulesLocator() {
+        return this._sideNavSchedules;
+    }
+
+    public get sideNavIndexesLocator() {
+        return this._sideNavIndexes;
+    }
+
+    public get sideNavContactGroupLocator(){
+        return this._contactGroup;
     }
 
     //#endregion
@@ -165,6 +185,34 @@ export class SideNavBar {
         await webActions.clickElement(this.sideNavControlCenter)
         await webActions.waitForElementAttached(this.sideNavTestTemplates);
         await webActions.clickElement(this.sideNavTestTemplates);
+    }
+
+    async navigateToDivisionFromSideNavigation() {
+        await webActions.waitForElementAttached(this.sideNavSettingsTest);
+        await webActions.clickElement(this.sideNavSettingsTest)
+        await webActions.waitForElementAttached(this.sideNavDivisionLocator);
+        await webActions.clickElement(this.sideNavDivisionLocator);
+    }
+
+    async navigateToSchedulesPageFromSideNavigation() {
+        await webActions.waitForElementAttached(this.sideNavSettingsTest);
+        await webActions.clickElement(this.sideNavSettingsTest)
+        await webActions.waitForElementAttached(this.sideNavSchedulesLocator);
+        await webActions.clickElement(this.sideNavSchedulesLocator);
+    }
+
+    async navigateToIndexesPageFromSideNavigation() {
+        await webActions.waitForElementAttached(this.sideNavSettingsTest);
+        await webActions.clickElement(this.sideNavSettingsTest)
+        await webActions.waitForElementAttached(this.sideNavIndexesLocator);
+        await webActions.clickElement(this.sideNavIndexesLocator);
+    }
+
+    async navigateToContactGroupPageFromSideNavigation() {
+        await webActions.waitForElementAttached(this.sideNavContactIcon);
+        await webActions.clickElement(this.sideNavContactIcon)
+        await webActions.waitForElementAttached(this.sideNavContactGroupLocator);
+        await webActions.clickElement(this.sideNavContactGroupLocator);
     }
 
 
