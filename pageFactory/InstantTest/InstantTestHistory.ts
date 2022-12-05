@@ -41,7 +41,7 @@ export class InstantTestHistoryPage {
     //#endregion
 
     //#region This region is to have the functions
-
+    
 
 
 

@@ -1,6 +1,6 @@
 import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
-import { Page } from "playwright";
+import { BrowserContext, Page } from "playwright";
 
 let webActions: WebActions;
 let util: Utility;
@@ -34,7 +34,18 @@ export class SideNavBar {
     private _library = '//a[text()="Library"]';
     private _sideNavInstantTest = '#instanttestssection';
     private _newInstantTestSiveNav = '//a[text()="New Instant Test"]';
-    private _instantTestHistorySiveNav = '//a[text()="History"]'
+    private _instantTestHistorySiveNav = '//a[text()="History"]';
+    private _reportsSideNavBar = '#reportssection';
+    private _reportPageLinkSideNavBar = '//span[contains(@class,"SiteNavigationSubGroupMenu") and text()="Reports"]';
+    private _reportTemplateSideNav = '//span[text()="Templates"]';
+    private _alertSideNav = "#alertsection";
+    private _alertNavigation = '//a[text()="Alert Log"]';
+    private _nodesSideNavMenu = '#nodesection';
+    private _mapNavigationFromNodesMenu = '//a[text()="Map"]';
+    private _groupNavigationFromNodeMenu = '//a[text()="Groups"]';
+    private _nodeListNavigationFromNodeMenu = '//a[text()="Nodes"]';
+    private _instancesFromNodesMenu = '//a[text()="Instances"]';
+
 
     public get sideNavControlCenter() {
         return this._sideNavControlCenter;
@@ -114,6 +125,46 @@ export class SideNavBar {
         return this._instantTestHistorySiveNav;
     }
 
+    public get reportsSideNavBarLocator(){
+        return this._reportsSideNavBar;
+    }
+
+    public get reportPageLinkSideNavBarLocator(){
+        return this._reportPageLinkSideNavBar;
+    }
+
+    public get reportTemplateSideNavLocator() {
+        return this._reportTemplateSideNav;
+    } 
+
+    public get alertNavBarLocator() {
+        return this._alertSideNav;
+    } 
+
+    public get alertLogNavigationLocator(){
+        return this._alertNavigation;
+    }
+
+    //============
+    public get mapNavigationFromNodesMenuLocator(){
+        return this._mapNavigationFromNodesMenu;
+    }
+
+    public get groupNavigationFromNodeMenuLocator(){
+        return this._groupNavigationFromNodeMenu;
+    }
+
+    public get nodeListNavigationFromNodeMenuLocator(){
+        return this._nodeListNavigationFromNodeMenu;
+    }
+
+    public get instancesFromNodesMenuLocator(){
+        return this._instancesFromNodesMenu;
+    }
+
+    public get nodesSideNavMenuLocator(){
+        return this._nodesSideNavMenu;
+    }
     //#endregion
 
     async navigateToSyntheticCCFromSideNavigation() {
@@ -209,6 +260,52 @@ export class SideNavBar {
         await webActions.waitForElementAttached(this.instantTestHistorySiveNavLocator);
         await webActions.clickElement(this.instantTestHistorySiveNavLocator);
     }
+
+    async clickOnReportSideNavigation() {
+        await webActions.waitForElementAttached(this.reportsSideNavBarLocator);
+        await webActions.clickElement(this.reportsSideNavBarLocator)
+    }
+
+    async getNewWindow(context: BrowserContext, locator: string) {
+        return await webActions.newWindowHandle(context, locator);
+
+    }
+
+    async navigateToAlertLogFromSideNavigation() {
+        await webActions.waitForElementAttached(this.alertNavBarLocator);
+        await webActions.clickElement(this.alertNavBarLocator)
+        await webActions.waitForElementAttached(this.alertLogNavigationLocator);
+        await webActions.clickElement(this.alertLogNavigationLocator);
+    }
+
+    async navigateToMapFromNodeSideNavigation() {
+        await webActions.waitForElementAttached(this.nodesSideNavMenuLocator);
+        await webActions.clickElement(this.nodesSideNavMenuLocator)
+        await webActions.waitForElementAttached(this.mapNavigationFromNodesMenuLocator);
+        await webActions.clickElement(this.mapNavigationFromNodesMenuLocator);
+    }
+
+    async navigateToGroupsFromNodeSideNavigation() {
+        await webActions.waitForElementAttached(this.nodesSideNavMenuLocator);
+        await webActions.clickElement(this.nodesSideNavMenuLocator)
+        await webActions.waitForElementAttached(this.groupNavigationFromNodeMenuLocator);
+        await webActions.clickElement(this.groupNavigationFromNodeMenuLocator);
+    }
+
+    async navigateToNodeFromNodeSideNavigation() {
+        await webActions.waitForElementAttached(this.nodesSideNavMenuLocator);
+        await webActions.clickElement(this.nodesSideNavMenuLocator)
+        await webActions.waitForElementAttached(this.nodeListNavigationFromNodeMenuLocator);
+        await webActions.clickElement(this.nodeListNavigationFromNodeMenuLocator);
+    }
+
+    async navigateToInstancesFromNodeSideNavigation() {
+        await webActions.waitForElementAttached(this.nodesSideNavMenuLocator);
+        await webActions.clickElement(this.nodesSideNavMenuLocator)
+        await webActions.waitForElementAttached(this.instancesFromNodesMenuLocator);
+        await webActions.clickElement(this.instancesFromNodesMenuLocator);
+    }
+
 
 
 }

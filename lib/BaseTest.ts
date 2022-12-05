@@ -38,6 +38,13 @@ import { RumControlCenterPage } from '@pageobjects/ControlCenter/RumControlCente
 import { LibraryControlCenterPage } from '@pageobjects/ControlCenter/LibraryControlCenter';
 import { InstantTestPage } from '@pageobjects/InstantTest/InstantTestPage';
 import { InstantTestHistoryPage } from '@pageobjects/InstantTest/InstantTestHistory';
+import { ReportListPage } from '@pageobjects/Reports/ReportsPage';
+import { ReportTemplatePage } from '@pageobjects/Reports/ReportTemplatePage';
+import { AlertLogPage } from '@pageobjects/Alert/AlertLog';
+import { MapPage } from '@pageobjects/Node/MapPage';
+import { NodeGroupPage } from '@pageobjects/Node/NodeGroupPage';
+import { NodeListPage } from '@pageobjects/Node/NodesListPage';
+import { InstancesListPage } from '@pageobjects/Node/IntancesListPage';
 
 const test = baseTest.extend<{      
     baseTestUtil: BaseTestUtility;
@@ -78,6 +85,13 @@ const test = baseTest.extend<{
     libraryControlCenter: LibraryControlCenterPage;
     instantTest:InstantTestPage;
     instantTestHistory:InstantTestHistoryPage;
+    reportListPage:ReportListPage;
+    reportTemplatePage:ReportTemplatePage;
+    alertLogPage: AlertLogPage;
+    nodeMapPage:MapPage;
+    nodeGroupPage:NodeGroupPage;
+    nodeListPage:NodeListPage;
+    nodeInstancePage:InstancesListPage;
 
 }>({
     baseTestUtil: async ({ page }, use, testInfo: TestInfo) => {
@@ -199,8 +213,27 @@ const test = baseTest.extend<{
     instantTestHistory:async ({ page }, use) => {
         await use(new InstantTestHistoryPage(page))
     },
-
-   
+    reportListPage:async ({ page }, use) => {
+        await use(new ReportListPage(page))
+    },
+    reportTemplatePage:async ({ page }, use) => {
+        await use(new ReportTemplatePage(page))
+    },
+    alertLogPage:async ({ page }, use) => {
+        await use(new AlertLogPage(page))
+    },
+    nodeMapPage:async ({ page }, use) => {
+        await use(new MapPage(page))
+    },
+    nodeGroupPage:async ({ page }, use) => {
+        await use(new NodeGroupPage(page))
+    },
+    nodeListPage:async ({ page }, use) => {
+        await use(new NodeListPage(page))
+    },
+    nodeInstancePage:async ({ page }, use) => {
+        await use(new InstancesListPage(page))
+    },
 
 });
 

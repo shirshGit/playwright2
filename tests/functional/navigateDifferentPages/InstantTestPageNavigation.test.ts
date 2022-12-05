@@ -14,5 +14,5 @@ test("InstantTestHistoryiNavigation @PageNavigation@ProductionSmoke@Smoke", asyn
     await verification.verifyIfElementIsPresent(instantTestHistory.urlHeaderForIntantTestHistoryLocator,'Url Header for Instant Test Table not present');
     await verification.verifyIfElementIsPresent(instantTestHistory.testTypeHeaderInInstantTestHistoryTableLocator,'Test Type for Instant Test Table not present');
     await verification.verifyIfElementIsPresent(instantTestHistory.statusInstantTestHistoryTableLocator,'Status for Instant Test Table not present');
-
+    
 })

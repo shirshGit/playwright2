@@ -8,7 +8,7 @@
   "scripts": {
     "test:single:chrome": "npx playwright test /tests/functional/cc/synthetic/VerifyFolderSettingsInheritedFromProduct.test.ts --project=Chrome --workers=1",
     "test:single:chrome2": "npx playwright test /tests/functional/cc/synthetic/VerifyUserCantDeactivateFolder.test.ts --project=Chrome --workers=1",
-    "test:single:chrome3": "npx playwright test /tests/functional/navigateDifferentPages/InstantTestPageNavigation.test.ts --project=Chrome --workers=1",
+    "test:single:chrome3": "npx playwright test /tests/functional/navigateDifferentPages/NodePagesNavigation.test.ts --project=Chrome --workers=1",
     "test:single:chrome4": "npx playwright test /tests/functional/navigateDifferentPages/OverviewDBNavigation.test.ts --project=Chrome --workers=1",
     "test:single:chromesmoke": "npx playwright test /tests/functional/cc/synthetic/ --project=ChromeSmoke --workers=1",
     "test:single:edge": "npx playwright test /tests/functional/catchpointEndpointDB.test.ts --project=Edge --workers=1",
