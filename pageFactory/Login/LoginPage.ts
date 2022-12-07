@@ -4,10 +4,12 @@ import type { Page } from 'playwright';
 import { testConfig } from '../../testConfig';
 import { BrowserContext, expect, TestInfo } from '@playwright/test';
 import { HomePage } from "@objects/HomePage";
+import { Utility } from "@util/Utility";
 
 
 
 let webActions: WebActions;
+let util : Utility;
 const ENV = process.env.ENV;
 
 export class LoginPage {
@@ -56,16 +58,30 @@ export class LoginPage {
         else if (ENV === 'stage') {
             await webActions.navigateToURL(`https://iostage.catchpoint.com/auth/Account/Login`);
         }
+        else if(ENV === 'production') {
+            await webActions.navigateToURL(`https://io.catchpoint.com/auth/Account/Login`);
+        }
 
     }
 
 
     async loginToCP(): Promise<void> {
-        await webActions.enterElementText(this.emailInputLocator, testConfig.cpun);
-        await webActions.enterElementText(this.passwordInputLocator, testConfig.cppwd);
-        await webActions.clickElement(this.loginBtnLocator);
-        //await webActions.waitForPageNavigation('domcontentloaded');
-        await webActions.waitForElementAttached(this.dashboardDDLabelLocator);
+        if (ENV === 'production') {
+            await webActions.enterElementText(this.emailInputLocator, testConfig.produn);
+            await webActions.enterElementText(this.passwordInputLocator, testConfig.prodpwd);
+            await webActions.clickElement(this.loginBtnLocator);
+            //await webActions.waitForPageNavigation('domcontentloaded');
+            await webActions.waitForElementAttached(this.dashboardDDLabelLocator);
+            //await util.delay(5000);
+            
+        }
+        else {
+            await webActions.enterElementText(this.emailInputLocator, testConfig.cpun);
+            await webActions.enterElementText(this.passwordInputLocator, testConfig.cppwd);
+            await webActions.clickElement(this.loginBtnLocator);
+            //await webActions.waitForPageNavigation('domcontentloaded');
+            await webActions.waitForElementAttached(this.dashboardDDLabelLocator);
+        }
     }
 
     async logOutFromBrowser() {

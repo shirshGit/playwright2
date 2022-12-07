@@ -1,7 +1,6 @@
 import { test as baseTest, TestInfo } from '@playwright/test';
 import { LoginPage } from '@pageobjects/Login/LoginPage';
 import { NewTabInstatntTest } from '@pages/InstantTestNewWindow';
-import { EndpointCC } from '@pages/EndpointControlCenter';
 import { SyntheticControlCenter } from '@pages/SyntheticControlCenter';
 import { BaseTestUtility } from './BaseTestUtility';
 import { TestResult } from '@playwright/test/reporter';
@@ -24,9 +23,9 @@ import { SourceSelectorPage } from '@pageobjects/Records/SourceSelecterPage';
 import { CharmBar } from '@pageobjects/CharmBar/CharmBar';
 import { SyntheticSmartboardPage } from '@pageobjects/Smartboard/SyntheticSmartboardPage';
 import { SourceSelectorSmartboard } from '@pageobjects/Smartboard/SourceSelectorSmartboard';
-import { ExplorerPage} from '@pageobjects/Explorer/ExplorerPage';
+import { ExplorerPage } from '@pageobjects/Explorer/ExplorerPage';
 import { SourceSelectorExplorer } from '@pageobjects/Explorer/SourceSelectorExplorer';
-import {ControlCenterRecords } from'@pageobjects/ControlCenter/ControlCenterRecords';
+import { ControlCenterRecords } from '@pageobjects/ControlCenter/ControlCenterRecords';
 import { DashboardBlade } from '@pageobjects/OverviewDashboard/DashboardBlade';
 import { TestOverviewDashboard } from '@pageobjects/OverviewDashboard/TestOverviewDashboardPage';
 import { DefaultDashboardPage } from '@pageobjects/OverviewDashboard/DefaultDashboardPage';
@@ -35,20 +34,31 @@ import { ExplorerRecordListPage } from '@pageobjects/Explorer/ExplorerRecordList
 import { EndpointOverviewDashboard } from '@pageobjects/OverviewDashboard/EndpointMonitorOverview';
 import { BGPOverviewDashboard } from '@pageobjects/OverviewDashboard/BGPOverviewDashboard';
 import { ExplorerSyntheticDetails } from '@pageobjects/Explorer/ExplorerSyntheticDetails';
+import { EndpointControlCenterPage } from '@pageobjects/ControlCenter/EndpointControlCenter';
 import { ExplorerRUMDetails } from '@pageobjects/Explorer/ExplorerRUMDetails';
+import { RumControlCenterPage } from '@pageobjects/ControlCenter/RumControlCenter';
 import { RumRecordsPage } from '@pageobjects/Records/RumRecordsPage';
+import { LibraryControlCenterPage } from '@pageobjects/ControlCenter/LibraryControlCenter';
 import { NodeSmartboardPage } from '@pageobjects/Smartboard/NodeSmartboardPage';
+import { InstantTestPage } from '@pageobjects/InstantTest/InstantTestPage';
 import { RUMSmartboardPage } from '@pageobjects/Smartboard/RUMSmartboardPage';
+import { InstantTestHistoryPage } from '@pageobjects/InstantTest/InstantTestHistory';
 import { DivisionPage } from '@pageobjects/Division/DivisionPage';
+import { ReportListPage } from '@pageobjects/Reports/ReportsPage';
 import { IndexPage } from '@pageobjects/Indexes/IndexPage';
+import { ReportTemplatePage } from '@pageobjects/Reports/ReportTemplatePage';
 import { SchedulePage } from '@pageobjects/Schedules/SchedulePage';
+import { AlertLogPage } from '@pageobjects/Alert/AlertLog';
 import { ContactGroupPage } from '@pageobjects/Contacts/ContactGroupPage';
+import { MapPage } from '@pageobjects/Node/MapPage';
+import { NodeGroupPage } from '@pageobjects/Node/NodeGroupPage';
+import { NodeListPage } from '@pageobjects/Node/NodesListPage';
+import { InstancesListPage } from '@pageobjects/Node/IntancesListPage';
 
-const test = baseTest.extend<{      
+const test = baseTest.extend<{
     baseTestUtil: BaseTestUtility;
-    loginPage: LoginPage;        
+    loginPage: LoginPage;
     instantTabWindow: NewTabInstatntTest;
-    endpointControlCenter: EndpointCC;
     syntheticControlCenter: SyntheticControlCenter;
     verification: Verification;
     sideNavigationBar: SideNavBar;
@@ -59,35 +69,47 @@ const test = baseTest.extend<{
     synLocationBlade: SyntheticLocationBlade;
     util: Utility;
     syntheticTestDetailPage: SyntheticTestDetailPage;
-    testUtility : TestUtility;
+    testUtility: TestUtility;
     contactDetailsPage: ContactDetailsPage;
-    contactsPage : ContactsPage;
+    contactsPage: ContactsPage;
     userrolePage: UserrolePage;
-    userroleDetailPage : UserroleDetailPage;
+    userroleDetailPage: UserroleDetailPage;
     syntheticRecordsPage: SyntheticRecordsPage;
-    sourceSelectorPage : SourceSelectorPage;
-    charmBar : CharmBar;
+    sourceSelectorPage: SourceSelectorPage;
+    charmBar: CharmBar;
     syntheticSmartboardPage: SyntheticSmartboardPage;
-    sourceSelectorSmartboard : SourceSelectorSmartboard;
-    explorerPage : ExplorerPage;
-    sourceSelectorExplorer : SourceSelectorExplorer;
-    controlCenterRecords : ControlCenterRecords;
-    dashboardBlade : DashboardBlade;
-    defaultDashboardPage : DefaultDashboardPage;
-    testOverviewDashboard : TestOverviewDashboard;
-    dashboardRecordListPage : DashboardRecordListPage;
-    explorerRecordListPage : ExplorerRecordListPage;
+    sourceSelectorSmartboard: SourceSelectorSmartboard;
+    explorerPage: ExplorerPage;
+    sourceSelectorExplorer: SourceSelectorExplorer;
+    controlCenterRecords: ControlCenterRecords;
+    dashboardBlade: DashboardBlade;
+    defaultDashboardPage: DefaultDashboardPage;
+    testOverviewDashboard: TestOverviewDashboard;
+    dashboardRecordListPage: DashboardRecordListPage;
+    explorerRecordListPage: ExplorerRecordListPage;
     endpointOverviewDB: EndpointOverviewDashboard;
     bgpOverviewDB: BGPOverviewDashboard;
-    explorerSyntheticDetails : ExplorerSyntheticDetails;
-    explorerRUMDetails : ExplorerRUMDetails;
-    rumRecordsPage : RumRecordsPage;
-    nodeSmartboardPage : NodeSmartboardPage;
-    rumSmartboardPage : RUMSmartboardPage;
-    divisionPage : DivisionPage;
-    indexPage : IndexPage;
-    schedulePage : SchedulePage;
-    contactGroupPage : ContactGroupPage;
+    explorerSyntheticDetails: ExplorerSyntheticDetails;
+    endpointControlCenter: EndpointControlCenterPage;
+    explorerRUMDetails: ExplorerRUMDetails;
+    rumControCenter: RumControlCenterPage;
+    rumRecordsPage: RumRecordsPage;
+    libraryControlCenter: LibraryControlCenterPage;
+    nodeSmartboardPage: NodeSmartboardPage;
+    instantTest: InstantTestPage;
+    rumSmartboardPage: RUMSmartboardPage;
+    instantTestHistory: InstantTestHistoryPage;
+    divisionPage: DivisionPage;
+    reportListPage: ReportListPage;
+    indexPage: IndexPage;
+    reportTemplatePage: ReportTemplatePage;
+    schedulePage: SchedulePage;
+    alertLogPage: AlertLogPage;
+    contactGroupPage: ContactGroupPage;
+    nodeMapPage: MapPage;
+    nodeGroupPage: NodeGroupPage;
+    nodeListPage: NodeListPage;
+    nodeInstancePage: InstancesListPage;
 
 
 }>({
@@ -98,7 +120,7 @@ const test = baseTest.extend<{
         await base.fullPageScreenShot(testInfo);
     },
 
-     loginPage: async ({ page }, use, testInfo) => {
+    loginPage: async ({ page }, use, testInfo) => {
         let login = new LoginPage(page);
         await use(login);
     },
@@ -106,7 +128,7 @@ const test = baseTest.extend<{
         await use(new NewTabInstatntTest(page))
     },
     endpointControlCenter: async ({ page }, use) => {
-        await use(new EndpointCC(page));
+        await use(new EndpointControlCenterPage(page));
     },
     syntheticControlCenter: async ({ page }, use) => {
         await use(new SyntheticControlCenter(page));
@@ -132,13 +154,13 @@ const test = baseTest.extend<{
     syntheticDetailsPage: async ({ page }, use) => {
         await use(new SyntheticDetailPage(page));
     },
-    util: async ({},use) => {
+    util: async ({ }, use) => {
         await use(new Utility());
     },
     syntheticTestDetailPage: async ({ page }, use) => {
         await use(new SyntheticTestDetailPage(page));
     },
-    testUtility : async ({ page }, use) => {
+    testUtility: async ({ page }, use) => {
         await use(new TestUtility());
     },
     contactDetailsPage: async ({ page }, use) => {
@@ -195,41 +217,75 @@ const test = baseTest.extend<{
     endpointOverviewDB: async ({ page }, use) => {
         await use(new EndpointOverviewDashboard(page))
     },
-    bgpOverviewDB:async ({ page }, use) => {
+    bgpOverviewDB: async ({ page }, use) => {
         await use(new BGPOverviewDashboard(page))
     },
     explorerSyntheticDetails: async ({ page }, use) => {
         await use(new ExplorerSyntheticDetails(page))
     },
-    explorerRUMDetails:async ({ page }, use) => {
+    rumControCenter: async ({ page }, use) => {
+        await use(new RumControlCenterPage(page))
+    },
+    explorerRUMDetails: async ({ page }, use) => {
         await use(new ExplorerRUMDetails(page))
     },
-    rumRecordsPage:async ({ page }, use) => {
+    libraryControlCenter: async ({ page }, use) => {
+        await use(new LibraryControlCenterPage(page))
+    },
+    rumRecordsPage: async ({ page }, use) => {
         await use(new RumRecordsPage(page))
     },
-    rumSmartboardPage:async ({ page }, use) => {
+    instantTest: async ({ page }, use) => {
+        await use(new InstantTestPage(page))
+    },
+    rumSmartboardPage: async ({ page }, use) => {
         await use(new RUMSmartboardPage(page))
     },
-    nodeSmartboardPage:async ({ page }, use) => {
+    instantTestHistory: async ({ page }, use) => {
+        await use(new InstantTestHistoryPage(page))
+    },
+    nodeSmartboardPage: async ({ page }, use) => {
         await use(new NodeSmartboardPage(page))
     },
-    divisionPage:async ({ page }, use) => {
+    reportListPage: async ({ page }, use) => {
+        await use(new ReportListPage(page))
+    },
+    divisionPage: async ({ page }, use) => {
         await use(new DivisionPage(page))
     },
-    indexPage:async ({ page }, use) => {
+    reportTemplatePage: async ({ page }, use) => {
+        await use(new ReportTemplatePage(page))
+    },
+    indexPage: async ({ page }, use) => {
         await use(new IndexPage(page))
     },
-    schedulePage:async ({ page }, use) => {
+    alertLogPage: async ({ page }, use) => {
+        await use(new AlertLogPage(page))
+    },
+    schedulePage: async ({ page }, use) => {
         await use(new SchedulePage(page))
     },
 
-    contactGroupPage:async ({ page }, use) => {
+    nodeMapPage: async ({ page }, use) => {
+        await use(new MapPage(page))
+    },
+    nodeGroupPage: async ({ page }, use) => {
+        await use(new NodeGroupPage(page))
+    },
+    nodeListPage: async ({ page }, use) => {
+        await use(new NodeListPage(page))
+    },
+    nodeInstancePage: async ({ page }, use) => {
+        await use(new InstancesListPage(page))
+    },
+
+    contactGroupPage: async ({ page }, use) => {
         await use(new ContactGroupPage(page))
     },
 
-  
 
-   
+
+
 
 });
 
