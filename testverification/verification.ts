@@ -1,6 +1,7 @@
 import { WebActions } from "@lib/WebActions";
 import { expect, Page } from "@playwright/test";
 
+
 let webActions: WebActions;
 
 export class Verification {
@@ -43,12 +44,12 @@ export class Verification {
 
     async verifyHardAssertForTextOfAnElement(locator: string, textTOMatch: string, errorMessage: string) {
 
-        await expect(this.page.locator(locator), `${errorMessage}`).toContainText(textTOMatch);
+        await expect(this.page.locator(locator), `${errorMessage}`).toContain(textTOMatch);
     }
 
     async verifySoftAssertForTextOfAnElement(locator: string, textTOMatch: string, errorMessage: string) {
 
-        await expect.soft(this.page.locator(locator), `${errorMessage}`).toContainText(textTOMatch);
+        await expect.soft(this.page.locator(locator), `${errorMessage}`).toContain(textTOMatch);
     }
 
     async verifyAttributeValueOfLocatorMatch(locator: string, attribute: string, valueToMatch: string, errorMessage: string) {

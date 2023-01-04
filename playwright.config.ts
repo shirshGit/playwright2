@@ -25,7 +25,7 @@ const config: PlaywrightTestConfig = {
 
 
   //Reporters
-  reporter: [[`./CustomReporterConfig.ts`], [`experimental-allure-playwright`], [`html`, { outputFolder: 'html-report', open: 'never' }], ['junit', {outputFile: 'resultJunit.xml'}]],
+  reporter: [[`./CustomReporterConfig.ts`], [`experimental-allure-playwright`], [`html`, { outputFolder: 'html-report', open: 'never' }], ['junit', {outputFile: 'resultJunit.xml'}],['json', {  outputFile: 'test-results.json' }]],
 
   projects: [
     {
@@ -102,7 +102,7 @@ const config: PlaywrightTestConfig = {
           slowMo: 0
         }
       },
-      grep: [new RegExp("@Smoke")]
+      grep: [new RegExp("@SyntheticControlCenter")]
     },
     {
       name: `Firefox`,

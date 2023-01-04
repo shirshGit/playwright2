@@ -7,7 +7,7 @@ let data = new DataForEnv();
     CP-4556 : Verify autocomplete contacts
 */
 
-test("@Smoke @SyntheticControlCenter Verify Contact Autocomplete For Alert Recepient", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar, verification}) => {
+test("VerifyContactAutocompleteForAlertRecepient  @Smoke@SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar, verification}) => {
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
     let prodForTestCreate =await data.getValueOfTheParameter('productForJunkItems');
     let alertRecipientName = await data.getValueOfTheParameter('alertRecipientName');

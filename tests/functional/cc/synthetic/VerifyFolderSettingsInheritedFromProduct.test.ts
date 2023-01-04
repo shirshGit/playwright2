@@ -12,7 +12,7 @@ test.beforeEach(async ({ baseTestUtil }) => {
 /*
     CP-6805:Verify Parent's settings should be Inherited to the folder
 */
-test('@Smoke @SyntheticControlCenter Verify Parents settings should be Inherited to the folder',async({util, sideNavigationBar, syntheticProductDetailPage, syntheticFolderDetailPage, verification}) => {
+test('VerifyParentsSettingsShouldBeInheritedToTheFolder    @Smoke@SyntheticControlCenter',async({util, sideNavigationBar, syntheticProductDetailPage, syntheticFolderDetailPage, verification}) => {
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
     await syntheticProductDetailPage.goToNewProductCreate();
     let productName: string = 'Automation_Delete_UI' + await util.generateRandomText(5);
