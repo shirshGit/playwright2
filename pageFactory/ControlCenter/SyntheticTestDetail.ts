@@ -24,7 +24,7 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
     private _chnageLogInTestDetailBlade = '//span[text()="Change Log"]';
     private _targetAndScheduleSection = '//div[@id="#targeting_and_scheduling"]//span[text()="Targeting & Scheduling"]';
     private _overrideForTargetAndSchedulPage = '//div[@id="#targeting_and_scheduling"]//span[text()="Override"]';
-    private _subSetOfNode = '//span[text()="Subset of nodes"]/..';
+    private _subSetOfNode = '//span[text()="Subset of nodes"]';
     private _subSetOfNodeValueBox = '//input[@id="text-field"]';
     private _addNodeField = '//input[contains(@placeholder ,"Add Node")]';
     private _changeLogRunOn = '//td[text()="Run On"]';
@@ -174,6 +174,7 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
     }
 
     async fetchTestName() {
+        await util.delay(2000);
         let testName = await webActions.getElementAttributeValue(this.getTestNameLocator, 'value');
         return testName;
     }
@@ -207,8 +208,6 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
             const element = nodeName[index];
             await webActions.enterElementText(this.addNodeFileldLocator, element);
             await webActions.keyPress(this.addNodeFileldLocator, "Enter");
-            await webActions.clickElement(this.saveButtonLoctor);
-
         }
 
     }
@@ -216,8 +215,6 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
     async addNode(nodeName: string) {
         await webActions.enterElementText(this.addNodeFileldLocator, nodeName);
         await webActions.keyPress(this.addNodeFileldLocator, "Enter");
-        await webActions.clickElement(this.saveButtonLoctor);
-
     }
 
 

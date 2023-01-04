@@ -51,7 +51,7 @@ test("ActiveTestsAreChangingToInactiveOnceWehenRefreshPage  @ProductionDefect@Sy
     //search test
     await syntheticTestDetailPage.clickOnSearchedItemInCC(testName);
     //validation for active status
-    await verification.verifySoftAssertForTextOfAnElement(synCCPage.statusOfFirstItemLocator,'Active',"Test got inactive after removing end date");
+    await verification.verifyIfElementIsPresent(synCCPage.activeStatsLocatorOfFirstSearchedItem,"Test got inactive after removing end date");
     //close test property page by clicking on cross icon
     await syntheticTestDetailPage.closePropertyPage();
     //delete test

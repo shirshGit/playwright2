@@ -9,7 +9,7 @@
     "test:single:chrome": "npx playwright test /tests/functional/cc/synthetic/VerifyFolderSettingsInheritedFromProduct.test.ts --project=Chrome --workers=1",
     "test:single:chrome2": "npx playwright test /tests/functional/cc/synthetic/VerifyUserCantDeactivateFolder.test.ts --project=Chrome --workers=1",
     "test:single:chrome3": "npx playwright test /tests/functional/cc/synthetic/CreateNewSyntheticProduct.test.ts --project=Chrome --workers=1",
-    "test:single:chrome4": "npx playwright test /tests/functional/cc/synthetic/SearchOnLabel.test.ts --project=Chrome --workers=1",
+    "test:single:chrome4": "npx playwright test /tests/functional/cc/synthetic/TestStatusValidation.test.ts --project=Chrome --workers=1",
     "test:single:chromesmoke": "npx playwright test /tests/functional/cc/synthetic/ --project=ChromeSmoke --workers=1",
     "test:single:edge": "npx playwright test /tests/functional/catchpointEndpointDB.test.ts --project=Edge --workers=1",
     "test:single:firefox": "npx playwright test /tests/functional/catchpointEndpointDB.test.ts --project=Firefox --workers=1",

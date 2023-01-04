@@ -46,16 +46,17 @@ export class SynControlCenterPage {
     private _moveButtonInHeaderSection = '//button[text()="Move"]';
     private _moveButtonInTestLocationBlade = '//button[@type="button"]//span[text()="Move"]';
     private _divisionLevelDDInRootSection = '//div[contains(@class,"DivisionComboBox_divisionSelector")]//div[@id="chevron-down-icon"]';
-    private _clientLevelInDivisionDropDown = '//div[contains(@class,"ms-Callout ms-Dropdown-callout")]//span[text()="Client Level"]';
+    private _clientLevelInDivisionDropDown = '//span[text()="Client Level"]';
     private _closeMasterBlade = '//div[@data-testid="cancel-icon"]';
     private _statusOfFirstItem = '//div[@data-automation-key="Status_4"]';
-    private _getItemLocation = '//div[contains(@class,"BasicPropertySection_")]//div[@data-automation-id="visibleContent"]';
+    private _getItemLocation = '(//span[contains(@class,"ms-Breadcrumb-item")])[2]/div';
     private _testLocationTextIntestLocationBlade = '//span[text()="Tests Location"]';
     private _getDefaultItemselectedInDivisionDD = '//span[text()="Client Level"]';
     private _rumInRootBlade = '(//div[contains(@class,"NavigationTree_navGroupText_")][normalize-space()="RUM"])[2]';
     private _divLevelDropDown = '(//div[@data-testid="divisionSelector"]//div)[1]';
     private _closeChangeLogPage = '(//div[@data-testid="cancel-icon"])[2]';
-    
+    private _copyTestProductName = '//div[text()="ProductForCopyScenariosDoNotDelete"]'
+    private _activeStatusOfFirstSearchedItem = '//span[text()="Active"]';
     public get newItemCreationLocator() {
         return this._newItemCreation;
     }
@@ -156,6 +157,10 @@ export class SynControlCenterPage {
     public get getItemLocationLocator(){
         return this._getItemLocation;
     }
+
+    public get copyTestproductNameInTestPropertyPageLocator(){
+        return this._copyTestProductName;
+    }
    
 
     public get itemInMasterBladeLocator(){
@@ -206,6 +211,14 @@ export class SynControlCenterPage {
 
     public get itemInThreeDotMenu() {
         return (text: string) => { return `//span[text()="${text}"]` };
+    }
+
+    public get selectedItemLocatorInDivDropDown(){
+        return this._clientLevelInDivisionDropDown;
+    }
+
+    public get activeStatsLocatorOfFirstSearchedItem(){
+        return this._activeStatusOfFirstSearchedItem;
     }
 
 
@@ -381,8 +394,8 @@ export class SynControlCenterPage {
 
     async getThreeDotMenuItem(itemName: string) {
         let xpath = this.threeDotMenuItemsLocator(itemName);
-        return xpath;
-
+        let item =  await webActions.getElementText(xpath);
+        return item;
     }
 
 
