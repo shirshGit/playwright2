@@ -101,7 +101,7 @@ test("UserIsAbleToSelectLocationOnSyntheticTestLocation @SyntheticControlCenter"
     //validation for Tests Location 
     await verification.verifyIfElementIsPresent(synCCPage.copyTestproductNameInTestPropertyPageLocator ,"Tests Location is not present");
     //close test property page by clicking on cross icon
-    await util.delay(1000);
+    await util.delay(2000);
     await syntheticTestDetailPage.closeTestPropertyPage();
     //delete test
     await syntheticTestDetailPage.deleteItemFromThreeDotMenu(copyTestName);

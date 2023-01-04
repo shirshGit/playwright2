@@ -6,7 +6,7 @@ import { DataForEnv } from "@lib/DataForEnvironment";
     CP-34475 : Verify "Client Level" should be selected by default under Division dropdown
 */
 
-test.skip("VerifyClientLevelShouldBeSelectedByDefaultUnderDivisionDropDown @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage,page, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
+test("VerifyClientLevelShouldBeSelectedByDefaultUnderDivisionDropDown @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage,page, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
     //navigate to cc test page
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
     //click on division drop down
@@ -20,7 +20,7 @@ test.skip("VerifyClientLevelShouldBeSelectedByDefaultUnderDivisionDropDown @Synt
      CP-34477 : Verify reset the dropdown to be set to "Client Level" and disable the dropdown when user click other
 */
 
-test.skip("VerifyResetDivisionDropDownToBeSetClientLevel @SyntheticControlCenter", async({baseTestUtil,syntheticTestDetailPage, contactDetailsPage,loginPage, sideNavigationBar,util,testUtility,synCCPage,contactsPage, verification}) => {
+test("VerifyResetDivisionDropDownToBeSetClientLevel @SyntheticControlCenter", async({baseTestUtil,syntheticTestDetailPage, contactDetailsPage,loginPage, sideNavigationBar,util,testUtility,synCCPage,contactsPage, verification}) => {
     let data = new DataForEnv();
     //navigate to contacts page
     await sideNavigationBar.navigateToContactPageFromSideNavigation();

@@ -28,7 +28,7 @@ test("CreateASyntheticProductInCC   @Smoke@SyntheticControlCenter", async ({base
   CP-6801 : Verify all existing Test data webhook is displayed in Product detail blade
 */
 
-test.skip("VerifyAllExistingTestDataWebhookIsDisplayedInProductDetailBlade    @Smoke@SyntheticControlCenter", async ({ util, verification, syntheticProductDetailPage, sideNavigationBar }) => {
+test("VerifyAllExistingTestDataWebhookIsDisplayedInProductDetailBlade    @Smoke@SyntheticControlCenter", async ({ util, verification, syntheticProductDetailPage, sideNavigationBar }) => {
   var webhookToSelect = 'DNDCookieTestWebhook';
   await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
   await syntheticProductDetailPage.goToNewProductCreate();

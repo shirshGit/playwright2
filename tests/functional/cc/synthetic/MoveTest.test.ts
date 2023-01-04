@@ -23,6 +23,7 @@ test("VerifyMoveTestInOtherLocation @SyntheticControlCenter", async({baseTestUti
     await synCCPage.moveSelectedItem(testName,prodForMoveTest);
     //search test
     await synCCPage.clickOnSearchedItemInCC(testName);
+    await util.delay(5000);
     //validation for Tests Location 
     await verification.verifyIfElementIsPresent(synCCPage.copyTestproductNameInTestPropertyPageLocator ,"Tests is not moved to selected location.");
     //close test property page by clicking on cross icon
