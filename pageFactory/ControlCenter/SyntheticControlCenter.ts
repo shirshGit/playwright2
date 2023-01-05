@@ -17,7 +17,7 @@ export class SynControlCenterPage {
 
     //#region This region is for getter
 
-    private _newItemCreation: string = '//button[text()="New"]';
+    private _newItemCreation = '//button[text()="New"]';
     private _searchBox = '//div[contains(@class,"FilterPanel_filter_")]//input[@data-testid="fabricsearchbox"]';
     private _newProductItem = '//p[text()="Product"]';
     private _newFolderItem = '//p[text()="Folder"]';
@@ -349,7 +349,7 @@ export class SynControlCenterPage {
     }
 
     async goToNewTransactionChromeTestCreate() {
-        await webActions.clickElement(this.newItemCreationLocator);
+        await webActions.clickElementJS(this.newItemCreationLocator);
         await webActions.clickElement(this.transactionChromeTestLocator);
 
     }

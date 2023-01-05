@@ -59,8 +59,8 @@ test("VerifyChangeLogShouldCaptureCorrectDataAfterUpdate @SyntheticControlCenter
     await syntheticDetailsPage.clickOnChangeLogButton();
     await util.delay(5000);
     //validation
-    verification.verifySoftAssertForTextOfAnElement(syntheticTestDetailPage.changeLogRunOnLocator, 'Run On', 'run on is not present.');
-    verification.verifySoftAssertForTextOfAnElement(syntheticTestDetailPage.changeLogRunOnValueLocator, '2', 'run on value is not present.');
+    verification.verifyIfElementIsPresent(syntheticTestDetailPage.changeLogRunOnLocator, 'run on is not present.');
+    verification.verifyIfElementIsPresent(syntheticTestDetailPage.changeLogRunOnValueLocator, 'run on value is not present.');
     //close Change Logs Page
     await syntheticTestDetailPage.closeChangeLogsPage();
     //close test property page

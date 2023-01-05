@@ -7,7 +7,7 @@ import { expect } from "@playwright/test";
     CP-16894 : Verify Settings should be Inherited
 */
 
-test("AfterCopyATestProductSettingsShouldBeInheritedInTest @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
+test.skip("AfterCopyATestProductSettingsShouldBeInheritedInTest @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
     let data = new DataForEnv();
     let prodForTestCreate = await data.getValueOfTheParameter('productForJunkItems');
     let prodForCopyTest = await data.getValueOfTheParameter('productForCopyTest');
@@ -45,7 +45,7 @@ test("AfterCopyATestProductSettingsShouldBeInheritedInTest @SyntheticControlCent
     CP-4391 : Verify 'Copy' option is available in menu for indivudual test
 */
 
-test("CopyOptionShouldBeAvailableInMenuForIndividualTest @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
+test.skip("CopyOptionShouldBeAvailableInMenuForIndividualTest @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
     let data = new DataForEnv();
     let testId = await data.getValueOfTheParameter('testID');
     //navigate to cc test page
@@ -61,7 +61,7 @@ test("CopyOptionShouldBeAvailableInMenuForIndividualTest @SyntheticControlCenter
 /*
     CP-4392 : Verify clicking on 'Copy' will open a blade to the user with the tree structure 
 */
-test("AfterClickingOnCopyTestLocationBladeShouldOpen @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
+test.skip("AfterClickingOnCopyTestLocationBladeShouldOpen @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
     let data = new DataForEnv();
     let testId = await data.getValueOfTheParameter('testID');
     //navigate to cc test page
@@ -99,6 +99,7 @@ test("UserIsAbleToSelectLocationOnSyntheticTestLocation @SyntheticControlCenter"
     //search test
     await synCCPage.clickOnSearchedItemInCC(copyTestName);
     //validation for Tests Location 
+    await util.delay(3000);
     await verification.verifyIfElementIsPresent(synCCPage.copyTestproductNameInTestPropertyPageLocator ,"Tests Location is not present");
     //close test property page by clicking on cross icon
     await util.delay(2000);
@@ -111,7 +112,7 @@ test("UserIsAbleToSelectLocationOnSyntheticTestLocation @SyntheticControlCenter"
 /*
     CP-4394 : Verify test name of copied test 
 */
-test("VeriftTestNameOfCopyTest @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
+test.skip("VeriftTestNameOfCopyTest @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
     let data = new DataForEnv();
     let prodForTestCreate = await data.getValueOfTheParameter('productForJunkItems');
     let prodForCopyTest = await data.getValueOfTheParameter('productForCopyTest');

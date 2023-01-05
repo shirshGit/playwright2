@@ -15,7 +15,7 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
 
     //#region This for properties of Test Detail Page
 
-    private _alertOverrideToogleBtn = '//div[@id = "#alerts"]//button[@id = "toggle"]';
+    private _alertOverrideToogleBtn = '(//span[text()="Override"])[5]';
     private _testNameField = '#name-input';
     private _labelInputBox = '//div[@data-testid = "labelautocomplete"]//input';
     private _targetUrlInput = '#target-url-input';
@@ -28,7 +28,7 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
     private _subSetOfNodeValueBox = '//input[@id="text-field"]';
     private _addNodeField = '//input[contains(@placeholder ,"Add Node")]';
     private _changeLogRunOn = '//td[text()="Run On"]';
-    private _changeLogRunOnValue = '//td[text()="Run On"]//following-sibling::td[1]';
+    private _changeLogRunOnValue = '//td[text()="Run On"]//following-sibling::td[text()="2"]';
     private _transactionTestScriptEditorField = '//div[@data-mode-id = "transaction"]//div[contains(@class, "monaco-scrollable-element editor-scrollable vs")]'
 
     public get alertOverrideToogleBtnLocator() {
@@ -130,6 +130,11 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
         if (toogleBtnCheck === 'true') {
             await webActions.clickElement(this.alertOverrideToogleBtnLocator);
         }
+    }
+
+    async clickOnAlertOverideButton() {
+        await webActions.waitForElementAttached(this.alertOverrideToogleBtnLocator);
+        await webActions.clickElement(this.alertOverrideToogleBtnLocator);
     }
 
     async alertToggleButtonToInheritAlertSettings() {
