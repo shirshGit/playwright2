@@ -18,6 +18,7 @@ export class AlertLogPage {
     private _alertsForTests = '//span[text()="Tests"]';
     private _alertsForRum = '//span[text()="RUM"]';
     private _testIDInAlertLogTable = '//span[text()="Test ID"]';
+    private _searchBox = '(//input[@id="fabric-search-box"])[2]';
 
 
     public get alertSectionForTestsLocator(){
@@ -30,6 +31,10 @@ export class AlertLogPage {
 
     public get testIDHeaderInAlertLogListLocator(){
         return this._testIDInAlertLogTable;
+    }
+
+    public get searchBoxLocator(){
+        return this._searchBox;
     }
 
 

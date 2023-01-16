@@ -60,9 +60,8 @@ export class SourceSelectorExplorer extends ExplorerPage{
     //#region This region is to have the functions
 
     async clickOnFirstSearchedItemInSelectorPage(itemId: string) {
-        await util.delay(5000);
         await this.searchItem(itemId);
-        await util.delay(5000);
+        await util.delay(3000);
         await webActions.clickElement(this.firstSearchedItemLocator);
         await webActions.clickElement(this.selectButtonLocator);
     }
@@ -79,8 +78,6 @@ export class SourceSelectorExplorer extends ExplorerPage{
         await webActions.waitForElementAttached(this.searchBoxLocator);
         await webActions.clickElement(this.searchBoxLocator);
         await webActions.enterElementText(this.searchBoxLocator, item);
-        await util.delay(1000);
-        await webActions.clickElement(this.searchBoxLocator);
         await webActions.keyPress(this.searchBoxLocator, 'Enter')
         await webActions.onlyKeyPress('Enter');
     }

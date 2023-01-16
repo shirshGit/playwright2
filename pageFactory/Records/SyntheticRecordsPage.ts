@@ -106,23 +106,23 @@ export class SyntheticRecordsPage {
         return (text: number) => { return `//div[@data-item-index="${text}"]//label` };
     }
 
-    public get searchBoxOfGanttChartLocator(){
+    public get searchBoxOfGanttChartLocator() {
         return this._searchBoxOfGanttChart;
     }
 
-    public get wiredRequestMetricsLocator(){
+    public get wiredRequestMetricsLocator() {
         return this._wiredRequestMetrics;
     }
 
-    public get hostMetricsLocator(){
+    public get hostMetricsLocator() {
         return this._hostMetrics;
     }
 
-    public get requestFilterDDLocator(){
+    public get requestFilterDDLocator() {
         return this._requestFilterDD;
     }
 
-    public get fileTypeDDLocator(){
+    public get fileTypeDDLocator() {
         return this._fileTypeFilterDD
     }
 
@@ -191,10 +191,11 @@ export class SyntheticRecordsPage {
         return await webActions.getCurrentPageUrl();
     }
 
-    async getIPAddressValue(){
+    async getIPAddressValue() {
         let ipAddressValue = await webActions.getElementText(this.getIPAddressLocator);
         return ipAddressValue;
 
     }
 
+   
 }

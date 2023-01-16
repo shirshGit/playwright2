@@ -7,9 +7,11 @@ import { testConfig } from '../testConfig';
 import * as path from 'path';
 import { ControlCenter } from '@objects/ControlCenter';
 import { TestResult } from '@playwright/test/reporter';
+import { Utility } from "@util/Utility";
 
 const waitForElement = testConfig.waitTimeForElement;
 const waitForPageLoad = testConfig.waitTimeForPageLoad;
+let util : Utility;
 
 export class WebActions {
     readonly page: Page;
@@ -213,5 +215,7 @@ export class WebActions {
         await this.enterElementText(loc,'');
     }
 
-    
+    // async wait(){
+    //     await util.delay(5000);
+    // }
 }

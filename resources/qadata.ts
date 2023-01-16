@@ -24,7 +24,8 @@ export const qadata = {
     'transactionTestIDWithEnforceFailureAdvanceSetting' : '269328',//used for records automation
     'transactionTestWithMultipleStepAndStepName' : '272641', // used for records automation
     'transactionTestWithMultipleStepWithoutStepName' : '272642',//used for records automation
-    
+    'transactionTestId' : '226984',//transaction test for refrence host on failure
+
     'userRoleManageTests' : 'OnlyManageTestPermission',//user role with only test and test templates permission
 	'userRoleManageRumAndTestTemplate' : 'OnlyManageRumAndTestTemplatePermission',// userrole with only rum and test templates permission
 	'userRoleManageDivisionLevel' : 'DivisionLevelAccess',//used for division level access

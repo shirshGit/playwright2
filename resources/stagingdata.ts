@@ -24,7 +24,7 @@ export const stagedata = {
     'transactionTestIDWithEnforceFailureAdvanceSetting' : '81472',//used for records automation
     'transactionTestWithMultipleStepAndStepName' : '244168', // used for records automation
     'transactionTestWithMultipleStepWithoutStepName' : '246072',//used for records automation
-    'transactionTestId' : '216885',
+    'transactionTestId' : '236336',//transaction test with refrence host on failure
 
     'userRoleManageTests' : 'OnlyManageTestPermission',//user role with only test and test templates permission
 	'userRoleManageRumAndTestTemplate' : 'OnlyManageRumAndTestTemplatePermission',// userrole with only rum and test templates permission
@@ -34,7 +34,6 @@ export const stagedata = {
     
     'webPingTestID' : '64424', // used for records automation
     'webPingTestIDForDivision' : '191274',// used for records automation
-
 }
 
 

@@ -350,5 +350,12 @@ export class SideNavBar {
         await webActions.clickElement(this.nodeListNavigationFromNodeMenuLocator);
     }
 
+    async navigateToInstancesFromNodeSideNavigation() {
+        await webActions.waitForElementAttached(this.nodesSideNavMenuLocator);
+        await webActions.clickElement(this.nodesSideNavMenuLocator)
+        await webActions.waitForElementAttached(this.instancesFromNodesMenuLocator);
+        await webActions.clickElement(this.instancesFromNodesMenuLocator);
+    }
+
 
 }

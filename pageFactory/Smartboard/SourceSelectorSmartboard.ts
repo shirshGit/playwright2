@@ -19,6 +19,19 @@ export class SourceSelectorSmartboard extends SyntheticSmartboardPage{
     private _nodeTab = '//li[text()="Nodes"]';
     private _myAppTab = '//li[text()="My Apps"]';
     private _testTab = '//li[text()="Tests"]';
+    private _endpointTab = '//li[text()="Tests"]';
+    private _employeeAppTab = '//li[text()="Tests"]';
+    private _LocationTab = '//li[text()="Tests"]';
+    private _endpointTestTab = '//li[text()="Endpoint Tests"]';
+    private _goButton = '//span[text()="Go"]';
+    private _timeZoneDropDown = '//div[@data-testid="timezone-dropdown"]';
+    private _compareDropDown = '(//i[@data-icon-name="chevrondownLarge"])[1]';
+    private _timeLine = '//div[contains(@class,"EndpointSmartboardstyles__EndpointSmartboardTimeline-")]';
+    private _summary = '//span[text()="Summary"]';
+    private _endpoint = '//span[text()="Endpoint"]';
+    private _network = '//span[text()="Network"]';
+    private _application = '//span[text()="Application"]';
+
 
     public get searchBox() {
         return this._searchBox;
@@ -37,6 +50,25 @@ export class SourceSelectorSmartboard extends SyntheticSmartboardPage{
 
     public get testTabLocator() {
         return this._testTab;
+    }
+
+    public get employeeAppTabLocator() {
+        return this._myAppTab;
+    }
+    public get endpointTabLocator() {
+        return this._endpointTab;
+    }
+
+    public get endpointTestTabLocator() {
+        return this._endpointTestTab;
+    }
+
+    public get locationTabLocator() {
+        return this._LocationTab;
+    }
+
+    public get tabLocator() {
+        return (text:string) => {return `//li[text()="${text}"]`};
     }
 
 
@@ -60,13 +92,11 @@ export class SourceSelectorSmartboard extends SyntheticSmartboardPage{
         await webActions.onlyKeyPress('Enter');
     }
 
-    async clickOnNodeTab(){
-        await webActions.clickElement(this.nodeTabLocator);
+    
+    async clickOnTab(item : string){
+        await webActions.clickElement(this.tabLocator(item));
     }
-
-    async clickOnMyAppTab(){
-        await webActions.clickElement(this.myAppTabLocator);
-    }
+    
 
     
     //#endregion

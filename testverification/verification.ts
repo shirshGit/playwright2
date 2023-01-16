@@ -31,6 +31,17 @@ export class Verification {
         }
     }
 
+    async verifyTextIsPresentInPage(text: string, errorMessage: string, isHardAssert: boolean = true) {
+        let noOFElements = await webActions.getNoOfElementsPresentInPage(text);
+        let isElementPresent = await this.page.isVisible(`text=${text}`);
+        if (isHardAssert) {
+            await expect(noOFElements > 0 && isElementPresent === true, `${errorMessage}`).toBeFalsy();
+        }
+        else {
+            await expect(noOFElements > 0 && isElementPresent === true, `${errorMessage}`).toBeFalsy();
+        }
+    }
+
     async verifyElementIsNotPresent(locator: string, errorMessage: string, isHardAssert: boolean = true) {
         let noOFElements = await webActions.getNoOfElementsPresentInPage(locator);
         if (isHardAssert) {

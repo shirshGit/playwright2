@@ -4,12 +4,11 @@ import type { Page } from 'playwright';
 import { testConfig } from '../../testConfig';
 import { BrowserContext, expect, TestInfo } from '@playwright/test';
 import { HomePage } from "@objects/HomePage";
-import { Utility } from "@util/Utility";
+
 
 
 
 let webActions: WebActions;
-let util : Utility;
 const ENV = process.env.ENV;
 
 export class LoginPage {
@@ -72,7 +71,6 @@ export class LoginPage {
             await webActions.clickElement(this.loginBtnLocator);
             //await webActions.waitForPageNavigation('domcontentloaded');
             await webActions.waitForElementAttached(this.dashboardDDLabelLocator);
-            //await util.delay(5000);
             
         }
         else {
