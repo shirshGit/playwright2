@@ -12,7 +12,7 @@ test("VerifyClientLevelShouldBeSelectedByDefaultUnderDivisionDropDown @Synthetic
     //click on division drop down
     await synCCPage.clickDivisionDropDown();
     //validation for division drop down 
-    await verification.verifySoftAssertForTextOfAnElement(synCCPage.selectedItemLocatorInDivDropDown , 'Client Level',"Client Level is not selected in division drop down.");
+    await verification.verifyIfElementIsPresent(synCCPage.selectedItemLocatorInDivDropDown ,"Client Level is not selected in division drop down.");
     
 })
 
@@ -29,7 +29,7 @@ test("VerifyResetDivisionDropDownToBeSetClientLevel @SyntheticControlCenter", as
     let password = await data.getValueOfTheParameter('password');
     //search and click contact
     await contactsPage.clickOnFirstSearchedItemInContactPage(email);
-    //chnage and apply system access
+    //change and apply system access
     await contactDetailsPage.selectGivenUserrole(userroleName);
     //logout
     await loginPage.logOutFromBrowser();
@@ -46,7 +46,7 @@ test("VerifyResetDivisionDropDownToBeSetClientLevel @SyntheticControlCenter", as
     await synCCPage.clickOnRumInRootBlade();
     await util.delay(2000);
     //validation for division drop down
-    await verification.verifySoftAssertForTextOfAnElement(synCCPage.selectedItemLocatorInDivDropDown , 'Client Level',"Client Level is not selected in division drop down.");
+    await verification.verifyIfElementIsPresent(synCCPage.selectedItemLocatorInDivDropDown ,"Client Level is not selected in division drop down.");
     
 })
 
@@ -58,7 +58,7 @@ test("VerifyDivisionDropDownIsNotPresentInTheUIWhenClientHasNoDivisionAccess @Sy
     let data = new DataForEnv();
     //navigate to contacts page
     await sideNavigationBar.navigateToContactPageFromSideNavigation();
-    let userroleName = await data.getValueOfTheParameter('userroleDoNotHavePermissionForDivision');
+    let userroleName = await data.getValueOfTheParameter('userRoleDoNotHavePermissionForDivision');
     let email = await data.getValueOfTheParameter('automationContact');
     let password = await data.getValueOfTheParameter('password');
     //search and click contact

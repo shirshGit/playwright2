@@ -22,6 +22,8 @@ export class LoginPage {
     private _passwordInput = '#Password';
     private _loginBtn = '#user-login-button';
     private _dashboardDDLabel = 'div[ id = "header"] label[class *= "DashboardHeader_dashboardLabel"]';
+    private _Persona = '//div[@id="persona"]';
+    private _logoutButton = '//button[@id="sign-out"]';
 
     public get emailInputLocator() {
         return this._emailInput;
@@ -37,6 +39,14 @@ export class LoginPage {
     
     public get dashboardDDLabelLocator(){
         return this._dashboardDDLabel;
+    }
+
+    public get persona() {
+        return this._Persona
+    }
+
+    public get logout() {
+        return this._logoutButton;
     }
 
     async navigateToCPUrl(): Promise<void> {
@@ -57,6 +67,11 @@ export class LoginPage {
         await webActions.clickElement(this.loginBtnLocator);
         //await webActions.waitForPageNavigation('domcontentloaded');
         await webActions.waitForElementAttached(this.dashboardDDLabelLocator);
+    }
+
+    async logOutFromBrowser() {
+        await webActions.clickElement(this.persona);
+        await webActions.clickElement(this.logout);
     }
 
     async loginWithOtherContact(email: string, pw: string) {

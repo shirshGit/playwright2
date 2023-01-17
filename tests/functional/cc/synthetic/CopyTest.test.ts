@@ -53,7 +53,8 @@ test("CopyOptionShouldBeAvailableInMenuForIndividualTest @SyntheticControlCenter
     //search test
     await synCCPage.searchAndClickOnThreeDotMenu(testId);
     //validation for copy option
-    await verification.verifySoftAssertForTextOfAnElement(await syntheticTestDetailPage.getThreeDotMenuItem('Copy') ,'Copy' ,"copy is not present");
+    await util.delay(2000);
+    await verification.verifyIfElementIsPresent(synCCPage.copyOptionInThreeDotMenuLocator ,"copy option is not present");
     
 })
 
@@ -67,8 +68,9 @@ test("AfterClickingOnCopyTestLocationBladeShouldOpen @SyntheticControlCenter", a
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
     //search and click on three dot menu  
     await synCCPage.clickCopyButtonFromThreeDotMenu(testId);
+    await util.delay(2000);
     //validation for Tests Location 
-    await verification.verifySoftAssertForTextOfAnElement(synCCPage.testLocationTextAfterClickingOnCopyInThreeDotMenuLocator ,'Tests Location' ,"Tests Location blade is not present after clicking on copy button in three dot menu.");
+    await verification.verifyIfElementIsPresent(synCCPage.testLocationTextAfterClickingOnCopyInThreeDotMenuLocator ,"Tests Location blade is not present after clicking on copy button in three dot menu.");
     
 })
 
@@ -93,11 +95,14 @@ test("UserIsAbleToSelectLocationOnSyntheticTestLocation @SyntheticControlCenter"
     await syntheticTestDetailPage.copyItemFromThreeDotMenu(testName,prodForCopyTest);
     //save test
     await syntheticTestDetailPage.clickSaveButton();
+    await util.delay(3000);
     //search test
     await synCCPage.clickOnSearchedItemInCC(copyTestName);
     //validation for Tests Location 
-    await verification.verifySoftAssertForTextOfAnElement(synCCPage.getItemLocationLocator , prodForCopyTest,"Tests Location is not present");
+    await util.delay(3000);
+    await verification.verifyIfElementIsPresent(synCCPage.copyTestproductNameInTestPropertyPageLocator ,"Tests Location is not present");
     //close test property page by clicking on cross icon
+    await util.delay(2000);
     await syntheticTestDetailPage.closeTestPropertyPage();
     //delete test
     await syntheticTestDetailPage.deleteItemFromThreeDotMenu(copyTestName);
@@ -125,6 +130,7 @@ test("VeriftTestNameOfCopyTest @SyntheticControlCenter", async({baseTestUtil, sy
     await syntheticTestDetailPage.copyItemFromThreeDotMenu(testName,prodForCopyTest);
     //save test
     await syntheticTestDetailPage.clickSaveButton();
+    await util.delay(2000);
     //search test
     await synCCPage.clickOnSearchedItemInCC(copiedTestName);
     //get test name

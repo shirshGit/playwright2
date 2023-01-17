@@ -22,6 +22,7 @@ test("CheckStartDateBeforeAndAfterSaveingTest  @ProductionDefect@SyntheticContro
     //create web test
     await syntheticTestDetailPage.createWebChromeTests(prodForTestCreate, testName, url);
     //fetch start date before saving test
+    await util.delay(3000);
     let startDateBeforeSavingTest = await syntheticTestDetailPage.fetchStartDate();
     //save test
     await syntheticTestDetailPage.clickSaveButton();
