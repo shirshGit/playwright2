@@ -12,7 +12,7 @@ test("VerifySmartboardTestLoads @PageNavigation@ProductionSmoke@Smoke", async({b
     await verification.verifyIfElementIsPresent(sourceSelectorSmartboard.testTabLocator, 'Test Tab is not present in source selector');
     //select test
     await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(transactionTestID);
-    //validation for metrics and filters
+    //validation for metrics
     await verification.verifyIfElementIsPresent(syntheticSmartboardPage.testTimeMetricsInTimeLineLocator,"test time metrics in time line is not present");
     await verification.verifyIfElementIsPresent(syntheticSmartboardPage.rumMetricsInTimeLineLocator,"run metrics is not present")
     await verification.verifyIfElementIsPresent(syntheticSmartboardPage.downTimeMetricsInKeyMetricLocator,"down time metrics in key metrics is not present")
@@ -36,7 +36,7 @@ test("VerifySmartboardNodeLoads @PageNavigation@ProductionSmoke@Smoke", async({b
     await sourceSelectorSmartboard.clickOnTab("Nodes");
     //select test
     await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(nodeName);
-    //validation for metrics and filters
+    //validation for metrics
     await verification.verifyIfElementIsPresent(nodeSmartboardPage.nodeNameLocator,"node name is not present");
     await verification.verifyIfElementIsPresent(nodeSmartboardPage.networkTypeLocator,"network type is not present")
     await verification.verifyIfElementIsPresent(nodeSmartboardPage.locationLocator,"location is not present")
@@ -59,7 +59,7 @@ test("VerifySmartboardRUMLoads @PageNavigation@ProductionSmoke@Smoke", async({ba
     await sourceSelectorSmartboard.clickOnTab("RUM");
     //select test
     await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(appName);
-    //validation for metrics and filters
+    //validation for metrics and filter
     await verification.verifyIfElementIsPresent(rumSmartboardPage.pageViewsMetricsValueLocator,"page view metrics value is not present");
     await verification.verifyIfElementIsPresent(rumSmartboardPage.docCompleteMetricsValueLocator,"doc complete metric value is not present")
     await verification.verifyIfElementIsPresent(rumSmartboardPage.jsValueMetricsLocator,"jsValue metric value is not present")

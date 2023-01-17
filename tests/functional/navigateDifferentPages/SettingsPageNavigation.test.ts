@@ -8,7 +8,7 @@ test("VerifySettingsUserroleLoads @PageNavigation@ProductionSmoke@Smoke", async(
     //navigate to userrole page
     await util.delay(3000);
     await sideNavigationBar.navigateToUserrolePageFromSideNavigation();
-    //validation for create button
+    //validation 
     await verification.verifyIfElementIsPresent(userrolePage.createIconLocator,"create icon is not present");
     await verification.verifyIfElementIsPresent(userrolePage.nameTextLocator,"name text is not present");
     await verification.verifyIfElementIsPresent(userrolePage.divisionTextLocator,"division text is not present");
@@ -26,7 +26,7 @@ test("VerifySettingsDivisionLoads @PageNavigation@ProductionSmoke@Smoke", async(
     //navigate to userrole page
     await util.delay(3000);
     await sideNavigationBar.navigateToDivisionFromSideNavigation();
-    //validation for create button
+    //validation 
     await verification.verifyIfElementIsPresent(divisionPage.createIconLocator,"create icon is not present");
     await verification.verifyIfElementIsPresent(divisionPage.nameTextLocator,"name text is not present");
     await verification.verifyIfElementIsPresent(divisionPage.statusIconLocator,"status text is not present");
@@ -43,7 +43,7 @@ test("VerifySettingsSchedulesLoads @PageNavigation@ProductionSmoke@Smoke", async
     //navigate to userrole page
     await util.delay(5000);
     await sideNavigationBar.navigateToSchedulesPageFromSideNavigation();
-    //validation for create button
+    //validation 
     await verification.verifyIfElementIsPresent(schedulePage.newIconLocator,"create icon is not present");
     await verification.verifyIfElementIsPresent(schedulePage.nameTextLocator,"name text is not present");
     await verification.verifyIfElementIsPresent(schedulePage.typeTextLocator,"type text is not present");
