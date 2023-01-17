@@ -12,7 +12,7 @@ test.beforeEach(async ({ baseTestUtil }) => {
   CP-30507 : Verify User can create a product with all settings and configuration using Control Center
 */
 
-test("CreateASyntheticProductInCC   @Smoke@SyntheticControlCenter", async ({baseTestUtil, verification, syntheticProductDetailPage, sideNavigationBar, util  }) => {
+test("CreateASyntheticProductInCC   @Smoke@SyntheticControlCenter@Test", async ({baseTestUtil, verification, syntheticProductDetailPage, sideNavigationBar, util  }) => {
   await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
   await syntheticProductDetailPage.goToNewProductCreate();
   let productName: string = 'Automation_Delete_UI' + await util.generateRandomText(5);

@@ -102,7 +102,7 @@ const config: PlaywrightTestConfig = {
           slowMo: 0
         }
       },
-      grep: [new RegExp("@SyntheticControlCenter")]
+      grep: [new RegExp("@Test")]
     },
     {
       name: `Firefox`,
