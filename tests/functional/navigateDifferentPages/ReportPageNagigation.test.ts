@@ -22,7 +22,7 @@ test("VerifyReportListPageLoads @PageNavigation@ProductionSmoke@Smoke", async({b
 })
 
 /*
-    CP-39722 : Verify if user is able to navigate reports templates page from side navigation  
+     CP-39722 : Verify if user is able to navigate reports templates page from side navigation 
 */
 test("VerifyReportTemplateListPageLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil, context, sideNavigationBar, verification, reportTemplatePage, util}) => {
     await util.delay(5000);
