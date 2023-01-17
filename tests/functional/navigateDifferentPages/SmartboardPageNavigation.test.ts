@@ -13,11 +13,11 @@ test("VerifySmartboardTestLoads @PageNavigation@ProductionSmoke@Smoke", async({b
     //select test
     await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(transactionTestID);
     //validation for metrics and filters
-    await verification.verifyIfElementIsPresent(syntheticSmartboardPage.testTimeMetricsInTimeLineLocator,"test time metrics is not present");
+    await verification.verifyIfElementIsPresent(syntheticSmartboardPage.testTimeMetricsInTimeLineLocator,"test time metrics in time line is not present");
     await verification.verifyIfElementIsPresent(syntheticSmartboardPage.rumMetricsInTimeLineLocator,"run metrics is not present")
-    await verification.verifyIfElementIsPresent(syntheticSmartboardPage.downTimeMetricsInKeyMetricLocator,"down time metrics is not present")
+    await verification.verifyIfElementIsPresent(syntheticSmartboardPage.downTimeMetricsInKeyMetricLocator,"down time metrics in key metrics is not present")
     await verification.verifyIfElementIsPresent(syntheticSmartboardPage.downTimeMetricsInTimeLine,"down time in timeline is not present");
-    await verification.verifyIfElementIsPresent(syntheticSmartboardPage.testTimeMetricsInKeyMetricLocator,"test time metrics is not present");
+    await verification.verifyIfElementIsPresent(syntheticSmartboardPage.testTimeMetricsInKeyMetricLocator,"test time metricsin key metrics is not present");
     //validation for something went wrong
     await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     
@@ -60,12 +60,12 @@ test("VerifySmartboardRUMLoads @PageNavigation@ProductionSmoke@Smoke", async({ba
     //select test
     await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(appName);
     //validation for metrics and filters
-    await verification.verifyIfElementIsPresent(rumSmartboardPage.pageViewsMetricsValueLocator,"page view metrics is not present");
-    await verification.verifyIfElementIsPresent(rumSmartboardPage.docCompleteMetricsValueLocator,"doc complete metric is not present")
-    await verification.verifyIfElementIsPresent(rumSmartboardPage.jsValueMetricsLocator,"jsValue metric is not present")
-    await verification.verifyIfElementIsPresent(rumSmartboardPage.filterButtonDropDown,"filter button is not present");
-    await verification.verifyIfElementIsPresent(rumSmartboardPage.responseMetricsValueLocator,"response metric is not present")
-    await verification.verifyIfElementIsPresent(rumSmartboardPage.domInteractiveMetricsValueLocator,"domInteractive metrics is not present");
+    await verification.verifyIfElementIsPresent(rumSmartboardPage.pageViewsMetricsValueLocator,"page view metrics value is not present");
+    await verification.verifyIfElementIsPresent(rumSmartboardPage.docCompleteMetricsValueLocator,"doc complete metric value is not present")
+    await verification.verifyIfElementIsPresent(rumSmartboardPage.jsValueMetricsLocator,"jsValue metric value is not present")
+    await verification.verifyIfElementIsPresent(rumSmartboardPage.filterButtonDropDown,"filter button drop down is not present");
+    await verification.verifyIfElementIsPresent(rumSmartboardPage.responseMetricsValueLocator,"response metric value is not present")
+    await verification.verifyIfElementIsPresent(rumSmartboardPage.domInteractiveMetricsValueLocator,"domInteractive metrics value is not present");
     //validation for something went wrong
     await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     

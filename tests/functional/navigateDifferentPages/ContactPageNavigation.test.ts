@@ -25,7 +25,6 @@ test("VerifyContactLoads @PageNavigation@ProductionSmoke@Smoke", async ({ baseTe
 /*
      CP-44300 : Verify left navigation for Contacts group Page
 */
-
 test("VerifyContactGroupLoads @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification,contactGroupPage, util }) => {
     //navigate to contacts page
     await util.delay(4000);

@@ -54,6 +54,7 @@ import { MapPage } from '@pageobjects/Node/MapPage';
 import { NodeGroupPage } from '@pageobjects/Node/NodeGroupPage';
 import { NodeListPage } from '@pageobjects/Node/NodesListPage';
 import { InstancesListPage } from '@pageobjects/Node/IntancesListPage';
+import { RecordsPage } from '@pageobjects/Records/RecordsPage';
 
 const test = baseTest.extend<{
     baseTestUtil: BaseTestUtility;
@@ -110,6 +111,7 @@ const test = baseTest.extend<{
     nodeGroupPage: NodeGroupPage;
     nodeListPage: NodeListPage;
     nodeInstancePage: InstancesListPage;
+    recordsPage: RecordsPage;
 
 
 }>({
@@ -282,6 +284,10 @@ const test = baseTest.extend<{
     contactGroupPage: async ({ page }, use) => {
         await use(new ContactGroupPage(page))
     },
+    recordsPage: async ({ page }, use) => {
+        await use(new RecordsPage(page));
+    },
+  
 
 
 

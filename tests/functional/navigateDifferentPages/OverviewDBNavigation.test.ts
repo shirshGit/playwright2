@@ -9,7 +9,7 @@ test("VerifyOverviewDashboardLoads @PageNavigation@ProductionSmoke@Smoke", async
     await verification.verifyIfElementIsPresent(defaultDashboardPage.eventSectionOverviewDashboardLocator, 'Event Section is not Present');
     await verification.verifyIfElementIsPresent(defaultDashboardPage.alertSectionOverviewDashboardLocator, 'Alert Section is not Present');
     await verification.verifyIfElementIsPresent(defaultDashboardPage.nodeMapPerformanceOverviewLocator, 'Node Map Section is not present');
-    //await verification.verifyIfElementIsPresent(defaultDashboardPage.rumWidgetinOverviewDashboardLocator,'Rum Widget is not present');
+    await verification.verifyIfElementIsPresent(defaultDashboardPage.rumWidgetinOverviewDashboardLocator,'Rum Widget is not present');
     //validation for something went wrong
     await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     
@@ -19,7 +19,6 @@ test("VerifyOverviewDashboardLoads @PageNavigation@ProductionSmoke@Smoke", async
   CP-44295 : Verify Widgets in test overview dashboard page
 */
 test("VerifyTestOverviewDashboardLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil, defaultDashboardPage, verification, util,testOverviewDashboard, dashboardBlade}) => {
-    
     await defaultDashboardPage.clickOnOverviewdashboard();
     await dashboardBlade.clickOnOverviewDashboardDropDown();
     await dashboardBlade.clickOnTestOverviewDashboard();
@@ -39,7 +38,6 @@ test("VerifyTestOverviewDashboardLoads @PageNavigation@ProductionSmoke@Smoke", a
 */
 
 test("VerifyEndpointOverviewDBLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil, defaultDashboardPage, verification, util,testOverviewDashboard, dashboardBlade, endpointOverviewDB}) => {
-    
     await defaultDashboardPage.clickOnOverviewdashboard();
     await dashboardBlade.clickOnOverviewDashboardDropDown();
     await dashboardBlade.clickOnEndpointOverviewDashboard();
@@ -57,7 +55,6 @@ test("VerifyEndpointOverviewDBLoads @PageNavigation@ProductionSmoke@Smoke", asyn
     CP-39997 : To Validate BGP Metric Cards RPKI Status, %Reachability, #Hijacks , #Neighboring Peers , # Prefix withdrawn in BGP Dashboard
 */
 test("VerifyBGPOverviewDBLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil, defaultDashboardPage, verification, util,testOverviewDashboard, dashboardBlade, bgpOverviewDB}) => {
-    
     await defaultDashboardPage.clickOnOverviewdashboard();
     await dashboardBlade.clickOnOverviewDashboardDropDown();
     await dashboardBlade.clickOnBGPOverviewDashboard();

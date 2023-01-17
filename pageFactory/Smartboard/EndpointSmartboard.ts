@@ -23,21 +23,6 @@ export class EndpointSmartboardPage {
     private _endpoint = '//span[text()="Endpoint"]';
     private _network = '//span[text()="Network"]';
     private _application = '//span[text()="Application"]';
-    private _experienceStore = '';
-    private _networkStore = '';
-    private _appStore = '';
-    private _pageView = '';
-    private _location = '';
-    private _error = '';
-    private _networkScore = '';
-    private _locationInNetworkTab = "";
-    private  _testRun = '';
-    private _failure = '';
-    private _packetLoss = '';
-    private _roundTrip = '';
-
-
-
 
 
     public get locationTabLocator() {

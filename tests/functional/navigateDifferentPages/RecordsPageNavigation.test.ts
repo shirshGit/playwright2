@@ -3,7 +3,7 @@ import { DataForEnv } from "@lib/DataForEnvironment";
 import { expect } from "@playwright/test";
 
 /*
- CP-41352 : Verify Metrics for Web chrome test in Summary tab
+  CP-44184 : Verify navigate to records page by left navigation 
 */
 test("VerifyRecordsTestLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorPage,syntheticRecordsPage, util}) => {
     let data = new DataForEnv();

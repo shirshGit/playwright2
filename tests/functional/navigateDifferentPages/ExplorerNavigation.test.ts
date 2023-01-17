@@ -15,10 +15,10 @@ test("VerifyExplorerTestLoads @PageNavigation@ProductionSmoke@Smoke", async({bas
     // click on summary tab
     await explorerPage.clickOnSummaryTab();
     //validation for summary tab metrics and value
-    await verification.verifyIfElementIsPresent(explorerSyntheticDetails.runMetricsTextLocator,"run metrics is not present");
-    await verification.verifyIfElementIsPresent(explorerSyntheticDetails.testTimeMetricsTextLocator,"test time metrics is not present")
-    await verification.verifyIfElementIsPresent(explorerSyntheticDetails.availabilityMetricsTextLocator,"availability metrics is not present")
-    await verification.verifyIfElementIsPresent(explorerSyntheticDetails.runMetricsValueLocator,"run metrics  value is not present");
+    await verification.verifyIfElementIsPresent(explorerSyntheticDetails.runMetricsTextLocator,"run metrics text is not present");
+    await verification.verifyIfElementIsPresent(explorerSyntheticDetails.testTimeMetricsTextLocator,"test time metrics text is not present")
+    await verification.verifyIfElementIsPresent(explorerSyntheticDetails.availabilityMetricsTextLocator,"availability metrics yexy is not present")
+    await verification.verifyIfElementIsPresent(explorerSyntheticDetails.runMetricsValueLocator,"run metrics value is not present");
     await verification.verifyIfElementIsPresent(explorerSyntheticDetails.testTimeMetricsValueLocator,"test time metrics value is not present")
     await verification.verifyIfElementIsPresent(explorerSyntheticDetails.availabilityMetricsValueLocator,"availability metrics value is not present")
     //validation for something went wrong
@@ -46,10 +46,10 @@ test("VerifyExplorerRUMLoads @PageNavigation@ProductionSmoke@Smoke", async({base
     // click on summary tab
     await explorerPage.clickOnSummaryTab();
     //validation for summary tab metrics and value
-    await verification.verifyIfElementIsPresent(explorerRUMDetails.avgDOCCompleteMetricsTextLocator,"run metrics is not present");
-    await verification.verifyIfElementIsPresent(explorerRUMDetails.pageViewsMetricsTextLocator,"test time metrics is not present")
-    await verification.verifyIfElementIsPresent(explorerRUMDetails.avgDOCCompleteMetricsValueLocator,"availability metrics is not present")
-    //await verification.verifyIfElementIsPresent(explorerRUMDetails.pageViewsMetricsLocator,"run metrics value is not present");
+    await verification.verifyIfElementIsPresent(explorerRUMDetails.avgDOCCompleteMetricsTextLocator,"avg doc complete metrics text is not present");
+    await verification.verifyIfElementIsPresent(explorerRUMDetails.pageViewsMetricsTextLocator,"page view metrics text is not present")
+    await verification.verifyIfElementIsPresent(explorerRUMDetails.avgDOCCompleteMetricsValueLocator,"avg doc complete metrics value is not present")
+    await verification.verifyIfElementIsPresent(explorerRUMDetails.pageViewsMetricValueLocator,"page view metrics value is not present");
     //validation for something went wrong
     await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     
