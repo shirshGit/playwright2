@@ -29,6 +29,6 @@ export default class CustomReporterConfig implements Reporter {
 
 
     onError(error: TestError): void {
-        console.log(error.message);
+        console.log(`Error: ${error.message}`);
     }
 }
