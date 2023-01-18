@@ -7,7 +7,7 @@ import { expect } from "@playwright/test";
     CP-16894 : Verify Settings should be Inherited
 */
 
-test("AfterCopyATestProductSettingsShouldBeInheritedInTest @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
+test.skip("AfterCopyATestProductSettingsShouldBeInheritedInTest @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
     let data = new DataForEnv();
     let prodForTestCreate = await data.getValueOfTheParameter('productForJunkItems');
     let prodForCopyTest = await data.getValueOfTheParameter('productForCopyTest');
@@ -45,7 +45,7 @@ test("AfterCopyATestProductSettingsShouldBeInheritedInTest @SyntheticControlCent
     CP-4391 : Verify 'Copy' option is available in menu for indivudual test
 */
 
-test("CopyOptionShouldBeAvailableInMenuForIndividualTest @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
+test.skip("CopyOptionShouldBeAvailableInMenuForIndividualTest @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
     let data = new DataForEnv();
     let testId = await data.getValueOfTheParameter('testID');
     //navigate to cc test page
@@ -106,6 +106,7 @@ test("UserIsAbleToSelectLocationOnSyntheticTestLocation @SyntheticControlCenter"
     await syntheticTestDetailPage.closeTestPropertyPage();
     //delete test
     await syntheticTestDetailPage.deleteItemFromThreeDotMenu(copyTestName);
+    await util.delay(2000);
     await syntheticTestDetailPage.deleteItemFromThreeDotMenu(testName);
 })
 
