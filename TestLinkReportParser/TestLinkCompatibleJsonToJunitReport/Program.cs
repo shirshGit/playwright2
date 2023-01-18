@@ -1,6 +1,11 @@
-﻿using System;
+﻿using JsonReportToTestLinkCompatibleReport;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace JsonReportToTestLinkCompatibleReport
+namespace TestLinkCompatibleJsonToJunitReport
 {
     class Program
     {
@@ -8,7 +13,6 @@ namespace JsonReportToTestLinkCompatibleReport
         {
             JsonReportToXmlReport.CreateXmlFromJson(JsonReportToXmlReport.ReadJsonReport());
             Console.WriteLine("Hello World!");
-            Console.ReadLine();
         }
     }
 }

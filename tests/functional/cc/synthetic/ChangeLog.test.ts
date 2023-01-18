@@ -6,7 +6,7 @@ import { DataForEnv } from "@lib/DataForEnvironment";
     CP-26410 : Verify user should see Change Log option on the test update properties
 */
 
-test("VerifyUserShouldSeeChangeLogOptionOnTestPropertyPage @SyntheticControlCenter", async ({ baseTestUtil, syntheticTestDetailPage, page, sideNavigationBar, util, testUtility, synCCPage, verification }) => {
+test("VerifyUserShouldSeeChangeLogOptionOnTestPropertyPage @SyntheticControlCenter@Test", async ({ baseTestUtil, syntheticTestDetailPage, page, sideNavigationBar, util, testUtility, synCCPage, verification }) => {
     let data = new DataForEnv();
     let testID = await data.getValueOfTheParameter('testID');
     //navigate to CC page
