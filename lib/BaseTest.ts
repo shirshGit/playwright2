@@ -22,6 +22,7 @@ import { UserroleDetailPage } from '@pageobjects/Userrole/UserroleDetailPage';
 import { RecordsPage } from '@pageobjects/Records/RecordsPage';
 import { SourceSelectorPage } from '@pageobjects/Records/SourceSelecterPage';
 import { CharmBar } from '@pageobjects/CharmBar/CharmBar';
+import { GanttBladePage } from '@pageobjects/Records/GanttBladePage';
 
 const test = baseTest.extend<{
     baseTestUtil: BaseTestUtility;
@@ -46,6 +47,7 @@ const test = baseTest.extend<{
     recordsPage: RecordsPage;
     sourceSelectorPage : SourceSelectorPage;
     charmBar : CharmBar;
+    ganttBladePage : GanttBladePage;
 
 }>({
     baseTestUtil: async ({ page }, use, testInfo: TestInfo) => {
@@ -118,6 +120,9 @@ const test = baseTest.extend<{
     },
     charmBar: async ({ page }, use) => {
         await use(new CharmBar(page));
+    },
+    ganttBladePage: async ({ page }, use) => {
+        await use(new GanttBladePage(page));
     },
   
 

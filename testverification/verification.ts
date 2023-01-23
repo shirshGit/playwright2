@@ -6,7 +6,6 @@ let webActions: WebActions;
 export class Verification {
 
     readonly page: Page;
-
     constructor(page: Page) {
         this.page = page;
         webActions = new WebActions(this.page);
@@ -42,12 +41,10 @@ export class Verification {
 
 
     async verifyHardAssertForTextOfAnElement(locator: string, textTOMatch: string, errorMessage: string) {
-
         await expect(this.page.locator(locator), `${errorMessage}`).toContainText(textTOMatch);
     }
 
     async verifySoftAssertForTextOfAnElement(locator: string, textTOMatch: string, errorMessage: string) {
-
         await expect.soft(this.page.locator(locator), `${errorMessage}`).toContainText(textTOMatch);
     }
 
@@ -66,6 +63,11 @@ export class Verification {
         await listToCompare.forEach(val => expect.soft(listToCompareWith.includes(val), `Value did not match for ${val} input`).toBeTruthy());
     }
 
-
+    async verifyValueIsNotNull(itemList : string[], errorMessage : string){
+        await itemList.forEach(element =>  {
+        let value = element;
+         expect.soft((value),errorMessage).not.toBeNull();
+        });
+    }
 
 }

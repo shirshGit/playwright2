@@ -28,7 +28,8 @@ export class SideNavBar{
     private _sideNavContacts = '//a[text()="Contacts"]/..';
     private _sideNavRum = '//a[text()="RUM"]';
     private _sideNavRecords = '//a[text()="Records"]';
-    private _testTemplate = '//a[text()="Test Templates"]'
+    private _sideNavSmartboard = '//a[text()="Smartboard"]';
+    private _testTemplate = '//a[text()="Test Templates"]';
 
 
 
@@ -59,6 +60,10 @@ export class SideNavBar{
     public get sideNavDashboard(){
         return this._dashboard;
     }
+
+    public get sideNavSmartboard(){
+        return this._sideNavSmartboard;
+    }
     
     public get sideNavUserrole(){
         return this._sideNavUserrole;
@@ -79,7 +84,7 @@ export class SideNavBar{
     public get sideNavRecordsTest(){
         return this._sideNavRecords;
     }
-
+    
     public get sideNavTestTemplates(){
         return this._testTemplate;
     }
@@ -111,6 +116,13 @@ export class SideNavBar{
         await webActions.clickElement(this.sideNavHome)
         await webActions.waitForElementAttached(this.sideNavDashboard);
         await webActions.clickElement(this.sideNavDashboard);
+    }
+
+    async navigateToSmartboardFromSideNavigation(){
+        await webActions.waitForElementAttached(this.sideNavHome);
+        await webActions.clickElement(this.sideNavHome)
+        await webActions.waitForElementAttached(this.sideNavSmartboard);
+        await webActions.clickElement(this.sideNavSmartboard);
     }
 
 

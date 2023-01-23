@@ -23,7 +23,8 @@ export const qadata = {
     'transactionTestIDWithEnforceFailureAdvanceSetting' : '269328',//used for records automation
     'transactionTestWithMultipleStepAndStepName' : '272641', // used for records automation
     'transactionTestWithMultipleStepWithoutStepName' : '272642',//used for records automation
-    
+    'transactionTestWithRefrenceHostOnFailure' : '256480',
+
     'userRoleManageTests' : 'OnlyManageTestPermission',//user role with only test and test templates permission
 	'userRoleManageRumAndTestTemplate' : 'OnlyManageRumAndTestTemplatePermission',// userrole with only rum and test templates permission
 	'userRoleManageDivisionLevel' : 'DivisionLevelAccess',//used for division level access
@@ -32,6 +33,14 @@ export const qadata = {
     
     'webPingTestID' : '211914',// used for records automation
     'webPingTestIDForDivision' : '268968',// used for records automation
+    'webTestForZoneFilterTest' : '281816',
+    'web40x50xTestID' : '212311',
+    'webTestForTracepointAndIndicator' : '295329',
+    'webTestWithRefrenceHostOnFailure' : '256479',
+    'webTestWithWarningAndError' : '300679',
+
+    'zoneName' : 'UIAutomationDND',
+    
 }
     
     
