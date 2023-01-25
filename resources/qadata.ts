@@ -2,14 +2,22 @@ export const qadata = {
     'alertRecipientName' : 'Client Admin DoNotDelete', //for creating items which needs contact
     'automationContact' : 'userrole9_DoNOTDeleteqaautomationxclient-clientadministrator@catchpoint.com', //contact used for automation, where assiging other userrole is required
 	
+    'bgpTest' : '200723',
+
     'defaultUserrole' : 'Client Administrator',//for contact default system access
     
+    'endpointTracerouteTestID' : '3892',
+    'endpointLocationID' : '7003',
+    'endpointID' : '192782262991156',
+    'endpointEmployeeApp' : '2073',
+
     'imapTestID' : '276990', // used for records automation
 
     'mqttTestID' : '276989',// used for records automation
 
     'node' : 'Denver - Level3 - QA',   //for creating test
     'ntpTestID' : '276988',// used for records automation
+    'nodeToNodeTest' : '301201',
     
     'productForJunkItems' : 'Selenium',  //for creating folder and test for automation
     'productForCopyTest' : 'ProductForCopyScenariosDoNotDelete',//product for copy test scenarios

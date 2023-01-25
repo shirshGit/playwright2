@@ -67,8 +67,11 @@ export class SourceSelectorSmartboard extends SyntheticSmartboardPage{
         return this._LocationTab;
     }
 
-    public get tabLocator() {
+    public get tabLocatorInSourceSelector() {
         return (text:string) => {return `//li[text()="${text}"]`};
+    }
+    public get tabLocator() {
+        return (text:string) => {return `//span[text()="${text}"]`};
     }
 
 
@@ -93,6 +96,10 @@ export class SourceSelectorSmartboard extends SyntheticSmartboardPage{
     }
 
     
+    async clickOnTabInSourceSelector(item : string){
+        await webActions.clickElement(this.tabLocatorInSourceSelector(item));
+    }
+
     async clickOnTab(item : string){
         await webActions.clickElement(this.tabLocator(item));
     }
