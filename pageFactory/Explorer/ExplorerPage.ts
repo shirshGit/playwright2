@@ -18,7 +18,7 @@ export class ExplorerPage {
     private _errorTab = '//li[@data-testid="Errors"]';
     private _firstThreeDotMenuInErrorTab = '(//div[@data-testid="table_row"]//span[@data-automationid="splitbuttonprimary"])[1]//i';
     private _recordsInThreeDotMenuInErrorTab = '//span[normalize-space()="Records"]';
-    private _myAppTabInSourceSelector = '//li[text()="My Apps"]';
+    private _summeryTab = '//li[@data-testid="Summary Table"]';
 
     public get errorTabLocator() {
         return this._errorTab;
@@ -32,9 +32,11 @@ export class ExplorerPage {
     public get errorTabRowWiseTimeLocator() {
         return (text: number) => { return `//div[@data-item-index="${text}"]//div[@aria-colindex="3"]//div` };
     }
-    public get myAppTabInSourceSelectorLocator() {
-        return this._myAppTabInSourceSelector;
+    public get summaryTabLocator() {
+        return this._summeryTab;
     }
+    
+   
 
 
 
@@ -56,7 +58,9 @@ export class ExplorerPage {
         let time = await webActions.getElementText(this.errorTabRowWiseTimeLocator(rowNum));
         return time;
     }
-    async clickOnMyAppInSourceSelector() {
-        await webActions.clickElement(this.myAppTabInSourceSelectorLocator);
+    
+    async clickOnSummaryTab(){
+        await webActions.clickElement(this.summaryTabLocator);
     }
+    
 }

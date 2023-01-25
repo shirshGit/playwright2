@@ -67,7 +67,7 @@ const config: PlaywrightTestConfig = {
       //grep: [new RegExp("@Smoke")]
     },
     {
-      name: `ChromeSmoke`,
+      name: `Smoke`,
       //testMatch: [`CreateNewSyntheticProduct.test.ts`],
       use: {
         // Configure the browser to use.

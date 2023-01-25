@@ -7,6 +7,7 @@ import { HomePage } from "@objects/HomePage";
 
 
 
+
 let webActions: WebActions;
 const ENV = process.env.ENV;
 
@@ -24,7 +25,7 @@ export class LoginPage {
     private _dashboardDDLabel = 'div[ id = "header"] label[class *= "DashboardHeader_dashboardLabel"]';
     private _Persona = '//div[@id="persona"]';
     private _logoutButton = '//button[@id="sign-out"]';
-
+    
     public get emailInputLocator() {
         return this._emailInput;
     }
@@ -57,16 +58,29 @@ export class LoginPage {
         else if (ENV === 'stage') {
             await webActions.navigateToURL(`https://iostage.catchpoint.com/auth/Account/Login`);
         }
+        else if(ENV === 'production') {
+            await webActions.navigateToURL(`https://io.catchpoint.com/auth/Account/Login`);
+        }
 
     }
 
 
     async loginToCP(): Promise<void> {
-        await webActions.enterElementText(this.emailInputLocator, testConfig.cpun);
-        await webActions.enterElementText(this.passwordInputLocator, testConfig.cppwd);
-        await webActions.clickElement(this.loginBtnLocator);
-        //await webActions.waitForPageNavigation('domcontentloaded');
-        await webActions.waitForElementAttached(this.dashboardDDLabelLocator);
+        if (ENV === 'production') {
+            await webActions.enterElementText(this.emailInputLocator, testConfig.produn);
+            await webActions.enterElementText(this.passwordInputLocator, testConfig.prodpwd);
+            await webActions.clickElement(this.loginBtnLocator);
+            //await webActions.waitForPageNavigation('domcontentloaded');
+            await webActions.waitForElementAttached(this.dashboardDDLabelLocator);
+            
+        }
+        else {
+            await webActions.enterElementText(this.emailInputLocator, testConfig.cpun);
+            await webActions.enterElementText(this.passwordInputLocator, testConfig.cppwd);
+            await webActions.clickElement(this.loginBtnLocator);
+            //await webActions.waitForPageNavigation('domcontentloaded');
+            await webActions.waitForElementAttached(this.dashboardDDLabelLocator);
+        }
     }
 
     async logOutFromBrowser() {

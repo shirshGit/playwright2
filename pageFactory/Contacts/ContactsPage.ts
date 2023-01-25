@@ -17,6 +17,15 @@ export class ContactsPage {
 
     private _searchBox = '//input[@data-testid="contact-search-box"]';
     private _firstRowSearchResult = '//div[@data-automation-key="First Name_0"]';
+    private _createButton = '//button[text()="Create"]';
+    private _firstName   = '//span[text()="First Name"]';
+    private _lastName   = '//span[text()="Last Name"]';
+    private _status   = '//span[text()="Status"]';
+    private _email   = '//span[text()="Email"]';
+    private _telephone   = '//span[text()="Telephone"]';
+    private _companyName    = '//span[text()="Company Name"]';
+    private _systemAccess = '//span[text()="System Access"]';
+    private _division  = '//span[text()="Division"]';
 
 
 
@@ -28,6 +37,43 @@ export class ContactsPage {
     public get firstRowSearchResultLocator() {
         return this._firstRowSearchResult
     }
+
+    public get createButtonLocator() {
+        return this._createButton;
+    }
+
+    public get firstNameLocator() {
+        return this._firstName;
+    }
+
+    public get lastNameLocator() {
+        return this._lastName;
+    }
+
+    public get statusLocator() {
+        return this._status;
+    }
+
+    public get emailLocator() {
+        return this._email;
+    }
+
+    public get telephoneLocator() {
+        return this._telephone;
+    }
+
+    public get companyNameLocator() {
+        return this._companyName;
+    }
+
+    public get systemAccessLocator() {
+        return this._systemAccess;
+    }
+
+    public get divisionLocator() {
+        return this._division;
+    }
+
 
 
     //#endregion
