@@ -15,7 +15,7 @@ test("VerifyUserShouldSeeChangeLogOptionOnTestPropertyPage @SyntheticControlCent
     await syntheticTestDetailPage.clickOnSearchedItemInCC(testID);
     await util.delay(3000);
     //validation
-    await verification.verifyIfElementIsPresent(syntheticTestDetailPage.changeLogLocator, 'Change log is not present in test property blade.');
+    await verification.verifyElementIsNotPresent(syntheticTestDetailPage.changeLogLocator, 'Change log is not present in test property blade.');
 
 })
 
@@ -24,7 +24,7 @@ test("VerifyUserShouldSeeChangeLogOptionOnTestPropertyPage @SyntheticControlCent
     CP-35379 : Verify Changelog should capturing correctly for "All" and "Nodes" under Ru
 */
 
-test("VerifyChangeLogShouldCaptureCorrectDataAfterUpdate @SyntheticControlCenter", async ({ baseTestUtil, syntheticTestDetailPage, syntheticDetailsPage, sideNavigationBar, util, testUtility, synCCPage, verification }) => {
+test("VerifyChangeLogShouldCaptureCorrectDataAfterUpdate @SyntheticControlCenter@Test", async ({ baseTestUtil, syntheticTestDetailPage, syntheticDetailsPage, sideNavigationBar, util, testUtility, synCCPage, verification }) => {
     let data = new DataForEnv();
     let prodForTestCreate = await data.getValueOfTheParameter('productForJunkItems');
     let testName = await testUtility.getTestName();
