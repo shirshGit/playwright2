@@ -17,7 +17,7 @@ export class InstantTestPage {
     //#region This region is for getter
     private _testTypeDDInstantTest = '//label[text()="Test Type"]/..//input';
     private _monitorDDInstantTest = '//label[text()="Monitor"]/..//input';
-    private _nodesInputField = '//label[text()="Nodes"]/..//input';
+    private _nodesInputField = '//label[contains(text(),"Nodes")]/..//input';
 
     public get testTypeDDInstantTestLocator(){
         return this._testTypeDDInstantTest;

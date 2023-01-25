@@ -102,7 +102,7 @@ const config: PlaywrightTestConfig = {
           slowMo: 0
         }
       },
-      grep: [new RegExp("@Test")]
+      grep: [new RegExp("@ProductionSmoke")]
     },
     {
       name: `Firefox`,

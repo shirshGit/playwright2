@@ -22,13 +22,18 @@ export class TestOverviewDashboard extends DefaultDashboardPage{
     public get testWidgetInTestOverviewDBLocator(){
         return this._testWidgetInTestOverviewDB;
     }
+    public get tabLocator(){
+        return (text:string) => { return `(//span[text()="${text}"])[1]`}
+    }
 
     //#endregion
 
     //#region This region is to have the functions
 
   
-   
+    async clickOnTab(tabName : string){
+        await webActions.clickElement(this.tabLocator(tabName));
+     }
 
     //#endregion
 

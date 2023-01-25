@@ -38,7 +38,7 @@ export class SideNavBar {
     private _sideNavIndexes = '//a[text()="Indexes"]';
     private _newInstantTestSiveNav = '//a[text()="New Instant Test"]';
     private _contactGroup = '//a[text()="Contact Groups"]';
-    private _instantTestHistorySiveNav = '//a[text()="History"]';
+    private _instantTestHistorySiveNav = '//a[text()="Instant Test History"]';
     private _reportsSideNavBar = '#reportssection';
     private _reportPageLinkSideNavBar = '//span[contains(@class,"SiteNavigationSubGroupMenu") and text()="Reports"]';
     private _reportTemplateSideNav = '//span[text()="Templates"]';
