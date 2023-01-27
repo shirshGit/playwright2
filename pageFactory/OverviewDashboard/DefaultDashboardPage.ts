@@ -15,10 +15,19 @@ export class DefaultDashboardPage {
 
     //#region This region is for getter
     private _overviewDashboard = '//label[text()="Overview Dashboard"]';
+
     
 
     public get overviewDashboardLocator(){
         return this._overviewDashboard;
+    }
+
+    public get tabLocator(){
+        return (text:string) => { return `(//span[text()="${text}"])[1]`}
+    }
+
+    public get testNameLocator(){
+        return (text:number) => { return `(//div[contains(@class,"ms-DetailsRow-fields fields")]//a)[${text}]`}
     }
    
     //#endregion
@@ -28,6 +37,16 @@ export class DefaultDashboardPage {
     async clickOnOverviewdashboard(){
         await webActions.clickElement(this.overviewDashboardLocator);
     }
+
+    async clickOnTab(tabName : string){
+        await webActions.clickElement(this.tabLocator(tabName));
+    }
+
+    async getTestNameFromTestTable(tileNum: number){
+        return await webActions.getElementText(this.testNameLocator(tileNum));
+    }
+
+    
 
   
 
