@@ -116,7 +116,7 @@ const test = baseTest.extend<{
     endpointSmartboardPage : EndpointSmartboardPage;
     ntnSmartboardPage : NodeToNodeSmartboardPage;
     bgpSmartboardPage : BGPSmartboardPage
-
+    
 
 }>({
     baseTestUtil: async ({ page }, use, testInfo: TestInfo) => {

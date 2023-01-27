@@ -19,11 +19,7 @@ test("VerifyOverviewDashboardLoads @PageNavigation@ProductionSmoke@Smoke", async
   CP-44295 : Verify Widgets in test overview dashboard page
 */
 test("VerifyTestOverviewDashboardLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil, defaultDashboardPage, verification, util,testOverviewDashboard, dashboardBlade}) => {
-    
-    // await defaultDashboardPage.clickOnOverviewdashboard();
-    // await dashboardBlade.clickOnOverviewDashboardDropDown();
-    // await dashboardBlade.clickOnTestOverviewDashboard();
-    await testOverviewDashboard.clickOnTab('Test');
+    await defaultDashboardPage.clickOnTab('Tests');
     await util.delay(2000);
     await verification.verifyIfElementIsPresent(defaultDashboardPage.errorSectionOverviewDashboardLocator, 'Error Section is not Present');
     await verification.verifyIfElementIsPresent(defaultDashboardPage.eventSectionOverviewDashboardLocator, 'Event Section is not Present');
@@ -40,11 +36,7 @@ test("VerifyTestOverviewDashboardLoads @PageNavigation@ProductionSmoke@Smoke", a
 */
 
 test("VerifyEndpointOverviewDBLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil, defaultDashboardPage, verification, util,testOverviewDashboard, dashboardBlade, endpointOverviewDB}) => {
-    
-    // await defaultDashboardPage.clickOnOverviewdashboard();
-    // await dashboardBlade.clickOnOverviewDashboardDropDown();
-    // await dashboardBlade.clickOnEndpointOverviewDashboard();
-    await testOverviewDashboard.clickOnTab('Endpoint');
+    await defaultDashboardPage.clickOnTab('Endpoint');
     await util.delay(2000);
     await verification.verifyIfElementIsPresent(endpointOverviewDB.worstLocationWidgetLocator, 'Worst Endpont is not Present');
     await verification.verifyIfElementIsPresent(endpointOverviewDB.worstAppHeaderLocator, 'Worst App Section is not Present');
@@ -58,12 +50,8 @@ test("VerifyEndpointOverviewDBLoads @PageNavigation@ProductionSmoke@Smoke", asyn
 /*
     CP-39997 : To Validate BGP Metric Cards RPKI Status, %Reachability, #Hijacks , #Neighboring Peers , # Prefix withdrawn in BGP Dashboard
 */
-test("VerifyBGPOverviewDBLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil, defaultDashboardPage, verification, util,testOverviewDashboard, dashboardBlade, bgpOverviewDB}) => {
-    
-    // await defaultDashboardPage.clickOnOverviewdashboard();
-    // await dashboardBlade.clickOnOverviewDashboardDropDown();
-    // await dashboardBlade.clickOnBGPOverviewDashboard();
-    await testOverviewDashboard.clickOnTab('BGP');
+test("VerifyBGPOverviewDBLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil, defaultDashboardPage, verification, util,testOverviewDashboard, bgpOverviewDB}) => {
+    await defaultDashboardPage.clickOnTab('BGP');
     await util.delay(3000);
     await verification.verifyIfElementIsPresent(bgpOverviewDB.RPKIStatusLocator, 'RPKI is not Present');
     await verification.verifyIfElementIsPresent(bgpOverviewDB.reachabilityFieldLocator, 'Rechability Section is not Present');
