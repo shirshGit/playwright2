@@ -21,7 +21,6 @@ export class UserroleDetailPage extends UserrolePage {
     private _applyButtonOnconatctPropertyPage = '//span[text()="Apply"]';
     private _firstCheckBox = '//button//i[@data-icon-name="CircleRing"]';
     private _cancelButtonOnconatctPropertyPage = '//span[text()="Cancel"]';
-    private _createIcon = '//button[text()="Create"]';
 
 
 
@@ -55,9 +54,7 @@ export class UserroleDetailPage extends UserrolePage {
         return this._firstCheckBox;
     }
 
-    public get createIconLocator() {
-        return this._createIcon;
-    }
+    
 
 
 

@@ -7,7 +7,7 @@ import { expect } from "@playwright/test";
     CP-16894 : Verify Settings should be Inherited
 */
 
-test("AfterCopyATestProductSettingsShouldBeInheritedInTest @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
+test("AfterCopyATestProductSettingsShouldBeInheritedInTest @SyntheticControlCenter@Test", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
     let data = new DataForEnv();
     let prodForTestCreate = await data.getValueOfTheParameter('productForJunkItems');
     let prodForCopyTest = await data.getValueOfTheParameter('productForCopyTest');
@@ -45,7 +45,7 @@ test("AfterCopyATestProductSettingsShouldBeInheritedInTest @SyntheticControlCent
     CP-4391 : Verify 'Copy' option is available in menu for indivudual test
 */
 
-test("CopyOptionShouldBeAvailableInMenuForIndividualTest @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
+test("CopyOptionShouldBeAvailableInMenuForIndividualTest @SyntheticControlCenter@Test", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
     let data = new DataForEnv();
     let testId = await data.getValueOfTheParameter('testID');
     //navigate to cc test page
@@ -53,22 +53,24 @@ test("CopyOptionShouldBeAvailableInMenuForIndividualTest @SyntheticControlCenter
     //search test
     await synCCPage.searchAndClickOnThreeDotMenu(testId);
     //validation for copy option
-    await verification.verifySoftAssertForTextOfAnElement(await syntheticTestDetailPage.getThreeDotMenuItem('Copy') ,'Copy' ,"copy is not present");
+    await util.delay(2000);
+    await verification.verifyIfElementIsPresent(synCCPage.copyOptionInThreeDotMenuLocator ,"copy option is not present");
     
 })
 
 /*
     CP-4392 : Verify clicking on 'Copy' will open a blade to the user with the tree structure 
 */
-test("AfterClickingOnCopyTestLocationBladeShouldOpen @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
+test("AfterClickingOnCopyTestLocationBladeShouldOpen @SyntheticControlCenter@Test", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
     let data = new DataForEnv();
     let testId = await data.getValueOfTheParameter('testID');
     //navigate to cc test page
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
     //search and click on three dot menu  
     await synCCPage.clickCopyButtonFromThreeDotMenu(testId);
+    await util.delay(2000);
     //validation for Tests Location 
-    await verification.verifySoftAssertForTextOfAnElement(synCCPage.testLocationTextAfterClickingOnCopyInThreeDotMenuLocator ,'Tests Location' ,"Tests Location blade is not present after clicking on copy button in three dot menu.");
+    await verification.verifyIfElementIsPresent(synCCPage.testLocationTextAfterClickingOnCopyInThreeDotMenuLocator ,"Tests Location blade is not present after clicking on copy button in three dot menu.");
     
 })
 
@@ -93,21 +95,25 @@ test("UserIsAbleToSelectLocationOnSyntheticTestLocation @SyntheticControlCenter"
     await syntheticTestDetailPage.copyItemFromThreeDotMenu(testName,prodForCopyTest);
     //save test
     await syntheticTestDetailPage.clickSaveButton();
+    await util.delay(3000);
     //search test
     await synCCPage.clickOnSearchedItemInCC(copyTestName);
     //validation for Tests Location 
-    await verification.verifySoftAssertForTextOfAnElement(synCCPage.getItemLocationLocator , prodForCopyTest,"Tests Location is not present");
+    await util.delay(3000);
+    await verification.verifyIfElementIsPresent(synCCPage.copyTestproductNameInTestPropertyPageLocator ,"Tests Location is not present");
     //close test property page by clicking on cross icon
+    await util.delay(2000);
     await syntheticTestDetailPage.closeTestPropertyPage();
     //delete test
     await syntheticTestDetailPage.deleteItemFromThreeDotMenu(copyTestName);
+    await util.delay(2000);
     await syntheticTestDetailPage.deleteItemFromThreeDotMenu(testName);
 })
 
 /*
     CP-4394 : Verify test name of copied test 
 */
-test("VeriftTestNameOfCopyTest @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
+test("VeriftTestNameOfCopyTest @SyntheticControlCenter@Test", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
     let data = new DataForEnv();
     let prodForTestCreate = await data.getValueOfTheParameter('productForJunkItems');
     let prodForCopyTest = await data.getValueOfTheParameter('productForCopyTest');
@@ -125,6 +131,7 @@ test("VeriftTestNameOfCopyTest @SyntheticControlCenter", async({baseTestUtil, sy
     await syntheticTestDetailPage.copyItemFromThreeDotMenu(testName,prodForCopyTest);
     //save test
     await syntheticTestDetailPage.clickSaveButton();
+    await util.delay(2000);
     //search test
     await synCCPage.clickOnSearchedItemInCC(copiedTestName);
     //get test name

@@ -15,7 +15,7 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
 
     //#region This for properties of Test Detail Page
 
-    private _alertOverrideToogleBtn = '//div[@id = "#alerts"]//button[@id = "toggle"]';
+    private _alertOverrideToogleBtn = '(//span[text()="Override"])[5]';
     private _testNameField = '#name-input';
     private _labelInputBox = '//div[@data-testid = "labelautocomplete"]//input';
     private _targetUrlInput = '#target-url-input';
@@ -24,11 +24,11 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
     private _chnageLogInTestDetailBlade = '//span[text()="Change Log"]';
     private _targetAndScheduleSection = '//div[@id="#targeting_and_scheduling"]//span[text()="Targeting & Scheduling"]';
     private _overrideForTargetAndSchedulPage = '//div[@id="#targeting_and_scheduling"]//span[text()="Override"]';
-    private _subSetOfNode = '//span[text()="Subset of nodes"]/..';
+    private _subSetOfNode = '//span[text()="Subset of nodes"]';
     private _subSetOfNodeValueBox = '//input[@id="text-field"]';
     private _addNodeField = '//input[contains(@placeholder ,"Add Node")]';
     private _changeLogRunOn = '//td[text()="Run On"]';
-    private _changeLogRunOnValue = '//td[text()="Run On"]//following-sibling::td[1]';
+    private _changeLogRunOnValue = '//td[text()="Run On"]//following-sibling::td[text()="2"]';
     private _transactionTestScriptEditorField = '//div[@data-mode-id = "transaction"]//div[contains(@class, "monaco-scrollable-element editor-scrollable vs")]'
 
     public get alertOverrideToogleBtnLocator() {
@@ -132,6 +132,11 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
         }
     }
 
+    async clickOnAlertOverideButton() {
+        await webActions.waitForElementAttached(this.alertOverrideToogleBtnLocator);
+        await webActions.clickElement(this.alertOverrideToogleBtnLocator);
+    }
+
     async alertToggleButtonToInheritAlertSettings() {
         await webActions.waitForElementAttached(this.alertOverrideToogleBtnLocator);
         var toogleBtnCheck = await webActions.getElementAttributeValue(this.alertOverrideToogleBtnLocator, "aria-checked");
@@ -174,6 +179,7 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
     }
 
     async fetchTestName() {
+        await util.delay(2000);
         let testName = await webActions.getElementAttributeValue(this.getTestNameLocator, 'value');
         return testName;
     }
@@ -207,8 +213,6 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
             const element = nodeName[index];
             await webActions.enterElementText(this.addNodeFileldLocator, element);
             await webActions.keyPress(this.addNodeFileldLocator, "Enter");
-            await webActions.clickElement(this.saveButtonLoctor);
-
         }
 
     }
@@ -216,8 +220,6 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
     async addNode(nodeName: string) {
         await webActions.enterElementText(this.addNodeFileldLocator, nodeName);
         await webActions.keyPress(this.addNodeFileldLocator, "Enter");
-        await webActions.clickElement(this.saveButtonLoctor);
-
     }
 
 

@@ -24,6 +24,11 @@ export class UserrolePage {
     private _firstRowCheckBoxOfContainer = '//div[@data-testid = "table_row"]//i[@data-icon-name = "StatusCircleCheckmark"]'
     private _popUpDeleteBtn = '//div[contains(@class, "DialogPopup")]//button[text()="Delete"]';
     private _deleteOptionAfterThreeDotMenu = '//i[@data-icon-name="delete"]';
+    private _createIcon = '//button[text()="Create"]';
+    private _nameText = '//span[text()="Name"]';
+    private _divisionText = '//span[text()="Division"]';
+    private _activeContactText = '//span[text()="Active Contacts"]';
+    private _inactiveContactText = '//span[text()="Inactive Contacts"]';
 
     public get searchBoxLocator() {
         return this._searchBox;
@@ -55,6 +60,23 @@ export class UserrolePage {
 
     public get deleteOptionAfterThreeDotMenuLocator() {
         return this._deleteOptionAfterThreeDotMenu;
+    }
+
+    public get createIconLocator() {
+        return this._createIcon;
+    }
+
+    public get divisionTextLocator() {
+        return this._divisionText;
+    }
+    public get activeContactTextLocator() {
+        return this._activeContactText;
+    }
+    public get inactiveContactTextLocator() {
+        return this._inactiveContactText;
+    }
+    public get nameTextLocator() {
+        return this._nameText;
     }
   
 

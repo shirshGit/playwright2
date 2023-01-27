@@ -1,7 +1,7 @@
 import test from "@lib/BaseTest"
 import { DataForEnv } from "@lib/DataForEnvironment";
 import { ExplorerRecordListPage } from "@pageobjects/Explorer/ExplorerRecordListPage";
-import { RecordsPage } from "@pageobjects/Records/RecordsPage";
+import { SyntheticRecordsPage } from "@pageobjects/Records/SyntheticRecordsPage";
 
 
 
@@ -24,7 +24,7 @@ test("VerifyDataInRecordsListPageForTransactionTest  @ProductionDefectRecords@Re
 /*
    CP-44053 : DES: Selected run is not displayed in Records when we navigate from errors tab
 */
-test("VerifyNavigationFromErrorTab  @ProductionDefectRecords@Records", async ({ baseTestUtil, sideNavigationBar, context, loginPage, util, sourceSelectorExplorer, recordsPage, explorerPage, page, verification }) => {
+test("VerifyNavigationFromErrorTab  @ProductionDefectRecords@Records", async ({ baseTestUtil, sideNavigationBar, context, loginPage, util, sourceSelectorExplorer, syntheticRecordsPage: recordsPage, explorerPage, page, verification }) => {
    let data = new DataForEnv();
    let TransactionTestID = await data.getValueOfTheParameter('transactionTestId');
    //navigate to CC page
@@ -40,7 +40,7 @@ test("VerifyNavigationFromErrorTab  @ProductionDefectRecords@Records", async ({ 
    await explorerPage.clickOnFirstRowThreeDotMenu();
    let getNewPage = await explorerPage.getNewWindow(context, explorerPage.recordInThreeDotMenuInErrorTabLocator);
    await util.delay(3000);
-   let newRecordPage = new RecordsPage(getNewPage);
+   let newRecordPage = new SyntheticRecordsPage(getNewPage);
    //get url of records page
    let runTimeInRecordsPage = await newRecordPage.getRunTimeValues();
    //verification
@@ -90,7 +90,7 @@ test("VerifyNavigationFromTileWidgetInOverviewDashboardToRecords @ProductionDefe
    await util.delay(2000);
    let getNewPage = await dashboardRecordListPage.getNewWindow(context, dashboardRecordListPage.selectRowLocator(0));
    await util.delay(3000);
-   let recordPage = new RecordsPage(getNewPage);
+   let recordPage = new SyntheticRecordsPage(getNewPage);
    //get url of records page
    let getCurrentPageUrl = await recordPage.getUrl();
    //verification for records page

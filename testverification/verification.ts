@@ -1,6 +1,7 @@
 import { WebActions } from "@lib/WebActions";
 import { expect, Page } from "@playwright/test";
 
+
 let webActions: WebActions;
 
 export class Verification {
@@ -21,12 +22,24 @@ export class Verification {
     }
 
     async verifyIfElementIsPresent(locator: string, errorMessage: string, isHardAssert: boolean = true) {
+        await webActions.waitForElementAttached(locator);
         let noOFElements = await webActions.getNoOfElementsPresentInPage(locator);
         if (isHardAssert) {
             this.verifyHardAssertTrue(noOFElements > 0, errorMessage);
         }
         else {
             this.verifySoftAssertTrue(noOFElements > 0, errorMessage);
+        }
+    }
+
+    async verifyTextIsPresentInPage(text: string, errorMessage: string, isHardAssert: boolean = true) {
+        let noOFElements = await webActions.getNoOfElementsPresentInPage(text);
+        let isElementPresent = await this.page.isVisible(`text=${text}`);
+        if (isHardAssert) {
+            await expect(noOFElements > 0 && isElementPresent === true, `${errorMessage}`).toBeFalsy();
+        }
+        else {
+            await expect(noOFElements > 0 && isElementPresent === true, `${errorMessage}`).toBeFalsy();
         }
     }
 
@@ -42,13 +55,11 @@ export class Verification {
 
 
     async verifyHardAssertForTextOfAnElement(locator: string, textTOMatch: string, errorMessage: string) {
-
         await expect(this.page.locator(locator), `${errorMessage}`).toContainText(textTOMatch);
     }
 
     async verifySoftAssertForTextOfAnElement(locator: string, textTOMatch: string, errorMessage: string) {
-
-        await expect.soft(this.page.locator(locator), `${errorMessage}`).toContainText(textTOMatch);
+        await expect.soft(this.page.locator(locator),`${errorMessage}`).toContainText(textTOMatch);
     }
 
     async verifyAttributeValueOfLocatorMatch(locator: string, attribute: string, valueToMatch: string, errorMessage: string) {

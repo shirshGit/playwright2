@@ -1,19 +1,25 @@
 import { WebActions } from "@lib/WebActions";
 import { Page } from "@playwright/test";
 import { Utility } from "@util/Utility";
+<<<<<<< HEAD
+=======
+import { Page } from "playwright";
+import { DefaultDashboardPage } from "./DefaultDashboardPage";
+>>>>>>> 46c18545d520992cba6d775bab9c109612466f2b
 let webActions: WebActions;
 let util: Utility
 
-export class TestOverviewDashboard {
-    readonly page: Page;
+export class TestOverviewDashboard extends DefaultDashboardPage{
+
 
     constructor(page: Page) {
-        this.page = page;
+        super(page);
         webActions = new WebActions(this.page);
         util = new Utility();
     }
 
     //#region This region is for getter
+<<<<<<< HEAD
 
     private _testWidgetFirstRowThreeDotMenu = '(//div[@data-automationid="DetailsList"])[1]//div[@data-item-index="0"]//div[contains(@class,"CustomCell_icoMenuCell_")]';
     private _webTestPropertyText = '(//span[text()="Web Test Properties"])[1]';
@@ -42,7 +48,16 @@ export class TestOverviewDashboard {
         return this._testNameInTestPropertiesPage;
     }
 
+=======
+    private _testWidgetInTestOverviewDB = '//div[contains(@class,"Tiles_container")]';
+   
+  
+>>>>>>> 46c18545d520992cba6d775bab9c109612466f2b
 
+    public get testWidgetInTestOverviewDBLocator(){
+        return this._testWidgetInTestOverviewDB;
+    }
+   
     //#endregion
 
     //#region This region is to have the functions
