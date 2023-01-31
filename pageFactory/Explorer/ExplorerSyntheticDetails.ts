@@ -21,7 +21,7 @@ export class ExplorerSyntheticDetails {
     private _runMetricsValue = '//div[@data-automation-key="# Runs_1"]';
     private _testTimeMetricsValue = '//div[@data-automation-key="Avg. Test Time (ms)_2"]';
     private _availabilityMetricsValue = '//div[@data-automation-key="% Availability_3"]';
-
+    private _last24HourTimeFrame = '//input[@value="Last 24 Hours"]';
 
     public get runMetricsTextLocator() {
         return this._runMetricsText;
@@ -40,6 +40,13 @@ export class ExplorerSyntheticDetails {
     }
     public get availabilityMetricsValueLocator() {
         return this._availabilityMetricsValue;
+    }
+    public get last24HourTimeFrameLocator(){
+        return this._last24HourTimeFrame;
+    }
+
+    public get summaryTabMetricsLocator(){
+        return (text:string) => { return `//span[text()="${text}"]`}
     }
 
      //#endregion

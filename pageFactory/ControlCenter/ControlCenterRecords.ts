@@ -16,12 +16,17 @@ export class ControlCenterRecords extends SynControlCenterPage {
    private _sessionsTabForRumRecordPopUpPage = '//div[contains(@class,"RumRecordsTablestyles__InnerTableContainer")]//button[contains(@name,"Sessions")]';
    private _pageViewTabForRumRecordsPopUpPage = '//div[contains(@class,"RumRecordsTablestyles__InnerTableContainer")]//button[contains(@name,"Page Views")]';
    private _pageViewValue = '';
+   private _fetchTimeFrame = '((//div[contains(@class,"ScatterPlot_container_")]//div[2]//*/*/*)[14]/*)[8]';
 
    public get sessionsTabForRumRecordPopUpPageLocator(){
         return this._sessionsTabForRumRecordPopUpPage
    }
    public get pageViewsTabForRumRecordPopUpPageLocator(){
     return this._pageViewTabForRumRecordsPopUpPage
+   }
+
+   public get graphTimeLocator(){
+    return (text:number) => { return `((//*[local-name()="g"])[3]//*)[${text}]`}
    }
 
    public get getSessionsTabPageViewValueLocator(){
@@ -67,6 +72,16 @@ export class ControlCenterRecords extends SynControlCenterPage {
 
     }
 
-    
 
+    async getStartGraphTime(){
+        return await webActions.getElementText(this.graphTimeLocator(2))
+    }
+
+    async getlastGraphTime(){
+        return await webActions.getElementText(this.graphTimeLocator(24))
+    }
+   
+
+   
 }
+

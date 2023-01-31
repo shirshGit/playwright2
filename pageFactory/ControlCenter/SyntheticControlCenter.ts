@@ -1,5 +1,5 @@
 import { WebActions } from "@lib/WebActions";
-import { Page } from "@playwright/test";
+import { BrowserContext, Page } from "@playwright/test";
 import { Utility } from "@util/Utility";
 let webActions: WebActions;
 let util: Utility
@@ -303,7 +303,7 @@ export class SynControlCenterPage {
         await util.delay(2000);
         await webActions.hoverOnElement(this.threeDotMenuOfSearchedItemLocator);
         await webActions.clickElement(this.threeDotMenuOfSearchedItemLocator);
-        await webActions.clickElement(this.itemInThreeDotMenu(navigationFromThreeDotMenu));
+        await webActions.clickElementJS(this.itemInThreeDotMenu(navigationFromThreeDotMenu));
     }
 
     async clickOnSearchedItemInCC(itemName: string) {
@@ -444,6 +444,14 @@ export class SynControlCenterPage {
 
     async closeChangeLogsPage(){
         await webActions.clickElement(this.closeChangeLogPageLocator);
+    }
+
+    async getNewWindow(context: BrowserContext, locator: string) {
+        return await webActions.newWindowHandle(context, locator);
+
+    }
+    async getUrl() {
+        return await webActions.getCurrentPageUrl();
     }
 
    
