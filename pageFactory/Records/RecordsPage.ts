@@ -329,7 +329,8 @@ export class RecordsPage {
     }
 
     async getRunTimeValues() {
-        return await webActions.getTextFromWebElementsUsingSelector(this.getRunTimeLocator);
+        let runTimeValue = await webActions.getElementText(this.getRunTimeLocator);
+        return runTimeValue;
     }
 
     async selectStepInTransactionTest(stepNumber: string) {

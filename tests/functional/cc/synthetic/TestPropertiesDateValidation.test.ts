@@ -9,7 +9,7 @@ test.beforeEach(async ({ baseTestUtil }) => {
 
 
 /*
-  CP-12527 : Bug 127422: Start Date on Safari is not pre-populated and on save uses the UTC Time
+  CP-39581 : Bug 127422: Start Date on Safari is not pre-populated and on save uses the UTC Time
 */
 
 test("CheckStartDateBeforeAndAfterSaveingTest  @ProductionDefect@SyntheticControlCenter", async ({baseTestUtil, verification, syntheticTestDetailPage, sideNavigationBar,synCCPage, testUtility, util }) => {
@@ -45,7 +45,7 @@ test("CheckStartDateBeforeAndAfterSaveingTest  @ProductionDefect@SyntheticContro
 
 
 /*
- CP-12529 :Bug 130312: CC: Safari: To Date is not getting saved
+ CP-39582 :Bug 130312: CC: Safari: To Date is not getting saved
 */
 
 test("CheckEndDateAfterSavingTest  @ProductionDefect@SyntheticControlCenter", async ({ baseTestUtil,verification, syntheticTestDetailPage, sideNavigationBar, testUtility,synCCPage, util }) => {

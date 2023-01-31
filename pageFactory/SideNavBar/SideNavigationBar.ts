@@ -32,7 +32,6 @@ export class SideNavBar{
     private _testTemplate = '//a[text()="Test Templates"]';
 
 
-
     public get sideNavControlCenter(){
         return this._sideNavControlCenter;
     }
@@ -76,19 +75,15 @@ export class SideNavBar{
     public get sideNavContacts(){
         return this._sideNavContacts;
     }
-
-    public get sideNavRUMTest(){
+    public get sideNavRUM(){
         return this._sideNavRum;
     }
-
-    public get sideNavRecordsTest(){
+    public get sideNavRecords(){
         return this._sideNavRecords;
     }
-    
     public get sideNavTestTemplates(){
         return this._testTemplate;
     }
-
     //#endregion
 
     async navigateToSyntheticCCFromSideNavigation(){
@@ -103,6 +98,13 @@ export class SideNavBar{
         await webActions.clickElement(this.sideNavAnalytics)
         await webActions.waitForElementAttached(this.sideNavExplorer);
         await webActions.clickElement(this.sideNavExplorer);
+    }
+
+    async navigateToRecordsFromSideNavigation(){
+        await webActions.waitForElementAttached(this.sideNavAnalytics);
+        await webActions.clickElement(this.sideNavAnalytics)
+        await webActions.waitForElementAttached(this.sideNavRecords);
+        await webActions.clickElement(this.sideNavRecords);
     }
     async navigateToUserrolePageFromSideNavigation(){
         await webActions.waitForElementAttached(this.sideNavSettingsTest);
@@ -136,15 +138,16 @@ export class SideNavBar{
     async navigateToRUMFromSideNavigation(){
         await webActions.waitForElementAttached(this.sideNavControlCenter);
         await webActions.clickElement(this.sideNavControlCenter)
-        await webActions.waitForElementAttached(this.sideNavRUMTest);
-        await webActions.clickElement(this.sideNavRUMTest);
+        await webActions.waitForElementAttached(this.sideNavRUM);
+        await webActions.clickElement(this.sideNavRUM);
     }
 
-    async navigateToRecordsFromSideNavigation(){
-        await webActions.waitForElementAttached(this.sideNavAnalytics);
-        await webActions.clickElement(this.sideNavAnalytics)
-        await webActions.waitForElementAttached(this.sideNavRecordsTest);
-        await webActions.clickElement(this.sideNavRecordsTest);
+
+    async navigateToSmartboardFromSideNavigation(){
+        await webActions.waitForElementAttached(this.sideNavHome);
+        await webActions.clickElement(this.sideNavHome)
+        await webActions.waitForElementAttached(this.sideNavSmartboard);
+        await webActions.clickElement(this.sideNavSmartboard);
     }
 
     async navigateToTestTemplateFromSideNavigation(){

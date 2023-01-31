@@ -5,7 +5,7 @@ import { Page } from "@playwright/test";
 
 let webActions: WebActions;
 let util: Utility
-
+   
 export class ContactDetailsPage extends ContactsPage {
     constructor(page: Page) {
         super(page);
@@ -60,7 +60,19 @@ export class ContactDetailsPage extends ContactsPage {
         await webActions.clickElement(this.applyButtonLocator);
     }
 
+    async ClickDiv() {
+        await webActions.clickElement('(//i[@data-icon-name="chevronDark"]/div)[2]');
+    }
     
+
+    async clickI() {
+        await webActions.clickElement('(//i[@data-icon-name="chevronDark"])[2]');
+    }
+
+    async clickBox() {
+        await webActions.clickElement('//div[contains(text(),"System Access")]/../div/div//span[@id="Dropdown5450-option"]');
+    }
+
 
 
 

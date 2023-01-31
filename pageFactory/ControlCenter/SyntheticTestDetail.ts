@@ -29,6 +29,7 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
     private _addNodeField = '//input[contains(@placeholder ,"Add Node")]';
     private _changeLogRunOn = '//td[text()="Run On"]';
     private _changeLogRunOnValue = '//td[text()="Run On"]//following-sibling::td[1]';
+    private _transactionTestScriptEditorField = '//div[@data-mode-id = "transaction"]//div[contains(@class, "monaco-scrollable-element editor-scrollable vs")]'
 
     public get alertOverrideToogleBtnLocator() {
         return this._alertOverrideToogleBtn;
@@ -64,6 +65,10 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
 
     public get targetAndScheduleSectionLocator() {
         return this._targetAndScheduleSection;
+    }
+
+    public get transactionTestScriptEditorFieldLocator(){
+        return this._transactionTestScriptEditorField;
     }
 
     public get overrideButtonInTargetAndScheduleLocator() {
@@ -202,13 +207,23 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
             const element = nodeName[index];
             await webActions.enterElementText(this.addNodeFileldLocator, element);
             await webActions.keyPress(this.addNodeFileldLocator, "Enter");
+            await webActions.clickElement(this.saveButtonLoctor);
+
         }
 
     }
 
-    
+    async addNode(nodeName: string) {
+        await webActions.enterElementText(this.addNodeFileldLocator, nodeName);
+        await webActions.keyPress(this.addNodeFileldLocator, "Enter");
+        await webActions.clickElement(this.saveButtonLoctor);
 
-   
+    }
+
+
+
+
+
 
     //#endregion
 }
