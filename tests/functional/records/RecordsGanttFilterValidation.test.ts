@@ -8,7 +8,7 @@ import { expect } from "@playwright/test";
 /*
    CP-7523 : Verifying the Zone filter for Gantt 
 */
-test.skip("VerifyZoneFilterForGantt  @Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, recordsPage, page, verification }) => {
+test("VerifyZoneFilterForGantt  @Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, recordsPage, page, verification }) => {
     //navigate to records page
     await sideNavigationBar.navigateToRecordsFromSideNavigation();
     let data = new DataForEnv();
@@ -34,7 +34,7 @@ test.skip("VerifyZoneFilterForGantt  @Records", async ({ baseTestUtil, sideNavig
 /*
     CP-21648 : 117537 DES Filtering is not proper when we filter using the File Type
 */
-test.skip("VerifyFileTypeFilterForGanttSection  @ProductionDefectRecords@Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, recordsPage, ganttBladePage, verification }) => {
+test("VerifyFileTypeFilterForGanttSection  @ProductionDefectRecords@Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, recordsPage, ganttBladePage, verification }) => {
     //navigate to records page
     await sideNavigationBar.navigateToRecordsFromSideNavigation();
     let data = new DataForEnv();
@@ -59,7 +59,7 @@ test.skip("VerifyFileTypeFilterForGanttSection  @ProductionDefectRecords@Records
 /*
     CP-21702 : 119376 Gantt error item always displays as error even when its a warning 
 */
-test.skip("VerifyGanttChartErrorAndWarningItemsDisplay  @ProductionDefectRecords@Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, recordsPage, ganttBladePage, verification }) => {
+test("VerifyGanttChartErrorAndWarningItemsDisplay  @ProductionDefectRecords@Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, recordsPage, ganttBladePage, verification }) => {
     //navigate to records page
     await sideNavigationBar.navigateToRecordsFromSideNavigation();
     let data = new DataForEnv();
