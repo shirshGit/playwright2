@@ -142,13 +142,13 @@ test("VerifyAppPropertiesPageOpenFromExplorerPage @SyntheticControlCenter", asyn
     //open any app
     await sourceSelectorExplorer.clickOnFirstSearchAppInSelectorPage(rumAppId);
     await util.delay(1000);
-    //click on test in source blade and get new window
+    //click on app in source blade and get new window
     let getNewPage = await rumRecordsPage.getNewWindow(context, rumRecordsPage.testInSourceSelectorLocator);
     let testPropertyPage = new SyntheticRecordsPage(getNewPage);
-    //fetch url of test property page
+    //fetch url of app property page
     await util.delay(4000);
     let getTestPropertyPageURL = await testPropertyPage.getUrl();
-    //validation for test properties page
+    //validation for app properties page
     await verification.verifySoftAssertTrue(getTestPropertyPageURL.includes('/ControlCenter/Rum/Site/' + rumAppId + '/Properties'), 'test property page is not opening after clicking on testName in records source blade');
     //validation for something went wrong
     await verification.verifyTextIsPresentInPage("'Something went wrong!'", 'getting something went wrong message.');
@@ -168,13 +168,13 @@ test("VerifyAppPropertiesPageOpenFromRecordsPage @SyntheticControlCenter", async
     //open any app
     await sourceSelectorPage.clickOnFirstSearchedAPPInSelectorPage(rumAppId);
     await util.delay(1000);
-    //click on test in source blade and get new window
+    //click on app in source blade and get new window
     let getNewPage = await rumRecordsPage.getNewWindow(context, rumRecordsPage.appInSourceSelectorLocator);
     let testPropertyPage = new SyntheticRecordsPage(getNewPage);
-    //fetch url of test property page
+    //fetch url of app property page
     await util.delay(4000);
     let getTestPropertyPageURL = await testPropertyPage.getUrl();
-    //validation for test properties page
+    //validation for app properties page
     await verification.verifySoftAssertTrue(getTestPropertyPageURL.includes('/ControlCenter/Rum/Site/' + rumAppId + '/Properties'), 'test property page is not opening after clicking on testName in records source blade');
     //validation for something went wrong
     await verification.verifyTextIsPresentInPage("'Something went wrong!'", 'getting something went wrong message.');
@@ -212,7 +212,7 @@ test("VerifyNavigationToDifferentPageFromThreeDotMenu @SyntheticControlCenter", 
     let getPageURL = await synCCPage.getUrl();
     //validation for explorer page and line viz
     await verification.verifySoftAssertTrue(getPageURL.includes('/Explorer/?sIds=[' + testID), 'Explorer page is not opening after clicking on three dot manu performance button');
-    await verification.verifySoftAssertTrue(getPageURL.includes('viz=1'), 'performace viz is set after clicking on performace button fron three dot menu');
+    await verification.verifySoftAssertTrue(getPageURL.includes('viz=1'), 'performace viz is not set after clicking on performace button fron three dot menu');
     //validation for last 6 hour time frame selected
     await verification.verifyIfElementIsPresent(explorerSyntheticDetails.last24HourTimeFrameLocator, 'last 24 hour is not selected as default time frame');
     //validation for something went wrong
