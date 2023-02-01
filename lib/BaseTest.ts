@@ -54,7 +54,10 @@ import { MapPage } from '@pageobjects/Node/MapPage';
 import { NodeGroupPage } from '@pageobjects/Node/NodeGroupPage';
 import { NodeListPage } from '@pageobjects/Node/NodesListPage';
 import { InstancesListPage } from '@pageobjects/Node/IntancesListPage';
+import { EndpointSmartboardPage } from'@pageobjects/Smartboard/EndpointSmartboard';
 import { RecordsPage } from '@pageobjects/Records/RecordsPage';
+import { NodeToNodeSmartboardPage } from '@pageobjects/Smartboard/NodeToNodeSmartboard';
+import { BGPSmartboardPage } from '@pageobjects/Smartboard/BGPSmartboard';
 
 const test = baseTest.extend<{
     baseTestUtil: BaseTestUtility;
@@ -111,7 +114,10 @@ const test = baseTest.extend<{
     nodeGroupPage: NodeGroupPage;
     nodeListPage: NodeListPage;
     nodeInstancePage: InstancesListPage;
+    endpointSmartboardPage : EndpointSmartboardPage;
     recordsPage: RecordsPage;
+    ntnSmartboardPage : NodeToNodeSmartboardPage;
+    bgpSmartboardPage : BGPSmartboardPage
 
 
 }>({
@@ -280,14 +286,21 @@ const test = baseTest.extend<{
     nodeInstancePage: async ({ page }, use) => {
         await use(new InstancesListPage(page))
     },
-
     contactGroupPage: async ({ page }, use) => {
         await use(new ContactGroupPage(page))
     },
     recordsPage: async ({ page }, use) => {
         await use(new RecordsPage(page));
     },
-  
+    endpointSmartboardPage: async ({ page }, use) => {
+        await use(new EndpointSmartboardPage(page))
+    },
+    ntnSmartboardPage: async ({ page }, use) => {
+        await use(new NodeToNodeSmartboardPage(page))
+    },
+    bgpSmartboardPage: async ({ page }, use) => {
+        await use(new BGPSmartboardPage(page))
+    },
 
 
 

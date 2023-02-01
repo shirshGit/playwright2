@@ -1,4 +1,5 @@
 import test from "@lib/BaseTest"
+import { DataForEnv } from "@lib/DataForEnvironment";
 
 /*
     CP-44179 : Verify Synthetic test tree side navigation
