@@ -4,7 +4,7 @@ import { DataForEnv } from "@lib/DataForEnvironment";
 /*
     CP-40696 : Verify smartboard is opened when clicked on smartboard option in left navigation
 */
-test.skip("VerifySmartboardTestLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,syntheticSmartboardPage, util}) => {
+test("VerifySmartboardTestLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,syntheticSmartboardPage, util}) => {
     let data = new DataForEnv();
     let transactionTestID = await data.getValueOfTheParameter('transactionTestId');
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();
@@ -26,7 +26,7 @@ test.skip("VerifySmartboardTestLoads @PageNavigation@ProductionSmoke@Smoke", asy
     CP-44496 : Verify Node smartboard navigation
 */
 
-test.skip("VerifySmartboardNodeLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,nodeSmartboardPage, util}) => {
+test("VerifySmartboardNodeLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,nodeSmartboardPage, util}) => {
     let data = new DataForEnv();
     let nodeName = await data.getValueOfTheParameter('node');
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();
@@ -49,7 +49,7 @@ test.skip("VerifySmartboardNodeLoads @PageNavigation@ProductionSmoke@Smoke", asy
 /*
     CP-44188 : Verify RUM smartboard loads properly from side navigation
 */
-test.skip("VerifySmartboardRUMLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,rumSmartboardPage, util}) => {
+test("VerifySmartboardRUMLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,rumSmartboardPage, util}) => {
     let data = new DataForEnv();
     let appName = await data.getValueOfTheParameter('rumAppName');
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();
@@ -99,7 +99,7 @@ test("VerifyPeerInfoInBGPSB @PageNavigation@ProductionSmoke@Smoke", async({baseT
 /*
     CP-39964 : To validate Time zone dropdown in NTN SB
 */
-test.skip("VerifyTimeZoneDropDownInNTNSB @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,ntnSmartboardPage, util}) => {
+test("VerifyTimeZoneDropDownInNTNSB @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,ntnSmartboardPage, util}) => {
     let data = new DataForEnv();
     let ntnTestID = await data.getValueOfTheParameter('nodeToNodeTest');
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();
@@ -125,7 +125,7 @@ test.skip("VerifyTimeZoneDropDownInNTNSB @PageNavigation@ProductionSmoke@Smoke",
 /*
     CP-39967 : To Validate Matrix Compare Section- NTN SB
 */
-test.skip("VerifyMatrixCompareInNTNSB @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,ntnSmartboardPage, util}) => {
+test("VerifyMatrixCompareInNTNSB @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,ntnSmartboardPage, util}) => {
     let data = new DataForEnv();
     let ntnTestID = await data.getValueOfTheParameter('nodeToNodeTest');
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();
@@ -167,7 +167,7 @@ test.skip("VerifyMatrixCompareInNTNSB @PageNavigation@ProductionSmoke@Smoke", as
 /*
     CP-39971 : To Validate Record Compare Section- NTN SB
 */
-test.skip("VerifyRecordsCompareSectionInNTNSB @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,ntnSmartboardPage, util}) => {
+test("VerifyRecordsCompareSectionInNTNSB @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,ntnSmartboardPage, util}) => {
     let data = new DataForEnv();
     let ntnTestID = await data.getValueOfTheParameter('nodeToNodeTest');
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();
@@ -213,10 +213,10 @@ test.skip("VerifyRecordsCompareSectionInNTNSB @PageNavigation@ProductionSmoke@Sm
 /*
     CP-44479 : Verify User Landing in Endpoint test Smartboard page 
 */
-test.skip("VerifySmartboardEndpointTestLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,endpointSmartboardPage, util}) => {
+test("VerifySmartboardEndpointTestLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,endpointSmartboardPage, util}) => {
     let data = new DataForEnv();
     let testID = await data.getValueOfTheParameter('endpointTracerouteTestID');
-    await sideNavigationBar.navigateToSmartboardFromSideNavigation();
+    //await sideNavigationBar.navigateToSmartboardFromSideNavigation();
     await util.delay(2000);
     await verification.verifyIfElementIsPresent(sourceSelectorSmartboard.endpointTestTabLocator, 'endpoint test Tab is not present in source selector');
     //validation for something went wrong
@@ -235,7 +235,7 @@ test.skip("VerifySmartboardEndpointTestLoads @PageNavigation@ProductionSmoke@Smo
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeZoneDDLocator,"time zone is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.compareDDLocator,"compare is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeFrame,"time frame is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.networkScoreMetricsInNetworkTabLocator,"network score metrics is not present");
+    await verification.verifyIfElementIsPresent(endpointSmartboardPage.networkScoreMetricsInNetworkTabForTestLocator,"network score metrics is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.packetLossCardMetricsLocator,"packet loss metrics is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.roundTripMetricsLocator,"round trip card metrics is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.testRunCardMetricsLocator,"test run card metrics is not present");
@@ -267,7 +267,7 @@ test.skip("VerifySmartboardEndpointTestLoads @PageNavigation@ProductionSmoke@Smo
 /*
     CP-44478 : Verify User Landing in Location Smartboard page
 */
-test.skip("VerifySmartboardLocationLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,endpointSmartboardPage, util}) => {
+test("VerifySmartboardLocationLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,endpointSmartboardPage, util}) => {
     let data = new DataForEnv();
     let locationID = await data.getValueOfTheParameter('endpointLocationID');
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();
@@ -307,7 +307,7 @@ test.skip("VerifySmartboardLocationLoads @PageNavigation@ProductionSmoke@Smoke",
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.endpointScoreMetricsLocator,"endpoint score is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.errorMetricsLocator,"error metric is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.pageViewInLocationEndpointTab,"page view metrics is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.expScoreInLocationSummaryTabLocator,"exp score is not present");
+    await verification.verifyIfElementIsPresent(endpointSmartboardPage.endpointWidgetInEndpointLocationTab,"exp score is not present");
     //click on network tab
     await sourceSelectorSmartboard.clickOnTab("Network");
     //validation for something went wrong
@@ -359,7 +359,7 @@ test.skip("VerifySmartboardLocationLoads @PageNavigation@ProductionSmoke@Smoke",
 /*
     CP-44188 : Verify RUM smartboard loads properly from side navigation
 */
-test.skip("VerifySmartboardEmployeeAppLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,endpointSmartboardPage, util}) => {
+test("VerifySmartboardEmployeeAppLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,endpointSmartboardPage, util}) => {
     let data = new DataForEnv();
     let appName = await data.getValueOfTheParameter('rumAppName');
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();
@@ -431,7 +431,7 @@ test.skip("VerifySmartboardEmployeeAppLoads @PageNavigation@ProductionSmoke@Smok
 /*
     CP-44188 : Verify RUM smartboard loads properly from side navigation
 */
-test.skip("VerifySmartboardEndpointLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,endpointSmartboardPage, util}) => {
+test("VerifySmartboardEndpointLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,endpointSmartboardPage, util}) => {
     let data = new DataForEnv();
     let endpointID = await data.getValueOfTheParameter('endpoint');
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();
@@ -450,7 +450,7 @@ test.skip("VerifySmartboardEndpointLoads @PageNavigation@ProductionSmoke@Smoke",
     //1.validation for metrics
     await util.delay(4000);
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.goButtonLocator,"go button is not present");
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeLineLocator,"time line is not present")
+    await verification.verifyIfElementIsPresent(endpointSmartboardPage.endpointTimeLineLocator,"time line is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeZoneDDLocator,"time zone is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.compareDDLocator,"compare is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeFrame,"time frame is not present")
@@ -470,7 +470,7 @@ test.skip("VerifySmartboardEndpointLoads @PageNavigation@ProductionSmoke@Smoke",
     await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     //2.validation for endpoint tab
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.goButtonLocator,"go button is not present");
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeLineLocator,"time line is not present")
+    await verification.verifyIfElementIsPresent(endpointSmartboardPage.endpointTimeLineLocator,"time line is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeZoneDDLocator,"time zone is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.compareDDLocator,"compare is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeFrame,"time frame is not present")
@@ -490,7 +490,7 @@ test.skip("VerifySmartboardEndpointLoads @PageNavigation@ProductionSmoke@Smoke",
     await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     //3.validation for network tab
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.goButtonLocator,"go button is not present");
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeLineLocator,"time line is not present")
+    await verification.verifyIfElementIsPresent(endpointSmartboardPage.endpointTimeLineLocator,"time line is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeZoneDDLocator,"time zone is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.compareDDLocator,"compare is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeFrame,"time frame is not present")
@@ -516,7 +516,7 @@ test.skip("VerifySmartboardEndpointLoads @PageNavigation@ProductionSmoke@Smoke",
     await util.delay(4000);
     //4.validation for application tab
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.goButtonLocator,"go button is not present");
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeLineLocator,"time line is not present")
+    await verification.verifyIfElementIsPresent(endpointSmartboardPage.endpointTimeLineLocator,"time line is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeZoneDDLocator,"time zone is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.compareDDLocator,"compare is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeFrame,"time frame is not present")

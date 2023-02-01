@@ -17,11 +17,11 @@ export class EndpointSmartboardPage {
 
     private _goButton = '//span[text()="Go"]';
     private _timeZoneDropDown = '//div[@data-testid="timezone-dropdown"]';
-    private _compareDropDown = '(//i[@data-icon-name="chevronDark"])[2]';
-    private _timeLine = '//div[@data-testid="smartboard-timeline"]';
+    private _compareDropDown = '(//i[@data-icon-name="chevrondownLarge"])[1]//div';
+    private _timeLine = '//div[contains(@class,"EndpointSmartboardstyles__EndpointSmartboardTimeline")]';
     private _timeFrame = '//input[@value="Last 24 Hours"]';
     private _summary = '//span[text()="Summary"]';
-    private _endpoint = '//span[text()="Endpoint"]';
+    private _endpoint = '//span[text()="Endpoints"]';
     private _network = '//span[text()="Network"]';
     private _application = '//span[text()="Application"]';
     private _endPointTested = '//div[text()="Endpoints Tested"]';
@@ -37,7 +37,7 @@ export class EndpointSmartboardPage {
     private _trendingChart = '//div[contains(@class,"Chart_chartCont_")]';
     //location endpointTab
     private _pageViews = '//span[text()="Page Views"]';
-    private  _endpointWidgetInEndpointLoc = '//div[@data-automationid="DetailsList"]';
+    private  _endpointWidgetInEndpointLoc = '//div[@data-testid="endpoint-breakdown-dimension-container"]';
     //location networkTab
     private _domains = '//div[@data-testid="plainCard"]//div[text()="Domains"]';
     private _failures = '//div[text()="Failures"]';
@@ -45,7 +45,8 @@ export class EndpointSmartboardPage {
 
     //common locators
     private _endpointScore = '//span[text()="Endpoint Score"]';
-    private _networkScore = '//span[text()="Application Score"]';
+    private _networkScore = '//div[text()="Network Score"]';
+    private _netWorkScore = '//span[text()="Network Score"]';
     private _roundTrip = '//div[contains(text(),"Round Trip (ms)")]';
     private _packetLoss = '//div[text()="% Packet Loss"]';
     private _testRun = '//div[text()="Test Runs"]';
@@ -74,6 +75,7 @@ export class EndpointSmartboardPage {
     private _settingsIcon = '//i[@data-icon-name="properties"]';
     private _keyMetricsWidget = '//div[@data-testid="key-metrics-container"]';
     private _issueNdEventWidget = '(//div[contains(@class,"KeyEventsTableContainerstyl")])[1]';
+    private _endpointTimeLine  = '//div[@data-testid="smartboard-timeline"]';
     
     //endpoint endpoint tab
     private _filterButton = '(//button[@id="action-button"])[3]';
@@ -105,7 +107,10 @@ export class EndpointSmartboardPage {
     private _networkWidget = '//span[text()="Network Path"]';
     private _hopByHopWidget = '//span[text()="Hop-by-Hop"]';
 
-    
+    public get endpointTimeLineLocator(){
+        return this._endpointTimeLine;
+    }
+
     public get endpointWgtForNetworkTabLocator(){
         return this._endpointWgtForNetworkTab;
     }
@@ -166,8 +171,12 @@ export class EndpointSmartboardPage {
         return this._timeFrame;
     }
 
-    public get networkScoreMetricsInNetworkTabLocator(){
+    public get networkScoreMetricsInNetworkTabForTestLocator(){
         return this._networkScore;
+    }
+
+    public get networkScoreMetricsInNetworkTabForLocLocator(){
+        return this._netWorkScore;
     }
 
     public get endpointTestedCardMetricsInNetworkTabLocator(){
@@ -314,7 +323,7 @@ export class EndpointSmartboardPage {
     }
 
     public get netScoreMetricsLocator(){
-        return this._networkScore;
+        return this._netWorkScore;
     }
 
     public get roundTripMetricsLocator(){
