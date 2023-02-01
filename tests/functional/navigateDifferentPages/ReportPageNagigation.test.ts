@@ -10,14 +10,14 @@ test("VerifyReportListPageLoads @PageNavigation@ProductionSmoke@Smoke", async({b
     await util.delay(4000);
     await sideNavigationBar.clickOnReportSideNavigation();
     await util.delay(2000);
+    //validation for errors
+    await verification.validationsForPage();
     let getNewPage = await sideNavigationBar.getNewWindow(context, sideNavigationBar.reportPageLinkSideNavBarLocator);
     let reportPage = new ReportListPage(getNewPage);
     let verification1 = new Verification(getNewPage);
     //verification reportPage
     await verification1.verifyIfElementIsPresent(reportPage.reportCreateLinkLocator, 'Report List Create is not present');
     await verification1.verifyIfElementIsPresent(reportPage.batchReportActiveTopLocator,'Report Active Create is not present')
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     
 })
 
@@ -28,12 +28,12 @@ test("VerifyReportTemplateListPageLoads @PageNavigation@ProductionSmoke@Smoke", 
     await util.delay(5000);
     await sideNavigationBar.clickOnReportSideNavigation();
     await util.delay(2000);
+    //validation for errors
+    await verification.validationsForPage();
     let getNewPage = await sideNavigationBar.getNewWindow(context, sideNavigationBar.reportTemplateSideNavLocator);
     let reportTemplatePageInNewTab = new ReportTemplatePage(getNewPage);
     let verification1 = new Verification(getNewPage);
     //verification
     await verification1.verifyIfElementIsPresent(reportTemplatePageInNewTab.reportTeamplateCreateLinkLocator, 'Report template Create link is not present');
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     
 })

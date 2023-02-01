@@ -10,6 +10,8 @@ test("VerifyRecordsTestLoads @PageNavigation@ProductionSmoke@Smoke", async({base
     let transactionTestID = await data.getValueOfTheParameter('transactionTestId');
     await sideNavigationBar.navigateToRecordsFromSideNavigation();
     await util.delay(2000);
+    //validation for errors
+    await verification.validationsForPage();
     await verification.verifyIfElementIsPresent(sourceSelectorPage.testTabLocator, 'Test Tab is not present in source selector');
     //select test
     await sourceSelectorPage.clickOnFirstSearchedTestInSelectorPage(transactionTestID);
@@ -32,6 +34,8 @@ test("VerifyRecordsRUMLoads @PageNavigation@ProductionSmoke@Smoke", async({baseT
     let appId = await data.getValueOfTheParameter('rumAppId');
     await sideNavigationBar.navigateToRecordsFromSideNavigation();
     await util.delay(2000);
+    //validation for errors
+    await verification.validationsForPage();
     await verification.verifyIfElementIsPresent(sourceSelectorPage.myAppTabLocator, 'myApp Tab is not present in source selector');
     // click on my app tab
     await sourceSelectorPage.clickOnMyAppTab();
@@ -42,7 +46,5 @@ test("VerifyRecordsRUMLoads @PageNavigation@ProductionSmoke@Smoke", async({baseT
     await verification.verifyIfElementIsPresent(rumRecordsPage.changeSessionTabLocator,"change session tab is not present");
     await verification.verifyIfElementIsPresent(rumRecordsPage.ganttChartSearchBoxLocator,"search box of gantt chant is not present")
     await verification.verifyIfElementIsPresent(rumRecordsPage.zoneFilterLocator,"zone filter is not present")
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     
 })

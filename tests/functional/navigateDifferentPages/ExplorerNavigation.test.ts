@@ -7,8 +7,10 @@ import { DataForEnv } from "@lib/DataForEnvironment";
 test("VerifyExplorerTestLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorExplorer,explorerPage,explorerSyntheticDetails, util}) => {
     let data = new DataForEnv();
     let transactionTestID = await data.getValueOfTheParameter('transactionTestId');
-    await util.delay(5000);
     await sideNavigationBar.navigateToExplorerFromSideNavigation();
+    await util.delay(5000);
+    //validation for errors
+    await verification.validationsForPage();
     await verification.verifyIfElementIsPresent(sourceSelectorExplorer.testTabLocator, 'Test Tab is not present in source selector');
     //select test
     await sourceSelectorExplorer.clickOnFirstSearchedItemInSelectorPage(transactionTestID);
@@ -21,8 +23,6 @@ test("VerifyExplorerTestLoads @PageNavigation@ProductionSmoke@Smoke", async({bas
     await verification.verifyIfElementIsPresent(explorerSyntheticDetails.runMetricsValueLocator,"run metrics value is not present");
     await verification.verifyIfElementIsPresent(explorerSyntheticDetails.testTimeMetricsValueLocator,"test time metrics value is not present")
     await verification.verifyIfElementIsPresent(explorerSyntheticDetails.availabilityMetricsValueLocator,"availability metrics value is not present")
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     
 })
 
@@ -36,6 +36,8 @@ test("VerifyExplorerRUMLoads @PageNavigation@ProductionSmoke@Smoke", async({base
     await util.delay(5000);
     await sideNavigationBar.navigateToExplorerFromSideNavigation();
     await util.delay(2000);
+    //validation for errors
+    await verification.validationsForPage();
     await verification.verifyIfElementIsPresent(sourceSelectorExplorer.myAppTabInSourceSelectorLocator, 'myApp Tab is not present in source selector');
     //select myApp tab
     await sourceSelectorExplorer.clickOnMyAppTab();
@@ -50,7 +52,5 @@ test("VerifyExplorerRUMLoads @PageNavigation@ProductionSmoke@Smoke", async({base
     await verification.verifyIfElementIsPresent(explorerRUMDetails.pageViewsMetricsTextLocator,"page view metrics text is not present")
     await verification.verifyIfElementIsPresent(explorerRUMDetails.avgDOCCompleteMetricsValueLocator,"avg doc complete metrics value is not present")
     await verification.verifyIfElementIsPresent(explorerRUMDetails.pageViewsMetricValueLocator,"page view metrics value is not present");
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     
 })

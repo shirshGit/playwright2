@@ -24,8 +24,6 @@ export class EndpointSmartboardPage {
     private _endpoint = '//span[text()="Endpoint"]';
     private _network = '//span[text()="Network"]';
     private _application = '//span[text()="Application"]';
-<<<<<<< HEAD
-=======
     private _endPointTested = '//div[text()="Endpoints Tested"]';
     private _locationTested = '//div[text()="Locations Tested"]';
     private _name = '//span[text()="Name"]';
@@ -106,7 +104,6 @@ export class EndpointSmartboardPage {
     private _locWidgetForNetworkTab = '//div[text()="Location"]/../../../..';
     private _networkWidget = '//span[text()="Network Path"]';
     private _hopByHopWidget = '//span[text()="Hop-by-Hop"]';
->>>>>>> f7fd8fb9a8d5121bbf80726b18242f1f225f6b04
 
     
     public get endpointWgtForNetworkTabLocator(){

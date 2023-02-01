@@ -8,14 +8,14 @@ test("VerifySettingsUserroleLoads @PageNavigation@ProductionSmoke@Smoke", async(
     //navigate to userrole page
     await util.delay(3000);
     await sideNavigationBar.navigateToUserrolePageFromSideNavigation();
+    //validation for errors
+    await verification.validationsForPage();
     //validation 
     await verification.verifyIfElementIsPresent(userrolePage.createIconLocator,"create icon is not present");
     await verification.verifyIfElementIsPresent(userrolePage.nameTextLocator,"name text is not present");
     await verification.verifyIfElementIsPresent(userrolePage.divisionTextLocator,"division text is not present");
     await verification.verifyIfElementIsPresent(userrolePage.activeContactTextLocator,"active contact text is not present");
     await verification.verifyIfElementIsPresent(userrolePage.inactiveContactTextLocator,"inactive contact text is not present");
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     
 })
 
@@ -26,14 +26,14 @@ test("VerifySettingsDivisionLoads @PageNavigation@ProductionSmoke@Smoke", async(
     //navigate to userrole page
     await util.delay(3000);
     await sideNavigationBar.navigateToDivisionFromSideNavigation();
+    //validation for errors
+    await verification.validationsForPage();
     //validation 
     await verification.verifyIfElementIsPresent(divisionPage.createIconLocator,"create icon is not present");
     await verification.verifyIfElementIsPresent(divisionPage.nameTextLocator,"name text is not present");
     await verification.verifyIfElementIsPresent(divisionPage.statusIconLocator,"status text is not present");
     await verification.verifyIfElementIsPresent(divisionPage.lastUpdatedTextLocator,"last updated text is not present");
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
-    
+   
 })
 
 /*
@@ -43,14 +43,14 @@ test("VerifySettingsSchedulesLoads @PageNavigation@ProductionSmoke@Smoke", async
     //navigate to userrole page
     await util.delay(5000);
     await sideNavigationBar.navigateToSchedulesPageFromSideNavigation();
+    //validation for errors
+    await verification.validationsForPage();
     //validation 
     await verification.verifyIfElementIsPresent(schedulePage.newIconLocator,"create icon is not present");
     await verification.verifyIfElementIsPresent(schedulePage.nameTextLocator,"name text is not present");
     await verification.verifyIfElementIsPresent(schedulePage.typeTextLocator,"type text is not present");
     await verification.verifyIfElementIsPresent(schedulePage.statusTextLocator,"status text is not present");
     await verification.verifyIfElementIsPresent(schedulePage.lastUpdatedColumnTextLocator,"last updated text is not present");
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     
 })
 
@@ -61,13 +61,13 @@ test("VerifySettingsIndexesLoads @PageNavigation@ProductionSmoke@Smoke", async({
     //navigate to userrole page
     await util.delay(5000);
     await sideNavigationBar.navigateToIndexesPageFromSideNavigation();
+    //validation for errors
+    await verification.validationsForPage();
     //validation 
     await verification.verifyIfElementIsPresent(indexPage.newIconLocator,"create icon is not present");
     await verification.verifyIfElementIsPresent(indexPage.nameTextLocator,"name text is not present");
     await verification.verifyIfElementIsPresent(indexPage.idTextLocator,"id text is not present");
     await verification.verifyIfElementIsPresent(indexPage.descrptionTextLocator,"description text is not present");
     await verification.verifyIfElementIsPresent(indexPage.noOfTestTextLocator,"no. of test text is not present");
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     
 })

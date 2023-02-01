@@ -273,7 +273,6 @@ const test = baseTest.extend<{
     schedulePage: async ({ page }, use) => {
         await use(new SchedulePage(page))
     },
-
     nodeMapPage: async ({ page }, use) => {
         await use(new MapPage(page))
     },
