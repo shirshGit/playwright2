@@ -19,8 +19,8 @@ test("VerifyOverviewDashboardLoads @PageNavigation@ProductionSmoke@Smoke", async
   CP-44295 : Verify Widgets in test overview dashboard page
 */
 test("VerifyTestOverviewDashboardLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil, defaultDashboardPage, verification, util,testOverviewDashboard, dashboardBlade}) => {
-    
     await util.delay(2000);
+    await defaultDashboardPage.clickOnTab('Tests');
     //validation for errors
     await verification.validationsForPage();
     await verification.verifyIfElementIsPresent(defaultDashboardPage.errorSectionOverviewDashboardLocator, 'Error Section is not Present');
@@ -38,8 +38,8 @@ test("VerifyTestOverviewDashboardLoads @PageNavigation@ProductionSmoke@Smoke", a
 */
 
 test("VerifyEndpointOverviewDBLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil, defaultDashboardPage, verification, util,testOverviewDashboard, dashboardBlade, endpointOverviewDB}) => {
-    
     await util.delay(2000);
+    await defaultDashboardPage.clickOnTab('Endpoint');
     //validation for errors
     await verification.validationsForPage();
     await verification.verifyIfElementIsPresent(endpointOverviewDB.worstLocationWidgetLocator, 'Worst Endpont is not Present');
@@ -53,8 +53,8 @@ test("VerifyEndpointOverviewDBLoads @PageNavigation@ProductionSmoke@Smoke", asyn
     CP-39997 : To Validate BGP Metric Cards RPKI Status, %Reachability, #Hijacks , #Neighboring Peers , # Prefix withdrawn in BGP Dashboard
 */
 test("VerifyBGPOverviewDBLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil, defaultDashboardPage, verification, util,testOverviewDashboard, dashboardBlade, bgpOverviewDB}) => {
-    
     await util.delay(3000);
+    await defaultDashboardPage.clickOnTab('BGP');
     //validation for errors
     await verification.validationsForPage();
     await verification.verifyIfElementIsPresent(bgpOverviewDB.RPKIStatusLocator, 'RPKI is not Present');

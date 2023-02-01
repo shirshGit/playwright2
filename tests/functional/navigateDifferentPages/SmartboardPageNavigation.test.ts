@@ -4,7 +4,7 @@ import { DataForEnv } from "@lib/DataForEnvironment";
 /*
     CP-40696 : Verify smartboard is opened when clicked on smartboard option in left navigation
 */
-test.skip("VerifySmartboardTestLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,syntheticSmartboardPage, util}) => {
+test("VerifySmartboardTestLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,syntheticSmartboardPage, util}) => {
     let data = new DataForEnv();
     let transactionTestID = await data.getValueOfTheParameter('transactionTestId');
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();
@@ -28,7 +28,7 @@ test.skip("VerifySmartboardTestLoads @PageNavigation@ProductionSmoke@Smoke", asy
     CP-44496 : Verify Node smartboard navigation
 */
 
-test.skip("VerifySmartboardNodeLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,nodeSmartboardPage, util}) => {
+test("VerifySmartboardNodeLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,nodeSmartboardPage, util}) => {
     let data = new DataForEnv();
     let nodeName = await data.getValueOfTheParameter('node');
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();
@@ -53,7 +53,7 @@ test.skip("VerifySmartboardNodeLoads @PageNavigation@ProductionSmoke@Smoke", asy
 /*
     CP-44188 : Verify RUM smartboard loads properly from side navigation
 */
-test.skip("VerifySmartboardRUMLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,rumSmartboardPage, util}) => {
+test("VerifySmartboardRUMLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,rumSmartboardPage, util}) => {
     let data = new DataForEnv();
     let appName = await data.getValueOfTheParameter('rumAppName');
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();
@@ -132,7 +132,7 @@ test("VerifyTimeZoneDropDownInNTNSB @PageNavigation@ProductionSmoke@Smoke", asyn
 /*
     CP-39967 : To Validate Matrix Compare Section- NTN SB
 */
-test.skip("VerifyMatrixCompareInNTNSB @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,ntnSmartboardPage, util}) => {
+test("VerifyMatrixCompareInNTNSB @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,ntnSmartboardPage, util}) => {
     let data = new DataForEnv();
     let ntnTestID = await data.getValueOfTheParameter('nodeToNodeTest');
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();
@@ -174,7 +174,7 @@ test.skip("VerifyMatrixCompareInNTNSB @PageNavigation@ProductionSmoke@Smoke", as
 /*
     CP-39971 : To Validate Record Compare Section- NTN SB
 */
-test.skip("VerifyRecordsCompareSectionInNTNSB @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,ntnSmartboardPage, util}) => {
+test("VerifyRecordsCompareSectionInNTNSB @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,ntnSmartboardPage, util}) => {
     let data = new DataForEnv();
     let ntnTestID = await data.getValueOfTheParameter('nodeToNodeTest');
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();
@@ -220,7 +220,7 @@ test.skip("VerifyRecordsCompareSectionInNTNSB @PageNavigation@ProductionSmoke@Sm
 /*
     CP-44479 : Verify User Landing in Endpoint test Smartboard page 
 */
-test.skip("VerifySmartboardEndpointTestLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,endpointSmartboardPage, util}) => {
+test("VerifySmartboardEndpointTestLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,endpointSmartboardPage, util}) => {
     let data = new DataForEnv();
     let testID = await data.getValueOfTheParameter('endpointTracerouteTestID');
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();
@@ -274,7 +274,7 @@ test.skip("VerifySmartboardEndpointTestLoads @PageNavigation@ProductionSmoke@Smo
 /*
     CP-44478 : Verify User Landing in Location Smartboard page
 */
-test.skip("VerifySmartboardLocationLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,endpointSmartboardPage, util}) => {
+test("VerifySmartboardLocationLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,endpointSmartboardPage, util}) => {
     let data = new DataForEnv();
     let locationID = await data.getValueOfTheParameter('endpointLocationID');
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();
@@ -366,7 +366,7 @@ test.skip("VerifySmartboardLocationLoads @PageNavigation@ProductionSmoke@Smoke",
 /*
     CP-44188 : Verify RUM smartboard loads properly from side navigation
 */
-test.skip("VerifySmartboardEmployeeAppLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,endpointSmartboardPage, util}) => {
+test("VerifySmartboardEmployeeAppLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,endpointSmartboardPage, util}) => {
     let data = new DataForEnv();
     let appName = await data.getValueOfTheParameter('rumAppName');
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();
@@ -438,7 +438,7 @@ test.skip("VerifySmartboardEmployeeAppLoads @PageNavigation@ProductionSmoke@Smok
 /*
     CP-44188 : Verify RUM smartboard loads properly from side navigation
 */
-test.skip("VerifySmartboardEndpointLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,endpointSmartboardPage, util}) => {
+test("VerifySmartboardEndpointLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,endpointSmartboardPage, util}) => {
     let data = new DataForEnv();
     let endpointID = await data.getValueOfTheParameter('endpoint');
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();
