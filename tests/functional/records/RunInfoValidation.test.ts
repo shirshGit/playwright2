@@ -1,6 +1,6 @@
 import test from "@lib/BaseTest"
 import { DataForEnv } from "@lib/DataForEnvironment";
-import { RecordsPage } from "@pageobjects/Records/RecordsPage";
+import { SyntheticRecordsPage } from "@pageobjects/Records/SyntheticRecordsPage";
 
 
 
@@ -15,7 +15,7 @@ test("VerifyIPAddressForTest  @ProductionDefectRecords@Records", async ({ baseTe
     let mqttTestID = await data.getValueOfTheParameter('mqttTestID');
     let ntpTestID = await data.getValueOfTheParameter('ntpTestID');
     //search IMAP test
-    await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(imapTestID);
+    await sourceSelectorPage.clickOnFirstSearchedTestInSelectorPage(imapTestID);
     await util.delay(3000);
     let getIPAddressOfImapTest = await recordsPage.getIPAddressValue();
     //validation for IMAP test
@@ -25,7 +25,7 @@ test("VerifyIPAddressForTest  @ProductionDefectRecords@Records", async ({ baseTe
     //click on source button
     await recordsPage.clickOnSourceButton();
     //search MQTT test
-    await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(mqttTestID);
+    await sourceSelectorPage.clickOnFirstSearchedTestInSelectorPage(mqttTestID);
     await util.delay(3000);
     let getIPAddressOfMQTTTest = await recordsPage.getIPAddressValue();
     //validation for MQTT test
@@ -35,7 +35,7 @@ test("VerifyIPAddressForTest  @ProductionDefectRecords@Records", async ({ baseTe
     //click on source button
     await recordsPage.clickOnSourceButton();
     //search NTP test
-    await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(ntpTestID);
+    await sourceSelectorPage.clickOnFirstSearchedTestInSelectorPage(ntpTestID);
     await util.delay(3000);
     let getIPAddressOfNTPTest = await recordsPage.getIPAddressValue();
     //validation for NTP test
@@ -47,14 +47,14 @@ test("VerifyIPAddressForTest  @ProductionDefectRecords@Records", async ({ baseTe
 /*
     CP-21643 : 117271 DES Test URL Is updated incorrectly when we change a test from Source
 */
-test("VerifyTestURLUpdate  @ProductionDefectRecords@Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, recordsPage, page, verification }) => {
+test("VerifyTestURLUpdate  @ProductionDefectRecords@Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage,  recordsPage, page, verification }) => {
     //navigate to records page
     await sideNavigationBar.navigateToRecordsFromSideNavigation();
     let data = new DataForEnv();
     let testID1 = await data.getValueOfTheParameter('transactionTest');
     let testID2 = await data.getValueOfTheParameter('webPingTestID');
     //search transaction test
-    await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(testID1);
+    await sourceSelectorPage.clickOnFirstSearchedTestInSelectorPage(testID1);
     await util.delay(3000);
     //get url
     let pageURL1 = await baseTestUtil.getUrl();
@@ -65,7 +65,7 @@ test("VerifyTestURLUpdate  @ProductionDefectRecords@Records", async ({ baseTestU
     //click on source button
     await recordsPage.clickOnSourceButton();
     //search web test
-    await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(testID2);
+    await sourceSelectorPage.clickOnFirstSearchedTestInSelectorPage(testID2);
     await util.delay(3000);
     //get url
     let pageURL2 = await baseTestUtil.getUrl();
@@ -84,7 +84,7 @@ test("VerifyFailedVerbInTransactionTest  @ProductionDefectRecords@Records", asyn
     let data = new DataForEnv();
     let testID = await data.getValueOfTheParameter('transactionTestIDWithEnforceFailureAdvanceSetting');
     //search transaction test
-    await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(testID);
+    await sourceSelectorPage.clickOnFirstSearchedTestInSelectorPage(testID);
     await util.delay(3000);
     //validation for failed verb error bar
     await verification.verifyIfElementIsPresent(recordsPage.failedVerbLocator, 'failed verb error bar Is not present.');
@@ -100,11 +100,11 @@ test("VerifyUserShouldAbleToClickOnSourceBlade  @Records", async ({ baseTestUtil
     let data = new DataForEnv();
     let testID = await data.getValueOfTheParameter('webPingTestID');
     //open any test
-    await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(testID);
+    await sourceSelectorPage.clickOnFirstSearchedTestInSelectorPage(testID);
     await util.delay(1000);
     //click on test in source blade and get new window
     let getNewPage = await recordsPage.getNewWindow(context,recordsPage.testInSourceSelectorLocator);
-    let testPropertyPage = new RecordsPage(getNewPage);
+    let testPropertyPage = new SyntheticRecordsPage(getNewPage);
     //fetch url of test property page
     let getTestPropertyPageURL = await testPropertyPage.getUrl();
     //validation for test properties page

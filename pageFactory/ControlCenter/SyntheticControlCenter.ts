@@ -55,6 +55,7 @@ export class SynControlCenterPage {
     private _rumInRootBlade = '(//div[contains(@class,"NavigationTree_navGroupText_")][normalize-space()="RUM"])[2]';
     private _divLevelDropDown = '(//div[@data-testid="divisionSelector"]//div)[1]';
     private _closeChangeLogPage = '(//div[@data-testid="cancel-icon"])[2]';
+    private _testsTreeSideSideNav = '//div[contains(@class,"NavigationTree_navGroupText") and text() = "Tests"]';
     
     public get newItemCreationLocator() {
         return this._newItemCreation;
@@ -208,7 +209,9 @@ export class SynControlCenterPage {
         return (text: string) => { return `//span[text()="${text}"]` };
     }
 
-
+    public get testsTreeSideSideNavLocator(){
+        return this._testsTreeSideSideNav;
+    }
 
    
     

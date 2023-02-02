@@ -7,11 +7,11 @@ import { DataForEnv } from "@lib/DataForEnvironment";
 /*
     CP-14491 : Verify the user is able to search the test based on test id/test name from source selector
 */
-test("VerifyUserShouldAbleToSelectTestIsSourceBlade  @Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util,sourceSelectorPage ,recordsPage, page, verification }) => {
+test("VerifyUserShouldAbleToSelectTestIsSourceBlade  @Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util,sourceSelectorPage, recordsPage, page, verification }) => {
     let data = new DataForEnv();
     await sideNavigationBar.navigateToRecordsFromSideNavigation();
     let testID = await data.getValueOfTheParameter('webPingTestID');
-    await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(testID);
+    await sourceSelectorPage.clickOnFirstSearchedTestInSelectorPage(testID);
     await util.delay(3000);
     //validation for data tabs
     await verification.verifyIfElementIsPresent(recordsPage.waterFallTabLocator,"WaterFall tab is not present.");
@@ -24,13 +24,13 @@ test("VerifyUserShouldAbleToSelectTestIsSourceBlade  @Records", async ({ baseTes
 /*
      CP-32065 : Verify user can only search for tests under selected division 
 */
-test("VerifyUserShouldAbleToSearchTestUnderSelectedDivision @Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util,sourceSelectorPage ,recordsPage, page,charmBar, verification }) => {
+test("VerifyUserShouldAbleToSearchTestUnderSelectedDivision @Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util,sourceSelectorPage , recordsPage, page,charmBar, verification }) => {
     let data = new DataForEnv();
     await sideNavigationBar.navigateToRecordsFromSideNavigation();
     let testID = await data.getValueOfTheParameter('webPingTestIDForDivision');
     await charmBar.selectDivFromCharmbar('ToCreateFromAutomation');
     await util.delay(3000);
-    await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(testID);
+    await sourceSelectorPage.clickOnFirstSearchedTestInSelectorPage(testID);
     let pageURL = await baseTestUtil.getUrl();
     //validation for selected test
     await verification.verifySoftAssertTrue(pageURL.includes(testID), 'TestId is not present in url');
