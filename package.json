@@ -9,7 +9,7 @@
     "test:single:Smoke": "npx playwright test /tests/functional/navigateDifferentPages --project=Smoke --workers=1",
     "test:single:chrome2": "npx playwright test /tests/functional/navigateDifferentPages/ExplorerNavigation.test.ts --project=Chrome --workers=1",
     "test:single:chrome3": "npx playwright test /tests/functional/navigateDifferentPages/SmartboardPageNavigation.test.ts --project=Chrome --workers=1",
-    "test:single:chrome4": "npx playwright test /tests/functional/navigateDifferentPages/RecordsPageNavigation.test.ts --project=Chrome --workers=1",
+    "test:single:chrome4": "npx playwright test /tests/functional/smartboard/smartboradNavigation.test.ts --project=Chrome --workers=1",
     "test:single:chromesmoke": "npx playwright test /tests/functional/cc/synthetic/ --project=ChromeSmoke --workers=1",
     "test:single:edge": "npx playwright test /tests/functional/catchpointEndpointDB.test.ts --project=Edge --workers=1",
     "test:single:firefox": "npx playwright test /tests/functional/catchpointEndpointDB.test.ts --project=Firefox --workers=1",
