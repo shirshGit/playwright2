@@ -23,7 +23,7 @@ test("VerifyRecordsTestLoads @PageNavigation@ProductionSmoke@Smoke", async({base
     await verification.verifyIfElementIsPresent(syntheticRecordsPage.requestFilterDDLocator,"request filter DD is not present")
     await verification.verifyIfElementIsPresent(syntheticRecordsPage.fileTypeDDLocator,"file type filter DD is not present")
     //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
+    await verification.verifyTextIsNotPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     
 })
 /*

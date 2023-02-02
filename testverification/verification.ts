@@ -31,7 +31,7 @@ export class Verification {
         }
     }
 
-    async verifyTextIsPresentInPage(text: string, errorMessage: string, isHardAssert: boolean = true) {
+    async verifyTextIsNotPresentInPage(text: string, errorMessage: string, isHardAssert: boolean = true) {
         let noOFElements = await webActions.getNoOfElementsPresentInPage(text);
         let isElementPresent = await this.page.isVisible(`text=${text}`);
         if (isHardAssert) {
@@ -87,13 +87,13 @@ export class Verification {
 
     async validationsForPage() {
         //validation for Rollback error
-        await this.verifyTextIsPresentInPage("Rollback: An unexpected database related exception was encountered.Failed to Save Entity.", 'getting roll back error.');
+        await this.verifyTextIsNotPresentInPage("Rollback: An unexpected database related exception was encountered.Failed to Save Entity.", 'getting roll back error.');
         //validation for something went wrong
-        await this.verifyTextIsPresentInPage("'Something went wrong!'", 'getting something went wrong message.');
+        await this.verifyTextIsNotPresentInPage("'Something went wrong!'", 'getting something went wrong message.');
         //validation for 500 error
-        await this.verifyTextIsPresentInPage("500 - An unexpected error was encountered.", 'getting 500 error.');
+        await this.verifyTextIsNotPresentInPage("500 - An unexpected error was encountered.", 'getting 500 error.');
         //validation for 404 error
-        await this.verifyTextIsPresentInPage("Page not found", 'getting page not found error.');
+        await this.verifyTextIsNotPresentInPage("Page not found", 'getting page not found error.');
 
     }
 
