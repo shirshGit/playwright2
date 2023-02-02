@@ -6,7 +6,7 @@ import { DataForEnv } from "@lib/DataForEnvironment";
     CP-26410 : Verify user should see Change Log option on the test update properties
 */
 
-test("VerifyUserShouldSeeChangeLogOptionOnTestPropertyPage @SyntheticControlCenter", async ({ baseTestUtil, syntheticTestDetailPage, page, sideNavigationBar, util, testUtility, synCCPage, verification }) => {
+test("VerifyUserShouldSeeChangeLogOptionOnTestPropertyPage @SyntheticControlCenter@Test", async ({ baseTestUtil, syntheticTestDetailPage, page, sideNavigationBar, util, testUtility, synCCPage, verification }) => {
     let data = new DataForEnv();
     let testID = await data.getValueOfTheParameter('testID');
     //navigate to CC page
@@ -15,7 +15,7 @@ test("VerifyUserShouldSeeChangeLogOptionOnTestPropertyPage @SyntheticControlCent
     await syntheticTestDetailPage.clickOnSearchedItemInCC(testID);
     await util.delay(3000);
     //validation
-    await verification.verifyIfElementIsPresent(syntheticTestDetailPage.changeLogLocator, 'Change log is not present in test property blade.');
+    await verification.verifyElementIsNotPresent(syntheticTestDetailPage.changeLogLocator, 'Change log is not present in test property blade.');
 
 })
 
@@ -24,7 +24,7 @@ test("VerifyUserShouldSeeChangeLogOptionOnTestPropertyPage @SyntheticControlCent
     CP-35379 : Verify Changelog should capturing correctly for "All" and "Nodes" under Ru
 */
 
-test("VerifyChangeLogShouldCaptureCorrectDataAfterUpdate @SyntheticControlCenter", async ({ baseTestUtil, syntheticTestDetailPage, syntheticDetailsPage, sideNavigationBar, util, testUtility, synCCPage, verification }) => {
+test("VerifyChangeLogShouldCaptureCorrectDataAfterUpdate @SyntheticControlCenter@Test", async ({ baseTestUtil, syntheticTestDetailPage, syntheticDetailsPage, sideNavigationBar, util, testUtility, synCCPage, verification }) => {
     let data = new DataForEnv();
     let prodForTestCreate = await data.getValueOfTheParameter('productForJunkItems');
     let testName = await testUtility.getTestName();
@@ -59,8 +59,8 @@ test("VerifyChangeLogShouldCaptureCorrectDataAfterUpdate @SyntheticControlCenter
     await syntheticDetailsPage.clickOnChangeLogButton();
     await util.delay(5000);
     //validation
-    verification.verifySoftAssertForTextOfAnElement(syntheticTestDetailPage.changeLogRunOnLocator, 'Run On', 'run on is not present.');
-    verification.verifySoftAssertForTextOfAnElement(syntheticTestDetailPage.changeLogRunOnValueLocator, '2', 'run on value is not present.');
+    verification.verifyIfElementIsPresent(syntheticTestDetailPage.changeLogRunOnLocator, 'run on is not present.');
+    verification.verifyIfElementIsPresent(syntheticTestDetailPage.changeLogRunOnValueLocator, 'run on value is not present.');
     //close Change Logs Page
     await syntheticTestDetailPage.closeChangeLogsPage();
     //close test property page

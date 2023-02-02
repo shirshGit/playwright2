@@ -6,3 +6,6 @@ html-report/
 Downloads/
 html-report.zip/
 resultJunit.xml
+TestLinkReportParser/TestLinkCompatibleJsonToJunitReport/bin
+TestLinkReportParser/TestLinkCompatibleJsonToJunitReport/obj
+TestLinkReportParser/.vs

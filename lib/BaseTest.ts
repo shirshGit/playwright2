@@ -118,7 +118,7 @@ const test = baseTest.extend<{
     recordsPage: RecordsPage;
     ntnSmartboardPage : NodeToNodeSmartboardPage;
     bgpSmartboardPage : BGPSmartboardPage
-
+    
 
 }>({
     baseTestUtil: async ({ page }, use, testInfo: TestInfo) => {

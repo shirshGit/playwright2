@@ -26,6 +26,13 @@ export class DefaultDashboardPage {
         return this._overviewDashboard;
     }
 
+    public get tabLocator(){
+        return (text:string) => { return `(//span[text()="${text}"])[1]`}
+    }
+
+    public get testNameLocator(){
+        return (text:number) => { return `(//div[contains(@class,"ms-DetailsRow-fields fields")]//a)[${text}]`}
+    }
     public get errorSectionOverviewDashboardLocator(){
         return this._errorSectionOverviewDashboard;
     }
@@ -50,10 +57,14 @@ export class DefaultDashboardPage {
         return this._rumWidgetinOverviewDashboard;
     }
 
+<<<<<<< HEAD
     public get tabLocator(){
         return (text:string) => { return `(//span[text()="${text}"])[1]`}
     }
    
+=======
+    
+>>>>>>> 01570058f09f4e4899656dbd40045315db5e88b4
     //#endregion
 
     //#region This region is to have the functions
@@ -65,8 +76,13 @@ export class DefaultDashboardPage {
         await webActions.clickElement(this.tabLocator(tabName));
      }
 
-    
+    async clickOnTab(tabName : string){
+        await webActions.clickElement(this.tabLocator(tabName));
+    }
 
+    async getTestNameFromTestTable(tileNum: number){
+        return await webActions.getElementText(this.testNameLocator(tileNum));
+    }
 
 
     //#endregion

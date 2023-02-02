@@ -18,14 +18,14 @@ const config: PlaywrightTestConfig = {
   globalTeardown: `./global-teardown`,
 
   //sets timeout for each test case
-  timeout: 180000,
+  timeout: 120000,
 
   //number of retries if test case fails
   retries: 0,
 
 
   //Reporters
-  reporter: [[`./CustomReporterConfig.ts`], [`experimental-allure-playwright`], [`html`, { outputFolder: 'html-report', open: 'never' }], ['junit', {outputFile: 'resultJunit.xml'}]],
+  reporter: [[`./CustomReporterConfig.ts`], [`experimental-allure-playwright`], [`html`, { outputFolder: 'html-report', open: 'never' }], ['junit', {outputFile: 'resultJunit.xml'}],['json', {  outputFile: 'test-results.json' }]],
 
   projects: [
     {
@@ -102,7 +102,7 @@ const config: PlaywrightTestConfig = {
           slowMo: 0
         }
       },
-      grep: [new RegExp("@Smoke")]
+      grep: [new RegExp("@ProductionSmoke")]
     },
     {
       name: `Firefox`,

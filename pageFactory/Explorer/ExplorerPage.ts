@@ -19,7 +19,8 @@ export class ExplorerPage {
     private _firstThreeDotMenuInErrorTab = '(//div[@data-testid="table_row"]//span[@data-automationid="splitbuttonprimary"])[1]//i';
     private _recordsInThreeDotMenuInErrorTab = '//span[normalize-space()="Records"]';
     private _summeryTab = '//li[@data-testid="Summary Table"]';
-
+    private _testInSourceSelector = '//div[@data-testid="custom-picker-pill-container"]//span';
+    private _errorTabFirstRowTestName = '//div[@data-selection-index="0"]//div[@data-automation-key="Test_0"]//span';
     public get errorTabLocator() {
         return this._errorTab;
     }
@@ -35,8 +36,15 @@ export class ExplorerPage {
     public get summaryTabLocator() {
         return this._summeryTab;
     }
-    
+    public get testInSourceSelectorLocator() {
+        return this._testInSourceSelector;
+    }
+    public get errorTabFirstRowTestName(){
+        return this._errorTabFirstRowTestName
+    }
    
+
+
 
 
 
@@ -50,17 +58,25 @@ export class ExplorerPage {
         await webActions.hoverOnElement(this.firstThreeDotInErrorTabLocator);
         await webActions.clickElement(this.firstThreeDotInErrorTabLocator);
     }
-    async getNewWindow(context: BrowserContext, locator: string) {
-        return await webActions.newWindowHandle(context, locator);
-
-    }
     async getRowWiseTimeFromErrorTab(rowNum: number) {
         let time = await webActions.getElementText(this.errorTabRowWiseTimeLocator(rowNum));
         return time;
     }
-    
-    async clickOnSummaryTab(){
+
+    async clickOnSummaryTab() {
         await webActions.clickElement(this.summaryTabLocator);
     }
-    
+
+    async getNewWindow(context: BrowserContext, locator: string) {
+        return await webActions.newWindowHandle(context, locator);
+
+    }
+    async getUrl() {
+        return await webActions.getCurrentPageUrl();
+    }
+
+    async clickOnErrorTabFirstRowTestName(){
+        return await webActions.clickElement(this.errorTabFirstRowTestName);
+    }
+
 }

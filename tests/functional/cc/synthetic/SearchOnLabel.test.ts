@@ -7,7 +7,7 @@ let data = new DataForEnv();
     CP-32507 : Verify search on labels works on contains
 */
 
-test("@Smoke @SyntheticControlCenter Search By label", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar, verification, util}) => {
+test("SearchBylabel   @Smoke@SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar, verification, util}) => {
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
     let prodForTestCreate = await data.getValueOfTheParameter('productForJunkItems');
     let testName = 'Automation_Delete_UI' + await util.generateRandomText(5);

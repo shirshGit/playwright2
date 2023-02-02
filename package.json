@@ -7,16 +7,25 @@
   "license": "MIT",
   "scripts": {
     "test:single:Smoke": "npx playwright test /tests/functional/navigateDifferentPages --project=Smoke --workers=1",
+<<<<<<< HEAD
     "test:single:chrome2": "npx playwright test /tests/functional/navigateDifferentPages/ExplorerNavigation.test.ts --project=Chrome --workers=1",
     "test:single:chrome3": "npx playwright test /tests/functional/navigateDifferentPages/SmartboardPageNavigation.test.ts --project=Chrome --workers=1",
     "test:single:chrome4": "npx playwright test /tests/functional/smartboard/smartboradNavigation.test.ts --project=Chrome --workers=1",
     "test:single:chromesmoke": "npx playwright test /tests/functional/cc/synthetic/ --project=ChromeSmoke --workers=1",
+=======
+    "test:single:chrome2": "npx playwright test /tests/functional/cc/synthetic/VerifyUserCantDeactivateFolder.test.ts --project=Chrome --workers=1",
+    "test:single:chrome3": "npx playwright test /tests/functional/cc/synthetic/CreateNewSyntheticProduct.test.ts --project=Chrome --workers=1",
+    "test:single:chrome4": "npx playwright test /tests/functional/cc/synthetic/CCNavigationToAndFrom.test.ts --project=Chrome --workers=1",
+   "test:single:chromesmoke": "npx playwright test /tests/functional/cc/synthetic/ --project=ChromeSmoke --workers=1",
+>>>>>>> 01570058f09f4e4899656dbd40045315db5e88b4
     "test:single:edge": "npx playwright test /tests/functional/catchpointEndpointDB.test.ts --project=Edge --workers=1",
     "test:single:firefox": "npx playwright test /tests/functional/catchpointEndpointDB.test.ts --project=Firefox --workers=1",
-    "test:single:chromeTimeCapture": "npx playwright test /tests/functional/catchointSampleTestForTimeComapre.test.ts --project=Chrome --workers=1"
+    "test:single:chromeTimeCapture": "npx playwright test /tests/functional/catchointSampleTestForTimeComapre.test.ts --project=Chrome --workers=1",
+    "test:single:nav": "npx playwright test /tests/functional/navigateDifferentPages --project=Smoke --workers=1"
+    
   },
   "dependencies": {
-    "@playwright/test": "^1.29.2",
+    "@playwright/test": "^1.29.1",
     "@types/adm-zip": "^0.5.0",
     "@types/crypto-js": "^4.1.1",
     "@typescript-eslint/eslint-plugin": "^5.19.0",
@@ -30,7 +39,7 @@
     "experimental-allure-playwright": "0.0.3",
     "install": "^0.13.0",
     "pg": "^8.7.3",
-    "playwright": "^1.23.0",
+    "playwright": "^1.29.1",
     "typescript": "^4.6.3"
   }
 }

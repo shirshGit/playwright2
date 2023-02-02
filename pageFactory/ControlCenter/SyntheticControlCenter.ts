@@ -1,6 +1,6 @@
 import { WebActions } from "@lib/WebActions";
+import { BrowserContext, Page } from "@playwright/test";
 import { Utility } from "@util/Utility";
-import { Page } from "playwright";
 let webActions: WebActions;
 let util: Utility
 
@@ -17,7 +17,7 @@ export class SynControlCenterPage {
 
     //#region This region is for getter
 
-    private _newItemCreation: string = '//button[text()="New"]';
+    private _newItemCreation = '//button[text()="New"]';
     private _searchBox = '//div[contains(@class,"FilterPanel_filter_")]//input[@data-testid="fabricsearchbox"]';
     private _newProductItem = '//p[text()="Product"]';
     private _newFolderItem = '//p[text()="Folder"]';
@@ -46,17 +46,19 @@ export class SynControlCenterPage {
     private _moveButtonInHeaderSection = '//button[text()="Move"]';
     private _moveButtonInTestLocationBlade = '//button[@type="button"]//span[text()="Move"]';
     private _divisionLevelDDInRootSection = '//div[contains(@class,"DivisionComboBox_divisionSelector")]//div[@id="chevron-down-icon"]';
-    private _clientLevelInDivisionDropDown = '//div[contains(@class,"ms-Callout ms-Dropdown-callout")]//span[text()="Client Level"]';
+    private _clientLevelInDivisionDropDown = '//span[text()="Client Level"]';
     private _closeMasterBlade = '//div[@data-testid="cancel-icon"]';
     private _statusOfFirstItem = '//div[@data-automation-key="Status_4"]';
-    private _getItemLocation = '//div[contains(@class,"BasicPropertySection_")]//div[@data-automation-id="visibleContent"]';
+    private _getItemLocation = '(//span[contains(@class,"ms-Breadcrumb-item")])[2]/div';
     private _testLocationTextIntestLocationBlade = '//span[text()="Tests Location"]';
     private _getDefaultItemselectedInDivisionDD = '//span[text()="Client Level"]';
     private _rumInRootBlade = '(//div[contains(@class,"NavigationTree_navGroupText_")][normalize-space()="RUM"])[2]';
     private _divLevelDropDown = '(//div[@data-testid="divisionSelector"]//div)[1]';
     private _closeChangeLogPage = '(//div[@data-testid="cancel-icon"])[2]';
     private _testsTreeSideSideNav = '//div[contains(@class,"NavigationTree_navGroupText") and text() = "Tests"]';
+    private _copyTestProductName = '//div[text()="ProductForCopyScenariosDoNotDelete"]'
     
+    private _activeStatusOfFirstSearchedItem = '//span[text()="Active"]';
     public get newItemCreationLocator() {
         return this._newItemCreation;
     }
@@ -157,6 +159,10 @@ export class SynControlCenterPage {
     public get getItemLocationLocator(){
         return this._getItemLocation;
     }
+
+    public get copyTestproductNameInTestPropertyPageLocator(){
+        return this._copyTestProductName;
+    }
    
 
     public get itemInMasterBladeLocator(){
@@ -212,6 +218,14 @@ export class SynControlCenterPage {
     public get testsTreeSideSideNavLocator(){
         return this._testsTreeSideSideNav;
     }
+    public get selectedItemLocatorInDivDropDown(){
+        return this._clientLevelInDivisionDropDown;
+    }
+    public get activeStatsLocatorOfFirstSearchedItem(){
+        return this._activeStatusOfFirstSearchedItem;
+    }
+
+
 
    
     
@@ -289,7 +303,7 @@ export class SynControlCenterPage {
         await util.delay(2000);
         await webActions.hoverOnElement(this.threeDotMenuOfSearchedItemLocator);
         await webActions.clickElement(this.threeDotMenuOfSearchedItemLocator);
-        await webActions.clickElement(this.itemInThreeDotMenu(navigationFromThreeDotMenu));
+        await webActions.clickElementJS(this.itemInThreeDotMenu(navigationFromThreeDotMenu));
     }
 
     async clickOnSearchedItemInCC(itemName: string) {
@@ -339,7 +353,7 @@ export class SynControlCenterPage {
     }
 
     async goToNewTransactionChromeTestCreate() {
-        await webActions.clickElement(this.newItemCreationLocator);
+        await webActions.clickElementJS(this.newItemCreationLocator);
         await webActions.clickElement(this.transactionChromeTestLocator);
 
     }
@@ -384,8 +398,8 @@ export class SynControlCenterPage {
 
     async getThreeDotMenuItem(itemName: string) {
         let xpath = this.threeDotMenuItemsLocator(itemName);
-        return xpath;
-
+        let item =  await webActions.getElementText(xpath);
+        return item;
     }
 
 
@@ -430,6 +444,14 @@ export class SynControlCenterPage {
 
     async closeChangeLogsPage(){
         await webActions.clickElement(this.closeChangeLogPageLocator);
+    }
+
+    async getNewWindow(context: BrowserContext, locator: string) {
+        return await webActions.newWindowHandle(context, locator);
+
+    }
+    async getUrl() {
+        return await webActions.getCurrentPageUrl();
     }
 
    

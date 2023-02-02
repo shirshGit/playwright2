@@ -11,7 +11,7 @@ test.beforeEach(async ({ baseTestUtil }) => {
 /*
     //CP-16588:Verify When User tried to Deactivate Folder ,then user should get an Error Messa
 */
-test("@Smoke @SyntheticControlCenter Verify User Cant Deactivate Folder", async ({ util, sideNavigationBar, syntheticProductDetailPage, syntheticFolderDetailPage, verification }) => {
+test("VerifyUserCantDeactivateFolder   @Smoke@SyntheticControlCenter", async ({ util, sideNavigationBar, syntheticProductDetailPage, syntheticFolderDetailPage, verification }) => {
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
     await syntheticProductDetailPage.goToNewProductCreate();
     let productName: string = await util.generateRandomText(5);

@@ -17,11 +17,11 @@ export class EndpointSmartboardPage {
 
     private _goButton = '//span[text()="Go"]';
     private _timeZoneDropDown = '//div[@data-testid="timezone-dropdown"]';
-    private _compareDropDown = '(//i[@data-icon-name="chevronDark"])[2]';
+    private _compareDropDown = '(//i[@data-icon-name="chevrondownLarge"])[1]//div';
     private _timeLine = '//div[@data-testid="smartboard-timeline"]';
     private _timeFrame = '//input[@value="Last 24 Hours"]';
     private _summary = '//span[text()="Summary"]';
-    private _endpoint = '//span[text()="Endpoint"]';
+    private _endpoint = '//span[text()="Endpoints"]';
     private _network = '//span[text()="Network"]';
     private _application = '//span[text()="Application"]';
     private _endPointTested = '//div[text()="Endpoints Tested"]';
@@ -37,7 +37,7 @@ export class EndpointSmartboardPage {
     private _trendingChart = '//div[contains(@class,"Chart_chartCont_")]';
     //location endpointTab
     private _pageViews = '//span[text()="Page Views"]';
-    private  _endpointWidgetInEndpointLoc = '//div[@data-automationid="DetailsList"]';
+    private  _endpointWidgetInEndpointLoc = '//div[@data-testid="endpoint-breakdown-dimension-container"]';
     //location networkTab
     private _domains = '//div[@data-testid="plainCard"]//div[text()="Domains"]';
     private _failures = '//div[text()="Failures"]';
@@ -74,7 +74,7 @@ export class EndpointSmartboardPage {
     private _settingsIcon = '//i[@data-icon-name="properties"]';
     private _keyMetricsWidget = '//div[@data-testid="key-metrics-container"]';
     private _issueNdEventWidget = '(//div[contains(@class,"KeyEventsTableContainerstyl")])[1]';
-    
+    private _endpointTimeLine  = '//div[@data-testid="smartboard-timeline"]';
     //endpoint endpoint tab
     private _filterButton = '(//button[@id="action-button"])[3]';
     private _cpuUsageCardMetrics = '//span[text()="CPU Usage"]';
@@ -106,6 +106,9 @@ export class EndpointSmartboardPage {
     private _hopByHopWidget = '//span[text()="Hop-by-Hop"]';
 
     
+    public get endpointTimeLineLocator(){
+        return this._endpointTimeLine;
+    }
     public get endpointWgtForNetworkTabLocator(){
         return this._endpointWgtForNetworkTab;
     }
