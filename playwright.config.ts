@@ -67,7 +67,7 @@ const config: PlaywrightTestConfig = {
       //grep: [new RegExp("@Smoke")]
     },
     {
-      name: `Smoke`,
+      name: `ChromeSmoke`,
       //testMatch: [`CreateNewSyntheticProduct.test.ts`],
       use: {
         // Configure the browser to use.
@@ -102,7 +102,7 @@ const config: PlaywrightTestConfig = {
           slowMo: 0
         }
       },
-      grep: [new RegExp("@ProductionSmoke")]
+      grep: [new RegExp("@Test")]
     },
     {
       name: `Firefox`,
