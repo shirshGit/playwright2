@@ -42,7 +42,7 @@ namespace JsonReportToTestLinkCompatibleReport
 
         public static void CreateXmlFromJson(JObject json)
         {
-            using (XmlWriter writer = XmlWriter.Create(System.IO.Directory.GetCurrentDirectory() + "//testlink.xml"))
+            using (XmlWriter writer = XmlWriter.Create("C://JenkinsWorkArea//PlaywrightJobs//testlink.xml"))
             {
                 writer.WriteStartElement("testsuites");
                 foreach(JObject suite in json["suites"])
