@@ -6,7 +6,6 @@ let webActions: WebActions;
 export class Verification {
 
     readonly page: Page;
-
     constructor(page: Page) {
         this.page = page;
         webActions = new WebActions(this.page);
@@ -54,12 +53,10 @@ export class Verification {
 
 
     async verifyHardAssertForTextOfAnElement(locator: string, textTOMatch: string, errorMessage: string) {
-
         await expect(this.page.locator(locator), `${errorMessage}`).toContainText(textTOMatch);
     }
 
     async verifySoftAssertForTextOfAnElement(locator: string, textTOMatch: string, errorMessage: string) {
-
         await expect.soft(this.page.locator(locator), `${errorMessage}`).toContainText(textTOMatch);
     }
 
@@ -84,7 +81,7 @@ export class Verification {
             expect.soft((value), errorMessage).not.toBeNull();
         });
     }
-
+  
     async validationsForPage() {
         //validation for Rollback error
         await this.verifyTextIsNotPresentInPage("Rollback: An unexpected database related exception was encountered.Failed to Save Entity.", 'getting roll back error.');
@@ -96,6 +93,7 @@ export class Verification {
         await this.verifyTextIsNotPresentInPage("Page not found", 'getting page not found error.');
 
     }
+
 
 
 
