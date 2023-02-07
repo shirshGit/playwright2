@@ -1,9 +1,8 @@
-import test from "@lib/BaseTest"
+import test from "@lib/BaseTest";
 import { DataForEnv } from "@lib/DataForEnvironment";
 import { ExplorerPage } from "@pageobjects/Explorer/ExplorerPage";
 import { SyntheticRecordsPage } from "@pageobjects/Records/SyntheticRecordsPage";
 import { SyntheticSmartboardPage } from "@pageobjects/Smartboard/SyntheticSmartboardPage";
-import { expect } from "@playwright/test";
 
 
 /*
