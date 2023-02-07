@@ -7,7 +7,7 @@ import { DataForEnv } from "@lib/DataForEnvironment";
 /*
    CP-14519 : Verify whether user is able to select the step if it is transaction test 
 */
-test("VerifyUserIsAbleToSelectStep  @Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, syntheticRecordsPage: recordsPage, page, verification }) => {
+test("VerifyUserIsAbleToSelectStep  @Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, recordsPage, page, verification }) => {
     await sideNavigationBar.navigateToRecordsFromSideNavigation();
     let data = new DataForEnv();
     let TransactionTestID = await data.getValueOfTheParameter('transactionTestWithMultipleStepAndStepName');
@@ -32,7 +32,7 @@ test("VerifyUserIsAbleToSelectStep  @Records", async ({ baseTestUtil, sideNaviga
 /*
    CP-21631 : 117043 DES- For a transaction test which has Special characters in Step Name
 */
-test("VerifyStepsNameInTransactionTest  @ProductionDefectRecords", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, syntheticRecordsPage: recordsPage, page, verification }) => {
+test("VerifyStepsNameInTransactionTest  @ProductionDefectRecords", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, recordsPage, page, verification }) => {
     await sideNavigationBar.navigateToRecordsFromSideNavigation();
     let data = new DataForEnv();
     let TransactionTestID = await data.getValueOfTheParameter('transactionTestWithMultipleStepAndStepName');
@@ -54,7 +54,7 @@ test("VerifyStepsNameInTransactionTest  @ProductionDefectRecords", async ({ base
 /*
    CP-21637 : 117112 Step index should reset when changing runs
 */
-test("VerifyStepIndexWhenUserChangeRuns  @ProductionDefectRecords", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, syntheticRecordsPage: recordsPage, page, verification }) => {
+test("VerifyStepIndexWhenUserChangeRuns  @ProductionDefectRecords", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, recordsPage, page, verification }) => {
     await sideNavigationBar.navigateToRecordsFromSideNavigation();
     let data = new DataForEnv();
     let TransactionTestID = await data.getValueOfTheParameter('transactionTestWithMultipleStepAndStepName');
@@ -77,7 +77,7 @@ test("VerifyStepIndexWhenUserChangeRuns  @ProductionDefectRecords", async ({ bas
 /*
    CP-21638 : 117138 DES StepName is displayed as blank when we don't set the step Name in Transaction Test 
 */
-test("VerifyStepNameDoesNotDisplayAsBlank  @ProductionDefectRecords@Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, syntheticRecordsPage: recordsPage, page, verification }) => {
+test("VerifyStepNameDoesNotDisplayAsBlank  @ProductionDefectRecords@Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, recordsPage, page, verification }) => {
     await sideNavigationBar.navigateToRecordsFromSideNavigation();
     let data = new DataForEnv();
     let TransactionTestID = await data.getValueOfTheParameter('transactionTestWithMultipleStepWithoutStepName');

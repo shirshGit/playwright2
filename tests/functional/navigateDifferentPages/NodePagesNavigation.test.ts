@@ -6,6 +6,8 @@ import test from "@lib/BaseTest";
 test("VerifyNodeMapLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil, sideNavigationBar, verification,nodeMapPage, util}) => {
     await sideNavigationBar.navigateToMapFromNodeSideNavigation();
     await util.delay(2000);
+    //validation for errors
+    await verification.validationsForPage();
     await verification.verifyIfElementIsPresent(nodeMapPage.mapContainerLocator, 'Map is not present');
     await nodeMapPage.clickOnFabricIconToOpenNodeList();
     await verification.verifyIfElementIsPresent(nodeMapPage.cityHeaderInNodeListLocator, 'Node List is not present');
@@ -18,12 +20,12 @@ test("VerifyNodeMapLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTest
 test("VerifyNodeGroupPageLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil, sideNavigationBar, verification,nodeGroupPage, util}) => {
     await sideNavigationBar.navigateToGroupsFromNodeSideNavigation();
     await util.delay(2000);
+    //validation for errors
+    await verification.validationsForPage();
     await verification.verifyIfElementIsPresent(nodeGroupPage.descriptionHeaderInTableLocator, 'Node Group Table Not Present');
     await verification.verifyIfElementIsPresent(nodeGroupPage.nodeCountHeaderInTableLocator, 'Node Group Table Not Present');
     await verification.verifyIfElementIsPresent(nodeGroupPage.nodeGroupIdHeaderInTableLocator, 'Node Group Table Not Present');
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
-    
+   
 })
 
 /*
@@ -35,8 +37,6 @@ test("VerifyNodeListPageLoads @PageNavigation@ProductionSmoke@Smoke", async({bas
     await verification.verifyIfElementIsPresent(nodeListPage.nodeNameHeaderInNodeListTableLocator, 'Node List Table Not Present');
     await verification.verifyIfElementIsPresent(nodeListPage.runRateHeaderInNodeListPageLocator, 'Node List Table Not Present');
     await verification.verifyIfElementIsPresent(nodeListPage.statusHeaderInNodeListPageLocator, 'Node List Table Not Present');
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     
 })
 
@@ -49,7 +49,5 @@ test("VerifyNodeInstancesListPageLoads @PageNavigation@ProductionSmoke@Smoke", a
     await verification.verifyIfElementIsPresent(nodeInstancePage.hardwareHeaderHeaderInInstancesListLocator, 'Node Instance List Table Not Present');
     await verification.verifyIfElementIsPresent(nodeInstancePage.instacesNameHeaderInInstanceListPageLocator, 'Node Instance List Table Not Present');
     await verification.verifyIfElementIsPresent(nodeInstancePage.statusHeaderInInstanceListLocator, 'Node Instance List Table Not Present');
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
-    
+   
 })

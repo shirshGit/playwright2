@@ -56,8 +56,9 @@ export class DefaultDashboardPage {
     public get rumWidgetinOverviewDashboardLocator(){
         return this._rumWidgetinOverviewDashboard;
     }
-
-    
+    public get tabLocator(){
+        return (text:string) => { return `(//span[text()="${text}"])[1]`}
+    }
     //#endregion
 
     //#region This region is to have the functions
@@ -65,6 +66,9 @@ export class DefaultDashboardPage {
     async clickOnOverviewdashboard(){
         await webActions.clickElement(this.overviewDashboardLocator);
     }
+    async clickOnTab(tabName : string){
+        await webActions.clickElement(this.tabLocator(tabName));
+     }
 
     async clickOnTab(tabName : string){
         await webActions.clickElement(this.tabLocator(tabName));

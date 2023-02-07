@@ -7,7 +7,7 @@ import { DataForEnv } from "@lib/DataForEnvironment";
 /*
     CP-14491 : Verify the user is able to search the test based on test id/test name from source selector
 */
-test("VerifyUserShouldAbleToSelectTestIsSourceBlade  @Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util,sourceSelectorPage ,syntheticRecordsPage: recordsPage, page, verification }) => {
+test("VerifyUserShouldAbleToSelectTestIsSourceBlade  @Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util,sourceSelectorPage, recordsPage, page, verification }) => {
     let data = new DataForEnv();
     await sideNavigationBar.navigateToRecordsFromSideNavigation();
     let testID = await data.getValueOfTheParameter('webPingTestID');
@@ -24,7 +24,7 @@ test("VerifyUserShouldAbleToSelectTestIsSourceBlade  @Records", async ({ baseTes
 /*
      CP-32065 : Verify user can only search for tests under selected division 
 */
-test("VerifyUserShouldAbleToSearchTestUnderSelectedDivision @Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util,sourceSelectorPage ,syntheticRecordsPage: recordsPage, page,charmBar, verification }) => {
+test("VerifyUserShouldAbleToSearchTestUnderSelectedDivision @Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util,sourceSelectorPage , recordsPage, page,charmBar, verification }) => {
     let data = new DataForEnv();
     await sideNavigationBar.navigateToRecordsFromSideNavigation();
     let testID = await data.getValueOfTheParameter('webPingTestIDForDivision');
