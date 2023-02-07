@@ -109,6 +109,18 @@ export class WebActions {
         return download.suggestedFilename();
     }
 
+    async deleteFile(filePath) {
+        const fs = require("fs");
+        const path = filePath;
+        fs.unlink(path, function (err) {
+            if (err) {
+                console.error(err);
+            } else {
+                console.log("File removed:", path);
+            }
+        });
+    }
+
     async keyPress(locator: string, key: string): Promise<void> {
         this.page.press(locator, key);
     }

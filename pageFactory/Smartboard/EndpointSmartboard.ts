@@ -19,6 +19,7 @@ export class EndpointSmartboardPage {
     private _timeZoneDropDown = '//div[@data-testid="timezone-dropdown"]';
     private _compareDropDown = '(//i[@data-icon-name="chevrondownLarge"])[1]//div';
     private _timeLine = '//div[@data-testid="smartboard-timeline"]';
+    private _timeLine = '//div[contains(@class,"EndpointSmartboardstyles__EndpointSmartboardTimeline")]';
     private _timeFrame = '//input[@value="Last 24 Hours"]';
     private _summary = '//span[text()="Summary"]';
     private _endpoint = '//span[text()="Endpoints"]';
@@ -45,7 +46,8 @@ export class EndpointSmartboardPage {
 
     //common locators
     private _endpointScore = '//span[text()="Endpoint Score"]';
-    private _networkScore = '//span[text()="Application Score"]';
+    private _networkScore = '//div[text()="Network Score"]';
+    private _netWorkScore = '//span[text()="Network Score"]';
     private _roundTrip = '//div[contains(text(),"Round Trip (ms)")]';
     private _packetLoss = '//div[text()="% Packet Loss"]';
     private _testRun = '//div[text()="Test Runs"]';
@@ -104,8 +106,9 @@ export class EndpointSmartboardPage {
     private _locWidgetForNetworkTab = '//div[text()="Location"]/../../../..';
     private _networkWidget = '//span[text()="Network Path"]';
     private _hopByHopWidget = '//span[text()="Hop-by-Hop"]';
-
-    
+    public get endpointTimeLineLocator(){
+        return this._endpointTimeLine;
+    }
     public get endpointTimeLineLocator(){
         return this._endpointTimeLine;
     }
@@ -169,8 +172,12 @@ export class EndpointSmartboardPage {
         return this._timeFrame;
     }
 
-    public get networkScoreMetricsInNetworkTabLocator(){
+    public get networkScoreMetricsInNetworkTabForTestLocator(){
         return this._networkScore;
+    }
+
+    public get networkScoreMetricsInNetworkTabForLocLocator(){
+        return this._netWorkScore;
     }
 
     public get endpointTestedCardMetricsInNetworkTabLocator(){
@@ -317,7 +324,7 @@ export class EndpointSmartboardPage {
     }
 
     public get netScoreMetricsLocator(){
-        return this._networkScore;
+        return this._netWorkScore;
     }
 
     public get roundTripMetricsLocator(){
@@ -395,10 +402,6 @@ export class EndpointSmartboardPage {
     public get downTimeLOcator(){
         return this._downtime;
     }
-
-
-
-
 
 
     
