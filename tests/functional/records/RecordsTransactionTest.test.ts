@@ -12,7 +12,7 @@ test("VerifyUserIsAbleToSelectStep  @Records", async ({ baseTestUtil, sideNaviga
     let data = new DataForEnv();
     let TransactionTestID = await data.getValueOfTheParameter('transactionTestWithMultipleStepAndStepName');
     //enter test from source selector
-    await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(TransactionTestID);
+    await sourceSelectorPage.clickOnFirstSearchedTestInSelectorPage(TransactionTestID);
     await util.delay(3000);
     //get first step metric value
     let cardMetrics : string[] = ['# Wire Requests','Downloaded Bytes','Largest Contentful Paint (ms)','Cumulative Layout Shift'];
@@ -37,7 +37,7 @@ test("VerifyStepsNameInTransactionTest  @ProductionDefectRecords", async ({ base
     let data = new DataForEnv();
     let TransactionTestID = await data.getValueOfTheParameter('transactionTestWithMultipleStepAndStepName');
     //enter test from source selector
-    await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(TransactionTestID);
+    await sourceSelectorPage.clickOnFirstSearchedTestInSelectorPage(TransactionTestID);
     await util.delay(3000);
     let stepName : string[] = ['Step1#','Step2;','Step3&'];//[these step name already define in transaction test]
     //get step names
@@ -59,7 +59,7 @@ test("VerifyStepIndexWhenUserChangeRuns  @ProductionDefectRecords", async ({ bas
     let data = new DataForEnv();
     let TransactionTestID = await data.getValueOfTheParameter('transactionTestWithMultipleStepAndStepName');
     //enter test from source selector
-    await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(TransactionTestID);
+    await sourceSelectorPage.clickOnFirstSearchedTestInSelectorPage(TransactionTestID);
     await util.delay(3000);
     let firstStep = await recordsPage.getClassPropertyOfStepNameCheckBox(0);
     await verification.verifySoftAssertTrue(firstStep.includes('is-checked'), 'After selecting transaction test first step is not selected.');
@@ -82,7 +82,7 @@ test("VerifyStepNameDoesNotDisplayAsBlank  @ProductionDefectRecords@Records", as
     let data = new DataForEnv();
     let TransactionTestID = await data.getValueOfTheParameter('transactionTestWithMultipleStepWithoutStepName');
     //enter test from source selector
-    await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(TransactionTestID);
+    await sourceSelectorPage.clickOnFirstSearchedTestInSelectorPage(TransactionTestID);
     await util.delay(3000);
     //steps name validation
     let getStepName : string[] = await recordsPage.getStepNames(3);

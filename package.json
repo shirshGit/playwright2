@@ -25,9 +25,10 @@
     "test:single:RecordsTransactionTest": "npx playwright test /tests/functional/records/RecordsTransactionTest.test.ts --project=Chrome --workers=1",
     "test:single:NavigationToRecordsPageValidation": "npx playwright test /tests/functional/records/NavigationToRecordsPageValidation.test.ts --project=Chrome --workers=1",
     "test:single:RecordsGanttFilterValidation": "npx playwright test /tests/functional/records/RecordsGanttFilterValidation.test.ts --project=Chrome --workers=1"
+    "test:single:chromeTimeCapture": "npx playwright test /tests/functional/catchointSampleTestForTimeComapre.test.ts --project=Chrome --workers=1"
   },
   "dependencies": {
-    "@playwright/test": "^1.23.0",
+    "@playwright/test": "^1.29.2",
     "@types/adm-zip": "^0.5.0",
     "@types/crypto-js": "^4.1.1",
     "@types/xlsx": "^0.0.36",

@@ -30,6 +30,7 @@ export class RecordsPage {
     private _zoneFilterDropDown = '//label[text()="Zone"]/..//i[@data-icon-name="chevron"]';
     private _imageFileTypeFilter = '//span[text()="Images"]';
     private _errorIcon = '(//div[contains(@class,"GanttChart_icon-error_")])';
+    private _errorTextInGeneralTab = '//td[text()="Error"]';
     private _columnTab = '//span[text()="Columns"]';
     private _applyButton = '//span[text()="Apply"]';
     private _zoneIn = '//div[@data-testid="zones"]';
@@ -54,7 +55,10 @@ export class RecordsPage {
     private _downLoadFile = '//i[@data-icon-name="download"]';
     private _imageFilterUnderFileType = '(//span[text()="Images"])[2]';
     private _fileTypeFilterDropDown = '(//i[@data-icon-name="chevron"])[2]//div';
-    
+    private _indicatorValue = '//div[contains(@class,"GanttChart_numericCell_")]';
+    private _getErrorRowValue = '//div[contains(@class,"GanttChart_icon-error_")]/../../div';
+    private _getZoneValue = '//div[contains(@class,"GanttChart_zonesCell_")]';
+    private _resetToDefault = '//span[text()="Reset to Default"]';
 
     public get waterFallTabLocator() {
         return this._waterFallTab;
@@ -160,7 +164,9 @@ export class RecordsPage {
     public get zoneDropDownLocator() {
         return this._zoneFilterDropDown;
     }
-
+    public get selectZoneLocator() {
+        return (text: string) => { return `//span[text()="${text}"]` };
+    }
     public get hostNameLocator() {
         return (text: number) => { return `(//div[contains(@class,"GanttChart_tableRow_")]//div[contains(@class,"GanttChart_cell-host_")])[${text}]` };
     }
@@ -168,8 +174,7 @@ export class RecordsPage {
     public get getImageLocator() {
         return (text: number) => { return `(//div[contains(@class,"GanttChart_icon-image_")])[${text}]` };
     }
-
-    public get filterLocator() {
+    public get getFileTypeFilterLocator() {
         return (text: string) => { return `//span[text()="${text}"]` };
     }
 
@@ -188,7 +193,9 @@ export class RecordsPage {
     public get selectRowFromGanttChartLocator() {
         return (text: number) => { return `(//div[contains(@class,"GanttChart_tableRow_")])[${text}]` };
     }
-
+    public get errorTextInGeneralTabLocator() {
+        return this._errorTextInGeneralTab
+    }
     public get columnTabLocator() {
         return this._columnTab;
     }
@@ -272,6 +279,7 @@ export class RecordsPage {
 
     public get indicatorValueLocator() {
         return (text: number) => { return `(//div[contains(@class,"GanttChart_cell-indicator")])[${text}]/div` };
+        return (text: string) => { return `//td[text()="${text}"]/..//td[2]` };
     }
 
     public get tracePointValueLocator() {
@@ -289,7 +297,6 @@ export class RecordsPage {
     public get responseTimeMetricsValueLocator() {
         return (text: number) => { return `(//div[contains(@class,"GanttChart_tableRow_")])[${text}]//div[10]/div` };
     }
-
     public get getWarningIconRowNumberLocator() {
         return (text: number) => { return `((//div[contains(@class,"GanttChart_icon-warning_")])[${text}]/../..//div)[1]` };
     }
@@ -300,6 +307,9 @@ export class RecordsPage {
 
     public get getProtocolValueLocator(){
         return (text:number) => { return `(//div[contains(@class,"GanttChart_tableRow_")])[${text}]//div[contains(text(),"HTTP")]`}
+        
+    public get getErrorRowValueLocator() {
+        return this._getErrorRowValue;
     }
 
     //#endregion
@@ -329,8 +339,7 @@ export class RecordsPage {
     }
 
     async getRunTimeValues() {
-        let runTimeValue = await webActions.getElementText(this.getRunTimeLocator);
-        return runTimeValue;
+        return await webActions.getTextFromWebElementsUsingSelector(this.getRunTimeLocator);
     }
 
     async selectStepInTransactionTest(stepNumber: string) {
@@ -397,7 +406,6 @@ export class RecordsPage {
         }
         return iconClassProperty;
     }
-
     //By this method user can select filter from fileType,Request,ZoneDropdown
     async selectFilter(filterType:string,filterName:string){
         await this.clickOnFilterDropDown(filterType);
@@ -414,6 +422,33 @@ export class RecordsPage {
 
     async clickOnRequestTypeFilter() {
         await webActions.clickElementJS(this.imageFilterLocator);
+    }
+    async selectZone(zoneName: string) {
+        await webActions.clickElement(this.zoneDropDownLocator);
+        await webActions.clickElement(this.selectZoneLocator(zoneName));
+    }
+
+    async getRowCount() {
+        let rowCount = await this.page.locator('//div[contains(@class,"GanttChart_tableRow_")]').count();
+        return rowCount;
+    }
+
+    async getFirstErrorRowValue() {
+        let rowValue = await webActions.getElementText(this.getErrorRowValueLocator);
+        return rowValue;
+    }
+
+    async getIconsClassProperty(nunberOfRow: number) {
+        let iconClassProperty: string[] = [];
+        for (let index = 0; index < nunberOfRow; index++) {
+            let hostValue = await webActions.getElementAttributeValue(this.iconsInGanttSectionLocator(index), 'class');
+            iconClassProperty.push(hostValue);
+        }
+        return iconClassProperty;
+    }
+
+    async clickOnFileTypeFilter(fileType: string) {
+        await webActions.clickElement(this.getFileTypeFilterLocator(fileType));
     }
 
     async clickOnRowInGanntChart(rownum: number) {
@@ -481,6 +516,10 @@ export class RecordsPage {
     async deleteFile(filePath) {
         await webActions.deleteFile(filePath);
     }
+    async downloadFile(): Promise<string> {
+        let fileName = await webActions.downloadFile('//span[text()="Excel"]');
+        return fileName;
+    }
 
     async readData(nameOfColumn: string, rowCount: number, fileName: string) {
         var XLSX = require('xlsx');
@@ -503,7 +542,11 @@ export class RecordsPage {
         }
         return metricsColumn;
     }
-
+    async getRowsCount(locator: string) {
+        await this.page.waitForSelector(locator, { timeout: 5000 });
+        let count = await this.page.$$(locator);
+        return await count.length;
+    }
     async getHostNameList(nunberOfHost: number) {
         let hostList: string[] = [];
         for (let index = 1; index <= nunberOfHost; index++) {
@@ -524,7 +567,6 @@ export class RecordsPage {
         }
         return hostList;
     }
-
     async getHTMLFileTypeClassPropertyList(nunberOfitem: number) {
         let classProperty: string[] = [];
         for (let index = 1; index <= nunberOfitem; index++) {
@@ -535,6 +577,7 @@ export class RecordsPage {
     }
 
     async getZoneList(nunberOfitem: number) {
+    async getFileIconClassPropertyList(nunberOfitem: number) {
         let classProperty: string[] = [];
         for (let index = 1; index <= nunberOfitem; index++) {
             let classPropertyValue = await webActions.getElementAttributeValue(this.htmlFileTypeLocator, 'class');
@@ -542,7 +585,6 @@ export class RecordsPage {
         }
         return classProperty;
     }
-
     async getRequestProtocolList(nunberOfRow: number) {
         let protocolList: string[] = [];
         for (let index = 1; index <= nunberOfRow; index++) {
@@ -551,7 +593,6 @@ export class RecordsPage {
         }
         return protocolList;
     }
-
     async getErrorMsgFromRowsContaingError(number: string) {
         let errorMsg: string[] = [];
         for (let index = 1; index <= number.length; index++) {
@@ -574,8 +615,7 @@ export class RecordsPage {
         }
         return metricsValue;
     }
-
-    async getTracePointValues(count: number) {
+      async getTracePointValue(count: number) {
         let traceValue: string[] = [];
         for (let index = 1; index <= count; index++) {
             let xpath = this.tracepointValueLocator(index);
@@ -584,7 +624,6 @@ export class RecordsPage {
         }
         return traceValue;
     }
-
     async getIndicatorValues(count: number) {
         let indicatorValue: string[] = [];
         for (let index = 1; index <= count; index++) {
@@ -594,7 +633,6 @@ export class RecordsPage {
         }
         return indicatorValue;
     }
-
     async getSelectedZoneValue(count: number) {
         let zoneValue: string[] = [];
         for (let index = 1; index <= count; index++) {
@@ -604,12 +642,10 @@ export class RecordsPage {
         }
         return zoneValue;
     }
-
     async getCount(locator: string) {
         await this.page.waitForSelector(locator, { timeout: 5000 });
         let count = await this.page.$$(locator);
         return await count.length;
     }
-
 
 }

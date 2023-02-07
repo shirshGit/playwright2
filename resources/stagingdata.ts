@@ -2,7 +2,14 @@ export const stagedata = {
     'alertRecipientName' : 'Client Admin DoNotDelete', //for creating items which needed contact.
     'automationContact' : 'userrole9_DoNOTDeleteqaautomationxclient-clientadministrator@catchpoint.com', //contact used for automation, where assiging other userrole is required
 	
+    'bgpTest' : '187860',
+
     'defaultUserrole' : 'Client Administrator',//for contact default system access
+
+    'endpointTracerouteTestID' : '3892',
+    'endpointLocationID' : '7003',
+    'endpointID' : '199745416042238',
+    'endpointEmployeeApp' : '2073',
 
     'imapTestID' : '249840', // used for records automation
 
@@ -16,6 +23,7 @@ export const stagedata = {
     'password' : 'Password123!',
 
     'rumAppName' : 'Automation_WebApp_DoNotEdit',//used for automation
+    'rumAppId' : '59',
 
     'testID' : '240905', // used for automation scripts where test are not being created.
     'testListPageUrl' : 'https://portalstage.catchpoint.com/ui/Symphony/ControlCenter/Tests', //for validation of synthetic cc page.
@@ -25,6 +33,7 @@ export const stagedata = {
     'transactionTestWithMultipleStepWithoutStepName' : '246072',//used for records automation
     'transactionTestId' : '216885',
     'transactionTestWithRefrenceHostOnFailure' : '236336',
+    'transactionTestId' : '236336',//transaction test with refrence host on failure
 
     'userRoleManageTests' : 'OnlyManageTestPermission',//user role with only test and test templates permission
 	'userRoleManageRumAndTestTemplate' : 'OnlyManageRumAndTestTemplatePermission',// userrole with only rum and test templates permission
@@ -41,7 +50,6 @@ export const stagedata = {
     'webTestWithWarningAndError' : '266287',
 
     'zoneName' : 'UIAutomationDND',
-
 }
 
 
