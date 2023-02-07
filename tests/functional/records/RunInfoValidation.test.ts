@@ -7,7 +7,7 @@ import { SyntheticRecordsPage } from "@pageobjects/Records/SyntheticRecordsPage"
 /*
    CP-21842 : DES: IP address is displayed as NA for IMAP, MQTT and NTP test type if the address is in IPV6 format
 */
-test("VerifyIPAddressForTest  @ProductionDefectRecords@Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, syntheticRecordsPage: recordsPage, page, verification }) => {
+test("VerifyIPAddressForTest  @ProductionDefectRecords@Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, recordsPage, page, verification }) => {
     //navigate to records page
     await sideNavigationBar.navigateToRecordsFromSideNavigation();
     let data = new DataForEnv();
@@ -47,7 +47,7 @@ test("VerifyIPAddressForTest  @ProductionDefectRecords@Records", async ({ baseTe
 /*
     CP-21643 : 117271 DES Test URL Is updated incorrectly when we change a test from Source
 */
-test("VerifyTestURLUpdate  @ProductionDefectRecords@Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, syntheticRecordsPage: recordsPage, page, verification }) => {
+test("VerifyTestURLUpdate  @ProductionDefectRecords@Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage,  recordsPage, page, verification }) => {
     //navigate to records page
     await sideNavigationBar.navigateToRecordsFromSideNavigation();
     let data = new DataForEnv();
@@ -78,7 +78,7 @@ test("VerifyTestURLUpdate  @ProductionDefectRecords@Records", async ({ baseTestU
 /*
     CP-21697 : 119321 DES Failed Verb is missing from the run info 
 */
-test("VerifyFailedVerbInTransactionTest  @ProductionDefectRecords@Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, syntheticRecordsPage: recordsPage, page, verification }) => {
+test("VerifyFailedVerbInTransactionTest  @ProductionDefectRecords@Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, recordsPage, page, verification }) => {
     //navigate to records page
     await sideNavigationBar.navigateToRecordsFromSideNavigation();
     let data = new DataForEnv();
@@ -94,7 +94,7 @@ test("VerifyFailedVerbInTransactionTest  @ProductionDefectRecords@Records", asyn
 /*
     CP-30549 : Verify user should able to click on source pill and navigate to properties blade in new tab
 */
-test("VerifyUserShouldAbleToClickOnSourceBlade  @Records", async ({ baseTestUtil, sideNavigationBar,context, loginPage, util,sourceSelectorPage ,syntheticRecordsPage: recordsPage, page, verification }) => {
+test("VerifyUserShouldAbleToClickOnSourceBlade  @Records", async ({ baseTestUtil, sideNavigationBar,context, loginPage, util,sourceSelectorPage ,recordsPage, page, verification }) => {
     //navigate to records page
     await sideNavigationBar.navigateToRecordsFromSideNavigation();
     let data = new DataForEnv();
