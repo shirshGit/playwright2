@@ -34,7 +34,7 @@ export class SyntheticRecordsPage {
     private _requestFilterDD = '//label[text()="Request"]/..//i[@data-icon-name="chevron"]';
     private _fileTypeFilterDD = '//label[text()="File Type"]/..//i[@data-icon-name="chevron"]';
     private _zoneFilterDD = '//label[text()="Zone"]/..//i[@data-icon-name="chevron"]';
-
+    private _resordFirstRow = '//div[contains(@class,"RecordsTable_table")]//div[@data-list-index="0"]';
     public get waterFallTabLocator() {
         return this._waterFallTab;
     }
@@ -125,6 +125,9 @@ export class SyntheticRecordsPage {
 
     public get fileTypeDDLocator() {
         return this._fileTypeFilterDD
+    }
+    public get firstSearchRowInRecordsListPage(){
+        return this._resordFirstRow;
     }
 
 
