@@ -18,7 +18,7 @@ export class EndpointSmartboardPage {
     private _goButton = '//span[text()="Go"]';
     private _timeZoneDropDown = '//div[@data-testid="timezone-dropdown"]';
     private _compareDropDown = '(//i[@data-icon-name="chevrondownLarge"])[1]//div';
-    private _timeLine = '//div[@data-testid="smartboard-timeline"]';
+    private _timeLine = '//div[contains(@class,"EndpointSmartboardstyles__EndpointSmartboardTimeline")]';
     private _timeFrame = '//input[@value="Last 24 Hours"]';
     private _summary = '//span[text()="Summary"]';
     private _endpoint = '//span[text()="Endpoints"]';
@@ -105,8 +105,6 @@ export class EndpointSmartboardPage {
     private _locWidgetForNetworkTab = '//div[text()="Location"]/../../../..';
     private _networkWidget = '//span[text()="Network Path"]';
     private _hopByHopWidget = '//span[text()="Hop-by-Hop"]';
-
-
     public get endpointTimeLineLocator(){
         return this._endpointTimeLine;
     }
@@ -308,14 +306,6 @@ export class EndpointSmartboardPage {
     public get urlTestedWidgetLocator() {
         return this._urlWidget;
     }
-
-    
-
-    
-
-    
-
-
     //common
     public get endpointScoreMetricsLocator(){
         return this._endpointScore;
@@ -400,24 +390,9 @@ export class EndpointSmartboardPage {
     public get downTimeLOcator(){
         return this._downtime;
     }
-
-
-
-
-
-
-    
-    
-
-
-
-
     //#endregion
 
     //#region This region is to have the functions
-
-    
-
     async clickOnEndpointTab(){
         await webActions.clickElement(this.endpointTabLocator);
     }

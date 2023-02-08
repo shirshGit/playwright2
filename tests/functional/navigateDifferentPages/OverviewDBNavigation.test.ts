@@ -4,7 +4,7 @@ import test from "@lib/BaseTest"
   CP-44294 : Verify Widgets in default overview dashboard page
 */
 test("VerifyOverviewDashboardLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil, defaultDashboardPage, verification, util}) => {
-    await util.delay(5000);
+     await util.delay(5000);
     //validation for errors
     await verification.validationsForPage();
     await verification.verifyIfElementIsPresent(defaultDashboardPage.errorSectionOverviewDashboardLocator, 'Error Section is not Present');
@@ -28,6 +28,7 @@ test("VerifyTestOverviewDashboardLoads @PageNavigation@ProductionSmoke@Smoke", a
     await verification.verifyIfElementIsPresent(defaultDashboardPage.nodeMapPerformanceOverviewLocator, 'Node Map Section is not present');
     await verification.verifyIfElementIsPresent(testOverviewDashboard.testWidgetInTestOverviewDBLocator, 'Test tile widget is not present');
     await verification.verifyElementIsNotPresent(defaultDashboardPage.rumWidgetinOverviewDashboardLocator,'Rum Widget is present'); 
+   
     
 })  
 /*
@@ -35,7 +36,6 @@ test("VerifyTestOverviewDashboardLoads @PageNavigation@ProductionSmoke@Smoke", a
 */
 
 test("VerifyEndpointOverviewDBLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil, defaultDashboardPage, verification, util,testOverviewDashboard, dashboardBlade, endpointOverviewDB}) => {
-    await defaultDashboardPage.clickOnTab('Endpoint');
     //validation for errors
     await verification.validationsForPage();
     //validaton for page load
@@ -49,8 +49,7 @@ test("VerifyEndpointOverviewDBLoads @PageNavigation@ProductionSmoke@Smoke", asyn
 /*
     CP-39997 : To Validate BGP Metric Cards RPKI Status, %Reachability, #Hijacks , #Neighboring Peers , # Prefix withdrawn in BGP Dashboard
 */
-test("VerifyBGPOverviewDBLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil, defaultDashboardPage, verification, util,testOverviewDashboard, bgpOverviewDB}) => {
-    await util.delay(3000);
+test("VerifyBGPOverviewDBLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil, defaultDashboardPage, verification, util,testOverviewDashboard, dashboardBlade, bgpOverviewDB}) => {
     await defaultDashboardPage.clickOnTab('BGP');
     //validation for errors
     await verification.validationsForPage();

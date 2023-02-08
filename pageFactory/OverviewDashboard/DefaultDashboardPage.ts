@@ -60,7 +60,6 @@ export class DefaultDashboardPage {
     //#endregion
 
     //#region This region is to have the functions
-
     async clickOnOverviewdashboard() {
         await webActions.clickElement(this.overviewDashboardLocator);
     }

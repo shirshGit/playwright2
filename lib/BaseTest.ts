@@ -120,7 +120,6 @@ const test = baseTest.extend<{
     explorerRecordListPage : ExplorerRecordListPage;
     ntnSmartboardPage : NodeToNodeSmartboardPage;
     bgpSmartboardPage : BGPSmartboardPage
-    
 }>({
     baseTestUtil: async ({ page }, use, testInfo: TestInfo) => {
         let base = new BaseTestUtility(page);

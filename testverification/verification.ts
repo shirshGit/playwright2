@@ -58,7 +58,7 @@ export class Verification {
     }
 
     async verifySoftAssertForTextOfAnElement(locator: string, textTOMatch: string, errorMessage: string) {
-        await expect.soft(this.page.locator(locator),`${errorMessage}`).toContainText(textTOMatch);
+        await expect.soft(this.page.locator(locator), `${errorMessage}`).toContainText(textTOMatch);
     }
 
     async verifyAttributeValueOfLocatorMatch(locator: string, attribute: string, valueToMatch: string, errorMessage: string) {

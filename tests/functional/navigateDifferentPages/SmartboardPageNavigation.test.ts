@@ -365,7 +365,7 @@ test("VerifySmartboardLocationLoads @PageNavigation@ProductionSmoke@Smoke", asyn
 
 
 /*
-    CP-44188 : Verify RUM smartboard loads properly from side navigation
+    CP-44477 : Verify User Landing in Employee app Smartboard page 
 */
 test("VerifySmartboardEmployeeAppLoads @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, endpointSmartboardPage, util }) => {
     let data = new DataForEnv();
@@ -525,8 +525,6 @@ test("VerifySmartboardEndpointLoads @PageNavigation@ProductionSmoke@Smoke", asyn
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.networkPathInNetworkTabLocator, "network path widget is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.hopByHopInNetworkTabLocator, "hop by hop widget button is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.trendingWidgetLocator, "trending widget is not present")
-
-
     //click on application tab
     await sourceSelectorSmartboard.clickOnTab("Application");
     //validation for errors
