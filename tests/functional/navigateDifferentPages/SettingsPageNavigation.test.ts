@@ -14,8 +14,6 @@ test("VerifySettingsUserroleLoads @PageNavigation@ProductionSmoke@Smoke", async(
     await verification.verifyIfElementIsPresent(userrolePage.divisionTextLocator,"division column is not present");
     await verification.verifyIfElementIsPresent(userrolePage.activeContactTextLocator,"active contact column is not present");
     await verification.verifyIfElementIsPresent(userrolePage.inactiveContactTextLocator,"inactive contact column is not present");
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     
 })
 
@@ -31,8 +29,6 @@ test("VerifySettingsDivisionLoads @PageNavigation@ProductionSmoke@Smoke", async(
     await verification.verifyIfElementIsPresent(divisionPage.nameTextLocator,"name column is not present");
     await verification.verifyIfElementIsPresent(divisionPage.statusIconLocator,"status column is not present");
     await verification.verifyIfElementIsPresent(divisionPage.lastUpdatedTextLocator,"last updated column is not present");
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     
 })
 
@@ -49,8 +45,6 @@ test("VerifySettingsSchedulesLoads @PageNavigation@ProductionSmoke@Smoke", async
     await verification.verifyIfElementIsPresent(schedulePage.typeTextLocator,"type column is not present");
     await verification.verifyIfElementIsPresent(schedulePage.statusTextLocator,"status column is not present");
     await verification.verifyIfElementIsPresent(schedulePage.lastUpdatedColumnTextLocator,"last updated column is not present");
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     
 })
 

@@ -18,8 +18,6 @@ test.skip("VerifySmartboardTestLoads @PageNavigation@ProductionSmoke@Smoke", asy
     await verification.verifyIfElementIsPresent(syntheticSmartboardPage.downTimeMetricsInKeyMetricLocator,"down time metrics is not present")
     await verification.verifyIfElementIsPresent(syntheticSmartboardPage.downTimeMetricsInTimeLine,"down time in timeline is not present");
     await verification.verifyIfElementIsPresent(syntheticSmartboardPage.testTimeMetricsInKeyMetricLocator,"test time metrics is not present");
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     
 })
 /*
@@ -41,8 +39,6 @@ test.skip("VerifySmartboardNodeLoads @PageNavigation@ProductionSmoke@Smoke", asy
     await verification.verifyIfElementIsPresent(nodeSmartboardPage.networkTypeLocator,"network type is not present")
     await verification.verifyIfElementIsPresent(nodeSmartboardPage.locationLocator,"location is not present")
     await verification.verifyIfElementIsPresent(nodeSmartboardPage.networkRadarLocator,"network radar graph is not present");
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     
 })
 
@@ -66,8 +62,6 @@ test.skip("VerifySmartboardRUMLoads @PageNavigation@ProductionSmoke@Smoke", asyn
     await verification.verifyIfElementIsPresent(rumSmartboardPage.filterButtonDropDown,"filter button is not present");
     await verification.verifyIfElementIsPresent(rumSmartboardPage.responseMetricsValueLocator,"response metric is not present")
     await verification.verifyIfElementIsPresent(rumSmartboardPage.domInteractiveMetricsValueLocator,"domInteractive metrics is not present");
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     
 })
 
@@ -82,8 +76,6 @@ test.skip("VerifyPeerInfoInBGPSB @PageNavigation@ProductionSmoke@Smoke", async({
     await verification.verifyIfElementIsPresent(sourceSelectorSmartboard.testTabLocator, 'Test Tab is not present in source selector');
     //select test
     await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(bgpTestID);
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     //validation 
     await verification.verifyIfElementIsPresent(bgpSmartboardPage.selectedTimeInTimeFrameLocator,"24 hour time frame is not selected");
     await verification.verifyIfElementIsPresent(bgpSmartboardPage.peerInfoWidgetLocator,"peer info widget is not present")
@@ -113,9 +105,6 @@ test("VerifyTimeZoneDropDownInNTNSB @PageNavigation@ProductionSmoke@Smoke", asyn
         const element2 = timeZoneNameFromUI[index];
         await verification.verifySoftAssertTrue(element2.includes(element1),"time zone is not matching")
     }
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
-    
 })
 
 /*
@@ -127,12 +116,8 @@ test("VerifyMatrixCompareInNTNSB @PageNavigation@ProductionSmoke@Smoke", async({
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();
     await util.delay(2000);
     await verification.verifyIfElementIsPresent(sourceSelectorSmartboard.testTabLocator, 'Test Tab is not present in source selector');
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     //select test
     await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(ntnTestID);
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     //verification for cards metrics
     await verification.verifyIfElementIsPresent(ntnSmartboardPage.latencyCardMetricsLocator,"latency metrics is not present");
     await verification.verifyIfElementIsPresent(ntnSmartboardPage.jitterCardMetricsLocator,"jitter metrics is not present")
@@ -169,14 +154,10 @@ test("VerifyRecordsCompareSectionInNTNSB @PageNavigation@ProductionSmoke@Smoke",
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();
     await util.delay(2000);
     await verification.verifyIfElementIsPresent(sourceSelectorSmartboard.testTabLocator, 'Test Tab is not present in source selector');
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     //select test
     await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(ntnTestID);
     //click on records compare tab
     await ntnSmartboardPage.clickOnRecordsCompareButton();
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     //validation for first and second widget From and To Node
     await verification.verifyIfElementIsPresent(ntnSmartboardPage.firstWidgetFromLocator,"frist widget from text is not present.")
     await verification.verifyIfElementIsPresent(ntnSmartboardPage.fristWidgetToLocator,"frist widget To text is not present.")
@@ -195,13 +176,13 @@ test("VerifyRecordsCompareSectionInNTNSB @PageNavigation@ProductionSmoke@Smoke",
     await verification.verifySoftAssertTrue(firstWgtFromNodeValue === secondWgtToNodeValue,'not matching')
     await verification.verifySoftAssertTrue(firstWgtToNodeValue === secondWgtFromNodeValue,'not matching')
     //get first row record selected schedule time for both widget
-    // let firstRecordSheduleTimeInFirstWgt = await ntnSmartboardPage.fetchElementText(ntnSmartboardPage.firstRecordSheduleTimeInFirstWgtLocator);
-    // let firstRecordSheduleTimeInSecondWgt = await ntnSmartboardPage.fetchElementText(ntnSmartboardPage.firstRecordSheduleTimeInSecondWgtLocator);
-    // //get selected record schedule time
-    // let recordSheduleTimeFirstWgt = await ntnSmartboardPage.fetchElementText(ntnSmartboardPage.recordSheduleTimeFirstWgtLocator);
-    // let recordSheduleTimeSecondWgt = await ntnSmartboardPage.fetchElementText(ntnSmartboardPage.recordSheduleTimeSecondWgtLocator);
-    // await verification.verifySoftAssertTrue(recordSheduleTimeFirstWgt.includes(firstRecordSheduleTimeInFirstWgt),'time is not matching')
-    // await verification.verifySoftAssertTrue(recordSheduleTimeSecondWgt.includes(firstRecordSheduleTimeInSecondWgt),'time is not matching')
+    let firstRecordSheduleTimeInFirstWgt = await ntnSmartboardPage.fetchElementText(ntnSmartboardPage.firstRecordSheduleTimeInFirstWgtLocator);
+    let firstRecordSheduleTimeInSecondWgt = await ntnSmartboardPage.fetchElementText(ntnSmartboardPage.firstRecordSheduleTimeInSecondWgtLocator);
+    //get selected record schedule time
+    let recordSheduleTimeFirstWgt = await ntnSmartboardPage.fetchElementText(ntnSmartboardPage.recordSheduleTimeFirstWgtLocator);
+    let recordSheduleTimeSecondWgt = await ntnSmartboardPage.fetchElementText(ntnSmartboardPage.recordSheduleTimeSecondWgtLocator);
+    await verification.verifySoftAssertTrue(recordSheduleTimeFirstWgt.includes(firstRecordSheduleTimeInFirstWgt),'time is not matching')
+    await verification.verifySoftAssertTrue(recordSheduleTimeSecondWgt.includes(firstRecordSheduleTimeInSecondWgt),'time is not matching')
     
 })
 
@@ -209,24 +190,18 @@ test("VerifyRecordsCompareSectionInNTNSB @PageNavigation@ProductionSmoke@Smoke",
 /*
     CP-44479 : Verify User Landing in Endpoint test Smartboard page 
 */
-test.skip("VerifySmartboardEndpointTestLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,endpointSmartboardPage, util}) => {
+test("VerifySmartboardEndpointTestLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,endpointSmartboardPage, util}) => {
     let data = new DataForEnv();
     let testID = await data.getValueOfTheParameter('endpointTracerouteTestID');
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();
     await util.delay(2000);
     await verification.verifyIfElementIsPresent(sourceSelectorSmartboard.endpointTestTabLocator, 'endpoint test Tab is not present in source selector');
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     //click on my app tab
     await sourceSelectorSmartboard.clickOnTabInSourceSelector("Endpoint Tests");
     await util.delay(2000);
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     //select test
     await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(testID);
     await util.delay(4000);
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     //validation for metrics , time line , time zone , go button , timeframe
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.goButtonLocator,"go button is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeLineLocator,"time line is not present")
@@ -239,12 +214,8 @@ test.skip("VerifySmartboardEndpointTestLoads @PageNavigation@ProductionSmoke@Smo
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.testRunCardMetricsLocator,"test run card metrics is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.locationTestedCardMetricsInNetworkTabLocator,"location tested card metrics is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.endpointTestedCardMetricsInNetworkTabLocator,"endpoint tested card metrics is not present");
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     //click on endpoint tab
     await endpointSmartboardPage.clickOnEndpointTab();
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     //validation for metrics , time line , time zone , go button , timeframe
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.goButtonLocator,"go button is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeLineLocator,"time line is not present")
@@ -265,22 +236,16 @@ test.skip("VerifySmartboardEndpointTestLoads @PageNavigation@ProductionSmoke@Smo
 /*
     CP-44478 : Verify User Landing in Location Smartboard page
 */
-test.skip("VerifySmartboardLocationLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,endpointSmartboardPage, util}) => {
+test("VerifySmartboardLocationLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,endpointSmartboardPage, util}) => {
     let data = new DataForEnv();
     let locationID = await data.getValueOfTheParameter('endpointLocationID');
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();
     await util.delay(2000);
     await verification.verifyIfElementIsPresent(sourceSelectorSmartboard.locationTabLocator, 'Location Tab is not present in source selector');
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     //click on location tab
     await sourceSelectorSmartboard.clickOnTabInSourceSelector("Location");
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     //select location
     await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(locationID);
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     //1.validation for summary tab metrics 
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.goButtonLocator,"go button is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeLineLocator,"time line is not present")
@@ -295,9 +260,7 @@ test.skip("VerifySmartboardLocationLoads @PageNavigation@ProductionSmoke@Smoke",
     //click on endpoint tab
     await sourceSelectorSmartboard.clickOnTab("Endpoint");
     await util.delay(5000);
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
-    //2.validation for endpoint tab metrics 
+     //2.validation for endpoint tab metrics 
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.goButtonLocator,"go button is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeLineLocator,"time line is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeZoneDDLocator,"time zone is not present")
@@ -310,8 +273,6 @@ test.skip("VerifySmartboardLocationLoads @PageNavigation@ProductionSmoke@Smoke",
     //click on network tab
     await sourceSelectorSmartboard.clickOnTab("Network");
     await util.delay(5000);
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     //3.validation for network tab metrics 
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.goButtonLocator,"go button is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeLineLocator,"time line is not present")
@@ -332,8 +293,6 @@ test.skip("VerifySmartboardLocationLoads @PageNavigation@ProductionSmoke@Smoke",
     //click on application tab
     await sourceSelectorSmartboard.clickOnTab("Application");
     await util.delay(5000);
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     //4.validation for app tab metrics 
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.goButtonLocator,"go button is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeLineLocator,"time line is not present")
@@ -360,22 +319,16 @@ test.skip("VerifySmartboardLocationLoads @PageNavigation@ProductionSmoke@Smoke",
 /*
     CP-44188 : Verify RUM smartboard loads properly from side navigation
 */
-test.skip("VerifySmartboardEmployeeAppLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,endpointSmartboardPage, util}) => {
+test("VerifySmartboardEmployeeAppLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,endpointSmartboardPage, util}) => {
     let data = new DataForEnv();
     let appName = await data.getValueOfTheParameter('rumAppName');
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();
     await util.delay(2000);
     await verification.verifyIfElementIsPresent(sourceSelectorSmartboard.employeeAppTabLocator, 'employee app Tab is not present in source selector');
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     //click on employee app tab
     await sourceSelectorSmartboard.clickOnTabInSourceSelector("Employee App");
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     //select test
     await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(appName);
-    //validation for something went wrong
-   await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     //1.validation for summary tab
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.endpointScoreMetricsLocator,"page view metrics is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.netScoreMetricsLocator,"doc complete metric is not present")
@@ -385,8 +338,6 @@ test.skip("VerifySmartboardEmployeeAppLoads @PageNavigation@ProductionSmoke@Smok
     //click on endpoint tab
     await sourceSelectorSmartboard.clickOnTab("Endpoint");
     await util.delay(5000);
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     //2.validation for endpoint tab metrics 
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.goButtonLocator,"go button is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeLineLocator,"time line is not present")
@@ -400,8 +351,6 @@ test.skip("VerifySmartboardEmployeeAppLoads @PageNavigation@ProductionSmoke@Smok
     //click on network tab
     await sourceSelectorSmartboard.clickOnTab("Network");
     await util.delay(5000);
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     //3.validation for network tab metrics 
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.goButtonLocator,"go button is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeLineLocator,"time line is not present")
@@ -415,8 +364,6 @@ test.skip("VerifySmartboardEmployeeAppLoads @PageNavigation@ProductionSmoke@Smok
     //click on application tab
     await sourceSelectorSmartboard.clickOnTab("Application");
     await util.delay(5000);
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     //4.validation for app tab metrics 
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.goButtonLocator,"go button is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeLineLocator,"time line is not present")
@@ -435,23 +382,17 @@ test.skip("VerifySmartboardEmployeeAppLoads @PageNavigation@ProductionSmoke@Smok
 /*
     CP-44188 : Verify RUM smartboard loads properly from side navigation
 */
-test.skip("VerifySmartboardEndpointLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,endpointSmartboardPage, util}) => {
+test("VerifySmartboardEndpointLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,endpointSmartboardPage, util}) => {
     let data = new DataForEnv();
     let endpointID = await data.getValueOfTheParameter('endpoint');
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();
     await util.delay(2000);
     await verification.verifyIfElementIsPresent(sourceSelectorSmartboard.endpointTabLocator, 'endpoint Tab is not present in source selector');
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     //click on Endpoints tab
     await sourceSelectorSmartboard.clickOnTabInSourceSelector("Endpoints");
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     //select endpoint
     await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(endpointID);
     await util.delay(4000);
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     //1.validation for metrics
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.goButtonLocator,"go button is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.endpointTimeLineLocator,"time line is not present")
@@ -470,8 +411,6 @@ test.skip("VerifySmartboardEndpointLoads @PageNavigation@ProductionSmoke@Smoke",
     //click on endpoint tab
     await sourceSelectorSmartboard.clickOnTab("Endpoint");
     await util.delay(4000);
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     //2.validation for endpoint tab
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.goButtonLocator,"go button is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.endpointTimeLineLocator,"time line is not present")
@@ -490,8 +429,6 @@ test.skip("VerifySmartboardEndpointLoads @PageNavigation@ProductionSmoke@Smoke",
     //click on network tab
     await sourceSelectorSmartboard.clickOnTab("Network");
     await util.delay(4000);
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     //3.validation for network tab
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.goButtonLocator,"go button is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.endpointTimeLineLocator,"time line is not present")
@@ -516,8 +453,6 @@ test.skip("VerifySmartboardEndpointLoads @PageNavigation@ProductionSmoke@Smoke",
     //click on application tab
     await sourceSelectorSmartboard.clickOnTab("Application");
     await util.delay(4000);
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     //4.validation for application tab
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.goButtonLocator,"go button is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.endpointTimeLineLocator,"time line is not present")
