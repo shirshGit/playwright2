@@ -1,5 +1,5 @@
 import { WebActions } from "@lib/WebActions";
-import { BrowserContext, Page } from "@playwright/test";
+import { BrowserContext ,Page} from "@playwright/test";
 import { Utility } from "@util/Utility";
 
 let webActions: WebActions;
@@ -26,6 +26,7 @@ export class SyntheticSmartboardPage {
     private _trendingChart = '(//div[contains(@class,"AnalyticsTrendingChart_chartContainer_")]//div//div[contains(@class,"Chart_chartContainer_")]//*[name()="svg"])[1]';
     private _testInSourceSelector = '//div[@data-testid="test-picker"]//div[contains(@class,"Pill_pillContent_")]';
     private _Last6HourTimeFrame = '//input[@value="Last 6 Hours"]';
+    
 
     public get dataPoint(){
         return this._firstDataPointInTrendingChart;
@@ -64,6 +65,9 @@ export class SyntheticSmartboardPage {
     public get lastSixHourTimeFrame(){
         return this._Last6HourTimeFrame;
     }
+    public get filterValueLocator(){
+        return (text:number) =>{ return `(//div[@data-testid="pill-content"])[${text}]`}
+    }
 
    
     //#endregion
@@ -81,6 +85,9 @@ export class SyntheticSmartboardPage {
     }
     async getUrl() {
         return await webActions.getCurrentPageUrl();
+    }
+    async getFilterValue(valueNum:number){
+        return await webActions.getElementText(this.filterValueLocator(valueNum));
     }
 
    

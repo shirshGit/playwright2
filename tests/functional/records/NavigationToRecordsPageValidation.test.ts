@@ -80,7 +80,7 @@ test("VerifyNavigationFromTileWidgetInOverviewDashboardToRecords @ProductionDefe
    //click on overview dashboard 
    await defaultDashboardPage.clickOnOverviewdashboard();
    //clikc on overview dashboard dropdown
-   await dashboardBlade.clickOnOverviewDashboardDropDown();
+   await dashboardBlade.clickOnOverviewDashboard();
    //select test overview dashboard
    await dashboardBlade.selectDashboard('Test Overview');
    //navigate to records page from tooltip menu

@@ -1,16 +1,17 @@
-import { WebActions } from "@lib/WebActions";
-import { Utility } from "@util/Utility";
-import { Page } from "playwright";
-let webActions: WebActions;
+import { WebActions } from "@lib/WebActions"
+import { Page } from "@playwright/test"
+import { Utility } from "@util/Utility"
+
+let webActions: WebActions
 let util: Utility
 
 export class DefaultDashboardPage {
-    readonly page: Page;
+    readonly page: Page
 
     constructor(page: Page) {
-        this.page = page;
-        webActions = new WebActions(this.page);
-        util = new Utility();
+        this.page = page
+        webActions = new WebActions(this.page)
+        util = new Utility()
     }
 
     //#region This region is for getter
@@ -21,68 +22,61 @@ export class DefaultDashboardPage {
     private _nodeMapPerformanceOverview = '//div[contains(@class,"NodePerformanceOverview_mapContainer")]'
     private _threeLineBurgerMenu = '//div[contains(@class,"fabricIcons_burgerMenu")]';
     private _rumWidgetinOverviewDashboard = '//div[contains(@class,"RumAppsOverview_mainContainer")]'
-
+   
+    
     public get overviewDashboardLocator(){
-        return this._overviewDashboard;
+        return this._overviewDashboard
     }
-
-    public get tabLocator(){
-        return (text:string) => { return `(//span[text()="${text}"])[1]`}
-    }
-
     public get testNameLocator(){
         return (text:number) => { return `(//div[contains(@class,"ms-DetailsRow-fields fields")]//a)[${text}]`}
     }
     public get errorSectionOverviewDashboardLocator(){
-        return this._errorSectionOverviewDashboard;
+        return this._errorSectionOverviewDashboard
     }
-
     public get eventSectionOverviewDashboardLocator(){
-        return this._eventSectionOverviewDashboard;
+        return this._eventSectionOverviewDashboard
     }
-
     public get alertSectionOverviewDashboardLocator(){
-        return this._alertSectionOverviewDashboard;
+        return this._alertSectionOverviewDashboard
     }
-
     public get nodeMapPerformanceOverviewLocator(){
-        return this._nodeMapPerformanceOverview;
+        return this._nodeMapPerformanceOverview
     }
 
     public get threeLineBurgerMenuLocator(){
-        return this._threeLineBurgerMenu;
+        return this._threeLineBurgerMenu
     }
 
     public get rumWidgetinOverviewDashboardLocator(){
-        return this._rumWidgetinOverviewDashboard;
+        return this._rumWidgetinOverviewDashboard
     }
-
-<<<<<<< HEAD
     public get tabLocator(){
         return (text:string) => { return `(//span[text()="${text}"])[1]`}
     }
-   
-=======
     
->>>>>>> 01570058f09f4e4899656dbd40045315db5e88b4
+    
+
+    
     //#endregion
 
     //#region This region is to have the functions
 
     async clickOnOverviewdashboard(){
-        await webActions.clickElement(this.overviewDashboardLocator);
+        await webActions.clickElement(this.overviewDashboardLocator)
     }
     async clickOnTab(tabName : string){
-        await webActions.clickElement(this.tabLocator(tabName));
+        await webActions.clickElement(this.tabLocator(tabName))
      }
 
-    async clickOnTab(tabName : string){
-        await webActions.clickElement(this.tabLocator(tabName));
-    }
-
     async getTestNameFromTestTable(tileNum: number){
-        return await webActions.getElementText(this.testNameLocator(tileNum));
+        return await webActions.getElementText(this.testNameLocator(tileNum))
     }
+    // async searchInCDSearchBox(itemName : string){
+    //     await webActions.clickElement(this.searchBoxLocator)
+    //     await webActions.enterElementText(this._searchBox,itemName)
+    // }
+   
+   
 
 
     //#endregion

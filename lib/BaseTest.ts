@@ -58,6 +58,8 @@ import { EndpointSmartboardPage } from'@pageobjects/Smartboard/EndpointSmartboar
 import { RecordsPage } from '@pageobjects/Records/RecordsPage';
 import { NodeToNodeSmartboardPage } from '@pageobjects/Smartboard/NodeToNodeSmartboard';
 import { BGPSmartboardPage } from '@pageobjects/Smartboard/BGPSmartboard';
+import { SynWidgetPropertyPage } from '@pageobjects/OverviewDashboard/SynWidgetPropertyPage';
+import { CustomDBPage } from '@pageobjects/OverviewDashboard/CustomDBPage';
 
 const test = baseTest.extend<{
     baseTestUtil: BaseTestUtility;
@@ -118,6 +120,8 @@ const test = baseTest.extend<{
     recordsPage: RecordsPage;
     ntnSmartboardPage : NodeToNodeSmartboardPage;
     bgpSmartboardPage : BGPSmartboardPage
+    synWidgetPropertyPage : SynWidgetPropertyPage;
+    customDBPage : CustomDBPage;
     
 
 }>({
@@ -299,6 +303,12 @@ const test = baseTest.extend<{
     },
     bgpSmartboardPage: async ({ page }, use) => {
         await use(new BGPSmartboardPage(page))
+    },
+    synWidgetPropertyPage: async ({ page }, use) => {
+        await use(new SynWidgetPropertyPage(page))
+    },
+    customDBPage: async ({ page }, use) => {
+        await use(new CustomDBPage(page))
     },
 
 

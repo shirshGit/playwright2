@@ -1,6 +1,6 @@
 import { WebActions } from "@lib/WebActions";
+import { Page } from "@playwright/test";
 import { Utility } from "@util/Utility";
-import { Page } from "playwright";
 let webActions: WebActions;
 let util: Utility
 
@@ -15,9 +15,9 @@ export class DashboardBlade {
 
     //#region This region is for getter
 
-    private _overviewDashboard = '//span[text()="Overview Dashboards"]';
+    private _overviewDashboard = '//label[text()="Overview Dashboard"]';
     private _firstTile = '(//ul[contains(@class,"Tiles_tiles_")]//li)[1]//p[contains(@class,"Tiles_name_")]';
-    private _createDashboard = '//span[text()="Create Dashboard"]';
+    private _createDashboard = '//span[contains(text(),"New Dashboard")]';
     private _createFolder = '//span[text()="Create Folder"]';
     private _testOverview = '//span[text()="Test Overview"]';
     private _endpointOverview = '//span[text()="Endpoint Monitoring Overview"]'
@@ -63,7 +63,7 @@ export class DashboardBlade {
 
     //#region This region is to have the functions
     
-    async clickOnOverviewDashboardDropDown(){
+    async clickOnOverviewDashboard(){
         await webActions.clickElement(this.overviewDashboardLocator);
     }
     
