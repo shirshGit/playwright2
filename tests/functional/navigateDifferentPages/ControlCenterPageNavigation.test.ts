@@ -7,10 +7,10 @@ import { DataForEnv } from "@lib/DataForEnvironment";
 test("VerifySyntheticControlCenterLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, synCCPage, util}) => {
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
     await util.delay(2000);
+    //validation for errors
+    await verification.validationsForPage();
     await verification.verifyIfElementIsPresent(synCCPage.testsTreeSideSideNavLocator, 'Side Navigation Bar is not present');
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
-    
+   
 })
 
 /*
@@ -19,13 +19,13 @@ test("VerifySyntheticControlCenterLoads @PageNavigation@ProductionSmoke@Smoke", 
 test("VerifyEndpointControlCenterLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, endpointControlCenter, util}) => {
     await sideNavigationBar.navigateToEndpointCCFromSideNavigation();
     await util.delay(2000);
+    //validation for errors
+    await verification.validationsForPage();
     await verification.verifyIfElementIsPresent(endpointControlCenter.endpointTreeSideSideNavLocator, 'Side Navigation Bar is not present');
     await verification.verifyIfElementIsPresent(endpointControlCenter.endpointsNavigationNavLinkLocator, 'Side Navigation Bar is not present');
     await verification.verifyIfElementIsPresent(endpointControlCenter.endpointsAppNavigationNavLinkLocator, 'Side Navigation Bar is not present');
     await verification.verifyIfElementIsPresent(endpointControlCenter.endpointsTestNavigationNavLinkLocator, 'Side Navigation Bar is not present');
     await verification.verifyIfElementIsPresent(endpointControlCenter.endpointsLocationNavigationNavLinkLocator, 'Side Navigation Bar is not present');
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     
 })
 
@@ -35,9 +35,9 @@ test("VerifyEndpointControlCenterLoads @PageNavigation@ProductionSmoke@Smoke", a
 test("VerifyRumControlCenterLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, rumControCenter, util}) => {
     await sideNavigationBar.navigateToEndpointCCFromSideNavigation();
     await util.delay(2000);
+    //validation for errors
+    await verification.validationsForPage();
     await verification.verifyIfElementIsPresent(rumControCenter.rumTreeSideSideNavLocator, 'Side Navigation Bar is not present');
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     
 })
 
@@ -51,7 +51,5 @@ test("VerifyLibraryControlCenterLoads @PageNavigation@ProductionSmoke@Smoke", as
     await verification.verifyIfElementIsPresent(libraryControlCenter.libraryCredentialsNavigationNavLinkLocator, 'Credentials Navigation Bar is not present');
     await verification.verifyIfElementIsPresent(libraryControlCenter.libraryFilesNavigationNavLinkLocator, 'File Navigation Bar is not present');
     await verification.verifyIfElementIsPresent(libraryControlCenter.libraryASNsNavigationNavLinkLocator, 'ASN link is not present');
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     
 })

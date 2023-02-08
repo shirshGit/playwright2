@@ -21,6 +21,7 @@ import { UserroleDetailPage } from '@pageobjects/Userrole/UserroleDetailPage';
 import { SyntheticRecordsPage } from '@pageobjects/Records/SyntheticRecordsPage';
 import { SourceSelectorPage } from '@pageobjects/Records/SourceSelecterPage';
 import { CharmBar } from '@pageobjects/CharmBar/CharmBar';
+import { GanttBladePage } from '@pageobjects/Records/GanttBladePage';
 import { SyntheticSmartboardPage } from '@pageobjects/Smartboard/SyntheticSmartboardPage';
 import { SourceSelectorSmartboard } from '@pageobjects/Smartboard/SourceSelectorSmartboard';
 import { ExplorerPage } from '@pageobjects/Explorer/ExplorerPage';
@@ -55,6 +56,7 @@ import { NodeGroupPage } from '@pageobjects/Node/NodeGroupPage';
 import { NodeListPage } from '@pageobjects/Node/NodesListPage';
 import { InstancesListPage } from '@pageobjects/Node/IntancesListPage';
 import { EndpointSmartboardPage } from'@pageobjects/Smartboard/EndpointSmartboard';
+import { RecordsPage } from '@pageobjects/Records/RecordsPage';
 import { NodeToNodeSmartboardPage } from '@pageobjects/Smartboard/NodeToNodeSmartboard';
 import { BGPSmartboardPage } from '@pageobjects/Smartboard/BGPSmartboard';
 
@@ -78,18 +80,7 @@ const test = baseTest.extend<{
     userrolePage: UserrolePage;
     userroleDetailPage: UserroleDetailPage;
     syntheticRecordsPage: SyntheticRecordsPage;
-    sourceSelectorPage: SourceSelectorPage;
-    charmBar: CharmBar;
     syntheticSmartboardPage: SyntheticSmartboardPage;
-    sourceSelectorSmartboard: SourceSelectorSmartboard;
-    explorerPage: ExplorerPage;
-    sourceSelectorExplorer: SourceSelectorExplorer;
-    controlCenterRecords: ControlCenterRecords;
-    dashboardBlade: DashboardBlade;
-    defaultDashboardPage: DefaultDashboardPage;
-    testOverviewDashboard: TestOverviewDashboard;
-    dashboardRecordListPage: DashboardRecordListPage;
-    explorerRecordListPage: ExplorerRecordListPage;
     endpointOverviewDB: EndpointOverviewDashboard;
     bgpOverviewDB: BGPOverviewDashboard;
     explorerSyntheticDetails: ExplorerSyntheticDetails;
@@ -114,10 +105,22 @@ const test = baseTest.extend<{
     nodeListPage: NodeListPage;
     nodeInstancePage: InstancesListPage;
     endpointSmartboardPage : EndpointSmartboardPage;
+    recordsPage: RecordsPage;
+    sourceSelectorPage : SourceSelectorPage;
+    charmBar : CharmBar;
+    ganttBladePage : GanttBladePage;
+    sourceSelectorSmartboard : SourceSelectorSmartboard;
+    explorerPage : ExplorerPage;
+    sourceSelectorExplorer : SourceSelectorExplorer;
+    controlCenterRecords : ControlCenterRecords;
+    dashboardBlade : DashboardBlade;
+    defaultDashboardPage : DefaultDashboardPage;
+    testOverviewDashboard : TestOverviewDashboard;
+    dashboardRecordListPage : DashboardRecordListPage;
+    explorerRecordListPage : ExplorerRecordListPage;
     ntnSmartboardPage : NodeToNodeSmartboardPage;
     bgpSmartboardPage : BGPSmartboardPage
     
-
 }>({
     baseTestUtil: async ({ page }, use, testInfo: TestInfo) => {
         let base = new BaseTestUtility(page);
@@ -189,6 +192,9 @@ const test = baseTest.extend<{
     },
     charmBar: async ({ page }, use) => {
         await use(new CharmBar(page));
+    },
+    ganttBladePage: async ({ page }, use) => {
+        await use(new GanttBladePage(page));
     },
     syntheticSmartboardPage: async ({ page }, use) => {
         await use(new SyntheticSmartboardPage(page));
@@ -271,7 +277,6 @@ const test = baseTest.extend<{
     schedulePage: async ({ page }, use) => {
         await use(new SchedulePage(page))
     },
-
     nodeMapPage: async ({ page }, use) => {
         await use(new MapPage(page))
     },
@@ -284,9 +289,11 @@ const test = baseTest.extend<{
     nodeInstancePage: async ({ page }, use) => {
         await use(new InstancesListPage(page))
     },
-
     contactGroupPage: async ({ page }, use) => {
         await use(new ContactGroupPage(page))
+    },
+    recordsPage: async ({ page }, use) => {
+        await use(new RecordsPage(page));
     },
     endpointSmartboardPage: async ({ page }, use) => {
         await use(new EndpointSmartboardPage(page))
@@ -297,9 +304,6 @@ const test = baseTest.extend<{
     bgpSmartboardPage: async ({ page }, use) => {
         await use(new BGPSmartboardPage(page))
     },
-
-
-
 
 
 });

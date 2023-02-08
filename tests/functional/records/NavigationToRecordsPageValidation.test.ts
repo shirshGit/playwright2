@@ -24,7 +24,7 @@ test("VerifyDataInRecordsListPageForTransactionTest  @ProductionDefectRecords@Re
 /*
    CP-44053 : DES: Selected run is not displayed in Records when we navigate from errors tab
 */
-test("VerifyNavigationFromErrorTab  @ProductionDefectRecords@Records", async ({ baseTestUtil, sideNavigationBar, context, loginPage, util, sourceSelectorExplorer, syntheticRecordsPage: recordsPage, explorerPage, page, verification }) => {
+test("VerifyNavigationFromErrorTab  @ProductionDefectRecords@Records", async ({ baseTestUtil, sideNavigationBar, context, loginPage, util, sourceSelectorExplorer,  recordsPage, explorerPage, page, verification }) => {
    let data = new DataForEnv();
    let TransactionTestID = await data.getValueOfTheParameter('transactionTestId');
    //navigate to CC page
