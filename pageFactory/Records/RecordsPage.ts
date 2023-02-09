@@ -1,6 +1,6 @@
 import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
-import { BrowserContext, Page } from "playwright";
+import { BrowserContext, Page } from "@playwright/test";
 
 let webActions: WebActions;
 let util: Utility
@@ -55,11 +55,7 @@ export class RecordsPage {
     private _downLoadFile = '//i[@data-icon-name="download"]';
     private _imageFilterUnderFileType = '(//span[text()="Images"])[2]';
     private _fileTypeFilterDropDown = '(//i[@data-icon-name="chevron"])[2]//div';
-    private _indicatorValue = '//div[contains(@class,"GanttChart_numericCell_")]';
-    private _getErrorRowValue = '//div[contains(@class,"GanttChart_icon-error_")]/../../div';
-    private _getZoneValue = '//div[contains(@class,"GanttChart_zonesCell_")]';
-    private _resetToDefault = '//span[text()="Reset to Default"]';
-
+    
     public get waterFallTabLocator() {
         return this._waterFallTab;
     }
@@ -274,12 +270,11 @@ export class RecordsPage {
     }
 
     public get tracepointValueLocator() {
-        return (text: number) => { return `//div[contains(text(),"max-age=")]` };
+        return (text: number) => { return `(//div[contains(text(),"max-age=")])[${text}]` };
     }
 
     public get indicatorValueLocator() {
         return (text: number) => { return `(//div[contains(@class,"GanttChart_cell-indicator")])[${text}]/div` };
-        return (text: string) => { return `//td[text()="${text}"]/..//td[2]` };
     }
 
     public get tracePointValueLocator() {
@@ -307,10 +302,12 @@ export class RecordsPage {
 
     public get getProtocolValueLocator(){
         return (text:number) => { return `(//div[contains(@class,"GanttChart_tableRow_")])[${text}]//div[contains(text(),"HTTP")]`}
-        
+     
+    }
     public get getErrorRowValueLocator() {
         return this._getErrorRowValue;
     }
+
 
     //#endregion
 
@@ -396,20 +393,11 @@ export class RecordsPage {
         let rowCount = await this.page.locator(this.getRowsCountLocator).count();
         return rowCount;
     }
-
-    async getIconsClassProperty(nunberOfRow: number) {
-        let iconClassProperty: string[] = [];
-        for (let index = 1; index <= nunberOfRow; index++) {
-            let xpath = this.iconsInGanttSectionLocator(index);
-            let hostValue = await webActions.getElementAttributeValue(xpath, 'class');
-            iconClassProperty.push(hostValue);
-        }
-        return iconClassProperty;
-    }
+   
     //By this method user can select filter from fileType,Request,ZoneDropdown
     async selectFilter(filterType:string,filterName:string){
         await this.clickOnFilterDropDown(filterType);
-        await webActions.clickElement(this.filterLocator(filterName));
+        await webActions.clickElement(this.getFileTypeFilterLocator(filterName));
     }
 
     async clickOnFilterDropDown(filterType:string){
@@ -426,11 +414,6 @@ export class RecordsPage {
     async selectZone(zoneName: string) {
         await webActions.clickElement(this.zoneDropDownLocator);
         await webActions.clickElement(this.selectZoneLocator(zoneName));
-    }
-
-    async getRowCount() {
-        let rowCount = await this.page.locator('//div[contains(@class,"GanttChart_tableRow_")]').count();
-        return rowCount;
     }
 
     async getFirstErrorRowValue() {
@@ -516,10 +499,6 @@ export class RecordsPage {
     async deleteFile(filePath) {
         await webActions.deleteFile(filePath);
     }
-    async downloadFile(): Promise<string> {
-        let fileName = await webActions.downloadFile('//span[text()="Excel"]');
-        return fileName;
-    }
 
     async readData(nameOfColumn: string, rowCount: number, fileName: string) {
         var XLSX = require('xlsx');
@@ -577,6 +556,8 @@ export class RecordsPage {
     }
 
     async getZoneList(nunberOfitem: number) {
+
+    }
     async getFileIconClassPropertyList(nunberOfitem: number) {
         let classProperty: string[] = [];
         for (let index = 1; index <= nunberOfitem; index++) {

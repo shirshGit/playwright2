@@ -24,11 +24,9 @@ export class SourceSelectorPage extends SyntheticRecordsPage {
     public get searchBoxLocator() {
         return this._searchBoxForTest;
     }
-
     public get firstRowSearchCheckBoxInSelectorPageLocator() {
         return this._firstRowSearchCheckBoxInSelectorPage
     }
-
     public get testTabLocator() {
         return this._testTab;
     }
@@ -38,7 +36,6 @@ export class SourceSelectorPage extends SyntheticRecordsPage {
     public get firstSearchedAppCheckBoxLocator() {
         return this._firstSearchedAppChechBox;
     }
-
     public get searchBoxForAppLocator() {
         return this._searchBoxForApp;
     }
