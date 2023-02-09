@@ -1,7 +1,7 @@
 import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
 import { ListenOptions } from "net";
-import { Page } from "playwright";
+import { Page } from "@playwright/test";
 import { UserrolePage } from "./UserrolePage";
 
 let webActions: WebActions;

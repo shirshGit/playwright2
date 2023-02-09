@@ -31,7 +31,6 @@ export const stagedata = {
     'transactionTestIDWithEnforceFailureAdvanceSetting' : '81472',//used for records automation
     'transactionTestWithMultipleStepAndStepName' : '244168', // used for records automation
     'transactionTestWithMultipleStepWithoutStepName' : '246072',//used for records automation
-    'transactionTestId' : '216885',
     'transactionTestWithRefrenceHostOnFailure' : '236336',
     'transactionTestId' : '236336',//transaction test with refrence host on failure
 
