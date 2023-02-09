@@ -1,8 +1,8 @@
-import { WebActions } from "@lib/WebActions"
-import { Page } from "@playwright/test"
-import { Utility } from "@util/Utility"
 
-let webActions: WebActions
+import { WebActions } from "@lib/WebActions";
+import { Utility } from "@util/Utility";
+import { Page } from "@playwright/test";
+let webActions: WebActions;
 let util: Utility
 
 export class DefaultDashboardPage {

@@ -1,5 +1,5 @@
 import { WebActions } from "@lib/WebActions";
-import { Page } from "playwright";
+import { Page } from "@playwright/test";
 import { SynControlCenterPage } from "@pageobjects/ControlCenter/SyntheticControlCenter";
 
 //const SyntheticControlCenter = require('@pageobjects/ControlCenter/SyntheticControlCenter');

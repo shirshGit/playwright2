@@ -45,17 +45,54 @@ export class RecordsPage {
     private _htmlFileType = '//div[contains(@class,"GanttChart_cell-file-type-icon_")]//div[contains(@class,"GanttChart_icon-html_")]';
     private _errorMessage = '(//td[contains(@class,"GanttChart_tooltipValue_")])[3]';
     private _teaceValue = '//div[contains(text(),"max-age=")]';
-    private _indicatorValue = '//div[contains(@class,"GanttChart_numericCell_")]';
+    private _indicatorValue = '//div[contains(@class,"GanttChart_cell-indicator_")]//div[contains(@class,"GanttChart_numericCell_")]';
     private _getErrorRowValue = '//div[contains(@class,"GanttChart_icon-error_")]/../../div';
     private _getZoneValue = '//div[contains(@class,"GanttChart_zonesCell_")]';
     private _resetToDefault = '//span[text()="Reset to Default"]';
-
+    private _requestTypeFilterDD = '(//i[@data-icon-name="chevron"])[3]//div';
+    private _warningIcon = '//div[contains(@class,"GanttChart_icon-warning_")]';
+    private _clearIconOfGanttSearchBox = '//i[@data-icon-name="Clear"]';
+    private _downLoadFile = '//i[@data-icon-name="download"]';
+    private _imageFilterUnderFileType = '(//span[text()="Images"])[2]';
+    private _fileTypeFilterDropDown = '(//i[@data-icon-name="chevron"])[2]//div';
+    
     public get waterFallTabLocator() {
         return this._waterFallTab;
+    }
+    public get fileTypeFilterDropDownLocator() {
+        return this._fileTypeFilterDropDown;
+    }
+
+    public get imageFilterLocator(){
+        return this._imageFilterUnderFileType;
+    }
+
+    public get filterDropDownLocator(){
+        return (text:string) => {return `//label[text()="${text}"]/..//i[@data-icon-name="chevron"]/div`}
+    }
+
+    public get indicatorCountLocator(){
+        return this._indicatorValue;
+    }
+
+    public get downloadFileLocator(){
+        return this._downLoadFile
+    }
+
+    public get downLoadFileTypeLocator(){
+        return (text:string) => { return `//span[text()="${text}"]`};
+    }
+
+    public get clearIconOfGanttChartLocator() {
+        return this._clearIconOfGanttSearchBox;
     }
 
     public get pingTabLocator() {
         return this._pingTab
+    }
+
+    public get requestTypeFilterDDLocator() {
+        return this._requestTypeFilterDD
     }
 
     public get pillDeleteButtonLocator() {
@@ -123,11 +160,9 @@ export class RecordsPage {
     public get zoneDropDownLocator() {
         return this._zoneFilterDropDown;
     }
-
     public get selectZoneLocator() {
         return (text: string) => { return `//span[text()="${text}"]` };
     }
-
     public get hostNameLocator() {
         return (text: number) => { return `(//div[contains(@class,"GanttChart_tableRow_")]//div[contains(@class,"GanttChart_cell-host_")])[${text}]` };
     }
@@ -135,7 +170,6 @@ export class RecordsPage {
     public get getImageLocator() {
         return (text: number) => { return `(//div[contains(@class,"GanttChart_icon-image_")])[${text}]` };
     }
-
     public get getFileTypeFilterLocator() {
         return (text: string) => { return `//span[text()="${text}"]` };
     }
@@ -155,11 +189,9 @@ export class RecordsPage {
     public get selectRowFromGanttChartLocator() {
         return (text: number) => { return `(//div[contains(@class,"GanttChart_tableRow_")])[${text}]` };
     }
-
     public get errorTextInGeneralTabLocator() {
         return this._errorTextInGeneralTab
     }
-
     public get columnTabLocator() {
         return this._columnTab;
     }
@@ -238,11 +270,11 @@ export class RecordsPage {
     }
 
     public get tracepointValueLocator() {
-        return (text: number) => { return `//div[contains(text(),"max-age=")]` };
+        return (text: number) => { return `(//div[contains(text(),"max-age=")])[${text}]` };
     }
 
     public get indicatorValueLocator() {
-        return (text: string) => { return `//td[text()="${text}"]/..//td[2]` };
+        return (text: number) => { return `(//div[contains(@class,"GanttChart_cell-indicator")])[${text}]/div` };
     }
 
     public get tracePointValueLocator() {
@@ -260,12 +292,32 @@ export class RecordsPage {
     public get responseTimeMetricsValueLocator() {
         return (text: number) => { return `(//div[contains(@class,"GanttChart_tableRow_")])[${text}]//div[10]/div` };
     }
+    public get getWarningIconRowNumberLocator() {
+        return (text: number) => { return `((//div[contains(@class,"GanttChart_icon-warning_")])[${text}]/../..//div)[1]` };
+    }
 
+    public get getErrorIconRowNumverLocator() {
+        return (text: number) => { return `((//div[contains(@class,"GanttChart_icon-error_")])[${text}]/../..//div)[1]` };
+    }
+
+    public get getProtocolValueLocator(){
+        return (text:number) => { return `(//div[contains(@class,"GanttChart_tableRow_")])[${text}]//div[contains(text(),"HTTP")]`}
+     
+    }
     public get getErrorRowValueLocator() {
         return this._getErrorRowValue;
     }
 
+
     //#endregion
+
+    async clickOnFileTypeFilterDropDown(){
+        await webActions.clickElement(this.fileTypeFilterDropDownLocator);
+    }
+
+    async ganttChartClearIcon(){
+        await webActions.clickElement(this.clearIconOfGanttChartLocator);
+    }
 
     async clickOnTestInSourceSelector() {
         await webActions.clickElement(this.testInSourceSelectorLocator);
@@ -331,17 +383,37 @@ export class RecordsPage {
     async getIPAddressValue() {
         let ipAddressValue = await webActions.getElementText(this.getIPAddressLocator);
         return ipAddressValue;
-
     }
 
-    async selectZone(zoneName: string) {
+    async clickOnZoneDropDown() {
         await webActions.clickElement(this.zoneDropDownLocator);
-        await webActions.clickElement(this.selectZoneLocator(zoneName));
     }
 
     async getRowCount() {
-        let rowCount = await this.page.locator('//div[contains(@class,"GanttChart_tableRow_")]').count();
+        let rowCount = await this.page.locator(this.getRowsCountLocator).count();
         return rowCount;
+    }
+   
+    //By this method user can select filter from fileType,Request,ZoneDropdown
+    async selectFilter(filterType:string,filterName:string){
+        await this.clickOnFilterDropDown(filterType);
+        await webActions.clickElement(this.getFileTypeFilterLocator(filterName));
+    }
+
+    async clickOnFilterDropDown(filterType:string){
+        await webActions.clickElementJS(this.filterDropDownLocator(filterType));
+    }
+
+    async clickOnImageFilter(filterType:string){
+        await webActions.clickElement(this.imageFilterLocator);
+    }
+
+    async clickOnRequestTypeFilter() {
+        await webActions.clickElementJS(this.imageFilterLocator);
+    }
+    async selectZone(zoneName: string) {
+        await webActions.clickElement(this.zoneDropDownLocator);
+        await webActions.clickElement(this.selectZoneLocator(zoneName));
     }
 
     async getFirstErrorRowValue() {
@@ -415,14 +487,18 @@ export class RecordsPage {
     }
 
     async clickOnDownload() {
-        webActions.clickElement('//i[@data-icon-name="download"]');
+        webActions.clickElement(this.downloadFileLocator);
     }
 
-    async downloadFile(): Promise<string> {
-        let fileName = await webActions.downloadFile('//span[text()="CSV"]');
-        return fileName;
+    async downloadFile(fileName:string): Promise<string> {
+        let xpath = this.downLoadFileTypeLocator(fileName);
+        let fileNAme = await webActions.downloadFile(xpath);
+        return fileNAme;
     }
 
+    async deleteFile(filePath) {
+        await webActions.deleteFile(filePath);
+    }
 
     async readData(nameOfColumn: string, rowCount: number, fileName: string) {
         var XLSX = require('xlsx');
@@ -445,14 +521,11 @@ export class RecordsPage {
         }
         return metricsColumn;
     }
-
     async getRowsCount(locator: string) {
         await this.page.waitForSelector(locator, { timeout: 5000 });
         let count = await this.page.$$(locator);
         return await count.length;
     }
-
-
     async getHostNameList(nunberOfHost: number) {
         let hostList: string[] = [];
         for (let index = 1; index <= nunberOfHost; index++) {
@@ -473,6 +546,14 @@ export class RecordsPage {
         }
         return hostList;
     }
+    async getHTMLFileTypeClassPropertyList(nunberOfitem: number) {
+        let classProperty: string[] = [];
+        for (let index = 1; index <= nunberOfitem; index++) {
+            let classPropertyValue = await webActions.getElementAttributeValue(this.htmlFileTypeLocator, 'class');
+            classProperty.push(classPropertyValue);
+        }
+        return classProperty;
+    }
 
     async getFileIconClassPropertyList(nunberOfitem: number) {
         let classProperty: string[] = [];
@@ -482,7 +563,14 @@ export class RecordsPage {
         }
         return classProperty;
     }
-
+    async getRequestProtocolList(nunberOfRow: number) {
+        let protocolList: string[] = [];
+        for (let index = 1; index <= nunberOfRow; index++) {
+            let protocolValue = await webActions.getElementAttributeValue(this.getProtocolValueLocator(index), 'class');
+            protocolList.push(protocolValue);
+        }
+        return protocolList;
+    }
     async getErrorMsgFromRowsContaingError(number: string) {
         let errorMsg: string[] = [];
         for (let index = 1; index <= number.length; index++) {
@@ -500,12 +588,12 @@ export class RecordsPage {
             let metric = timingTabMetrics[index]
             let xpath = this.timingTabMetricsValueLocator(metric);
             let value = await webActions.getElementText(xpath);
+            await util.delay(1000);
             metricsValue.push(value);
         }
         return metricsValue;
     }
-
-    async getTracePointValue(count: number) {
+      async getTracePointValues(count: number) {
         let traceValue: string[] = [];
         for (let index = 1; index <= count; index++) {
             let xpath = this.tracepointValueLocator(index);
@@ -514,7 +602,15 @@ export class RecordsPage {
         }
         return traceValue;
     }
-
+    async getIndicatorValues(count: number) {
+        let indicatorValue: string[] = [];
+        for (let index = 1; index <= count; index++) {
+            let xpath = this.indicatorValueLocator(index);
+            let value = await webActions.getElementText(xpath);
+            indicatorValue.push(value);
+        }
+        return indicatorValue;
+    }
     async getSelectedZoneValue(count: number) {
         let zoneValue: string[] = [];
         for (let index = 1; index <= count; index++) {
@@ -524,6 +620,10 @@ export class RecordsPage {
         }
         return zoneValue;
     }
-
+    async getCount(locator: string) {
+        await this.page.waitForSelector(locator, { timeout: 5000 });
+        let count = await this.page.$$(locator);
+        return await count.length;
+    }
 
 }

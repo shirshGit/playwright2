@@ -90,8 +90,6 @@ test.skip("VerifyPeerInfoInBGPSB @PageNavigation@ProductionSmoke@Smoke", async({
     await verification.verifyIfElementIsPresent(sourceSelectorSmartboard.testTabLocator, 'Test Tab is not present in source selector');
     //select test
     await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(bgpTestID);
-    //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     //validation 
     await verification.verifyIfElementIsPresent(bgpSmartboardPage.selectedTimeInTimeFrameLocator,"24 hour time frame is not selected");
     await verification.verifyIfElementIsPresent(bgpSmartboardPage.peerInfoWidgetLocator,"peer info widget is not present")
@@ -222,7 +220,7 @@ test("VerifyRecordsCompareSectionInNTNSB @PageNavigation@ProductionSmoke@Smoke",
 test("VerifySmartboardEndpointTestLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,endpointSmartboardPage, util}) => {
     let data = new DataForEnv();
     let testID = await data.getValueOfTheParameter('endpointTracerouteTestID');
-    await sideNavigationBar.navigateToSmartboardFromSideNavigation();
+    //await sideNavigationBar.navigateToSmartboardFromSideNavigation();
     await util.delay(2000);
     //validation for errors
     await verification.validationsForPage();
@@ -249,14 +247,14 @@ test("VerifySmartboardEndpointTestLoads @PageNavigation@ProductionSmoke@Smoke", 
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeZoneDDLocator,"time zone is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.compareDDLocator,"compare is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeFrame,"time frame is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.networkScoreMetricsInNetworkTabLocator,"network score metrics is not present");
+    await verification.verifyIfElementIsPresent(endpointSmartboardPage.networkScoreMetricsInNetworkTabForTestLocator,"network score metrics is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.packetLossCardMetricsLocator,"packet loss metrics is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.roundTripMetricsLocator,"round trip card metrics is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.testRunCardMetricsLocator,"test run card metrics is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.locationTestedCardMetricsInNetworkTabLocator,"location tested card metrics is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.endpointTestedCardMetricsInNetworkTabLocator,"endpoint tested card metrics is not present");
     //validation for something went wrong
-    await verification.verifyTextIsPresentInPage("'Something went wrong!'",'getting something went wrong message.');
+    await verification.verifyTextIsNotPresentInPage("'Something went wrong!'",'getting something went wrong message.');
     //click on endpoint tab
     await endpointSmartboardPage.clickOnEndpointTab();
     //validation for errors

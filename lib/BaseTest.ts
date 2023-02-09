@@ -21,6 +21,7 @@ import { UserroleDetailPage } from '@pageobjects/Userrole/UserroleDetailPage';
 import { SyntheticRecordsPage } from '@pageobjects/Records/SyntheticRecordsPage';
 import { SourceSelectorPage } from '@pageobjects/Records/SourceSelecterPage';
 import { CharmBar } from '@pageobjects/CharmBar/CharmBar';
+import { GanttBladePage } from '@pageobjects/Records/GanttBladePage';
 import { SyntheticSmartboardPage } from '@pageobjects/Smartboard/SyntheticSmartboardPage';
 import { SourceSelectorSmartboard } from '@pageobjects/Smartboard/SourceSelectorSmartboard';
 import { ExplorerPage } from '@pageobjects/Explorer/ExplorerPage';
@@ -65,7 +66,6 @@ const test = baseTest.extend<{
     baseTestUtil: BaseTestUtility;
     loginPage: LoginPage;
     instantTabWindow: NewTabInstatntTest;
-    syntheticControlCenter: SyntheticControlCenter;
     verification: Verification;
     sideNavigationBar: SideNavBar;
     synCCPage: SynControlCenterPage;
@@ -81,18 +81,7 @@ const test = baseTest.extend<{
     userrolePage: UserrolePage;
     userroleDetailPage: UserroleDetailPage;
     syntheticRecordsPage: SyntheticRecordsPage;
-    sourceSelectorPage: SourceSelectorPage;
-    charmBar: CharmBar;
     syntheticSmartboardPage: SyntheticSmartboardPage;
-    sourceSelectorSmartboard: SourceSelectorSmartboard;
-    explorerPage: ExplorerPage;
-    sourceSelectorExplorer: SourceSelectorExplorer;
-    controlCenterRecords: ControlCenterRecords;
-    dashboardBlade: DashboardBlade;
-    defaultDashboardPage: DefaultDashboardPage;
-    testOverviewDashboard: TestOverviewDashboard;
-    dashboardRecordListPage: DashboardRecordListPage;
-    explorerRecordListPage: ExplorerRecordListPage;
     endpointOverviewDB: EndpointOverviewDashboard;
     bgpOverviewDB: BGPOverviewDashboard;
     explorerSyntheticDetails: ExplorerSyntheticDetails;
@@ -118,6 +107,18 @@ const test = baseTest.extend<{
     nodeInstancePage: InstancesListPage;
     endpointSmartboardPage : EndpointSmartboardPage;
     recordsPage: RecordsPage;
+    sourceSelectorPage : SourceSelectorPage;
+    charmBar : CharmBar;
+    ganttBladePage : GanttBladePage;
+    sourceSelectorSmartboard : SourceSelectorSmartboard;
+    explorerPage : ExplorerPage;
+    sourceSelectorExplorer : SourceSelectorExplorer;
+    controlCenterRecords : ControlCenterRecords;
+    dashboardBlade : DashboardBlade;
+    defaultDashboardPage : DefaultDashboardPage;
+    testOverviewDashboard : TestOverviewDashboard;
+    dashboardRecordListPage : DashboardRecordListPage;
+    explorerRecordListPage : ExplorerRecordListPage;
     ntnSmartboardPage : NodeToNodeSmartboardPage;
     bgpSmartboardPage : BGPSmartboardPage
     synWidgetPropertyPage : SynWidgetPropertyPage;
@@ -141,9 +142,6 @@ const test = baseTest.extend<{
     },
     endpointControlCenter: async ({ page }, use) => {
         await use(new EndpointControlCenterPage(page));
-    },
-    syntheticControlCenter: async ({ page }, use) => {
-        await use(new SyntheticControlCenter(page));
     },
     verification: async ({ page }, use) => {
         await use(new Verification(page));
@@ -195,6 +193,9 @@ const test = baseTest.extend<{
     },
     charmBar: async ({ page }, use) => {
         await use(new CharmBar(page));
+    },
+    ganttBladePage: async ({ page }, use) => {
+        await use(new GanttBladePage(page));
     },
     syntheticSmartboardPage: async ({ page }, use) => {
         await use(new SyntheticSmartboardPage(page));
@@ -310,9 +311,6 @@ const test = baseTest.extend<{
     customDBPage: async ({ page }, use) => {
         await use(new CustomDBPage(page))
     },
-
-
-
 
 
 });

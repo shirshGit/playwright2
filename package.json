@@ -6,20 +6,31 @@
   "author": "sgiri",
   "license": "MIT",
   "scripts": {
-    "test:single:Smoke": "npx playwright test /tests/functional/navigateDifferentPages --project=Smoke --workers=1",
-    "test:single:chrome2": "npx playwright test /tests/functional/navigateDifferentPages/ExplorerNavigation.test.ts --project=Chrome --workers=1",
-    "test:single:chrome3": "npx playwright test /tests/functional/navigateDifferentPages/SmartboardPageNavigation.test.ts --project=Chrome --workers=1",
-    "test:single:chrome4": "npx playwright test /tests/functional/smartboard/smartboradNavigation.test.ts --project=Chrome --workers=1",
+    "test:single:chrome": "npx playwright test /tests/functional/cc/synthetic/VerifyFolderSettingsInheritedFromProduct.test.ts --project=Chrome --workers=1",
+    "test:single:chrome2": "npx playwright test /tests/functional/cc/synthetic/VerifyUserCantDeactivateFolder.test.ts --project=Chrome --workers=1",
+    "test:single:chrome3": "npx playwright test /tests/functional/cc/synthetic/CreateNewSyntheticProduct.test.ts --project=Chrome --workers=1",
+    "test:single:chrome4": "npx playwright test /tests/functional/records/RecordsGanttFilterValidation.test.ts --project=Chrome --workers=1",
     "test:single:chromesmoke": "npx playwright test /tests/functional/cc/synthetic/ --project=ChromeSmoke --workers=1",
-    "test:single:edge": "npx playwright test /tests/functional/catchpointEndpointDB.test.ts --project=Edge --workers=1",
+    "test:single:edge": "npx playwright test /tests/functional/records/RecordsGanttFilterValidation.test.ts --project=Edge --workers=1",
     "test:single:firefox": "npx playwright test /tests/functional/catchpointEndpointDB.test.ts --project=Firefox --workers=1",
     "test:single:chromeTimeCapture": "npx playwright test /tests/functional/catchointSampleTestForTimeComapre.test.ts --project=Chrome --workers=1",
-    "test:single:nav": "npx playwright test /tests/functional/navigateDifferentPages --project=Smoke --workers=1"
+    "test:single:TestURLValidation": "npx playwright test /tests/functional/cc/synthetic/TestURLValidation.test.ts --project=Chrome --workers=1",
+    "test:single:TestPropertiesDateValidation": "npx playwright test /tests/functional/cc/synthetic/TestPropertiesDateValidation.test.ts --project=Chrome --workers=1",
+    "test:single:CopyTest": "npx playwright test /tests/functional/cc/synthetic/CopyTest.test.ts --project=Chrome --workers=1",
+    "test:single:MoveTest": "npx playwright test /tests/functional/cc/synthetic/MoveTest.test.ts --project=Chrome --workers=1",
+    "test:single:DivisionLevelAccessInClientLevelValidation": "npx playwright test /tests/functional/cc/synthetic/DivisionLevelAccessInClientLevelValidation.test.ts --project=Chrome --workers=1",
+    "test:single:ChangeLog": "npx playwright test /tests/functional/cc/synthetic/ChangeLog.test.ts --project=Chrome --workers=1",
+    "test:single:RecordsSourcePageValidation": "npx playwright test /tests/functional/records/RecordsSourcePageValidation.test.ts --project=Chrome --workers=1",
+    "test:single:RunInfoValidation": "npx playwright test /tests/functional/records/RunInfoValidation.test.ts --project=Chrome --workers=1",
+    "test:single:RecordsTransactionTest": "npx playwright test /tests/functional/records/RecordsTransactionTest.test.ts --project=Chrome --workers=1",
+    "test:single:NavigationToRecordsPageValidation": "npx playwright test /tests/functional/records/NavigationToRecordsPageValidation.test.ts --project=Chrome --workers=1",
+    "test:single:RecordsGanttFilterValidation": "npx playwright test /tests/functional/records/RecordsGanttFilterValidation.test.ts --project=Chrome --workers=1"
   },
   "dependencies": {
     "@playwright/test": "^1.29.1",
     "@types/adm-zip": "^0.5.0",
     "@types/crypto-js": "^4.1.1",
+    "@types/xlsx": "^0.0.36",
     "@typescript-eslint/eslint-plugin": "^5.19.0",
     "@typescript-eslint/parser": "^5.19.0",
     "adm-zip": "^0.5.9",
@@ -31,7 +42,9 @@
     "experimental-allure-playwright": "0.0.3",
     "install": "^0.13.0",
     "pg": "^8.7.3",
-    "playwright": "^1.29.1",
-    "typescript": "^4.6.3"
+    "playwright": "^1.23.0",
+    "read-excel-file": "^5.5.3",
+    "typescript": "^4.6.3",
+    "xlsx": "^0.18.5"
   }
 }

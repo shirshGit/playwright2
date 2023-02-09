@@ -1,6 +1,6 @@
 import { WebActions } from "@lib/WebActions";
 import { DefaultDashboardPage } from "./DefaultDashboardPage";
-import { Page } from "playwright";
+import { Page } from "@playwright/test";
 import { Utility } from "@util/Utility";
 
 let webActions: WebActions;

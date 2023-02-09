@@ -1,6 +1,6 @@
 import { WebActions } from "@lib/WebActions";
 import { SyntheticDetailPage } from "@pageobjects/ControlCenter/SyntheticDetailsPage";
-import { Page } from "playwright";
+import { Page } from "@playwright/test";
 import { Utility } from "@util/Utility";
 
 let util = new Utility();
