@@ -555,9 +555,6 @@ export class RecordsPage {
         return classProperty;
     }
 
-    async getZoneList(nunberOfitem: number) {
-
-    }
     async getFileIconClassPropertyList(nunberOfitem: number) {
         let classProperty: string[] = [];
         for (let index = 1; index <= nunberOfitem; index++) {
@@ -596,7 +593,7 @@ export class RecordsPage {
         }
         return metricsValue;
     }
-      async getTracePointValue(count: number) {
+      async getTracePointValues(count: number) {
         let traceValue: string[] = [];
         for (let index = 1; index <= count; index++) {
             let xpath = this.tracepointValueLocator(index);
