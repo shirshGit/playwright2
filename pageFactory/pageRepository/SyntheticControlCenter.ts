@@ -1,5 +1,5 @@
 import { WebActions } from "@lib/WebActions";
-import type { Page } from 'playwright';
+import { Page } from "@playwright/test";
 import {SideNavigationBar} from '@objects/SideNavigationBar';
 import { ControlCenter } from "@objects/ControlCenter";
 import { expect } from "@playwright/test";
