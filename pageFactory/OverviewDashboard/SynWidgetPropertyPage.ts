@@ -27,8 +27,9 @@ export class SynWidgetPropertyPage {
     private _metricsInputBox = '//label[contains(text(),"Metrics:")]/../..//input';
     private _defaultTimeFrameDD = '//label[contains(text(),"Default Timeframe:")]/..//i[@data-icon-name="chevrondown"]';
     private _otherTimeFrameToggleButton = '//label[contains(text(),"Other Timeframes:")]/..//button';
-    private _otherTimeFrameDD = '//div[contains(@class,"TimeframeSelection_otherTimeframes")]//i[@data-icon-name="chevrondown"]';
+    private _otherTimeFrameDD = '//label[contains(text(),"Timeframes")]/..//i/div';
     private _saveWidgetButton = '(//span[text()="Save"])[2]';
+    
     
     public get sourceDDOptionLocator() {
         return (text1: string, text2: string) => { return `//span[text()="${text1}"]/../following-sibling::button[@title="${text2}"]` }

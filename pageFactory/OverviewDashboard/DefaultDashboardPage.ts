@@ -53,6 +53,9 @@ export class DefaultDashboardPage {
     public get tabLocator(){
         return (text:string) => { return `(//span[text()="${text}"])[1]`}
     }
+    public get testInTestWidget(){
+        return (text:number) => { return `//div[@class="ms-List-page"]//a[@tabindex="${text}"]`}
+    }
     
     
 
@@ -66,8 +69,10 @@ export class DefaultDashboardPage {
     }
     async clickOnTab(tabName : string){
         await webActions.clickElement(this.tabLocator(tabName))
-     }
-
+    }
+    async clickOnTestInTestWidget(rowNum:number){
+        await webActions.clickElement(this.testInTestWidget(1));
+    }
     async getTestNameFromTestTable(tileNum: number){
         return await webActions.getElementText(this.testNameLocator(tileNum))
     }

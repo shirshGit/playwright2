@@ -65,6 +65,9 @@ export class CustomDBPage extends SynWidgetPropertyPage{
     public get threeDotMenuOptionLocator(){
         return (text:string) => { return `//span[normalize-space()='${text}']`}
     }
+    public get tableWidgetRowLocator(){
+        return (text:number) => { return `//div[@data-testid="table_row"]//a[@tabindex="${text}"]`}
+    }
 
   
     //#endregion
@@ -106,10 +109,29 @@ export class CustomDBPage extends SynWidgetPropertyPage{
         await this.selectOtherTimeFrame(otherTimeFrame)
         await webActions.clickElement(this.saveWidgetLocator)
     }
+    async createTableWidget(widgetName: string, widgetDiscription: string, division:string=null, dataFilterName: string = null, otherFilter:string = null,otherFilterOptions:string[]=null,dimension: string[] ,metrics: string[], defaultTimeFrame: string = null, otherTimeFrame: string = null) {
+        await this.fillBasicProperties(widgetName,widgetDiscription)
+        await this.selectFilters(dataFilterName,otherFilter,otherFilterOptions)
+        await this.selectDimension(dimension)
+        await this.selectMetrics(metrics)
+        await this.selectDefaultTimeFrame(defaultTimeFrame)
+        await this.selectOtherTimeFrame(otherTimeFrame)
+        await webActions.clickElement(this.saveWidgetLocator)
+    }
+    async createSLAWidget(widgetName: string, widgetDiscription: string, division:string=null, dataFilterName: string = null, otherFilter:string = null,otherFilterOptions:string[]=null,dimension: string[] ,metrics: string[], defaultTimeFrame: string = null, otherTimeFrame: string = null) {
+        await this.fillBasicProperties(widgetName,widgetDiscription)
+        await this.selectFilters(dataFilterName,otherFilter,otherFilterOptions)
+        await this.selectMetrics(metrics)
+        await this.selectOtherTimeFrame(otherTimeFrame)
+        await webActions.clickElement(this.saveWidgetLocator)
+    }
     async navigateByThreeDotMenu(option:string){
         await webActions.hoverOnElement(this.tileHeaderLocator);
         await webActions.clickElement(this.threeDotMenuLocator);
         await webActions.clickElement(this.threeDotMenuOptionLocator(option))
+    }
+    async clickTableWidgeRow(rowNum: number) {
+        await webActions.clickElement(this.tableWidgetRowLocator(rowNum))
     }
     
    
