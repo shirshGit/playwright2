@@ -1,7 +1,6 @@
 import { test as baseTest, TestInfo } from '@playwright/test';
 import { LoginPage } from '@pageobjects/Login/LoginPage';
 import { NewTabInstatntTest } from '@pages/InstantTestNewWindow';
-import { SyntheticControlCenter } from '@pages/SyntheticControlCenter';
 import { BaseTestUtility } from './BaseTestUtility';
 import { TestResult } from '@playwright/test/reporter';
 import { Verification } from '@verification/verification';
