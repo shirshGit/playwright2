@@ -211,7 +211,7 @@ const test = baseTest.extend<{
     },
     smartboardPage: async ({ page }, use) => {
         await use(new SmartboardPage(page));
-    }
+    },
     syntheticSmartboardPage: async ({ page }, use) => {
         await use(new SyntheticSmartboardPage(page));
     },

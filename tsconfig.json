@@ -1,15 +1,33 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "baseUrl": ".",                                      /* Specify the base directory to resolve non-relative module names. */
-    "paths": {                                           /* Specify a set of entries that re-map imports to additional lookup locations. */
-      "@pages/*":["pageFactory/pageRepository/*"],
-      "@objects/*":["pageFactory/objectRepository/*"],
-      "@lib/*":["lib/*"],
-      "@verification/*":["testverification/*"],
-      "@testData/*":["resources/*"],
-      "@pageobjects/*" : ["pageFactory/*"],
-      "@util/*" : ["utility/*"],
-    }                                         
+    "baseUrl": ".",
+    "outDir": "../test_out", /* Specify the base directory to resolve non-relative module names. */
+    "paths": { /* Specify a set of entries that re-map imports to additional lookup locations. */
+      "@pages/*": [
+        "pageFactory/pageRepository/*"
+      ],
+      "@objects/*": [
+        "pageFactory/objectRepository/*"
+      ],
+      "@lib/*": [
+        "lib/*"
+      ],
+      "@verification/*": [
+        "testverification/*"
+      ],
+      "@testData/*": [
+        "resources/*"
+      ],
+      "@pageobjects/*": [
+        "pageFactory/*"
+      ],
+      "@util/*": [
+        "utility/*"
+      ],
+    },
+    "module": "commonjs",
+    "moduleResolution": "Node",
+    "sourceMap": true,
   }
 }
