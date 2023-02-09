@@ -1,6 +1,6 @@
 import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
-import { BrowserContext, Page } from "playwright";
+import { BrowserContext, Page } from "@playwright/test";
 
 let webActions: WebActions;
 let util: Utility;
@@ -92,20 +92,9 @@ export class SideNavBar {
     public get sideNavContacts() {
         return this._sideNavContacts;
     }
-    public get sideNavRUM(){
-        return this._sideNavRum;
-    }
-    public get sideNavRecords(){
-        return this._sideNavRecords;
-    }
-    public get sideNavTestTemplates(){
-        return this._testTemplate;
-    }
     public get sideNavRUM() {
         return this._sideNavRum;
     }
-
-
     public get sideNavRecords() {
         return this._sideNavRecords;
     }
@@ -113,11 +102,6 @@ export class SideNavBar {
     public get sideNavEndpointLocator() {
         return this._sideNavEndpoint;
     }
-
-    public get sideNavSmartboard() {
-        return this._sideNavSmartboard;
-    }
-
     public get sideNavTestTemplates() {
         return this._testTemplate;
     }

@@ -1,6 +1,6 @@
 import { LoginPageObjects } from "@objects/LoginPageObjects";
 import { WebActions } from "@lib/WebActions";
-import type { Page } from 'playwright';
+import { Page } from "@playwright/test";
 import { testConfig } from '../../testConfig';
 import { BrowserContext, expect, TestInfo } from '@playwright/test';
 import { HomePage } from "@objects/HomePage";

@@ -1,7 +1,7 @@
 import { test as baseTest, TestInfo } from '@playwright/test';
 import { LoginPage } from '@pageobjects/Login/LoginPage';
 import { NewTabInstatntTest } from '@pages/InstantTestNewWindow';
-import { SyntheticControlCenter } from '@pages/SyntheticControlCenter';
+//import { SyntheticControlCenter } from '@pages/SyntheticControlCenter';
 import { BaseTestUtility } from './BaseTestUtility';
 import { TestResult } from '@playwright/test/reporter';
 import { Verification } from '@verification/verification';
@@ -22,7 +22,6 @@ import { SyntheticRecordsPage } from '@pageobjects/Records/SyntheticRecordsPage'
 import { SourceSelectorPage } from '@pageobjects/Records/SourceSelecterPage';
 import { CharmBar } from '@pageobjects/CharmBar/CharmBar';
 import { GanttBladePage } from '@pageobjects/Records/GanttBladePage';
-import { SmartboardPage } from '@pageobjects/Smartboard/SmartboardPage';
 import { SyntheticSmartboardPage } from '@pageobjects/Smartboard/SyntheticSmartboardPage';
 import { SourceSelectorSmartboard } from '@pageobjects/Smartboard/SourceSelectorSmartboard';
 import { ExplorerPage } from '@pageobjects/Explorer/ExplorerPage';
@@ -65,7 +64,6 @@ const test = baseTest.extend<{
     baseTestUtil: BaseTestUtility;
     loginPage: LoginPage;
     instantTabWindow: NewTabInstatntTest;
-    syntheticControlCenter: SyntheticControlCenter;
     verification: Verification;
     sideNavigationBar: SideNavBar;
     synCCPage: SynControlCenterPage;
@@ -81,18 +79,7 @@ const test = baseTest.extend<{
     userrolePage: UserrolePage;
     userroleDetailPage: UserroleDetailPage;
     syntheticRecordsPage: SyntheticRecordsPage;
-    sourceSelectorPage: SourceSelectorPage;
-    charmBar: CharmBar;
     syntheticSmartboardPage: SyntheticSmartboardPage;
-    sourceSelectorSmartboard: SourceSelectorSmartboard;
-    explorerPage: ExplorerPage;
-    sourceSelectorExplorer: SourceSelectorExplorer;
-    controlCenterRecords: ControlCenterRecords;
-    dashboardBlade: DashboardBlade;
-    defaultDashboardPage: DefaultDashboardPage;
-    testOverviewDashboard: TestOverviewDashboard;
-    dashboardRecordListPage: DashboardRecordListPage;
-    explorerRecordListPage: ExplorerRecordListPage;
     endpointOverviewDB: EndpointOverviewDashboard;
     bgpOverviewDB: BGPOverviewDashboard;
     explorerSyntheticDetails: ExplorerSyntheticDetails;
@@ -121,7 +108,6 @@ const test = baseTest.extend<{
     sourceSelectorPage : SourceSelectorPage;
     charmBar : CharmBar;
     ganttBladePage : GanttBladePage;
-    smartboardPage: SmartboardPage;
     sourceSelectorSmartboard : SourceSelectorSmartboard;
     explorerPage : ExplorerPage;
     sourceSelectorExplorer : SourceSelectorExplorer;
@@ -151,9 +137,6 @@ const test = baseTest.extend<{
     },
     endpointControlCenter: async ({ page }, use) => {
         await use(new EndpointControlCenterPage(page));
-    },
-    syntheticControlCenter: async ({ page }, use) => {
-        await use(new SyntheticControlCenter(page));
     },
     verification: async ({ page }, use) => {
         await use(new Verification(page));
@@ -208,9 +191,6 @@ const test = baseTest.extend<{
     },
     ganttBladePage: async ({ page }, use) => {
         await use(new GanttBladePage(page));
-    },
-    smartboardPage: async ({ page }, use) => {
-        await use(new SmartboardPage(page));
     },
     syntheticSmartboardPage: async ({ page }, use) => {
         await use(new SyntheticSmartboardPage(page));

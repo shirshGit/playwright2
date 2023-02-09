@@ -1,8 +1,6 @@
 import test from '@lib/BaseTest';
 import { DataForEnv } from '@lib/DataForEnvironment';
 import { ControlCenter } from '@objects/ControlCenter';
-import { SyntheticControlCenter } from '@pages/SyntheticControlCenter';
-
 let data = new DataForEnv();
 
 test.beforeEach(async ({ baseTestUtil }) => {
