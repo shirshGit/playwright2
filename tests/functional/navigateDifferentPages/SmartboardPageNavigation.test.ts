@@ -444,7 +444,7 @@ test("VerifySmartboardEmployeeAppLoads @PageNavigation@ProductionSmoke@Smoke", a
 
 
 /*
-    CP-44188 : Verify RUM smartboard loads properly from side navigation
+    CP-44476 : Verify User Landing in new Endpoint Smartboard page 
 */
 test("VerifySmartboardEndpointLoads @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, endpointSmartboardPage, util }) => {
     let data = new DataForEnv();

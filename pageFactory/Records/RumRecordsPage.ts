@@ -1,7 +1,6 @@
 import { WebActions } from "@lib/WebActions";
-import { expect } from "@playwright/test";
 import { Utility } from "@util/Utility";
-import { BrowserContext, Page } from "playwright";
+import { BrowserContext, Page } from "@playwright/test";
 
 let webActions: WebActions;
 let util: Utility

@@ -66,8 +66,6 @@ export class DefaultDashboardPage {
     async clickOnTab(tabName: string) {
         await webActions.clickElement(this.tabLocator(tabName));
     }
-
-
     async getTestNameFromTestTable(tileNum: number) {
         return await webActions.getElementText(this.testNameLocator(tileNum));
     }
