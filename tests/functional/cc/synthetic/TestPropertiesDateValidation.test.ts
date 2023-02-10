@@ -12,7 +12,7 @@ test.beforeEach(async ({ baseTestUtil }) => {
   CP-39581 : Bug 127422: Start Date on Safari is not pre-populated and on save uses the UTC Time
 */
 
-test("CheckStartDateBeforeAndAfterSaveingTest  @ProductionDefect@SyntheticControlCenter", async ({baseTestUtil, verification, syntheticTestDetailPage, sideNavigationBar,synCCPage, testUtility, util }) => {
+test("CheckStartDateBeforeAndAfterSaveingTest  @ProductionDefect@SyntheticControlCenter@ControlCenter", async ({baseTestUtil, verification, syntheticTestDetailPage, sideNavigationBar,synCCPage, testUtility, util }) => {
 
     let prodForTestCreate = await data.getValueOfTheParameter('productForJunkItems');
     let testName = await testUtility.getTestName();
@@ -48,7 +48,7 @@ test("CheckStartDateBeforeAndAfterSaveingTest  @ProductionDefect@SyntheticContro
  CP-39582 :Bug 130312: CC: Safari: To Date is not getting saved
 */
 
-test("CheckEndDateAfterSavingTest  @ProductionDefect@SyntheticControlCenter", async ({ baseTestUtil,verification, syntheticTestDetailPage, sideNavigationBar, testUtility,synCCPage, util }) => {
+test("CheckEndDateAfterSavingTest  @ProductionDefect@SyntheticControlCenter@ControlCenter", async ({ baseTestUtil,verification, syntheticTestDetailPage, sideNavigationBar, testUtility,synCCPage, util }) => {
 
     let prodForTestCreate = await data.getValueOfTheParameter('productForJunkItems');
     let testName = await testUtility.getTestName();

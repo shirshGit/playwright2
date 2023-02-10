@@ -6,7 +6,7 @@ import { DataForEnv } from "@lib/DataForEnvironment";
 /*
     CP-12790 : Bug 123222 Able to View RUM ,Test Template Options in Master create blade though we dont have permission
 */
-test("VerifyManageRealUserAndTestTemplatesPermission  @ProductionDefect@SyntheticControlCenter", async ({ baseTestUtil, contactsPage, contactDetailsPage, testUtility, sideNavigationBar, loginPage, synCCPage, util, userrolePage, syntheticDetailsPage, userroleDetailPage, page, verification }) => {
+test("VerifyManageRealUserAndTestTemplatesPermission  @ProductionDefect@SyntheticControlCenter@ControlCenter", async ({ baseTestUtil, contactsPage, contactDetailsPage, testUtility, sideNavigationBar, loginPage, synCCPage, util, userrolePage, syntheticDetailsPage, userroleDetailPage, page, verification }) => {
     let userroleNameForRum = await testUtility.getUserroleName();
     let data = new DataForEnv();
     let userrole = await data.getValueOfTheParameter('defaultUserrole');

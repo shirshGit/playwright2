@@ -35,6 +35,8 @@ export class SyntheticRecordsPage {
     private _fileTypeFilterDD = '//label[text()="File Type"]/..//i[@data-icon-name="chevron"]';
     private _zoneFilterDD = '//label[text()="Zone"]/..//i[@data-icon-name="chevron"]';
     private _recordFirstRow = '//div[contains(@class,"RecordsTable_table")]//div[@data-list-index="0"]';
+    private _errorMessageFieldForDatePoint = '//div[contains(@class,"ms-MessageBar-content")]'
+
     public get waterFallTabLocator() {
         return this._waterFallTab;
     }
@@ -124,10 +126,15 @@ export class SyntheticRecordsPage {
     }
 
     public get fileTypeDDLocator() {
-        return this._fileTypeFilterDD
+        return this._fileTypeFilterDD;
     }
+
     public get firstSearchRowInRecordsListPage(){
         return this._recordFirstRow;
+    }
+
+    public get errorMessageFieldForDatePoint(){
+        return this._errorMessageFieldForDatePoint;
     }
 
 
