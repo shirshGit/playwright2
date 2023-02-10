@@ -42,7 +42,7 @@ export class AlertLogPage {
     }
 
     public get threeDotMenuItemLocator(){
-        return (text:string) => { return `//span[normalize-space()='${text}']`}
+        return (text:string) => { return `//span[contains(@class,'ms-ContextualMenu-itemText')][normalize-space()='${text}']`}
     }
 
 
@@ -52,12 +52,12 @@ export class AlertLogPage {
 
     //#region This region is to have the functions
     
-    async clickOnThreeDotManu(num:number){
-        await this.hoverOnThreeDotManu(num)
-        await webActions.clickElement(this.threeDotMenuLocator(num))
+    async clickOnThreeDotMenu(num:number,threeDotMenuItem:string){
+        await this.hoverOnThreeDotMenu(num)
+        await webActions.clickElement(this.threeDotMenuItemLocator(threeDotMenuItem))
     }
 
-    async hoverOnThreeDotManu(num:number){
+    async hoverOnThreeDotMenu(num:number){
         await webActions.hoverOnElement(this.threeDotMenuLocator(num))
         await webActions.clickElement(this.threeDotMenuLocator(num))
     }

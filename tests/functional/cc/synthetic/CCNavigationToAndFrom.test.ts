@@ -3,7 +3,6 @@ import { DataForEnv } from "@lib/DataForEnvironment";
 import { ExplorerPage } from "@pageobjects/Explorer/ExplorerPage";
 import { SyntheticRecordsPage } from "@pageobjects/Records/SyntheticRecordsPage";
 import { SyntheticSmartboardPage } from "@pageobjects/Smartboard/SyntheticSmartboardPage";
-import { expect } from "@playwright/test";
 
 
 /*
@@ -249,7 +248,7 @@ test("VerifyNavigationToDifferentPageFromThreeDotMenu @SyntheticControlCenter", 
     CP-44585 : Scenario: Verify Test properties open up from explorer's error table 
 */
 test("VerifyTestPropertyOpenUpFromExplorerErrorTable @SyntheticControlCenter", async ({ baseTestUtil, sideNavigationBar, page, context, sourceSelectorExplorer, util, verification, explorerPage }) => {
-    //navigate to records page
+    //navigate to explorer page
     await sideNavigationBar.navigateToExplorerFromSideNavigation();
     let data = new DataForEnv();
     let testId = await data.getValueOfTheParameter('transactionTest');
@@ -276,9 +275,9 @@ test("VerifyTestPropertyOpenUpFromTestsAlertsLog @SyntheticControlCenter", async
     //navigate to records page
     await sideNavigationBar.navigateToAlertLogFromSideNavigation();
     //click hover first test three dot menu
-    await alertLogPage.hoverOnThreeDotManu(1);
+    await alertLogPage.hoverOnThreeDotMenu(1);
     //click on test in source blade and get new window
-    let getNewPage = await alertLogPage.getNewWindow(context, alertLogPage.threeDotMenuItemLocator('Properties'));
+    let getNewPage = await alertLogPage.getNewWindow(context,await alertLogPage.threeDotMenuItemLocator('Properties'));
     let testPropertyPage = new ExplorerPage(getNewPage);
     //fetch url of test property page
     let getTestPropertyPageURL = await testPropertyPage.getUrl();
@@ -298,7 +297,7 @@ test("VerifyRumPropertyOpenUpFromRumAlertsLog @SyntheticControlCenter", async ({
     //click on rum
     await alertLogPage.clickOnRumTab();
     //click hover first test three dot menu
-    await alertLogPage.hoverOnThreeDotManu(1);
+    await alertLogPage.hoverOnThreeDotMenu(1);
     //click on test in source blade and get new window
     let getNewPage = await alertLogPage.getNewWindow(context, alertLogPage.threeDotMenuItemLocator('Properties'));
     let testPropertyPage = new ExplorerPage(getNewPage);

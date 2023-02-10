@@ -22,83 +22,128 @@ export class DashboardBlade {
     private _testOverview = '//span[text()="Test Overview"]';
     private _endpointOverview = '//span[text()="Endpoint Monitoring Overview"]'
     private _bgpOverview = '//span[text()="BGP Overview"]';
-    
-    public get overviewDashboardLocator(){
+    private _searchBox = '//div[@data-testid="dashboard-blade"]//input[@data-testid="fabricsearchbox"]';
+    private _deleteDB = '//button[text()="Delete"]';
+
+    public get overviewDashboardLocator() {
         return this._overviewDashboard;
     }
 
-    public get dashboardLocator(){
-        return (text: string) => { return `//span[text()="${text}"]`};
+    public get dashboardLocator() {
+        return (text: string) => { return `//span[text()="${text}"]` };
     }
 
-    public get firstTileLocator(){
+    public get firstTileLocator() {
         return this._firstTile;
     }
 
-    public get toolTipItemsLocator(){
-        return (text:string) => {return `//div[text()="${text}"]`}
+    public get toolTipItemsLocator() {
+        return (text: string) => { return `//div[text()="${text}"]` }
     }
 
-    public get createDashboardLocator(){
+    public get createDashboardLocator() {
         return this._createDashboard;
     }
 
-    public get createFolderLocator(){
+    public get createFolderLocator() {
         return this._createFolder;
     }
 
-    public get testOverviewLocator(){
+    public get testOverviewLocator() {
         return this._testOverview;
     }
 
-    public get EndpointOverviewLocator(){
+    public get EndpointOverviewLocator() {
         return this._endpointOverview;
     }
 
-    public get bgpOverviewLocator(){
+    public get bgpOverviewLocator() {
         return this._bgpOverview;
+    }
+
+    public get searchBoxLocator() {
+        return this._searchBox
+    }
+    public get searchRowInDBBlade() {
+        return (text: number) => { return `(//ul[contains(@class,"ant-tree")]//li)[${text}]` };
+    }
+    public get threeDotMenuLocator() {
+        return (text: number) => { return `//ul[1]/li[${text}][@role="treeitem"]/span[2]/span[1]/span[1]/div[1]/button[1]/span[1]/i[1]` };
+    }
+    public get threeDotMenuOptionLocator() {
+        return (text: string) => { return `//span[normalize-space()="${text}"]` };
+    }
+    public get deleteDBButtonLocator() {
+        return this._deleteDB
+    }
+    public get commonLocator(){
+        return (text:string) => {return `//span[text()="${text}"]`}
+    }
+    public get searchedItemThreeDotMenuLocator() {
+        return (text: number) => { return `//ul[1]/li[${text}][@role="treeitem"]/span[2]/span[1]/span[1]/div[1]/button[1]/span[1]/i[1]` };
     }
 
     //#endregion
 
     //#region This region is to have the functions
-    
-    async clickOnOverviewDashboard(){
+
+    async clickOnOverviewDashboard() {
         await webActions.clickElement(this.overviewDashboardLocator);
     }
-    
-    async selectDashboard(dashboardName : string){
+
+    async selectDashboard(dashboardName: string) {
         await webActions.waitForElementAttached(this.dashboardLocator(dashboardName));
         await webActions.clickElement(this.dashboardLocator(dashboardName));
     }
 
-    async navigateFromToolTip(itemName : string){
+    async navigateFromToolTip(itemName: string) {
         await webActions.waitForElementAttached(this.firstTileLocator);
         await webActions.hoverOnElement(this.firstTileLocator);
         await webActions.clickElement(this.toolTipItemsLocator(itemName));
     }
 
-    async clickOnCreateDashboard(){
+    async clickOnCreateDashboard() {
         await webActions.clickElement(this.createDashboardLocator);
     }
 
-    async clickOnCreateFolder(){
+    async clickOnCreateFolder() {
         await webActions.clickElement(this.createFolderLocator);
     }
 
-    async clickOnTestOverviewDashboard(){
+    async clickOnTestOverviewDashboard() {
         await webActions.clickElement(this.testOverviewLocator);
     }
 
 
-    async clickOnEndpointOverviewDashboard(){
+    async clickOnEndpointOverviewDashboard() {
         await webActions.clickElement(this.EndpointOverviewLocator);
     }
 
-    async clickOnBGPOverviewDashboard(){
+    async clickOnBGPOverviewDashboard() {
         await webActions.clickElement(this.bgpOverviewLocator);
     }
-    
+    async searchInCDSearchBox(itemName: string) {
+        await webActions.clickElement(this.searchBoxLocator)
+        await webActions.enterElementText(this.searchBoxLocator, itemName)
+    }
+    async deleteBulkDB() {
+        let dbCount = await this.page.locator('//ul[contains(@class,"ant-tree")]//li').count();
+        if (dbCount !== 0)
+            for (let index = 1; index <= dbCount; index++) {
+                await webActions.hoverOnElement(this.searchRowInDBBlade(index))
+                await webActions.clickElement(this.threeDotMenuLocator(index))
+                await webActions.clickElement(this.threeDotMenuOptionLocator('Delete Dashboard'))
+                await webActions.clickElement(this.deleteDBButtonLocator);
+            }
+    }
+    async deleteDB(dbName: string) {
+        await this.searchInCDSearchBox(dbName)
+        await webActions.hoverOnElement(this.commonLocator(dbName))
+        await webActions.clickElement(this.searchedItemThreeDotMenuLocator(1))
+        await webActions.clickElement(this.threeDotMenuOptionLocator('Delete Dashboard'))
+        await webActions.clickElement(this.deleteDBButtonLocator);
+    }
+
 
 
     //#endregion

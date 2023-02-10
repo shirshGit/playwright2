@@ -87,6 +87,7 @@ export class SyntheticSmartboardPage {
         return await webActions.getCurrentPageUrl();
     }
     async getFilterValue(valueNum:number){
+        await util.delay(4000);
         return await webActions.getElementText(this.filterValueLocator(valueNum));
     }
 
