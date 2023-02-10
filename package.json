@@ -7,24 +7,18 @@
   "license": "MIT",
   "scripts": {
     "test:single:chrome": "npx playwright test /tests/functional/cc/synthetic/VerifyFolderSettingsInheritedFromProduct.test.ts --project=Chrome --workers=1",
+<<<<<<< HEAD
     "test:single:chrome2": "npx playwright test /tests/functional/cc/synthetic/VerifyUserCantDeactivateFolder.test.ts --project=Chrome --workers=1",
     "test:single:chrome3": "npx playwright test /tests/functional/cc/synthetic/CreateNewSyntheticProduct.test.ts --project=Chrome --workers=1",
     "test:single:chrome4": "npx playwright test /tests/functional/smartboard/smartboradNavigation.test.ts --project=Chrome --workers=1",
+=======
+>>>>>>> 08cebc9627e4d078d0d75219d95155c31cb6e3c7
     "test:single:chromesmoke": "npx playwright test /tests/functional/cc/synthetic/ --project=ChromeSmoke --workers=1",
     "test:single:edge": "npx playwright test /tests/functional/smartboard/smartboradNavigation.test.ts --project=Edge --workers=1",
     "test:single:firefox": "npx playwright test /tests/functional/catchpointEndpointDB.test.ts --project=Firefox --workers=1",
-    "test:single:chromeTimeCapture": "npx playwright test /tests/functional/catchointSampleTestForTimeComapre.test.ts --project=Chrome --workers=1",
-    "test:single:TestURLValidation": "npx playwright test /tests/functional/cc/synthetic/TestURLValidation.test.ts --project=Chrome --workers=1",
-    "test:single:TestPropertiesDateValidation": "npx playwright test /tests/functional/cc/synthetic/TestPropertiesDateValidation.test.ts --project=Chrome --workers=1",
-    "test:single:CopyTest": "npx playwright test /tests/functional/cc/synthetic/CopyTest.test.ts --project=Chrome --workers=1",
-    "test:single:MoveTest": "npx playwright test /tests/functional/cc/synthetic/MoveTest.test.ts --project=Chrome --workers=1",
-    "test:single:DivisionLevelAccessInClientLevelValidation": "npx playwright test /tests/functional/cc/synthetic/DivisionLevelAccessInClientLevelValidation.test.ts --project=Chrome --workers=1",
-    "test:single:ChangeLog": "npx playwright test /tests/functional/cc/synthetic/ChangeLog.test.ts --project=Chrome --workers=1",
-    "test:single:RecordsSourcePageValidation": "npx playwright test /tests/functional/records/RecordsSourcePageValidation.test.ts --project=Chrome --workers=1",
-    "test:single:RunInfoValidation": "npx playwright test /tests/functional/records/RunInfoValidation.test.ts --project=Chrome --workers=1",
-    "test:single:RecordsTransactionTest": "npx playwright test /tests/functional/records/RecordsTransactionTest.test.ts --project=Chrome --workers=1",
-    "test:single:NavigationToRecordsPageValidation": "npx playwright test /tests/functional/records/NavigationToRecordsPageValidation.test.ts --project=Chrome --workers=1",
-    "test:single:RecordsGanttFilterValidation": "npx playwright test /tests/functional/records/RecordsGanttFilterValidation.test.ts --project=Chrome --workers=1"
+    "test:single:controlcenter": "npx playwright test /tests/functional/ --project=ControlCenter --workers=1",
+    "test:single:records": "npx playwright test /tests/functional/ --project=Records --workers=1",
+    "test:single:pageNavigation": "npx playwright test /tests/functional/ --project=PageNavigation --workers=1"
   },
   "dependencies": {
     "@playwright/test": "^1.29.1",

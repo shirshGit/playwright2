@@ -7,7 +7,7 @@ let data = new DataForEnv();
      CP-12699 : Bug 129625 Script field missing for Transaction tests in the new UI 
 */
 
-test("VerifyTransactionScriptFieldIsPresent @SyntheticControlCenter", async ({ baseTestUtil, verification, syntheticProductDetailPage, sideNavigationBar, util,testUtility, syntheticTestDetailPage, page }) => {
+test("VerifyTransactionScriptFieldIsPresent @SyntheticControlCenter@ControlCenter", async ({ baseTestUtil, verification, syntheticProductDetailPage, sideNavigationBar, util,testUtility, syntheticTestDetailPage, page }) => {
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
     let prodForTestCreate =await data.getValueOfTheParameter('productForJunkItems');
     await syntheticTestDetailPage.clickOnSearchedItemInCC(prodForTestCreate);

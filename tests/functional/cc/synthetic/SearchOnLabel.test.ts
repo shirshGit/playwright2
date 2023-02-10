@@ -7,7 +7,11 @@ let data = new DataForEnv();
     CP-32507 : Verify search on labels works on contains
 */
 
+<<<<<<< HEAD
 test("SearchBylabel   @Smoke@SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar, verification, util}) => {
+=======
+test("SearchByLabel @Smoke@SyntheticControlCenter@ControlCenter", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar, verification, util}) => {
+>>>>>>> 08cebc9627e4d078d0d75219d95155c31cb6e3c7
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
     let prodForTestCreate = await data.getValueOfTheParameter('productForJunkItems');
     let testName = 'Automation_Delete_UI' + await util.generateRandomText(5);

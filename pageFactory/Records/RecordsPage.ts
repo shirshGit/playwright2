@@ -55,6 +55,7 @@ export class RecordsPage {
     private _downLoadFile = '//i[@data-icon-name="download"]';
     private _imageFilterUnderFileType = '(//span[text()="Images"])[2]';
     private _fileTypeFilterDropDown = '(//i[@data-icon-name="chevron"])[2]//div';
+    private _responsecodeValueInGaantChart = '//div[contains(@class,"GanttChart_numericCell")]'
     
     public get waterFallTabLocator() {
         return this._waterFallTab;
@@ -306,6 +307,10 @@ export class RecordsPage {
     }
     public get getErrorRowValueLocator() {
         return this._getErrorRowValue;
+    }
+
+    public get responsecodeValueInGaantChart(){
+        return this._responsecodeValueInGaantChart;
     }
 
 
