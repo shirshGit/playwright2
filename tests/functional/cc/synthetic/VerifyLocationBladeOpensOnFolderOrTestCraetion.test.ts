@@ -9,11 +9,7 @@ test.beforeEach(async ({ baseTestUtil }) => {
 /*
     CP-6675:Verify When user selects Folder/test on create blade then location selection blade should display
 */
-<<<<<<< HEAD
-test('VerifyWhenUserSelectsFolderOnCreateBladeThenLocationSelectionBladeShouldDisplay    @Smoke@SyntheticControlCenter', async({util, sideNavigationBar, syntheticFolderDetailPage,synLocationBlade,synCCPage, verification}) => {
-=======
 test('VerifyWhenUserSelectsFolderOnCreateBladeThenLocationSelectionBladeShouldDisplay @Smoke@SyntheticControlCenter@ControlCente', async({util, sideNavigationBar, syntheticFolderDetailPage,synLocationBlade,synCCPage, verification}) => {
->>>>>>> 08cebc9627e4d078d0d75219d95155c31cb6e3c7
     
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
     await syntheticFolderDetailPage.goToNewFolderCreate();
