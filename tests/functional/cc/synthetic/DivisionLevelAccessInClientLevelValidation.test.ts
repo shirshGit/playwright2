@@ -6,7 +6,7 @@ import { DataForEnv } from "@lib/DataForEnvironment";
     CP-34475 : Verify "Client Level" should be selected by default under Division dropdown
 */
 
-test("VerifyClientLevelShouldBeSelectedByDefaultUnderDivisionDropDown @SyntheticControlCenter", async({baseTestUtil, syntheticTestDetailPage,page, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
+test("VerifyClientLevelShouldBeSelectedByDefaultUnderDivisionDropDown @SyntheticControlCenter@ControlCenter", async({baseTestUtil, syntheticTestDetailPage,page, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
     //navigate to cc test page
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
     //click on division drop down
@@ -20,7 +20,7 @@ test("VerifyClientLevelShouldBeSelectedByDefaultUnderDivisionDropDown @Synthetic
      CP-34477 : Verify reset the dropdown to be set to "Client Level" and disable the dropdown when user click other
 */
 
-test("VerifyResetDivisionDropDownToBeSetClientLevel @SyntheticControlCenter", async({baseTestUtil,syntheticTestDetailPage, contactDetailsPage,loginPage, sideNavigationBar,util,testUtility,synCCPage,contactsPage, verification}) => {
+test("VerifyResetDivisionDropDownToBeSetClientLevel @SyntheticControlCenter@ControlCenter", async({baseTestUtil,syntheticTestDetailPage, contactDetailsPage,loginPage, sideNavigationBar,util,testUtility,synCCPage,contactsPage, verification}) => {
     let data = new DataForEnv();
     //navigate to contacts page
     await sideNavigationBar.navigateToContactPageFromSideNavigation();
@@ -54,7 +54,7 @@ test("VerifyResetDivisionDropDownToBeSetClientLevel @SyntheticControlCenter", as
     CP-34474 : Verify Division dropdown is not present in the UI when client has no divisions 
 */
 
-test("VerifyDivisionDropDownIsNotPresentInTheUIWhenClientHasNoDivisionAccess @SyntheticControlCenter", async({baseTestUtil,syntheticTestDetailPage, contactDetailsPage,loginPage, sideNavigationBar,util,testUtility,synCCPage,contactsPage, verification}) => {
+test("VerifyDivisionDropDownIsNotPresentInTheUIWhenClientHasNoDivisionAccess @SyntheticControlCenter@ControlCenter", async({baseTestUtil,syntheticTestDetailPage, contactDetailsPage,loginPage, sideNavigationBar,util,testUtility,synCCPage,contactsPage, verification}) => {
     let data = new DataForEnv();
     //navigate to contacts page
     await sideNavigationBar.navigateToContactPageFromSideNavigation();
