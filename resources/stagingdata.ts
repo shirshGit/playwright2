@@ -32,7 +32,6 @@ export const stagedata = {
     'transactionTestIDWithEnforceFailureAdvanceSetting' : '81472',//used for records automation
     'transactionTestWithMultipleStepAndStepName' : '244168', // used for records automation
     'transactionTestWithMultipleStepWithoutStepName' : '246072',//used for records automation
-    'transactionTestId' : '216885',
     'transactionTestWithRefrenceHostOnFailure' : '236336',
     'transactionTestId' : '236336',//transaction test with refrence host on failure
 
@@ -49,6 +48,7 @@ export const stagedata = {
     'webTestForTracepointAndIndicator' : '295329',//used for tracepoint and indicator related automation
     'webTestWithRefrenceHostOnFailure' : '233620',
     'webTestWithWarningAndError' : '266287',
+    'webTest40X50XMarkedPass' : '64429', //40X50XErrorMarked as successful
 
     'zoneName' : 'UIAutomationDND',
 }

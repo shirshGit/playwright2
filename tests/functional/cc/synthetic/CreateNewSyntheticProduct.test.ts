@@ -1,8 +1,6 @@
 import test from '@lib/BaseTest';
 import { DataForEnv } from '@lib/DataForEnvironment';
 import { ControlCenter } from '@objects/ControlCenter';
-import { SyntheticControlCenter } from '@pages/SyntheticControlCenter';
-
 let data = new DataForEnv();
 
 test.beforeEach(async ({ baseTestUtil }) => {
@@ -12,7 +10,7 @@ test.beforeEach(async ({ baseTestUtil }) => {
   CP-30507 : Verify User can create a product with all settings and configuration using Control Center
 */
 
-test("CreateASyntheticProductInCC   @Smoke@SyntheticControlCenter@Test", async ({baseTestUtil, verification, syntheticProductDetailPage, sideNavigationBar, util  }) => {
+test("CreateASyntheticProductInCC @Smoke@SyntheticControlCenter", async ({baseTestUtil, verification, syntheticProductDetailPage, sideNavigationBar, util  }) => {
   await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
   await syntheticProductDetailPage.goToNewProductCreate();
   let productName: string = 'Automation_Delete_UI' + await util.generateRandomText(5);
@@ -28,7 +26,7 @@ test("CreateASyntheticProductInCC   @Smoke@SyntheticControlCenter@Test", async (
   CP-6801 : Verify all existing Test data webhook is displayed in Product detail blade
 */
 
-test("VerifyAllExistingTestDataWebhookIsDisplayedInProductDetailBlade    @Smoke@SyntheticControlCenter", async ({ util, verification, syntheticProductDetailPage, sideNavigationBar }) => {
+test("VerifyAllExistingTestDataWebhookIsDisplayedInProductDetailBlade @Smoke@SyntheticControlCenter@ControlCenter", async ({ util, verification, syntheticProductDetailPage, sideNavigationBar }) => {
   var webhookToSelect = 'DNDCookieTestWebhook';
   await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
   await syntheticProductDetailPage.goToNewProductCreate();

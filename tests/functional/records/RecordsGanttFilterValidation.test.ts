@@ -15,7 +15,7 @@ test("VerifyZoneFilterForGantt  @Records", async ({ baseTestUtil, sideNavigation
     let testID = await data.getValueOfTheParameter('webTestForZoneFilterTest');
     let zoneName = await data.getValueOfTheParameter('zoneName');
     //search test
-    await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(testID);
+    await sourceSelectorPage.clickOnFirstSearchedTestInSelectorPage(testID);
     await util.delay(3000);
     //verification for zone filter drop down filter
     await verification.verifyIfElementIsPresent(recordsPage.zoneDropDownLocator, 'zone filter drop down is not present.');
@@ -40,7 +40,7 @@ test("VerifyFileTypeFilterForGanttSection  @ProductionDefectRecords@Records", as
     let data = new DataForEnv();
     let testID = await data.getValueOfTheParameter('webTestForZoneFilterTest');
     //search test
-    await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(testID);
+    await sourceSelectorPage.clickOnFirstSearchedTestInSelectorPage(testID);
     await util.delay(3000);
     //click on file type filter DD
     await recordsPage.clickOnFileTypeFilterDropDown();
@@ -65,7 +65,7 @@ test("VerifyGanttChartErrorAndWarningItemsDisplay  @ProductionDefectRecords@Reco
     let data = new DataForEnv();
     let testID = await data.getValueOfTheParameter('webTestWithWarningAndError');
     //search test
-    await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(testID);
+    await sourceSelectorPage.clickOnFirstSearchedTestInSelectorPage(testID);
     await util.delay(3000);
     //select failed request filter
     await recordsPage.selectFilter('Request','Failed Requests');
@@ -104,7 +104,7 @@ test("VerifyCombinationOfAppliedColumns @Records", async ({ baseTestUtil, sideNa
     let data = new DataForEnv();
     let testID = await data.getValueOfTheParameter('webTestWithRefrenceHostOnFailure');
     //search test
-    await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(testID);
+    await sourceSelectorPage.clickOnFirstSearchedTestInSelectorPage(testID);
     await util.delay(3000);
     //click on column tab
     await recordsPage.clickOnColumnTab();
@@ -137,7 +137,7 @@ test("VerifyDataFromUIAndExcel @ProductionDefectRecords@Records", async ({ baseT
     let data = new DataForEnv();
     let testID = await data.getValueOfTheParameter('transactionTestWithMultipleStepAndStepName');
     //search test
-    await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(testID);
+    await sourceSelectorPage.clickOnFirstSearchedTestInSelectorPage(testID);
     await util.delay(2000);
     //click on download button 
     await recordsPage.clickOnDownload();
@@ -190,7 +190,7 @@ test("VerifyTimingTabMetrics @Records", async ({ baseTestUtil, sideNavigationBar
     let data = new DataForEnv();
     let testID = await data.getValueOfTheParameter('transactionTestWithRefrenceHostOnFailure');
     //search test
-    await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(testID);
+    await sourceSelectorPage.clickOnFirstSearchedTestInSelectorPage(testID);
     await util.delay(3000);
     //click on 1st row
     await recordsPage.clickOnRowInGanntChart(1);
@@ -218,7 +218,7 @@ test("VerifySearchBoxInGanttChart @Records", async ({ baseTestUtil, sideNavigati
     let data = new DataForEnv();
     let testID = await data.getValueOfTheParameter('transactionTestWithRefrenceHostOnFailure');
     //search test
-    await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(testID);
+    await sourceSelectorPage.clickOnFirstSearchedTestInSelectorPage(testID);
     await util.delay(3000);
     //click and search in gantt chart search box
     await recordsPage.searchInGanttSearchBox('www.gstatic.com');
@@ -239,7 +239,7 @@ test("VerifyClickingOnIPShouldNavigateToRipestatLink @Records", async ({ baseTes
     let data = new DataForEnv();
     let testID = await data.getValueOfTheParameter('transactionTestWithRefrenceHostOnFailure');
     //search test
-    await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(testID);
+    await sourceSelectorPage.clickOnFirstSearchedTestInSelectorPage(testID);
     await util.delay(3000);
     //click on IP in gantt chart
     let getNewPage = await recordsPage.getNewWindow(context, recordsPage.firstIPAddressValue);
@@ -260,7 +260,7 @@ test("VerifyUserShouldAbleToFilterTracepointAndIndicatorInGanttChart @Records", 
     let data = new DataForEnv();
     let testID = await data.getValueOfTheParameter('webTestForTracepointAndIndicator');
     //search test
-    await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(testID);
+    await sourceSelectorPage.clickOnFirstSearchedTestInSelectorPage(testID);
     await util.delay(3000);
     //click on column tab 
     await recordsPage.clickOnColumnTab();
@@ -296,7 +296,7 @@ test("VerifyIPAddressLable @Records", async ({ baseTestUtil, context, sideNaviga
     let data = new DataForEnv();
     let testID = await data.getValueOfTheParameter('transactionTestWithRefrenceHostOnFailure');
     //search test
-    await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(testID);
+    await sourceSelectorPage.clickOnFirstSearchedTestInSelectorPage(testID);
     await util.delay(3000);
     //verification for IP lable
     await verification.verifyIfElementIsPresent(recordsPage.getNodeIPLocator, "ip address value is not present.");
@@ -314,7 +314,7 @@ test("VerifySearchtheGanttChartRequestUsingSearchBoxFileType @Records", async ({
     let testID = await data.getValueOfTheParameter('webTestWithRefrenceHostOnFailure');
     let zoneName = await data.getValueOfTheParameter('zoneName');
     //search test
-    await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(testID);
+    await sourceSelectorPage.clickOnFirstSearchedTestInSelectorPage(testID);
     await util.delay(3000);
     //verification for search box
     //click on search box and enter text
@@ -374,7 +374,7 @@ test("VerifyErrorIcon @Records", async ({ baseTestUtil, context, sideNavigationB
     let data = new DataForEnv();
     let testID = await data.getValueOfTheParameter('transactionTestWithRefrenceHostOnFailure');
     //search test
-    await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(testID);
+    await sourceSelectorPage.clickOnFirstSearchedTestInSelectorPage(testID);
     await util.delay(3000);
     //get rows count which contains error
     let rowContainingErrorCount = recordsPage.getRowCount();
@@ -396,7 +396,7 @@ test("VerifyUserIsAbleToSelectColumn @Records", async ({ baseTestUtil, context, 
     let data = new DataForEnv();
     let testID = await data.getValueOfTheParameter('transactionTestWithRefrenceHostOnFailure');
     //search test
-    await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(testID);
+    await sourceSelectorPage.clickOnFirstSearchedTestInSelectorPage(testID);
     await util.delay(3000);
     //click on column
     recordsPage.clickOnColumnTab();
@@ -423,7 +423,7 @@ test("VerifyBlockMetricsValue @Records", async ({ baseTestUtil, context, sideNav
     let data = new DataForEnv();
     let testID = await data.getValueOfTheParameter('transactionTestWithRefrenceHostOnFailure');
     //search test
-    await sourceSelectorPage.clickOnFirstSearchedItemInSelectorPage(testID);
+    await sourceSelectorPage.clickOnFirstSearchedTestInSelectorPage(testID);
     await util.delay(3000);
     //get row count
     let totalRowcount = await recordsPage.getRowCount();

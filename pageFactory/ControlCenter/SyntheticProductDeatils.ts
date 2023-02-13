@@ -1,5 +1,5 @@
 import { WebActions } from "@lib/WebActions";
-import { Page } from "playwright";
+import { Page } from "@playwright/test";
 import { SyntheticDetailPage } from "@pageobjects/ControlCenter/SyntheticDetailsPage";
 
 let webActions: WebActions;

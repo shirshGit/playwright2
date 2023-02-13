@@ -1,7 +1,7 @@
 import { test as baseTest, TestInfo } from '@playwright/test';
 import { LoginPage } from '@pageobjects/Login/LoginPage';
 import { NewTabInstatntTest } from '@pages/InstantTestNewWindow';
-import { SyntheticControlCenter } from '@pages/SyntheticControlCenter';
+//import { SyntheticControlCenter } from '@pages/SyntheticControlCenter';
 import { BaseTestUtility } from './BaseTestUtility';
 import { TestResult } from '@playwright/test/reporter';
 import { Verification } from '@verification/verification';
@@ -64,7 +64,6 @@ const test = baseTest.extend<{
     baseTestUtil: BaseTestUtility;
     loginPage: LoginPage;
     instantTabWindow: NewTabInstatntTest;
-    syntheticControlCenter: SyntheticControlCenter;
     verification: Verification;
     sideNavigationBar: SideNavBar;
     synCCPage: SynControlCenterPage;
@@ -137,9 +136,6 @@ const test = baseTest.extend<{
     },
     endpointControlCenter: async ({ page }, use) => {
         await use(new EndpointControlCenterPage(page));
-    },
-    syntheticControlCenter: async ({ page }, use) => {
-        await use(new SyntheticControlCenter(page));
     },
     verification: async ({ page }, use) => {
         await use(new Verification(page));
