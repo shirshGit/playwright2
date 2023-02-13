@@ -76,7 +76,10 @@ export class EndpointSmartboardPage {
     private _keyMetricsWidget = '//div[@data-testid="key-metrics-container"]';
     private _issueNdEventWidget = '(//div[contains(@class,"KeyEventsTableContainerstyl")])[1]';
     private _endpointTimeLine  = '//div[@data-testid="smartboard-timeline"]';
+<<<<<<< HEAD
 
+=======
+>>>>>>> a8b72cc71f455e46b306fb984c2b96a666dfe131
     //endpoint endpoint tab
     private _filterButton = '(//button[@id="action-button"])[3]';
     private _cpuUsageCardMetrics = '//span[text()="CPU Usage"]';
@@ -106,11 +109,17 @@ export class EndpointSmartboardPage {
     private _locWidgetForNetworkTab = '//div[text()="Location"]/../../../..';
     private _networkWidget = '//span[text()="Network Path"]';
     private _hopByHopWidget = '//span[text()="Hop-by-Hop"]';
+<<<<<<< HEAD
 
     public get endpointTimeLineLocator(){
         return this._endpointTimeLine;
     }
 
+=======
+    public get endpointTimeLineLocator(){
+        return this._endpointTimeLine;
+    }
+>>>>>>> a8b72cc71f455e46b306fb984c2b96a666dfe131
     public get endpointWgtForNetworkTabLocator(){
         return this._endpointWgtForNetworkTab;
     }
@@ -309,14 +318,6 @@ export class EndpointSmartboardPage {
     public get urlTestedWidgetLocator() {
         return this._urlWidget;
     }
-
-    
-
-    
-
-    
-
-
     //common
     public get endpointScoreMetricsLocator(){
         return this._endpointScore;
@@ -401,24 +402,9 @@ export class EndpointSmartboardPage {
     public get downTimeLOcator(){
         return this._downtime;
     }
-
-
-
-
-
-
-    
-    
-
-
-
-
     //#endregion
 
     //#region This region is to have the functions
-
-    
-
     async clickOnEndpointTab(){
         await webActions.clickElement(this.endpointTabLocator);
     }

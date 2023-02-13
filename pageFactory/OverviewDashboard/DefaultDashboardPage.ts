@@ -25,47 +25,50 @@ export class DefaultDashboardPage {
     private _testOverView = '(//span[text()="Tests"])[1]';
 
     public get overviewDashboardLocator() {
-        return this._overviewDashboard
+        return this._overviewDashboard;
     }
+
+    public get tabLocator() {
+        return (text: string) => { return `(//span[text()="${text}"])[1]` }
+    }
+
     public get testNameLocator() {
         return (text: number) => { return `(//div[contains(@class,"ms-DetailsRow-fields fields")]//a)[${text}]` }
     }
     public get errorSectionOverviewDashboardLocator() {
-        return this._errorSectionOverviewDashboard
+        return this._errorSectionOverviewDashboard;
     }
+
     public get eventSectionOverviewDashboardLocator() {
-        return this._eventSectionOverviewDashboard
+        return this._eventSectionOverviewDashboard;
     }
+
     public get alertSectionOverviewDashboardLocator() {
-        return this._alertSectionOverviewDashboard
+        return this._alertSectionOverviewDashboard;
     }
+
     public get nodeMapPerformanceOverviewLocator() {
-        return this._nodeMapPerformanceOverview
+        return this._nodeMapPerformanceOverview;
     }
 
     public get threeLineBurgerMenuLocator() {
-        return this._threeLineBurgerMenu
+        return this._threeLineBurgerMenu;
     }
 
     public get rumWidgetinOverviewDashboardLocator() {
-        return this._rumWidgetinOverviewDashboard
+        return this._rumWidgetinOverviewDashboard;
     }
-    public get tabLocator() {
-        return (text: string) => { return `(//span[text()="${text}"])[1]` }
-    }
-    public get testInTileWidget() {
-        return (text: number) => { return `(//ul[contains(@class,"Tiles_tiles_")]//div)[${text}]` }
-    }
-    public get testInTableWidget() {
-        return (text: number) => { return `(//div[@data-testid="table_row"]//a)[${text}]` }
-    }
-    public get testOverViewTabLocator() {
+    public get testOverViewTabLocator(){
         return this._testOverView;
     }
-    
 
+    public get testInTableWidget(){
+        return (text:number) => {return `(//div[@class="ms-List-page"]//div[@data-list-index="${text}"]//a)[${text}]`}
+    }
 
-
+    public get testInTileWidget(){
+        return (text:number) => {return `(//ul[contains(@class,"Tiles_tiles")]//li//div)[${text}]`}
+    }
 
     //#endregion
 

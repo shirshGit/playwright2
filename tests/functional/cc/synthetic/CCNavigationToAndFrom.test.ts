@@ -1,4 +1,4 @@
-import test from "@lib/BaseTest"
+import test from "@lib/BaseTest";
 import { DataForEnv } from "@lib/DataForEnvironment";
 import { ExplorerPage } from "@pageobjects/Explorer/ExplorerPage";
 import { SyntheticRecordsPage } from "@pageobjects/Records/SyntheticRecordsPage";
@@ -110,7 +110,11 @@ test("VerifyTestPropertiesPageOpenFromRecordsPage @SyntheticControlCenter", asyn
     let getTestPropertyPageURL = await testPropertyPage.getUrl();
     //validation for test properties page
     await verification.verifySoftAssertTrue(getTestPropertyPageURL.includes('/ControlCenter/Tests/Test/' + testID + '/Properties'), 'test property page is not opening after clicking on testName in records source blade');
+<<<<<<< HEAD
     
+=======
+   
+>>>>>>> a8b72cc71f455e46b306fb984c2b96a666dfe131
 })
 
 
@@ -180,7 +184,10 @@ test("VerifyNavigationToDifferentPageFromThreeDotMenu @SyntheticControlCenter", 
     //validation for last 6 hour time frame selected
     await verification.verifyIfElementIsPresent(syntheticSmartboardPage.lastSixHourTimeFrame,'');
     
+<<<<<<< HEAD
 
+=======
+>>>>>>> a8b72cc71f455e46b306fb984c2b96a666dfe131
     //navigate to CC page
     await util.delay(2000);
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
@@ -240,7 +247,11 @@ test("VerifyNavigationToDifferentPageFromThreeDotMenu @SyntheticControlCenter", 
     let startTime = parseInt(await controlCenterRecords.getStartGraphTime())
     let endTime = parseInt(await controlCenterRecords.getlastGraphTime())
     await verification.verifySoftAssertTrue(endTime - startTime === 3, 'time difference is not equal to 3hr.')
+<<<<<<< HEAD
     
+=======
+   
+>>>>>>> a8b72cc71f455e46b306fb984c2b96a666dfe131
 })
 
 
@@ -265,7 +276,11 @@ test("VerifyTestPropertyOpenUpFromExplorerErrorTable @SyntheticControlCenter", a
     let getTestPropertyPageURL = await testPropertyPage.getUrl();
     //validation for test properties page
     await verification.verifySoftAssertTrue(getTestPropertyPageURL.includes('/ControlCenter/Tests/Test/' + testId + '/Properties'), 'test property page is not opening after clicking on testName in error tab first row in explorer');
+<<<<<<< HEAD
    
+=======
+    
+>>>>>>> a8b72cc71f455e46b306fb984c2b96a666dfe131
 })
 
 /*
