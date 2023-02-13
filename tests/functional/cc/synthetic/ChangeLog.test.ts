@@ -6,7 +6,11 @@ import { DataForEnv } from "@lib/DataForEnvironment";
     CP-26410 : Verify user should see Change Log option on the test update properties
 */
 
+<<<<<<< HEAD
 test("VerifyUserShouldSeeChangeLogOptionOnTestPropertyPage @SyntheticControlCenter@Test", async ({ baseTestUtil, syntheticTestDetailPage, page, sideNavigationBar, util, testUtility, synCCPage, verification }) => {
+=======
+test("VerifyUserShouldSeeChangeLogOptionOnTestPropertyPage @SyntheticControlCenter@ControlCenter", async ({ baseTestUtil, syntheticTestDetailPage, page, sideNavigationBar, util, testUtility, synCCPage, verification }) => {
+>>>>>>> 08cebc9627e4d078d0d75219d95155c31cb6e3c7
     let data = new DataForEnv();
     let testID = await data.getValueOfTheParameter('testID');
     //navigate to CC page
@@ -24,7 +28,11 @@ test("VerifyUserShouldSeeChangeLogOptionOnTestPropertyPage @SyntheticControlCent
     CP-35379 : Verify Changelog should capturing correctly for "All" and "Nodes" under Ru
 */
 
+<<<<<<< HEAD
 test("VerifyChangeLogShouldCaptureCorrectDataAfterUpdate @SyntheticControlCenter@Test", async ({ baseTestUtil, syntheticTestDetailPage, syntheticDetailsPage, sideNavigationBar, util, testUtility, synCCPage, verification }) => {
+=======
+test("VerifyChangeLogShouldCaptureCorrectDataAfterUpdate @SyntheticControlCenter@ControlCenter", async ({ baseTestUtil, syntheticTestDetailPage, syntheticDetailsPage, sideNavigationBar, util, testUtility, synCCPage, verification }) => {
+>>>>>>> 08cebc9627e4d078d0d75219d95155c31cb6e3c7
     let data = new DataForEnv();
     let prodForTestCreate = await data.getValueOfTheParameter('productForJunkItems');
     let testName = await testUtility.getTestName();

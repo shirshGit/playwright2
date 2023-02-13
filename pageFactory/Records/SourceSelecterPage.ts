@@ -1,13 +1,12 @@
 import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
-import { Page } from "playwright";
-import { ContactsPage } from "@pageobjects/Contacts/ContactsPage";
+import { Page } from "@playwright/test";
 import { SyntheticRecordsPage } from "./SyntheticRecordsPage";
 
 let webActions: WebActions;
 let util: Utility
 
-export class SourceSelectorPage extends SyntheticRecordsPage{
+export class SourceSelectorPage extends SyntheticRecordsPage {
     constructor(page: Page) {
         super(page);
         webActions = new WebActions(this.page);
@@ -21,30 +20,27 @@ export class SourceSelectorPage extends SyntheticRecordsPage{
     private _myAppTab = '//li[@data-testid="My Apps"]';
     private _firstSearchedAppChechBox = '//div[@data-item-index="0"]//i[@data-icon-name="StatusCircleCheckmark"]';
     private _searchBoxForApp = '(//input[@id="fabric-search-box"])[2]';
-    
+
     public get searchBoxLocator() {
         return this._searchBoxForTest;
     }
-
     public get firstRowSearchCheckBoxInSelectorPageLocator() {
         return this._firstRowSearchCheckBoxInSelectorPage
     }
-
     public get testTabLocator() {
         return this._testTab;
     }
     public get myAppTabLocator() {
         return this._myAppTab;
     }
-    public get firstSearchedAppCheckBox(){
+    public get firstSearchedAppCheckBoxLocator() {
         return this._firstSearchedAppChechBox;
     }
-
-    public get searchBoxForAppLocator(){
+    public get searchBoxForAppLocator() {
         return this._searchBoxForApp;
     }
 
-  
+
     //#endregion
 
     //#region This region is to have the functions
@@ -54,9 +50,19 @@ export class SourceSelectorPage extends SyntheticRecordsPage{
         await webActions.clickElement(this.firstRowSearchCheckBoxInSelectorPageLocator);
     }
 
+    async searchItem(item: string) {
+        await webActions.waitForElementAttached(this.searchBoxLocator);
+        await webActions.clickElement(this.searchBoxLocator);
+        await webActions.enterElementText(this.searchBoxLocator, item);
+        await util.delay(1000);
+        await webActions.clickElement(this.searchBoxLocator);
+        await webActions.keyPress(this.searchBoxLocator, 'Enter')
+        await webActions.onlyKeyPress('Enter');
+    }
+
     async clickOnFirstSearchedAPPInSelectorPage(itemId: string) {
         await this.searchApp(itemId);
-        await webActions.clickElementJS(this.firstSearchedAppCheckBox);
+        await webActions.clickElementJS(this.firstSearchedAppCheckBoxLocator);
     }
 
     async searchTest(item: string) {
@@ -79,13 +85,13 @@ export class SourceSelectorPage extends SyntheticRecordsPage{
         await webActions.onlyKeyPress('Enter');
     }
 
-    async clickOnMyAppTab(){
+    async clickOnMyAppTab() {
         await webActions.clickElement(this.myAppTabLocator);
     }
 
-    
 
-    
+
+
     //#endregion
 
 }

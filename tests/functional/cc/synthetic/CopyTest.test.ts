@@ -7,7 +7,11 @@ import { expect } from "@playwright/test";
     CP-16894 : Verify Settings should be Inherited
 */
 
+<<<<<<< HEAD
 test("AfterCopyATestProductSettingsShouldBeInheritedInTest @SyntheticControlCenter@Test", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
+=======
+test("AfterCopyATestProductSettingsShouldBeInheritedInTest @SyntheticControlCenter@ControlCenter", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
+>>>>>>> 08cebc9627e4d078d0d75219d95155c31cb6e3c7
     let data = new DataForEnv();
     let prodForTestCreate = await data.getValueOfTheParameter('productForJunkItems');
     let prodForCopyTest = await data.getValueOfTheParameter('productForCopyTest');

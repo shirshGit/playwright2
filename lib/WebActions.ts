@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as CryptoJS from 'crypto-js';
-import type { Page } from 'playwright';
+import type { Page } from '@playwright/test';
 import { Browser, BrowserContext, expect, TestInfo } from '@playwright/test';
 import { Workbook } from 'exceljs';
 import { testConfig } from '../testConfig';
@@ -107,6 +107,18 @@ export class WebActions {
         ]);
         await download.saveAs(path.join(__dirname, `../Downloads`, download.suggestedFilename()));
         return download.suggestedFilename();
+    }
+
+    async deleteFile(filePath) {
+        const fs = require("fs");
+        const path = filePath;
+        fs.unlink(path, function (err) {
+            if (err) {
+                console.error(err);
+            } else {
+                console.log("File removed:", path);
+            }
+        });
     }
 
     async keyPress(locator: string, key: string): Promise<void> {

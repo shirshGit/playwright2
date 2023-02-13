@@ -1,6 +1,6 @@
 import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
-import { Page } from "playwright";
+import { Page } from "@playwright/test";
 
 let webActions: WebActions;
 let util: Utility
@@ -18,7 +18,11 @@ export class EndpointSmartboardPage {
     private _goButton = '//span[text()="Go"]';
     private _timeZoneDropDown = '//div[@data-testid="timezone-dropdown"]';
     private _compareDropDown = '(//i[@data-icon-name="chevrondownLarge"])[1]//div';
+<<<<<<< HEAD
     private _timeLine = '//div[@data-testid="smartboard-timeline"]';
+=======
+    private _timeLine = '//div[contains(@class,"EndpointSmartboardstyles__EndpointSmartboardTimeline")]';
+>>>>>>> 08cebc9627e4d078d0d75219d95155c31cb6e3c7
     private _timeFrame = '//input[@value="Last 24 Hours"]';
     private _summary = '//span[text()="Summary"]';
     private _endpoint = '//span[text()="Endpoints"]';
@@ -45,7 +49,8 @@ export class EndpointSmartboardPage {
 
     //common locators
     private _endpointScore = '//span[text()="Endpoint Score"]';
-    private _networkScore = '//span[text()="Application Score"]';
+    private _networkScore = '//div[text()="Network Score"]';
+    private _netWorkScore = '//span[text()="Network Score"]';
     private _roundTrip = '//div[contains(text(),"Round Trip (ms)")]';
     private _packetLoss = '//div[text()="% Packet Loss"]';
     private _testRun = '//div[text()="Test Runs"]';
@@ -75,6 +80,10 @@ export class EndpointSmartboardPage {
     private _keyMetricsWidget = '//div[@data-testid="key-metrics-container"]';
     private _issueNdEventWidget = '(//div[contains(@class,"KeyEventsTableContainerstyl")])[1]';
     private _endpointTimeLine  = '//div[@data-testid="smartboard-timeline"]';
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 08cebc9627e4d078d0d75219d95155c31cb6e3c7
     //endpoint endpoint tab
     private _filterButton = '(//button[@id="action-button"])[3]';
     private _cpuUsageCardMetrics = '//span[text()="CPU Usage"]';
@@ -105,10 +114,17 @@ export class EndpointSmartboardPage {
     private _networkWidget = '//span[text()="Network Path"]';
     private _hopByHopWidget = '//span[text()="Hop-by-Hop"]';
 
+<<<<<<< HEAD
     
     public get endpointTimeLineLocator(){
         return this._endpointTimeLine;
     }
+=======
+    public get endpointTimeLineLocator(){
+        return this._endpointTimeLine;
+    }
+
+>>>>>>> 08cebc9627e4d078d0d75219d95155c31cb6e3c7
     public get endpointWgtForNetworkTabLocator(){
         return this._endpointWgtForNetworkTab;
     }
@@ -169,8 +185,12 @@ export class EndpointSmartboardPage {
         return this._timeFrame;
     }
 
-    public get networkScoreMetricsInNetworkTabLocator(){
+    public get networkScoreMetricsInNetworkTabForTestLocator(){
         return this._networkScore;
+    }
+
+    public get networkScoreMetricsInNetworkTabForLocLocator(){
+        return this._netWorkScore;
     }
 
     public get endpointTestedCardMetricsInNetworkTabLocator(){
@@ -317,7 +337,7 @@ export class EndpointSmartboardPage {
     }
 
     public get netScoreMetricsLocator(){
-        return this._networkScore;
+        return this._netWorkScore;
     }
 
     public get roundTripMetricsLocator(){

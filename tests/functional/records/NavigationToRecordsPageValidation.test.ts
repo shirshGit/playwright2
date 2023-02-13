@@ -2,14 +2,10 @@ import test from "@lib/BaseTest"
 import { DataForEnv } from "@lib/DataForEnvironment";
 import { ExplorerRecordListPage } from "@pageobjects/Explorer/ExplorerRecordListPage";
 import { SyntheticRecordsPage } from "@pageobjects/Records/SyntheticRecordsPage";
-
-
-
-
 /*
    CP-21690 : 119205 DES Records Blade Shows No Data For Traceroute and Ping Test 
 */
-test("VerifyDataInRecordsListPageForTransactionTest  @ProductionDefectRecords@Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util, syntheticTestDetailPage, synCCPage, page, verification }) => {
+test("VerifyDataInRecordsListPageForTransactionTest  @ProductionDefectRecords@Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util, syntheticRecordsPage, synCCPage, page, verification }) => {
    let data = new DataForEnv();
    let TransactionTestID = await data.getValueOfTheParameter('transactionTestWithMultipleStepAndStepName');
    //navigate to CC page
@@ -17,14 +13,14 @@ test("VerifyDataInRecordsListPageForTransactionTest  @ProductionDefectRecords@Re
    //click on three dot menu and navigate recoeds page
    await synCCPage.navigateFromThreeDotMenu(TransactionTestID, 'Records');
    //validation for data
-   await verification.verifyIfElementIsPresent(syntheticTestDetailPage.firstSearchRowInRecordsListPage, 'data is not present in records list page.');
+   await verification.verifyIfElementIsPresent(syntheticRecordsPage.firstSearchRowInRecordsListPage, 'data is not present in records list page.');
 
 })
 
 /*
    CP-44053 : DES: Selected run is not displayed in Records when we navigate from errors tab
 */
-test("VerifyNavigationFromErrorTab  @ProductionDefectRecords@Records", async ({ baseTestUtil, sideNavigationBar, context, loginPage, util, sourceSelectorExplorer, syntheticRecordsPage: recordsPage, explorerPage, page, verification }) => {
+test("VerifyNavigationFromErrorTab  @ProductionDefectRecords@Records", async ({ baseTestUtil, sideNavigationBar, context, loginPage, util, sourceSelectorExplorer,  recordsPage, explorerPage, page, verification }) => {
    let data = new DataForEnv();
    let TransactionTestID = await data.getValueOfTheParameter('transactionTestId');
    //navigate to CC page

@@ -1,6 +1,6 @@
 import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
-import { Page } from "playwright";
+import { Page } from "@playwright/test";
 let webActions: WebActions;
 let util: Utility
 
@@ -61,6 +61,9 @@ export class DefaultDashboardPage {
     async clickOnOverviewdashboard(){
         await webActions.clickElement(this.overviewDashboardLocator);
     }
+    async clickOnTab(tabName : string){
+        await webActions.clickElement(this.tabLocator(tabName));
+     }
 
     async clickOnTab(tabName : string){
         await webActions.clickElement(this.tabLocator(tabName));

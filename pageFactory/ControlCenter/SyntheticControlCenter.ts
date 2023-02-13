@@ -1,6 +1,6 @@
 import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
-import { Page } from "playwright";
+import { Page } from "@playwright/test";
 let webActions: WebActions;
 let util: Utility
 
@@ -57,8 +57,8 @@ export class SynControlCenterPage {
     private _closeChangeLogPage = '(//div[@data-testid="cancel-icon"])[2]';
     private _testsTreeSideSideNav = '//div[contains(@class,"NavigationTree_navGroupText") and text() = "Tests"]';
     private _copyTestProductName = '//div[text()="ProductForCopyScenariosDoNotDelete"]'
-    
     private _activeStatusOfFirstSearchedItem = '//span[text()="Active"]';
+    
     public get newItemCreationLocator() {
         return this._newItemCreation;
     }
@@ -224,7 +224,6 @@ export class SynControlCenterPage {
     public get activeStatsLocatorOfFirstSearchedItem(){
         return this._activeStatusOfFirstSearchedItem;
     }
-
 
 
    
