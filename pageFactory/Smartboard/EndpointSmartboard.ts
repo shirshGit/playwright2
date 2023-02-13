@@ -18,11 +18,7 @@ export class EndpointSmartboardPage {
     private _goButton = '//span[text()="Go"]';
     private _timeZoneDropDown = '//div[@data-testid="timezone-dropdown"]';
     private _compareDropDown = '(//i[@data-icon-name="chevrondownLarge"])[1]//div';
-<<<<<<< HEAD
-    private _timeLine = '//div[@data-testid="smartboard-timeline"]';
-=======
     private _timeLine = '//div[contains(@class,"EndpointSmartboardstyles__EndpointSmartboardTimeline")]';
->>>>>>> 08cebc9627e4d078d0d75219d95155c31cb6e3c7
     private _timeFrame = '//input[@value="Last 24 Hours"]';
     private _summary = '//span[text()="Summary"]';
     private _endpoint = '//span[text()="Endpoints"]';
@@ -80,10 +76,7 @@ export class EndpointSmartboardPage {
     private _keyMetricsWidget = '//div[@data-testid="key-metrics-container"]';
     private _issueNdEventWidget = '(//div[contains(@class,"KeyEventsTableContainerstyl")])[1]';
     private _endpointTimeLine  = '//div[@data-testid="smartboard-timeline"]';
-<<<<<<< HEAD
-=======
     
->>>>>>> 08cebc9627e4d078d0d75219d95155c31cb6e3c7
     //endpoint endpoint tab
     private _filterButton = '(//button[@id="action-button"])[3]';
     private _cpuUsageCardMetrics = '//span[text()="CPU Usage"]';
@@ -114,17 +107,10 @@ export class EndpointSmartboardPage {
     private _networkWidget = '//span[text()="Network Path"]';
     private _hopByHopWidget = '//span[text()="Hop-by-Hop"]';
 
-<<<<<<< HEAD
-    
-    public get endpointTimeLineLocator(){
-        return this._endpointTimeLine;
-    }
-=======
     public get endpointTimeLineLocator(){
         return this._endpointTimeLine;
     }
 
->>>>>>> 08cebc9627e4d078d0d75219d95155c31cb6e3c7
     public get endpointWgtForNetworkTabLocator(){
         return this._endpointWgtForNetworkTab;
     }
