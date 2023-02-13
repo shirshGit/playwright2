@@ -55,12 +55,7 @@ export class SynControlCenterPage {
     private _divLevelDropDown = '(//div[@data-testid="divisionSelector"]//div)[1]';
     private _closeChangeLogPage = '(//div[@data-testid="cancel-icon"])[2]';
     private _testsTreeSideSideNav = '//div[contains(@class,"NavigationTree_navGroupText") and text() = "Tests"]';
-<<<<<<< HEAD
-    private _copyTestProductName = '';
-    
-=======
     private _copyTestProductName = '//div[text()="ProductForCopyScenariosDoNotDelete"]'
->>>>>>> a8b72cc71f455e46b306fb984c2b96a666dfe131
     private _activeStatusOfFirstSearchedItem = '//span[text()="Active"]';
 
     public get newItemCreationLocator() {
@@ -228,11 +223,8 @@ export class SynControlCenterPage {
     public get activeStatsLocatorOfFirstSearchedItem(){
         return this._activeStatusOfFirstSearchedItem;
     }
-<<<<<<< HEAD
-=======
 
 
->>>>>>> a8b72cc71f455e46b306fb984c2b96a666dfe131
    
     
    
