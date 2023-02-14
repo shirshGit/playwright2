@@ -57,11 +57,7 @@ export class SynControlCenterPage {
     private _testsTreeSideSideNav = '//div[contains(@class,"NavigationTree_navGroupText") and text() = "Tests"]';
     private _copyTestProductName = '//div[text()="ProductForCopyScenariosDoNotDelete"]'
     private _activeStatusOfFirstSearchedItem = '//span[text()="Active"]';
-<<<<<<< HEAD
     
-=======
-
->>>>>>> ee2ecf6e997abb012aac912283a8e6a4e087aa87
     public get newItemCreationLocator() {
         return this._newItemCreation;
     }

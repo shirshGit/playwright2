@@ -1,10 +1,6 @@
 import { test as baseTest, TestInfo } from '@playwright/test';
 import { LoginPage } from '@pageobjects/Login/LoginPage';
 import { NewTabInstatntTest } from '@pages/InstantTestNewWindow';
-<<<<<<< HEAD
-import { SyntheticControlCenter } from '@pages/SyntheticControlCenter';
-=======
->>>>>>> ee2ecf6e997abb012aac912283a8e6a4e087aa87
 import { BaseTestUtility } from './BaseTestUtility';
 import { TestResult } from '@playwright/test/reporter';
 import { Verification } from '@verification/verification';
@@ -124,13 +120,8 @@ const test = baseTest.extend<{
     explorerRecordListPage : ExplorerRecordListPage;
     ntnSmartboardPage : NodeToNodeSmartboardPage;
     bgpSmartboardPage : BGPSmartboardPage
-<<<<<<< HEAD
-    
-
-=======
     synWidgetPropertyPage : SynWidgetPropertyPage
     customDBPage : CustomDBPage
->>>>>>> ee2ecf6e997abb012aac912283a8e6a4e087aa87
 }>({
     baseTestUtil: async ({ page }, use, testInfo: TestInfo) => {
         let base = new BaseTestUtility(page);
