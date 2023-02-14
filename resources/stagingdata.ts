@@ -29,7 +29,7 @@ export const stagedata = {
     'testID' : '240905', // used for automation scripts where test are not being created.
     'testListPageUrl' : 'https://portalstage.catchpoint.com/ui/Symphony/ControlCenter/Tests', //for validation of synthetic cc page.
     'transactionTest' : '81406', // used for records automation
-    'transactionTestIDWithEnforceFailureAdvanceSetting' : '81472',//used for records automation
+    'transactionTestIDWithEnforceFailureAdvanceSetting' : '276027',//used for records automation
     'transactionTestWithMultipleStepAndStepName' : '244168', // used for records automation
     'transactionTestWithMultipleStepWithoutStepName' : '246072',//used for records automation
     'transactionTestWithRefrenceHostOnFailure' : '236336',

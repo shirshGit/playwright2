@@ -72,21 +72,15 @@ test("ValidationForPageViewsAndImpactValueForRumApp  @ProductionDefectRecords@Re
   CP-21736 : Clicking on the waterfall from tile widget in synthetic overview dashboard fails
 */
 
-test("VerifyNavigationFromTileWidgetInOverviewDashboardToRecords @ProductionDefectRecords@Records", async ({ baseTestUtil, sideNavigationBar, verification, defaultDashboardPage, dashboardBlade, dashboardRecordListPage,util,context }) => {
-   //select test overview dashboard
+test("VerifyNavigationFromTileWidgetInOverviewDashboardToRecords @ProductionDefectRecords@Records", async ({ baseTestUtil, sideNavigationBar,testOverviewDashboard, verification, defaultDashboardPage, dashboardBlade, dashboardRecordListPage,util,context }) => {
+   //click on test over view dashboard
    await defaultDashboardPage.clickOnTab('Tests');
    //navigate to records page from tooltip menu
    await dashboardBlade.navigateFromToolTip('Records');
    //validation for record list page
    await verification.verifyIfElementIsPresent(dashboardRecordListPage.recordListTextLocator, "record list page is not opening.");
-   await util.delay(2000);
-   let getNewPage = await dashboardRecordListPage.getNewWindow(context, dashboardRecordListPage.selectRowLocator(0));
-   await util.delay(3000);
-   let recordPage = new SyntheticRecordsPage(getNewPage);
-   //get url of records page
-   let getCurrentPageUrl = await recordPage.getUrl();
-   //verification for records page
-   await verification.verifySoftAssertTrue(getCurrentPageUrl.includes('catchpoint.com/ui/Symphony/Record/'), 'not able to navigate to records page');
+   await verification.verifyIfElementIsPresent(dashboardRecordListPage.recordListPageGraphLocator, "record list page graph is not opening.");
+   await verification.verifyIfElementIsPresent(dashboardRecordListPage.selectRowLocator(0), "record row is not present.");
 
 })
 

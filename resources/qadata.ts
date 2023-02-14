@@ -29,7 +29,7 @@ export const qadata = {
     'testID' : '264592',// used for automation scripts where test are not being created.
     'testListPageUrl' : 'https://qaportal.catchpoint.com/ui/Symphony/ControlCenter/Tests', //for validation of synthetic cc page
     'transactionTest' : '211911', // used for records automation
-    'transactionTestIDWithEnforceFailureAdvanceSetting' : '269328',//used for records automation
+    'transactionTestIDWithEnforceFailureAdvanceSetting' : '311792',//used for records automation
     'transactionTestWithMultipleStepAndStepName' : '272641', // used for records automation
     'transactionTestWithMultipleStepWithoutStepName' : '272642',//used for records automation
     'transactionTestWithRefrenceHostOnFailure' : '256480',

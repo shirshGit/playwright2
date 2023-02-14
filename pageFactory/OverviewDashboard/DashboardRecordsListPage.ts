@@ -16,13 +16,16 @@ export class DashboardRecordListPage {
     //#region This region is for getter
 
     private _recordListText = '//span[text()="Records List"]'; 
+    private _recordPageGraph = '//div[contains(@class,"RecordsScatterplot_scatterplot_")]';
     
     public get recordListTextLocator(){
         return this._recordListText;
     }
-
     public get selectRowLocator(){
         return (text:number) => { return `(//div[@data-automationid="DetailsList"])[2]//div[@data-list-index="${text}"]`}
+    }
+    public get recordListPageGraphLocator(){
+        return this._recordPageGraph;
     }
 
     //#endregion

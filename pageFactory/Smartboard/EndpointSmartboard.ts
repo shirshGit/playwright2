@@ -76,10 +76,7 @@ export class EndpointSmartboardPage {
     private _keyMetricsWidget = '//div[@data-testid="key-metrics-container"]';
     private _issueNdEventWidget = '(//div[contains(@class,"KeyEventsTableContainerstyl")])[1]';
     private _endpointTimeLine  = '//div[@data-testid="smartboard-timeline"]';
-<<<<<<< HEAD
     
-=======
->>>>>>> ee2ecf6e997abb012aac912283a8e6a4e087aa87
     //endpoint endpoint tab
     private _filterButton = '(//button[@id="action-button"])[3]';
     private _cpuUsageCardMetrics = '//span[text()="CPU Usage"]';

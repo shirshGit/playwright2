@@ -64,7 +64,7 @@ const config: PlaywrightTestConfig = {
           slowMo: 0
         }
       },
-      grep: [new RegExp("VerifyNavigationFromTileWidgetInOverviewDashboardToRecords @ProductionDefectRecords@Records")]
+      grep: [new RegExp("VerifyStepNameDoesNotDisplayAsBlank  @ProductionDefectRecords@Records")]
     },
     {
       name: `ChromeSmoke`,
