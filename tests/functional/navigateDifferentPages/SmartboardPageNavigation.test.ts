@@ -462,10 +462,6 @@ test("VerifySmartboardEndpointLoads @PageNavigation@ProductionSmoke@Smoke", asyn
     await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(endpointID);
     //validation for errors
     await verification.validationsForPage();
-    //select endpoint
-    await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(endpointID);
-    //validation for errors
-    await verification.validationsForPage();
     //1.validation for metrics
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.goButtonLocator, "go button is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.endpointTimeLineLocator, "time line is not present")

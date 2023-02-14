@@ -36,6 +36,8 @@ test("VerifyTestOverviewDashboardLoads @PageNavigation@ProductionSmoke@Smoke", a
 */
 
 test("VerifyEndpointOverviewDBLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil, defaultDashboardPage, verification, util,testOverviewDashboard, dashboardBlade, endpointOverviewDB}) => {
+    await defaultDashboardPage.clickOnTab('Endpoint');
+    await util.delay(2000);
     //validation for errors
     await verification.validationsForPage();
     //validaton for page load

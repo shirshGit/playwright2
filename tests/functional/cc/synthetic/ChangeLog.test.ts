@@ -59,13 +59,16 @@ test("VerifyChangeLogShouldCaptureCorrectDataAfterUpdate @SyntheticControlCenter
     await syntheticDetailsPage.clickOnChangeLogButton();
     await util.delay(5000);
     //validation
-    verification.verifyIfElementIsPresent(syntheticTestDetailPage.changeLogRunOnLocator, 'run on is not present.');
-    verification.verifyIfElementIsPresent(syntheticTestDetailPage.changeLogRunOnValueLocator, 'run on value is not present.');
+    let getRunOnText = await syntheticTestDetailPage.getElementText(syntheticTestDetailPage.changeLogRunOnLocator);
+    let getNodeSetText = await syntheticTestDetailPage.getElementText(syntheticTestDetailPage.changeLogRunOnValueLocator);
+    verification.verifySoftAssertTrue(getRunOnText==='Run On', 'run on is not present in change log.');
+    verification.verifySoftAssertTrue(getNodeSetText==='2', 'subset of node value is not present in change log');
     //close Change Logs Page
     await syntheticTestDetailPage.closeChangeLogsPage();
     //close test property page
     await syntheticTestDetailPage.closePropertyPage();
     //delete test
+    await util.delay(2000);
     await syntheticTestDetailPage.deleteItemFromThreeDotMenu(testName);
 
 

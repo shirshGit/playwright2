@@ -19,7 +19,7 @@ export const stagedata = {
     'ntpTestID' : '249659',// used for records automation
     'nodeToNodeTest' : '266461',
     
-    'productForJunkItems' : 'Selenium', //for creating folder and test for automation.
+    'productForJunkItems' : '12511', //for creating folder and test for automation.
     'productForCopyTest' : 'ProductForCopyScenariosDoNotDelete',//product for copy test scenarios
     'password' : 'Password123!',
 
@@ -29,7 +29,7 @@ export const stagedata = {
     'testID' : '240905', // used for automation scripts where test are not being created.
     'testListPageUrl' : 'https://portalstage.catchpoint.com/ui/Symphony/ControlCenter/Tests', //for validation of synthetic cc page.
     'transactionTest' : '81406', // used for records automation
-    'transactionTestIDWithEnforceFailureAdvanceSetting' : '81472',//used for records automation
+    'transactionTestIDWithEnforceFailureAdvanceSetting' : '276027',//used for records automation
     'transactionTestWithMultipleStepAndStepName' : '244168', // used for records automation
     'transactionTestWithMultipleStepWithoutStepName' : '246072',//used for records automation
     'transactionTestWithRefrenceHostOnFailure' : '236336',

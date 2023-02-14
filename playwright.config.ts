@@ -64,10 +64,10 @@ const config: PlaywrightTestConfig = {
           slowMo: 0
         }
       },
-      //grep: [new RegExp("@Smoke")]
+      grep: [new RegExp("VerifyStepNameDoesNotDisplayAsBlank  @ProductionDefectRecords@Records")]
     },
     {
-      name: `Smoke`,
+      name: `ChromeSmoke`,
       //testMatch: [`CreateNewSyntheticProduct.test.ts`],
       use: {
         // Configure the browser to use.
@@ -102,7 +102,7 @@ const config: PlaywrightTestConfig = {
           slowMo: 0
         }
       },
-      grep: [new RegExp("@ProductionSmoke")]
+      grep: [new RegExp("@Test")]
     },
     {
       name: `Firefox`,
