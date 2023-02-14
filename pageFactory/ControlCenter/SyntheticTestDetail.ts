@@ -222,6 +222,13 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
         await webActions.keyPress(this.addNodeFileldLocator, "Enter");
     }
 
+    async getElementText(locator:string){
+        await util.delay(2000);
+        let text = await webActions.getElementText(locator);
+        return text;
+
+    }
+
 
 
 

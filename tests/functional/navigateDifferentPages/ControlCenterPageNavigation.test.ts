@@ -47,6 +47,8 @@ test("VerifyRumControlCenterLoads @PageNavigation@ProductionSmoke@Smoke", async(
 test("VerifyLibraryControlCenterLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification,libraryControlCenter, util}) => {
     await sideNavigationBar.navigateToLibraryCCFromSideNavigation();
     await util.delay(2000);
+    //validation for errors
+    await verification.validationsForPage();
     await verification.verifyIfElementIsPresent(libraryControlCenter.libraryTreeSideSideNavLocator, 'Side Navigation Bar is not present');
     await verification.verifyIfElementIsPresent(libraryControlCenter.libraryCredentialsNavigationNavLinkLocator, 'Credentials Navigation Bar is not present');
     await verification.verifyIfElementIsPresent(libraryControlCenter.libraryFilesNavigationNavLinkLocator, 'File Navigation Bar is not present');

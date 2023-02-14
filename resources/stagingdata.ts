@@ -19,7 +19,7 @@ export const stagedata = {
     'ntpTestID' : '249659',// used for records automation
     'nodeToNodeTest' : '266461',
     
-    'productForJunkItems' : 'Selenium', //for creating folder and test for automation.
+    'productForJunkItems' : '12511', //for creating folder and test for automation.
     'productForCopyTest' : 'ProductForCopyScenariosDoNotDelete',//product for copy test scenarios
     'password' : 'Password123!',
 

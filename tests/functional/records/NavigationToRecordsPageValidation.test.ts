@@ -73,12 +73,8 @@ test("ValidationForPageViewsAndImpactValueForRumApp  @ProductionDefectRecords@Re
 */
 
 test("VerifyNavigationFromTileWidgetInOverviewDashboardToRecords @ProductionDefectRecords@Records", async ({ baseTestUtil, sideNavigationBar, verification, defaultDashboardPage, dashboardBlade, dashboardRecordListPage,util,context }) => {
-   //click on overview dashboard 
-   await defaultDashboardPage.clickOnOverviewdashboard();
-   //clikc on overview dashboard dropdown
-   await dashboardBlade.clickOnOverviewDashboardDropDown();
    //select test overview dashboard
-   await dashboardBlade.selectDashboard('Test Overview');
+   await defaultDashboardPage.clickOnTab('Tests');
    //navigate to records page from tooltip menu
    await dashboardBlade.navigateFromToolTip('Records');
    //validation for record list page

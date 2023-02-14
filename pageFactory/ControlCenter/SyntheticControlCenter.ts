@@ -268,6 +268,7 @@ export class SynControlCenterPage {
         await webActions.hoverOnElement(this.threeDotMenuOfSearchedItemLocator);
         await webActions.clickElement(this.threeDotMenuOfSearchedItemLocator);
         await webActions.clickElement(this.deleteOptionInThreeDotMenuLocator);
+        await util.delay(2000);
         await webActions.clickElement(this.popUpDeleteBtnLocator);
     }
 
@@ -413,7 +414,7 @@ export class SynControlCenterPage {
     }
 
     async closePropertyPage(){
-        await webActions.clickElement(this._closeMasterBlade);
+        await webActions.clickElement(this.closeItemPropertiesBladeLocator);
     }
 
     async moveSelectedItem(itemName : string ,product : string){

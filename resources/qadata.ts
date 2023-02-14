@@ -19,7 +19,7 @@ export const qadata = {
     'ntpTestID' : '276988',// used for records automation
     'nodeToNodeTest' : '301201',
     
-    'productForJunkItems' : 'Selenium',  //for creating folder and test for automation
+    'productForJunkItems' : '1142',  //for creating folder and test for automation
     'productForCopyTest' : 'ProductForCopyScenariosDoNotDelete',//product for copy test scenarios
     'password' : 'Password123!',
 

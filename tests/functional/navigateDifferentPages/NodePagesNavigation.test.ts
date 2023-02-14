@@ -34,6 +34,8 @@ test("VerifyNodeGroupPageLoads @PageNavigation@ProductionSmoke@Smoke", async({ba
 test("VerifyNodeListPageLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil, sideNavigationBar, verification,nodeListPage, util}) => {
     await sideNavigationBar.navigateToNodeFromNodeSideNavigation();
     await util.delay(2000);
+    //validation for errors
+    await verification.validationsForPage();
     await verification.verifyIfElementIsPresent(nodeListPage.nodeNameHeaderInNodeListTableLocator, 'Node List Table Not Present');
     await verification.verifyIfElementIsPresent(nodeListPage.runRateHeaderInNodeListPageLocator, 'Node List Table Not Present');
     await verification.verifyIfElementIsPresent(nodeListPage.statusHeaderInNodeListPageLocator, 'Node List Table Not Present');
@@ -46,6 +48,8 @@ test("VerifyNodeListPageLoads @PageNavigation@ProductionSmoke@Smoke", async({bas
 test("VerifyNodeInstancesListPageLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil, sideNavigationBar, verification,nodeInstancePage, util}) => {
     await sideNavigationBar.navigateToInstancesFromNodeSideNavigation();
     await util.delay(2000);
+    //validation for errors
+    await verification.validationsForPage();
     await verification.verifyIfElementIsPresent(nodeInstancePage.hardwareHeaderHeaderInInstancesListLocator, 'Node Instance List Table Not Present');
     await verification.verifyIfElementIsPresent(nodeInstancePage.instacesNameHeaderInInstanceListPageLocator, 'Node Instance List Table Not Present');
     await verification.verifyIfElementIsPresent(nodeInstancePage.statusHeaderInInstanceListLocator, 'Node Instance List Table Not Present');

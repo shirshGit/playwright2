@@ -19,11 +19,6 @@ test("VerifyOverviewDashboardLoads @PageNavigation@ProductionSmoke@Smoke", async
   CP-44295 : Verify Widgets in test overview dashboard page
 */
 test("VerifyTestOverviewDashboardLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil, defaultDashboardPage, verification, util,testOverviewDashboard, dashboardBlade}) => {
-<<<<<<< HEAD
-    await defaultDashboardPage.clickOnTab('Tests');
-=======
->>>>>>> 08cebc9627e4d078d0d75219d95155c31cb6e3c7
-    await util.delay(2000);
     await defaultDashboardPage.clickOnTab('Tests');
     //validation for errors
     await verification.validationsForPage();
@@ -42,10 +37,7 @@ test("VerifyTestOverviewDashboardLoads @PageNavigation@ProductionSmoke@Smoke", a
 */
 
 test("VerifyEndpointOverviewDBLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil, defaultDashboardPage, verification, util,testOverviewDashboard, dashboardBlade, endpointOverviewDB}) => {
-<<<<<<< HEAD
     await defaultDashboardPage.clickOnTab('Endpoint');
-=======
->>>>>>> 08cebc9627e4d078d0d75219d95155c31cb6e3c7
     await util.delay(2000);
     await defaultDashboardPage.clickOnTab('Endpoint');
     //validation for errors
@@ -60,14 +52,9 @@ test("VerifyEndpointOverviewDBLoads @PageNavigation@ProductionSmoke@Smoke", asyn
 /*
     CP-39997 : To Validate BGP Metric Cards RPKI Status, %Reachability, #Hijacks , #Neighboring Peers , # Prefix withdrawn in BGP Dashboard
 */
-<<<<<<< HEAD
 test("VerifyBGPOverviewDBLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil, defaultDashboardPage, verification, util,testOverviewDashboard, bgpOverviewDB}) => {
     await defaultDashboardPage.clickOnTab('BGP');
-=======
-test("VerifyBGPOverviewDBLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil, defaultDashboardPage, verification, util,testOverviewDashboard, dashboardBlade, bgpOverviewDB}) => {
->>>>>>> 08cebc9627e4d078d0d75219d95155c31cb6e3c7
     await util.delay(3000);
-    await defaultDashboardPage.clickOnTab('BGP');
     //validation for errors
     await verification.validationsForPage();
     await verification.verifyIfElementIsPresent(bgpOverviewDB.RPKIStatusLocator, 'RPKI is not Present');

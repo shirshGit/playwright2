@@ -32,13 +32,13 @@ export class Verification {
     }
 
     async verifyTextIsNotPresentInPage(text: string, errorMessage: string, isHardAssert: boolean = true) {
-        let noOFElements = await webActions.getNoOfElementsPresentInPage(text);
+        let noOFElements = await this.page.$$(`text=${text}`);
         let isElementPresent = await this.page.isVisible(`text=${text}`);
         if (isHardAssert) {
-            await expect(noOFElements > 0 && isElementPresent === true, `${errorMessage}`).toBeFalsy();
+            await expect(noOFElements.length > 0 && isElementPresent === true, `${errorMessage}`).toBeFalsy();
         }
         else {
-            await expect(noOFElements > 0 && isElementPresent === true, `${errorMessage}`).toBeFalsy();
+            await expect(noOFElements.length > 0 && isElementPresent === true, `${errorMessage}`).toBeFalsy();
         }
     }
 
