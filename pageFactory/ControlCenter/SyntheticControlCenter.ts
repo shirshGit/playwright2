@@ -16,7 +16,6 @@ export class SynControlCenterPage {
     }
 
     //#region This region is for getter
-
     private _newItemCreation = '//button[text()="New"]';
     private _searchBox = '//div[contains(@class,"FilterPanel_filter_")]//input[@data-testid="fabricsearchbox"]';
     private _newProductItem = '//p[text()="Product"]';

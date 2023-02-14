@@ -42,7 +42,15 @@ export class ExplorerPage {
     public get errorTabFirstRowTestName(){
         return this._errorTabFirstRowTestName
     }
-   
+    public get vizualizationLocator(){
+        return (text:string) => { return `//div[contains(@class,"ExplorerVisualization_")]//div[@title="${text}"]`}
+    }
+    public get tableVizThreeDotMenuLocator(){
+        return (text:number) => { return `//div[@data-list-index="${text}"]//button//i`};
+    }
+    public get commonLocator(){
+        return (text:string) => { return `//span[text()="${text}"]`}
+    }
 
 
 
@@ -77,6 +85,18 @@ export class ExplorerPage {
 
     async clickOnErrorTabFirstRowTestName(){
         return await webActions.clickElement(this.errorTabFirstRowTestName);
+    }
+    async selectVizualization(vizName:string){
+        return await webActions.clickElement(this.vizualizationLocator(vizName))
+
+    }
+    async clickOnThreeDotMenuForTableViz(rowNum:number) {
+        await util.delay(3000);
+        await webActions.hoverOnElement(this.tableVizThreeDotMenuLocator(rowNum));
+        await webActions.clickElement(this.tableVizThreeDotMenuLocator(rowNum));
+    }
+    async selectItemFormThreeDotMenu(itemName:string){
+        await webActions.clickElement(this.commonLocator(itemName))
     }
 
 }

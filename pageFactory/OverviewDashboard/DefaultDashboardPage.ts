@@ -1,3 +1,4 @@
+
 import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
 import { Page } from "@playwright/test";
@@ -5,12 +6,12 @@ let webActions: WebActions;
 let util: Utility
 
 export class DefaultDashboardPage {
-    readonly page: Page;
+    readonly page: Page
 
     constructor(page: Page) {
-        this.page = page;
-        webActions = new WebActions(this.page);
-        util = new Utility();
+        this.page = page
+        webActions = new WebActions(this.page)
+        util = new Utility()
     }
 
     //#region This region is for getter
@@ -21,6 +22,7 @@ export class DefaultDashboardPage {
     private _nodeMapPerformanceOverview = '//div[contains(@class,"NodePerformanceOverview_mapContainer")]'
     private _threeLineBurgerMenu = '//div[contains(@class,"fabricIcons_burgerMenu")]';
     private _rumWidgetinOverviewDashboard = '//div[contains(@class,"RumAppsOverview_mainContainer")]'
+    private _testOverView = '(//span[text()="Tests"])[1]';
 
     public get overviewDashboardLocator() {
         return this._overviewDashboard;
@@ -56,19 +58,44 @@ export class DefaultDashboardPage {
     public get rumWidgetinOverviewDashboardLocator() {
         return this._rumWidgetinOverviewDashboard;
     }
+    public get testOverViewTabLocator(){
+        return this._testOverView;
+    }
+
+    public get testInTableWidget(){
+        return (text:number) => {return `(//div[@class="ms-List-page"]//div[@data-list-index="${text}"]//a)[${text}]`}
+    }
+
+    public get testInTileWidget(){
+        return (text:number) => {return `(//ul[contains(@class,"Tiles_tiles")]//li//div)[${text}]`}
+    }
 
     //#endregion
 
     //#region This region is to have the functions
+
     async clickOnOverviewdashboard() {
-        await webActions.clickElement(this.overviewDashboardLocator);
+        await webActions.clickElement(this.overviewDashboardLocator)
     }
     async clickOnTab(tabName: string) {
-        await webActions.clickElement(this.tabLocator(tabName));
+        if (tabName = 'Tests') {
+            await webActions.clickElement(this.testOverViewTabLocator);
+        } else {
+            await webActions.clickElement(this.tabLocator(tabName))
+        }
+    }
+    async clickOnTestInTileTestWidget(tileNum: number) {
+        await webActions.clickElement(this.testInTileWidget(tileNum));
     }
     async getTestNameFromTestTable(tileNum: number) {
-        return await webActions.getElementText(this.testNameLocator(tileNum));
+        return await webActions.getElementText(this.testNameLocator(tileNum))
     }
+    async clickOnTestInTableTestWidget(rowNum: number) {
+        await webActions.clickElement(this.testInTableWidget(rowNum));
+    }
+   
+
+
 
 
     //#endregion

@@ -105,9 +105,11 @@ export class EndpointSmartboardPage {
     private _locWidgetForNetworkTab = '//div[text()="Location"]/../../../..';
     private _networkWidget = '//span[text()="Network Path"]';
     private _hopByHopWidget = '//span[text()="Hop-by-Hop"]';
+
     public get endpointTimeLineLocator(){
         return this._endpointTimeLine;
     }
+
     public get endpointWgtForNetworkTabLocator(){
         return this._endpointWgtForNetworkTab;
     }

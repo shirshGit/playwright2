@@ -1,5 +1,5 @@
 import { WebActions } from "@lib/WebActions";
-import { Page } from "@playwright/test";
+import { BrowserContext, Page } from "@playwright/test";
 import { Utility } from "@util/Utility";
 import { DefaultDashboardPage } from "./DefaultDashboardPage";
 let webActions: WebActions;
@@ -20,7 +20,12 @@ export class TestOverviewDashboard extends DefaultDashboardPage{
     private _webTestPropertyText = '(//span[text()="Web Test Properties"])[1]';
     private _testNameInTestPropertiesPage = '//label[text()="Name * :"]/..//input';
     private _testWidgetInTestOverviewDB = '//div[contains(@class,"Tiles_container")]';
-
+    private _filterBlade = '//button[text()="Filters"]';
+    private _geoFilterLocator = '//div[text()="Geo"]';
+    private _filterSearchBox = '//input[@placeholder="Search City, Country"]';
+    private _firstSearchedItemCheckBox = '(//div[contains(@class,"fabricIcons_tableCheckMark_")])[2]';
+    private _allItemCheckBox = '(//div[contains(@class,"fabricIcons_tableCheckMark_")])[1]'
+    private _applyButton = '//button[text()="Apply"]';
 
     public get tabLocator() {
         return (text: string) => { return `(//span[text()="${text}"])[1]` }
@@ -43,13 +48,32 @@ export class TestOverviewDashboard extends DefaultDashboardPage{
     public get getTestNameInTestPropertiesPage(){
         return this._testNameInTestPropertiesPage;
     }
-
-   
-   
-
-
+    public get filterLocator(){
+        return this._filterBlade;
+    }
+    public get geoFilterLocator(){
+        return this._geoFilterLocator;
+    }
+    public get filterSearchBoxLocator(){
+        return this._filterSearchBox;
+    }
+    public get allItemSelectCheckBoxLocator(){
+        return this._allItemCheckBox;
+    }
+    public get fisrtItemSelectCheckBoxLocator(){
+        return this._firstSearchedItemCheckBox;
+    }
+    public get applyButtonLocator(){
+        return this._applyButton;
+    }
     public get testWidgetInTestOverviewDBLocator(){
         return this._testWidgetInTestOverviewDB;
+    }
+    public get filterValueLocator(){
+        return (text:number) =>{ return `(//div[@data-testid="pill-content"])[${text}]`}
+    }
+    public get selectTile(){
+        return(num:number) => { return `(//ul[contains(@class,"Tiles_tiles_")]//li)[${num}]`}
     }
    
     //#endregion
@@ -71,13 +95,36 @@ export class TestOverviewDashboard extends DefaultDashboardPage{
     async clickOnTileWidgetOptions(optionName:string){
         await webActions.clickElement(this.tileWidgetOptionLocator(optionName))
     }
-
     async getTileWidgetTestName(tileNum: number){
         return await webActions.getElementText(this.tileWidgetTestNameLocator(tileNum));
     }
-
     async getPropertiesPageTestName(){
         return await webActions.getElementAttributeValue(this._testNameInTestPropertiesPage,'value');
+    }
+    async clickOnFilter(){
+        await webActions.clickElement(this.filterLocator);
+    }
+    async applyFilterButton(){
+        await webActions.clickElement(this.applyButtonLocator);
+    }
+    async clickOnFirstTile(tileNum:number){
+        await webActions.clickElement(this.selectTile(tileNum))
+    }
+    async selectCityInGeoFilter(cityName:string){
+        await webActions.clickElement(this.geoFilterLocator);
+        await util.delay(3000);
+        await webActions.clickElement(this.filterSearchBoxLocator);
+        await webActions.enterElementText(cityName,this.filterSearchBoxLocator);
+        await webActions.clickElement(this.filterSearchBoxLocator);
+    }
+    async getNewWindow(context: BrowserContext, locator: string) {
+        return await webActions.newWindowHandle(context, locator);
+    }
+    async getUrl() {
+        return await webActions.getCurrentPageUrl();
+    }
+    async getFilterValue(valueNum:number){
+        return await webActions.getElementText(this.filterValueLocator(valueNum));
     }
 
 

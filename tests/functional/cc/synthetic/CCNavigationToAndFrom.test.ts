@@ -110,7 +110,7 @@ test("VerifyTestPropertiesPageOpenFromRecordsPage @SyntheticControlCenter", asyn
     let getTestPropertyPageURL = await testPropertyPage.getUrl();
     //validation for test properties page
     await verification.verifySoftAssertTrue(getTestPropertyPageURL.includes('/ControlCenter/Tests/Test/' + testID + '/Properties'), 'test property page is not opening after clicking on testName in records source blade');
-   
+    
 })
 
 
@@ -239,7 +239,7 @@ test("VerifyNavigationToDifferentPageFromThreeDotMenu @SyntheticControlCenter", 
     let startTime = parseInt(await controlCenterRecords.getStartGraphTime())
     let endTime = parseInt(await controlCenterRecords.getlastGraphTime())
     await verification.verifySoftAssertTrue(endTime - startTime === 3, 'time difference is not equal to 3hr.')
-   
+    
 })
 
 
@@ -247,7 +247,7 @@ test("VerifyNavigationToDifferentPageFromThreeDotMenu @SyntheticControlCenter", 
     CP-44585 : Scenario: Verify Test properties open up from explorer's error table 
 */
 test("VerifyTestPropertyOpenUpFromExplorerErrorTable @SyntheticControlCenter", async ({ baseTestUtil, sideNavigationBar, page, context, sourceSelectorExplorer, util, verification, explorerPage }) => {
-    //navigate to records page
+    //navigate to explorer page
     await sideNavigationBar.navigateToExplorerFromSideNavigation();
     let data = new DataForEnv();
     let testId = await data.getValueOfTheParameter('transactionTest');
@@ -264,7 +264,7 @@ test("VerifyTestPropertyOpenUpFromExplorerErrorTable @SyntheticControlCenter", a
     let getTestPropertyPageURL = await testPropertyPage.getUrl();
     //validation for test properties page
     await verification.verifySoftAssertTrue(getTestPropertyPageURL.includes('/ControlCenter/Tests/Test/' + testId + '/Properties'), 'test property page is not opening after clicking on testName in error tab first row in explorer');
-    
+   
 })
 
 /*
@@ -274,9 +274,9 @@ test("VerifyTestPropertyOpenUpFromTestsAlertsLog @SyntheticControlCenter", async
     //navigate to records page
     await sideNavigationBar.navigateToAlertLogFromSideNavigation();
     //click hover first test three dot menu
-    await alertLogPage.hoverOnThreeDotManu(1);
+    await alertLogPage.hoverOnThreeDotMenu(1);
     //click on test in source blade and get new window
-    let getNewPage = await alertLogPage.getNewWindow(context, alertLogPage.threeDotMenuItemLocator('Properties'));
+    let getNewPage = await alertLogPage.getNewWindow(context,await alertLogPage.threeDotMenuItemLocator('Properties'));
     let testPropertyPage = new ExplorerPage(getNewPage);
     //fetch url of test property page
     let getTestPropertyPageURL = await testPropertyPage.getUrl();
@@ -296,7 +296,7 @@ test("VerifyRumPropertyOpenUpFromRumAlertsLog @SyntheticControlCenter", async ({
     //click on rum
     await alertLogPage.clickOnRumTab();
     //click hover first test three dot menu
-    await alertLogPage.hoverOnThreeDotManu(1);
+    await alertLogPage.hoverOnThreeDotMenu(1);
     //click on test in source blade and get new window
     let getNewPage = await alertLogPage.getNewWindow(context, alertLogPage.threeDotMenuItemLocator('Properties'));
     let testPropertyPage = new ExplorerPage(getNewPage);
