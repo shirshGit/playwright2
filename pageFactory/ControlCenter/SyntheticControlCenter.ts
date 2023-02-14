@@ -1,6 +1,6 @@
 import { WebActions } from "@lib/WebActions";
+import { BrowserContext, Page } from "@playwright/test";
 import { Utility } from "@util/Utility";
-import { Page } from "@playwright/test";
 let webActions: WebActions;
 let util: Utility
 
@@ -16,7 +16,6 @@ export class SynControlCenterPage {
     }
 
     //#region This region is for getter
-
     private _newItemCreation = '//button[text()="New"]';
     private _searchBox = '//div[contains(@class,"FilterPanel_filter_")]//input[@data-testid="fabricsearchbox"]';
     private _newProductItem = '//p[text()="Product"]';
@@ -58,7 +57,11 @@ export class SynControlCenterPage {
     private _testsTreeSideSideNav = '//div[contains(@class,"NavigationTree_navGroupText") and text() = "Tests"]';
     private _copyTestProductName = '//div[text()="ProductForCopyScenariosDoNotDelete"]'
     private _activeStatusOfFirstSearchedItem = '//span[text()="Active"]';
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> ee2ecf6e997abb012aac912283a8e6a4e087aa87
     public get newItemCreationLocator() {
         return this._newItemCreation;
     }
@@ -303,7 +306,7 @@ export class SynControlCenterPage {
         await util.delay(2000);
         await webActions.hoverOnElement(this.threeDotMenuOfSearchedItemLocator);
         await webActions.clickElement(this.threeDotMenuOfSearchedItemLocator);
-        await webActions.clickElement(this.itemInThreeDotMenu(navigationFromThreeDotMenu));
+        await webActions.clickElementJS(this.itemInThreeDotMenu(navigationFromThreeDotMenu));
     }
 
     async clickOnSearchedItemInCC(itemName: string) {
@@ -444,6 +447,14 @@ export class SynControlCenterPage {
 
     async closeChangeLogsPage(){
         await webActions.clickElement(this.closeChangeLogPageLocator);
+    }
+
+    async getNewWindow(context: BrowserContext, locator: string) {
+        return await webActions.newWindowHandle(context, locator);
+
+    }
+    async getUrl() {
+        return await webActions.getCurrentPageUrl();
     }
 
    

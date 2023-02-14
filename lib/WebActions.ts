@@ -1,7 +1,6 @@
 import * as fs from 'fs';
 import * as CryptoJS from 'crypto-js';
-import type { Page } from '@playwright/test';
-import { Browser, BrowserContext, expect, TestInfo } from '@playwright/test';
+import { Browser, BrowserContext, expect, Page, TestInfo } from '@playwright/test';
 import { Workbook } from 'exceljs';
 import { testConfig } from '../testConfig';
 import * as path from 'path';

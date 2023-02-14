@@ -1,6 +1,6 @@
 import { WebActions } from "@lib/WebActions";
-import { Utility } from "@util/Utility";
 import { BrowserContext, Page } from "@playwright/test";
+import { Utility } from "@util/Utility";
 
 let webActions: WebActions;
 let util: Utility;
@@ -49,6 +49,7 @@ export class SideNavBar {
     private _groupNavigationFromNodeMenu = '//a[text()="Groups"]';
     private _nodeListNavigationFromNodeMenu = '//a[text()="Nodes"]';
     private _instancesFromNodesMenu = '//a[text()="Instances"]';
+    private _homeSection = '//div[@data-testid="site-nav"]//div[@id="homesection"]'
 
     public get sideNavControlCenter() {
         return this._sideNavControlCenter;
@@ -347,6 +348,11 @@ export class SideNavBar {
         await webActions.clickElement(this.nodesSideNavMenuLocator)
         await webActions.waitForElementAttached(this.instancesFromNodesMenuLocator);
         await webActions.clickElement(this.instancesFromNodesMenuLocator);
+    }
+
+    async clickOnHomeIcon(){
+        await webActions.waitForElementAttached(this.sideNavHome);
+        await webActions.clickElement(this.sideNavHome)
     }
 
 

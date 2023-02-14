@@ -1,7 +1,10 @@
 import { test as baseTest, TestInfo } from '@playwright/test';
 import { LoginPage } from '@pageobjects/Login/LoginPage';
 import { NewTabInstatntTest } from '@pages/InstantTestNewWindow';
+<<<<<<< HEAD
 import { SyntheticControlCenter } from '@pages/SyntheticControlCenter';
+=======
+>>>>>>> ee2ecf6e997abb012aac912283a8e6a4e087aa87
 import { BaseTestUtility } from './BaseTestUtility';
 import { TestResult } from '@playwright/test/reporter';
 import { Verification } from '@verification/verification';
@@ -59,6 +62,8 @@ import { EndpointSmartboardPage } from'@pageobjects/Smartboard/EndpointSmartboar
 import { RecordsPage } from '@pageobjects/Records/RecordsPage';
 import { NodeToNodeSmartboardPage } from '@pageobjects/Smartboard/NodeToNodeSmartboard';
 import { BGPSmartboardPage } from '@pageobjects/Smartboard/BGPSmartboard';
+import { SynWidgetPropertyPage } from '@pageobjects/OverviewDashboard/SynWidgetPropertyPage';
+import { CustomDBPage } from '@pageobjects/OverviewDashboard/CustomDBPage';
 
 const test = baseTest.extend<{
     baseTestUtil: BaseTestUtility;
@@ -119,8 +124,13 @@ const test = baseTest.extend<{
     explorerRecordListPage : ExplorerRecordListPage;
     ntnSmartboardPage : NodeToNodeSmartboardPage;
     bgpSmartboardPage : BGPSmartboardPage
+<<<<<<< HEAD
     
 
+=======
+    synWidgetPropertyPage : SynWidgetPropertyPage
+    customDBPage : CustomDBPage
+>>>>>>> ee2ecf6e997abb012aac912283a8e6a4e087aa87
 }>({
     baseTestUtil: async ({ page }, use, testInfo: TestInfo) => {
         let base = new BaseTestUtility(page);
@@ -300,6 +310,12 @@ const test = baseTest.extend<{
     },
     bgpSmartboardPage: async ({ page }, use) => {
         await use(new BGPSmartboardPage(page))
+    },
+    synWidgetPropertyPage: async ({ page }, use) => {
+        await use(new SynWidgetPropertyPage(page))
+    },
+    customDBPage: async ({ page }, use) => {
+        await use(new CustomDBPage(page))
     },
 
 

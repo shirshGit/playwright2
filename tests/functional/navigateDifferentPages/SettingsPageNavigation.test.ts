@@ -12,6 +12,10 @@ test("VerifySettingsUserroleLoads @PageNavigation@ProductionSmoke@Smoke", async(
     await verification.validationsForPage();
     //validation 
     await verification.verifyIfElementIsPresent(userrolePage.createIconLocator,"create icon is not present");
+    await verification.verifyIfElementIsPresent(userrolePage.nameTextLocator,"name column is not present");
+    await verification.verifyIfElementIsPresent(userrolePage.divisionTextLocator,"division column is not present");
+    await verification.verifyIfElementIsPresent(userrolePage.activeContactTextLocator,"active contact column is not present");
+    await verification.verifyIfElementIsPresent(userrolePage.inactiveContactTextLocator,"inactive contact column is not present");
     await verification.verifyIfElementIsPresent(userrolePage.nameTextLocator,"name text is not present");
     await verification.verifyIfElementIsPresent(userrolePage.divisionTextLocator,"division text is not present");
     await verification.verifyIfElementIsPresent(userrolePage.activeContactTextLocator,"active contact text is not present");
@@ -30,6 +34,9 @@ test("VerifySettingsDivisionLoads @PageNavigation@ProductionSmoke@Smoke", async(
     await verification.validationsForPage();
     //validation 
     await verification.verifyIfElementIsPresent(divisionPage.createIconLocator,"create icon is not present");
+    await verification.verifyIfElementIsPresent(divisionPage.nameTextLocator,"name column is not present");
+    await verification.verifyIfElementIsPresent(divisionPage.statusIconLocator,"status column is not present");
+    await verification.verifyIfElementIsPresent(divisionPage.lastUpdatedTextLocator,"last updated column is not present");
     await verification.verifyIfElementIsPresent(divisionPage.nameTextLocator,"name text is not present");
     await verification.verifyIfElementIsPresent(divisionPage.statusIconLocator,"status text is not present");
     await verification.verifyIfElementIsPresent(divisionPage.lastUpdatedTextLocator,"last updated text is not present");
@@ -47,6 +54,10 @@ test("VerifySettingsSchedulesLoads @PageNavigation@ProductionSmoke@Smoke", async
     await verification.validationsForPage();
     //validation 
     await verification.verifyIfElementIsPresent(schedulePage.newIconLocator,"create icon is not present");
+    await verification.verifyIfElementIsPresent(schedulePage.nameTextLocator,"name column is not present");
+    await verification.verifyIfElementIsPresent(schedulePage.typeTextLocator,"type column is not present");
+    await verification.verifyIfElementIsPresent(schedulePage.statusTextLocator,"status column is not present");
+    await verification.verifyIfElementIsPresent(schedulePage.lastUpdatedColumnTextLocator,"last updated column is not present");
     await verification.verifyIfElementIsPresent(schedulePage.nameTextLocator,"name text is not present");
     await verification.verifyIfElementIsPresent(schedulePage.typeTextLocator,"type text is not present");
     await verification.verifyIfElementIsPresent(schedulePage.statusTextLocator,"status text is not present");
