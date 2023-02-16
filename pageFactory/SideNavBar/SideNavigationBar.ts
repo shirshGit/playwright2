@@ -20,7 +20,7 @@ export class SideNavBar {
     private _sideNavCCTest = '//button/a[text()="Tests"]';
     private _sideNavAnalytics = '#analysissection';
     private _sideNavExplorer = '//a[text()="Explorer"]';
-    private _homesection = '#homesection';
+    private _homesection = '//i[@data-icon-name="dashboardSiteNav"]';
     private _dashboard = '//a[text()="Dashboard"]';
     private _sideNavSettings = '//i[@data-icon-name="settingsSiteNav"]';
     private _sideNavUserrole = '//a[text()="User Roles"]';

@@ -1,7 +1,6 @@
-
 import { WebActions } from "@lib/WebActions";
-import { Utility } from "@util/Utility";
 import { Page } from "@playwright/test";
+import { Utility } from "@util/Utility";
 let webActions: WebActions;
 let util: Utility
 
@@ -23,6 +22,7 @@ export class DefaultDashboardPage {
     private _threeLineBurgerMenu = '//div[contains(@class,"fabricIcons_burgerMenu")]';
     private _rumWidgetinOverviewDashboard = '//div[contains(@class,"RumAppsOverview_mainContainer")]'
     private _testOverView = '(//span[text()="Tests"])[1]';
+    private _testWidgetTimeFrameDD = '(//button[@type="button"][normalize-space()="Last Hour"])[2]';
 
     public get overviewDashboardLocator() {
         return this._overviewDashboard;
@@ -58,17 +58,29 @@ export class DefaultDashboardPage {
     public get rumWidgetinOverviewDashboardLocator() {
         return this._rumWidgetinOverviewDashboard;
     }
-    public get testOverViewTabLocator(){
+    public get testOverViewTabLocator() {
         return this._testOverView;
     }
 
-    public get testInTableWidget(){
-        return (text:number) => {return `(//div[@class="ms-List-page"]//div[@data-list-index="${text}"]//a)[${text}]`}
+    public get testInTableWidget() {
+        return (text: number) => { return `(//div[@class="ms-List-page"]//div[@data-list-index="${text}"])[1]//a` }
+    }
+    public get commomLocator() {
+        return (text: string) => { return `//span[text()="${text}"]` }
+    }
+    public get tableWidgetTimeFrameDDLocator() {
+        return this._testWidgetTimeFrameDD;
+    }
+    public get commoNLocator() {
+        return (text: string) => { return `//div[contains(text(),"${text}")]` }
+    }
+    public get threeDotMenuInTestTableWidgetLocator() {
+        return (text: number) => { return `(//div[contains(@class,"visibilityToggle")]//i)[${text}]` }
+    }
+    public get errorWidgetErrorLocator(){
+        return (text: number) => { return `//div[contains(@class,"AnalyticsErrorsOverviewDisplay_table")]//div[@data-list-index="${text}"]//a`}
     }
 
-    public get testInTileWidget(){
-        return (text:number) => {return `(//ul[contains(@class,"Tiles_tiles")]//li//div)[${text}]`}
-    }
 
     //#endregion
 
@@ -84,16 +96,31 @@ export class DefaultDashboardPage {
             await webActions.clickElement(this.tabLocator(tabName))
         }
     }
-    async clickOnTestInTileTestWidget(tileNum: number) {
-        await webActions.clickElement(this.testInTileWidget(tileNum));
-    }
-    async getTestNameFromTestTable(tileNum: number) {
-        return await webActions.getElementText(this.testNameLocator(tileNum))
+    
+    async getTestNameFromTestTable(itemNum: number) {
+        return await webActions.getElementText(this.testNameLocator(itemNum))
     }
     async clickOnTestInTableTestWidget(rowNum: number) {
         await webActions.clickElement(this.testInTableWidget(rowNum));
     }
-   
+
+    async selectTimeFrameForTestWidget(timeframe: string) {
+        await webActions.clickElement(this.tableWidgetTimeFrameDDLocator);
+        await webActions.clickElement(this.commoNLocator(timeframe))
+    }
+
+    async clickOnThreeDotMenuInTableTestWidget(rowNum: number, threeDotMenuItem: string) {
+        await webActions.hoverOnElement(this.testInTableWidget(rowNum))
+        await webActions.clickElement(this.threeDotMenuInTestTableWidgetLocator(rowNum + 1))
+        await webActions.clickElement(this.commomLocator(threeDotMenuItem))
+    }
+    async clickOnErrorInErrorWidget(errorNum:number){
+        await webActions.clickElement(this.errorWidgetErrorLocator(errorNum))
+    }
+    async getTextOfElement(locator:string){
+        return await webActions.getElementText(locator)
+    }
+
 
 
 

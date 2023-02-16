@@ -26,6 +26,7 @@ export class TestOverviewDashboard extends DefaultDashboardPage{
     private _firstSearchedItemCheckBox = '(//div[contains(@class,"fabricIcons_tableCheckMark_")])[2]';
     private _allItemCheckBox = '(//div[contains(@class,"fabricIcons_tableCheckMark_")])[1]'
     private _applyButton = '//button[text()="Apply"]';
+    private _tileWidgetTimeFrameDD = '(//button[@type="button"][normalize-space()="Last Hour"])[2]'
 
     public get tabLocator() {
         return (text: string) => { return `(//span[text()="${text}"])[1]` }
@@ -72,8 +73,20 @@ export class TestOverviewDashboard extends DefaultDashboardPage{
     public get filterValueLocator(){
         return (text:number) =>{ return `(//div[@data-testid="pill-content"])[${text}]`}
     }
-    public get selectTile(){
+    public get selectTileLocator(){
         return(num:number) => { return `(//ul[contains(@class,"Tiles_tiles_")]//li)[${num}]`}
+    }
+    public get testInTileWidgetLocator() {
+        return (text: number) => { return `(//ul[contains(@class,"Tiles_tiles")]//li//p[contains(@class,"Tiles_name_")])[${text}]` }
+    }
+    public get commonLocator() {
+        return (text: string) => { return `//span[text()="${text}"]` }
+    }
+    public get commoNLocator() {
+        return (text: string) => { return `//div[text()="${text}"]` }
+    }
+    public get tileWidgetTimeFrameDDLocator() {
+        return this._tileWidgetTimeFrameDD;
     }
    
     //#endregion
@@ -108,7 +121,7 @@ export class TestOverviewDashboard extends DefaultDashboardPage{
         await webActions.clickElement(this.applyButtonLocator);
     }
     async clickOnFirstTile(tileNum:number){
-        await webActions.clickElement(this.selectTile(tileNum))
+        await webActions.clickElement(this.selectTileLocator(tileNum))
     }
     async selectCityInGeoFilter(cityName:string){
         await webActions.clickElement(this.geoFilterLocator);
@@ -125,6 +138,17 @@ export class TestOverviewDashboard extends DefaultDashboardPage{
     }
     async getFilterValue(valueNum:number){
         return await webActions.getElementText(this.filterValueLocator(valueNum));
+    }
+    async hoverAndSelectItemFromThreeDotMenuInTileTestWidget(tileNum: number, threeDotMenuItem: string) {
+        await webActions.hoverOnElement(this.testInTileWidgetLocator(tileNum))
+        await webActions.clickElement(this.commoNLocator(threeDotMenuItem))
+    }
+    async clickOnTestInTileTestWidget(tileNum: number) {
+        await webActions.clickElement(this.testInTileWidgetLocator(tileNum));
+    }
+    async selectTimeFrameForTileTestWidget(timeframe: string) {
+        await webActions.clickElement(this.tileWidgetTimeFrameDDLocator);
+        await webActions.clickElement(this.commoNLocator(timeframe))
     }
 
 
