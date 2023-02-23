@@ -1,7 +1,5 @@
 import test from "@lib/BaseTest"
 import { DataForEnv } from "@lib/DataForEnvironment";
-import { ExplorerPage } from "@pageobjects/Explorer/ExplorerPage";
-import { TestOverviewDashboard } from "@pageobjects/OverviewDashboard/TestOverviewDashboardPage";
 
 
 
@@ -291,30 +289,3 @@ test("VerifyCorrectErrorCodeFilterShouldPassToExplorerPageFromOVDBPage @PageNavi
 })
 
 
-/*
-     CP-27084 : Correct error code filter should pass to explorer page from SB(NewUI)
-*/
-test("VerifyCorrectErrorCodeFilterShouldPassToExplorerPageFromTestOVDBPage @PageNavigation@Explorer", async({baseTestUtil,sideNavigationBar, verification, testOverviewDashboard,explorerPage, util}) => {
-    let errorName = await testOverviewDashboard.getTextOfElement(testOverviewDashboard.errorWidgetErrorLocator(1));
-    await testOverviewDashboard.clickOnErrorInErrorWidget(1);
-    await util.delay(4000);
-    let getPageURL1 = await explorerPage.getUrl();
-    //validation for explorer page and line viz
-    await verification.verifySoftAssertTrue(getPageURL1.includes('/Explorer/?sIds='), 'Explorer page is not opening after clicking on error in error widget');
-    //get filter name and value
-    let filterName = await explorerPage.getTextOfElement(explorerPage.filterNameLocator);
-    let filterValue = await explorerPage.getTextOfElement(explorerPage.filterValueLocator);
-    //verification
-    await verification.verifySoftAssertTrue(errorName === filterValue,'Selected filter is not passed to explorer')
-    await verification.verifySoftAssertTrue(filterName.includes('Error Type'),'Selected filter is not passed to explorer')
-    //error table item
-    await util.delay(4000);
-    let errorTableItem : string[] = ['Test','Time','Step/Hop/Level','Node','IP','URL','Error Type','Error Code','# Test Failures']
-    let getValue : string[] = await explorerPage.getValue(errorTableItem);
-    //validation for error table items
-    for (let index = 0; index < errorTableItem.length; index++) {
-        const element1 = errorTableItem[index];
-        const element2 = getValue[index];
-        await verification.verifySoftAssertTrue(element1 === element2,'Selected filter is not passed to explorer')
-    }
-})

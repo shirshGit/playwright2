@@ -64,7 +64,7 @@ const config: PlaywrightTestConfig = {
           slowMo: 0
         }
       },
-      grep: [new RegExp("VerifyScoreSelectionBladeDisplayAllTabSelectedWhenItsDivisionWide @PageNavigation@Explorer")]
+     // grep: [new RegExp("deleteDB @CleanUp")]
     },
     {
       name: `ChromeSmoke`,
