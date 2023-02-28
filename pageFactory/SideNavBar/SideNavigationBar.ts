@@ -26,17 +26,17 @@ export class SideNavBar {
     private _sideNavUserrole = '//a[text()="User Roles"]';
     private _sideNavContactIcon = '//i[@data-icon-name="contactsSiteNav"]//div';
     private _sideNavContacts = '//a[text()="Contacts"]/..';
-    private _sideNavRum = '//a[text()="RUM"]';
+    private _sideNavRum = '(//div[1][contains(@class,"NavigationTree_navGroupText_")][normalize-space()="RUM"])[2]';
     private _sideNavRecords = '//a[text()="Records"]';
-    private _sideNavEndpoint = '//a[text()="Endpoint"]';
+    private _sideNavEndpoint = '(//div[1][contains(@class,"NavigationTree_navGroupText_")][normalize-space()="Endpoint"])[2]';
     private _sideNavSmartboard = '//a[text()="Smartboard"]';
-    private _testTemplate = '//a[text()="Test Templates"]';
+    private _testTemplate = '(//div[1][contains(@class,"NavigationTree_navGroupText_")][normalize-space()="Test Templates"])[2]';
     private _sideNavDivision = '//a[text()="Divisions"]';
-    private _library = '//a[text()="Library"]';
+    private _library = '(//div[1][contains(@class,"NavigationTree_navGroupText_")][normalize-space()="Library"])[2]';
     private _sideNavSchedules = '//a[text()="Schedules"]';
     private _sideNavInstantTest = '#instanttestssection';
     private _sideNavIndexes = '//a[text()="Indexes"]';
-    private _newInstantTestSiveNav = '//a[text()="New Instant Test"]';
+    private _newInstantTestSiveNav = '//button[text()="New Instant Test"]';
     private _contactGroup = '//a[text()="Contact Groups"]';
     private _instantTestHistorySiveNav = '//a[text()="Instant Test History"]';
     private _reportsSideNavBar = '#reportssection';
@@ -119,7 +119,7 @@ export class SideNavBar {
         return this._sideNavSchedules;
     }
 
-    public get sideNavInstantTestLocator() {
+    public get sideNavInstantTestHistoryLocator() {
         return this._sideNavInstantTest;
     }
 
@@ -127,7 +127,7 @@ export class SideNavBar {
         return this._sideNavIndexes;
     }
 
-    public get newInstantTestSiveNavLocator() {
+    public get instantTestInHistoryPage() {
         return this._newInstantTestSiveNav;
     }
 
@@ -181,11 +181,15 @@ export class SideNavBar {
     }
     //#endregion
 
+    async navigateToDashboardFromSideNavigation() {
+        await webActions.waitForElementAttached(this.sideNavHome);
+        await webActions.clickElement(this.sideNavHome)
+    }
+
+
     async navigateToSyntheticCCFromSideNavigation() {
         await webActions.waitForElementAttached(this.sideNavControlCenter);
         await webActions.clickElement(this.sideNavControlCenter)
-        await webActions.waitForElementAttached(this.sideNavCCTest);
-        await webActions.clickElement(this.sideNavCCTest);
     }
 
     async navigateToEndpointCCFromSideNavigation() {
@@ -193,50 +197,6 @@ export class SideNavBar {
         await webActions.clickElement(this.sideNavControlCenter)
         await webActions.waitForElementAttached(this.sideNavEndpointLocator);
         await webActions.clickElement(this.sideNavEndpointLocator);
-    }
-
-
-    async navigateToExplorerFromSideNavigation() {
-        await webActions.waitForElementAttached(this.sideNavAnalytics);
-        await webActions.clickElement(this.sideNavAnalytics)
-        await webActions.waitForElementAttached(this.sideNavExplorer);
-        await webActions.clickElement(this.sideNavExplorer);
-    }
-
-    async navigateToRecordsFromSideNavigation() {
-        await webActions.waitForElementAttached(this.sideNavAnalytics);
-        await webActions.clickElement(this.sideNavAnalytics)
-        await webActions.waitForElementAttached(this.sideNavRecords);
-        await webActions.clickElement(this.sideNavRecords);
-    }
-
-    async navigateToUserrolePageFromSideNavigation() {
-        await webActions.waitForElementAttached(this.sideNavSettingsTest);
-        await webActions.clickElement(this.sideNavSettingsTest)
-        await webActions.waitForElementAttached(this.sideNavUserrole);
-        await webActions.clickElement(this.sideNavUserrole);
-    }
-
-    async navigateToDashboardFromSideNavigation() {
-        await webActions.waitForElementAttached(this.sideNavHome);
-        await webActions.clickElement(this.sideNavHome)
-        await webActions.waitForElementAttached(this.sideNavDashboard);
-        await webActions.clickElement(this.sideNavDashboard);
-    }
-
-    async navigateToSmartboardFromSideNavigation(){
-        await webActions.waitForElementAttached(this.sideNavHome);
-        await webActions.clickElement(this.sideNavHome)
-        await webActions.waitForElementAttached(this.sideNavSmartboard);
-        await webActions.clickElement(this.sideNavSmartboard);
-    }
-
-
-    async navigateToContactPageFromSideNavigation() {
-        await webActions.waitForElementAttached(this.sideNavContactIcon);
-        await webActions.clickElement(this.sideNavContactIcon)
-        await webActions.waitForElementAttached(this.sideNavContacts);
-        await webActions.clickElement(this.sideNavContacts);
     }
 
     async navigateToRUMFromSideNavigation() {
@@ -261,47 +221,55 @@ export class SideNavBar {
     }
 
 
-    async navigateToDivisionFromSideNavigation() {
-        await webActions.waitForElementAttached(this.sideNavSettingsTest);
-        await webActions.clickElement(this.sideNavSettingsTest)
-        await webActions.waitForElementAttached(this.sideNavDivisionLocator);
-        await webActions.clickElement(this.sideNavDivisionLocator);
+    async navigateToExplorerFromSideNavigation() {
+        await webActions.waitForElementAttached(this.sideNavAnalytics);
+        await webActions.clickElement(this.sideNavAnalytics)
+        await webActions.waitForElementAttached(this.sideNavExplorer);
+        await webActions.clickElement(this.sideNavExplorer);
     }
 
+    async navigateToRecordsFromSideNavigation() {
+        await webActions.waitForElementAttached(this.sideNavAnalytics);
+        await webActions.clickElement(this.sideNavAnalytics)
+        await webActions.waitForElementAttached(this.sideNavRecords);
+        await webActions.clickElement(this.sideNavRecords);
+    }
+
+    async navigateToSmartboardFromSideNavigation(){
+        await webActions.waitForElementAttached(this.sideNavAnalytics);
+        await webActions.clickElement(this.sideNavAnalytics)
+        await webActions.waitForElementAttached(this.sideNavSmartboard);
+        await webActions.clickElement(this.sideNavSmartboard);
+    }
 
     async navigateToNewInstantTestFromSideNavigation() {
-        await webActions.waitForElementAttached(this.sideNavInstantTestLocator);
-        await webActions.clickElement(this.sideNavInstantTestLocator)
-        await webActions.waitForElementAttached(this.newInstantTestSiveNavLocator);
-        await webActions.clickElement(this.newInstantTestSiveNavLocator);
-    }
-
-    async navigateToSchedulesPageFromSideNavigation() {
-        await webActions.waitForElementAttached(this.sideNavSettingsTest);
-        await webActions.clickElement(this.sideNavSettingsTest)
-        await webActions.waitForElementAttached(this.sideNavSchedulesLocator);
-        await webActions.clickElement(this.sideNavSchedulesLocator);
+        await webActions.waitForElementAttached(this.sideNavInstantTestHistoryLocator);
+        await webActions.clickElement(this.sideNavInstantTestHistoryLocator)
+        await webActions.waitForElementAttached(this.instantTestInHistoryPage);
+        await webActions.clickElement(this.instantTestInHistoryPage);
     }
 
     async navigateToInstantTestHistoryFromSideNavigation() {
-            await webActions.waitForElementAttached(this.sideNavInstantTestLocator);
-            await webActions.clickElement(this.sideNavInstantTestLocator);
-            await webActions.waitForElementAttached(this.instantTestHistorySiveNavLocator);
-            await webActions.clickElement(this.instantTestHistorySiveNavLocator);
-        }
-    
-
-    async navigateToIndexesPageFromSideNavigation() {
-        await webActions.waitForElementAttached(this.sideNavSettingsTest);
-        await webActions.clickElement(this.sideNavSettingsTest);
-        await webActions.waitForElementAttached(this.sideNavIndexesLocator);
-        await webActions.clickElement(this.sideNavIndexesLocator);
+        await webActions.waitForElementAttached(this.sideNavInstantTestHistoryLocator);
+        await webActions.clickElement(this.sideNavInstantTestHistoryLocator);
     }
-    
 
     async clickOnReportSideNavigation() {
-            await webActions.waitForElementAttached(this.reportsSideNavBarLocator);
-            await webActions.clickElement(this.reportsSideNavBarLocator);
+        await webActions.waitForElementAttached(this.reportsSideNavBarLocator);
+        await webActions.clickElement(this.reportsSideNavBarLocator);
+}
+
+
+    async navigateToAlertLogFromSideNavigation() {
+        await webActions.waitForElementAttached(this.alertNavBarLocator);
+        await webActions.clickElement(this.alertNavBarLocator)
+    }
+
+    async navigateToContactPageFromSideNavigation() {
+        await webActions.waitForElementAttached(this.sideNavContactIcon);
+        await webActions.clickElement(this.sideNavContactIcon)
+        await webActions.waitForElementAttached(this.sideNavContacts);
+        await webActions.clickElement(this.sideNavContacts);
     }
 
     async navigateToContactGroupPageFromSideNavigation() {
@@ -311,16 +279,38 @@ export class SideNavBar {
         await webActions.clickElement(this.sideNavContactGroupLocator);
     }
 
+
+    async navigateToUserrolePageFromSideNavigation() {
+        await webActions.waitForElementAttached(this.sideNavSettingsTest);
+        await webActions.clickElement(this.sideNavSettingsTest)
+        await webActions.waitForElementAttached(this.sideNavUserrole);
+        await webActions.clickElement(this.sideNavUserrole);
+    }
     
+    async navigateToDivisionFromSideNavigation() {
+        await webActions.waitForElementAttached(this.sideNavSettingsTest);
+        await webActions.clickElement(this.sideNavSettingsTest)
+        await webActions.waitForElementAttached(this.sideNavDivisionLocator);
+        await webActions.clickElement(this.sideNavDivisionLocator);
+    }
+
+    async navigateToSchedulesPageFromSideNavigation() {
+        await webActions.waitForElementAttached(this.sideNavSettingsTest);
+        await webActions.clickElement(this.sideNavSettingsTest)
+        await webActions.waitForElementAttached(this.sideNavSchedulesLocator);
+        await webActions.clickElement(this.sideNavSchedulesLocator);
+    }
+    async navigateToIndexesPageFromSideNavigation() {
+        await webActions.waitForElementAttached(this.sideNavSettingsTest);
+        await webActions.clickElement(this.sideNavSettingsTest);
+        await webActions.waitForElementAttached(this.sideNavIndexesLocator);
+        await webActions.clickElement(this.sideNavIndexesLocator);
+    }
+
     async getNewWindow(context: BrowserContext, locator: string) {
         return await webActions.newWindowHandle(context, locator);
     }
-    async navigateToAlertLogFromSideNavigation() {
-        await webActions.waitForElementAttached(this.alertNavBarLocator);
-        await webActions.clickElement(this.alertNavBarLocator)
-        await webActions.waitForElementAttached(this.alertLogNavigationLocator);
-        await webActions.clickElement(this.alertLogNavigationLocator);
-    }
+   
 
     async navigateToMapFromNodeSideNavigation() {
         await webActions.waitForElementAttached(this.nodesSideNavMenuLocator);
@@ -349,7 +339,7 @@ export class SideNavBar {
         await webActions.waitForElementAttached(this.instancesFromNodesMenuLocator);
         await webActions.clickElement(this.instancesFromNodesMenuLocator);
     }
-
+    
     async clickOnHomeIcon(){
         await webActions.waitForElementAttached(this.sideNavHome);
         await webActions.clickElement(this.sideNavHome)
