@@ -30,7 +30,7 @@ test("ActiveTestsAreChangingToInactiveOnceWehenRefreshPage  @ProductionDefect@Sy
     //click on save
     await syntheticTestDetailPage.clickSaveButton();
     //reload page
-    await util.delay(3000);
+    await util.delay(10000);
     await page.reload();
     await synCCPage.waitForItemPresentInMasterBlade('Selenium');
     //navigate to dashboard page

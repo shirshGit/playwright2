@@ -11,13 +11,14 @@ test("VerifyClientLevelShouldBeSelectedByDefaultUnderDivisionDropDown @Synthetic
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
     //click on division drop down
     await synCCPage.clickDivisionDropDown();
+    let classProperty = await synCCPage.getAttributeProperty(synCCPage.selectedItemLocatorInDivDropDown)
     //validation for division drop down 
-    await verification.verifyIfElementIsPresent(synCCPage.selectedItemLocatorInDivDropDown ,"Client Level is not selected in division drop down.");
+    await verification.verifySoftAssertTrue(classProperty.includes('dropdownItemSelected') ,"Client Level is not selected in division drop down.");
     
 })
 
 /*
-     CP-34477 : Verify reset the dropdown to be set to "Client Level" and disable the dropdown when user click other
+    CP-34477 : Verify reset the dropdown to be set to "Client Level" and disable the dropdown when user click other
 */
 
 test("VerifyResetDivisionDropDownToBeSetClientLevel @SyntheticControlCenter@ControlCenter", async({baseTestUtil,syntheticTestDetailPage, contactDetailsPage,loginPage, sideNavigationBar,util,testUtility,synCCPage,contactsPage, verification}) => {
@@ -46,7 +47,7 @@ test("VerifyResetDivisionDropDownToBeSetClientLevel @SyntheticControlCenter@Cont
     await synCCPage.clickOnRumInRootBlade();
     await util.delay(2000);
     //validation for division drop down
-    await verification.verifyIfElementIsPresent(synCCPage.selectedItemLocatorInDivDropDown ,"Client Level is not selected in division drop down.");
+    await verification.verifyIfElementIsPresent(synCCPage.commonLocator('Client Level') ,"Client Level is not selected in division drop down.");
     
 })
 

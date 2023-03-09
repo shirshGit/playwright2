@@ -14,8 +14,10 @@ export class SourceSelectorSmartboard extends SyntheticSmartboardPage{
     }
 
     //#region This region is for getter
-    private _searchBox = '//input[@data-testid="searchText"]';
-    private _firstRowSearchCheckBoxInSelectorPage = '//i[@data-icon-name="StatusCircleCheckmark"]/div';
+    private _searchBox1 = '//input[@data-testid="searchText"]';
+    private _searchBox2 = '(//input[@data-testid="fabricsearchbox"])[2]';
+    private _firstRowSearchCheckBoxInSelectorPage1 = '//i[@data-icon-name="StatusCircleCheckmark"]/div';
+    private _firstRowSearchCheckBoxInSelectorPage2 = '//div[@data-automationid="DetailsRowCheck"]//label'
     private _nodeTab = '//li[text()="Nodes"]';
     private _myAppTab = '//li[text()="My Apps"]';
     private _testTab = '//li[text()="Tests"]';
@@ -33,12 +35,18 @@ export class SourceSelectorSmartboard extends SyntheticSmartboardPage{
     private _application = '//span[text()="Application"]';
 
 
-    public get searchBox() {
-        return this._searchBox;
+    public get searchBox1() {
+        return this._searchBox1;
+    }
+    public get searchBox2() {
+        return this._searchBox2;
     }
 
-    public get firstRowSearchCheckBoxInSelectorPage() {
-        return this._firstRowSearchCheckBoxInSelectorPage
+    public get firstRowSearchCheckBoxInSelectorPage1() {
+        return this._firstRowSearchCheckBoxInSelectorPage1
+    }
+    public get firstRowSearchCheckBoxInSelectorPage2() {
+        return this._firstRowSearchCheckBoxInSelectorPage2
     }
 
     public get myAppTabLocator() {
@@ -80,18 +88,30 @@ export class SourceSelectorSmartboard extends SyntheticSmartboardPage{
 
     //#region This region is to have the functions
 
-    async clickOnFirstSearchedItemInSelectorPage(itemName: string) {
-        await this.searchItem(itemName);
-        await webActions.clickElement(this.firstRowSearchCheckBoxInSelectorPage);
+    async clickOnFirstSearchedItemInSelectorPage(itemName: string, parentName:string) {
+        await this.searchItem(itemName,parentName);
+        let xpath = null;
+        if (parentName === 'Nodes') {
+            xpath = this.firstRowSearchCheckBoxInSelectorPage2;
+        }else{
+            xpath = this.firstRowSearchCheckBoxInSelectorPage1;
+        }
+        await webActions.clickElement(xpath);
     }
 
-    async searchItem(item: string) {
-        await webActions.waitForElementAttached(this.searchBox);
-        await webActions.clickElement(this.searchBox);
-        await webActions.enterElementText(this.searchBox, item);
+    async searchItem(item: string, parentName:string) {
+        let xpath = null;
+        if (parentName === 'Nodes' || parentName === 'My Apps') {
+            xpath = this.searchBox2;
+        }else{
+            xpath = this.searchBox1;
+        }
+        await webActions.waitForElementAttached(xpath);
+        await webActions.clickElement(xpath);
+        await webActions.enterElementText(xpath, item);
         await util.delay(1000);
-        await webActions.clickElement(this.searchBox);
-        await webActions.keyPress(this.searchBox, 'Enter')
+        await webActions.clickElement(xpath);
+        await webActions.keyPress(xpath, 'Enter')
         await webActions.onlyKeyPress('Enter');
     }
 
@@ -102,6 +122,9 @@ export class SourceSelectorSmartboard extends SyntheticSmartboardPage{
 
     async clickOnTab(item : string){
         await webActions.clickElement(this.tabLocator(item));
+    }
+    async selectTabUnderNodes(item : string){
+        await webActions.clickElement(this.commonLocator(item));
     }
     
 
