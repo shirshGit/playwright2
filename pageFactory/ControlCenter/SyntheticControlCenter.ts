@@ -44,8 +44,8 @@ export class SynControlCenterPage {
     private _locationOfItem = '(//span[contains(@class,"ms-Breadcrumb-item")]/div[contains(@class,"ms-TooltipHost")])[2]';
     private _moveButtonInHeaderSection = '//button[text()="Move"]';
     private _moveButtonInTestLocationBlade = '//button[@type="button"]//span[text()="Move"]';
-    private _divisionLevelDDInRootSection = '//div[contains(@class,"DivisionComboBox_divisionSelector")]//div[@id="chevron-down-icon"]';
-    private _clientLevelInDivisionDropDown = '//span[text()="Client Level"]';
+    private _divisionLevelDDInRootSection = '//label[text()="Division"]/..//i[@data-icon-name="chevrondown"]';
+    private _clientLevelInDivisionDropDown = '//button[@title="Client Level"]';
     private _closeMasterBlade = '//div[@data-testid="cancel-icon"]';
     private _statusOfFirstItem = '//div[@data-automation-key="Status_4"]';
     private _getItemLocation = '(//span[contains(@class,"ms-Breadcrumb-item")])[2]/div';
@@ -222,6 +222,9 @@ export class SynControlCenterPage {
     }
     public get activeStatsLocatorOfFirstSearchedItem(){
         return this._activeStatusOfFirstSearchedItem;
+    }
+    public get commonLocator(){
+        return (text:string) => { return `//span[text()="${text}"]`}
     }
 
 
@@ -424,7 +427,7 @@ export class SynControlCenterPage {
     }
 
     async clickDivisionDropDown(){
-        await webActions.clickElement(this.clickOnDivisionDropDownLocator);
+        await webActions.clickElementJS(this.clickOnDivisionDropDownLocator);
 
     }
 
@@ -451,6 +454,10 @@ export class SynControlCenterPage {
     }
     async getUrl() {
         return await webActions.getCurrentPageUrl();
+    }
+    async getAttributeProperty(loc:string){
+        let property = await webActions.getElementAttributeValue(loc,'class')
+        return property
     }
 
    

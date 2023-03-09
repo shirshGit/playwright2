@@ -6,10 +6,10 @@ export const stagedata = {
 
     'defaultUserrole' : 'Client Administrator',//for contact default system access
 
-    'endpointTracerouteTestID' : '3892',
-    'endpointLocationID' : '7003',
-    'endpointID' : '199745416042238',
-    'endpointEmployeeApp' : '2073',
+    'endpointTracerouteTestID' : '5599',
+    'endpointLocationID' : '4723',
+    'endpointID' : 'PradeepD-INL2',
+    'endpointEmployeeApp' : '2562',
 
     'imapTestID' : '249840', // used for records automation
 

@@ -19,25 +19,25 @@ export class SideNavBar {
     private _sideNavControlCenter = '#controlcentersection';
     private _sideNavCCTest = '//button/a[text()="Tests"]';
     private _sideNavAnalytics = '#analysissection';
-    private _sideNavExplorer = '//a[text()="Explorer"]';
+    private _sideNavExplorer = '//span[text()="Explorer"]';
     private _homesection = '#homesection';
     private _dashboard = '//a[text()="Dashboard"]';
     private _sideNavSettings = '//i[@data-icon-name="settingsSiteNav"]';
-    private _sideNavUserrole = '//a[text()="User Roles"]';
-    private _sideNavContactIcon = '//i[@data-icon-name="contactsSiteNav"]//div';
-    private _sideNavContacts = '//a[text()="Contacts"]/..';
+    private _sideNavUserrole = '//span[text()="User Roles"]';
+    private _sideNavContactIcon = '(//span[text()="Contacts"])[1]';
+    private _sideNavContacts = '(//span[text()="Contacts"])[2]';
     private _sideNavRum = '(//div[1][contains(@class,"NavigationTree_navGroupText_")][normalize-space()="RUM"])[2]';
-    private _sideNavRecords = '//a[text()="Records"]';
+    private _sideNavRecords = '//span[text()="Records"]';
     private _sideNavEndpoint = '(//div[1][contains(@class,"NavigationTree_navGroupText_")][normalize-space()="Endpoint"])[2]';
-    private _sideNavSmartboard = '//a[text()="Smartboard"]';
-    private _testTemplate = '(//div[1][contains(@class,"NavigationTree_navGroupText_")][normalize-space()="Test Templates"])[2]';
-    private _sideNavDivision = '//a[text()="Divisions"]';
-    private _library = '(//div[1][contains(@class,"NavigationTree_navGroupText_")][normalize-space()="Library"])[2]';
-    private _sideNavSchedules = '//a[text()="Schedules"]';
+    private _sideNavSmartboard = '//span[text()="Smartboard"]';
+    private _testTemplate = '//div[contains(text(),"Test Templates")]';
+    private _sideNavDivision = '//span[text()="Divisions"]';
+    private _library = '//div[contains(text(),"Library")]';
+    private _sideNavSchedules = '//span[text()="Schedules"]';
     private _sideNavInstantTest = '#instanttestssection';
-    private _sideNavIndexes = '//a[text()="Indexes"]';
+    private _sideNavIndexes = '//span[text()="Indexes"]';
     private _newInstantTestSiveNav = '//button[text()="New Instant Test"]';
-    private _contactGroup = '//a[text()="Contact Groups"]';
+    private _contactGroup = '//span[text()="Contact Groups"]';
     private _instantTestHistorySiveNav = '//a[text()="Instant Test History"]';
     private _reportsSideNavBar = '#reportssection';
     private _reportPageLinkSideNavBar = '//span[contains(@class,"SiteNavigationSubGroupMenu") and text()="Reports"]';
@@ -45,10 +45,10 @@ export class SideNavBar {
     private _alertSideNav = "#alertsection";
     private _alertNavigation = '//a[text()="Alert Log"]';
     private _nodesSideNavMenu = '#nodesection';
-    private _mapNavigationFromNodesMenu = '//a[text()="Map"]';
-    private _groupNavigationFromNodeMenu = '//a[text()="Groups"]';
-    private _nodeListNavigationFromNodeMenu = '//a[text()="Nodes"]';
-    private _instancesFromNodesMenu = '//a[text()="Instances"]';
+    private _mapNavigationFromNodesMenu = '//span[text()="Node Map"]';
+    private _groupNavigationFromNodeMenu = '//span[text()="Node Groups"]';
+    private _nodeListNavigationFromNodeMenu = '//span[text()="Nodes"]';
+    private _instancesFromNodesMenu = '//span[text()="Instances"]';
     private _homeSection = '//div[@data-testid="site-nav"]//div[@id="homesection"]'
 
     public get sideNavControlCenter() {

@@ -45,6 +45,12 @@ export class RUMSmartboardPage {
     public get domInteractiveMetricsValueLocator(){
         return this._domInteractiveMetricsValue;
     }
+    public get commonLocator(){
+        return (text:string) => { return `//span[text()="${text}"]`}
+    }
+    public get commoNLocator(){
+        return (text:string) => { return `(//div[text()="${text}"])[1]`}
+    }
 
    
     //#endregion

@@ -20,10 +20,13 @@ export class EndpointSmartboardPage {
     private _compareDropDown = '(//i[@data-icon-name="chevrondownLarge"])[1]//div';
     private _timeLine = '//div[contains(@class,"EndpointSmartboardstyles__EndpointSmartboardTimeline")]';
     private _timeFrame = '//input[@value="Last 24 Hours"]';
-    private _summary = '//span[text()="Summary"]';
+    private _domainWidget = '(//div[text()="Domains"]/../../../..)[2]';
+    private _endpointWidget = '//div[text()="Endpoints"]/../../../..'
+    private _locWidget = '//div[text()="Location"]/../../../..'
+    private _trendingChart = '//li[text()="Trending"]/../../..';
     private _endpoint = '//span[text()="Endpoints"]';
-    private _network = '//span[text()="Network"]';
-    private _application = '//span[text()="Application"]';
+    private _endpointSmartboardNetworkTAb = '//div[@data-testid="endpoint-smartboard-network-tabs"]';
+    private _endpointDomainWidget = '(//div[text()="Domains"]/../../../..)';
     private _endPointTested = '//div[text()="Endpoints Tested"]';
     private _locationTested = '//div[text()="Locations Tested"]';
     private _name = '//span[text()="Name"]';
@@ -34,14 +37,14 @@ export class EndpointSmartboardPage {
     private _isp = '//span[text()="ISP"]';
     //location summeryTab
     private _expScore = '//span[text()="Experience Score"]';
-    private _trendingChart = '//div[contains(@class,"Chart_chartCont_")]';
+    //private _trendingChart = '//div[contains(@class,"Chart_chartCont_")]';
     //location endpointTab
     private _pageViews = '//span[text()="Page Views"]';
     private  _endpointWidgetInEndpointLoc = '//div[@data-testid="endpoint-breakdown-dimension-container"]';
     //location networkTab
     private _domains = '//div[@data-testid="plainCard"]//div[text()="Domains"]';
     private _failures = '//div[text()="Failures"]';
-    private _endpointWidget = '(//div[@data-automationid="DetailsList"])[1]';    
+    //private _endpointWidget = '(//div[@data-automationid="DetailsList"])[1]';    
 
     //common locators
     private _endpointScore = '//span[text()="Endpoint Score"]';
@@ -52,40 +55,28 @@ export class EndpointSmartboardPage {
     private _testRun = '//div[text()="Test Runs"]';
     private _appScore = '//span[text()="Network Score"]';
     private _errors = '//span[text()="Errors"]';
-    private _domainWidget = '(//div[@data-automationid="DetailsList"])[2]';
+    //private _domainWidget = '(//div[@data-automationid="DetailsList"])[2]';
     private _networkPath = '//span[text()="Network Path"]';
     private _hopByHop = '//span[text()="Hop-by-Hop"]';
-    private _trending = '//span[text()="Trending"]';
-    private _appVisited = '//div[contains(text(),"Applications Visited")]';
-    private _urlTested = '//div[text()="URLs Tested"]';
+    private _trending = '';
+    private _appVisited = '//div[@data-testid="endpoint-device-apps-visited-list"]';
+    private _urlTestedWidget = '//div[text()="URLs Tested"]/../../../..';
     private _doccomplete = '//div[text()="Doc Complete"]';
     private _downtime = '//div[text()="% Downtime"]';
     private _urlWidget = '(//div[text()="URLs Tested"])[2]/../../../..';
-    private _appVisititedWidget = '(//div[text()="Applications Visited"])[2]';
+    private _appVisititedWidget = '//div[text()="Applications Visited"]/../../../..';
     private _trendsChart = '//li[text()="Trends"]/../../..';
 
 
     
-    //endpoint overview tab
-    private _callquality = '//div[text()="Call Quality"]';
-    private _vpnHealth = '//div[text()="VPN Health"]';
-    private _online = '//div[text()="Online"]';
-    private _event = '//div[text()="Events"]';
-    private _issue = '//div[text()="Issue"]';
+    //endpoint 
     private _settingsIcon = '//i[@data-icon-name="properties"]';
-    private _keyMetricsWidget = '//div[@data-testid="key-metrics-container"]';
-    private _issueNdEventWidget = '(//div[contains(@class,"KeyEventsTableContainerstyl")])[1]';
+    private _keyMetricsWidget = '//div[text()="Key Metrics"]/../../..';
+    private _issueNdEventWidget = '//div[text()="Events & Issues"]/..';
     private _endpointTimeLine  = '//div[@data-testid="smartboard-timeline"]';
-    
-    //endpoint endpoint tab
-    private _filterButton = '(//button[@id="action-button"])[3]';
-    private _cpuUsageCardMetrics = '//span[text()="CPU Usage"]';
-    private _memoryUsageCardMetrics = '//span[text()="CPU Usage"]';
-    private _wifiStrenghtCardMetrics = '//span[text()="CPU Usage"]';
-    private _signalQualityCardMetrics = '//span[text()="CPU Usage"]';
-    private _hardwareUsageWidget = '//div[contains(@class,"DeviceContainerstyles__ChartContainer-")]';
-    private _processWidget = '//div[@data-automationid="DetailsList"]';
-    private _systemInfoCard = '//div[@data-testid="multipleDataCard"]';
+    private _hardwareUsageWidget = '//li[text()="Hardware Usage"]/../../..';
+    private _processWidget = '//div[text()="Processes"]/../../../..';
+    private _systemInfoCard = '//div[text()="System Info"]/../..';
     
     //endpoint network tab
     private _failure = '//div[text()="Failures"]';
@@ -99,44 +90,46 @@ export class EndpointSmartboardPage {
     private _locCardMetrics = '//div[text()="Locations"]';
     private _pageViewCardMetrics = '//div[text()="Page Views"]';
     private _errorCardMetrics = '//div[text()="Errors"]';
-    private _endpointPerLocationChart = '//div[text()="Endpoints Per Location"]/../../../..';
+    private _endpointPerLocationWidget = '//div[@data-testid="endpoint-app-device-list"]';
     
     //employee app network tab
-    private _endpointWgtForNetworkTab = '//div[text()="Endpoints"]/../../../..';
     private _locWidgetForNetworkTab = '//div[text()="Location"]/../../../..';
-    private _networkWidget = '//span[text()="Network Path"]';
-    private _hopByHopWidget = '//span[text()="Hop-by-Hop"]';
+    private _networkWidget = '//div[contains(@class,"EndpointNetworkVizContainerstyles__EndpointNetworkViz")]';
+    private _hopByHopText = '//span[text()="Hop-by-Hop"]';
+    private _hopBtHopWidget = '//div[@data-testid="hop-traceroute"]';
 
-    public get endpointTimeLineLocator(){
-        return this._endpointTimeLine;
+    public get endpointWidgetLocator(){
+        return this._endpointWidget;
     }
-
-    public get endpointWgtForNetworkTabLocator(){
-        return this._endpointWgtForNetworkTab;
+    public get domainWidgetLocator(){
+        return this._domainWidget;
     }
-    public get locWidgetForNetworkTabLocator(){
-        return this._locWidgetForNetworkTab;
+    public get locWidgetLocator(){
+        return this._locWidget;
     }
-    public get networkWidgetLocator() {
+    public get networkPathWidgetLocator() {
         return this._networkWidget;
     }
+    public get hopByHopTextLocator() {
+        return this._hopByHopText;
+    }
     public get hopByHopWidgetLocator() {
-        return this._hopByHopWidget;
+        return this._hopBtHopWidget;
     }
     public get endpointPerLocationChartLocator(){
-        return this._endpointPerLocationChart;
+        return this._endpointPerLocationWidget;
     }
-    public get locCardMetricsLocator(){
-        return this._locCardMetrics;
+    public get trendingChartLocator(){
+        return this._trendingChart;
     }
-    public get pageViewCardMetricsLocator() {
-        return this._pageViewCardMetrics;
+    public get endpointDomainWidgetLocator() {
+        return this._endpointDomainWidget;
     }
-    public get errorCardMetricsLocator() {
-        return this._errorCardMetrics;
+    public get appVisititedWidgetLocator() {
+        return this._appVisititedWidget;
     }
-    public get trendsChartLocator(){
-        return this._trendsChart;
+    public get urlTestedWgtLocator(){
+        return this._urlTestedWidget;
     }
     public get goButtonLocator() {
         return this._goButton;
@@ -150,138 +143,112 @@ export class EndpointSmartboardPage {
     public get timeLineLocator() {
         return this._timeLine;
     }
+    public get timeFrame(){
+        return this._timeFrame;
+    }
 
-    public get summaryTabLocator() {
-        return this._summary;
+    public get endpointSmartboardNetworkTAbLocator() {
+        return this._endpointSmartboardNetworkTAb;
     }
 
     public get endpointTabLocator() {
         return this._endpoint;
     }
 
-    public get applicationTabLocator() {
-        return this._application;
+    public get endpointTimeLineLocator() {
+        return this._endpointTimeLine;
     }
 
-    public get networkTabLocator() {
-        return this._network;
-    }
+    // public get networkTabLocator() {
+    //     return this._network;
+    // }
 
-    public get timeFrame(){
-        return this._timeFrame;
-    }
-
-    public get networkScoreMetricsInNetworkTabForTestLocator(){
-        return this._networkScore;
-    }
-
-    public get networkScoreMetricsInNetworkTabForLocLocator(){
-        return this._netWorkScore;
-    }
-
-    public get endpointTestedCardMetricsInNetworkTabLocator(){
-        return this._endPointTested;
-    }
-
-    public get locationTestedCardMetricsInNetworkTabLocator(){
-        return this._locationTested;
-    }
-
-    public get nameInEndpointTabLocator(){
-        return this._name;
-    }
-
-    public get timeInEndpointTabLocator(){
-        return this._time;
-    }
-
-    public get networkScoreInEndpointTabLocator(){
-        return this._networkScoreInEndpointTab;
-    }
-
-    public get roundTripInEndpointTabLocator(){
-        return this._roundtrip;
-    }
-
-    public get cityInEndpointTabLocator(){
-        return this._city;
-    }
-
-    public get ispInEndpointTabLocator(){
-        return this._isp;
-    }
     
-    public get expScoreInLocationSummaryTabLocator(){
-        return this._expScore;
-    }
 
-    public get trendingChartInLocationSummaryTab(){
-        return this._trendingChart;
-    }
+    // public get networkScoreMetricsInNetworkTabForTestLocator(){
+    //     return this._networkScore;
+    // }
 
-    public get pageViewInLocationEndpointTab(){
-        return this._pageViews;
-    }
+    // public get networkScoreMetricsInNetworkTabForLocLocator(){
+    //     return this._netWorkScore;
+    // }
 
-    public get endpointWidgetInEndpointLocationTab(){
-        return this._endpointWidgetInEndpointLoc;
-    }
+    // public get endpointTestedCardMetricsInNetworkTabLocator(){
+    //     return this._endPointTested;
+    // }
 
-    public get domainInEndpointLocationTab(){
-        return this._domains;
-    }
+    // public get locationTestedCardMetricsInNetworkTabLocator(){
+    //     return this._locationTested;
+    // }
 
-    public get failureInEndpointLocationLocator(){
-        return this._failures;
-    }
+    // public get nameInEndpointTabLocator(){
+    //     return this._name;
+    // }
 
-    public get domainWidgetInNetworkLocationTab(){
-        return this._domainWidget;
-    }
+    // public get timeInEndpointTabLocator(){
+    //     return this._time;
+    // }
 
-    public get endpointWidgetInnetworkLocationLocator(){
-        return this._endpointWidget;
-    }
-    public get hopByHopInNetworkTabLocator(){
-        return this._hopByHop;
-    }
+    // public get networkScoreInEndpointTabLocator(){
+    //     return this._networkScoreInEndpointTab;
+    // }
 
-    public get networkPathInNetworkTabLocator(){
-        return this._networkPath;
-    }
+    // public get roundTripInEndpointTabLocator(){
+    //     return this._roundtrip;
+    // }
 
-    public get appVisitedInApplicationTab(){
+    // public get cityInEndpointTabLocator(){
+    //     return this._city;
+    // }
+
+    // public get ispInEndpointTabLocator(){
+    //     return this._isp;
+    // }
+    
+    // public get expScoreInLocationSummaryTabLocator(){
+    //     return this._expScore;
+    // }
+
+    // public get trendingChartInLocationSummaryTab(){
+    //     return this._trendingChart;
+    // }
+
+    // public get pageViewInLocationEndpointTab(){
+    //     return this._pageViews;
+    // }
+
+    // public get endpointWidgetInEndpointLocationTab(){
+    //     return this._endpointWidgetInEndpointLoc;
+    // }
+
+    // public get domainInEndpointLocationTab(){
+    //     return this._domains;
+    // }
+
+    // public get failureInEndpointLocationLocator(){
+    //     return this._failures;
+    // }
+
+    // public get domainWidgetInNetworkLocationTab(){
+    //     return this._domainWidget;
+    // }
+
+    // public get endpointWidgetInnetworkLocationLocator(){
+    //     return this._endpointWidget;
+    // }
+    // public get hopByHopInNetworkTabLocator(){
+    //     return this._hopByHop;
+    // }
+
+    // public get networkPathInNetworkTabLocator(){
+    //     return this._networkPath;
+    // }
+
+    public get appVisitedWidgetTab(){
         return this._appVisited;
-    }
-
-    public get urlTestedInApplicationLocator(){
-        return this._urlTested;
-    }
-
-    public get docCompletedApplicationLocator(){
-        return this._doccomplete;
-    }
-
-    public get onlineLocator() {
-        return this._online;
-    }
-
-    public get vpnHealthLocator() {
-        return this._vpnHealth;
-    }
-
-    public get issueLocator() {
-        return this._issue;
     }
     public get settingsIconLocator() {
         return this._settingsIcon;
-    }
-
-    public get eventsLocator() {
-        return this._event;
-    }
-    public get callQualityLocator() {
-        return this._callquality;
     }
     public get keyMetricsWidgetLocator() {
         return this._keyMetricsWidget;
@@ -290,65 +257,65 @@ export class EndpointSmartboardPage {
         return this._issueNdEventWidget;
     }
 
-    public get filterButtonLocator() {
-        return this._filterButton;
-    }
+    // public get filterButtonLocator() {
+    //     return this._filterButton;
+    // }
 
-    public get wifiMetricsLocator() {
-        return this._wifiStrenghtCardMetrics;
-    }
-    public get signalQualityLocator() {
-        return this._compareDropDown;
-    }
+    // public get wifiMetricsLocator() {
+    //     return this._wifiStrenghtCardMetrics;
+    // }
+    // public get signalQualityLocator() {
+    //     return this._compareDropDown;
+    // }
     public get trendingWidgetLocator() {
         return this._trending;
     }
-    public get appVisitedWidgetLocator() {
-        return this._appVisititedWidget;
-    }
+    // public get appVisitedWidgetLocator() {
+    //     return this._appVisititedWidget;
+    // }
     public get urlTestedWidgetLocator() {
         return this._urlWidget;
     }
-    //common
-    public get endpointScoreMetricsLocator(){
-        return this._endpointScore;
-    }
+    // //common
+    // public get endpointScoreMetricsLocator(){
+    //     return this._endpointScore;
+    // }
 
-    public get netScoreMetricsLocator(){
-        return this._netWorkScore;
-    }
+    // public get netScoreMetricsLocator(){
+    //     return this._netWorkScore;
+    // }
 
-    public get roundTripMetricsLocator(){
-        return this._roundTrip;
-    }
+    // public get roundTripMetricsLocator(){
+    //     return this._roundTrip;
+    // }
 
-    public get packetLossCardMetricsLocator(){
-        return this._packetLoss;
-    }
+    // public get packetLossCardMetricsLocator(){
+    //     return this._packetLoss;
+    // }
 
-    public get testRunCardMetricsLocator(){
-        return this._testRun;
-    }
+    // public get testRunCardMetricsLocator(){
+    //     return this._testRun;
+    // }
 
-    public get appScoreMetricsLocator(){
-        return this._appScore;
-    }
+    // public get appScoreMetricsLocator(){
+    //     return this._appScore;
+    // }
 
-    public get errorMetricsLocator(){
-        return this._errors;
-    }
+    // public get errorMetricsLocator(){
+    //     return this._errors;
+    // }
 
-    public get cpuUsageCardLocator(){
-        return this._cpuUsageCardMetrics
-    }
+    // public get cpuUsageCardLocator(){
+    //     return this._cpuUsageCardMetrics
+    // }
 
-    public get memoryUsageMetricsLocator(){
-        return this._memoryUsageCardMetrics;
-    }
+    // public get memoryUsageMetricsLocator(){
+    //     return this._memoryUsageCardMetrics;
+    // }
 
-    public get wifiStrenghtCardLocator(){
-        return this._wifiStrenghtCardMetrics
-    }
+    // public get wifiStrenghtCardLocator(){
+    //     return this._wifiStrenghtCardMetrics
+    // }
 
     public get processWidgetLocator(){
         return this._processWidget;
@@ -358,46 +325,65 @@ export class EndpointSmartboardPage {
         return this._hardwareUsageWidget
     }
 
-    public get signalQualityMetricsLocator(){
-        return this._signalQualityCardMetrics;
-    }
+    // public get signalQualityMetricsLocator(){
+    //     return this._signalQualityCardMetrics;
+    // }
 
     public get systemInfoCardLocator(){
         return this._systemInfoCard;
     }
 
-    public failureCardMetricsLocator() {
-        return this._failure;
-    }
-    public get pktLossCardMetricsLocator() {
-        return this._packetLoss;
-    }
+    // public failureCardMetricsLocator() {
+    //     return this._failure;
+    // }
+    // public get pktLossCardMetricsLocator() {
+    //     return this._packetLoss;
+    // }
 
-    public get jitterCardMetricsLocator() {
-        return this._jitter;
-    }
-    public get uploadCardMetricsLocator() {
-        return this._upload;
-    }
-    public get downloadCardMetricsLocator() {
-        return this._download;
-    }
-    public get domainWidgetEndPointLocator() {
-        return this._domainWidgetEndpoint;
-    }
+    // public get jitterCardMetricsLocator() {
+    //     return this._jitter;
+    // }
+    // public get uploadCardMetricsLocator() {
+    //     return this._upload;
+    // }
+    // public get downloadCardMetricsLocator() {
+    //     return this._download;
+    // }
+    // public get domainWidgetEndPointLocator() {
+    //     return this._domainWidgetEndpoint;
+    // }
 
-    public get locWidgetLocator() {
-        return this._locationWidgetEndpoint;
-    }
+    // public get locWidgetLocator() {
+    //     return this._locationWidgetEndpoint;
+    // }
 
-    public get downTimeLOcator(){
-        return this._downtime;
+    // public get downTimeLOcator(){
+    //     return this._downtime;
+    // }
+
+    public get commonLocator(){
+        return (text:string) => { return `//span[text()="${text}"]`}
+    }
+    public get commoNLocator(){
+        return (text:string) => { return `(//div[text()="${text}"])[1]`}
+    }
+    public get tabLocator() {
+        return (text:string) => {return `//span[text()="${text}"]`};
     }
     //#endregion
 
     //#region This region is to have the functions
     async clickOnEndpointTab(){
         await webActions.clickElement(this.endpointTabLocator);
+    }
+
+    async clickOn(item:string){
+        await webActions.waitForElementAttached(this.commonLocator(item));
+        await webActions.clickElement(this.commonLocator(item));
+    }
+
+    async clickOnTab(item : string){
+        await webActions.clickElement(this.tabLocator(item));
     }
 
 

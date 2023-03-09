@@ -13,23 +13,34 @@ test("VerifySmartboardTestLoads @PageNavigation@ProductionSmoke@Smoke", async ({
     await verification.validationsForPage();
     await verification.verifyIfElementIsPresent(sourceSelectorSmartboard.testTabLocator, 'Test Tab is not present in source selector');
     //select test
-    await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(transactionTestID);
+    await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(transactionTestID,'Tests');
     //validation for errors
     await verification.validationsForPage();
-    //validation for metrics
-    await verification.verifyIfElementIsPresent(syntheticSmartboardPage.testTimeMetricsInTimeLineLocator, "test time metrics in time line is not present");
-    await verification.verifyIfElementIsPresent(syntheticSmartboardPage.rumMetricsInTimeLineLocator, "run metrics is not present")
-    await verification.verifyIfElementIsPresent(syntheticSmartboardPage.downTimeMetricsInKeyMetricLocator, "down time metrics in key metrics is not present")
-    await verification.verifyIfElementIsPresent(syntheticSmartboardPage.downTimeMetricsInTimeLine, "down time in timeline is not present");
-    await verification.verifyIfElementIsPresent(syntheticSmartboardPage.testTimeMetricsInKeyMetricLocator, "test time metrics is not present");
-    await verification.verifyIfElementIsPresent(syntheticSmartboardPage.testTimeMetricsInKeyMetricLocator, "test time metricsin key metrics is not present");
+    //validation for time line metrics
+    let timeLineMetrics: string[] = await syntheticSmartboardPage.testWiseTimeLineMetrics()
+    for (let index = 0; index < timeLineMetrics.length; index++) {
+        const element = timeLineMetrics[index]
+        if (index == 0) {
+            await verification.verifyIfElementIsPresent(syntheticSmartboardPage.commonLocator(element), element +" metrics is not present in time line");
+        }
+        else {
+            await verification.verifyIfElementIsPresent(syntheticSmartboardPage.commoNLocator(element), element +" metrics is not present in time line");
+        }
 
+    }
+    //validation for key metrics
+    let keyMetrics: string[] = await syntheticSmartboardPage.testWiseKeyMetrics('Transaction')
+    for (let index = 0; index < keyMetrics.length; index++) {
+        const element = keyMetrics[index];
+            await verification.verifyIfElementIsPresent(syntheticSmartboardPage.commoNLocator(element), element +" metrics is not present in key metrics section");
+        
+    }
+    
 
 })
 /*
     CP-44496 : Verify Node smartboard navigation
 */
-
 test("VerifySmartboardNodeLoads @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, nodeSmartboardPage, util }) => {
     let data = new DataForEnv();
     let nodeName = await data.getValueOfTheParameter('node');
@@ -40,8 +51,12 @@ test("VerifySmartboardNodeLoads @PageNavigation@ProductionSmoke@Smoke", async ({
     await verification.verifyIfElementIsPresent(sourceSelectorSmartboard.nodeTabLocator, 'node Tab is not present in source selector');
     //click on node tab
     await sourceSelectorSmartboard.clickOnTabInSourceSelector("Nodes");
+    await util.delay(6000);
+    //select node
+    await sourceSelectorSmartboard.selectTabUnderNodes('Node')
+    await util.delay(4000);
     //select test
-    await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(nodeName);
+    await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(nodeName,'Nodes');
     //validation for errors
     await verification.validationsForPage();
     //validation for metrics
@@ -64,19 +79,23 @@ test("VerifySmartboardRUMLoads @PageNavigation@ProductionSmoke@Smoke", async ({ 
     await verification.validationsForPage();
     await verification.verifyIfElementIsPresent(sourceSelectorSmartboard.myAppTabLocator, 'my app Tab is not present in source selector');
     //click on my app tab
-    await sourceSelectorSmartboard.clickOnTabInSourceSelector("RUM");
+    await sourceSelectorSmartboard.clickOnTabInSourceSelector("My Apps");
     //select test
-    await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(appName);
+    await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(appName,'My Apps');
     //validation for errors
     await verification.validationsForPage();
-    //validation for metrics and filters
+    //validation for time line metrics and filters
     await verification.verifyIfElementIsPresent(rumSmartboardPage.pageViewsMetricsValueLocator, "page view metrics is not present");
     await verification.verifyIfElementIsPresent(rumSmartboardPage.docCompleteMetricsValueLocator, "doc complete metric is not present")
     await verification.verifyIfElementIsPresent(rumSmartboardPage.jsValueMetricsLocator, "jsValue metric is not present")
     await verification.verifyIfElementIsPresent(rumSmartboardPage.filterButtonDropDown, "filter button is not present");
-    await verification.verifyIfElementIsPresent(rumSmartboardPage.responseMetricsValueLocator, "response metric is not present")
-    await verification.verifyIfElementIsPresent(rumSmartboardPage.domInteractiveMetricsValueLocator, "domInteractive metrics is not present");
-
+    
+    //validation for other metrics
+    let rumMetrics : string[] = ['Response (ms)','DOM Interactive (ms)','DOM Loaded (ms)','Doc Complete (ms)','Visually Complete (ms)','Total Ajax (ms)']
+    for (let index = 0; index < rumMetrics.length; index++) {
+        const element = rumMetrics[index];
+        await verification.verifyIfElementIsPresent(rumSmartboardPage.commoNLocator(element),element+" metric is not present.")
+    }
 })
 
 /*
@@ -85,13 +104,13 @@ test("VerifySmartboardRUMLoads @PageNavigation@ProductionSmoke@Smoke", async ({ 
 test.skip("VerifyPeerInfoInBGPSB @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, bgpSmartboardPage, util }) => {
     let data = new DataForEnv();
     let bgpTestID = await data.getValueOfTheParameter('bgpTest');
-    await sideNavigationBar.navigateToSmartboardFromSideNavigation();
+    //await sideNavigationBar.navigateToSmartboardFromSideNavigation();
     await util.delay(2000);
     //validation for errors
     await verification.validationsForPage();
     await verification.verifyIfElementIsPresent(sourceSelectorSmartboard.testTabLocator, 'Test Tab is not present in source selector');
     //select test
-    await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(bgpTestID);
+    await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(bgpTestID,'Tests');
     //validation 
     await verification.verifyIfElementIsPresent(bgpSmartboardPage.selectedTimeInTimeFrameLocator, "24 hour time frame is not selected");
     await verification.verifyIfElementIsPresent(bgpSmartboardPage.peerInfoWidgetLocator, "peer info widget is not present")
@@ -112,7 +131,7 @@ test("VerifyTimeZoneDropDownInNTNSB @PageNavigation@ProductionSmoke@Smoke", asyn
     await verification.validationsForPage();
     await verification.verifyIfElementIsPresent(sourceSelectorSmartboard.testTabLocator, 'Test Tab is not present in source selector');
     //select test
-    await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(ntnTestID);
+    await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(ntnTestID,'Test');
     //validation for errors
     await verification.validationsForPage();
     //validation for time zone dropDowm
@@ -139,7 +158,7 @@ test("VerifyMatrixCompareInNTNSB @PageNavigation@ProductionSmoke@Smoke", async (
     await verification.validationsForPage();
     await verification.verifyIfElementIsPresent(sourceSelectorSmartboard.testTabLocator, 'Test Tab is not present in source selector');
     //select test
-    await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(ntnTestID);
+    await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(ntnTestID,'Tests');
     //validation for errors
     await verification.validationsForPage();
     //verification for cards metrics
@@ -175,13 +194,13 @@ test("VerifyMatrixCompareInNTNSB @PageNavigation@ProductionSmoke@Smoke", async (
 test("VerifyRecordsCompareSectionInNTNSB @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, ntnSmartboardPage, util }) => {
     let data = new DataForEnv();
     let ntnTestID = await data.getValueOfTheParameter('nodeToNodeTest');
-    await sideNavigationBar.navigateToSmartboardFromSideNavigation();
+    //await sideNavigationBar.navigateToSmartboardFromSideNavigation();
     await util.delay(2000);
     await verification.verifyIfElementIsPresent(sourceSelectorSmartboard.testTabLocator, 'Test Tab is not present in source selector');
     //validation for errors
     await verification.validationsForPage();
     //select test
-    await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(ntnTestID);
+    await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(ntnTestID,'Tests');
     //click on records compare tab
     await ntnSmartboardPage.clickOnRecordsCompareButton();
     //validation for errors
@@ -232,40 +251,40 @@ test("VerifySmartboardEndpointTestLoads @PageNavigation@ProductionSmoke@Smoke", 
     //validation for errors
     await verification.validationsForPage();
     //select test
-    await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(testID);
+    await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(testID,'Endpoint Tests');
+    await util.delay(5000);
     //validation for errors
     await verification.validationsForPage();
-    //validation for metrics , time line , time zone , go button , timeframe
+    //validation for time line , time zone , go button , timeframe
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.goButtonLocator, "go button is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeLineLocator, "time line is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeZoneDDLocator, "time zone is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.compareDDLocator, "compare is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeFrame, "time frame is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.networkScoreMetricsInNetworkTabForTestLocator, "network score metrics is not present");
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.packetLossCardMetricsLocator, "packet loss metrics is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.roundTripMetricsLocator, "round trip card metrics is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.testRunCardMetricsLocator, "test run card metrics is not present");
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.locationTestedCardMetricsInNetworkTabLocator, "location tested card metrics is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.endpointTestedCardMetricsInNetworkTabLocator, "endpoint tested card metrics is not present");
-
+    //validation for network tab metrics
+    let networkTabMetrics : string[] = ['Network Score','Round Trip (ms)(Traceroute)','% Packet Loss','Test Runs','Endpoints Tested','Locations Tested']
+    for (let index = 0; index < networkTabMetrics.length; index++) {
+        const element = networkTabMetrics[index];
+        await verification.verifyIfElementIsPresent(endpointSmartboardPage.commoNLocator(element),element+" metric is not present in network tab.")
+    }
+    
     //click on endpoint tab
     await endpointSmartboardPage.clickOnEndpointTab();
+    await util.delay(4000);
     //validation for errors
     await verification.validationsForPage();
-    //validation for metrics , time line , time zone , go button , timeframe
+    //validation for  time line , time zone , go button , timeframe
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.goButtonLocator, "go button is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeLineLocator, "time line is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeZoneDDLocator, "time zone is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.compareDDLocator, "compare is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeFrame, "time frame is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.nameInEndpointTabLocator, "name  is not present in endpoint widget");
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeInEndpointTabLocator, "time is not present in endpoint widget")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.roundTripInEndpointTabLocator, "round trip is not present in endpoint widget")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.cityInEndpointTabLocator, "city is not present in endpoint widget");
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.ispInEndpointTabLocator, "ISP is not present in endpoint widget")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.networkScoreInEndpointTabLocator, "network score is not present in endpoint widget");
-
-
+    //validation for endpoint tab items
+    let endpointTabItems : string[] = ['Name','Time','Network Score','Round Trip (ms)','City','ISP']
+    for (let index = 0; index < endpointTabItems.length; index++) {
+        const element = endpointTabItems[index];
+        await verification.verifyIfElementIsPresent(endpointSmartboardPage.commonLocator(element),element+" metric is not present in network tab.")
+    }
 })
 
 
@@ -285,81 +304,101 @@ test("VerifySmartboardLocationLoads @PageNavigation@ProductionSmoke@Smoke", asyn
     //validation for errors
     await verification.validationsForPage();
     //select location
-    await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(locationID);
+    await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(locationID,'Location');
+    await util.delay(12000);
     //validation for errors
     await verification.validationsForPage();
-    //1.validation for summary tab metrics 
+    //validation for time line , time zone , go button , timeframe
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.goButtonLocator, "go button is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeLineLocator, "time line is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeZoneDDLocator, "time zone is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.compareDDLocator, "compare is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeFrame, "time frame is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.netScoreMetricsLocator, "network score is not present");
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.appScoreMetricsLocator, "app score is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.endpointScoreMetricsLocator, "endpoint score is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.expScoreInLocationSummaryTabLocator, "exp score is not present");
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.trendingChartInLocationSummaryTab, "trending chart is not present");
+    //validation for Summary tab metrics
+    let summaryTabMetrics : string[] = ['Experience Score','Endpoint Score','Network Score','Application Score']
+    for (let index = 0; index < summaryTabMetrics.length; index++) {
+        const element = summaryTabMetrics[index];
+        await verification.verifyIfElementIsPresent(endpointSmartboardPage.commonLocator(element),element+" metric is not present in summary tab.")
+    }
+
     //click on endpoint tab
-    await sourceSelectorSmartboard.clickOnTab("Endpoint");
-    await util.delay(5000);
+    await endpointSmartboardPage.clickOn("Endpoint");
+    await util.delay(12000);
     //validation for errors
     await verification.validationsForPage();
-    //2.validation for endpoint tab metrics 
+    //validation for time line , time zone , go button , timeframe
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.goButtonLocator, "go button is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeLineLocator, "time line is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeZoneDDLocator, "time zone is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.compareDDLocator, "compare is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeFrame, "time frame is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.endpointScoreMetricsLocator, "endpoint score is not present");
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.errorMetricsLocator, "error metric is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.pageViewInLocationEndpointTab, "page view metrics is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.endpointWidgetInEndpointLocationTab, "exp score is not present");
+    //validation for endpoint tab metrics
+    let endpointTabMetrics : string[] = ['Endpoint Score','Page Views','Errors']
+    for (let index = 0; index < endpointTabMetrics.length; index++) {
+        const element = endpointTabMetrics[index];
+        if (index == 0) {
+            await verification.verifyIfElementIsPresent(endpointSmartboardPage.commonLocator(element), element +" metrics is not present in network tab");
+        }
+        else {
+            await verification.verifyIfElementIsPresent(endpointSmartboardPage.commoNLocator(element), element +" metrics is not present in network tab");
+        }
+    }
+    //validation for endpoint widget
+    await verification.verifyIfElementIsPresent(endpointSmartboardPage.endpointWidgetLocator,'Endpoint widget is not present in endpoint tab')
+    
     //click on network tab
-    await sourceSelectorSmartboard.clickOnTab("Network");
-    await util.delay(5000);
+    await endpointSmartboardPage.clickOn("Network");
+    await util.delay(12000);
     //validation for errors
     await verification.validationsForPage();
-    //3.validation for network tab metrics 
+    //validation for time line , time zone , go button , timeframe
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.goButtonLocator, "go button is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeLineLocator, "time line is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeZoneDDLocator, "time zone is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.compareDDLocator, "compare is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeFrame, "time frame is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.netScoreMetricsLocator, "network score is not present");
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.testRunCardMetricsLocator, "test run metric is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.packetLossCardMetricsLocator, "pkt loss metrics is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.roundTripMetricsLocator, "round trip is not present");
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.domainInEndpointLocationTab, "domain is not present");
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.failureInEndpointLocationLocator, "failure is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.domainWidgetInNetworkLocationTab, "domain widget is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.endpointWidgetInnetworkLocationLocator, "domain widget is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.domainWidgetInNetworkLocationTab, "endpoint widget is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.hopByHopInNetworkTabLocator, "hop by hop widget is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.networkPathInNetworkTabLocator, "network path widget is not present")
+    //validation for network tab metrics
+    let networkTabMetrics : string[] = ['Network Score','Domains','Test Runs','Failures','Packet Loss (%)','Round Trip (ms)']
+    for (let index = 0; index < networkTabMetrics.length; index++) {
+        const element = networkTabMetrics[index]
+        if (index == 0) {
+            await verification.verifyIfElementIsPresent(endpointSmartboardPage.commonLocator(element), element +" metrics is not present in network tab");
+        }
+        else {
+            await verification.verifyIfElementIsPresent(endpointSmartboardPage.commoNLocator(element), element +" metrics is not present in network tab");
+        }
+    }
+    //validation for endpoint, domain , network , hopbyhop widget
+    await verification.verifyIfElementIsPresent(endpointSmartboardPage.endpointWidgetLocator,'Endpoint widget is not present in network tab')
+    await verification.verifyIfElementIsPresent(endpointSmartboardPage.domainWidgetLocator,'domain widget is not present in network tab')
+    await verification.verifyIfElementIsPresent(endpointSmartboardPage.networkPathWidgetLocator,'network path widget is not present in network tab')
+    await endpointSmartboardPage.clickOn('Hop-by-Hop')
+    await util.delay(6000)
+    await verification.verifyIfElementIsPresent(endpointSmartboardPage.hopByHopWidgetLocator,'hop by hop widget is not present in network tab')
+    
     //click on application tab
     await sourceSelectorSmartboard.clickOnTab("Application");
-    await util.delay(5000);
+    await util.delay(12000);
     //validation for errors
     await verification.validationsForPage();
-    //4.validation for app tab metrics 
+    //validation for time line , time zone , go button , timeframe
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.goButtonLocator, "go button is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeLineLocator, "time line is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeZoneDDLocator, "time zone is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.compareDDLocator, "compare is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeFrame, "time frame is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.netScoreMetricsLocator, "network score is not present");
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.testRunCardMetricsLocator, "test run metric is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.packetLossCardMetricsLocator, "pkt loss metrics is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.roundTripMetricsLocator, "round trip is not present");
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.domainInEndpointLocationTab, "domain is not present");
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.failureInEndpointLocationLocator, "failure is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.domainWidgetInNetworkLocationTab, "domain widget is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.endpointWidgetInnetworkLocationLocator, "domain widget is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.domainWidgetInNetworkLocationTab, "endpoint widget is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.hopByHopInNetworkTabLocator, "hop by hop widget is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.networkPathInNetworkTabLocator, "network path widget is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.appVisitedInApplicationTab, "app vistied widget is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.urlTestedInApplicationLocator, "url tested widget is not present")
+    let applicationTabMetrics : string[] = ['Application Score','Applications Visited','URLs Tested','Errors','Doc Complete','% Downtime']
+    for (let index = 0; index < applicationTabMetrics.length; index++) {
+        const element = applicationTabMetrics[index]
+        if (index == 0) {
+            await verification.verifyIfElementIsPresent(endpointSmartboardPage.commonLocator(element), element +" metrics is not present in network tab");
+        }
+        else {
+            await verification.verifyIfElementIsPresent(endpointSmartboardPage.commoNLocator(element), element +" metrics is not present in network tab");
+        }
+    }
+    await verification.verifyIfElementIsPresent(endpointSmartboardPage.appVisitedWidgetTab, "app vistied widget is not present")
+    await verification.verifyIfElementIsPresent(endpointSmartboardPage.urlTestedWidgetLocator, "url tested widget is not present")
 
 })
 
@@ -369,7 +408,7 @@ test("VerifySmartboardLocationLoads @PageNavigation@ProductionSmoke@Smoke", asyn
 */
 test("VerifySmartboardEmployeeAppLoads @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, endpointSmartboardPage, util }) => {
     let data = new DataForEnv();
-    let appName = await data.getValueOfTheParameter('rumAppName');
+    let appName = await data.getValueOfTheParameter('endpointEmployeeApp');
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();
     await util.delay(2000);
     //validation for errors
@@ -380,66 +419,81 @@ test("VerifySmartboardEmployeeAppLoads @PageNavigation@ProductionSmoke@Smoke", a
     //validation for errors
     await verification.validationsForPage();
     //select test
-    await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(appName);
+    await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(appName,'Employee App');
+    await util.delay(10000);
     //validation for errors
     await verification.validationsForPage();
-    //select test
-    await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(appName);
-    //validation for errors
-    await verification.validationsForPage();
-    //1.validation for summary tab
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.endpointScoreMetricsLocator, "page view metrics is not present");
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.netScoreMetricsLocator, "doc complete metric is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.appScoreMetricsLocator, "jsValue metric is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.summaryTabLocator, "filter button is not present");
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.trendsChartLocator, "trendsChart is not present")
+    //validation for time line , time zone , go button , timeframe
+    await verification.verifyIfElementIsPresent(endpointSmartboardPage.goButtonLocator, "go button is not present");
+    await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeLineLocator, "time line is not present")
+    await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeZoneDDLocator, "time zone is not present")
+    await verification.verifyIfElementIsPresent(endpointSmartboardPage.compareDDLocator, "compare is not present");
+    await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeFrame, "time frame is not present")
+    //validation for Summary tab metrics
+    let summaryTabMetrics : string[] = ['Experience Score','Network Score','Application Score']
+    for (let index = 0; index < summaryTabMetrics.length; index++) {
+        const element = summaryTabMetrics[index];
+        await verification.verifyIfElementIsPresent(endpointSmartboardPage.commoNLocator(element),element+" metric is not present in summary tab.")
+    }
     //click on endpoint tab
     await sourceSelectorSmartboard.clickOnTab("Endpoint");
-    await util.delay(5000);
+    await util.delay(10000);
     //validation for errors
     await verification.validationsForPage();
-    //2.validation for endpoint tab metrics 
+    //validation for time line , time zone , go button , timeframe
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.goButtonLocator, "go button is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeLineLocator, "time line is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeZoneDDLocator, "time zone is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.compareDDLocator, "compare is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeFrame, "time frame is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.locCardMetricsLocator, "location card metrics is not present");
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.pageViewCardMetricsLocator, "page view card metrics is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.errorCardMetricsLocator, "error card metrics is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.endpointPerLocationChartLocator, "endpoint per location chart is not present");
+    //validation for endpoint tab metrics
+    let endpointTabMetrics : string[] = ['Locations','Page Views','Errors']
+    for (let index = 0; index < endpointTabMetrics.length; index++) {
+        const element = endpointTabMetrics[index];
+        await verification.verifyIfElementIsPresent(endpointSmartboardPage.commoNLocator(element),element+" metric is not present in endpoint tab.")
+    }
+    await verification.verifyIfElementIsPresent(endpointSmartboardPage.endpointPerLocationChartLocator,'endpoint per location widget is not present')
+
     //click on network tab
     await sourceSelectorSmartboard.clickOnTab("Network");
-    await util.delay(5000);
+    await util.delay(10000);
     //validation for errors
     await verification.validationsForPage();
-    //3.validation for network tab metrics 
+    //3.validation for time line , time zone , go button , timeframe
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.goButtonLocator, "go button is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeLineLocator, "time line is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeZoneDDLocator, "time zone is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.compareDDLocator, "compare is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeFrame, "time frame is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.endpointWgtForNetworkTabLocator, "network score is not present");
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.locWidgetForNetworkTabLocator, "test run metric is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.hopByHopInNetworkTabLocator, "pkt loss metrics is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.networkPathInNetworkTabLocator, "round trip is not present");
+    //validation for endpoint, location , network , hopbyhop widget
+    await verification.verifyIfElementIsPresent(endpointSmartboardPage.endpointWidgetLocator,'Endpoint widget is not present in network tab')
+    await verification.verifyIfElementIsPresent(endpointSmartboardPage.locWidgetLocator,'domain widget is not present in network tab')
+    await verification.verifyIfElementIsPresent(endpointSmartboardPage.networkPathWidgetLocator,'network path widget is not present in network tab')
+    await endpointSmartboardPage.clickOn('Hop-by-Hop')
+    await util.delay(3000)
+    await verification.verifyIfElementIsPresent(endpointSmartboardPage.hopByHopWidgetLocator,'hop by hop widget is not present in network tab')
+    
+    
+    
     //click on application tab
     await sourceSelectorSmartboard.clickOnTab("Application");
-    await util.delay(5000);
+    await util.delay(10000);
     //validation for errors
     await verification.validationsForPage();
-    //4.validation for app tab metrics 
+    //validation for time line , time zone , go button , timeframe 
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.goButtonLocator, "go button is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeLineLocator, "time line is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeZoneDDLocator, "time zone is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.compareDDLocator, "compare is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeFrame, "time frame is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.appScoreMetricsLocator, "network score is not present");
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.docCompletedApplicationLocator, "test run metric is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.errorCardMetricsLocator, "pkt loss metrics is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.downTimeLOcator, "round trip is not present");
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.trendsChartLocator, "domain is not present");
-
+    //validation for application tab metrics
+    let applicationTabMetrics : string[] = ['Application Score','Doc Complete','Errors','% Downtime']
+    for (let index = 0; index < applicationTabMetrics.length; index++) {
+        const element = applicationTabMetrics[index]
+        await verification.verifyIfElementIsPresent(endpointSmartboardPage.commoNLocator(element), element +" metrics is not present in network tab");
+    }
+    await verification.verifyIfElementIsPresent(endpointSmartboardPage.trendingChartLocator, "trending chart is not present in application tab");
+    await verification.verifyIfElementIsPresent(endpointSmartboardPage.endpointSmartboardNetworkTAbLocator,"trending chart is not present in application tab")
 })
 
 
@@ -448,7 +502,7 @@ test("VerifySmartboardEmployeeAppLoads @PageNavigation@ProductionSmoke@Smoke", a
 */
 test("VerifySmartboardEndpointLoads @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, endpointSmartboardPage, util }) => {
     let data = new DataForEnv();
-    let endpointID = await data.getValueOfTheParameter('endpoint');
+    let endpointID = await data.getValueOfTheParameter('endpointID');
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();
     await util.delay(2000);
     //validation for errors
@@ -456,95 +510,111 @@ test("VerifySmartboardEndpointLoads @PageNavigation@ProductionSmoke@Smoke", asyn
     await verification.verifyIfElementIsPresent(sourceSelectorSmartboard.endpointTabLocator, 'endpoint Tab is not present in source selector');
     //click on Endpoints tab
     await sourceSelectorSmartboard.clickOnTabInSourceSelector("Endpoints");
+    await util.delay(10000);
     //validation for errors
     await verification.validationsForPage();
     //select endpoint
-    await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(endpointID);
+    await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(endpointID,'Endpoints');
+    await util.delay(12000);
     //validation for errors
     await verification.validationsForPage();
-    //1.validation for metrics
+    //validation for metrics
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.goButtonLocator, "go button is not present");
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.endpointTimeLineLocator, "time line is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeZoneDDLocator, "time zone is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.compareDDLocator, "compare is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeFrame, "time frame is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.callQualityLocator, "call quality is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.onlineLocator, "online not present");
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.vpnHealthLocator, "vpn health is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.issueLocator, "issue is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.settingsIconLocator, "settings is not present");
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.eventsLocator, "events is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.keyMetricsWidgetLocator, "key metric widget is not present");
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.issueNdEventLocator, "events and issue widget is not present")
+    await verification.verifyIfElementIsPresent(endpointSmartboardPage.endpointTimeLineLocator, "time line is not present")
+    //validation for overview tab metrics
+    let overviewTabMetrics : string[] = ['Experience Score','Call Quality','VPN Health','Online','Events','Issues']
+    for (let index = 0; index < overviewTabMetrics.length; index++) {
+        const element = overviewTabMetrics[index]
+        if (index == 0) {
+            await verification.verifyIfElementIsPresent(endpointSmartboardPage.commonLocator(element), element +" metrics is not present in summary tab");
+        }
+        else {
+            await verification.verifyIfElementIsPresent(endpointSmartboardPage.commoNLocator(element), element +" metrics is not present in summary tab");
+        }
+    }
+    //validation for key metrics , issue and events widgets
+    await verification.verifyIfElementIsPresent(endpointSmartboardPage.keyMetricsWidgetLocator, "key metrics widget is not present")
+    await verification.verifyIfElementIsPresent(endpointSmartboardPage.issueNdEventLocator, "issue and events widget is not present")
+    
 
     //click on endpoint tab
     await sourceSelectorSmartboard.clickOnTab("Endpoint");
-    await util.delay(4000);
+    await util.delay(12000);
     //validation for errors
     await verification.validationsForPage();
     //2.validation for endpoint tab
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.goButtonLocator, "go button is not present");
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.endpointTimeLineLocator, "time line is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeZoneDDLocator, "time zone is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.compareDDLocator, "compare is not present");
+    await verification.verifyIfElementIsPresent(endpointSmartboardPage.endpointTimeLineLocator, "time line is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeFrame, "time frame is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.endpointScoreMetricsLocator, "endpoint score is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.cpuUsageCardLocator, "cpu usage card not present");
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.memoryUsageMetricsLocator, "memory usage is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.wifiMetricsLocator, "wifi metrics is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.signalQualityLocator, "signal quality metrics is not present");
+    //validation for endpoint tab metrics
+    let endpointTabMetrics : string[] = ['Endpoint Score','CPU Usage','Memory Usage','Wifi Strength','Signal Quality','Issues']
+    for (let index = 0; index < endpointTabMetrics.length; index++) {
+        const element = endpointTabMetrics[index]
+        if (index == 0) {
+            await verification.verifyIfElementIsPresent(endpointSmartboardPage.commonLocator(element), element +" metrics is not present in endpoint tab");
+        }
+        else {
+            await verification.verifyIfElementIsPresent(endpointSmartboardPage.commoNLocator(element), element +" metrics is not present in endpoint tab");
+        }
+    }
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.systemInfoCardLocator, "sys info is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.hardwareUsageLocator, "hardware usage widget is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.processWidgetLocator, "process widget is not present")
 
     //click on network tab
     await sourceSelectorSmartboard.clickOnTab("Network");
-    await util.delay(4000);
+    await util.delay(12000);
     //validation for errors
     await verification.validationsForPage();
-    //3.validation for network tab
+    //validation for network tab
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.goButtonLocator, "go button is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.endpointTimeLineLocator, "time line is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeZoneDDLocator, "time zone is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.compareDDLocator, "compare is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeFrame, "time frame is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.netScoreMetricsLocator, "network score is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.testRunCardMetricsLocator, "test run metrics not present");
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.failureInEndpointLocationLocator, "failure metrics is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.packetLossCardMetricsLocator, "pkt loss metrics is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.roundTripMetricsLocator, "round trip metrics is not present");
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.jitterCardMetricsLocator, "jitter metrics is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.uploadCardMetricsLocator, "upload metrics is not present");
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.downloadCardMetricsLocator, "download metrics is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.domainInEndpointLocationTab, "domain widget is not present")
+    //validation for network tab metrics
+    let networkTabMetrics : string[] = ['Network Score','Test Runs','Failures','Packet Loss (%)','Round Trip (ms)','Jitter (ms)','Upload (Mbps)','Download (Mbps)']
+    for (let index = 0; index < networkTabMetrics.length; index++) {
+        const element = networkTabMetrics[index]
+        if (index == 0) {
+            await verification.verifyIfElementIsPresent(endpointSmartboardPage.commonLocator(element), element +" metrics is not present in network tab");
+        }
+        else {
+            await verification.verifyIfElementIsPresent(endpointSmartboardPage.commoNLocator(element), element +" metrics is not present in network tab");
+        }
+    }
+    await verification.verifyIfElementIsPresent(endpointSmartboardPage.endpointDomainWidgetLocator, "domain widget is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.locWidgetLocator, "location widget widget is not present");
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.networkPathInNetworkTabLocator, "network path widget is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.hopByHopInNetworkTabLocator, "hop by hop widget button is not present");
+    await verification.verifyIfElementIsPresent(endpointSmartboardPage.networkPathWidgetLocator, "network path widget is not present")
+    await endpointSmartboardPage.clickOn('Hop-by-Hop')
+    await util.delay(3000)
+    await verification.verifyIfElementIsPresent(endpointSmartboardPage.hopByHopWidgetLocator, "hop by hop widget button is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.trendingWidgetLocator, "trending widget is not present")
+    
     //click on application tab
     await sourceSelectorSmartboard.clickOnTab("Application");
+    await util.delay(12000);
     //validation for errors
     await verification.validationsForPage();
-    await util.delay(4000);
-    //4.validation for application tab
+    //validation for application tab
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.goButtonLocator, "go button is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.endpointTimeLineLocator, "time line is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeZoneDDLocator, "time zone is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.compareDDLocator, "compare is not present");
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.timeFrame, "time frame is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.netScoreMetricsLocator, "network score is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.testRunCardMetricsLocator, "test run metrics not present");
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.failureInEndpointLocationLocator, "failure metrics is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.packetLossCardMetricsLocator, "pkt loss metrics is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.roundTripMetricsLocator, "round trip metrics is not present");
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.jitterCardMetricsLocator, "jitter metrics is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.uploadCardMetricsLocator, "upload metrics is not present");
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.downloadCardMetricsLocator, "download metrics is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.domainInEndpointLocationTab, "domain widget is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.locWidgetLocator, "location widget widget is not present");
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.networkPathInNetworkTabLocator, "network path widget is not present")
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.hopByHopInNetworkTabLocator, "hop by hop widget button is not present");
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.trendingWidgetLocator, "trending widget is not present")
-
-
+    //validation for network tab metrics
+    let applicationTabMetrics : string[] = ['Application Score','Applications Visited','URLs Tested','Errors','Doc Complete','% Downtime']
+    for (let index = 0; index < applicationTabMetrics.length; index++) {
+        const element = applicationTabMetrics[index]
+        if (index == 0) {
+            await verification.verifyIfElementIsPresent(endpointSmartboardPage.commonLocator(element), element +" metrics is not present in application tab");
+        }
+        else {
+            await verification.verifyIfElementIsPresent(endpointSmartboardPage.commoNLocator(element), element +" metrics is not present in application tab");
+        }
+    }
+    await verification.verifyIfElementIsPresent(endpointSmartboardPage.appVisititedWidgetLocator, "app visited widget is not present in application tab")
+    await verification.verifyIfElementIsPresent(endpointSmartboardPage.urlTestedWgtLocator, "url tested widget widget is not present in application tab");
+    
 })
