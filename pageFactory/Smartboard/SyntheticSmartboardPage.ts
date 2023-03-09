@@ -101,18 +101,15 @@ export class SyntheticSmartboardPage {
             case "Transaction":
                 let transactionTestMetrics: string[] = ['% Downtime', 'Response (ms)', 'DNS (ms)', 'Ping Round Trip (ms)', 'Connect (ms)', 'Load (ms)', 'Wait (ms)', '% Ping Packet Loss', '% Self Bottleneck', 'DOM Loaded (ms)', 'Test Time (ms)', 'Total Downloaded Bytes']
                 return transactionTestMetrics;
-                break;
             default:
                 let webTestMetrics: string[] = ['% Downtime', 'Test Time (ms)', 'Response (ms)', 'Time To Interactive (ms)', 'Doc Complete (ms)', 'Content Load (ms)', 'First Paint (ms)', 'First Contentful Paint (ms)', 'Largest Contentful Paint (ms)', 'Cumulative Layout Shift', 'Total Downloaded Bytes', '# Items', 'DNS (ms)', 'Connect (ms)', 'SSL (ms)', 'Wait (ms)', 'Load (ms)', 'Ping Round Trip (ms)', '% Ping Packet Loss', '% Self Bottleneck', '% Third Party Bottleneck', 'Wait (ms)']
                 return webTestMetrics;
-                break;
         }
     }
 
     async testWiseTimeLineMetrics() {
         let timeLineMetrics: string[] = ['Test Time (ms)', 'Downtime', 'Warning Alert', 'Critical Alert']
         return timeLineMetrics;
-
     }
 
 

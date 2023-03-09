@@ -591,7 +591,7 @@ test("VerifySmartboardEndpointLoads @PageNavigation@ProductionSmoke@Smoke", asyn
     await endpointSmartboardPage.clickOn('Hop-by-Hop')
     await util.delay(3000)
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.hopByHopWidgetLocator, "hop by hop widget button is not present");
-    await verification.verifyIfElementIsPresent(endpointSmartboardPage.trendingWidgetLocator, "trending widget is not present")
+    await verification.verifyIfElementIsPresent(endpointSmartboardPage.commonLocator('Trending'), "trending widget is not present")
     
     //click on application tab
     await sourceSelectorSmartboard.clickOnTab("Application");
