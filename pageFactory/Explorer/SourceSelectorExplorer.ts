@@ -21,7 +21,8 @@ export class SourceSelectorExplorer extends ExplorerPage{
     private _testTab = '//li[@data-testid="Tests"]';
     private _myAppTabInSourceSelector = '//li[text()="My Apps"]';
     private _allCheckBoxForApp = '//div[@data-item-index="0"]//i[@data-icon-name="CircleRing"]';
-    
+    private _explorerPillInSourceSelector = '//div[@data-testid="custom-picker-pill-container"]'
+
     
     public get searchBoxLocator() {
         return this._searchBox;
@@ -50,6 +51,10 @@ export class SourceSelectorExplorer extends ExplorerPage{
     public get allCheckLocatorForApp(){
         return this._allCheckBoxForApp;
 
+    }
+
+    public get pillItem(){
+        return this._explorerPillInSourceSelector;
     }
 
    

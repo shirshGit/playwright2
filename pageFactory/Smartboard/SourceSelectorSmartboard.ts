@@ -25,14 +25,7 @@ export class SourceSelectorSmartboard extends SyntheticSmartboardPage{
     private _employeeAppTab = '//li[text()="Tests"]';
     private _LocationTab = '//li[text()="Tests"]';
     private _endpointTestTab = '//li[text()="Endpoint Tests"]';
-    private _goButton = '//span[text()="Go"]';
-    private _timeZoneDropDown = '//div[@data-testid="timezone-dropdown"]';
-    private _compareDropDown = '(//i[@data-icon-name="chevrondownLarge"])[1]';
-    private _timeLine = '//div[contains(@class,"EndpointSmartboardstyles__EndpointSmartboardTimeline-")]';
-    private _summary = '//span[text()="Summary"]';
-    private _endpoint = '//span[text()="Endpoint"]';
-    private _network = '//span[text()="Network"]';
-    private _application = '//span[text()="Application"]';
+    private _sbPillInSourceSelector = '//div[contains(@class,"AutoCompletePillPicker_pillWrapper")]'
 
 
     public get searchBox1() {
@@ -80,6 +73,10 @@ export class SourceSelectorSmartboard extends SyntheticSmartboardPage{
     }
     public get tabLocator() {
         return (text:string) => {return `//span[text()="${text}"]`};
+    }
+
+    public get pillItem(){
+        return this._sbPillInSourceSelector;
     }
 
 

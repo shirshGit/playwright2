@@ -21,6 +21,7 @@ export class WebActions {
 
     async navigateToURL(url: string) {
         this.page.goto(url);
+        this.page.context().setExtraHTTPHeaders({'user-agent' : 'Catchpoint'})
     }
 
     async decipherPassword(): Promise<string> {

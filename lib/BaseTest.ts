@@ -60,6 +60,15 @@ import { NodeToNodeSmartboardPage } from '@pageobjects/Smartboard/NodeToNodeSmar
 import { BGPSmartboardPage } from '@pageobjects/Smartboard/BGPSmartboard';
 import { SynWidgetPropertyPage } from '@pageobjects/OverviewDashboard/SynWidgetPropertyPage';
 import { CustomDBPage } from '@pageobjects/OverviewDashboard/CustomDBPage';
+import { ZonePage } from '@pageobjects/Zone/ZonePage';
+import { RecordsPublicLinkPage } from '@pageobjects/Records/RecordsPublicLinkPage';
+import { ExplorerPublicLinkPage } from '@pageobjects/Explorer/ExplorerPublicLink';
+import { ExplorerSharedLinkPage } from '@pageobjects/Explorer/ExplorerSharedLinkPage';
+import { SBPublicLinkPage } from '@pageobjects/Smartboard/SBPublicLinkPage';
+import { SBSharedLinkPage } from '@pageobjects/Smartboard/SBSharedLinkPage';
+import { DBPublicLinkPage } from '@pageobjects/OverviewDashboard/DBPublicLinkPage';
+import { DBSharedLinkPage } from '@pageobjects/OverviewDashboard/DBSharedLinkPage';
+import { InstantTestPublicLinkPage } from '@pageobjects/InstantTest/InstantTestPublicLink';
 
 const test = baseTest.extend<{
     baseTestUtil: BaseTestUtility;
@@ -122,6 +131,17 @@ const test = baseTest.extend<{
     bgpSmartboardPage : BGPSmartboardPage
     synWidgetPropertyPage : SynWidgetPropertyPage
     customDBPage : CustomDBPage
+    instantTestHistoryPage: InstantTestHistoryPage;
+    instantTestPage : InstantTestPage;
+    zonePage : ZonePage;
+    recordsPublicLinkPage : RecordsPublicLinkPage
+    explorerPublicLinkPage : ExplorerPublicLinkPage
+    explorerSharedLinkPage : ExplorerSharedLinkPage
+    sbPublicLinkPage : SBPublicLinkPage
+    sbSharedLinkPage :SBSharedLinkPage
+    dbPublicLinkPage : DBPublicLinkPage
+    dbSharedLinkPage : DBSharedLinkPage
+    instantTestPublicLinkPage : InstantTestPublicLinkPage
 }>({
     baseTestUtil: async ({ page }, use, testInfo: TestInfo) => {
         let base = new BaseTestUtility(page);
@@ -307,6 +327,39 @@ const test = baseTest.extend<{
     },
     customDBPage: async ({ page }, use) => {
         await use(new CustomDBPage(page))
+    },
+    instantTestPage: async ({ page }, use) => {
+        await use(new InstantTestPage(page))
+    },
+    instantTestHistoryPage: async ({ page }, use) => {
+        await use(new InstantTestHistoryPage(page))
+    },
+    zonePage: async ({ page }, use) => {
+        await use(new ZonePage(page))
+    },
+    recordsPublicLinkPage: async ({ page }, use) => {
+        await use(new RecordsPublicLinkPage(page))
+    },
+    explorerSharedLinkPage: async ({ page }, use) => {
+        await use(new ExplorerSharedLinkPage(page))
+    },
+    explorerPublicLinkPage: async ({ page }, use) => {
+        await use(new ExplorerPublicLinkPage(page))
+    },
+    sbPublicLinkPage: async ({ page }, use) => {
+        await use(new SBPublicLinkPage(page))
+    },
+    sbSharedLinkPage: async ({ page }, use) => {
+        await use(new SBSharedLinkPage(page))
+    },
+    dbPublicLinkPage: async ({ page }, use) => {
+        await use(new DBPublicLinkPage(page))
+    },
+    dbSharedLinkPage: async ({ page }, use) => {
+        await use(new DBSharedLinkPage(page))
+    },
+    instantTestPublicLinkPage: async ({ page }, use) => {
+        await use(new InstantTestPublicLinkPage(page))
     },
 
 

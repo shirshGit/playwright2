@@ -1,6 +1,6 @@
 import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
-import { Page } from "@playwright/test";
+import { BrowserContext, Page } from "@playwright/test";
 
 let webActions: WebActions;
 let util: Utility
@@ -107,6 +107,13 @@ export class UserrolePage {
         await webActions.clickElement(this.firstRowCheckBoxLocator);
         await webActions.clickElement(this.deleteButtonInUserRolePageLocator);
         await webActions.clickElement(this.popUpDeleteBtnLocator);
+    }
+    async getNewWindow(context: BrowserContext, locator: string) {
+        return await webActions.newWindowHandle(context, locator);
+
+    }
+    async getUrl() {
+        return await webActions.getCurrentPageUrl();
     }
 
     
