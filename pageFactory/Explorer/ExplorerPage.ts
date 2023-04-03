@@ -21,6 +21,8 @@ export class ExplorerPage {
     private _summeryTab = '//li[@data-testid="Summary Table"]';
     private _testInSourceSelector = '//div[@data-testid="custom-picker-pill-container"]//span';
     private _errorTabFirstRowTestName = '//div[@data-selection-index="0"]//div[@data-automation-key="Test_0"]//span';
+    private _getTestNameFromSourceSelector = '//div[contains(@class,"Legend_name_")]'
+    
     public get errorTabLocator() {
         return this._errorTab;
     }
@@ -51,6 +53,11 @@ export class ExplorerPage {
     public get commonLocator(){
         return (text:string) => { return `//span[text()="${text}"]`}
     }
+    
+    public get gettestNameFromSourceSelectorBoxLocator(){
+        return this._getTestNameFromSourceSelector
+    }
+    
 
 
 
@@ -97,6 +104,13 @@ export class ExplorerPage {
     }
     async selectItemFormThreeDotMenu(itemName:string){
         await webActions.clickElement(this.commonLocator(itemName))
+    }
+    async click(loc:string){
+        await webActions.clickElement(loc)
+    }
+    async getElementText(locator:string){
+        let text = await webActions.getElementText(locator)
+        return text
     }
 
 }

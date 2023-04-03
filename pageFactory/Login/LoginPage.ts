@@ -59,7 +59,7 @@ export class LoginPage {
             await webActions.navigateToURL(`https://iostage.catchpoint.com/auth/Account/Login`);
         }
         else if(ENV === 'production') {
-            await webActions.navigateToURL(`https://io.catchpoint.com/auth/Account/Login`);
+            await webActions.navigateToURL(`https://portalb.catchpoint.com/ui/Symphony/Dashboard`);
         }
 
     }

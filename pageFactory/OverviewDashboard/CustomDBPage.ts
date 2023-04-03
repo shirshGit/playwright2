@@ -1,5 +1,5 @@
 import { WebActions } from "@lib/WebActions";
-import { Page } from "@playwright/test";
+import { BrowserContext, Page } from "@playwright/test";
 import { Utility } from "@util/Utility";
 import { SynWidgetPropertyPage } from "./SynWidgetPropertyPage";
 let webActions: WebActions;
@@ -22,7 +22,7 @@ export class CustomDBPage extends SynWidgetPropertyPage{
     private _saveDBButton = '//span[text()="Save"]';
     private _threeDotMenu = '//span[@data-testid="tile-name"]/..//span[2]//button//i[contains(@class,"ms-Icon-placeHolder")]';
     private _tileHeader = '(//div[contains(@class,"GaugeTilestyles__TileHeader-")])[1]';
-    
+    private _dbName = '(//span[@data-automationid="splitbuttonprimary"]//span[contains(@class,"ms-Button-textContainer")])[1]'
     
     
     public get overviewDashboardLocator(){
@@ -67,6 +67,9 @@ export class CustomDBPage extends SynWidgetPropertyPage{
     }
     public get tableWidgetRowLocator(){
         return (text:number) => { return `//div[@data-testid="table_row"]//a[@tabindex="${text}"]`}
+    }
+    public get getDBNameLocator(){
+        return this._dbName
     }
 
   
@@ -132,6 +135,20 @@ export class CustomDBPage extends SynWidgetPropertyPage{
     }
     async clickTableWidgeRow(rowNum: number) {
         await webActions.clickElement(this.tableWidgetRowLocator(rowNum))
+    }
+    async click(loc:string){
+        await webActions.clickElement(loc)
+    }
+    async getElementText(locator:string){
+        let text = await webActions.getElementText(locator)
+        return text
+    }
+    async getNewWindow(context: BrowserContext, locator: string) {
+        return await webActions.newWindowHandle(context, locator);
+
+    }
+    async getUrl() {
+        return await webActions.getCurrentPageUrl();
     }
     
    

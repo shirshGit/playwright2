@@ -6,6 +6,8 @@ export const productiondata = {
     'rumAppName' : 'Disha Saxena',//used for automation
 
     'transactionTestId' : '2079348',
+
+    'webTestForSmoke':'2180535',//used for smoke scenarios
     
 
 }
