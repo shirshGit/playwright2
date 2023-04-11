@@ -57,7 +57,11 @@ export class SynControlCenterPage {
     private _testsTreeSideSideNav = '//div[contains(@class,"NavigationTree_navGroupText") and text() = "Tests"]';
     private _copyTestProductName = '//div[text()="ProductForCopyScenariosDoNotDelete"]'
     private _activeStatusOfFirstSearchedItem = '//span[text()="Active"]';
-    
+    private _endpointInTestTree = '//div[contains(@class,"stickyBelowItems")]//div//div//div[contains(@class,"NavigationTree_navGroupText_")][normalize-space()="Endpoint"]'
+    private _rumInTestTree = '//div[contains(text(),"RUM")]'
+    private _testTemplatesInTestTree = '//div[contains(text(),"Test Templates")]'
+    private _libraryInTestTree = '//div[contains(text(),"Library")]'
+
     public get newItemCreationLocator() {
         return this._newItemCreation;
     }
@@ -225,6 +229,18 @@ export class SynControlCenterPage {
     }
     public get commonLocator(){
         return (text:string) => { return `//span[text()="${text}"]`}
+    }
+    public get endpointTabLocator(){
+        return this._endpointInTestTree
+    }
+    public get rumTabLocator(){
+        return this._rumInTestTree
+    }
+    public get testTemplatesTabLocator(){
+        return this._testTemplatesInTestTree
+    }
+    public get libraryTabLocator(){
+        return this._libraryInTestTree
     }
 
 
@@ -458,6 +474,18 @@ export class SynControlCenterPage {
     async getAttributeProperty(loc:string){
         let property = await webActions.getElementAttributeValue(loc,'class')
         return property
+    }
+    async clickOnEndpointTab(){
+        await webActions.clickElementJS(this.endpointTabLocator);
+    }
+    async clickOnRUMTab(){
+        await webActions.clickElement(this.rumTabLocator);
+    }
+    async clickOnTestTemplatesTab(){
+        await webActions.clickElement(this.testTemplatesTabLocator);
+    }
+    async clickOnLibraryTab(){
+        await webActions.clickElement(this.libraryTabLocator);
     }
 
    

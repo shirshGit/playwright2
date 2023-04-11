@@ -114,8 +114,10 @@ export class TestOverviewDashboard extends DefaultDashboardPage{
         await webActions.clickElement(this.geoFilterLocator);
         await util.delay(3000);
         await webActions.clickElement(this.filterSearchBoxLocator);
-        await webActions.enterElementText(cityName,this.filterSearchBoxLocator);
-        await webActions.clickElement(this.filterSearchBoxLocator);
+        await webActions.enterElementText(this.filterSearchBoxLocator,cityName);
+        await webActions.onlyKeyPress('Enter')
+        await webActions.clickElement(this.allItemSelectCheckBoxLocator);
+        
     }
     async getNewWindow(context: BrowserContext, locator: string) {
         return await webActions.newWindowHandle(context, locator);

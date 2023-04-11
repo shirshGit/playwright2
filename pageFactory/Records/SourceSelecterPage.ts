@@ -20,6 +20,7 @@ export class SourceSelectorPage extends SyntheticRecordsPage {
     private _myAppTab = '//li[@data-testid="My Apps"]';
     private _firstSearchedAppChechBox = '//div[@data-item-index="0"]//i[@data-icon-name="StatusCircleCheckmark"]';
     private _searchBoxForApp = '(//input[@id="fabric-search-box"])[2]';
+    private _sbPillInSourceSelector = '//div[contains(@class,"AutoCompletePillPicker_pillWrapper")]'
 
     public get searchBoxLocator() {
         return this._searchBoxForTest;
@@ -38,6 +39,9 @@ export class SourceSelectorPage extends SyntheticRecordsPage {
     }
     public get searchBoxForAppLocator() {
         return this._searchBoxForApp;
+    }
+    public get pillItem(){
+        return this._sbPillInSourceSelector;
     }
 
 

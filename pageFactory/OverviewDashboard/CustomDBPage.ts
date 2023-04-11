@@ -1,5 +1,5 @@
 import { WebActions } from "@lib/WebActions";
-import { Page } from "@playwright/test";
+import { BrowserContext, Page } from "@playwright/test";
 import { Utility } from "@util/Utility";
 import { SynWidgetPropertyPage } from "./SynWidgetPropertyPage";
 let webActions: WebActions;
@@ -22,8 +22,8 @@ export class CustomDBPage extends SynWidgetPropertyPage{
     private _saveDBButton = '//span[text()="Save"]';
     private _threeDotMenu = '//span[@data-testid="tile-name"]/..//span[2]//button//i[contains(@class,"ms-Icon-placeHolder")]';
     private _tileHeader = '(//div[contains(@class,"GaugeTilestyles__TileHeader-")])[1]';
-    
-    
+    private _dbName = '(//span[@data-automationid="splitbuttonprimary"]//span[contains(@class,"ms-Button-textContainer")])[1]'
+    private _testInTableWidget = '(//a[text()="Web40X-50XTestID"])[2]'
     
     public get overviewDashboardLocator(){
         return this._overviewDashboard;
@@ -63,10 +63,13 @@ export class CustomDBPage extends SynWidgetPropertyPage{
         return this._tileHeader
     }
     public get threeDotMenuOptionLocator(){
-        return (text:string) => { return `//span[normalize-space()='${text}']`}
+        return (text:string) => { return `//span[contains(@class,'GaugeTilestyles__IconLabel')][normalize-space()='${text}']`}
     }
-    public get tableWidgetRowLocator(){
-        return (text:number) => { return `//div[@data-testid="table_row"]//a[@tabindex="${text}"]`}
+    public get testInTableWidgetRowLocator(){
+        return this._testInTableWidget
+    }
+    public get getDBNameLocator(){
+        return this._dbName
     }
 
   
@@ -118,11 +121,11 @@ export class CustomDBPage extends SynWidgetPropertyPage{
         await this.selectOtherTimeFrame(otherTimeFrame)
         await webActions.clickElement(this.saveWidgetLocator)
     }
-    async createSLAWidget(widgetName: string, widgetDiscription: string, division:string=null, dataFilterName: string = null, otherFilter:string = null,otherFilterOptions:string[]=null,dimension: string[] ,metrics: string[], defaultTimeFrame: string = null, otherTimeFrame: string = null) {
+    async createSLAWidget(widgetName: string, widgetDiscription: string, division:string=null, dataFilterName: string = null, otherFilter:string = null,otherFilterOptions:string[]=null,dimension: string[] ,metrics: string[], timeFrame: string) {
         await this.fillBasicProperties(widgetName,widgetDiscription)
         await this.selectFilters(dataFilterName,otherFilter,otherFilterOptions)
         await this.selectMetrics(metrics)
-        await this.selectOtherTimeFrame(otherTimeFrame)
+        await this.selectTimeFrameForSLA(timeFrame)
         await webActions.clickElement(this.saveWidgetLocator)
     }
     async navigateByThreeDotMenu(option:string){
@@ -130,8 +133,22 @@ export class CustomDBPage extends SynWidgetPropertyPage{
         await webActions.clickElement(this.threeDotMenuLocator);
         await webActions.clickElement(this.threeDotMenuOptionLocator(option))
     }
-    async clickTableWidgeRow(rowNum: number) {
-        await webActions.clickElement(this.tableWidgetRowLocator(rowNum))
+    async clickTableWidgeTest() {
+        await webActions.clickElement(this.testInTableWidgetRowLocator)
+    }
+    async click(loc:string){
+        await webActions.clickElement(loc)
+    }
+    async getElementText(locator:string){
+        let text = await webActions.getElementText(locator)
+        return text
+    }
+    async getNewWindow(context: BrowserContext, locator: string) {
+        return await webActions.newWindowHandle(context, locator);
+
+    }
+    async getUrl() {
+        return await webActions.getCurrentPageUrl();
     }
     
    

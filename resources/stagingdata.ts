@@ -49,6 +49,7 @@ export const stagedata = {
     'webTestWithRefrenceHostOnFailure' : '233620',
     'webTestWithWarningAndError' : '266287',
     'webTest40X50XMarkedPass' : '64429', //40X50XErrorMarked as successful
+    'webTestForSmoke':'276855',//used for smoke scenarios
 
     'zoneName' : 'UIAutomationDND',
 }

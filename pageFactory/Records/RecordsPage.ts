@@ -56,7 +56,9 @@ export class RecordsPage {
     private _imageFilterUnderFileType = '(//span[text()="Images"])[2]';
     private _fileTypeFilterDropDown = '(//i[@data-icon-name="chevron"])[2]//div';
     private _responsecodeValueInGaantChart = '//div[contains(@class,"GanttChart_numericCell")]'
-    
+    private _getTestNameFromSourceSelector = '//div[contains(@class,"Pill_pillContent_")]'
+    private _shareButton = '//button[text()="Share"]'
+
     public get waterFallTabLocator() {
         return this._waterFallTab;
     }
@@ -311,6 +313,19 @@ export class RecordsPage {
 
     public get responsecodeValueInGaantChart(){
         return this._responsecodeValueInGaantChart;
+    }
+
+    public get gettestNameFromSourceSelectorBoxLocator(){
+        return this._getTestNameFromSourceSelector
+    }
+    public get commonLocator() {
+        return (text: string) => { return `//span[text()="${text}"]` }
+    }
+    public get commoNLocator() {
+        return (text: string) => { return `//div[text()="${text}"]` }
+    }
+    public get shareButtonLocator(){
+        return this._shareButton
     }
 
 
@@ -629,6 +644,18 @@ export class RecordsPage {
         await this.page.waitForSelector(locator, { timeout: 5000 });
         let count = await this.page.$$(locator);
         return await count.length;
+    }
+    async click(loc:string){
+        await webActions.clickElement(loc)
+    }
+    async getElementText(locator:string){
+        let text = await webActions.getElementText(locator)
+        return text
+    }
+    async getPublicLink(){
+        await webActions.hoverOnElement(this.shareButtonLocator)
+        let link =  await webActions.getElementText('//span[contains(@class,"TextBoxCopyButton_copySection")]')
+        return link
     }
 
 }

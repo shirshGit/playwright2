@@ -49,6 +49,7 @@ export const qadata = {
     'webTestWithRefrenceHostOnFailure' : '256479',
     'webTestWithWarningAndError' : '300679',
     'webTest40X50XMarkedPass' : '61310', //40X50XErrorMarked as successful
+    'webTestForSmoke':'256479',//used for smoke scenarios
 
     'zoneName' : 'UIAutomationDND',
     

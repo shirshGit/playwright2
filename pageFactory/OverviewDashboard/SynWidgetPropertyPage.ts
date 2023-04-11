@@ -29,6 +29,7 @@ export class SynWidgetPropertyPage {
     private _otherTimeFrameToggleButton = '//label[contains(text(),"Other Timeframes:")]/..//button';
     private _otherTimeFrameDD = '//label[contains(text(),"Timeframes")]/..//i/div';
     private _saveWidgetButton = '(//span[text()="Save"])[2]';
+    private _timeframeDDForSLA = '(//div[@data-testid="chevron-down-icon"])[3]'
     
     
     public get sourceDDOptionLocator() {
@@ -78,6 +79,9 @@ export class SynWidgetPropertyPage {
     }
     public get saveWidgetLocator() {
         return this._saveWidgetButton;
+    }
+    public get timeframeDDForSLA(){
+        return this._timeframeDDForSLA
     }
     //#endregion
 
@@ -145,6 +149,12 @@ export class SynWidgetPropertyPage {
         await webActions.clickElement(this.otherTimeFrameDDLocator);
         await webActions.clickElement(this.commomLocator(otherTimeFrame));
         }
+    }
+
+    async selectTimeFrameForSLA(timeFrame: string) {
+       await webActions.clickElement(this.timeframeDDForSLA);
+       await webActions.clickElement(this.commomLocator(timeFrame));
+      
     }
     
 
