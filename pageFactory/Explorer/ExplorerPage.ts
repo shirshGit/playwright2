@@ -17,7 +17,7 @@ export class ExplorerPage {
 
     private _errorTab = '//li[@data-testid="Errors"]';
     private _firstThreeDotMenuInErrorTab = '(//div[@data-testid="table_row"]//span[@data-automationid="splitbuttonprimary"])[1]//i';
-    private _recordsInThreeDotMenuInErrorTab = '//span[normalize-space()="Records"]';
+    private _recordsInThreeDotMenuInErrorTab = '//i[@data-icon-name="waterfall"]/..//span[text()="Records"]';
     private _summeryTab = '//li[@data-testid="Summary Table"]';
     private _testInSourceSelector = '//div[@data-testid="custom-picker-pill-container"]//span';
     private _errorTabFirstRowTestName = '//div[@data-selection-index="0"]//div[@data-automation-key="Test_0"]//span';

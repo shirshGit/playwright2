@@ -428,7 +428,7 @@ export class RecordsPage {
 
     async getIconsClassProperty(nunberOfRow: number) {
         let iconClassProperty: string[] = [];
-        for (let index = 0; index < nunberOfRow; index++) {
+        for (let index = 1; index <= nunberOfRow; index++) {
             let hostValue = await webActions.getElementAttributeValue(this.iconsInGanttSectionLocator(index), 'class');
             iconClassProperty.push(hostValue);
         }

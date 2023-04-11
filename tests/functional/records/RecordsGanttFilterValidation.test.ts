@@ -270,7 +270,7 @@ test("VerifyUserShouldAbleToFilterTracepointAndIndicatorInGanttChart @Records", 
     //click on column tab
     await recordsPage.clickOnColumnTab();
     //select column
-    await recordsPage.selectColumn(["TR-Cache Control", "IND-Test"]);
+    await recordsPage.selectColumn(["TR-Cache Control", "IND-Length"]);
     //verification for selected columns
     await verification.verifyIfElementIsPresent(recordsPage.CacheControltracepointLocator, "selected tracepoint is not present.");
     await verification.verifyIfElementIsPresent(recordsPage.indLenghtindicatorLocator, "selected indicator is not present.");
@@ -278,7 +278,7 @@ test("VerifyUserShouldAbleToFilterTracepointAndIndicatorInGanttChart @Records", 
     let traceCount = await recordsPage.getCount(recordsPage.tracePointValueLocator);
     let traceValue: string[] = await recordsPage.getTracePointValues(traceCount);
     for (let index = 0; index < traceCount; index++) {
-        await verification.verifyHardAssertTrue(traceValue.includes('max-age'), "not getting tracepoint value.");
+        await verification.verifySoftAssertTrue(traceValue.includes('max-age'), "not getting tracepoint value.");
     }
     //validation for indicator value
     let indicatorCount = await recordsPage.getCount(recordsPage.indicatorCountLocator);

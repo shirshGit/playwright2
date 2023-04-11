@@ -211,7 +211,7 @@ export class SynControlCenterPage {
 
 
     public get itemInThreeDotMenu() {
-        return (text: string) => { return `//span[text()="${text}"]` };
+        return (text: string) => { return `//div[contains(@class,"ms-ContextualMenu-linkContent")]//span[text()="${text}"]` };
     }
 
     public get testsTreeSideSideNavLocator(){
