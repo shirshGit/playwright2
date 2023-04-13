@@ -64,9 +64,10 @@ const config: PlaywrightTestConfig = {
           slowMo: 0
         }
       },
-      //grep: [new RegExp("VerifySmartboardNavigationToCC")]
+      grep: [new RegExp("VerifyAlertPageNavigationToSB")]
     },
     {
+
       name: `ChromeSmoke`,
       //testMatch: [`CreateNewSyntheticProduct.test.ts`],
       use: {

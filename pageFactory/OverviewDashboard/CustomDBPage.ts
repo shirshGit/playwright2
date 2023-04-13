@@ -21,7 +21,7 @@ export class CustomDBPage extends SynWidgetPropertyPage{
     private _dbNameBox = '//input[contains(@class,"TextBox_")]';
     private _saveDBButton = '//span[text()="Save"]';
     private _threeDotMenu = '//span[@data-testid="tile-name"]/..//span[2]//button//i[contains(@class,"ms-Icon-placeHolder")]';
-    private _tileHeader = '(//div[contains(@class,"GaugeTilestyles__TileHeader-")])[1]';
+    private _tileHeader = '(//div[contains(@class,"BigMetricTile_tileHeader_")])[1]';
     private _dbName = '(//span[@data-automationid="splitbuttonprimary"]//span[contains(@class,"ms-Button-textContainer")])[1]'
     private _testInTableWidget = '(//a[text()="Web40X-50XTestID"])[2]'
     
@@ -63,7 +63,7 @@ export class CustomDBPage extends SynWidgetPropertyPage{
         return this._tileHeader
     }
     public get threeDotMenuOptionLocator(){
-        return (text:string) => { return `//span[contains(@class,'GaugeTilestyles__IconLabel')][normalize-space()='${text}']`}
+        return (text:string) => { return `//span[contains(@class,'BigMetricTile_')][normalize-space()='${text}']`}
     }
     public get testInTableWidgetRowLocator(){
         return this._testInTableWidget
@@ -130,8 +130,8 @@ export class CustomDBPage extends SynWidgetPropertyPage{
     }
     async navigateByThreeDotMenu(option:string){
         await webActions.hoverOnElement(this.tileHeaderLocator);
-        await webActions.clickElement(this.threeDotMenuLocator);
-        await webActions.clickElement(this.threeDotMenuOptionLocator(option))
+        await webActions.clickElementJS(this.threeDotMenuLocator);
+        await webActions.clickElementJS(this.threeDotMenuOptionLocator(option))
     }
     async clickTableWidgeTest() {
         await webActions.clickElement(this.testInTableWidgetRowLocator)

@@ -304,6 +304,7 @@ test("VerifySLANavigationToSB @PageNavigation@CustomDashboard", async({baseTestU
     //get url
     let url =  await syntheticSmartboardPage.getUrl();
     await verification.verifySoftAssertTrue(url.includes('/Smartboard/Test'),'after clicking on test not able to navigate to smarboardpage');
+    await verification.verifyIfElementIsPresent(syntheticSmartboardPage.lastSixHourTimeFrame,'last 6hr time frame is not selected')
     //delete created db
     await sideNavigationBar.navigateToDashboardFromSideNavigation();
     await dashboardBlade.clickOnOverviewDashboard();
@@ -313,14 +314,18 @@ test("VerifySLANavigationToSB @PageNavigation@CustomDashboard", async({baseTestU
 /*
     CP-41017 : Verify test widget navigation to smartboard in overview dashboard
 */
-test("VerifyTestWidgetNavigationToSBInOVDB @PageNavigation@CustomDashboard", async({baseTestUtil, verification, defaultDashboardPage,testOverviewDashboard, util}) => {
+test("VerifyTestWidgetNavigationToSBInOVDB @PageNavigation@CustomDashboard", async({baseTestUtil, verification, defaultDashboardPage,testOverviewDashboard,syntheticSmartboardPage, util}) => {
     await util.delay(4000);
     //click on test in test widget page
     await defaultDashboardPage.clickOnTestInTableTestWidget(1);
     //get url
+    await util.delay(4000);
     let url =  await testOverviewDashboard.getUrl();
     await verification.verifySoftAssertTrue(url.includes('/Smartboard/Test'),'after clicking on test not able to navigate to smarboardpage');
+    await verification.verifyIfElementIsPresent(syntheticSmartboardPage.lastSixHourTimeFrame,'last 6hr time frame is not selected')
+    
 })
+
 
 /*
     CP-41018 :Verify tile widget navigation to smartboard in Test overview dashboard
@@ -333,23 +338,26 @@ test("VerifyTileWidgetNavigationToSBInOVDB @PageNavigation@CustomDashboard", asy
     //get url
     let url =  await testOverviewDashboard.getUrl();
     await verification.verifySoftAssertTrue(url.includes('/Smartboard/Test'),'after clicking on test not able to navigate to smarboardpage');
+    await verification.verifyIfElementIsPresent(syntheticSmartboardPage.lastSixHourTimeFrame,'last 6hr time frame is not selected')
+    
 })
 
 
 /*
     CP-41019 : Verify alert page navigation to smartboard
 */
-test("VerifyAlertPageNavigationToSB @PageNavigation@CustomDashboard", async({baseTestUtil,sideNavigationBar,util, verification, alertLogPage}) => {
+test("VerifyAlertPageNavigationToSB @PageNavigation@CustomDashboard", async({baseTestUtil,sideNavigationBar,util, verification,syntheticSmartboardPage, alertLogPage}) => {
     //navigate to records page
     await sideNavigationBar.navigateToAlertLogFromSideNavigation();
     //click hover first test three dot menu amd click on smartboard
     await alertLogPage.clickOnThreeDotMenu(0,'Smartboard');
-    await util.delay(3000);
+    await util.delay(4000);
     //fetch url of test property page
     let getPageURL = await alertLogPage.getUrl();
     //validation for test properties page
     await verification.verifySoftAssertTrue(getPageURL.includes('/Smartboard/Test?'), 'smartboard page is not opening after clicking on three dot menu smartboard option');
-   
+    await verification.verifyIfElementIsPresent(syntheticSmartboardPage.lastSixHourTimeFrame,'last 6hr time frame is not selected')
+    
 })
 
 /*

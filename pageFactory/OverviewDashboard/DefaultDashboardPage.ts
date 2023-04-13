@@ -63,11 +63,11 @@ export class DefaultDashboardPage {
     }
 
     public get testInTableWidget(){
-        return (text:number) => {return `(//div[@class="ms-List-page"]//div[@data-list-index="${text}"]//a)[${text}]`}
+        return (text:number) => {return `(//div[@data-automationid="DetailsRowFields"]//a)[${text}]`}
     }
 
     public get testInTileWidget(){
-        return (text:number) => {return `(//ul[contains(@class,"Tiles_tiles")]//li//div)[${text}]`}
+        return (text:number) => {return `(//ul[contains(@class,"Tiles_tiles")]//li//div//p)[${text}]`}
     }
 
     //#endregion
