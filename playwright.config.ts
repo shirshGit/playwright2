@@ -64,7 +64,9 @@ const config: PlaywrightTestConfig = {
           slowMo: 0
         }
       },
-     // grep: [new RegExp("deleteDB @CleanUp")]
+
+      //grep: [new RegExp("VerifyRecordsCompareSectionInNTNSB @PageNavigation@ProductionSmoke@Smoke")]
+
     },
     {
       name: `ChromeSmoke`,

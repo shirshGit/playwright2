@@ -41,7 +41,7 @@ export class NodeToNodeSmartboardPage {
     private _SecondWidgetFrom = '(//label[text()="From"])[2]';
     private _SecondWidgetTo = '(//label[text()="To"])[2]';
     private _firstRecordSheduleTimeInFirstWgt = '(//div[@data-automation-key="Schedule Time_0"])[1]//div';
-    private _firstRecordSheduleTimeInSecondWgt = '((//div[@class="ms-List-page"])[7]//div[@data-automation-key="Schedule Time_0"])[1]//div';
+    private _firstRecordSheduleTimeInSecondWgt = '((//div[@data-selection-index="0"])[3]//div[@data-automation-key="Schedule Time_0"]//div)[1]';
     private _recordSheduleTimeFirstWgt = '(//label[@data-testid="selected-label"])[1]';
     private _recordSheduleTimeSecondWgt = '(//label[@data-testid="selected-label"])[2]';
 
