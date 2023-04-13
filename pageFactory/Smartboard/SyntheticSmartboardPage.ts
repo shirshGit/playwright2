@@ -31,6 +31,7 @@ export class SyntheticSmartboardPage {
     private _getSourceNameFromPublicLinkPage = '//div[contains(@class,"SourceSelectorRowstyles__LabelWrapper")]'
     private _getTestNameFromSourceSelector = '//div[contains(@class,"Pill_pillContent_")]'
     private _createdLinksTextInShareExplorer = '//span[text()="Created Links"]'
+    
 
     public get commonLocator() {
         return (text: string) => { return `//span[text()="${text}"]` }
@@ -137,6 +138,7 @@ export class SyntheticSmartboardPage {
         let text = await webActions.getElementText(locator)
         return text
     }
+    
 
 
 
