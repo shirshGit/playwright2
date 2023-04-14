@@ -1,4 +1,4 @@
-import { devices } from 'playwright';
+import { devices } from '@playwright/test';
 import { PlaywrightTestConfig } from '@playwright/test';
 import { testConfig } from './testConfig';
 const ENV = process.env.ENV;
@@ -64,7 +64,9 @@ const config: PlaywrightTestConfig = {
           slowMo: 0
         }
       },
+
       //grep: [new RegExp("VerifyRecordsCompareSectionInNTNSB @PageNavigation@ProductionSmoke@Smoke")]
+
     },
     {
       name: `ChromeSmoke`,

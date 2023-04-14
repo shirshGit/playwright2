@@ -22,7 +22,7 @@ export class CustomDBPage extends SynWidgetPropertyPage{
     private _saveDBButton = '//span[text()="Save"]';
     private _threeDotMenu = '//span[@data-testid="tile-name"]/..//span[2]//button//i[contains(@class,"ms-Icon-placeHolder")]';
     private _tileHeader = '(//div[contains(@class,"GaugeTilestyles__TileHeader-")])[1]';
-    
+    private _editWidgetThreeDotMenu = '//div[contains(@class,"CommandBar_button_")]//i';
     
     
     public get overviewDashboardLocator(){
@@ -68,6 +68,9 @@ export class CustomDBPage extends SynWidgetPropertyPage{
     public get tableWidgetRowLocator(){
         return (text:number) => { return `//div[@data-testid="table_row"]//a[@tabindex="${text}"]`}
     }
+    public get editWidgetThreeDotLocator(){
+        return this._editWidgetThreeDotMenu
+    }
 
   
     //#endregion
@@ -102,7 +105,7 @@ export class CustomDBPage extends SynWidgetPropertyPage{
         await webActions.clickElement(this.commomLocator('Continue'));
     }
     async createTileWidget(widgetName: string, widgetDiscription: string, division:string=null, dataFilterName: string = null, otherFilter:string = null,otherFilterOptions:string[]=null,metrics: string[], defaultTimeFrame: string = null, otherTimeFrame: string = null) {
-        await this.fillBasicProperties(widgetName,widgetDiscription)
+        await this.fillBasicProperties(widgetName,widgetDiscription,division)
         await this.selectFilters(dataFilterName,otherFilter,otherFilterOptions)
         await this.selectMetrics(metrics)
         await this.selectDefaultTimeFrame(defaultTimeFrame)
@@ -132,6 +135,17 @@ export class CustomDBPage extends SynWidgetPropertyPage{
     }
     async clickTableWidgeRow(rowNum: number) {
         await webActions.clickElement(this.tableWidgetRowLocator(rowNum))
+    }
+    async clickOnWidgetName(widgetName:string){
+        await webActions.clickElement(this.commomLocator(widgetName))
+    }
+    async editWidget(threeDotManuOption:string){
+        await webActions.clickElement(this.commomLocator('Edit'));
+        await webActions.clickElement(this.editWidgetThreeDotLocator)
+        await webActions.clickElement(this.commomLocator(threeDotManuOption));
+    }
+    async saveWidget() {
+        await webActions.clickElement(this.saveWidgetLocator);
     }
     
    
