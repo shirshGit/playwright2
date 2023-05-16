@@ -11,7 +11,7 @@ test("VerifySmartboardOptionIsDisplayedInLeftNavigation @PageNavigation@CustomDa
     //verification for home icon
     await verification.verifyIfElementIsPresent(sideNavigationBar.sideNavHome,'home section icon is not present');
     //click on home Icon
-    await sideNavigationBar.clickOnHomeIcon();
+    await sideNavigationBar.clickOnAnalyticsIcon();
     //verification for smartboard option
     await verification.verifyIfElementIsPresent(sideNavigationBar.sideNavSmartboard,'smartboard option is not present');
     
@@ -70,9 +70,11 @@ test("VerifyAppliedFilterIsPassedIsAsFilterInSB @PageNavigation@CustomDashboard"
 test("VerifyAppliedFilterIsPassedIsAsFilterInSBWhenNavigateFromTestOVDB @PageNavigation@CustomDashboard", async({baseTestUtil,sideNavigationBar, verification, defaultDashboardPage, util,testOverviewDashboard}) => {
     //click on test over view dashboard
     await defaultDashboardPage.clickOnTab('Tests');
+    await util.delay(3000);
     //click on filter button
     await testOverviewDashboard.clickOnFilter();
     //select all geo filter
+    await util.delay(5000);
     await testOverviewDashboard.selectCityInGeoFilter('Denver');
     //click on apply button
     await testOverviewDashboard.applyFilterButton();
@@ -81,6 +83,7 @@ test("VerifyAppliedFilterIsPassedIsAsFilterInSBWhenNavigateFromTestOVDB @PageNav
     //get url
     let url =  await testOverviewDashboard.getUrl();
     await verification.verifySoftAssertTrue(url.includes('/Smartboard/Test'),'after clicking on test not able to navigate to smarboardpage');
+    await util.delay(3000);
     let filterValue = await testOverviewDashboard.getFilterValue(1);
     //verification for passed filter
     await verification.verifySoftAssertTrue(filterValue.includes('City') && filterValue.includes('Denver'),'filter value is not matching')
@@ -102,15 +105,13 @@ test("VerifyClickTableVizInExplorerNavigateToSB @PageNavigation@CustomDashboard"
     await explorerPage.selectVizualization('Table');
     //click on three dot menu and navigate to SB
     await explorerPage.clickOnThreeDotMenuForTableViz(0);
-    let getNewPage = await explorerPage.getNewWindow(context, await explorerPage.commonLocator('Smartboard'));
+    let getNewPage = await explorerPage.getNewWindow(context, await explorerPage.tableVizThreeDotMenuSB);
     let sbPage = new ExplorerPage(getNewPage);
     await util.delay(4000);
     //fetch url of test property page
     let url =  await sbPage.getUrl();
     await verification.verifySoftAssertTrue(url.includes('/Smartboard/Test'),'after clicking on test not able to navigate to smarboardpage');
-    //validation for last 6 hour time frame selected
-    await verification.verifyIfElementIsPresent(syntheticSmartboardPage.lastSixHourTimeFrame,'');
-
+   
 })
 
 /*
@@ -167,7 +168,7 @@ test("VerifyGuageTileNavigationToSBByThreeDotMenu @PageNavigation@CustomDashboar
     //click on save db
     await customDBPage.saveDB();
     //click on test 
-    await customDBPage.navigateByThreeDotMenu("Smartboard");
+    await customDBPage.navigateViaThreeDotMenuFromGuageWidget("Smartboard");
     //get url
     let url =  await syntheticSmartboardPage.getUrl();
     await verification.verifySoftAssertTrue(url.includes('/Smartboard/Test'),'after clicking on test not able to navigate to smarboardpage');
@@ -198,8 +199,9 @@ test("VerifyTileNavigationToSBByThreeDotMenu @PageNavigation@CustomDashboard", a
     await customDBPage.createTileWidget(await testUtility.getWidgetName(),'Delete',null,null,otherFilters,otherFilterOptions,metrics,null,null);
     //click on save db
     await customDBPage.saveDB();
+    await util.delay(4000);
     //click on test 
-    await customDBPage.navigateByThreeDotMenu("Smartboard");
+    await customDBPage.navigateViaThreeDotMenuFromTileWidget("Smartboard");
     //get url
     let url =  await syntheticSmartboardPage.getUrl();
     await verification.verifySoftAssertTrue(url.includes('/Smartboard/Test'),'after clicking on test not able to navigate to smarboardpage');
@@ -230,6 +232,7 @@ test("VerifyTileNavigationToSB @PageNavigation@CustomDashboard", async({baseTest
     await customDBPage.createTileWidget(await testUtility.getWidgetName(),'Delete',null,null,otherFilters,otherFilterOptions,metrics,null,null);
     //click on save db
     await customDBPage.saveDB();
+    await util.delay(4000);
     //click on test 
     await customDBPage.clickTileWidge(1);
     //get url
@@ -264,8 +267,9 @@ test("VerifyTableNavigationToSB @PageNavigation@CustomDashboard", async({baseTes
     await customDBPage.createTableWidget(await testUtility.getWidgetName(),'Delete',null,null,otherFilters,otherFilterOptions,dimension,metrics,null,null);
     //click on save db
     await customDBPage.saveDB();
+    await util.delay(6000);
     //click on test 
-    await customDBPage.clickTableWidgeRow(1);
+    await customDBPage.clickTableWidgeTest();
     //get url
     let url =  await syntheticSmartboardPage.getUrl();
     await verification.verifySoftAssertTrue(url.includes('/Smartboard/Test'),'after clicking on test not able to navigate to smarboardpage');
@@ -293,51 +297,64 @@ test("VerifySLANavigationToSB @PageNavigation@CustomDashboard", async({baseTestU
     //create navigate to custom DB widgetProperty page
     await customDBPage.SelectSourceAndVizualization(endpointName,endpointOption,vizName);
     //create Widget
-    await customDBPage.createSLAWidget(await testUtility.getWidgetName(),'Delete',null,null,otherFilters,otherFilterOptions,metrics,null,'Last 3 Days');
+    await customDBPage.createSLAWidget(await testUtility.getWidgetName(),'Delete',null,null,otherFilters,otherFilterOptions,null,metrics,'Last 3 Days');
     //click on save db
     await customDBPage.saveDB();
+    await util.delay(4000);
     //click on test 
-    await customDBPage.clickTableWidgeRow(1);
+    await customDBPage.clickSLAWidgeTest();
     //get url
     let url =  await syntheticSmartboardPage.getUrl();
     await verification.verifySoftAssertTrue(url.includes('/Smartboard/Test'),'after clicking on test not able to navigate to smarboardpage');
-    
+    await verification.verifyIfElementIsPresent(syntheticSmartboardPage.lastHourTimeFrame,'last hr time frame is not selected')
+    //delete created db
+    await sideNavigationBar.navigateToDashboardFromSideNavigation();
+    await dashboardBlade.clickOnOverviewDashboard();
+    await dashboardBlade.deleteDB(dbName);
 })
 
 /*
     CP-41017 : Verify test widget navigation to smartboard in overview dashboard
 */
-test("VerifyTestWidgetNavigationToSBInOVDB @PageNavigation@CustomDashboard", async({baseTestUtil, verification, defaultDashboardPage,testOverviewDashboard, util}) => {
+test("VerifyTestWidgetNavigationToSBInOVDB @PageNavigation@CustomDashboard", async({baseTestUtil, verification, defaultDashboardPage,testOverviewDashboard,syntheticSmartboardPage, util}) => {
+    await util.delay(4000);
     //click on test in test widget page
     await defaultDashboardPage.clickOnTestInTableTestWidget(1);
     //get url
+    await util.delay(4000);
     let url =  await testOverviewDashboard.getUrl();
     await verification.verifySoftAssertTrue(url.includes('/Smartboard/Test'),'after clicking on test not able to navigate to smarboardpage');
+    await verification.verifyIfElementIsPresent(syntheticSmartboardPage.lastHourTimeFrame,'last hour time frame is not selected')
+    
 })
+
 
 /*
     CP-41018 :Verify tile widget navigation to smartboard in Test overview dashboard
 */
 test("VerifyTileWidgetNavigationToSBInOVDB @PageNavigation@CustomDashboard", async({baseTestUtil,sideNavigationBar, verification, defaultDashboardPage,testOverviewDashboard, util,syntheticSmartboardPage}) => {
     //click on test over view dashboard
+    await util.delay(4000);
     await defaultDashboardPage.clickOnTab('Tests');
     //click on test in test widget page
     await testOverviewDashboard.clickOnTestInTileTestWidget(1);
     //get url
     let url =  await testOverviewDashboard.getUrl();
     await verification.verifySoftAssertTrue(url.includes('/Smartboard/Test'),'after clicking on test not able to navigate to smarboardpage');
+    await verification.verifyIfElementIsPresent(syntheticSmartboardPage.lastHourTimeFrame,'last hr time frame is not selected')
+    
 })
 
 
 /*
     CP-41019 : Verify alert page navigation to smartboard
 */
-test("VerifyAlertPageNavigationToSB @PageNavigation@CustomDashboard", async({baseTestUtil,sideNavigationBar,util, verification, alertLogPage}) => {
+test("VerifyAlertPageNavigationToSB @PageNavigation@CustomDashboard", async({baseTestUtil,sideNavigationBar,util, verification,syntheticSmartboardPage, alertLogPage}) => {
     //navigate to records page
     await sideNavigationBar.navigateToAlertLogFromSideNavigation();
     //click hover first test three dot menu amd click on smartboard
     await alertLogPage.clickOnThreeDotMenu(0,'Smartboard');
-    await util.delay(3000);
+    await util.delay(4000);
     //fetch url of test property page
     let getPageURL = await alertLogPage.getUrl();
     //validation for test properties page
@@ -361,6 +378,6 @@ test("VerifySmartboardNavigationToCC @PageNavigation@CustomDashboard", async({ba
     //validation for smartboard page
     await verification.verifySoftAssertTrue(getSBPageURL.includes('Smartboard/Test?ti=' + testID ), 'smartboard page is not opening after clicking on three dot manu smartboard button');
     //validation for last 6 hour time frame selected
-    await verification.verifyIfElementIsPresent(syntheticSmartboardPage.lastSixHourTimeFrame,'');
+    await verification.verifyIfElementIsPresent(syntheticSmartboardPage.lastSixHourTimeFrame,'last 6hr time frame is not selected');
 })
 

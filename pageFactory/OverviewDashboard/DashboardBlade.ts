@@ -15,7 +15,7 @@ export class DashboardBlade {
 
     //#region This region is for getter
 
-    private _overviewDashboard = '//label[text()="Overview Dashboard"]';
+    private _overviewDashboard = '//label[text()="My Dashboards"]';
     private _firstTile = '(//ul[contains(@class,"Tiles_tiles_")]//li)[1]//p[contains(@class,"Tiles_name_")]';
     private _createDashboard = '//span[contains(text(),"New Dashboard")]';
     private _createFolder = '//span[text()="Create Folder"]';

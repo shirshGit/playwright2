@@ -104,7 +104,7 @@ test("VerifySmartboardRUMLoads @PageNavigation@ProductionSmoke@Smoke", async ({ 
 test.skip("VerifyPeerInfoInBGPSB @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, bgpSmartboardPage, util }) => {
     let data = new DataForEnv();
     let bgpTestID = await data.getValueOfTheParameter('bgpTest');
-    //await sideNavigationBar.navigateToSmartboardFromSideNavigation();
+    await sideNavigationBar.navigateToSmartboardFromSideNavigation();
     await util.delay(2000);
     //validation for errors
     await verification.validationsForPage();
@@ -137,7 +137,7 @@ test("VerifyTimeZoneDropDownInNTNSB @PageNavigation@ProductionSmoke@Smoke", asyn
     //validation for time zone dropDowm
     await verification.verifyIfElementIsPresent(ntnSmartboardPage.zoneDropDownLocator, "time zone dd is not present");
     await ntnSmartboardPage.clickOnTimeZoneDropDown();
-    let timeZoneName: string[] = ['AEDT', 'AKST', 'ALMT', 'AMST', 'BRST', 'CET', 'CST', 'EEST', 'EEST', 'EST', 'GST', 'HAST', 'ICT', 'IST', 'Japan Standard Time', 'JST', 'KST', 'MSK', 'Mountain Standard Time (Mexico)', 'US Mountain Standard Time', 'MST', 'NZDT', 'PKT', 'Pacific Standard Time', 'PST', 'SGT', 'TST', 'UTC'];
+    let timeZoneName: string[] = ['AEST', 'AKDT', 'ALMT', 'AMST', 'BRST', 'BST', 'CDT','CEDT','CST','EDT','EEDT', 'EEST', 'HAST', 'ICT', 'IST', 'Japan Standard Time', 'JST', 'KST', 'MSK', 'Mountain Standard Time (Mexico)', 'US Mountain Standard Time', 'MST', 'NZST','Pacific Daylight Time (Mexico)','Pacific Daylight Time (PDT)', 'PKT', 'SGT', 'TST', 'UTC'];
     let timeZoneNameFromUI: string[] = await ntnSmartboardPage.getTimeZoneName(timeZoneName);
     for (let index = 0; index < timeZoneName.length; index++) {
         const element1 = timeZoneName[index];
@@ -176,7 +176,7 @@ test("VerifyMatrixCompareInNTNSB @PageNavigation@ProductionSmoke@Smoke", async (
     await verification.verifyIfElementIsPresent(ntnSmartboardPage.pktLossLatencyJitterInMetricsDDLocator, "pkt loss ,jitter,latency metrics is not present in metrics DD")
     //verification for no of node selected in test
     let nodeCount = await ntnSmartboardPage.getSelectedNodeCountInMetricsSection();
-    await verification.verifySoftAssertTrue(nodeCount === 2, "node count is not matching");
+    await verification.verifySoftAssertTrue(nodeCount === 7, "node count is not matching");
     //verification for item selected in legend metrics DD
     await verification.verifyIfElementIsPresent(ntnSmartboardPage.legendDDSelectedItemLocator, "pkt loss metrics is not selected in legend metrics DD");
     //click on legend metrics dd
@@ -194,7 +194,7 @@ test("VerifyMatrixCompareInNTNSB @PageNavigation@ProductionSmoke@Smoke", async (
 test("VerifyRecordsCompareSectionInNTNSB @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, ntnSmartboardPage, util }) => {
     let data = new DataForEnv();
     let ntnTestID = await data.getValueOfTheParameter('nodeToNodeTest');
-    //await sideNavigationBar.navigateToSmartboardFromSideNavigation();
+    await sideNavigationBar.navigateToSmartboardFromSideNavigation();
     await util.delay(2000);
     await verification.verifyIfElementIsPresent(sourceSelectorSmartboard.testTabLocator, 'Test Tab is not present in source selector');
     //validation for errors

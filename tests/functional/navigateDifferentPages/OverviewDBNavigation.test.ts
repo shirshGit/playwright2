@@ -36,7 +36,7 @@ test("VerifyTestOverviewDashboardLoads @PageNavigation@ProductionSmoke@Smoke", a
 */
 
 test("VerifyEndpointOverviewDBLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil, defaultDashboardPage, verification, util,testOverviewDashboard, dashboardBlade, endpointOverviewDB}) => {
-    await defaultDashboardPage.clickOnTab('Endpoint');
+    await defaultDashboardPage.clickOnEndpointdashboard();
     await util.delay(2000);
     //validation for errors
     await verification.validationsForPage();
@@ -52,7 +52,7 @@ test("VerifyEndpointOverviewDBLoads @PageNavigation@ProductionSmoke@Smoke", asyn
     CP-39997 : To Validate BGP Metric Cards RPKI Status, %Reachability, #Hijacks , #Neighboring Peers , # Prefix withdrawn in BGP Dashboard
 */
 test("VerifyBGPOverviewDBLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil, defaultDashboardPage, verification, util,testOverviewDashboard, dashboardBlade, bgpOverviewDB}) => {
-    await defaultDashboardPage.clickOnTab('BGP');
+    await defaultDashboardPage.clickOnBGPdashboard();
     //validation for errors
     await verification.validationsForPage();
     await verification.verifyIfElementIsPresent(bgpOverviewDB.RPKIStatusLocator, 'RPKI is not Present');

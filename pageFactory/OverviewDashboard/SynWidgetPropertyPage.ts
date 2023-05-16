@@ -29,6 +29,7 @@ export class SynWidgetPropertyPage {
     private _otherTimeFrameToggleButton = '//label[contains(text(),"Other Timeframes:")]/..//button';
     private _otherTimeFrameDD = '//label[contains(text(),"Timeframes")]/..//i/div';
     private _saveWidgetButton = '(//span[text()="Save"])[2]';
+    private _timeframeDDForSLA = '(//div[@data-testid="chevron-down-icon"])[3]'
     
     
     public get sourceDDOptionLocator() {
@@ -79,6 +80,12 @@ export class SynWidgetPropertyPage {
     public get saveWidgetLocator() {
         return this._saveWidgetButton;
     }
+    public get timeframeDDForSLA(){
+        return this._timeframeDDForSLA
+    }
+    public get commoNLocator() {
+        return (text: string) => { return `//div[text()="${text}"]` }
+    }
     //#endregion
 
     
@@ -120,7 +127,8 @@ export class SynWidgetPropertyPage {
     async selectDimension(dimensions: string[]) {
         for (let index = 0; index < dimensions.length; index++) {
             await webActions.clickElement(this.dimensionInputBoxLocator);
-            await webActions.enterElementText(this.descriptionInputLocator,dimensions[index])
+            await webActions.enterElementText(this.dimensionInputBoxLocator,dimensions[index])
+            await webActions.clickElement(this.commoNLocator(dimensions[index]))
             await webActions.onlyKeyPress('Enter');
             await webActions.onlyKeyPress('Enter');
         }
@@ -145,6 +153,12 @@ export class SynWidgetPropertyPage {
         await webActions.clickElement(this.otherTimeFrameDDLocator);
         await webActions.clickElement(this.commomLocator(otherTimeFrame));
         }
+    }
+
+    async selectTimeFrameForSLA(timeFrame: string) {
+       await webActions.clickElement(this.timeframeDDForSLA);
+       await webActions.clickElement(this.commomLocator(timeFrame));
+      
     }
     
 

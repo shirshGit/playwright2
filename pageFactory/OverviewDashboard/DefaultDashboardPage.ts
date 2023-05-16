@@ -22,6 +22,8 @@ export class DefaultDashboardPage {
     private _threeLineBurgerMenu = '//div[contains(@class,"fabricIcons_burgerMenu")]';
     private _rumWidgetinOverviewDashboard = '//div[contains(@class,"RumAppsOverview_mainContainer")]'
     private _testOverView = '(//span[text()="Tests"])[1]';
+    private _endpointInDefaultDashboard = '(//span[text()="Endpoint"])[1]';
+    private _bgpInDefaultDashboard = '(//span[text()="BGP"])[1]';
     private _testWidgetTimeFrameDD = '(//button[@type="button"][normalize-space()="Last Hour"])[2]';
 
     public get overviewDashboardLocator() {
@@ -62,9 +64,22 @@ export class DefaultDashboardPage {
         return this._testOverView;
     }
 
-    public get testInTableWidget() {
-        return (text: number) => { return `(//div[@class="ms-List-page"]//div[@data-list-index="${text}"])[1]//a` }
+    public get testInTableWidget(){
+        return (text:number) => {return `(//div[@data-automationid="DetailsRowFields"]//a)[${text}]`}
     }
+
+    public get testInTileWidget(){
+        return (text:number) => {return `(//ul[contains(@class,"Tiles_tiles")]//li//div//p)[${text}]`}
+    }
+
+    public get endpointInDefaultDashboardLocator() {
+        return this._endpointInDefaultDashboard;
+    }
+
+    public get bgpInDefaultDashboardLocator() {
+        return this._bgpInDefaultDashboard;
+    }
+    
     public get commomLocator() {
         return (text: string) => { return `//span[text()="${text}"]` }
     }
@@ -89,6 +104,7 @@ export class DefaultDashboardPage {
     async clickOnOverviewdashboard() {
         await webActions.clickElement(this.overviewDashboardLocator)
     }
+    
     async clickOnTab(tabName: string) {
         if (tabName = 'Tests') {
             await webActions.clickElement(this.testOverViewTabLocator);
@@ -102,6 +118,12 @@ export class DefaultDashboardPage {
     }
     async clickOnTestInTableTestWidget(rowNum: number) {
         await webActions.clickElement(this.testInTableWidget(rowNum));
+    }
+    async clickOnEndpointdashboard() {
+        await webActions.clickElement(this.endpointInDefaultDashboardLocator)
+    }
+    async clickOnBGPdashboard() {
+        await webActions.clickElement(this.bgpInDefaultDashboardLocator)
     }
 
     async selectTimeFrameForTestWidget(timeframe: string) {
@@ -120,7 +142,6 @@ export class DefaultDashboardPage {
     async getTextOfElement(locator:string){
         return await webActions.getElementText(locator)
     }
-
 
 
 

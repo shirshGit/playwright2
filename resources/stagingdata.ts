@@ -46,10 +46,11 @@ export const stagedata = {
     'webPingTestIDForDivision' : '191274',// used for records automation
     'webTestForZoneFilterTest' : '253150',
     'web40x50xTestID' : '216886',
-    'webTestForTracepointAndIndicator' : '295329',//used for tracepoint and indicator related automation
+    'webTestForTracepointAndIndicator' : '260695',//used for tracepoint and indicator related automation
     'webTestWithRefrenceHostOnFailure' : '233620',
     'webTestWithWarningAndError' : '266287',
     'webTest40X50XMarkedPass' : '64429', //40X50XErrorMarked as successful
+    'webTestForSmoke':'276855',//used for smoke scenarios
 
     'zoneName' : 'UIAutomationDND',
 }

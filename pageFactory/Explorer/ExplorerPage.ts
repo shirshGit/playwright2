@@ -17,10 +17,12 @@ export class ExplorerPage {
 
     private _errorTab = '//li[@data-testid="Errors"]';
     private _firstThreeDotMenuInErrorTab = '(//div[@data-testid="table_row"]//span[@data-automationid="splitbuttonprimary"])[1]//i';
-    private _recordsInThreeDotMenuInErrorTab = '//span[normalize-space()="Records"]';
+    private _recordsInThreeDotMenuInErrorTab = '//i[@data-icon-name="waterfall"]/..//span[text()="Records"]';
     private _summeryTab = '//li[@data-testid="Summary Table"]';
     private _testInSourceSelector = '//div[@data-testid="custom-picker-pill-container"]//span';
     private _errorTabFirstRowTestName = '//div[@data-selection-index="0"]//div[@data-automation-key="Test_0"]//span';
+    private _getTestNameFromSourceSelector = '//div[contains(@class,"Legend_name_")]'
+    private _tableVizThreeDotMenuSB = '//i[@data-icon-name="smartboardBlue"]/..//span[text()="Smartboard"]'
     private _getStarDate = '(//div[text()="From"]/..//input)[1]'
     private _getEndDate = '(//div[text()="To"]/..//input)[1]'
     private _getStarTime = '(//div[text()="From"]/..//input)[2]'
@@ -59,6 +61,14 @@ export class ExplorerPage {
     public get commonLocator(){
         return (text:string) => { return `//span[text()="${text}"]`}
     }
+    
+    public get gettestNameFromSourceSelectorBoxLocator(){
+        return this._getTestNameFromSourceSelector
+    }
+    public get tableVizThreeDotMenuSB(){
+        return this._tableVizThreeDotMenuSB
+    }
+    
     public get selectedFilterValueLocator(){
         return (text:string) => { return `//div[@title="${text}"]`}
     }
@@ -138,6 +148,14 @@ export class ExplorerPage {
     async selectItemFormThreeDotMenu(itemName:string){
         await webActions.clickElement(this.commonLocator(itemName))
     }
+    async click(loc:string){
+        await webActions.clickElement(loc)
+    }
+    async getElementText(locator:string){
+        let text = await webActions.getElementText(locator)
+        return text
+    }
+
     async getTestNameFromSourceSelector(itemName:string){
         return await webActions.getElementText(this.commonLocator(itemName))
     }

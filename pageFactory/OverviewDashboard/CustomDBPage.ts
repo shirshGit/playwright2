@@ -1,5 +1,5 @@
 import { WebActions } from "@lib/WebActions";
-import { Page } from "@playwright/test";
+import { BrowserContext, Page } from "@playwright/test";
 import { Utility } from "@util/Utility";
 import { SynWidgetPropertyPage } from "./SynWidgetPropertyPage";
 let webActions: WebActions;
@@ -21,9 +21,12 @@ export class CustomDBPage extends SynWidgetPropertyPage{
     private _dbNameBox = '//input[contains(@class,"TextBox_")]';
     private _saveDBButton = '//span[text()="Save"]';
     private _threeDotMenu = '//span[@data-testid="tile-name"]/..//span[2]//button//i[contains(@class,"ms-Icon-placeHolder")]';
-    private _tileHeader = '(//div[contains(@class,"GaugeTilestyles__TileHeader-")])[1]';
+    private _headerForGuage = '(//span[contains(@class,"GaugeTilestyles__TileTitle")])[1]';
+    private _dbName = '(//span[@data-automationid="splitbuttonprimary"]//span[contains(@class,"ms-Button-textContainer")])[1]'
+    private _testInTableWidget = '(//div[@data-list-index="0"]//a)[1]'
+    private _tileHeaderForTile = '(//div[contains(@class,"BigMetricTile_tileHeader_")])[1]'
+    private _SLAWidgetTest = '(//tr[@class="ant-table-row ant-table-row-level-0"]//a[contains(@class,"InfoBlock_text_")])[1]'
     private _editWidgetThreeDotMenu = '//div[contains(@class,"CommandBar_button_")]//i';
-    
     
     public get overviewDashboardLocator(){
         return this._overviewDashboard;
@@ -59,14 +62,26 @@ export class CustomDBPage extends SynWidgetPropertyPage{
     public get threeDotMenuLocator(){
         return this._threeDotMenu
     }
+    public get guageHeaderLocator(){
+        return this._headerForGuage
+    }
+    public get threeDotMenuOptionForGuageWidgetLocator(){
+        return (text:string) => { return `//span[contains(@class,'GaugeTilestyles__IconLabel')][normalize-space()='${text}']`}
+    }
+    public get testInTableWidgetRowLocator(){
+        return this._testInTableWidget
+    }
+    public get getDBNameLocator(){
+        return this._dbName
+    }
     public get tileHeaderLocator(){
-        return this._tileHeader
+        return this._tileHeaderForTile
     }
-    public get threeDotMenuOptionLocator(){
-        return (text:string) => { return `//span[normalize-space()='${text}']`}
+    public get threeDotMenuOptionForTileWidgetLocator(){
+        return (text:string) => { return `//span[contains(@class,'BigMetricTile_label')][normalize-space()='${text}']`}
     }
-    public get tableWidgetRowLocator(){
-        return (text:number) => { return `//div[@data-testid="table_row"]//a[@tabindex="${text}"]`}
+    public get testInSLAWidgetRowLocator(){
+        return this._SLAWidgetTest
     }
     public get editWidgetThreeDotLocator(){
         return this._editWidgetThreeDotMenu
@@ -121,20 +136,42 @@ export class CustomDBPage extends SynWidgetPropertyPage{
         await this.selectOtherTimeFrame(otherTimeFrame)
         await webActions.clickElement(this.saveWidgetLocator)
     }
-    async createSLAWidget(widgetName: string, widgetDiscription: string, division:string=null, dataFilterName: string = null, otherFilter:string = null,otherFilterOptions:string[]=null,dimension: string[] ,metrics: string[], defaultTimeFrame: string = null, otherTimeFrame: string = null) {
+    async createSLAWidget(widgetName: string, widgetDiscription: string, division:string=null, dataFilterName: string = null, otherFilter:string = null,otherFilterOptions:string[]=null,dimension: string[] ,metrics: string[], timeFrame: string) {
         await this.fillBasicProperties(widgetName,widgetDiscription)
         await this.selectFilters(dataFilterName,otherFilter,otherFilterOptions)
         await this.selectMetrics(metrics)
-        await this.selectOtherTimeFrame(otherTimeFrame)
+        await this.selectTimeFrameForSLA(timeFrame)
         await webActions.clickElement(this.saveWidgetLocator)
     }
-    async navigateByThreeDotMenu(option:string){
-        await webActions.hoverOnElement(this.tileHeaderLocator);
-        await webActions.clickElement(this.threeDotMenuLocator);
-        await webActions.clickElement(this.threeDotMenuOptionLocator(option))
+    async navigateViaThreeDotMenuFromGuageWidget(option:string){
+        await webActions.hoverOnElement(this.guageHeaderLocator);
+        await webActions.clickElementJS(this.threeDotMenuLocator);
+        await webActions.clickElementJS(this.threeDotMenuOptionForGuageWidgetLocator(option))
     }
-    async clickTableWidgeRow(rowNum: number) {
-        await webActions.clickElement(this.tableWidgetRowLocator(rowNum))
+    async clickTableWidgeTest() {
+        await webActions.clickElement(this.testInTableWidgetRowLocator)
+    }
+    async click(loc:string){
+        await webActions.clickElement(loc)
+    }
+    async getElementText(locator:string){
+        let text = await webActions.getElementText(locator)
+        return text
+    }
+    async getNewWindow(context: BrowserContext, locator: string) {
+        return await webActions.newWindowHandle(context, locator);
+
+    }
+    async getUrl() {
+        return await webActions.getCurrentPageUrl();
+    }
+    async navigateViaThreeDotMenuFromTileWidget(option:string){
+        await webActions.hoverOnElement(this.tileHeaderLocator);
+        await webActions.clickElementJS(this.threeDotMenuLocator);
+        await webActions.clickElementJS(this.threeDotMenuOptionForTileWidgetLocator(option))
+    }
+    async clickSLAWidgeTest() {
+        await webActions.clickElementJS(this.testInSLAWidgetRowLocator)
     }
     async clickOnWidgetName(widgetName:string){
         await webActions.clickElement(this.commomLocator(widgetName))
