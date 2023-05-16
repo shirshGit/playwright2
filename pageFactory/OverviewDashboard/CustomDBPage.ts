@@ -21,9 +21,11 @@ export class CustomDBPage extends SynWidgetPropertyPage{
     private _dbNameBox = '//input[contains(@class,"TextBox_")]';
     private _saveDBButton = '//span[text()="Save"]';
     private _threeDotMenu = '//span[@data-testid="tile-name"]/..//span[2]//button//i[contains(@class,"ms-Icon-placeHolder")]';
-    private _tileHeader = '(//div[contains(@class,"BigMetricTile_tileHeader_")])[1]';
+    private _headerForGuage = '(//span[contains(@class,"GaugeTilestyles__TileTitle")])[1]';
     private _dbName = '(//span[@data-automationid="splitbuttonprimary"]//span[contains(@class,"ms-Button-textContainer")])[1]'
-    private _testInTableWidget = '(//a[text()="Web40X-50XTestID"])[2]'
+    private _testInTableWidget = '(//div[@data-list-index="0"]//a)[1]'
+    private _tileHeaderForTile = '(//div[contains(@class,"BigMetricTile_tileHeader_")])[1]'
+    private _SLAWidgetTest = '(//tr[@class="ant-table-row ant-table-row-level-0"]//a[contains(@class,"InfoBlock_text_")])[1]'
     
     public get overviewDashboardLocator(){
         return this._overviewDashboard;
@@ -59,17 +61,26 @@ export class CustomDBPage extends SynWidgetPropertyPage{
     public get threeDotMenuLocator(){
         return this._threeDotMenu
     }
-    public get tileHeaderLocator(){
-        return this._tileHeader
+    public get guageHeaderLocator(){
+        return this._headerForGuage
     }
-    public get threeDotMenuOptionLocator(){
-        return (text:string) => { return `//span[contains(@class,'BigMetricTile_')][normalize-space()='${text}']`}
+    public get threeDotMenuOptionForGuageWidgetLocator(){
+        return (text:string) => { return `//span[contains(@class,'GaugeTilestyles__IconLabel')][normalize-space()='${text}']`}
     }
     public get testInTableWidgetRowLocator(){
         return this._testInTableWidget
     }
     public get getDBNameLocator(){
         return this._dbName
+    }
+    public get tileHeaderLocator(){
+        return this._tileHeaderForTile
+    }
+    public get threeDotMenuOptionForTileWidgetLocator(){
+        return (text:string) => { return `//span[contains(@class,'BigMetricTile_label')][normalize-space()='${text}']`}
+    }
+    public get testInSLAWidgetRowLocator(){
+        return this._SLAWidgetTest
     }
 
   
@@ -128,10 +139,10 @@ export class CustomDBPage extends SynWidgetPropertyPage{
         await this.selectTimeFrameForSLA(timeFrame)
         await webActions.clickElement(this.saveWidgetLocator)
     }
-    async navigateByThreeDotMenu(option:string){
-        await webActions.hoverOnElement(this.tileHeaderLocator);
+    async navigateViaThreeDotMenuFromGuageWidget(option:string){
+        await webActions.hoverOnElement(this.guageHeaderLocator);
         await webActions.clickElementJS(this.threeDotMenuLocator);
-        await webActions.clickElementJS(this.threeDotMenuOptionLocator(option))
+        await webActions.clickElementJS(this.threeDotMenuOptionForGuageWidgetLocator(option))
     }
     async clickTableWidgeTest() {
         await webActions.clickElement(this.testInTableWidgetRowLocator)
@@ -149,6 +160,14 @@ export class CustomDBPage extends SynWidgetPropertyPage{
     }
     async getUrl() {
         return await webActions.getCurrentPageUrl();
+    }
+    async navigateViaThreeDotMenuFromTileWidget(option:string){
+        await webActions.hoverOnElement(this.tileHeaderLocator);
+        await webActions.clickElementJS(this.threeDotMenuLocator);
+        await webActions.clickElementJS(this.threeDotMenuOptionForTileWidgetLocator(option))
+    }
+    async clickSLAWidgeTest() {
+        await webActions.clickElementJS(this.testInSLAWidgetRowLocator)
     }
     
    

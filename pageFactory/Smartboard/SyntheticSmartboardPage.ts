@@ -25,13 +25,13 @@ export class SyntheticSmartboardPage {
     private _testTimeMetricsInKeyMetric = '(//div[text()="Test Time (ms)"])[2]'
     private _trendingChart = '(//div[contains(@class,"AnalyticsTrendingChart_chartContainer_")]//div//div[contains(@class,"Chart_chartContainer_")]//*[name()="svg"])[1]'
     private _testInSourceSelector = '//div[@data-testid="test-picker"]//div[contains(@class,"Pill_pillContent_")]'
-    private _Last6HourTimeFrame = '//input[@value="Last 6 Hours"]'
+    private _LastHourTimeFrame = '//input[@value="Last Hour"]'
     private _generateButton = '//button[text()="+ Generate Link"]'
     private _firstPublicLink = '//div[@data-automation-key="Link_0"]'
     private _getSourceNameFromPublicLinkPage = '//div[contains(@class,"SourceSelectorRowstyles__LabelWrapper")]'
     private _getTestNameFromSourceSelector = '//div[contains(@class,"Pill_pillContent_")]'
     private _createdLinksTextInShareExplorer = '//span[text()="Created Links"]'
-    
+    private _LastSixHourTimeFrame = '//input[@value="Last 6 Hour"]'
 
     public get commonLocator() {
         return (text: string) => { return `//span[text()="${text}"]` }
@@ -73,8 +73,8 @@ export class SyntheticSmartboardPage {
     public get testInSourceSelectorLocator() {
         return this._testInSourceSelector
     }
-    public get lastSixHourTimeFrame() {
-        return this._Last6HourTimeFrame
+    public get lastHourTimeFrame() {
+        return this._LastHourTimeFrame
     }
     public get filterValueLocator() {
         return (text: number) => { return `(//div[@data-testid="pill-content"])[${text}]` }
@@ -93,6 +93,9 @@ export class SyntheticSmartboardPage {
     }
     public get createdLinksTextInShareExplorer(){
         return this._createdLinksTextInShareExplorer
+    }
+    public get lastSixHourTimeFrame() {
+        return this._LastSixHourTimeFrame
     }
 
 

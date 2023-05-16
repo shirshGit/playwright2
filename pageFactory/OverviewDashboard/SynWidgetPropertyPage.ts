@@ -83,6 +83,9 @@ export class SynWidgetPropertyPage {
     public get timeframeDDForSLA(){
         return this._timeframeDDForSLA
     }
+    public get commoNLocator() {
+        return (text: string) => { return `//div[text()="${text}"]` }
+    }
     //#endregion
 
     
@@ -124,7 +127,8 @@ export class SynWidgetPropertyPage {
     async selectDimension(dimensions: string[]) {
         for (let index = 0; index < dimensions.length; index++) {
             await webActions.clickElement(this.dimensionInputBoxLocator);
-            await webActions.enterElementText(this.descriptionInputLocator,dimensions[index])
+            await webActions.enterElementText(this.dimensionInputBoxLocator,dimensions[index])
+            await webActions.clickElement(this.commoNLocator(dimensions[index]))
             await webActions.onlyKeyPress('Enter');
             await webActions.onlyKeyPress('Enter');
         }

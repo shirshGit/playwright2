@@ -23,6 +23,8 @@ export class DefaultDashboardPage {
     private _threeLineBurgerMenu = '//div[contains(@class,"fabricIcons_burgerMenu")]';
     private _rumWidgetinOverviewDashboard = '//div[contains(@class,"RumAppsOverview_mainContainer")]'
     private _testOverView = '(//span[text()="Tests"])[1]';
+    private _endpointInDefaultDashboard = '(//span[text()="Endpoint"])[1]';
+    private _bgpInDefaultDashboard = '(//span[text()="BGP"])[1]';
 
     public get overviewDashboardLocator() {
         return this._overviewDashboard;
@@ -70,6 +72,14 @@ export class DefaultDashboardPage {
         return (text:number) => {return `(//ul[contains(@class,"Tiles_tiles")]//li//div//p)[${text}]`}
     }
 
+    public get endpointInDefaultDashboardLocator() {
+        return this._endpointInDefaultDashboard;
+    }
+
+    public get bgpInDefaultDashboardLocator() {
+        return this._bgpInDefaultDashboard;
+    }
+
     //#endregion
 
     //#region This region is to have the functions
@@ -77,6 +87,7 @@ export class DefaultDashboardPage {
     async clickOnOverviewdashboard() {
         await webActions.clickElement(this.overviewDashboardLocator)
     }
+    
     async clickOnTab(tabName: string) {
         if (tabName = 'Tests') {
             await webActions.clickElement(this.testOverViewTabLocator);
@@ -92,6 +103,12 @@ export class DefaultDashboardPage {
     }
     async clickOnTestInTableTestWidget(rowNum: number) {
         await webActions.clickElement(this.testInTableWidget(rowNum));
+    }
+    async clickOnEndpointdashboard() {
+        await webActions.clickElement(this.endpointInDefaultDashboardLocator)
+    }
+    async clickOnBGPdashboard() {
+        await webActions.clickElement(this.bgpInDefaultDashboardLocator)
     }
    
 
