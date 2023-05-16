@@ -34,6 +34,7 @@ export const stagedata = {
     'transactionTestWithMultipleStepWithoutStepName' : '246072',//used for records automation
     'transactionTestWithRefrenceHostOnFailure' : '236336',
     'transactionTestId' : '236336',//transaction test with refrence host on failure
+    'testName' : 'TransactionTestWithDebugRefrenceHost',
 
     'userRoleManageTests' : 'OnlyManageTestPermission',//user role with only test and test templates permission
 	'userRoleManageRumAndTestTemplate' : 'OnlyManageRumAndTestTemplatePermission',// userrole with only rum and test templates permission

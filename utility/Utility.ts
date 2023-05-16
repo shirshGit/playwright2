@@ -1,5 +1,4 @@
 import { WebActions } from "@lib/WebActions";
-import { Page } from "playwright";
 export class Utility {
 
 
@@ -47,11 +46,16 @@ export class Utility {
         }
         return getDateInFormat;
     }
-
+ 
     async getTodaysDate() {
         let getDate = new Date().toUTCString();
         let setDate = new Date(getDate);
         return setDate;
+    }
+    async getUTCTime() {
+        let getDate = new Date().toUTCString();
+        let utcTime = getDate.substring(17);
+       return utcTime;
     }
 
 

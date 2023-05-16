@@ -1,5 +1,5 @@
 import { WebActions } from "@lib/WebActions";
-import { BrowserContext, Page } from "@playwright/test";
+import { Page } from "@playwright/test";
 import { Utility } from "@util/Utility";
 
 let webActions: WebActions;

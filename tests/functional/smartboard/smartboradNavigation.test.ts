@@ -337,7 +337,7 @@ test("VerifyTileWidgetNavigationToSBInOVDB @PageNavigation@CustomDashboard", asy
     await util.delay(4000);
     await defaultDashboardPage.clickOnTab('Tests');
     //click on test in test widget page
-    await defaultDashboardPage.clickOnTestInTileTestWidget(1);
+    await testOverviewDashboard.clickOnTestInTileTestWidget(1);
     //get url
     let url =  await testOverviewDashboard.getUrl();
     await verification.verifySoftAssertTrue(url.includes('/Smartboard/Test'),'after clicking on test not able to navigate to smarboardpage');
