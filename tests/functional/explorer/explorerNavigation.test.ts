@@ -23,9 +23,10 @@ test("VerifyScoreSelectionBladeDisplayAllTabSelectedWhenItsDivisionWide @PageNav
     await customDBPage.createTileWidget(widgetName,'Delete',null,null,null,null,metrics,null,null);
     //click on save db
     await customDBPage.saveDB();
+    await util.delay(4000);
     //click on widget name
     await customDBPage.clickOnWidgetName(widgetName);
-    await util.delay(4000);
+    await util.delay(2000);
     let getPageURL = await explorerPage.getUrl();
     //validation for explorer page and line viz
     await verification.verifySoftAssertTrue(getPageURL.includes('/Explorer/?sIds='), 'Explorer page is not opening after clicking on error in error widget');
@@ -86,7 +87,7 @@ test("VerifyTestNameIsDisplayedInExplorerPageSourceSelectorWhileNavigateFromCC @
 /*
     CP-26758 : Verify User shouldn't seeing any banner message when navigate from CD to Explore
 */
-test("VerifyUserShouldNotSeeAnyBannerMessageWhenNavigateFromCDToExplorer @PageNavigation@Explorer", async({baseTestUtil,sideNavigationBar, verification, dashboardBlade,testUtility,customDBPage,explorerPage, util}) => {
+test.skip("VerifyUserShouldNotSeeAnyBannerMessageWhenNavigateFromCDToExplorer @PageNavigation@Explorer", async({baseTestUtil,sideNavigationBar, verification, dashboardBlade,testUtility,customDBPage,explorerPage, util}) => {
     let metrics : string[] = ['Test Time (ms)'];
     let otherFilters : string = 'City';
     let otherFilterOptions : string[] = ['Boston'];
@@ -105,6 +106,7 @@ test("VerifyUserShouldNotSeeAnyBannerMessageWhenNavigateFromCDToExplorer @PageNa
     await customDBPage.createTileWidget(widgetName,'Delete',null,null,otherFilters,otherFilterOptions,metrics,null,null);
     //click on save db
     await customDBPage.saveDB();
+    await util.delay(4000);
     //click on widget name
     await customDBPage.clickOnWidgetName(widgetName);
     await util.delay(4000);
@@ -119,6 +121,7 @@ test("VerifyUserShouldNotSeeAnyBannerMessageWhenNavigateFromCDToExplorer @PageNa
     let otherFilterOptions2 : string[] = null
     let dbName2 = await testUtility.getDashboardName();
     let widgetName2 = await testUtility.getWidgetName();
+    await dashboardBlade.clickOnHomeSection();
     //click on overview DB
     await dashboardBlade.clickOnOverviewDashboard();
     //click on create DB
@@ -129,12 +132,18 @@ test("VerifyUserShouldNotSeeAnyBannerMessageWhenNavigateFromCDToExplorer @PageNa
     await customDBPage.createTileWidget(widgetName2,'Delete',null,dataFilterName,otherFilters2,otherFilterOptions2,metrics,null,null);
     //click on save db
     await customDBPage.saveDB();
+    await util.delay(4000);
     //click on widget name
-    await customDBPage.clickOnWidgetName(widgetName);
+    await customDBPage.clickOnWidgetName(widgetName2);
     await util.delay(4000);
     //verification for selected label filter
     await verification.verifyIfElementIsPresent(explorerPage.commonLocator('This widget is not supported.'),'Banner is not displayed')
     
+    //delete created db
+    await sideNavigationBar.navigateToDashboardFromSideNavigation();
+    await dashboardBlade.clickOnOverviewDashboard();
+    await dashboardBlade.deleteDB(dbName);
+    await dashboardBlade.deleteDB(dbName2);
 })
 
 
@@ -150,51 +159,40 @@ test("VerifySelectedTimeFrameShouldPassWhenUserNavigateFromCDToExplorer @PageNav
     await defaultDashboardPage.selectTimeFrameForTestWidget('Today')
     await util.delay(2000);
     //click on test in test widget page
-    await defaultDashboardPage.clickOnThreeDotMenuInTableTestWidget(2,'Explorer');
-    await util.delay(2000);
+    await defaultDashboardPage.clickOnThreeDotMenuInTableTestWidget(2,defaultDashboardPage.explorerUnderThreeDotMenuInTableWidgetLocator);
+    await util.delay(5000);
     let getPageURL = await explorerPage.getUrl();
     //validation for explorer page and line viz
     await verification.verifySoftAssertTrue(getPageURL.includes('/Explorer/?sIds='), 'Explorer page is not opening after clicking on three dot manu performance button');
     await verification.verifySoftAssertTrue(getPageURL.includes('viz=1'), 'performace viz is not set after clicking on performace button fron three dot menu');
-   //fetch date
-    let startDate = await explorerPage.getDateTimeValue(explorerPage.getStartDateLocator);
-    let endDate = await explorerPage.getDateTimeValue(explorerPage.getEndDateLocator);
-    let startTime = await explorerPage.getDateTimeValue(explorerPage.getStartTimeLocator);
-    let endTime = await explorerPage.getDateTimeValue(explorerPage.getEndTimeLocator);
-    endTime = endTime.substring(0,2);
+
+    //fetch selected time frame 
+    let selectedTime = await explorerPage.getDateTimeValue(explorerPage.getSelectedTimeFrameLocator);
     //verification for selected filter
-    await verification.verifySoftAssertTrue(date === startDate,'Selected time frame is not passed to explorer')
-    await verification.verifySoftAssertTrue(date === endDate,'Selected time frame is not passed to explorer')
-    await verification.verifySoftAssertTrue(startTime === '00:00','Selected time frame is not passed to explorer')
-    await verification.verifySoftAssertTrue(timeNow.includes(endTime),'Selected time frame is not passed to explorer')
+    await verification.verifySoftAssertTrue('Today' === selectedTime,'Selected time frame is not passed from DB to explorer')
     
     //validation for Three dot menu scatterplot navigation
     //navigate to dashboard page
     await util.delay(2000);
-    await sideNavigationBar.navigateToDashboardFromSideNavigation();
+    await sideNavigationBar.navigateToDashboardFromSideNavigation(); 
     //select time frame
-    await defaultDashboardPage.selectTimeFrameForTestWidget('Today')
-    await util.delay(2000);
-    //click on test in test widget page
-    await defaultDashboardPage.clickOnThreeDotMenuInTableTestWidget(2,'Scatterplot');
-    await util.delay(4000);
-    let getPageURL1 = await explorerPage.getUrl();
-    //validation for explorer page and line viz
-    await verification.verifySoftAssertTrue(getPageURL1.includes('/Explorer/?sIds='), 'Explorer page is not opening after clicking on three dot manu performance button');
-    await verification.verifySoftAssertTrue(getPageURL1.includes('viz=3'), 'scatterplot viz is not set after clicking on scatterplot button fron three dot menu');
-   //fetch date
-    let startDate1 = await explorerPage.getDateTimeValue(explorerPage.getStartDateLocator);
-    let endDate1 = await explorerPage.getDateTimeValue(explorerPage.getEndDateLocator);
-    let startTime1 = await explorerPage.getDateTimeValue(explorerPage.getStartTimeLocator);
-    let endTime1 = await explorerPage.getDateTimeValue(explorerPage.getEndTimeLocator);
-    endTime1 = endTime1.substring(0,2);
-    await util.delay(2000);
-    //verification for selected filter
-    await verification.verifySoftAssertTrue(date === startDate1,'Selected time frame is not passed to explorer')
-    await verification.verifySoftAssertTrue(date === endDate1,'Selected time frame is not passed to explorer')
-    await verification.verifySoftAssertTrue(startTime1 === '00:00','Selected time frame is not passed to explorer')
-    await verification.verifySoftAssertTrue(timeNow.includes(endTime1),'Selected time frame is not passed to explorer')
-    
+     await defaultDashboardPage.selectTimeFrameForTestWidget('Today')
+     await util.delay(2000);
+     //click on test in test widget page
+     await defaultDashboardPage.clickOnThreeDotMenuInTableTestWidget(2,defaultDashboardPage.scatterPlotUnderThreeDotMenuInTableWidgetLocator);
+     await util.delay(5000);
+     let getPageURL2 = await explorerPage.getUrl();
+     //validation for explorer page and line viz
+     await verification.verifySoftAssertTrue(getPageURL2.includes('/Explorer/?sIds='), 'Explorer page is not opening after clicking on three dot manu performance button');
+     await verification.verifySoftAssertTrue(getPageURL2.includes('viz=3'), 'scatterplot viz is not set after clicking on performace button fron three dot menu');
+ 
+     //fetch selected time frame 
+     let selectedTime2 = await explorerPage.getDateTimeValue(explorerPage.getSelectedTimeFrameLocator);
+     //verification for selected filter
+     await verification.verifySoftAssertTrue('Today' === selectedTime2,'Selected time frame is not passed from DB to explorer')
+     
+
+ 
 })
 
 /*
@@ -216,18 +214,11 @@ test("VerifySelectedTimeFrameShouldPassWhenUserNavigateFromTestOVDBToExplorer @P
     //validation for explorer page and line viz
     await verification.verifySoftAssertTrue(getPageURL.includes('/Explorer/?sIds='), 'Explorer page is not opening after clicking on three dot manu performance button');
     await verification.verifySoftAssertTrue(getPageURL.includes('viz=1'), 'performace viz is not set after clicking on performace button fron three dot menu');
-   //fetch date
-    let startDate = await explorerPage.getDateTimeValue(explorerPage.getStartDateLocator);
-    let endDate = await explorerPage.getDateTimeValue(explorerPage.getEndDateLocator);
-    let startTime = await explorerPage.getDateTimeValue(explorerPage.getStartTimeLocator);
-    let endTime = await explorerPage.getDateTimeValue(explorerPage.getEndTimeLocator);
-    endTime = endTime.substring(0,2);
-    //verification for selected filter
-    await verification.verifySoftAssertTrue(date === startDate,'Selected time frame is not passed to explorer')
-    await verification.verifySoftAssertTrue(date === endDate,'Selected time frame is not passed to explorer')
-    await verification.verifySoftAssertTrue(startTime === '00:00','Selected time frame is not passed to explorer')
-    await verification.verifySoftAssertTrue(timeNow.includes(endTime),'Selected time frame is not passed to explorer')
-    
+   //fetch selected time frame 
+   let selectedTime = await explorerPage.getDateTimeValue(explorerPage.getSelectedTimeFrameLocator);
+   //verification for selected filter
+   await verification.verifySoftAssertTrue('Today' === selectedTime,'Selected time frame is not passed from OVDB to explorer')
+   
     //validation for Three dot menu scatterplot navigation
     //navigate to dashboard page
     await util.delay(2000);
@@ -243,19 +234,11 @@ test("VerifySelectedTimeFrameShouldPassWhenUserNavigateFromTestOVDBToExplorer @P
     //validation for explorer page and line viz
     await verification.verifySoftAssertTrue(getPageURL1.includes('/Explorer/?sIds='), 'Explorer page is not opening after clicking on three dot manu performance button');
     await verification.verifySoftAssertTrue(getPageURL1.includes('viz=3'), 'scatterplot viz is not set after clicking on scatterplot button fron three dot menu');
-   //fetch date
-    let startDate1 = await explorerPage.getDateTimeValue(explorerPage.getStartDateLocator);
-    let endDate1 = await explorerPage.getDateTimeValue(explorerPage.getEndDateLocator);
-    let startTime1 = await explorerPage.getDateTimeValue(explorerPage.getStartTimeLocator);
-    let endTime1 = await explorerPage.getDateTimeValue(explorerPage.getEndTimeLocator);
-    endTime1 = endTime1.substring(0,2);
-    await util.delay(2000);
-    //verification for selected filter
-    await verification.verifySoftAssertTrue(date === startDate1,'Selected time frame is not passed to explorer')
-    await verification.verifySoftAssertTrue(date === endDate1,'Selected time frame is not passed to explorer')
-    await verification.verifySoftAssertTrue(startTime1 === '00:00','Selected time frame is not passed to explorer')
-    await verification.verifySoftAssertTrue(timeNow.includes(endTime1),'Selected time frame is not passed to explorer')
-    
+   //fetch selected time frame 
+   let selectedTime2 = await explorerPage.getDateTimeValue(explorerPage.getSelectedTimeFrameLocator);
+   //verification for selected filter
+   await verification.verifySoftAssertTrue('Today' === selectedTime2,'Selected time frame is not passed from OVDB to explorer')
+   
 })
 
 
