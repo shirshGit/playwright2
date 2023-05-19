@@ -538,7 +538,6 @@ test.skip("VerifySmartboardEndpointLoads @PageNavigation@ProductionSmoke@Smoke",
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.keyMetricsWidgetLocator, "key metrics widget is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.issueNdEventLocator, "issue and events widget is not present")
     
-
     //click on endpoint tab
     await sourceSelectorSmartboard.clickOnTab("Endpoint");
     await util.delay(12000);
