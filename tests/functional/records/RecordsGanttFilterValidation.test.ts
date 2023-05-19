@@ -33,7 +33,7 @@ test("VerifyZoneFilterForGantt  @Records", async ({ baseTestUtil, sideNavigation
 })
 
 /*
-    CP-21648 : 117537 DES Filtering is not proper when we filter using the File Type
+     CP-21648 : 117537 DES Filtering is not proper when we filter using the File Type
 */
 test("VerifyFileTypeFilterForGanttSection  @ProductionDefectRecords@Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, recordsPage, ganttBladePage, verification }) => {
     //navigate to records page
