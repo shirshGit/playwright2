@@ -360,7 +360,7 @@ test("VerifyAlertPageNavigationToSB @PageNavigation@CustomDashboard", async({bas
     //fetch url of test property page
     let getPageURL = await alertLogPage.getUrl();
     //validation for test properties page
-    await verification.verifySoftAssertTrue(getPageURL.includes('/Smartboard/Test?'), 'smartboard page is not opening after clicking on three dot menu smartboard option');
+    await verification.verifySoftAssertTrue(getPageURL.includes('ui/Symphony/Smartboard/'), 'smartboard page is not opening after clicking on three dot menu smartboard option');
    
 })
 

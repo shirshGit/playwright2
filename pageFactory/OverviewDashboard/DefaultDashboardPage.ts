@@ -25,7 +25,9 @@ export class DefaultDashboardPage {
     private _endpointInDefaultDashboard = '(//span[text()="Endpoint"])[1]';
     private _bgpInDefaultDashboard = '(//span[text()="BGP"])[1]';
     private _testWidgetTimeFrameDD = '(//button[@type="button"][normalize-space()="Last Hour"])[2]';
-
+    private _explorerUnderThreeDotMenuInTableWidget = '(//span[text()="Explorer"])[2]'
+    private _scatterPlotUnderThreeDotMenuInTableWidget =  '//span[text()="Scatterplot"]'
+    
     public get overviewDashboardLocator() {
         return this._overviewDashboard;
     }
@@ -95,6 +97,12 @@ export class DefaultDashboardPage {
     public get errorWidgetErrorLocator(){
         return (text: number) => { return `//div[contains(@class,"AnalyticsErrorsOverviewDisplay_table")]//div[@data-list-index="${text}"]//a`}
     }
+    public get explorerUnderThreeDotMenuInTableWidgetLocator(){
+        return this._explorerUnderThreeDotMenuInTableWidget
+    }
+    public get scatterPlotUnderThreeDotMenuInTableWidgetLocator(){
+        return this._scatterPlotUnderThreeDotMenuInTableWidget
+    }
 
 
     //#endregion
@@ -131,10 +139,10 @@ export class DefaultDashboardPage {
         await webActions.clickElement(this.commoNLocator(timeframe))
     }
 
-    async clickOnThreeDotMenuInTableTestWidget(rowNum: number, threeDotMenuItem: string) {
+    async clickOnThreeDotMenuInTableTestWidget(rowNum: number, threeDotMenuLocator: string) {
         await webActions.hoverOnElement(this.testInTableWidget(rowNum))
-        await webActions.clickElement(this.threeDotMenuInTestTableWidgetLocator(rowNum + 1))
-        await webActions.clickElement(this.commomLocator(threeDotMenuItem))
+        await webActions.clickElement(this.threeDotMenuInTestTableWidgetLocator(rowNum))
+        await webActions.clickElement(threeDotMenuLocator)
     }
     async clickOnErrorInErrorWidget(errorNum:number){
         await webActions.clickElement(this.errorWidgetErrorLocator(errorNum))

@@ -64,7 +64,7 @@ const config: PlaywrightTestConfig = {
           slowMo: 0
         }
       },
-      //grep: [new RegExp("VerifySearchtheGanttChartRequestUsingSearchBoxFileType")]
+      grep: [new RegExp("VerifyScoreSelectionBladeDisplayAllTabSelectedWhenItsDivisionWide")]
     },
     {
 

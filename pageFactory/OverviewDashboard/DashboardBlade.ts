@@ -25,6 +25,7 @@ export class DashboardBlade {
     private _searchBox = '//div[@data-testid="dashboard-blade"]//input[@data-testid="fabricsearchbox"]';
     private _deleteDB = '//button[text()="Delete"]';
     private _folderDelete = '//span[normalize-space()="Delete Folder"]';
+    private _homeSection = '//div[@id="homesection"]'
 
     public get overviewDashboardLocator() {
         return this._overviewDashboard;
@@ -85,6 +86,9 @@ export class DashboardBlade {
     }
     public get deleteFolderButtonLocator() {
         return this._folderDelete
+    }
+    public get homeSectionLocator(){
+        return this._homeSection
     }
     //#endregion
 
@@ -167,6 +171,9 @@ export class DashboardBlade {
         await webActions.clickElement(this.searchedItemThreeDotMenuLocator(1))
         await webActions.clickElement(this.threeDotMenuOptionLocator('Delete Dashboard'))
         await webActions.clickElement(this.deleteDBButtonLocator);
+    }
+    async clickOnHomeSection() {
+        await webActions.clickElement(this.homeSectionLocator);
     }
 
 

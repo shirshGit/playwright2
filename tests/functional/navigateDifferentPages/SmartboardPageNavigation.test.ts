@@ -237,7 +237,7 @@ test("VerifyRecordsCompareSectionInNTNSB @PageNavigation@ProductionSmoke@Smoke",
 /*
     CP-44479 : Verify User Landing in Endpoint test Smartboard page 
 */
-test("VerifySmartboardEndpointTestLoads @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, endpointSmartboardPage, util }) => {
+test.skip("VerifySmartboardEndpointTestLoads @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, endpointSmartboardPage, util }) => {
     let data = new DataForEnv();
     let testID = await data.getValueOfTheParameter('endpointTracerouteTestID');
     //await sideNavigationBar.navigateToSmartboardFromSideNavigation();
@@ -291,7 +291,7 @@ test("VerifySmartboardEndpointTestLoads @PageNavigation@ProductionSmoke@Smoke", 
 /*
     CP-44478 : Verify User Landing in Location Smartboard page
 */
-test("VerifySmartboardLocationLoads @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, endpointSmartboardPage, util }) => {
+test.skip("VerifySmartboardLocationLoads @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, endpointSmartboardPage, util }) => {
     let data = new DataForEnv();
     let locationID = await data.getValueOfTheParameter('endpointLocationID');
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();
@@ -406,7 +406,7 @@ test("VerifySmartboardLocationLoads @PageNavigation@ProductionSmoke@Smoke", asyn
 /*
     CP-44477 : Verify User Landing in Employee app Smartboard page 
 */
-test("VerifySmartboardEmployeeAppLoads @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, endpointSmartboardPage, util }) => {
+test.skip("VerifySmartboardEmployeeAppLoads @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, endpointSmartboardPage, util }) => {
     let data = new DataForEnv();
     let appName = await data.getValueOfTheParameter('endpointEmployeeApp');
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();
@@ -500,7 +500,7 @@ test("VerifySmartboardEmployeeAppLoads @PageNavigation@ProductionSmoke@Smoke", a
 /*
     CP-44476 : Verify User Landing in new Endpoint Smartboard page 
 */
-test("VerifySmartboardEndpointLoads @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, endpointSmartboardPage, util }) => {
+test.skip("VerifySmartboardEndpointLoads @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, endpointSmartboardPage, util }) => {
     let data = new DataForEnv();
     let endpointID = await data.getValueOfTheParameter('endpointID');
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();

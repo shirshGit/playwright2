@@ -59,6 +59,7 @@ export class AlertLogPage {
 
     async hoverOnThreeDotMenu(num:number){
         await webActions.hoverOnElement(this.threeDotMenuLocator(num))
+        await util.delay(1000)
         await webActions.clickElement(this.threeDotMenuLocator(num))
     }
 
