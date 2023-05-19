@@ -29,6 +29,7 @@ test("VerifyZoneFilterForGantt  @Records", async ({ baseTestUtil, sideNavigation
     for (let index = 0; index < hostList.length; index++) {
         await verification.verifySoftAssertTrue(hostList[index].includes('www.gstatic.com'), "value is not matching with selected zone")
     }
+    
 })
 
 /*
