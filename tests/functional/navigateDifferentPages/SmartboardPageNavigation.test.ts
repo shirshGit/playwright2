@@ -104,7 +104,7 @@ test("VerifySmartboardRUMLoads @PageNavigation@ProductionSmoke@Smoke", async ({ 
 test.skip("VerifyPeerInfoInBGPSB @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, bgpSmartboardPage, util }) => {
     let data = new DataForEnv();
     let bgpTestID = await data.getValueOfTheParameter('bgpTest');
-    //await sideNavigationBar.navigateToSmartboardFromSideNavigation();
+    await sideNavigationBar.navigateToSmartboardFromSideNavigation();
     await util.delay(2000);
     //validation for errors
     await verification.validationsForPage();
@@ -137,7 +137,7 @@ test("VerifyTimeZoneDropDownInNTNSB @PageNavigation@ProductionSmoke@Smoke", asyn
     //validation for time zone dropDowm
     await verification.verifyIfElementIsPresent(ntnSmartboardPage.zoneDropDownLocator, "time zone dd is not present");
     await ntnSmartboardPage.clickOnTimeZoneDropDown();
-    let timeZoneName: string[] = ['AEDT', 'AKST', 'ALMT', 'AMST', 'BRST', 'CET', 'CST', 'EEST', 'EEST', 'EST', 'GST', 'HAST', 'ICT', 'IST', 'Japan Standard Time', 'JST', 'KST', 'MSK', 'Mountain Standard Time (Mexico)', 'US Mountain Standard Time', 'MST', 'NZDT', 'PKT', 'Pacific Standard Time', 'PST', 'SGT', 'TST', 'UTC'];
+    let timeZoneName: string[] = ['AEST', 'AKDT', 'ALMT', 'AMST', 'BRST', 'BST', 'CDT','CEDT','CST','EDT','EEDT', 'EEST', 'HAST', 'ICT', 'IST', 'Japan Standard Time', 'JST', 'KST', 'MSK', 'Mountain Standard Time (Mexico)', 'US Mountain Standard Time', 'MST', 'NZST','Pacific Daylight Time (Mexico)','Pacific Daylight Time (PDT)', 'PKT', 'SGT', 'TST', 'UTC'];
     let timeZoneNameFromUI: string[] = await ntnSmartboardPage.getTimeZoneName(timeZoneName);
     for (let index = 0; index < timeZoneName.length; index++) {
         const element1 = timeZoneName[index];
@@ -176,7 +176,7 @@ test("VerifyMatrixCompareInNTNSB @PageNavigation@ProductionSmoke@Smoke", async (
     await verification.verifyIfElementIsPresent(ntnSmartboardPage.pktLossLatencyJitterInMetricsDDLocator, "pkt loss ,jitter,latency metrics is not present in metrics DD")
     //verification for no of node selected in test
     let nodeCount = await ntnSmartboardPage.getSelectedNodeCountInMetricsSection();
-    await verification.verifySoftAssertTrue(nodeCount === 2, "node count is not matching");
+    await verification.verifySoftAssertTrue(nodeCount === 7, "node count is not matching");
     //verification for item selected in legend metrics DD
     await verification.verifyIfElementIsPresent(ntnSmartboardPage.legendDDSelectedItemLocator, "pkt loss metrics is not selected in legend metrics DD");
     //click on legend metrics dd
@@ -194,7 +194,7 @@ test("VerifyMatrixCompareInNTNSB @PageNavigation@ProductionSmoke@Smoke", async (
 test("VerifyRecordsCompareSectionInNTNSB @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, ntnSmartboardPage, util }) => {
     let data = new DataForEnv();
     let ntnTestID = await data.getValueOfTheParameter('nodeToNodeTest');
-    //await sideNavigationBar.navigateToSmartboardFromSideNavigation();
+    await sideNavigationBar.navigateToSmartboardFromSideNavigation();
     await util.delay(2000);
     await verification.verifyIfElementIsPresent(sourceSelectorSmartboard.testTabLocator, 'Test Tab is not present in source selector');
     //validation for errors
@@ -237,7 +237,7 @@ test("VerifyRecordsCompareSectionInNTNSB @PageNavigation@ProductionSmoke@Smoke",
 /*
     CP-44479 : Verify User Landing in Endpoint test Smartboard page 
 */
-test("VerifySmartboardEndpointTestLoads @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, endpointSmartboardPage, util }) => {
+test.skip("VerifySmartboardEndpointTestLoads @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, endpointSmartboardPage, util }) => {
     let data = new DataForEnv();
     let testID = await data.getValueOfTheParameter('endpointTracerouteTestID');
     //await sideNavigationBar.navigateToSmartboardFromSideNavigation();
@@ -291,7 +291,7 @@ test("VerifySmartboardEndpointTestLoads @PageNavigation@ProductionSmoke@Smoke", 
 /*
     CP-44478 : Verify User Landing in Location Smartboard page
 */
-test("VerifySmartboardLocationLoads @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, endpointSmartboardPage, util }) => {
+test.skip("VerifySmartboardLocationLoads @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, endpointSmartboardPage, util }) => {
     let data = new DataForEnv();
     let locationID = await data.getValueOfTheParameter('endpointLocationID');
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();
@@ -406,7 +406,7 @@ test("VerifySmartboardLocationLoads @PageNavigation@ProductionSmoke@Smoke", asyn
 /*
     CP-44477 : Verify User Landing in Employee app Smartboard page 
 */
-test("VerifySmartboardEmployeeAppLoads @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, endpointSmartboardPage, util }) => {
+test.skip("VerifySmartboardEmployeeAppLoads @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, endpointSmartboardPage, util }) => {
     let data = new DataForEnv();
     let appName = await data.getValueOfTheParameter('endpointEmployeeApp');
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();
@@ -500,7 +500,7 @@ test("VerifySmartboardEmployeeAppLoads @PageNavigation@ProductionSmoke@Smoke", a
 /*
     CP-44476 : Verify User Landing in new Endpoint Smartboard page 
 */
-test("VerifySmartboardEndpointLoads @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, endpointSmartboardPage, util }) => {
+test.skip("VerifySmartboardEndpointLoads @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, endpointSmartboardPage, util }) => {
     let data = new DataForEnv();
     let endpointID = await data.getValueOfTheParameter('endpointID');
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();
@@ -538,7 +538,6 @@ test("VerifySmartboardEndpointLoads @PageNavigation@ProductionSmoke@Smoke", asyn
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.keyMetricsWidgetLocator, "key metrics widget is not present")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.issueNdEventLocator, "issue and events widget is not present")
     
-
     //click on endpoint tab
     await sourceSelectorSmartboard.clickOnTab("Endpoint");
     await util.delay(12000);

@@ -32,7 +32,7 @@ export class SideNavBar {
     private _sideNavSmartboard = '//span[text()="Smartboard"]'
     private _testTemplate = '//div[contains(text(),"Test Templates")]'
     private _sideNavDivision = '//span[text()="Divisions"]'
-    private _library = '//div[contains(text(),"Library")]'
+    private _library = '(//div[contains(text(),"Library")])[2]'
     private _sideNavSchedules = '//span[text()="Schedules"]'
     private _sideNavInstantTest = '#instanttestssection'
     private _sideNavIndexes = '//span[text()="Indexes"]'
@@ -47,7 +47,7 @@ export class SideNavBar {
     private _nodesSideNavMenu = '#nodesection'
     private _mapNavigationFromNodesMenu = '//span[text()="Node Map"]'
     private _groupNavigationFromNodeMenu = '//span[text()="Node Groups"]'
-    private _nodeListNavigationFromNodeMenu = '//span[text()="Nodes"]'
+    private _nodeListNavigationFromNodeMenu = '(//span[text()="Nodes"])[2]'
     private _instancesFromNodesMenu = '//span[text()="Instances"]'
     private _homeSection = '//div[@data-testid="site-nav"]//div[@id="homesection"]'
     private _customViz = '//span[text()="Custom Visualization"]'
@@ -351,6 +351,17 @@ export class SideNavBar {
     async clickOnHomeIcon(){
         await webActions.waitForElementAttached(this.sideNavHome)
         await webActions.clickElement(this.sideNavHome)
+
+    async clickOnAnalyticsIcon(){
+        await webActions.waitForElementAttached(this.sideNavAnalytics)
+        await webActions.clickElement(this.sideNavAnalytics)
+    }
+    
+    async navigateToCustomVizFromSideNavigation(){
+        await webActions.waitForElementAttached(this.sideNavAnalytics)
+        await webActions.clickElement(this.sideNavAnalytics)
+        await webActions.waitForElementAttached(this.sideNavCV)
+        await webActions.clickElement(this.sideNavCV)
     }
     
     async navigateToCustomVizFromSideNavigation(){

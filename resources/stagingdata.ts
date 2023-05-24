@@ -34,6 +34,7 @@ export const stagedata = {
     'transactionTestWithMultipleStepWithoutStepName' : '246072',//used for records automation
     'transactionTestWithRefrenceHostOnFailure' : '236336',
     'transactionTestId' : '236336',//transaction test with refrence host on failure
+    'testName' : 'TransactionTestWithDebugRefrenceHost',
 
     'userRoleManageTests' : 'OnlyManageTestPermission',//user role with only test and test templates permission
 	'userRoleManageRumAndTestTemplate' : 'OnlyManageRumAndTestTemplatePermission',// userrole with only rum and test templates permission
@@ -45,7 +46,7 @@ export const stagedata = {
     'webPingTestIDForDivision' : '191274',// used for records automation
     'webTestForZoneFilterTest' : '253150',
     'web40x50xTestID' : '216886',
-    'webTestForTracepointAndIndicator' : '295329',//used for tracepoint and indicator related automation
+    'webTestForTracepointAndIndicator' : '260695',//used for tracepoint and indicator related automation
     'webTestWithRefrenceHostOnFailure' : '233620',
     'webTestWithWarningAndError' : '266287',
     'webTest40X50XMarkedPass' : '64429', //40X50XErrorMarked as successful

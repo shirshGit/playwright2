@@ -16,7 +16,7 @@ export class DashboardBlade {
     //#region This region is for getter
 
     private _overviewDashboard = '//label[text()="My Dashboards"]';
-    private _firstTile = '(//ul[contains(@class,"Tiles_tiles_")]//li)[1]//p[contains(@class,"Tiles_name_")]';
+    private _firstTile = '(//ul[contains(@class,"Tiles_tiles_")]//p[contains(@class,"Tiles_name_")])[1]';
     private _createDashboard = '//span[contains(text(),"New Dashboard")]';
     private _createFolder = '//span[text()="Create Folder"]';
     private _testOverview = '//span[text()="Test Overview"]';
@@ -24,6 +24,8 @@ export class DashboardBlade {
     private _bgpOverview = '//span[text()="BGP Overview"]';
     private _searchBox = '//div[@data-testid="dashboard-blade"]//input[@data-testid="fabricsearchbox"]';
     private _deleteDB = '//button[text()="Delete"]';
+    private _folderDelete = '//span[normalize-space()="Delete Folder"]';
+    private _homeSection = '//div[@id="homesection"]'
 
     public get overviewDashboardLocator() {
         return this._overviewDashboard;
@@ -65,7 +67,7 @@ export class DashboardBlade {
         return this._searchBox
     }
     public get searchRowInDBBlade() {
-        return (text: number) => { return `(//ul[contains(@class,"ant-tree")]//li)[${text}]` };
+        return (name: string, num: number) => { return `(//ul[contains(@class,"ant-tree")]//span[contains(text(),"${name}")])[${num}]` };
     }
     public get threeDotMenuLocator() {
         return (text: number) => { return `//ul[1]/li[${text}][@role="treeitem"]/span[2]/span[1]/span[1]/div[1]/button[1]/span[1]/i[1]` };
@@ -76,13 +78,18 @@ export class DashboardBlade {
     public get deleteDBButtonLocator() {
         return this._deleteDB
     }
-    public get commonLocator(){
-        return (text:string) => {return `//span[text()="${text}"]`}
+    public get commonLocator() {
+        return (text: string) => { return `//span[text()="${text}"]` }
     }
     public get searchedItemThreeDotMenuLocator() {
         return (text: number) => { return `//ul[1]/li[${text}][@role="treeitem"]/span[2]/span[1]/span[1]/div[1]/button[1]/span[1]/i[1]` };
     }
-
+    public get deleteFolderButtonLocator() {
+        return this._folderDelete
+    }
+    public get homeSectionLocator(){
+        return this._homeSection
+    }
     //#endregion
 
     //#region This region is to have the functions
@@ -126,14 +133,36 @@ export class DashboardBlade {
         await webActions.clickElement(this.searchBoxLocator)
         await webActions.enterElementText(this.searchBoxLocator, itemName)
     }
-    async deleteBulkDB() {
-        let dbCount = await this.page.locator('//ul[contains(@class,"ant-tree")]//li').count();
+    async deleteBulkDBItems(itemName: string) {
+        await this.searchInCDSearchBox(itemName)
+        let dbCount = await this.page.locator(`//ul[contains(@class,"ant-tree ant-tree")]//span[contains(text(),"${itemName}")]`).count();
         if (dbCount !== 0)
-            for (let index = 1; index <= dbCount; index++) {
-                await webActions.hoverOnElement(this.searchRowInDBBlade(index))
+            for (let index = dbCount; index <= dbCount; index--) {
+                await util.delay(2000);
+                await webActions.waitForElementAttached(this.searchRowInDBBlade(itemName, index))
+                await webActions.hoverOnElement(this.searchRowInDBBlade(itemName, index))
+                await webActions.waitForElementAttached(this.threeDotMenuLocator(index))
                 await webActions.clickElement(this.threeDotMenuLocator(index))
+                await webActions.waitForElementAttached(this.threeDotMenuOptionLocator('Delete Dashboard'))
                 await webActions.clickElement(this.threeDotMenuOptionLocator('Delete Dashboard'))
+                await webActions.waitForElementAttached(this.deleteDBButtonLocator)
                 await webActions.clickElement(this.deleteDBButtonLocator);
+            }
+    }
+    async deleteBulkFolder(itemName: string) {
+        await this.searchInCDSearchBox(itemName)
+        let dbCount = await this.page.locator(`//ul[contains(@class,"ant-tree ant-tree")]//span[contains(text(),"${itemName}")]`).count();
+        if (dbCount !== 0)
+            for (let index = dbCount; index <= dbCount; index--) {
+                await util.delay(2000);
+                await webActions.waitForElementAttached(this.searchRowInDBBlade(itemName, index))
+                await util.delay(2000);
+                await webActions.hoverOnElement(this.searchRowInDBBlade(itemName, index))
+                await webActions.waitForElementAttached(this.threeDotMenuLocator(index))
+                await webActions.clickElement(this.threeDotMenuLocator(index))
+                await webActions.waitForElementAttached(this.deleteFolderButtonLocator)
+                await webActions.clickElement(this.deleteFolderButtonLocator)
+
             }
     }
     async deleteDB(dbName: string) {
@@ -142,6 +171,9 @@ export class DashboardBlade {
         await webActions.clickElement(this.searchedItemThreeDotMenuLocator(1))
         await webActions.clickElement(this.threeDotMenuOptionLocator('Delete Dashboard'))
         await webActions.clickElement(this.deleteDBButtonLocator);
+    }
+    async clickOnHomeSection() {
+        await webActions.clickElement(this.homeSectionLocator);
     }
 
 

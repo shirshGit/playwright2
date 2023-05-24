@@ -17,12 +17,21 @@ export class ExplorerPage {
 
     private _errorTab = '//li[@data-testid="Errors"]';
     private _firstThreeDotMenuInErrorTab = '(//div[@data-testid="table_row"]//span[@data-automationid="splitbuttonprimary"])[1]//i';
-    private _recordsInThreeDotMenuInErrorTab = '//span[normalize-space()="Records"]';
+    private _recordsInThreeDotMenuInErrorTab = '//i[@data-icon-name="waterfall"]/..//span[text()="Records"]';
     private _summeryTab = '//li[@data-testid="Summary Table"]';
     private _testInSourceSelector = '//div[@data-testid="custom-picker-pill-container"]//span';
     private _errorTabFirstRowTestName = '//div[@data-selection-index="0"]//div[@data-automation-key="Test_0"]//span';
     private _getTestNameFromSourceSelector = '//div[contains(@class,"Legend_name_")]'
-    
+    private _tableVizThreeDotMenuSB = '//i[@data-icon-name="smartboardBlue"]/..//span[text()="Smartboard"]'
+    private _getStarDate = '(//div[text()="From"]/..//input)[1]'
+    private _getEndDate = '(//div[text()="To"]/..//input)[1]'
+    private _getStarTime = '(//div[text()="From"]/..//input)[2]'
+    private _getEndTime = '(//div[text()="To"]/..//input)[2]'
+    private _filterNameLocator = '//div[contains(@class,"FilterPillsContainer_container_")]'
+    private _filterValueLocator =  '//div[contains(@class,"FilterPillsContainer_valueText_")]'
+    private _sourceTab = '//button[text()="Source"]'
+    private _getSelectedTimeFrame = '//input[@value="Today"]'
+
     public get errorTabLocator() {
         return this._errorTab;
     }
@@ -57,8 +66,47 @@ export class ExplorerPage {
     public get gettestNameFromSourceSelectorBoxLocator(){
         return this._getTestNameFromSourceSelector
     }
-    
 
+    public get tableVizThreeDotMenuSB(){
+        return this._tableVizThreeDotMenuSB
+    }
+    
+    public get selectedFilterValueLocator(){
+        return (text:string) => { return `//div[@title="${text}"]`}
+    }
+    public get selectedFilterNameLocator(){
+        return (text:string) => { return `//div[contains(@class,"Pill_pillContent_")]//div[contains(text(),"${text}")]`}
+    }
+    public get selectedTimeFrameLocator(){
+        return (text:string) => { return `//input[@value="${text}"]`};
+    }
+    public get getStartDateLocator(){
+        return this._getStarDate
+    }
+    public get getEndDateLocator(){
+        return this._getEndDate
+    }
+    public get getStartTimeLocator(){
+        return this._getStarTime
+    }
+    public get getEndTimeLocator(){
+        return this._getEndTime
+    }
+    public get filterNameLocator() {
+        return this._filterNameLocator;
+    }
+    public get filterValueLocator() {
+        return this._filterValueLocator;
+    }
+    public get sourceTabLocator() {
+        return this._sourceTab;
+    }
+    public get tabInSourceSelectorPagelocator(){
+        return(text:string) => { return `//button[@name="${text}"]`}
+    }
+    public get getSelectedTimeFrameLocator(){
+        return this._getSelectedTimeFrame
+    }
 
 
 
@@ -95,7 +143,6 @@ export class ExplorerPage {
     }
     async selectVizualization(vizName:string){
         return await webActions.clickElement(this.vizualizationLocator(vizName))
-
     }
     async clickOnThreeDotMenuForTableViz(rowNum:number) {
         await util.delay(3000);
@@ -113,4 +160,27 @@ export class ExplorerPage {
         return text
     }
 
+    async getTestNameFromSourceSelector(itemName:string){
+        return await webActions.getElementText(this.commonLocator(itemName))
+    }
+    async getDateTimeValue(locator:string){
+        return await webActions.getElementAttributeValue(locator,'value')
+    }
+    async getTextOfElement(locator:string){
+        return await webActions.getElementText(locator)
+    }
+    async getValue(array:string[]){
+        let values:string[] = [];
+        for (let index = 0; index < array.length; index++) {
+            let text =  await webActions.getElementText(this.commonLocator(array[index]))
+            values.push(text);
+        }
+        return values;
+    }
+    async clickOnSourceTab(){
+        return await webActions.clickElement(this.sourceTabLocator);
+    }
+    async getAttributeProperty(locator:string,attributeName:string){
+        return await webActions.getElementAttributeValue(locator,attributeName)
+    }
 }
