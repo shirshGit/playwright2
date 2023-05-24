@@ -66,6 +66,7 @@ export class RecordsPage {
     private _allFilterUnderRequestDD = '(//span[text()="All"])[3]';
     private _failedRequestFilter = '//span[text()="Failed Requests"]'
     
+
     public get waterFallTabLocator() {
         return this._waterFallTab;
     }
@@ -351,8 +352,6 @@ export class RecordsPage {
     public get failedRequestFilterUnderRequestDDLocator(){
         return this._failedRequestFilter
     }
-
-
 
     //#endregion
 
@@ -695,6 +694,5 @@ export class RecordsPage {
         await this.clickOnFilterDropDown(filterType);
         await webActions.clickElement(this.getFileTypeFilterLocator(filterName));
     }
-    
 
 }

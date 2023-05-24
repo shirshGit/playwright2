@@ -78,6 +78,7 @@ import { WPTPage } from '@pageobjects/WptOrg/WPTPage';
 import { HomePage } from '@pageobjects/WptOrg/HomePage';
 
 
+
 const test = baseTest.extend<{
     baseTestUtil: BaseTestUtility;
     loginPage: LoginPage;
@@ -158,6 +159,7 @@ const test = baseTest.extend<{
     signUpPage : SignUpPage
     wptPage : WPTPage
     homePage : HomePage
+
 }>({
     baseTestUtil: async ({ page }, use, testInfo: TestInfo) => {
         let base = new BaseTestUtility(page);
@@ -409,7 +411,6 @@ const test = baseTest.extend<{
     homePage: async ({ page }, use) => {
         await use(new HomePage(page))
     },
-
 
 });
 
