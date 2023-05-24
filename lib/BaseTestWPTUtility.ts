@@ -7,7 +7,7 @@ import { WebActions } from "./WebActions";
 let webActions: WebActions;
 let loginPage: LoginPage;
 
-export class BaseTestUtility {
+export class BaseTestWPTUtility {
     readonly page: Page;
 
     constructor(page: Page) {
@@ -16,12 +16,20 @@ export class BaseTestUtility {
         loginPage = new LoginPage(this.page);
     }
 
-
-
-    async beforeEveryTest() {
-        await loginPage.navigateToCPUrl();
-        await loginPage.loginToCP();
+    async beforeEveryWPTTest() {
+        await loginPage.navigateToWPTOrgUrl();
+        await loginPage.loginToOrg();
     }
+
+    async navigateToWPTOrg(){
+        await loginPage.navigateToWPTOrgUrl();
+    }
+
+    async getUrl() {
+        let url = await webActions.getCurrentPageUrl();
+        return url;
+    }
+
     async fullPageScreenShot(testInfo: TestInfo) {
 
         if (testInfo.status.toString() === 'failed' || testInfo.errors.length > 0) {
@@ -30,10 +38,6 @@ export class BaseTestUtility {
 
     }
 
-    async getUrl() {
-        let url = await webActions.getCurrentPageUrl();
-        return url;
-    }
 
     
 }

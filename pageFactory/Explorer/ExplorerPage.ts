@@ -66,6 +66,7 @@ export class ExplorerPage {
     public get gettestNameFromSourceSelectorBoxLocator(){
         return this._getTestNameFromSourceSelector
     }
+
     public get tableVizThreeDotMenuSB(){
         return this._tableVizThreeDotMenuSB
     }
@@ -106,7 +107,6 @@ export class ExplorerPage {
     public get getSelectedTimeFrameLocator(){
         return this._getSelectedTimeFrame
     }
-
 
 
 

@@ -94,4 +94,35 @@ export class LoginPage {
         await webActions.clickElement(this.loginBtnLocator);
         await webActions.waitForElementAttached(this.dashboardDDLabelLocator);
     }
+
+    async navigateToWPTOrgUrl(): Promise<void> {
+
+        if (ENV === 'wptOrgQA') {
+            await webActions.navigateToURL(`https://wptqa.webpagetest.org/`);
+        }
+        else if (ENV === 'wptOrgStage') {
+            await webActions.navigateToURL(`https://wptstage.webpagetest.org/`);
+        }
+        else if(ENV === 'production') {
+            await webActions.navigateToURL(`https://www.webpagetest.org/`);
+        }
+
+    }
+
+    async loginToOrg(): Promise<void> {
+        if (ENV === 'production') {
+            await webActions.enterElementText(this.emailInputLocator, testConfig.produn);
+            await webActions.enterElementText(this.passwordInputLocator, testConfig.prodpwd);
+            await webActions.clickElement(this.loginBtnLocator);
+           
+        }
+        else {
+            await webActions.clickElement('(//details[@class="wptheader_menu"]//summary)[1]')
+            await webActions.clickElement('//a[text()="Login"]')
+            await webActions.enterElementText(this.emailInputLocator, testConfig.cpun);
+            await webActions.enterElementText(this.passwordInputLocator, testConfig.cppwd);
+            await webActions.clickElement(this.loginBtnLocator);
+         }
+    }
+
 }
