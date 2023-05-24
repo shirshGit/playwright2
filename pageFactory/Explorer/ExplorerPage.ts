@@ -30,6 +30,7 @@ export class ExplorerPage {
     private _filterNameLocator = '//div[contains(@class,"FilterPillsContainer_container_")]'
     private _filterValueLocator =  '//div[contains(@class,"FilterPillsContainer_valueText_")]'
     private _sourceTab = '//button[text()="Source"]'
+    private _getSelectedTimeFrame = '//input[@value="Today"]'
 
     public get errorTabLocator() {
         return this._errorTab;
@@ -101,6 +102,9 @@ export class ExplorerPage {
     }
     public get tabInSourceSelectorPagelocator(){
         return(text:string) => { return `//button[@name="${text}"]`}
+    }
+    public get getSelectedTimeFrameLocator(){
+        return this._getSelectedTimeFrame
     }
 
 

@@ -31,7 +31,7 @@ export class SyntheticSmartboardPage {
     private _getSourceNameFromPublicLinkPage = '//div[contains(@class,"SourceSelectorRowstyles__LabelWrapper")]'
     private _getTestNameFromSourceSelector = '//div[contains(@class,"Pill_pillContent_")]'
     private _createdLinksTextInShareExplorer = '//span[text()="Created Links"]'
-    private _LastSixHourTimeFrame = '//input[@value="Last 6 Hour"]'
+    private _LastSixHourTimeFrame = '//input[@value="Last 6 Hours"]'
 
     public get commonLocator() {
         return (text: string) => { return `//span[text()="${text}"]` }

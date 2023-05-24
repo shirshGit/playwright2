@@ -16,7 +16,7 @@ export class DashboardBlade {
     //#region This region is for getter
 
     private _overviewDashboard = '//label[text()="My Dashboards"]';
-    private _firstTile = '(//ul[contains(@class,"Tiles_tiles_")]//li)[1]//p[contains(@class,"Tiles_name_")]';
+    private _firstTile = '(//ul[contains(@class,"Tiles_tiles_")]//p[contains(@class,"Tiles_name_")])[1]';
     private _createDashboard = '//span[contains(text(),"New Dashboard")]';
     private _createFolder = '//span[text()="Create Folder"]';
     private _testOverview = '//span[text()="Test Overview"]';
@@ -25,6 +25,7 @@ export class DashboardBlade {
     private _searchBox = '//div[@data-testid="dashboard-blade"]//input[@data-testid="fabricsearchbox"]';
     private _deleteDB = '//button[text()="Delete"]';
     private _folderDelete = '//span[normalize-space()="Delete Folder"]';
+    private _homeSection = '//div[@id="homesection"]'
 
     public get overviewDashboardLocator() {
         return this._overviewDashboard;
@@ -85,6 +86,9 @@ export class DashboardBlade {
     }
     public get deleteFolderButtonLocator() {
         return this._folderDelete
+    }
+    public get homeSectionLocator(){
+        return this._homeSection
     }
     //#endregion
 
@@ -167,6 +171,9 @@ export class DashboardBlade {
         await webActions.clickElement(this.searchedItemThreeDotMenuLocator(1))
         await webActions.clickElement(this.threeDotMenuOptionLocator('Delete Dashboard'))
         await webActions.clickElement(this.deleteDBButtonLocator);
+    }
+    async clickOnHomeSection() {
+        await webActions.clickElement(this.homeSectionLocator);
     }
 
 

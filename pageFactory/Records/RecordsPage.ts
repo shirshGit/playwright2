@@ -58,7 +58,14 @@ export class RecordsPage {
     private _responsecodeValueInGaantChart = '//div[contains(@class,"GanttChart_numericCell")]'
     private _getTestNameFromSourceSelector = '//div[contains(@class,"Pill_pillContent_")]'
     private _shareButton = '//button[text()="Share"]'
-
+    private _zoneFilterDD = '(//div[contains(@class,"fabricIcons_chevron_")])[4]'
+    private _fileTypeFilterDD = '(//div[contains(@class,"fabricIcons_chevron_")])[2]'
+    private _requestFilterDD = '(//div[contains(@class,"fabricIcons_chevron_")])[3]'
+    private _htmlFilterUnderFileType = '(//span[text()="HTML"])[2]';
+    private _allFilterUnderFileTypeDD = '(//span[text()="All"])[4]';
+    private _allFilterUnderRequestDD = '(//span[text()="All"])[3]';
+    private _failedRequestFilter = '//span[text()="Failed Requests"]'
+    
     public get waterFallTabLocator() {
         return this._waterFallTab;
     }
@@ -256,10 +263,6 @@ export class RecordsPage {
         return this._nodeIPLabel;
     }
 
-    public get fileTypeLocator() {
-        return (text: string) => { return `//span[text()="${text}"]` }
-    }
-
     public get htmlFileTypeLocator() {
         return this._htmlFileType;
     }
@@ -327,6 +330,28 @@ export class RecordsPage {
     public get shareButtonLocator(){
         return this._shareButton
     }
+    public get zoneFilterDDLocator(){
+        return this._zoneFilterDD
+    }
+    public get requestFilterDDLocator(){
+        return this._requestFilterDD
+    }
+    public get htmlFileTypeFilterLocator(){
+        return this._htmlFilterUnderFileType
+    }
+    public get allFilterUnderFileTypeDDLocator(){
+        return this._allFilterUnderFileTypeDD
+    }
+    public get allFilterUnderRequestDDLocator(){
+        return this._allFilterUnderRequestDD
+    }
+    public get requestFilterDropDownLocator() {
+        return this._requestFilterDD;
+    }
+    public get failedRequestFilterUnderRequestDDLocator(){
+        return this._failedRequestFilter
+    }
+
 
 
     //#endregion
@@ -415,16 +440,17 @@ export class RecordsPage {
     }
    
     //By this method user can select filter from fileType,Request,ZoneDropdown
-    async selectFilter(filterType:string,filterName:string){
-        await this.clickOnFilterDropDown(filterType);
-        await webActions.clickElement(this.getFileTypeFilterLocator(filterName));
+    async selectFilter(filterDDLocator:string,filterLocator:string){
+        await webActions.clickElement(filterDDLocator);
+        await util.delay(2000);
+        await webActions.clickElement(filterLocator);
     }
 
     async clickOnFilterDropDown(filterType:string){
         await webActions.clickElementJS(this.filterDropDownLocator(filterType));
     }
 
-    async clickOnImageFilter(filterType:string){
+    async clickOnFileTypeImageFilter(){
         await webActions.clickElement(this.imageFilterLocator);
     }
 
@@ -586,7 +612,7 @@ export class RecordsPage {
     async getRequestProtocolList(nunberOfRow: number) {
         let protocolList: string[] = [];
         for (let index = 1; index <= nunberOfRow; index++) {
-            let protocolValue = await webActions.getElementAttributeValue(this.getProtocolValueLocator(index), 'class');
+            let protocolValue = await webActions.getElementText(this.getProtocolValueLocator(index));
             protocolList.push(protocolValue);
         }
         return protocolList;
@@ -657,5 +683,18 @@ export class RecordsPage {
         let link =  await webActions.getElementText('//span[contains(@class,"TextBoxCopyButton_copySection")]')
         return link
     }
+    async selectZoneFilter(filterType:string,filterName:string){
+        await this.clickOnFilterDropDown(filterType);
+        await webActions.clickElement(this.getFileTypeFilterLocator(filterName));
+    }
+    async selectFileTypeFilter(filterType:string,filterName:string){
+        await this.clickOnFilterDropDown(filterType);
+        await webActions.clickElement(this.getFileTypeFilterLocator(filterName));
+    }
+    async selectRequestFilter(filterType:string,filterName:string){
+        await this.clickOnFilterDropDown(filterType);
+        await webActions.clickElement(this.getFileTypeFilterLocator(filterName));
+    }
+    
 
 }

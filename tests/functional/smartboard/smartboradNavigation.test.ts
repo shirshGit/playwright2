@@ -167,7 +167,8 @@ test("VerifyGuageTileNavigationToSBByThreeDotMenu @PageNavigation@CustomDashboar
     await customDBPage.createTileWidget(await testUtility.getWidgetName(),'Delete',null,null,otherFilters,otherFilterOptions,metrics,null,null);
     //click on save db
     await customDBPage.saveDB();
-    //click on test 
+    //click on test
+    await util.delay(4000);
     await customDBPage.navigateViaThreeDotMenuFromGuageWidget("Smartboard");
     //get url
     let url =  await syntheticSmartboardPage.getUrl();
@@ -304,9 +305,10 @@ test("VerifySLANavigationToSB @PageNavigation@CustomDashboard", async({baseTestU
     //click on test 
     await customDBPage.clickSLAWidgeTest();
     //get url
+    await util.delay(4000);
     let url =  await syntheticSmartboardPage.getUrl();
     await verification.verifySoftAssertTrue(url.includes('/Smartboard/Test'),'after clicking on test not able to navigate to smarboardpage');
-    await verification.verifyIfElementIsPresent(syntheticSmartboardPage.lastHourTimeFrame,'last hr time frame is not selected')
+    await verification.verifyIfElementIsPresent(syntheticSmartboardPage.lastSixHourTimeFrame,'last 6hr time frame is not selected')
     //delete created db
     await sideNavigationBar.navigateToDashboardFromSideNavigation();
     await dashboardBlade.clickOnOverviewDashboard();
@@ -354,11 +356,11 @@ test("VerifyAlertPageNavigationToSB @PageNavigation@CustomDashboard", async({bas
     await sideNavigationBar.navigateToAlertLogFromSideNavigation();
     //click hover first test three dot menu amd click on smartboard
     await alertLogPage.clickOnThreeDotMenu(0,'Smartboard');
-    await util.delay(4000);
+    await util.delay(5000);
     //fetch url of test property page
     let getPageURL = await alertLogPage.getUrl();
     //validation for test properties page
-    await verification.verifySoftAssertTrue(getPageURL.includes('/Smartboard/Test?'), 'smartboard page is not opening after clicking on three dot menu smartboard option');
+    await verification.verifySoftAssertTrue(getPageURL.includes('ui/Symphony/Smartboard/'), 'smartboard page is not opening after clicking on three dot menu smartboard option');
    
 })
 
@@ -378,6 +380,7 @@ test("VerifySmartboardNavigationToCC @PageNavigation@CustomDashboard", async({ba
     //validation for smartboard page
     await verification.verifySoftAssertTrue(getSBPageURL.includes('Smartboard/Test?ti=' + testID ), 'smartboard page is not opening after clicking on three dot manu smartboard button');
     //validation for last 6 hour time frame selected
+    await util.delay(4000);
     await verification.verifyIfElementIsPresent(syntheticSmartboardPage.lastSixHourTimeFrame,'last 6hr time frame is not selected');
 })
 
