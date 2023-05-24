@@ -9,6 +9,8 @@ export const testConfig = {
     cppwd : `Password123!`,
     produn: `EngUI@catchpoint.com`,
     prodpwd:`Password123!`,
+    wptOrgQA: 'https://wptqa.webpagetest.org/',
+    wptOrgStage: 'https://wptstage.webpagetest.org/',
     waitTimeForElement : 5000,
     waitTimeForPageLoad : 20000,
     password: 'Test',

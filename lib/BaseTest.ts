@@ -69,6 +69,14 @@ import { SBSharedLinkPage } from '@pageobjects/Smartboard/SBSharedLinkPage';
 import { DBPublicLinkPage } from '@pageobjects/OverviewDashboard/DBPublicLinkPage';
 import { DBSharedLinkPage } from '@pageobjects/OverviewDashboard/DBSharedLinkPage';
 import { InstantTestPublicLinkPage } from '@pageobjects/InstantTest/InstantTestPublicLink';
+import { BaseTestWPTUtility } from './BaseTestWPTUtility';
+import { WPTLoginPage } from '@pageobjects/WptOrg/WPTLoginPage';
+import { TestHistoryPage } from '@pageobjects/WptOrg/TestHistoryPage';
+import { MyAccountPage } from '@pageobjects/WptOrg/MyAccountPage';
+import { SignUpPage } from '@pageobjects/WptOrg/WPTSignUpPage';
+import { WPTPage } from '@pageobjects/WptOrg/WPTPage';
+import { HomePage } from '@pageobjects/WptOrg/HomePage';
+
 
 const test = baseTest.extend<{
     baseTestUtil: BaseTestUtility;
@@ -142,10 +150,32 @@ const test = baseTest.extend<{
     dbPublicLinkPage : DBPublicLinkPage
     dbSharedLinkPage : DBSharedLinkPage
     instantTestPublicLinkPage : InstantTestPublicLinkPage
+    baseTestWPTUtil : BaseTestWPTUtility
+    wptOrgLoginPage : BaseTestWPTUtility
+    wptLoginPage : WPTLoginPage
+    testHistoryPage : TestHistoryPage
+    myAccountPage : MyAccountPage
+    signUpPage : SignUpPage
+    wptPage : WPTPage
+    homePage : HomePage
 }>({
     baseTestUtil: async ({ page }, use, testInfo: TestInfo) => {
         let base = new BaseTestUtility(page);
         await base.beforeEveryTest();
+        await use(base);
+        await base.fullPageScreenShot(testInfo);
+    },
+
+    baseTestWPTUtil: async ({ page }, use, testInfo: TestInfo) => {
+        let base = new BaseTestWPTUtility(page);
+        await base.beforeEveryWPTTest();
+        await use(base);
+        await base.fullPageScreenShot(testInfo);
+    },
+
+    wptOrgLoginPage: async ({ page }, use, testInfo: TestInfo) => {
+        let base = new BaseTestWPTUtility(page);
+        await base.navigateToWPTOrg();
         await use(base);
         await base.fullPageScreenShot(testInfo);
     },
@@ -360,6 +390,24 @@ const test = baseTest.extend<{
     },
     instantTestPublicLinkPage: async ({ page }, use) => {
         await use(new InstantTestPublicLinkPage(page))
+    },
+    wptLoginPage: async ({ page }, use) => {
+        await use(new WPTLoginPage(page))
+    },
+    signUpPage: async ({ page }, use) => {
+        await use(new SignUpPage(page))
+    },
+    myAccountPage: async ({ page }, use) => {
+        await use(new MyAccountPage(page))
+    },
+    testHistoryPage: async ({ page }, use) => {
+        await use(new TestHistoryPage(page))
+    },
+    wptPage: async ({ page }, use) => {
+        await use(new WPTPage(page))
+    },
+    homePage: async ({ page }, use) => {
+        await use(new HomePage(page))
     },
 
 

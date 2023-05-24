@@ -23,7 +23,6 @@ test("VerifyUserShouldSeeChangeLogOptionOnTestPropertyPage @SyntheticControlCent
 /*
     CP-35379 : Verify Changelog should capturing correctly for "All" and "Nodes" under Ru
 */
-
 test("VerifyChangeLogShouldCaptureCorrectDataAfterUpdate @SyntheticControlCenter@ControlCenter", async ({ baseTestUtil, syntheticTestDetailPage, syntheticDetailsPage, sideNavigationBar, util, testUtility, synCCPage, verification }) => {
     let data = new DataForEnv();
     let prodForTestCreate = await data.getValueOfTheParameter('productForJunkItems');
@@ -70,9 +69,6 @@ test("VerifyChangeLogShouldCaptureCorrectDataAfterUpdate @SyntheticControlCenter
     //delete test
     await util.delay(2000);
     await syntheticTestDetailPage.deleteItemFromThreeDotMenu(testName);
-
-
-
 })
 
 
