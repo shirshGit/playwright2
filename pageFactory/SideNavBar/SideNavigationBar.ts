@@ -351,17 +351,11 @@ export class SideNavBar {
     async clickOnHomeIcon(){
         await webActions.waitForElementAttached(this.sideNavHome)
         await webActions.clickElement(this.sideNavHome)
+    }
 
     async clickOnAnalyticsIcon(){
         await webActions.waitForElementAttached(this.sideNavAnalytics)
         await webActions.clickElement(this.sideNavAnalytics)
-    }
-    
-    async navigateToCustomVizFromSideNavigation(){
-        await webActions.waitForElementAttached(this.sideNavAnalytics)
-        await webActions.clickElement(this.sideNavAnalytics)
-        await webActions.waitForElementAttached(this.sideNavCV)
-        await webActions.clickElement(this.sideNavCV)
     }
     
     async navigateToCustomVizFromSideNavigation(){
