@@ -69,7 +69,6 @@ test("VerifyRequirmentsForPasswordField @WPTOrg", async ({ wptOrgLoginPage, page
     await util.delay(2000)
     await wptPage.clickItem(signUpPage.freeStarterPlanLocator)
     await signUpPage.fillSignUpDetails('firstName','lastName','abc@gmail.com','cp','qwe123','qwe123')
-    // await signUpPage.clickItem(signUpPage.signUpButtonLocator)
     await verification.verifyIsDisabled(signUpPage.signUpButtonLocator)
-    //await util.delay(40000)
+    
 })

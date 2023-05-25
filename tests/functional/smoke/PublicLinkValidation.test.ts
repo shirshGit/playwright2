@@ -11,7 +11,7 @@ import { SyntheticSmartboardPage } from "@pageobjects/Smartboard/SyntheticSmartb
 
 
 /*
-    CP-
+    CP-68028 : Verify Create And Navigate Smartboard Public Link
 */
 test("VerifySmartboardPublicLink @ProductionSmoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, context, syntheticSmartboardPage, sbPublicLinkPage, sbSharedLinkPage, util }) => {
     let data = new DataForEnv()
@@ -49,7 +49,7 @@ test("VerifySmartboardPublicLink @ProductionSmoke", async ({ baseTestUtil, sideN
 })
 
 /*
-    CP-
+    CP-68031 : Verify Create And Navigate Explorer Public Link 
 */
 test("VerifyExplorerPublicLink @ProductionSmoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorExplorer, context, explorerPage, explorerSharedLinkPage, explorerPublicLinkPage, util }) => {
     let data = new DataForEnv()
@@ -89,7 +89,7 @@ test("VerifyExplorerPublicLink @ProductionSmoke", async ({ baseTestUtil, sideNav
 })
 
 /*
-    CP-
+    CP-68034 : Verify Create And Navigate Records Public Link -
 */
 test("VerifyRecordsPublicLink @ProductionSmoke", async ({ baseTestUtil, sideNavigationBar, verification, recordsPage, context, sourceSelectorPage, recordsPublicLinkPage, util }) => {
     let data = new DataForEnv()
@@ -126,7 +126,7 @@ test("VerifyRecordsPublicLink @ProductionSmoke", async ({ baseTestUtil, sideNavi
 })
 
 /*
-    CP-
+     CP-68027 : Verify Create And Navigate DB Public Link
 */
 test("VerifyDBPublicLink @ProductionSmoke", async ({ baseTestUtil, sideNavigationBar, verification, dashboardBlade, context, customDBPage, dbSharedLinkPage, dbPublicLinkPage, util }) => {
 
@@ -162,7 +162,7 @@ test("VerifyDBPublicLink @ProductionSmoke", async ({ baseTestUtil, sideNavigatio
 })
 
 /*
-    CP-
+    CP-68033 : Verify Create And Navigate To Instant Test Public Link
 */
 test("VerifyInstantTestPublicLink @ProductionSmoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, context, syntheticSmartboardPage, instantTestPage, instantTestHistoryPage, instantTestPublicLinkPage, util }) => {
     let data = new DataForEnv();

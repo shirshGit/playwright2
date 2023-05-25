@@ -357,13 +357,14 @@ export class SideNavBar {
         await webActions.waitForElementAttached(this.sideNavAnalytics)
         await webActions.clickElement(this.sideNavAnalytics)
     }
-    
+
     async navigateToCustomVizFromSideNavigation(){
         await webActions.waitForElementAttached(this.sideNavAnalytics)
         await webActions.clickElement(this.sideNavAnalytics)
         await webActions.waitForElementAttached(this.sideNavCV)
         await webActions.clickElement(this.sideNavCV)
     }
+   
 
     async navigateToZoneFromSideNavigation() {
         await webActions.waitForElementAttached(this.sideNavSettingsTest)
