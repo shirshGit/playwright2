@@ -56,7 +56,7 @@ test("VerifyTestPropertiesPageOpenFromTestsSB @SyntheticControlCenter", async ({
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();
     await util.delay(2000);
     //select test
-    await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(testID);
+    await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(testID,'Tests');
     await util.delay(3000);
     //click on test in source blade and get new window
     let getNewPage = await syntheticSmartboardPage.getNewWindow(context, syntheticSmartboardPage.testInSourceSelectorLocator);

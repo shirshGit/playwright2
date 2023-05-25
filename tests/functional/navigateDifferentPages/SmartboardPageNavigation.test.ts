@@ -616,4 +616,5 @@ test.skip("VerifySmartboardEndpointLoads @PageNavigation@ProductionSmoke@Smoke",
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.appVisititedWidgetLocator, "app visited widget is not present in application tab")
     await verification.verifyIfElementIsPresent(endpointSmartboardPage.urlTestedWgtLocator, "url tested widget widget is not present in application tab");
     
+
 })

@@ -36,6 +36,7 @@ export class SyntheticRecordsPage {
     private _zoneFilterDD = '//label[text()="Zone"]/..//i[@data-icon-name="chevron"]';
     private _recordFirstRow = '//div[contains(@class,"RecordsTable_table")]//div[@data-list-index="0"]';
     private _errorMessageFieldForDatePoint = '//div[contains(@class,"ms-MessageBar-content")]'
+    private _errorCodeLocator = '//div[contains(@class,"GanttChart_numericCell")]'
 
     public get waterFallTabLocator() {
         return this._waterFallTab;
@@ -136,6 +137,9 @@ export class SyntheticRecordsPage {
     public get errorMessageFieldForDatePoint(){
         return this._errorMessageFieldForDatePoint;
     }
+    public get errorCodeLocator(){
+        return this._errorCodeLocator
+    }
 
 
     //#endregion
@@ -206,6 +210,11 @@ export class SyntheticRecordsPage {
         let ipAddressValue = await webActions.getElementText(this.getIPAddressLocator);
         return ipAddressValue;
 
+    }
+
+    async getElementText(loc:string){
+        let text = await webActions.getElementText(loc);
+        return text;
     }
 
    
