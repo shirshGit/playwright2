@@ -64,7 +64,7 @@ const config: PlaywrightTestConfig = {
           slowMo: 0
         }
       },
-      grep: [new RegExp("VerifyScoreSelectionBladeDisplayAllTabSelectedWhenItsDivisionWide")]
+      grep: [new RegExp("VerifyRequirmentsForPasswordField")]
     },
     {
 

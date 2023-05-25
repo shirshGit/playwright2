@@ -21,13 +21,15 @@ export class CustomDBPage extends SynWidgetPropertyPage{
     private _dbNameBox = '//input[contains(@class,"TextBox_")]';
     private _saveDBButton = '//span[text()="Save"]';
     private _threeDotMenu = '//span[@data-testid="tile-name"]/..//span[2]//button//i[contains(@class,"ms-Icon-placeHolder")]';
+    private _tileHeader = '(//div[contains(@class,"GaugeTilestyles__TileHeader-")])[1]';
+    private _dbName = '(//span[@data-automationid="splitbuttonprimary"]//span[contains(@class,"ms-Button-textContainer")])[1]'
     private _headerForGuage = '(//span[contains(@class,"GaugeTilestyles__TileTitle")])[1]';
     private _dbName = '(//span[@data-automationid="splitbuttonprimary"]//span[contains(@class,"ms-Button-textContainer")])[1]'
     private _testInTableWidget = '(//div[@data-list-index="0"]//a)[1]'
     private _tileHeaderForTile = '(//div[contains(@class,"BigMetricTile_tileHeader_")])[1]'
     private _SLAWidgetTest = '(//tr[@class="ant-table-row ant-table-row-level-0"]//a[contains(@class,"InfoBlock_text_")])[1]'
     private _editWidgetThreeDotMenu = '//div[contains(@class,"CommandBar_button_")]//i';
-    
+
     public get overviewDashboardLocator(){
         return this._overviewDashboard;
     }
@@ -85,6 +87,9 @@ export class CustomDBPage extends SynWidgetPropertyPage{
     }
     public get editWidgetThreeDotLocator(){
         return this._editWidgetThreeDotMenu
+    }
+    public get getDBNameLocator(){
+        return this._dbName
     }
 
   
@@ -183,6 +188,20 @@ export class CustomDBPage extends SynWidgetPropertyPage{
     }
     async saveWidget() {
         await webActions.clickElement(this.saveWidgetLocator);
+    }
+    async click(loc:string){
+        await webActions.clickElement(loc)
+    }
+    async getElementText(locator:string){
+        let text = await webActions.getElementText(locator)
+        return text
+    }
+    async getNewWindow(context: BrowserContext, locator: string) {
+        return await webActions.newWindowHandle(context, locator);
+
+    }
+    async getUrl() {
+        return await webActions.getCurrentPageUrl();
     }
     
    

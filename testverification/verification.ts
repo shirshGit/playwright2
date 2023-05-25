@@ -95,6 +95,14 @@ export class Verification {
 
     }
 
+    async verifyIsDisabled(locator: string) {
+        //await expect((await this.page.$(locator)).isDisabled(), `element is not disable`)
+        const isDis = (await this.page.getByRole('button',{name:'Sign Up'}).isDisabled())
+        console.log(isDis)
+        await expect.soft(isDis, `element is not disable`).toBeTruthy();
+ 
+    }
+
 
 
 

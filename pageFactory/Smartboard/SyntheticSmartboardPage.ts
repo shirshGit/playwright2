@@ -25,6 +25,7 @@ export class SyntheticSmartboardPage {
     private _testTimeMetricsInKeyMetric = '(//div[text()="Test Time (ms)"])[2]'
     private _trendingChart = '(//div[contains(@class,"AnalyticsTrendingChart_chartContainer_")]//div//div[contains(@class,"Chart_chartContainer_")]//*[name()="svg"])[1]'
     private _testInSourceSelector = '//div[@data-testid="test-picker"]//div[contains(@class,"Pill_pillContent_")]'
+    private _Last6HourTimeFrame = '//input[@value="Last 6 Hours"]'
     private _LastHourTimeFrame = '//input[@value="Last Hour"]'
     private _generateButton = '//button[text()="+ Generate Link"]'
     private _firstPublicLink = '//div[@data-automation-key="Link_0"]'
@@ -32,6 +33,7 @@ export class SyntheticSmartboardPage {
     private _getTestNameFromSourceSelector = '//div[contains(@class,"Pill_pillContent_")]'
     private _createdLinksTextInShareExplorer = '//span[text()="Created Links"]'
     private _LastSixHourTimeFrame = '//input[@value="Last 6 Hours"]'
+
 
     public get commonLocator() {
         return (text: string) => { return `//span[text()="${text}"]` }
@@ -97,6 +99,7 @@ export class SyntheticSmartboardPage {
     public get lastSixHourTimeFrame() {
         return this._LastSixHourTimeFrame
     }
+
 
 
     //#endregion
