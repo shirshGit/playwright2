@@ -15,12 +15,12 @@ test("VerifyNavigationToDifferentPages @PageNavigation@ProductionSmoke", async (
     
     //navigate to CC
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation()
-    // await util.delay(2000)
-    // //validation for errors
-    // await verification.validationsForPage()
-    // //get url
-    // let ccPageUrl = await synCCPage.getUrl()
-    // await verification.verifySoftAssertTrue(ccPageUrl.includes('catchpoint.com/ui/Symphony/ControlCenter'), 'CC page navigation not working')
+    await util.delay(2000)
+    //validation for errors
+    await verification.validationsForPage()
+    //get url
+    let ccPageUrl = await synCCPage.getUrl()
+    await verification.verifySoftAssertTrue(ccPageUrl.includes('catchpoint.com/ui/Symphony/ControlCenter'), 'CC page navigation not working')
 
     //navigate to CC endpoint
     await synCCPage.clickOnEndpointTab()

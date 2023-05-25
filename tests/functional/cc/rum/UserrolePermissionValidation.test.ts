@@ -6,7 +6,7 @@ import { DataForEnv } from "@lib/DataForEnvironment";
 /*
     CP-12790 : Bug 123222 Able to View RUM ,Test Template Options in Master create blade though we dont have permission
 */
-test.skip("VerifyManageRealUserAndTestTemplatesPermission  @ProductionDefect@SyntheticControlCenter@ControlCenter", async ({ baseTestUtil, contactsPage, contactDetailsPage, testUtility, sideNavigationBar, loginPage, synCCPage, util, userrolePage, syntheticDetailsPage, userroleDetailPage, page, verification }) => {
+test("VerifyManageRealUserAndTestTemplatesPermission  @ProductionDefect@SyntheticControlCenter@RUM", async ({ baseTestUtil, contactsPage, contactDetailsPage, testUtility, sideNavigationBar, loginPage, synCCPage, util, userrolePage, syntheticDetailsPage, userroleDetailPage, page, verification }) => {
     let userroleNameForRum = await testUtility.getUserroleName();
     let data = new DataForEnv();
     let userrole = await data.getValueOfTheParameter('defaultUserrole');
@@ -57,7 +57,7 @@ test.skip("VerifyManageRealUserAndTestTemplatesPermission  @ProductionDefect@Syn
 /*
     CP-39578 : VerifyManageTestPermission_Bug_123222: DES:CC: Able to View RUM ,Test Template Options in Master create blade though we disabled manage permissions for Template and RUM
 */
-test("VerifyManageTestPermission  @ProductionDefect@SyntheticControlCenter", async ({ baseTestUtil, contactsPage, contactDetailsPage, testUtility, sideNavigationBar, loginPage, synCCPage, util, syntheticDetailsPage, syntheticTestDetailPage, userroleDetailPage, page, verification }) => {
+test("VerifyManageTestPermission  @ProductionDefect@SyntheticControlCenter@RUM", async ({ baseTestUtil, contactsPage, contactDetailsPage, testUtility, sideNavigationBar, loginPage, synCCPage, util, syntheticDetailsPage, syntheticTestDetailPage, userroleDetailPage, page, verification }) => {
     let userroleNameForSynthetic = await testUtility.getUserroleName();
     let data = new DataForEnv();
     let userrole = await data.getValueOfTheParameter('defaultUserrole');
