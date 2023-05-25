@@ -17,5 +17,6 @@ test("Verify40X50XErrorMarkedAsPass  @ProductionDefectRecords@Records", async ({
     await util.delay(3000);
     //validation for data
     await verification.verifyElementIsNotPresent(syntheticRecordsPage.errorMessageFieldForDatePoint,'Error Field is Present')
-    await verification.verifySoftAssertForTextOfAnElement(recordsPage.responsecodeValueInGaantChart, '404', 'Response Code not matching')
+    let responseCode = await syntheticRecordsPage.getElementText(syntheticRecordsPage.errorCodeLocator)
+    await verification.verifySoftAssertTrue(responseCode === '404', 'Response Code not matching')
  })

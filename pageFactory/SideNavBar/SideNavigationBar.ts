@@ -352,17 +352,19 @@ export class SideNavBar {
         await webActions.waitForElementAttached(this.sideNavHome)
         await webActions.clickElement(this.sideNavHome)
     }
-    async clickOnAnalyticsIcon() {
+
+    async clickOnAnalyticsIcon(){
         await webActions.waitForElementAttached(this.sideNavAnalytics)
         await webActions.clickElement(this.sideNavAnalytics)
     }
- 
- async navigateToCustomVizFromSideNavigation(){
+
+    async navigateToCustomVizFromSideNavigation(){
         await webActions.waitForElementAttached(this.sideNavAnalytics)
         await webActions.clickElement(this.sideNavAnalytics)
         await webActions.waitForElementAttached(this.sideNavCV)
         await webActions.clickElement(this.sideNavCV)
     }
+   
 
     async navigateToZoneFromSideNavigation() {
         await webActions.waitForElementAttached(this.sideNavSettingsTest)
@@ -371,7 +373,4 @@ export class SideNavBar {
         await webActions.clickElement(this.sideNavZoneLocator)
     }
 
-    
-    
-   
 }
