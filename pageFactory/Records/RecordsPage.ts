@@ -419,7 +419,6 @@ export class RecordsPage {
         return await webActions.newWindowHandle(context, locator);
 
     }
-
     async getUrl() {
         return await webActions.getCurrentPageUrl();
     }

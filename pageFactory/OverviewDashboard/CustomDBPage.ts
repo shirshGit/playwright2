@@ -24,7 +24,6 @@ export class CustomDBPage extends SynWidgetPropertyPage{
     private _tileHeader = '(//div[contains(@class,"GaugeTilestyles__TileHeader-")])[1]';
     private _dbName = '(//span[@data-automationid="splitbuttonprimary"]//span[contains(@class,"ms-Button-textContainer")])[1]'
     private _headerForGuage = '(//span[contains(@class,"GaugeTilestyles__TileTitle")])[1]';
-    private _dbName = '(//span[@data-automationid="splitbuttonprimary"]//span[contains(@class,"ms-Button-textContainer")])[1]'
     private _testInTableWidget = '(//div[@data-list-index="0"]//a)[1]'
     private _tileHeaderForTile = '(//div[contains(@class,"BigMetricTile_tileHeader_")])[1]'
     private _SLAWidgetTest = '(//tr[@class="ant-table-row ant-table-row-level-0"]//a[contains(@class,"InfoBlock_text_")])[1]'
@@ -72,9 +71,6 @@ export class CustomDBPage extends SynWidgetPropertyPage{
     }
     public get testInTableWidgetRowLocator(){
         return this._testInTableWidget
-    }
-    public get getDBNameLocator(){
-        return this._dbName
     }
     public get tileHeaderLocator(){
         return this._tileHeaderForTile
@@ -189,20 +185,7 @@ export class CustomDBPage extends SynWidgetPropertyPage{
     async saveWidget() {
         await webActions.clickElement(this.saveWidgetLocator);
     }
-    async click(loc:string){
-        await webActions.clickElement(loc)
-    }
-    async getElementText(locator:string){
-        let text = await webActions.getElementText(locator)
-        return text
-    }
-    async getNewWindow(context: BrowserContext, locator: string) {
-        return await webActions.newWindowHandle(context, locator);
-
-    }
-    async getUrl() {
-        return await webActions.getCurrentPageUrl();
-    }
+    
     
    
 
