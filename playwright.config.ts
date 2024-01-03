@@ -64,7 +64,45 @@ const config: PlaywrightTestConfig = {
           slowMo: 0
         }
       },
-      grep: [new RegExp("VerifyRequirmentsForPasswordField")]
+      grep: [new RegExp("VerifyCharmBarScreenShot")]
+    },
+    {
+      name: `ChromeScreenshot`,
+      //testMatch: [`CreateNewSyntheticProduct.test.ts`],
+      use: {
+        // Configure the browser to use.
+        browserName: `chromium`,
+
+        //Chrome Browser Config
+        channel: `chrome`,
+
+        //Picks Base Url based on User input
+        baseURL: testConfig[process.env.ENV],
+
+        //Browser Mode
+        headless: false,
+
+        //Browser height and width
+        //viewport: { width: 1500, height: 730 },
+
+        viewport: { width: 1300, height: 600 },
+        
+        ignoreHTTPSErrors: true,
+
+        //Enable File Downloads in Chrome
+        //acceptDownloads: true,
+
+        //Artifacts
+        //screenshot: `only-on-failure`,
+        video: `retain-on-failure`,
+        //trace: `retain-on-failure`,
+
+        //Slows down execution by ms
+        launchOptions: {
+          slowMo: 0
+        }
+      },
+      grep: [new RegExp("VerifyCharmBarScreenShot")]
     },
     {
 

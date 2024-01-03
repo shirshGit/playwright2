@@ -76,6 +76,7 @@ import { MyAccountPage } from '@pageobjects/WptOrg/MyAccountPage';
 import { SignUpPage } from '@pageobjects/WptOrg/WPTSignUpPage';
 import { WPTPage } from '@pageobjects/WptOrg/WPTPage';
 import { HomePage } from '@pageobjects/WptOrg/HomePage';
+import { ScreenShotVerification } from '@verification/screenshotverification';
 
 
 
@@ -143,22 +144,23 @@ const test = baseTest.extend<{
     instantTestHistoryPage: InstantTestHistoryPage;
     instantTestPage : InstantTestPage;
     zonePage : ZonePage;
-    recordsPublicLinkPage : RecordsPublicLinkPage
-    explorerPublicLinkPage : ExplorerPublicLinkPage
-    explorerSharedLinkPage : ExplorerSharedLinkPage
-    sbPublicLinkPage : SBPublicLinkPage
-    sbSharedLinkPage :SBSharedLinkPage
-    dbPublicLinkPage : DBPublicLinkPage
-    dbSharedLinkPage : DBSharedLinkPage
-    instantTestPublicLinkPage : InstantTestPublicLinkPage
-    baseTestWPTUtil : BaseTestWPTUtility
-    wptOrgLoginPage : BaseTestWPTUtility
-    wptLoginPage : WPTLoginPage
-    testHistoryPage : TestHistoryPage
-    myAccountPage : MyAccountPage
-    signUpPage : SignUpPage
-    wptPage : WPTPage
-    homePage : HomePage
+    recordsPublicLinkPage : RecordsPublicLinkPage;
+    explorerPublicLinkPage : ExplorerPublicLinkPage;
+    explorerSharedLinkPage : ExplorerSharedLinkPage;
+    sbPublicLinkPage : SBPublicLinkPage;
+    sbSharedLinkPage :SBSharedLinkPage;
+    dbPublicLinkPage : DBPublicLinkPage;
+    dbSharedLinkPage : DBSharedLinkPage;
+    instantTestPublicLinkPage : InstantTestPublicLinkPage;
+    baseTestWPTUtil : BaseTestWPTUtility;
+    wptOrgLoginPage : BaseTestWPTUtility;
+    wptLoginPage : WPTLoginPage;
+    testHistoryPage : TestHistoryPage;
+    myAccountPage : MyAccountPage;
+    signUpPage : SignUpPage;
+    wptPage : WPTPage;
+    homePage : HomePage;
+    screenShotVerification : ScreenShotVerification;
 
 }>({
     baseTestUtil: async ({ page }, use, testInfo: TestInfo) => {
@@ -411,6 +413,9 @@ const test = baseTest.extend<{
     homePage: async ({ page }, use) => {
         await use(new HomePage(page))
     },
+    screenShotVerification: async ({page}, use) => {
+        await use(new ScreenShotVerification(page))
+    }
 
 });
 
