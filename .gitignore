@@ -9,3 +9,4 @@ resultJunit.xml
 TestLinkReportParser/TestLinkCompatibleJsonToJunitReport/bin
 TestLinkReportParser/TestLinkCompatibleJsonToJunitReport/obj
 TestLinkReportParser/.vs
+test-results.json

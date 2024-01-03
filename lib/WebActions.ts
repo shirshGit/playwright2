@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as CryptoJS from 'crypto-js';
-import { Browser, BrowserContext, expect, Page, TestInfo } from '@playwright/test';
+import { Browser, BrowserContext, expect, Locator, Page, TestInfo } from '@playwright/test';
 import { Workbook } from 'exceljs';
 import { testConfig } from '../testConfig';
 import * as path from 'path';
@@ -226,6 +226,17 @@ export class WebActions {
         await this.clickElement(loc);
         await this.enterElementText(loc,'');
     }
+
+    async takeScreeShotOfComponent(locator: string){
+        const screenshot = await this.page.locator(locator).screenshot();
+        return screenshot;
+    }
+
+    async takeFullPageScreeShotOfComponentWithMaskedElements(maskedElements : Locator[]){
+        const screenshot = await this.page.screenshot({mask : maskedElements})
+        return screenshot;
+    }
+    
 
     // async wait(){
     //     await util.delay(5000);
