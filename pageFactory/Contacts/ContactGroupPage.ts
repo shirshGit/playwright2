@@ -1,6 +1,7 @@
 import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
 import { BrowserContext, Page } from "@playwright/test";
+import { DataForEnv } from "@lib/DataForEnvironment";
 let webActions: WebActions;
 let util: Utility
 
@@ -22,6 +23,7 @@ export class ContactGroupPage {
     private _inactiveContact = '//span[text()="Inactive Contacts"]';
     private _status = '//span[text()="Status"]';
     private _lastUpdate = '//span[text()="Last Updated"]';
+    private _contactGroupTable = '//div[@class="ms-List-page"][1]'
 
 
 
@@ -54,6 +56,9 @@ export class ContactGroupPage {
     public get lastUpdatedTextTextLocator() {
         return this._lastUpdate;
     }
+    public get contactGroupLocator() {
+        return this._contactGroupTable;
+    }
 
     
 
@@ -69,6 +74,12 @@ export class ContactGroupPage {
     }
     async getUrl() {
         return await webActions.getCurrentPageUrl();
+    }
+    async navigateToContactsGroupPageByURL() {
+        let data = new DataForEnv();
+        let baseURL = await data.getValueOfTheParameter('baseURL');
+        await webActions.navigateToURL(baseURL + 'ContactGroups');
+        await util.delay(5000);
     }
 
 

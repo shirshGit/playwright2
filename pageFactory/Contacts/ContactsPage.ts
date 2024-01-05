@@ -1,6 +1,7 @@
 import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
 import { BrowserContext, Page } from "@playwright/test";
+import { DataForEnv } from "@lib/DataForEnvironment";
 let webActions: WebActions;
 let util: Utility
 
@@ -26,6 +27,7 @@ export class ContactsPage {
     private _companyName    = '//span[text()="Company Name"]';
     private _systemAccess = '//span[text()="System Access"]';
     private _division  = '//span[text()="Division"]';
+    private _contactTable = '//div[@class="ms-List-page"][1]'
 
 
 
@@ -73,6 +75,9 @@ export class ContactsPage {
     public get divisionLocator() {
         return this._division;
     }
+    public get contactTableLocator() {
+        return this._contactTable;
+    }
 
 
 
@@ -100,6 +105,13 @@ export class ContactsPage {
     }
     async getUrl() {
         return await webActions.getCurrentPageUrl();
+    }
+
+    async navigateToContactsPageByURL() {
+        let data = new DataForEnv();
+        let baseURL = await data.getValueOfTheParameter('baseURL');
+        await webActions.navigateToURL(baseURL + 'Contacts');
+        await util.delay(5000);
     }
 
 

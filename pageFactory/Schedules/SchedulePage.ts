@@ -1,6 +1,7 @@
 import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
 import { BrowserContext, Page } from "@playwright/test";
+import { DataForEnv } from "@lib/DataForEnvironment";
 
 let webActions: WebActions;
 let util: Utility
@@ -22,6 +23,7 @@ export class SchedulePage {
     private _statusText = '//span[text()="Status"]';
     private _typeText = '//span[text()="Type"]';
     private _lastUpdatedColumnText = '//span[text()="Last Updated"]';
+    private _scheduleTable = '//div[@class="ms-List-surface"]'
     
 
     public get newIconLocator() {
@@ -44,6 +46,10 @@ export class SchedulePage {
         return this._lastUpdatedColumnText;
     }
 
+    public get scheduleTableLocator() {
+        return this._scheduleTable;
+    }
+
  
 
     //#endregion
@@ -56,6 +62,13 @@ export class SchedulePage {
     }
     async getUrl() {
         return await webActions.getCurrentPageUrl();
+    }
+
+    async navigateToSchedulePageByURL() {
+        let data = new DataForEnv();
+        let baseURL = await data.getValueOfTheParameter('baseURL');
+        await webActions.navigateToURL(baseURL + 'Schedules');
+        await util.delay(5000);
     }
 
    

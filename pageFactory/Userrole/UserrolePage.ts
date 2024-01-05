@@ -1,6 +1,7 @@
 import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
 import { BrowserContext, Page } from "@playwright/test";
+import { DataForEnv } from "@lib/DataForEnvironment";
 
 let webActions: WebActions;
 let util: Utility
@@ -29,6 +30,7 @@ export class UserrolePage {
     private _divisionText = '//span[text()="Division"]';
     private _activeContactText = '//span[text()="Active Contacts"]';
     private _inactiveContactText = '//span[text()="Inactive Contacts"]';
+    private _userroleTable = "//div[@class='ms-List-page']"
 
     public get searchBoxLocator() {
         return this._searchBox;
@@ -78,6 +80,9 @@ export class UserrolePage {
     public get nameTextLocator() {
         return this._nameText;
     }
+    public get userroleTableLocator() {
+        return this._userroleTable;
+    }
   
 
     //#endregion
@@ -114,6 +119,12 @@ export class UserrolePage {
     }
     async getUrl() {
         return await webActions.getCurrentPageUrl();
+    }
+    async navigateToUserrolePageByURL() {
+        let data = new DataForEnv();
+        let baseURL = await data.getValueOfTheParameter('baseURL');
+        await webActions.navigateToURL(baseURL + 'User Roles');
+        await util.delay(5000);
     }
 
     

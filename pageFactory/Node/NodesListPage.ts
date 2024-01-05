@@ -1,6 +1,7 @@
 import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
 import { BrowserContext, Page } from "@playwright/test";
+import { DataForEnv } from "@lib/DataForEnvironment";
 
 let webActions: WebActions;
 let util: Utility;
@@ -18,6 +19,7 @@ export class NodeListPage {
     private _nodeNameHeaderInNodeListTable = '//span[text()="Node Name"]';
     private _statusHeaderInNodeListPage = '//span[text()="Status"]';
     private _runRateHeaderInNodeListPage = '//span[text()="Run Rate"]';
+    private _nodeTable = '//div[@class="ms-List-page"][1]'
 
     public get nodeNameHeaderInNodeListTableLocator(){
         return this._nodeNameHeaderInNodeListTable;
@@ -30,6 +32,9 @@ export class NodeListPage {
     public get runRateHeaderInNodeListPageLocator(){
         return this._runRateHeaderInNodeListPage;
     }
+    public get nodeTableLocator(){
+        return this._nodeTable;
+    }
 
 
     //#endregion
@@ -41,6 +46,13 @@ export class NodeListPage {
     }
     async getUrl() {
         return await webActions.getCurrentPageUrl();
+    }
+
+    async navigateToNodesPageByURL() {
+        let data = new DataForEnv();
+        let baseURL = await data.getValueOfTheParameter('baseURL');
+        await webActions.navigateToURL(baseURL + 'Nodes');
+        await util.delay(5000);
     }
     
     //#endregion

@@ -1,6 +1,7 @@
 import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
 import { BrowserContext, Page } from "@playwright/test";
+import { DataForEnv } from "@lib/DataForEnvironment";
 
 let webActions: WebActions;
 let util: Utility;
@@ -18,17 +19,19 @@ export class NodeGroupPage {
     private _nodeGroupIdHeaderInTable = '//span[text()="ID"]';
     private _nodeCountHeaderInTable = '//span[text()="Node Count"]';
     private _descriptionHeaderInTable = '//span[text()="Description"]';
+    private _nodeGroupTable = '//div[@class="ms-List"]'
 
     public get nodeGroupIdHeaderInTableLocator(){
         return this._nodeGroupIdHeaderInTable;
     }
-
     public get nodeCountHeaderInTableLocator(){
         return this._nodeCountHeaderInTable;
     }
-
     public get descriptionHeaderInTableLocator(){
         return this._descriptionHeaderInTable;
+    }
+    public get nodeGroupTableLocator(){
+        return this._nodeGroupTable;
     }
 
     //#endregion
@@ -41,6 +44,12 @@ export class NodeGroupPage {
     }
     async getUrl() {
         return await webActions.getCurrentPageUrl();
+    }
+    async navigateToNodeGroupPageByURL() {
+        let data = new DataForEnv();
+        let baseURL = await data.getValueOfTheParameter('baseURL');
+        await webActions.navigateToURL(baseURL + 'NodeGroups');
+        await util.delay(5000);
     }
 
     
