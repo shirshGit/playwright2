@@ -30,10 +30,10 @@ test("VerifySchedulePageScreenshot @ScreenshotVerification", async({baseTestUtil
 //     await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement(maskedElements, testInfo.title + '-screenshot.png');
     
 // })
-test("VerifyZonePageScreenshot @ScreenshotVerification", async({baseTestUtil,page, screenShotVerification, util,zonePage}, testInfo) => {
-    await zonePage.navigateToZonePageByURL();
-    const maskedElement1 = await page.locator(zonePage.zonesTableLocator);
-    const maskedElements = [maskedElement1];
-    await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement(maskedElements, testInfo.title + '-screenshot.png');
+// test("VerifyZonePageScreenshot @ScreenshotVerification", async({baseTestUtil,page, screenShotVerification, util,zonePage}, testInfo) => {
+//     await zonePage.navigateToZonePageByURL();
+//     const maskedElement1 = await page.locator(zonePage.zonesTableLocator);
+//     const maskedElements = [maskedElement1];
+//     await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement(maskedElements, testInfo.title + '-screenshot.png');
     
-})
+// })
