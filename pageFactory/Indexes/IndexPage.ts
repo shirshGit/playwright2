@@ -1,6 +1,7 @@
 import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
 import { BrowserContext, Page } from "@playwright/test";
+import { DataForEnv } from "@lib/DataForEnvironment";
 
 let webActions: WebActions;
 let util: Utility
@@ -20,7 +21,10 @@ export class IndexPage {
     private _descriptionText = '//span[text()="Description"]';
     private _IDText = '//span[text()="ID"]';
     private _numberOfTestText = '//span[text()="Number of Tests"]';
-    
+    private _indexTable = "//div[@class='ms-List-page']"
+
+
+   
 
     public get newIconLocator() {
         return this._newIcon;
@@ -41,6 +45,9 @@ export class IndexPage {
     public get noOfTestTextLocator() {
         return this._numberOfTestText;
     }
+    public get indexTableLocator() {
+        return this._indexTable;
+    }
 
 
     //#endregion
@@ -53,6 +60,12 @@ export class IndexPage {
     }
     async getUrl() {
         return await webActions.getCurrentPageUrl();
+    }
+    async navigateToIndexPageByURL() {
+        let data = new DataForEnv();
+        let baseURL = await data.getValueOfTheParameter('baseURL');
+        await webActions.navigateToURL(baseURL + 'Administration/Indexes');
+        await util.delay(5000);
     }
 
     //#endregion

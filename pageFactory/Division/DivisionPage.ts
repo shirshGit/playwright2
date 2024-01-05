@@ -1,6 +1,7 @@
 import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
 import { BrowserContext, Page } from "@playwright/test";
+import { DataForEnv } from "@lib/DataForEnvironment";
 
 let webActions: WebActions;
 let util: Utility
@@ -19,6 +20,11 @@ export class DivisionPage {
     private _nameText = '//span[text()="Name"]';
     private _statusText = '//span[text()="Status"]';
     private _lastUpdatedText = '//span[text()="Last Updated"]';
+    private _divisionTable = "//div[@class='ms-List-surface']"
+
+
+    
+
   
 
     public get createIconLocator() {
@@ -32,6 +38,9 @@ export class DivisionPage {
     }
     public get lastUpdatedTextLocator() {
         return this._lastUpdatedText;
+    }
+    public get divisionTableLocator() {
+        return this._divisionTable;
     }
 
     
@@ -47,8 +56,17 @@ export class DivisionPage {
     async getUrl() {
         return await webActions.getCurrentPageUrl();
     }
+    async navigateToDivisionPageByURL() {
+        let data = new DataForEnv();
+        let baseURL = await data.getValueOfTheParameter('baseURL');
+        await webActions.navigateToURL(baseURL + 'Divisions');
+        await util.delay(5000);
+    }
    
 
     //#endregion
 
 }
+
+
+

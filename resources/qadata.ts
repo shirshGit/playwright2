@@ -2,6 +2,7 @@ export const qadata = {
     'alertRecipientName' : 'Client Admin DoNotDelete', //for creating items which needs contact
     'automationContact' : 'userrole9_DoNOTDeleteqaautomationxclient-clientadministrator@catchpoint.com', //contact used for automation, where assiging other userrole is required
 	
+    'baseURL' : 'https://qaportal.catchpoint.com/ui/Symphony/',
     'bgpTest' : '200723',
 
     'defaultUserrole' : 'Client Administrator',//for contact default system access
