@@ -25,7 +25,8 @@ export class InstantTestPage {
     private _shareButton = '//button[text()="Share"]'
     private _getShareLink = '//span[contains(@class,"TextBoxCopyButton_copySection")]'
     private _loading = '//div[text()="Loading..."]'
-    private _testTypeDD = '(//i[@data-icon-name="chevrondownLarge"]/div)[1]';
+    private _testTypeDD = '(//i[@data-icon-name="chevrondownLarge"]/div)[1]'
+    private _insightSectionExpand = '//div[contains(@class,"CollapsibleContainer")]//span[text()="Insight"]'
     public get testTypeDDInstantTestLocator(){
         return this._testTypeDDInstantTest;
     }
@@ -57,6 +58,9 @@ export class InstantTestPage {
     }
     public get selectTestTypeDDLocator(){
         return this._testTypeDD
+    }
+    public get insightSectionExpandLocator(){
+        return this._insightSectionExpand
     }
     
     
@@ -118,6 +122,12 @@ export class InstantTestPage {
         await webActions.clickElement(this.selectTestTypeDDLocator)
         await util.delay(1000);
         await webActions.clickElement(this.commonLocatorWithIndex('API',2))
+    }
+    async clickOnRequestSection(){
+        await webActions.clickElement(this.commonLocator('Request'))
+    }
+    async clickOnInsightSection(){
+        await webActions.clickElement(this.insightSectionExpandLocator)
     }
 
 

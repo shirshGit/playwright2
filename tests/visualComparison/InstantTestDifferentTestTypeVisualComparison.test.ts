@@ -4,7 +4,9 @@ import test from "@lib/BaseTest"
     CP-84908 : Verify Web Instant Test Screenshot 
 */
 test("VerifyWebInstantTestScreenshot @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, instantTest }, testInfo) => {
-    await instantTest.navigateToInstantTestPageByURL();
+    await instantTest.navigateToInstantTestPageByURL()
+    await instantTest.clickOnRequestSection
+    await instantTest.clickOnInsightSection
     await util.delay(3000)
     await screenShotVerification.verifyScreenShotOfFullPage(testInfo.title + '-screenshot.png');
 })
@@ -14,6 +16,8 @@ test("VerifyWebInstantTestScreenshot @ScreenshotVerification", async ({ baseTest
 test("VerifyTransactionInstantTestScreenshot @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, instantTest }, testInfo) => {
     await instantTest.navigateToInstantTestPageByURL();
     await instantTest.selectTestTypeInInstantTestPage('Transaction')
+    await instantTest.clickOnRequestSection
+    await instantTest.clickOnInsightSection
     await util.delay(3000)
     await screenShotVerification.verifyScreenShotOfFullPage(testInfo.title + '-screenshot.png');
 })
@@ -23,6 +27,8 @@ test("VerifyTransactionInstantTestScreenshot @ScreenshotVerification", async ({ 
 test("VerifyPlaywrightInstantTestScreenshot @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, instantTest }, testInfo) => {
     await instantTest.navigateToInstantTestPageByURL();
     await instantTest.selectTestTypeInInstantTestPage('Playwright')
+    await instantTest.clickOnRequestSection
+    await instantTest.clickOnInsightSection
     await util.delay(3000)
     await screenShotVerification.verifyScreenShotOfFullPage(testInfo.title + '-screenshot.png');
 })
@@ -32,6 +38,8 @@ test("VerifyPlaywrightInstantTestScreenshot @ScreenshotVerification", async ({ b
 test("VerifyPuppeteerInstantTestScreenshot @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, instantTest }, testInfo) => {
     await instantTest.navigateToInstantTestPageByURL();
     await instantTest.selectTestTypeInInstantTestPage('Puppeteer')
+    await instantTest.clickOnRequestSection
+    await instantTest.clickOnInsightSection
     await util.delay(3000)
     await screenShotVerification.verifyScreenShotOfFullPage(testInfo.title + '-screenshot.png');
 })
@@ -50,6 +58,8 @@ test("VerifyTracerouteInstantTestScreenshot @ScreenshotVerification", async ({ b
 test("VerifyAPIInstantTestScreenshot @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, instantTest }, testInfo) => {
     await instantTest.navigateToInstantTestPageByURL();
     await instantTest.clickOnAPITestTypeInInstantTestDD()
+    await instantTest.clickOnRequestSection
+    await instantTest.clickOnInsightSection
     await util.delay(3000)
     await screenShotVerification.verifyScreenShotOfFullPage(testInfo.title + '-screenshot.png');
 })
@@ -77,6 +87,8 @@ test("VerifyDNSInstantTestScreenshot @ScreenshotVerification", async ({ baseTest
 test("VerifyHTMLInstantTestScreenshot @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, instantTest }, testInfo) => {
     await instantTest.navigateToInstantTestPageByURL();
     await instantTest.selectTestTypeInInstantTestPage('HTML Code')
+    await instantTest.clickOnRequestSection
+    await instantTest.clickOnInsightSection
     await util.delay(3000)
     await screenShotVerification.verifyScreenShotOfFullPage(testInfo.title + '-screenshot.png');
 })
@@ -86,6 +98,7 @@ test("VerifyHTMLInstantTestScreenshot @ScreenshotVerification", async ({ baseTes
 test("VerifyFTPInstantTestScreenshot @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, instantTest }, testInfo) => {
     await instantTest.navigateToInstantTestPageByURL();
     await instantTest.selectTestTypeInInstantTestPage('FTP')
+    await instantTest.clickOnInsightSection
     await util.delay(3000)
     await screenShotVerification.verifyScreenShotOfFullPage(testInfo.title + '-screenshot.png');
 })
@@ -104,6 +117,7 @@ test("VerifyIMAPInstantTestScreenshot @ScreenshotVerification", async ({ baseTes
 test("VerifySMTPInstantTestScreenshot @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, instantTest }, testInfo) => {
     await instantTest.navigateToInstantTestPageByURL();
     await instantTest.selectTestTypeInInstantTestPage('SMTP')
+    await instantTest.clickOnInsightSection
     await util.delay(3000)
     await screenShotVerification.verifyScreenShotOfFullPage(testInfo.title + '-screenshot.png');
 })
@@ -140,6 +154,7 @@ test("VerifyNTPInstantTestScreenshot @ScreenshotVerification", async ({ baseTest
 test("VerifyCustomInstantTestScreenshot @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, instantTest }, testInfo) => {
     await instantTest.navigateToInstantTestPageByURL();
     await instantTest.selectTestTypeInInstantTestPage('Custom')
+    await instantTest.clickOnInsightSection
     await util.delay(3000)
     await screenShotVerification.verifyScreenShotOfFullPage(testInfo.title + '-screenshot.png');
 })
@@ -149,6 +164,7 @@ test("VerifyCustomInstantTestScreenshot @ScreenshotVerification", async ({ baseT
 test("VerifyStreamingInstantTestScreenshot @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, instantTest }, testInfo) => {
     await instantTest.navigateToInstantTestPageByURL();
     await instantTest.selectTestTypeInInstantTestPage('Streaming')
+    await instantTest.clickOnInsightSection
     await util.delay(3000)
     await screenShotVerification.verifyScreenShotOfFullPage(testInfo.title + '-screenshot.png');
 })
@@ -158,6 +174,8 @@ test("VerifyStreamingInstantTestScreenshot @ScreenshotVerification", async ({ ba
 test("VerifyWebSocketInstantTestScreenshot @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, instantTest }, testInfo) => {
     await instantTest.navigateToInstantTestPageByURL();
     await instantTest.selectTestTypeInInstantTestPage('Web Socket')
+    await instantTest.clickOnRequestSection
+    await instantTest.clickOnInsightSection
     await util.delay(3000)
     await screenShotVerification.verifyScreenShotOfFullPage(testInfo.title + '-screenshot.png');
 })
@@ -167,6 +185,7 @@ test("VerifyWebSocketInstantTestScreenshot @ScreenshotVerification", async ({ ba
 test("VerifyTransportInstantTestScreenshot @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, instantTest }, testInfo) => {
     await instantTest.navigateToInstantTestPageByURL();
     await instantTest.selectTestTypeInInstantTestPage('Transport')
+    await instantTest.clickOnInsightSection
     await util.delay(3000)
     await screenShotVerification.verifyScreenShotOfFullPage(testInfo.title + '-screenshot.png');
 })
