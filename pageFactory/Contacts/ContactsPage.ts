@@ -111,7 +111,7 @@ export class ContactsPage {
         let data = new DataForEnv();
         let baseURL = await data.getValueOfTheParameter('baseURL');
         await webActions.navigateToURL(baseURL + 'Contacts');
-        await util.delay(9000);
+        await util.delay(5000);
     }
 
 

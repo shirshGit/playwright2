@@ -1,5 +1,7 @@
 import test from "@lib/BaseTest"
-
+/*
+    CP-84746 : Verify Contact Page Screenshot navigating by URL
+*/
 test("VerifyContactPageScreenshot @ScreenshotVerification", async({baseTestUtil,page, screenShotVerification, util,contactsPage}, testInfo) => {
     await contactsPage.navigateToContactsPageByURL();
     const maskedElement1 = await page.locator(contactsPage.contactTableLocator);
@@ -7,11 +9,13 @@ test("VerifyContactPageScreenshot @ScreenshotVerification", async({baseTestUtil,
     await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement(maskedElements, testInfo.title + '-screenshot.png');
     
 })
-
-// test("VerifyContactGroupsPageScreenshot @ScreenshotVerification", async({baseTestUtil,page, screenShotVerification, util,contactGroupPage}, testInfo) => {
-//     await contactGroupPage.navigateToContactsGroupPageByURL();
-//     const maskedElement1 = await page.locator(contactGroupPage.contactGroupLocator);
-//     const maskedElements = [maskedElement1];
-//     await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement(maskedElements, testInfo.title + '-screenshot.png');
+/*
+    CP-84747 : Verify ContactGroups Page Screenshot navigating by URL
+*/
+test("VerifyContactGroupsPageScreenshot @ScreenshotVerification", async({baseTestUtil,page, screenShotVerification, util,contactGroupPage}, testInfo) => {
+    await contactGroupPage.navigateToContactsGroupPageByURL();
+    const maskedElement1 = await page.locator(contactGroupPage.contactGroupLocator);
+    const maskedElements = [maskedElement1];
+    await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement(maskedElements, testInfo.title + '-screenshot.png');
     
-// })
+})

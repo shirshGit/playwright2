@@ -1,6 +1,7 @@
 import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
 import { BrowserContext, Page } from "@playwright/test";
+import { DataForEnv } from "@lib/DataForEnvironment";
 
 let webActions: WebActions;
 let util: Utility;
@@ -20,6 +21,7 @@ export class InstantTestHistoryPage {
     private _testTypeHeaderInInstantTestHistoryTable = '//span[contains(@id,"header")]//span[text()="Test Type"]';
     private _statusInstantTestHistoryTable = '//span[contains(@id,"header")]//span[text()="Status"]';
     private __instantTestPage = '//button[text()="New Instant Test"]'
+    private _instantTestHistoryList = '//div[@class="ms-List-surface"]'
 
     public get dailyInstantTestUsageLocator() {
         return this._dailyInstantTestUsage;
@@ -39,6 +41,9 @@ export class InstantTestHistoryPage {
     public get instantTestPageLocator() {
         return this.__instantTestPage
     }
+    public get instantTestHistoryListLocator(){
+        return this._instantTestHistoryList
+    }
 
 
 
@@ -56,6 +61,13 @@ export class InstantTestHistoryPage {
 
     async clickOnNewInstantTestButton() {
         await webActions.clickElement(this.instantTestPageLocator)
+    }
+
+    async navigateToInstantTestHistoryPageByURL() {
+        let data = new DataForEnv();
+        let baseURL = await data.getValueOfTheParameter('baseURL');
+        await webActions.navigateToURL(baseURL + 'InstantTest');
+        await util.delay(5000);
     }
 
 

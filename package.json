@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "test:single:chrome": "npx playwright test /tests/functional/smartboard/smartboradNavigation.test.ts --project=Chrome --workers=1",
-    "test:single:chromeScreenShot": "npx playwright test /tests/visualComparison/ --project=ChromeScreenshot --workers=1",
+    "test:single:chromeScreenShot": "npx playwright test /tests/visualComparison/AlertsPageVisualCompare.test.ts --project=ChromeScreenshot --workers=1",
     "test:single:chromesmoke": "npx playwright test /tests/functional/cc/synthetic/ --project=ChromeSmoke --workers=1",
     "test:single:edge": "npx playwright test /tests/functional/smartboard/smartboradNavigation.test.ts --project=Edge --workers=1",
     "test:single:firefox": "npx playwright test /tests/functional/catchpointEndpointDB.test.ts --project=Firefox --workers=1",

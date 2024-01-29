@@ -1,6 +1,7 @@
 import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
 import { BrowserContext, Page } from "@playwright/test";
+import { DataForEnv } from "@lib/DataForEnvironment";
 
 let webActions: WebActions;
 let util: Utility;
@@ -19,6 +20,7 @@ export class MapPage {
     private _nodesListIconInNodeMapPage = '//div[contains(@class,"fabricIcons_doubleChevronUp")]';
     private _nodeHeaderInNodeList = '//span[text()="Node"]';
     private _cityHeaderInNodeList = '//span[text()="City"]';
+    private _map = '//div[@data-testid="map_container"]'
 
     public get mapContainerLocator(){
         return this._mapContainer;
@@ -36,6 +38,10 @@ export class MapPage {
         return this._cityHeaderInNodeList;
     }
 
+    public get mapLocator(){
+        return this._map;
+    }
+
 
     //#endregion
 
@@ -50,6 +56,12 @@ export class MapPage {
     }
     async getUrl() {
         return await webActions.getCurrentPageUrl();
+    }
+    async navigateToNodeMapPageByURL() {
+        let data = new DataForEnv();
+        let baseURL = await data.getValueOfTheParameter('baseURL');
+        await webActions.navigateToURL(baseURL + 'NodeGroups');
+        await util.delay(5000);
     }
 
     

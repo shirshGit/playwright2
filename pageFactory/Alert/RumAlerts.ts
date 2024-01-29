@@ -6,7 +6,7 @@ import { DataForEnv } from "@lib/DataForEnvironment";
 let webActions: WebActions;
 let util: Utility;
 
-export class AlertLogPage {
+export class RumAlertLogPage {
     readonly page: Page;
 
     constructor(page: Page) {
@@ -16,24 +16,11 @@ export class AlertLogPage {
     }
 
     //#region This region is for getter
-    private _alertsForTests = '//span[text()="Tests"]';
-    private _alertsForRum = '//span[text()="RUM"]';
-    private _testIDInAlertLogTable = '//span[text()="Test ID"]';
+    
     private _searchBox = '(//input[@id="fabric-search-box"])[2]';
-    private _threeDotMenu = '//div[@data-selection-index="0"]//span[@data-automationid="splitbuttonprimary"]';
-    private _alertsLogList = '//div[@class="ms-List-page"][1]'
+    
 
-    public get alertSectionForTestsLocator(){
-        return this._alertsForTests;
-    }
-
-    public get alertSectionForRumLocator(){
-        return this._alertsForRum;
-    }
-
-    public get testIDHeaderInAlertLogListLocator(){
-        return this._testIDInAlertLogTable;
-    }
+  
 
     public get searchBoxLocator(){
         return this._searchBox;
@@ -44,10 +31,6 @@ export class AlertLogPage {
 
     public get threeDotMenuItemLocator(){
         return (text:string) => { return `//span[contains(@class,'ms-ContextualMenu-itemText')][normalize-space()='${text}']`}
-    }
-
-    public get alertLogListLocator(){
-        return this._alertsLogList;
     }
 
 
@@ -75,18 +58,15 @@ export class AlertLogPage {
     async getUrl() {
         return await webActions.getCurrentPageUrl();
     }
-
-    async clickOnRumTab(){
-        return await webActions.clickElement(this.alertSectionForRumLocator);
-    }
-
-    async navigateToTestAlertsPageByURL() {
+    async navigateToRUMAlertsTestPageByURL() {
         let data = new DataForEnv();
         let baseURL = await data.getValueOfTheParameter('baseURL');
-        await webActions.navigateToURL(baseURL + 'Alerts/Test');
+        await webActions.navigateToURL(baseURL + 'Alerts/Rum');
         await util.delay(5000);
     }
 
+
+  
 
     //#endregion
 

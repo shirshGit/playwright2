@@ -6,7 +6,7 @@ import { DataForEnv } from "@lib/DataForEnvironment";
 let webActions: WebActions;
 let util: Utility;
 
-export class InstancesListPage {
+export class EndpointInstantTestPage {
     readonly page: Page;
 
     constructor(page: Page) {
@@ -16,30 +16,23 @@ export class InstancesListPage {
     }
 
     //#region This region is for getter
-    private _instacesNameHeaderInInstanceListPage = '//span[text()="Instance Name"]';
-    private _statusHeaderInInstanceList = '//span[text()="Status"]';
-    private _hardwareHeaderHeaderInInstancesList = '//span[text()="Hardware"]';
-    private _instanceTable = '//div[@class="ms-List-page"][1]' 
-
-    public get instacesNameHeaderInInstanceListPageLocator(){
-        return this._instacesNameHeaderInInstanceListPage;
+    
+    private _loading = '//div[text()="Loading..."]'
+    
+    public get commonLocator(){
+        return (text:string) => {return `//span[text()="${text}"]`}
     }
-
-    public get statusHeaderInInstanceListLocator(){
-        return this._statusHeaderInInstanceList;
+   
+    public get loadingLocator(){
+        return this._loading
     }
-
-    public get hardwareHeaderHeaderInInstancesListLocator(){
-        return this._hardwareHeaderHeaderInInstancesList;
-    }
-    public get instanceTableLocator(){
-        return this._instanceTable
-    }
-
+    
+    
 
     //#endregion
 
     //#region This region is to have the functions
+
     async getNewWindow(context: BrowserContext, locator: string) {
         return await webActions.newWindowHandle(context, locator);
 
@@ -47,14 +40,27 @@ export class InstancesListPage {
     async getUrl() {
         return await webActions.getCurrentPageUrl();
     }
-
-    async navigateToNodeInstancePageByURL() {
-        let data = new DataForEnv();
-        let baseURL = await data.getValueOfTheParameter('baseURL');
-        await webActions.navigateToURL(baseURL + 'NodeGroups');
-        await util.delay(5000);
+    async click(loc:string){
+        await webActions.clickElement(loc)
+    }
+    async getElementText(locator:string){
+        let text = await webActions.getElementText(locator)
+        return text
     }
     
+    
+
+    async navigateToEndpointInstantTestPageByURL() {
+        let data = new DataForEnv();
+        let baseURL = await data.getValueOfTheParameter('baseURL');
+        await webActions.navigateToURL(baseURL + 'InstantTest/Endpoint');
+        await util.delay(5000);
+    }
+
+
+   
+
+
     //#endregion
 
 }

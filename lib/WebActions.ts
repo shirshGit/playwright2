@@ -233,7 +233,7 @@ export class WebActions {
     }
 
     async takeFullPageScreeShotOfComponentWithMaskedElements(maskedElements : Locator[]){
-        const screenshot = await this.page.screenshot({mask : maskedElements})
+        const screenshot = await this.page.screenshot({mask : maskedElements,fullPage: true })
         return screenshot;
     }
     

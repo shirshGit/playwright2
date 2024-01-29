@@ -6,7 +6,7 @@ import { DataForEnv } from "@lib/DataForEnvironment";
 let webActions: WebActions;
 let util: Utility;
 
-export class RumControlCenterPage {
+export class InternetSonarCenterPage {
     readonly page: Page;
 
     constructor(page: Page) {
@@ -16,30 +16,22 @@ export class RumControlCenterPage {
     }
 
     //#region This region is for getter
-    private _rumTreeSideSideNav = '//div[contains(@class,"NavigationTree_navGroupText") and text() = "RUM"]';
-    private _rumList = '//div[@class="ms-List-surface"]'
-
-    public get rumTreeSideSideNavLocator() {
-        return this._rumTreeSideSideNav;
-    }
-    public get rumListLocator() {
-        return this._rumList;
-    }
-
+    private _internetSonarList = '//div[@class="ms-List"]';
     
-
+    public get internetSonarListLocator() {
+        return this._internetSonarList;
+    }
+ 
     //#endregion
 
     //#region This region is to have the functions
 
-    async navigateToRUMPageByURL() {
+    async navigateToInternetSonarPageByURL() {
         let data = new DataForEnv();
         let baseURL = await data.getValueOfTheParameter('baseURL');
-        await webActions.navigateToURL(baseURL + 'ControlCenter/Endpoint');
+        await webActions.navigateToURL(baseURL + 'ControlCenter/InternetSonar');
         await util.delay(5000);
     }
-
-
 
 
     //#endregion
