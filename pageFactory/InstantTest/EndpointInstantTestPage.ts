@@ -18,6 +18,7 @@ export class EndpointInstantTestPage {
     //#region This region is for getter
     
     private _loading = '//div[text()="Loading..."]'
+    private _createButton = '//button[text()="New Instant Test"]'
     
     public get commonLocator(){
         return (text:string) => {return `//span[text()="${text}"]`}
@@ -25,6 +26,9 @@ export class EndpointInstantTestPage {
    
     public get loadingLocator(){
         return this._loading
+    }
+    public get createButtonLocator(){
+        return this._createButton
     }
     
     
@@ -47,14 +51,14 @@ export class EndpointInstantTestPage {
         let text = await webActions.getElementText(locator)
         return text
     }
-    
-    
-
     async navigateToEndpointInstantTestPageByURL() {
         let data = new DataForEnv();
         let baseURL = await data.getValueOfTheParameter('baseURL');
         await webActions.navigateToURL(baseURL + 'InstantTest/Endpoint');
         await util.delay(5000);
+    }
+    async clickOnCreateInstantTest() {
+        return await webActions.clickElement(this.createButtonLocator);
     }
 
 

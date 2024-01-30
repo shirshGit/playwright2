@@ -27,7 +27,7 @@ export class DefaultDashboardPage {
     private _testWidgetTimeFrameDD = '(//button[@type="button"][normalize-space()="Last Hour"])[2]';
     private _explorerUnderThreeDotMenuInTableWidget = '(//span[text()="Explorer"])[2]'
     private _scatterPlotUnderThreeDotMenuInTableWidget =  '//span[text()="Scatterplot"]'
-    
+    private _charmBar = '//div[@data-testid="main-charm-bar"]'
     public get overviewDashboardLocator() {
         return this._overviewDashboard;
     }
@@ -102,6 +102,9 @@ export class DefaultDashboardPage {
     }
     public get scatterPlotUnderThreeDotMenuInTableWidgetLocator(){
         return this._scatterPlotUnderThreeDotMenuInTableWidget
+    }
+    public get charmBarLocator(){
+        return this._charmBar
     }
 
 

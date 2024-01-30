@@ -51,7 +51,7 @@ export class InstancesListPage {
     async navigateToNodeInstancePageByURL() {
         let data = new DataForEnv();
         let baseURL = await data.getValueOfTheParameter('baseURL');
-        await webActions.navigateToURL(baseURL + 'NodeGroups');
+        await webActions.navigateToURL(baseURL + 'Instances/InstanceList');
         await util.delay(5000);
     }
     

@@ -16,6 +16,7 @@ test("VerifySyntheticAlertLgPageLoads @PageNavigation@ProductionSmoke@Smoke", as
 */
 test("VerifyRumAlertLgPageLoads @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification, alertLogPage, util }) => {
   await sideNavigationBar.navigateToAlertLogFromSideNavigation();
+  await alertLogPage.clickOnRumTab()
   await util.delay(2000);
   //validation for errors
   await verification.validationsForPage();

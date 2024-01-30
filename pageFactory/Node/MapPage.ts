@@ -60,7 +60,7 @@ export class MapPage {
     async navigateToNodeMapPageByURL() {
         let data = new DataForEnv();
         let baseURL = await data.getValueOfTheParameter('baseURL');
-        await webActions.navigateToURL(baseURL + 'NodeGroups');
+        await webActions.navigateToURL(baseURL + 'Nodes/NodeInformation');
         await util.delay(5000);
     }
 

@@ -22,6 +22,7 @@ export class InstantTestHistoryPage {
     private _statusInstantTestHistoryTable = '//span[contains(@id,"header")]//span[text()="Status"]';
     private __instantTestPage = '//button[text()="New Instant Test"]'
     private _instantTestHistoryList = '//div[@class="ms-List-surface"]'
+    private __endpointTab = '//span[text()="Endpoint"]'
 
     public get dailyInstantTestUsageLocator() {
         return this._dailyInstantTestUsage;
@@ -43,6 +44,9 @@ export class InstantTestHistoryPage {
     }
     public get instantTestHistoryListLocator(){
         return this._instantTestHistoryList
+    }
+    public get endpointTabLocator() {
+        return this.__endpointTab
     }
 
 
@@ -69,6 +73,10 @@ export class InstantTestHistoryPage {
         await webActions.navigateToURL(baseURL + 'InstantTest');
         await util.delay(5000);
     }
+    async clickOnEndpointTab() {
+        await webActions.clickElement(this.endpointTabLocator)
+    }
+
 
 
     //#endregion

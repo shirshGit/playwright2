@@ -22,7 +22,7 @@ export class SideNavBar {
     private _sideNavExplorer = '//span[text()="Explorer"]'
     private _homesection = '#homesection'
     private _dashboard = '//a[text()="Dashboard"]'
-    private _sideNavSettings = '//i[@data-icon-name="settingsSiteNav"]'
+    private _sideNavSettings = '#settingssection'
     private _sideNavUserrole = '//span[text()="User Roles"]'
     private _sideNavContactIcon = '(//span[text()="Contacts"])[1]'
     private _sideNavContacts = '(//span[text()="Contacts"])[2]'
@@ -44,7 +44,7 @@ export class SideNavBar {
     private _reportTemplateSideNav = '//span[text()="Templates"]'
     private _alertSideNav = "#alertsection"
     private _alertNavigation = '//a[text()="Alert Log"]'
-    private _nodesSideNavMenu = '#nodesection'
+    private _nodesSideNavMenu = '//div[@id="nodesection"]'
     private _mapNavigationFromNodesMenu = '//span[text()="Node Map"]'
     private _groupNavigationFromNodeMenu = '//span[text()="Node Groups"]'
     private _nodeListNavigationFromNodeMenu = '(//span[text()="Nodes"])[2]'
@@ -52,6 +52,9 @@ export class SideNavBar {
     private _homeSection = '//div[@data-testid="site-nav"]//div[@id="homesection"]'
     private _customViz = '//span[text()="Custom Visualization"]'
     private _sideNaveZone = '//span[text()="Zones"]'
+    private _sideNavInternetSonar = '(//div[contains(text(),"Internet Sonar")])[2]'
+    private _endpointTabInInstantTestPage = '//span[text()="Endpoint"]'
+    private _endpointInstantTestCreateButton = '//button[text()="New Instant Test"]'
     public get sideNavControlCenter() {
         return this._sideNavControlCenter
     }
@@ -187,6 +190,16 @@ export class SideNavBar {
     public get sideNavZoneLocator() {
         return this._sideNaveZone
     }
+    public get sideNavInternetSonarLocator() {
+        return this._sideNavInternetSonar
+    }
+    public get endpointTabInInstantTestPage(){
+        return this._endpointTabInInstantTestPage
+    }
+    public get endpointInstantTestCreateButtonLocator(){
+        return this._endpointInstantTestCreateButton
+    }
+
     //#endregion
 
     async navigateToDashboardFromSideNavigation() {
@@ -290,27 +303,27 @@ export class SideNavBar {
 
     async navigateToUserrolePageFromSideNavigation() {
         await webActions.waitForElementAttached(this.sideNavSettingsTest)
-        await webActions.clickElement(this.sideNavSettingsTest)
+        await webActions.hoverOnElement(this.sideNavSettingsTest)
         await webActions.waitForElementAttached(this.sideNavUserrole)
         await webActions.clickElement(this.sideNavUserrole)
     }
     
     async navigateToDivisionFromSideNavigation() {
         await webActions.waitForElementAttached(this.sideNavSettingsTest)
-        await webActions.clickElement(this.sideNavSettingsTest)
+        await webActions.hoverOnElement(this.sideNavSettingsTest)
         await webActions.waitForElementAttached(this.sideNavDivisionLocator)
         await webActions.clickElement(this.sideNavDivisionLocator)
     }
 
     async navigateToSchedulesPageFromSideNavigation() {
         await webActions.waitForElementAttached(this.sideNavSettingsTest)
-        await webActions.clickElement(this.sideNavSettingsTest)
+        await webActions.hoverOnElement(this.sideNavSettingsTest)
         await webActions.waitForElementAttached(this.sideNavSchedulesLocator)
         await webActions.clickElement(this.sideNavSchedulesLocator)
     }
     async navigateToIndexesPageFromSideNavigation() {
         await webActions.waitForElementAttached(this.sideNavSettingsTest)
-        await webActions.clickElement(this.sideNavSettingsTest)
+        await webActions.hoverOnElement(this.sideNavSettingsTest)
         await webActions.waitForElementAttached(this.sideNavIndexesLocator)
         await webActions.clickElement(this.sideNavIndexesLocator)
     }
@@ -322,28 +335,28 @@ export class SideNavBar {
 
     async navigateToMapFromNodeSideNavigation() {
         await webActions.waitForElementAttached(this.nodesSideNavMenuLocator)
-        await webActions.clickElement(this.nodesSideNavMenuLocator)
+        await webActions.hoverOnElement(this.nodesSideNavMenuLocator)
         await webActions.waitForElementAttached(this.mapNavigationFromNodesMenuLocator)
         await webActions.clickElement(this.mapNavigationFromNodesMenuLocator)
     }
 
     async navigateToGroupsFromNodeSideNavigation() {
         await webActions.waitForElementAttached(this.nodesSideNavMenuLocator)
-        await webActions.clickElement(this.nodesSideNavMenuLocator)
+        await webActions.hoverOnElement(this.nodesSideNavMenuLocator)
         await webActions.waitForElementAttached(this.groupNavigationFromNodeMenuLocator)
         await webActions.clickElement(this.groupNavigationFromNodeMenuLocator)
     }
 
     async navigateToNodeFromNodeSideNavigation() {
         await webActions.waitForElementAttached(this.nodesSideNavMenuLocator)
-        await webActions.clickElement(this.nodesSideNavMenuLocator)
+        await webActions.hoverOnElement(this.nodesSideNavMenuLocator)
         await webActions.waitForElementAttached(this.nodeListNavigationFromNodeMenuLocator)
         await webActions.clickElement(this.nodeListNavigationFromNodeMenuLocator)
     }
 
     async navigateToInstancesFromNodeSideNavigation() {
         await webActions.waitForElementAttached(this.nodesSideNavMenuLocator)
-        await webActions.clickElement(this.nodesSideNavMenuLocator)
+        await webActions.hoverOnElement(this.nodesSideNavMenuLocator)
         await webActions.waitForElementAttached(this.instancesFromNodesMenuLocator)
         await webActions.clickElement(this.instancesFromNodesMenuLocator)
     }
@@ -372,5 +385,21 @@ export class SideNavBar {
         await webActions.waitForElementAttached(this.sideNavZoneLocator)
         await webActions.clickElement(this.sideNavZoneLocator)
     }
+
+    async navigateToInternetSonarCCFromSideNavigation() {
+        await webActions.waitForElementAttached(this.sideNavControlCenter)
+        await webActions.clickElement(this.sideNavControlCenter)
+        await webActions.waitForElementAttached(this.sideNavInternetSonarLocator)
+        await webActions.clickElement(this.sideNavInternetSonarLocator)
+    }
+
+    async navigateToEndpointInstantTestHistoryFromSideNavigation() {
+        await webActions.waitForElementAttached(this.sideNavInstantTestHistoryLocator)
+        await webActions.clickElement(this.sideNavInstantTestHistoryLocator)
+        await webActions.waitForElementAttached(this.endpointTabInInstantTestPage)
+        await webActions.clickElement(this.endpointTabInInstantTestPage)
+    }
+
+
 
 }

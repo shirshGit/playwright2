@@ -102,7 +102,7 @@ const config: PlaywrightTestConfig = {
           slowMo: 0
         }
       },
-      grep: [new RegExp("VerifyInternetSonarAlertsPageScreenshot @ScreenshotVerification")]
+      grep: [new RegExp("VerifyCustomInstantTestScreenshot @ScreenshotVerification")]
     },
     {
 
