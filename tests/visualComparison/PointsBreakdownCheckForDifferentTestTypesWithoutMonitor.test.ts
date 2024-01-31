@@ -49,17 +49,6 @@ test("VerifyPuppeteerTestPointBreakdownScreenshot @PointEstScreenshot", async ({
 /*
     
 */
-test("VerifyWPTTestPointBreakdownScreenshot @PointEstScreenshot", async ({  page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
-    let testID = await data.getValueOfTheParameter('wPTTestIDWithoutAdvsSettings');
-    await synCCPage.LoginToCCPage()
-    await synCCPage.navigateToTestPropertiesPage(testID);
-    await syntheticTestDetailPage.clickOnPointBreakDown();
-    await util.delay(5000)
-    await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '-screenshot.png');
-})
-/*
-    
-*/
 test("VerifyHTMLTestPointBreakdownScreenshot @PointEstScreenshot", async ({  page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('hTMLTestIDWithoutAdvsSettings');
     await synCCPage.LoginToCCPage()
