@@ -326,7 +326,7 @@ const config: PlaywrightTestConfig = {
         //acceptDownloads: true,
 
         //Artifacts
-        //screenshot: `only-on-failure`,
+        screenshot: `only-on-failure`,
         video: `retain-on-failure`,
         //trace: `retain-on-failure`,
 
