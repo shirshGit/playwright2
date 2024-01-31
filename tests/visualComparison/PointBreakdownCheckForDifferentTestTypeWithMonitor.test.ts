@@ -7,7 +7,7 @@ let data = new DataForEnv();
 */
 test("VerifyWebTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('webTestIDWithAdvsSettings');
-    await synCCPage.LoginToContactsPage()
+    await synCCPage.LoginToCCPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
     await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
@@ -19,7 +19,7 @@ test("VerifyWebTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScre
 */
 test("VerifyTransactionTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('transactionTestIDWithAdvsSettings');
-    await synCCPage.LoginToContactsPage()
+    await synCCPage.LoginToCCPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
     await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
@@ -31,7 +31,7 @@ test("VerifyTransactionTestPointBreakdownScreenshot @ScreenshotVerification@Poin
 */
 test("VerifyPlaywrightTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('playwrightTestIDWitoutMonitor');
-    await synCCPage.LoginToContactsPage()
+    await synCCPage.LoginToCCPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
     await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
@@ -43,7 +43,7 @@ test("VerifyPlaywrightTestPointBreakdownScreenshot @ScreenshotVerification@Point
 */
 test("VerifyPuppeteerTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('pupperteerTestIDWithAdvsSettings');
-    await synCCPage.LoginToContactsPage()
+    await synCCPage.LoginToCCPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
     await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
@@ -55,7 +55,7 @@ test("VerifyPuppeteerTestPointBreakdownScreenshot @ScreenshotVerification@PointE
 */
 test("VerifyWPTTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('wPTTestIDWithAdvsSettings');
-    await synCCPage.LoginToContactsPage()
+    await synCCPage.LoginToCCPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
     await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
@@ -67,7 +67,7 @@ visualViewport/*
 */
 test("VerifyHTMLTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('hTMLTestIDWithAdvsSettings');
-    await synCCPage.LoginToContactsPage()
+    await synCCPage.LoginToCCPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
     await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
@@ -79,7 +79,7 @@ test("VerifyHTMLTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScr
 */
 test("VerifyAPITestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('aPITestIDWithAdvsSettings');
-    await synCCPage.LoginToContactsPage()
+    await synCCPage.LoginToCCPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
     await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
@@ -91,7 +91,7 @@ test("VerifyAPITestPointBreakdownScreenshot @ScreenshotVerification@PointEstScre
 */
 test("VerifyWebSocketTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('webSocketTestIDWithAdvsSettings');
-    await synCCPage.LoginToContactsPage()
+    await synCCPage.LoginToCCPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
     await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
@@ -103,7 +103,7 @@ test("VerifyWebSocketTestPointBreakdownScreenshot @ScreenshotVerification@PointE
 */
 test("VerifyStreamingTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('streamingTestIDWithAdvsSettings');
-    await synCCPage.LoginToContactsPage()
+    await synCCPage.LoginToCCPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
     await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
@@ -115,7 +115,7 @@ test("VerifyStreamingTestPointBreakdownScreenshot @ScreenshotVerification@PointE
 */
 test("VerifyDNSTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('dnsTestIDWithAdvsSettings');
-    await synCCPage.LoginToContactsPage()
+    await synCCPage.LoginToCCPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
     await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
@@ -127,7 +127,7 @@ test("VerifyDNSTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScre
 */
 test("VerifyFTPTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('ftpTestIDWithAdvsSettings');
-    await synCCPage.LoginToContactsPage()
+    await synCCPage.LoginToCCPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
     await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
@@ -139,7 +139,7 @@ test("VerifyFTPTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScre
 */
 test("VerifyTransportTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('transportTestIDWithAdvsSettings');
-    await synCCPage.LoginToContactsPage()
+    await synCCPage.LoginToCCPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
     await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
@@ -151,7 +151,7 @@ test("VerifyTransportTestPointBreakdownScreenshot @ScreenshotVerification@PointE
 */
 test("VerifySMTPTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('smtpTestIDWithAdvsSettings');
-    await synCCPage.LoginToContactsPage()
+    await synCCPage.LoginToCCPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
     await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
@@ -163,7 +163,7 @@ test("VerifySMTPTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScr
 */
 test("VerifyPingTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('pingTestIDWithAdvsSettings');
-    await synCCPage.LoginToContactsPage()
+    await synCCPage.LoginToCCPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
     await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
@@ -175,7 +175,7 @@ test("VerifyPingTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScr
 */
 test("VerifyTracerouteTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('tracerouteTestIDWithAdvsSettings');
-    await synCCPage.LoginToContactsPage()
+    await synCCPage.LoginToCCPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
     await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
@@ -187,7 +187,7 @@ test("VerifyTracerouteTestPointBreakdownScreenshot @ScreenshotVerification@Point
 */
 test("VerifyCustomTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('customTestIDWithAdvsSettings');
-    await synCCPage.LoginToContactsPage()
+    await synCCPage.LoginToCCPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
     await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
@@ -199,7 +199,7 @@ test("VerifyCustomTestPointBreakdownScreenshot @ScreenshotVerification@PointEstS
 */
 test("VerifyNTPTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('ntpTestIDWithAdvsSettings');
-    await synCCPage.LoginToContactsPage()
+    await synCCPage.LoginToCCPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
     await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
@@ -211,7 +211,7 @@ test("VerifyNTPTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScre
 */
 test("VerifyIMAPTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('imapTestIDWithAdvsSettings');
-    await synCCPage.LoginToContactsPage()
+    await synCCPage.LoginToCCPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
     await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
@@ -223,7 +223,7 @@ test("VerifyIMAPTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScr
 */
 test("VerifyMQTTTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('mqttTestIDWithAdvsSettings');
-    await synCCPage.LoginToContactsPage()
+    await synCCPage.LoginToCCPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
     await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
@@ -235,7 +235,7 @@ test("VerifyMQTTTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScr
 */
 test("VerifySSLTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('sslTestIDWithAdvsSettings');
-    await synCCPage.LoginToContactsPage()
+    await synCCPage.LoginToCCPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
     await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
@@ -247,7 +247,7 @@ test("VerifySSLTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScre
 */
 test("VerifyBGPTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('bgpTestIDWithAdvsSettings');
-    await synCCPage.LoginToContactsPage()
+    await synCCPage.LoginToCCPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
     await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
@@ -259,7 +259,7 @@ test("VerifyBGPTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScre
 */
 test("VerifyNTNTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('ntnTestIDWithAdvsSettings');
-    await synCCPage.LoginToContactsPage()
+    await synCCPage.LoginToCCPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
     await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();

@@ -335,7 +335,7 @@ const config: PlaywrightTestConfig = {
           slowMo: 0
         }
       },
-      grep: [new RegExp("@ScreenshotVerification@PointEstScreenshot")]
+      grep: [new RegExp("@PointEstScreenshot")]
     }
   ],
 };
