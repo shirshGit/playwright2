@@ -1,6 +1,8 @@
 import { WebActions } from "@lib/WebActions";
 import { BrowserContext, Page } from "@playwright/test";
 import { Utility } from "@util/Utility";
+import { DataForEnv } from "@lib/DataForEnvironment";
+
 let webActions: WebActions;
 let util: Utility
 
@@ -58,10 +60,12 @@ export class SynControlCenterPage {
     private _copyTestProductName = '//div[text()="ProductForCopyScenariosDoNotDelete"]'
     private _activeStatusOfFirstSearchedItem = '//span[text()="Active"]';
     private _endpointInTestTree = '//div[contains(@class,"stickyBelowItems")]//div//div//div[contains(@class,"NavigationTree_navGroupText_")][normalize-space()="Endpoint"]'
-    private _rumInTestTree = '//div[contains(text(),"RUM")]'
+    private _rumInTestTree = '(//div[contains(text(),"RUM")])[2]'
     private _testTemplatesInTestTree = '//div[contains(text(),"Test Templates")]'
-    private _libraryInTestTree = '//div[contains(text(),"Library")]'
-
+    private _libraryInTestTree = '(//div[contains(text(),"Library")])[2]'
+    private _synNavigationTreeLocator = '//ul[contains(@class,"ms-Nav-navItems navItems-")]'
+    private _synDetailList = '//div[contains(@class,"ms-DetailsList-contentWrapper")]'
+    private _internetSonarInTestTree = '(//div[contains(text(),"Internet Sonar")])[2]'
     public get newItemCreationLocator() {
         return this._newItemCreation;
     }
@@ -241,6 +245,15 @@ export class SynControlCenterPage {
     }
     public get libraryTabLocator(){
         return this._libraryInTestTree
+    }
+    public get synNavigationTreeLocator(){
+        return this._synNavigationTreeLocator
+    }
+    public get synDetailListLocator(){
+        return this._synDetailList
+    }
+    public get internetSonarTabLocator(){
+        return this._internetSonarInTestTree
     }
 
 
@@ -486,6 +499,15 @@ export class SynControlCenterPage {
     }
     async clickOnLibraryTab(){
         await webActions.clickElement(this.libraryTabLocator);
+    }
+    async clickOnInternetSonarTab(){
+        await webActions.clickElement(this.libraryTabLocator);
+    }
+    async navigateToCCPageByURL() {
+        let data = new DataForEnv();
+        let baseURL = await data.getValueOfTheParameter('baseURL');
+        await webActions.navigateToURL(baseURL + 'ControlCenter');
+        await util.delay(5000);
     }
 
    

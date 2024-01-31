@@ -51,7 +51,7 @@ export class NodeListPage {
     async navigateToNodesPageByURL() {
         let data = new DataForEnv();
         let baseURL = await data.getValueOfTheParameter('baseURL');
-        await webActions.navigateToURL(baseURL + 'Nodes');
+        await webActions.navigateToURL(baseURL + 'Nodes/NodeList');
         await util.delay(5000);
     }
     

@@ -1,6 +1,7 @@
 import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
 import { BrowserContext, Page } from "@playwright/test";
+import { DataForEnv } from "@lib/DataForEnvironment";
 
 let webActions: WebActions;
 let util: Utility;
@@ -18,6 +19,7 @@ export class InstancesListPage {
     private _instacesNameHeaderInInstanceListPage = '//span[text()="Instance Name"]';
     private _statusHeaderInInstanceList = '//span[text()="Status"]';
     private _hardwareHeaderHeaderInInstancesList = '//span[text()="Hardware"]';
+    private _instanceTable = '//div[@class="ms-List-page"][1]' 
 
     public get instacesNameHeaderInInstanceListPageLocator(){
         return this._instacesNameHeaderInInstanceListPage;
@@ -30,6 +32,9 @@ export class InstancesListPage {
     public get hardwareHeaderHeaderInInstancesListLocator(){
         return this._hardwareHeaderHeaderInInstancesList;
     }
+    public get instanceTableLocator(){
+        return this._instanceTable
+    }
 
 
     //#endregion
@@ -41,6 +46,13 @@ export class InstancesListPage {
     }
     async getUrl() {
         return await webActions.getCurrentPageUrl();
+    }
+
+    async navigateToNodeInstancePageByURL() {
+        let data = new DataForEnv();
+        let baseURL = await data.getValueOfTheParameter('baseURL');
+        await webActions.navigateToURL(baseURL + 'Instances/InstanceList');
+        await util.delay(5000);
     }
     
     //#endregion

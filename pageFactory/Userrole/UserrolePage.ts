@@ -123,7 +123,7 @@ export class UserrolePage {
     async navigateToUserrolePageByURL() {
         let data = new DataForEnv();
         let baseURL = await data.getValueOfTheParameter('baseURL');
-        await webActions.navigateToURL(baseURL + 'User Roles');
+        await webActions.navigateToURL(baseURL + 'UserRoles');
         await util.delay(5000);
     }
 

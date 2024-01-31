@@ -19,4 +19,9 @@ export class ScreenShotVerification{
         expect(await webActions.takeFullPageScreeShotOfComponentWithMaskedElements(maskedElements)).toMatchSnapshot(screenshotname);
         //expect(await this.page.locator(locator).screenshot()).toMatchSnapshot(screenshotname);
     }
+
+    async verifyScreenShotOfFullPage(screenshotname:string){
+        expect (await this.page.screenshot({fullPage: true })).toMatchSnapshot(screenshotname)
+    }
+
 }

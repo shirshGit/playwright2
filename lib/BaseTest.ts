@@ -77,6 +77,10 @@ import { SignUpPage } from '@pageobjects/WptOrg/WPTSignUpPage';
 import { WPTPage } from '@pageobjects/WptOrg/WPTPage';
 import { HomePage } from '@pageobjects/WptOrg/HomePage';
 import { ScreenShotVerification } from '@verification/screenshotverification';
+import { InternetSonarCenterPage } from '@pageobjects/ControlCenter/InternetSonarControlCenter';
+import { EndpointInstantTestPage } from '@pageobjects/InstantTest/EndpointInstantTestPage';
+import { InternetSonarAlertLogPage } from '@pageobjects/Alert/InternetSonarAlerts';
+import { RumAlertLogPage } from '@pageobjects/Alert/RumAlerts';
 
 
 
@@ -161,6 +165,10 @@ const test = baseTest.extend<{
     wptPage : WPTPage;
     homePage : HomePage;
     screenShotVerification : ScreenShotVerification;
+    internetSonarCenterPage: InternetSonarCenterPage;
+    endpointInstantTestPage: EndpointInstantTestPage;
+    internetSonarAlertLogPage : InternetSonarAlertLogPage;
+    rumAlertLogPage : RumAlertLogPage;
 
 }>({
     baseTestUtil: async ({ page }, use, testInfo: TestInfo) => {
@@ -415,6 +423,18 @@ const test = baseTest.extend<{
     },
     screenShotVerification: async ({page}, use) => {
         await use(new ScreenShotVerification(page))
+    },
+    internetSonarCenterPage: async ({page}, use) => {
+        await use(new InternetSonarCenterPage(page))
+    },
+    endpointInstantTestPage: async ({page}, use) => {
+        await use(new EndpointInstantTestPage(page))
+    },
+    internetSonarAlertLogPage: async ({page}, use) => {
+        await use(new InternetSonarAlertLogPage(page))
+    },
+    rumAlertLogPage: async ({page}, use) => {
+        await use(new RumAlertLogPage(page))
     }
 
 });

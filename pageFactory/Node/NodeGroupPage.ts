@@ -48,7 +48,7 @@ export class NodeGroupPage {
     async navigateToNodeGroupPageByURL() {
         let data = new DataForEnv();
         let baseURL = await data.getValueOfTheParameter('baseURL');
-        await webActions.navigateToURL(baseURL + 'NodeGroups');
+        await webActions.navigateToURL(baseURL + 'Nodes/NodeGroups');
         await util.delay(5000);
     }
 

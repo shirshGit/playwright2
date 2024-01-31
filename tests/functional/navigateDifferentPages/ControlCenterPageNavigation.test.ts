@@ -16,9 +16,10 @@ test("VerifySyntheticControlCenterLoads @PageNavigation@ProductionSmoke@Smoke", 
 /*
     CP-16027 : Verify items count updated for Endpoint data on the left panel
 */
-test("VerifyEndpointControlCenterLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, endpointControlCenter, util}) => {
+test("VerifyEndpointControlCenterLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, endpointControlCenter,synCCPage, util}) => {
     await sideNavigationBar.navigateToEndpointCCFromSideNavigation();
     await util.delay(2000);
+    await synCCPage.clickOnEndpointTab()
     //validation for errors
     await verification.validationsForPage();
     await verification.verifyIfElementIsPresent(endpointControlCenter.endpointTreeSideSideNavLocator, 'Side Navigation Bar is not present');
@@ -32,9 +33,10 @@ test("VerifyEndpointControlCenterLoads @PageNavigation@ProductionSmoke@Smoke", a
 /*
     CP-44180 : Verify RUM tree side navigation
 */
-test("VerifyRumControlCenterLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, rumControCenter, util}) => {
+test("VerifyRumControlCenterLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, rumControCenter, util,synCCPage}) => {
     await sideNavigationBar.navigateToEndpointCCFromSideNavigation();
     await util.delay(2000);
+    await synCCPage.clickOnRumInRootBlade()
     //validation for errors
     await verification.validationsForPage();
     await verification.verifyIfElementIsPresent(rumControCenter.rumTreeSideSideNavLocator, 'Side Navigation Bar is not present');
@@ -44,9 +46,10 @@ test("VerifyRumControlCenterLoads @PageNavigation@ProductionSmoke@Smoke", async(
 /*
     CP-44181 : Verify library section through side navigation bar
 */
-test("VerifyLibraryControlCenterLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification,libraryControlCenter, util}) => {
+test("VerifyLibraryControlCenterLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification,libraryControlCenter, util,synCCPage}) => {
     await sideNavigationBar.navigateToLibraryCCFromSideNavigation();
     await util.delay(2000);
+    await synCCPage.clickOnLibraryTab()
     //validation for errors
     await verification.validationsForPage();
     await verification.verifyIfElementIsPresent(libraryControlCenter.libraryTreeSideSideNavLocator, 'Side Navigation Bar is not present');
