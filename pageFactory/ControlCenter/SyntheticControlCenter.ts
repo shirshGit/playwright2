@@ -70,6 +70,8 @@ export class SynControlCenterPage {
     private _synNavigationTreeLocator = '//ul[contains(@class,"ms-Nav-navItems navItems-")]'
     private _synDetailList = '//div[contains(@class,"ms-DetailsList-contentWrapper")]'
     private _internetSonarInTestTree = '(//div[contains(text(),"Internet Sonar")])[2]'
+    private _pointEstimationLoc = '//div[contains(@class,"PointsEstimation_number_")]'
+
     public get newItemCreationLocator() {
         return this._newItemCreation;
     }
@@ -258,6 +260,9 @@ export class SynControlCenterPage {
     }
     public get internetSonarTabLocator(){
         return this._internetSonarInTestTree
+    }
+    public get pointEstimationLocator(){
+        return this._pointEstimationLoc
     }
 
 
@@ -518,12 +523,14 @@ export class SynControlCenterPage {
         let baseURL = await data.getValueOfTheParameter('baseURL');
         await webActions.navigateToURL(baseURL + 'ControlCenter/Tests/Test/'+testID+'/Properties');
         await util.delay(5000);
+        await webActions.waitForElementAttached(this.pointEstimationLocator);
     }
-    async LoginToContactsPage() {
+    async LoginToCCPage() {
         this.navigateToCCPageByURL()
         await webActions.enterElementText(this.loginPageObjects.CP_EMAIL_FIELD, testConfig.cpun);
         await webActions.enterElementText(this.loginPageObjects.CP_PASSWORD_FIELD, testConfig.cppwd);
         await webActions.clickElement(this.loginPageObjects.CP_LOGIN_BTN);
+        
     }
 
    
