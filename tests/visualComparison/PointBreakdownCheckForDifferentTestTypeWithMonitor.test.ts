@@ -5,243 +5,265 @@ let data = new DataForEnv();
 /*
     
 */
-test("VerifyWebTestPointBreakdownScreenshot @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
+test("VerifyWebTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('webTestIDWithAdvsSettings');
+    await synCCPage.LoginToContactsPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
-    await util.delay(5000)
+    await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
-    await util.delay(2000)
+    await util.delay(20000)
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '-screenshot.png');
 })
 /*
     
 */
-test("VerifyTransactionTestPointBreakdownScreenshot @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
+test("VerifyTransactionTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('transactionTestIDWithAdvsSettings');
+    await synCCPage.LoginToContactsPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
-    await util.delay(5000)
+    await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
-    await util.delay(2000)
+    await util.delay(20000)
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '-screenshot.png');
 })
 /*
     
 */
-test("VerifyPlaywrightTestPointBreakdownScreenshot @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
+test("VerifyPlaywrightTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('playwrightTestIDWitoutMonitor');
+    await synCCPage.LoginToContactsPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
-    await util.delay(5000)
+    await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
-    await util.delay(2000)
+    await util.delay(20000)
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '-screenshot.png');
 })
 /*
     
 */
-test("VerifyPuppeteerTestPointBreakdownScreenshot @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
+test("VerifyPuppeteerTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('pupperteerTestIDWithAdvsSettings');
+    await synCCPage.LoginToContactsPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
-    await util.delay(5000)
+    await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
-    await util.delay(2000)
+    await util.delay(20000)
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '-screenshot.png');
 })
 /*
     
 */
-test("VerifyWPTTestPointBreakdownScreenshot @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
+test("VerifyWPTTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('wPTTestIDWithAdvsSettings');
+    await synCCPage.LoginToContactsPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
-    await util.delay(5000)
+    await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
-    await util.delay(2000)
+    await util.delay(20000)
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '-screenshot.png');
 })
 visualViewport/*
     
 */
-test("VerifyHTMLTestPointBreakdownScreenshot @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
+test("VerifyHTMLTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('hTMLTestIDWithAdvsSettings');
+    await synCCPage.LoginToContactsPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
-    await util.delay(5000)
+    await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
-    await util.delay(2000)
+    await util.delay(20000)
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '-screenshot.png');
 })
 /*
     
 */
-test("VerifyAPITestPointBreakdownScreenshot @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
+test("VerifyAPITestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('aPITestIDWithAdvsSettings');
+    await synCCPage.LoginToContactsPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
-    await util.delay(5000)
+    await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
-    await util.delay(2000)
+    await util.delay(20000)
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '-screenshot.png');
 })
 /*
     
 */
-test("VerifyWebSocketTestPointBreakdownScreenshot @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
+test("VerifyWebSocketTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('webSocketTestIDWithAdvsSettings');
+    await synCCPage.LoginToContactsPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
-    await util.delay(5000)
+    await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
-    await util.delay(2000)
+    await util.delay(20000)
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '-screenshot.png');
 })
 /*
     
 */
-test("VerifyStreamingTestPointBreakdownScreenshot @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
+test("VerifyStreamingTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('streamingTestIDWithAdvsSettings');
+    await synCCPage.LoginToContactsPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
-    await util.delay(5000)
+    await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
-    await util.delay(2000)
+    await util.delay(20000)
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '-screenshot.png');
 })
 /*
     
 */
-test("VerifyDNSTestPointBreakdownScreenshot @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
+test("VerifyDNSTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('dnsTestIDWithAdvsSettings');
+    await synCCPage.LoginToContactsPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
-    await util.delay(5000)
+    await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
-    await util.delay(2000)
+    await util.delay(20000)
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '-screenshot.png');
 })
 /*
     
 */
-test("VerifyFTPTestPointBreakdownScreenshot @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
+test("VerifyFTPTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('ftpTestIDWithAdvsSettings');
+    await synCCPage.LoginToContactsPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
-    await util.delay(5000)
+    await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
-    await util.delay(2000)
+    await util.delay(20000)
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '-screenshot.png');
 })
 /*
     
 */
-test("VerifyTransportTestPointBreakdownScreenshot @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
+test("VerifyTransportTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('transportTestIDWithAdvsSettings');
+    await synCCPage.LoginToContactsPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
-    await util.delay(5000)
+    await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
-    await util.delay(2000)
+    await util.delay(20000)
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '-screenshot.png');
 })
 /*
     
 */
-test("VerifySMTPTestPointBreakdownScreenshot @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
+test("VerifySMTPTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('smtpTestIDWithAdvsSettings');
+    await synCCPage.LoginToContactsPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
-    await util.delay(5000)
+    await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
-    await util.delay(2000)
+    await util.delay(20000)
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '-screenshot.png');
 })
 /*
     
 */
-test("VerifyPingTestPointBreakdownScreenshot @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
+test("VerifyPingTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('pingTestIDWithAdvsSettings');
+    await synCCPage.LoginToContactsPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
-    await util.delay(5000)
+    await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
-    await util.delay(2000)
+    await util.delay(20000)
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '-screenshot.png');
 })
 /*
     
 */
-test("VerifyTracerouteTestPointBreakdownScreenshot @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
+test("VerifyTracerouteTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('tracerouteTestIDWithAdvsSettings');
+    await synCCPage.LoginToContactsPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
-    await util.delay(5000)
+    await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
-    await util.delay(2000)
+    await util.delay(20000)
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '-screenshot.png');
 })
 /*
     
 */
-test("VerifyCustomTestPointBreakdownScreenshot @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
+test("VerifyCustomTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('customTestIDWithAdvsSettings');
+    await synCCPage.LoginToContactsPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
-    await util.delay(5000)
+    await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
-    await util.delay(2000)
+    await util.delay(20000)
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '-screenshot.png');
 })
 /*
     
 */
-test("VerifyNTPTestPointBreakdownScreenshot @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
+test("VerifyNTPTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('ntpTestIDWithAdvsSettings');
+    await synCCPage.LoginToContactsPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
-    await util.delay(5000)
+    await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
-    await util.delay(2000)
+    await util.delay(20000)
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '-screenshot.png');
 })
 /*
     
 */
-test("VerifyIMAPTestPointBreakdownScreenshot @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
+test("VerifyIMAPTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('imapTestIDWithAdvsSettings');
+    await synCCPage.LoginToContactsPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
-    await util.delay(5000)
+    await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
-    await util.delay(2000)
+    await util.delay(20000)
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '-screenshot.png');
 })
 /*
     
 */
-test("VerifyMQTTTestPointBreakdownScreenshot @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
+test("VerifyMQTTTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('mqttTestIDWithAdvsSettings');
+    await synCCPage.LoginToContactsPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
-    await util.delay(5000)
+    await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
-    await util.delay(2000)
+    await util.delay(20000)
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '-screenshot.png');
 })
 /*
     
 */
-test("VerifySSLTestPointBreakdownScreenshot @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
+test("VerifySSLTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('sslTestIDWithAdvsSettings');
+    await synCCPage.LoginToContactsPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
-    await util.delay(5000)
+    await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
-    await util.delay(2000)
+    await util.delay(20000)
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '-screenshot.png');
 })
 /*
     
 */
-test("VerifyBGPTestPointBreakdownScreenshot @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
+test("VerifyBGPTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('bgpTestIDWithAdvsSettings');
+    await synCCPage.LoginToContactsPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
-    await util.delay(5000)
+    await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
-    await util.delay(2000)
+    await util.delay(20000)
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '-screenshot.png');
 })
 /*
     
 */
-test("VerifyNTNTestPointBreakdownScreenshot @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
+test("VerifyNTNTestPointBreakdownScreenshot @ScreenshotVerification@PointEstScreenshot", async ({ baseTestUtil, page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('ntnTestIDWithAdvsSettings');
+    await synCCPage.LoginToContactsPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
-    await util.delay(5000)
+    await util.delay(20000)
     await syntheticTestDetailPage.clickOnPointBreakDown();
-    await util.delay(2000)
+    await util.delay(20000)
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '-screenshot.png');
 })
 

@@ -6,7 +6,7 @@ export const stagedata = {
 
     'baseURL' : 'https://portalstage.catchpoint.com/ui/Symphony/',
     'bgpTest' : '187860',
-    'bgpTestIDWithoutAdvsSettings' : '',
+    'bgpTestIDWithoutAdvsSettings' : '187860',
     'bgpTestIDWithAdvsSettings' : '',
 
     'customTestIDWithoutAdvsSettings' : '427543',
