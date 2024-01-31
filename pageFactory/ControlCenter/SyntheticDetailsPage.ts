@@ -39,7 +39,9 @@ export class SyntheticDetailPage extends SynControlCenterPage {
     private _cancelItemDetailPage = '//span[text()="Cancel"]';
     private _rumInMasterTestBlade = '//span[text()="RUM"]';
     private _testsInMasterTestBlade = '//span[text()="Tests"]';
-     private _changeLogButton = '//span[text()="Change Log"]/../../i'
+    private _changeLogButton = '//span[text()="Change Log"]/../../i'
+    private _pointBreakDown = '//span[text()="Points Breakdown"]'
+    private _propertiesBladeLocator = '//div[contains(@class,"ms-Panel-scrollableContent")]'
     
 
     public get saveButtonLoctor() {
@@ -119,6 +121,13 @@ export class SyntheticDetailPage extends SynControlCenterPage {
         return this._changeLogButton;
     }
 
+    public get pointBreakDownLocator(){
+        return this._pointBreakDown;
+    }
+    public get propertiesBladeLocator(){
+        return this._propertiesBladeLocator;
+    }
+
     
 
 
@@ -159,6 +168,9 @@ export class SyntheticDetailPage extends SynControlCenterPage {
 
     async clickOnChangeLogButton(){
         await webActions.clickElement(this.ChangeLogButtonLocator);
+    }
+    async clickOnPointBreakDown(){
+        await webActions.clickElement(this.pointBreakDownLocator);
     }
 
 

@@ -2,6 +2,8 @@ import { WebActions } from "@lib/WebActions";
 import { BrowserContext, Page } from "@playwright/test";
 import { Utility } from "@util/Utility";
 import { DataForEnv } from "@lib/DataForEnvironment";
+import { LoginPageObjects } from "@objects/LoginPageObjects";
+import { testConfig } from '../../testConfig';
 
 let webActions: WebActions;
 let util: Utility
@@ -16,6 +18,8 @@ export class SynControlCenterPage {
         webActions = new WebActions(this.page);
         util = new Utility();
     }
+
+    loginPageObjects = new LoginPageObjects();
 
     //#region This region is for getter
     private _newItemCreation = '//button[text()="New"]';
@@ -508,6 +512,18 @@ export class SynControlCenterPage {
         let baseURL = await data.getValueOfTheParameter('baseURL');
         await webActions.navigateToURL(baseURL + 'ControlCenter');
         await util.delay(5000);
+    }
+    async navigateToTestPropertiesPage(testID) {
+        let data = new DataForEnv();
+        let baseURL = await data.getValueOfTheParameter('baseURL');
+        await webActions.navigateToURL(baseURL + 'ControlCenter/Tests/Test/'+testID+'/Properties');
+        await util.delay(5000);
+    }
+    async LoginToContactsPage() {
+        this.navigateToCCPageByURL()
+        await webActions.enterElementText(this.loginPageObjects.CP_EMAIL_FIELD, testConfig.cpun);
+        await webActions.enterElementText(this.loginPageObjects.CP_PASSWORD_FIELD, testConfig.cppwd);
+        await webActions.clickElement(this.loginPageObjects.CP_LOGIN_BTN);
     }
 
    
