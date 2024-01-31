@@ -102,7 +102,7 @@ const config: PlaywrightTestConfig = {
           slowMo: 0
         }
       },
-      grep: [new RegExp("@ScreenshotVerification")]
+      grep: [new RegExp("@ScreenshotVerifications")]
     },
     {
 
@@ -318,7 +318,7 @@ const config: PlaywrightTestConfig = {
         //Browser height and width
         //viewport: { width: 1500, height: 730 },
 
-        viewport: { width: 1200, height: 600 },
+        viewport: { width: 1250, height: 700 },
         
         ignoreHTTPSErrors: true,
 

@@ -2,8 +2,12 @@ import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
 import { BrowserContext, Page } from "@playwright/test";
 import { DataForEnv } from "@lib/DataForEnvironment";
+import { testConfig } from '../../testConfig';
+import { LoginPageObjects } from "@objects/LoginPageObjects";
 let webActions: WebActions;
 let util: Utility
+
+
 
 export class ContactsPage {
     readonly page: Page;
@@ -13,6 +17,8 @@ export class ContactsPage {
         webActions = new WebActions(this.page);
         util = new Utility();
     }
+
+    loginPageObjects = new LoginPageObjects();
 
     //#region This region is for getter
 
@@ -114,7 +120,13 @@ export class ContactsPage {
         await util.delay(5000);
     }
 
-
+    async LoginToContactsPage() {
+        this.navigateToContactsPageByURL()
+        await webActions.enterElementText(this.loginPageObjects.CP_EMAIL_FIELD, testConfig.cpun);
+        await webActions.enterElementText(this.loginPageObjects.CP_PASSWORD_FIELD, testConfig.cppwd);
+        await webActions.clickElement(this.loginPageObjects.CP_LOGIN_BTN);
+        await webActions.waitForElementAttached(this.contactTableLocator);
+    }
 
 
 

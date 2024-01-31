@@ -509,6 +509,12 @@ export class SynControlCenterPage {
         await webActions.navigateToURL(baseURL + 'ControlCenter');
         await util.delay(5000);
     }
+    async navigateToTestPropertiesPage(testID) {
+        let data = new DataForEnv();
+        let baseURL = await data.getValueOfTheParameter('baseURL');
+        await webActions.navigateToURL(baseURL + 'ControlCenter/Tests/Test/'+testID+'/Properties');
+        await util.delay(5000);
+    }
 
    
 

@@ -7,14 +7,14 @@
   "license": "MIT",
   "scripts": {
     "test:single:chrome": "npx playwright test /tests/functional/smartboard/smartboradNavigation.test.ts --project=Chrome --workers=1",
-    "test:single:chromeScreenShot": "npx playwright test /tests/visualComparison/PointAllocationCheckForDifferentTestTypes.test.ts --project=ChromeScreenshot --workers=1",
+    "test:single:chromeScreenShot": "npx playwright test /tests/visualComparison/ --project=ChromeScreenshot --workers=1",
     "test:single:chromesmoke": "npx playwright test /tests/functional/cc/synthetic/ --project=ChromeSmoke --workers=1",
     "test:single:edge": "npx playwright test /tests/functional/smartboard/smartboradNavigation.test.ts --project=Edge --workers=1",
     "test:single:firefox": "npx playwright test /tests/functional/catchpointEndpointDB.test.ts --project=Firefox --workers=1",
     "test:single:controlcenter": "npx playwright test /tests/functional/ --project=ControlCenter --workers=1",
     "test:single:records": "npx playwright test /tests/functional/ --project=Records --workers=1",
     "test:single:pageNavigation": "npx playwright test /tests/functional/ --project=PageNavigation --workers=1",
-    "test:single:ScreenshotValidation": "npx playwright test /tests/visualComparison/ --project=ScreenshotValidation --workers=1"
+    "test:single:ScreenshotValidation": "npx playwright test /tests/visualComparison/PointsBreakdownCheckForDifferentTestTypesWithoutMonitor.test.ts --project=ScreenshotValidation --workers=1"
   },
   "dependencies": {
     "@playwright/test": "^1.29.1",
