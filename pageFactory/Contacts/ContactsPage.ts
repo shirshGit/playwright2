@@ -4,8 +4,10 @@ import { BrowserContext, Page } from "@playwright/test";
 import { DataForEnv } from "@lib/DataForEnvironment";
 import { testConfig } from '../../testConfig';
 import { LoginPageObjects } from "@objects/LoginPageObjects";
+import { LoginPage } from "@pageobjects/Login/LoginPage";
 let webActions: WebActions;
-let util: Utility
+let util: Utility;
+let login : LoginPage;
 
 
 
@@ -16,9 +18,13 @@ export class ContactsPage {
         this.page = page;
         webActions = new WebActions(this.page);
         util = new Utility();
+        login = new LoginPage(this.page);
     }
 
     loginPageObjects = new LoginPageObjects();
+    
+    
+    
 
     //#region This region is for getter
 
@@ -33,7 +39,7 @@ export class ContactsPage {
     private _companyName    = '//span[text()="Company Name"]';
     private _systemAccess = '//span[text()="System Access"]';
     private _division  = '//span[text()="Division"]';
-    private _contactTable = '//div[@class="ms-List-page"][1]'
+    private _contactTable = '//div[@class="ms-List"]'
 
 
 
@@ -121,10 +127,10 @@ export class ContactsPage {
     }
 
     async LoginToContactsPage() {
-        this.navigateToContactsPageByURL()
-        await webActions.enterElementText(this.loginPageObjects.CP_EMAIL_FIELD, testConfig.cpun);
-        await webActions.enterElementText(this.loginPageObjects.CP_PASSWORD_FIELD, testConfig.cppwd);
-        await webActions.clickElement(this.loginPageObjects.CP_LOGIN_BTN);
+        this.navigateToContactsPageByURL();
+        await webActions.enterElementText(login.emailInputLocator, testConfig.cpun);
+        await webActions.enterElementText(login.passwordInputLocator, testConfig.cppwd);
+        await webActions.clickElement(login.loginBtnLocator);
         await webActions.waitForElementAttached(this.contactTableLocator);
     }
 

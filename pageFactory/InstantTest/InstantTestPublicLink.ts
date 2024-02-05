@@ -33,6 +33,7 @@ export class InstantTestPublicLinkPage {
         let text = await webActions.getElementText(locator)
         return text
     }
+  
     
    
 }

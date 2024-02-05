@@ -2,9 +2,13 @@ import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
 import { BrowserContext, Page } from "@playwright/test";
 import { DataForEnv } from "@lib/DataForEnvironment";
+import { testConfig } from '../../testConfig';
+import { LoginPageObjects } from "@objects/LoginPageObjects";
+import { LoginPage } from "@pageobjects/Login/LoginPage";
 
 let webActions: WebActions;
 let util: Utility;
+let login: LoginPage;
 
 export class RumAlertLogPage {
     readonly page: Page;
@@ -13,11 +17,13 @@ export class RumAlertLogPage {
         this.page = page;
         webActions = new WebActions(this.page);
         util = new Utility();
+        login = new LoginPage(this.page);
     }
 
     //#region This region is for getter
     
     private _searchBox = '(//input[@id="fabric-search-box"])[2]';
+    private _rumAlertList = '//div[@class="ms-List"]';
     
 
   
@@ -31,6 +37,9 @@ export class RumAlertLogPage {
 
     public get threeDotMenuItemLocator(){
         return (text:string) => { return `//span[contains(@class,'ms-ContextualMenu-itemText')][normalize-space()='${text}']`}
+    }
+    public get rumAlertsListLocator(){
+        return this._rumAlertList;
     }
 
 
@@ -62,7 +71,13 @@ export class RumAlertLogPage {
         let data = new DataForEnv();
         let baseURL = await data.getValueOfTheParameter('baseURL');
         await webActions.navigateToURL(baseURL + 'Alerts/Rum');
-        await util.delay(5000);
+    }
+    async LoginToRumAlertsPage() {
+        this.navigateToRUMAlertsTestPageByURL()
+        await webActions.enterElementText(login.emailInputLocator, testConfig.cpun);
+        await webActions.enterElementText(login.passwordInputLocator, testConfig.cppwd);
+        await webActions.clickElement(login.loginBtnLocator);
+        await webActions.waitForElementAttached(this.rumAlertsListLocator);
     }
 
 

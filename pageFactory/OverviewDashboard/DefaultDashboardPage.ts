@@ -1,6 +1,9 @@
 import { WebActions } from "@lib/WebActions";
 import { Page } from "@playwright/test";
 import { Utility } from "@util/Utility";
+import { LoginPageObjects } from "@objects/LoginPageObjects";
+import { testConfig } from '../../testConfig';
+import { DataForEnv } from "@lib/DataForEnvironment";
 let webActions: WebActions;
 let util: Utility
 
@@ -12,6 +15,7 @@ export class DefaultDashboardPage {
         webActions = new WebActions(this.page)
         util = new Utility()
     }
+    loginPageObjects = new LoginPageObjects();
 
     //#region This region is for getter
     private _overviewDashboard = '//label[text()="Overview Dashboard"]';
@@ -28,6 +32,7 @@ export class DefaultDashboardPage {
     private _explorerUnderThreeDotMenuInTableWidget = '(//span[text()="Explorer"])[2]'
     private _scatterPlotUnderThreeDotMenuInTableWidget =  '//span[text()="Scatterplot"]'
     private _charmBar = '//div[@data-testid="main-charm-bar"]'
+    private _nodeMapLocator = '(//div[contains(@class,"NodePerformanceOverview_container_")])[1]'
     public get overviewDashboardLocator() {
         return this._overviewDashboard;
     }
@@ -106,6 +111,9 @@ export class DefaultDashboardPage {
     public get charmBarLocator(){
         return this._charmBar
     }
+    public get nodeMapLocator(){
+        return this._nodeMapLocator
+    }
 
 
     //#endregion
@@ -152,6 +160,17 @@ export class DefaultDashboardPage {
     }
     async getTextOfElement(locator:string){
         return await webActions.getElementText(locator)
+    }
+    async navigateDBPageByURL() {
+        let data = new DataForEnv();
+        await webActions.navigateToURL(await data.getValueOfTheParameter('baseURL') + 'Dashboard');
+    }
+    async LoginToDBPage() {
+        this.navigateDBPageByURL()
+        await webActions.enterElementText(this.loginPageObjects.CP_EMAIL_FIELD, testConfig.cpun);
+        await webActions.enterElementText(this.loginPageObjects.CP_PASSWORD_FIELD, testConfig.cppwd);
+        await webActions.clickElement(this.loginPageObjects.CP_LOGIN_BTN);
+        await webActions.waitForElementAttached(this.nodeMapLocator)
     }
 
 

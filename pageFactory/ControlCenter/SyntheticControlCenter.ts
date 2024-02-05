@@ -2,11 +2,13 @@ import { WebActions } from "@lib/WebActions";
 import { BrowserContext, Page } from "@playwright/test";
 import { Utility } from "@util/Utility";
 import { DataForEnv } from "@lib/DataForEnvironment";
-import { LoginPageObjects } from "@objects/LoginPageObjects";
 import { testConfig } from '../../testConfig';
+import { LoginPageObjects } from "@objects/LoginPageObjects";
+import { LoginPage } from "@pageobjects/Login/LoginPage";
 
 let webActions: WebActions;
-let util: Utility
+let util: Utility;
+let login : LoginPage;
 
 export class SynControlCenterPage {
     readonly page: Page;
@@ -17,6 +19,7 @@ export class SynControlCenterPage {
         this.page = page;
         webActions = new WebActions(this.page);
         util = new Utility();
+        login = new LoginPage(this.page);
     }
 
     loginPageObjects = new LoginPageObjects();
@@ -516,21 +519,27 @@ export class SynControlCenterPage {
         let data = new DataForEnv();
         let baseURL = await data.getValueOfTheParameter('baseURL');
         await webActions.navigateToURL(baseURL + 'ControlCenter');
-        await util.delay(5000);
+        
     }
     async navigateToTestPropertiesPage(testID) {
         let data = new DataForEnv();
         let baseURL = await data.getValueOfTheParameter('baseURL');
         await webActions.navigateToURL(baseURL + 'ControlCenter/Tests/Test/'+testID+'/Properties');
-        await util.delay(5000);
+        await webActions.waitForElementAttached(this.pointEstimationLocator);
+    }
+    async navigateToWPTTestPropertiesPage(testID) {
+        let data = new DataForEnv();
+        let baseURL = await data.getValueOfTheParameter('baseURL');
+        await webActions.navigateToURL(baseURL + 'ControlCenter/Tests/WebPageTest/'+testID+'/Properties');
         await webActions.waitForElementAttached(this.pointEstimationLocator);
     }
     async LoginToCCPage() {
         this.navigateToCCPageByURL()
-        await webActions.enterElementText(this.loginPageObjects.CP_EMAIL_FIELD, testConfig.cpun);
-        await webActions.enterElementText(this.loginPageObjects.CP_PASSWORD_FIELD, testConfig.cppwd);
-        await webActions.clickElement(this.loginPageObjects.CP_LOGIN_BTN);
-        
+        await webActions.enterElementText(login.emailInputLocator, testConfig.cpun);
+        await webActions.enterElementText(login.passwordInputLocator, testConfig.cppwd);
+        await webActions.clickElement(login.loginBtnLocator);
+        await webActions.waitForElementAttached(this.synDetailListLocator)
+        await webActions.waitForElementAttached(this.synNavigationTreeLocator)
     }
 
    

@@ -45,84 +45,6 @@ const config: PlaywrightTestConfig = {
         headless: false,
 
         //Browser height and width
-        //viewport: { width: 1500, height: 730 },
-
-        viewport: { width: 1200, height: 600 },
-        
-        ignoreHTTPSErrors: true,
-
-        //Enable File Downloads in Chrome
-        //acceptDownloads: true,
-
-        //Artifacts
-        //screenshot: `only-on-failure`,
-        video: `retain-on-failure`,
-        //trace: `retain-on-failure`,
-
-        //Slows down execution by ms
-        launchOptions: {
-          slowMo: 0
-        }
-      },
-      grep: [new RegExp("VerifyCharmBarScreenShot")]
-    },
-    {
-      name: `ChromeScreenshot`,
-      //testMatch: [`CreateNewSyntheticProduct.test.ts`],
-      use: {
-        // Configure the browser to use.
-        browserName: `chromium`,
-
-        //Chrome Browser Config
-        channel: `chrome`,
-
-        //Picks Base Url based on User input
-        baseURL: testConfig[process.env.ENV],
-
-        //Browser Mode
-        headless: false,
-
-        //Browser height and width
-        //viewport: { width: 1500, height: 730 },
-
-        viewport: { width: 1300, height: 600 },
-        
-        ignoreHTTPSErrors: true,
-
-        //Enable File Downloads in Chrome
-        //acceptDownloads: true,
-
-        //Artifacts
-        //screenshot: `only-on-failure`,
-        video: `retain-on-failure`,
-        //trace: `retain-on-failure`,
-
-        //Slows down execution by ms
-        launchOptions: {
-          slowMo: 0
-        }
-      },
-      grep: [new RegExp("@ScreenshotVerifications")]
-    },
-    {
-
-      name: `ChromeSmoke`,
-      //testMatch: [`CreateNewSyntheticProduct.test.ts`],
-      use: {
-        // Configure the browser to use.
-        browserName: `chromium`,
-
-        //Chrome Browser Config
-        channel: `chrome`,
-
-        //Picks Base Url based on User input
-        baseURL: testConfig[process.env.ENV],
-
-        //Browser Mode
-        headless: false,
-
-        //Browser height and width
-        //viewport: { width: 1500, height: 730 },
 
         viewport: { width: 1200, height: 600 },
         
@@ -134,15 +56,16 @@ const config: PlaywrightTestConfig = {
         //Artifacts
         screenshot: `only-on-failure`,
         video: `retain-on-failure`,
-        trace: `retain-on-failure`,
+        //trace: `retain-on-failure`,
 
         //Slows down execution by ms
         launchOptions: {
           slowMo: 0
         }
       },
-      grep: [new RegExp("@Test")]
+      //grep: [new RegExp("VerifyCharmBarScreenShot")]
     },
+    
     {
       name: `Firefox`,
       use: {
@@ -179,164 +102,6 @@ const config: PlaywrightTestConfig = {
         }
       },
     },
-    {
-      name: `WebKit`,
-      use: {
-        browserName: `webkit`,
-        baseURL: testConfig[process.env.ENV],
-        headless: true,
-        viewport: { width: 1500, height: 730 },
-        ignoreHTTPSErrors: true,
-        acceptDownloads: true,
-        screenshot: `only-on-failure`,
-        video: `retain-on-failure`,
-        trace: `retain-on-failure`,
-        launchOptions: {
-          slowMo: 0
-        }
-      },
-    },
-    {
-      name: `ControlCenter`,
-      //testMatch: [`CreateNewSyntheticProduct.test.ts`],
-      use: {
-        // Configure the browser to use.
-        browserName: `chromium`,
-
-        //Chrome Browser Config
-        channel: `chrome`,
-
-        //Picks Base Url based on User input
-        baseURL: testConfig[process.env.ENV],
-
-        //Browser Mode
-        headless: false,
-
-        //Browser height and width
-        //viewport: { width: 1500, height: 730 },
-
-        viewport: { width: 1250, height: 720 },
-        
-        ignoreHTTPSErrors: true,
-
-        //Enable File Downloads in Chrome
-        //acceptDownloads: true,
-
-        //Artifacts
-        screenshot: `only-on-failure`,
-        video: `retain-on-failure`,
-        trace: `retain-on-failure`,
-
-        //Slows down execution by ms
-        launchOptions: {
-          slowMo: 0
-        }
-      },
-      grep: [new RegExp("@ControlCenter")]
-    },
-    {
-      name: `Records`,
-      use: {
-        // Configure the browser to use.
-        browserName: `chromium`,
-
-        //Chrome Browser Config
-        channel: `chrome`,
-
-        //Picks Base Url based on User input
-        baseURL: testConfig[process.env.ENV],
-
-        //Browser Mode
-        headless: false,
-
-        //Browser height and width
-        //viewport: { width: 1500, height: 730 },
-
-        viewport: { width: 1250, height: 720 },
-        
-        ignoreHTTPSErrors: true,
-
-        //Enable File Downloads in Chrome
-        //acceptDownloads: true,
-
-        //Artifacts
-        screenshot: `only-on-failure`,
-        video: `retain-on-failure`,
-        trace: `retain-on-failure`,
-
-        //Slows down execution by ms
-        launchOptions: {
-          slowMo: 0
-        }
-      },
-      grep: [new RegExp("@Records")]
-    },
-    {
-      name: `PageNavigation`,
-      use: {
-        // Configure the browser to use.
-        browserName: `chromium`,
-
-        //Chrome Browser Config
-        channel: `chrome`,
-
-        baseURL: testConfig[process.env.ENV],
-
-        headless: false,
-
-        viewport: { width: 1250, height: 720 },
-        
-        ignoreHTTPSErrors: true,
-
-        //Artifacts
-        screenshot: `only-on-failure`,
-        video: `retain-on-failure`,
-        trace: `retain-on-failure`,
-
-        launchOptions: {
-          slowMo: 0
-        }
-      },
-      grep: [new RegExp("@PageNavigation")]
-    },
-    {
-      name: `ScreenshotValidation`,
-      //testMatch: [`CreateNewSyntheticProduct.test.ts`],
-      use: {
-        // Configure the browser to use.
-        browserName: `chromium`,
-
-        //Chrome Browser Config
-        channel: `chrome`,
-
-        //Picks Base Url based on User input
-        baseURL: testConfig[process.env.ENV],
-
-        //Browser Mode
-        headless: false,
-
-        //Browser height and width
-        //viewport: { width: 1500, height: 730 },
-
-        viewport: { width: 1250, height: 700 },
-        
-        ignoreHTTPSErrors: true,
-
-        //Enable File Downloads in Chrome
-        //acceptDownloads: true,
-
-        //Artifacts
-        screenshot: `only-on-failure`,
-        video: `retain-on-failure`,
-        //trace: `retain-on-failure`,
-
-        //Slows down execution by ms
-        launchOptions: {
-          slowMo: 0
-        }
-      },
-      grep: [new RegExp("@PointEstScreenshot")]
-    }
-  ],
+  ]
 };
 export default config;

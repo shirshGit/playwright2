@@ -66,21 +66,8 @@ export class LoginPage {
 
 
     async loginToCP(): Promise<void> {
-        if (ENV === 'production') {
-            await webActions.enterElementText(this.emailInputLocator, testConfig.produn);
-            await webActions.enterElementText(this.passwordInputLocator, testConfig.prodpwd);
-            await webActions.clickElement(this.loginBtnLocator);
-            //await webActions.waitForPageNavigation('domcontentloaded');
+            this.enterLoginCredential();
             await webActions.waitForElementAttached(this.dashboardDDLabelLocator);
-            
-        }
-        else {
-            await webActions.enterElementText(this.emailInputLocator, testConfig.cpun);
-            await webActions.enterElementText(this.passwordInputLocator, testConfig.cppwd);
-            await webActions.clickElement(this.loginBtnLocator);
-            //await webActions.waitForPageNavigation('domcontentloaded');
-            await webActions.waitForElementAttached(this.dashboardDDLabelLocator);
-        }
     }
 
     async logOutFromBrowser() {
@@ -123,6 +110,19 @@ export class LoginPage {
             await webActions.enterElementText(this.passwordInputLocator, testConfig.cppwd);
             await webActions.clickElement(this.loginBtnLocator);
          }
+    }
+
+    async enterLoginCredential(): Promise<void> {
+        if (ENV === 'production') {
+            await webActions.enterElementText(this.emailInputLocator, testConfig.produn);
+            await webActions.enterElementText(this.passwordInputLocator, testConfig.prodpwd);
+            await webActions.clickElement(this.loginBtnLocator);
+        }
+        else {
+            await webActions.enterElementText(this.emailInputLocator, testConfig.cpun);
+            await webActions.enterElementText(this.passwordInputLocator, testConfig.cppwd);
+            await webActions.clickElement(this.loginBtnLocator);
+        }
     }
 
 }

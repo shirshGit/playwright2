@@ -2,9 +2,13 @@ import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
 import { Page } from "@playwright/test";
 import { DataForEnv } from "@lib/DataForEnvironment";
+import { testConfig } from '../../testConfig';
+import { LoginPageObjects } from "@objects/LoginPageObjects";
+import { LoginPage } from "@pageobjects/Login/LoginPage";
 
 let webActions: WebActions;
 let util: Utility;
+let login : LoginPage;
 
 export class EndpointControlCenterPage {
     readonly page: Page;
@@ -13,6 +17,7 @@ export class EndpointControlCenterPage {
         this.page = page;
         webActions = new WebActions(this.page);
         util = new Utility();
+        login = new LoginPage(this.page);
     }
 
     //#region This region is for getter
@@ -22,7 +27,7 @@ export class EndpointControlCenterPage {
     private _endpointsAppNavigationNavLink = '//div[contains(@class,"Navigation_navLinkText")]//span[text()="Employee Apps"]';
     private _endpointsLocationNavigationNavLink = '//div[contains(@class,"Navigation_navLinkText")]//span[text()="Locations"]';
     private _endpointNavigationTree = '//div[contains(@class,"Navigation_navigation_")]'
-    private _endpointsList = '//div[@class="ms-SelectionZone"]'
+    private _endpointsList = '//div[@class="ms-List"]';
 
     public get endpointTreeSideSideNavLocator() {
         return this._endpointTreeSideSideNav;
@@ -60,6 +65,14 @@ export class EndpointControlCenterPage {
         let baseURL = await data.getValueOfTheParameter('baseURL');
         await webActions.navigateToURL(baseURL + 'ControlCenter/Endpoint');
         await util.delay(5000);
+    }
+
+    async LoginToEndpointCCPage() {
+        this.navigateToEndpointsPageByURL()
+        await webActions.enterElementText(login.emailInputLocator, testConfig.cpun);
+        await webActions.enterElementText(login.passwordInputLocator, testConfig.cppwd);
+        await webActions.clickElement(login.loginBtnLocator);
+        await webActions.waitForElementAttached(this.endpointsListLocator)
     }
 
 

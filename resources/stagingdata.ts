@@ -98,6 +98,7 @@ export const stagedata = {
     'webSocketTestIDWithoutAdvsSettings' : '427523',
     'webTestIDWithAdvsSettings' : '427504',
     'webSocketTestIDWithAdvsSettings' : '427524',
+    'wptFolderID' : '3597',
 
     'zoneName' : 'UIAutomationDND',
 }

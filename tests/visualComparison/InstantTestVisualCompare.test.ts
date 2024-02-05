@@ -3,78 +3,88 @@ import { expect } from "@playwright/test";
 /*
   CP-84753 : Verify Instant Test History Page Screenshot navigating by URL
 */
-test("VerifyInstantTestHistoryPageScreenshot @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, instantTestHistory }, testInfo) => {
-  await instantTestHistory.navigateToInstantTestHistoryPageByURL();
+test("VerifyInstantTestHistoryPageScreenshot @Screenshot", async ({ page, screenShotVerification, util, instantTestHistory,alertLogPage }, testInfo) => {
+  let stringArray = testInfo.title.split(" ");
+  let screenShotName = stringArray[0];
+  await instantTestHistory.LoginToInstantTestHistoryPage();
   const maskedElement1 = await page.locator(instantTestHistory.instantTestHistoryListLocator);
   const maskedElements = [maskedElement1];
-  await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement(maskedElements, testInfo.title + '-screenshot.png');
+  await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement(maskedElements, screenShotName + '.png');
 })
 /*
   CP-84754 : Verify Node InstantTest Page Screenshot navigating by URL
 */
-test("VerifyNodeInstantTestPageScreenshot @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, instantTest }, testInfo) => {
-  await instantTest.navigateToInstantTestPageByURL();
-  await util.delay(4000)
-  await screenShotVerification.verifyScreenShotOfFullPage(testInfo.title + '-screenshot.png');
+test("VerifyNodeInstantTestPageScreenshot @Screenshot", async ({ page, screenShotVerification, util, instantTest }, testInfo) => {
+  let stringArray = testInfo.title.split(" ");
+  let screenShotName = stringArray[0];
+  await instantTest.LoginToNewInstantTestPage();
+  await screenShotVerification.verifyScreenShotOfFullPage(screenShotName + '.png');
 
 })
 /*
   CP-84755 : Verify Endpoint InstantTest History Page Screenshot navigating by URL
 */
-test("VerifyEndpointInstantTestHistoryPageScreenshot @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, endpointInstantTestPage,instantTestHistory }, testInfo) => {
-  await endpointInstantTestPage.navigateToEndpointInstantTestPageByURL();
-  await instantTestHistory.clickOnEndpointTab()
+test("VerifyEndpointInstantTestHistoryPageScreenshot @Screenshot", async ({ page, screenShotVerification, util, endpointInstantTestPage,instantTestHistory }, testInfo) => {
+  let stringArray = testInfo.title.split(" ");
+  let screenShotName = stringArray[0];
+  await endpointInstantTestPage.LoginToEndpointInstantTestHistoryPage();
   await util.delay(3000);
-  await screenShotVerification.verifyScreenShotOfFullPage(testInfo.title + '-screenshot.png');
+  await screenShotVerification.verifyScreenShotOfFullPage(screenShotName + '.png');
 })
 /*
   CP-84928 : Verify Endpoint Instant Test Create Page Screenshot by URL
 */
-test("VerifyEndpointInstantTestCreatePageScreenshot @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, endpointInstantTestPage,instantTestHistory }, testInfo) => {
-  await endpointInstantTestPage.navigateToEndpointInstantTestPageByURL();
+test("VerifyEndpointInstantTestCreatePageScreenshot @Screenshot", async ({ page, screenShotVerification, util, endpointInstantTestPage,instantTestHistory }, testInfo) => {
+  let stringArray = testInfo.title.split(" ");
+  let screenShotName = stringArray[0];
+  await endpointInstantTestPage.LoginToEndpointInstantTestHistoryPage();
   await util.delay(2000);
-  await instantTestHistory.clickOnEndpointTab()
   await endpointInstantTestPage.clickOnCreateInstantTest()
-  await util.delay(3000);
-  await screenShotVerification.verifyScreenShotOfFullPage(testInfo.title + '-screenshot.png');
+  await util.delay(1000);
+  await screenShotVerification.verifyScreenShotOfFullPage(screenShotName + '.png');
 })
 
 /*
   CP-84770 : Verify Instant Test History Page Screenshot navigating by left navigation
 */
-test("VerifyInstantTestHistoryPageScreenshotByLeftNav @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, instantTestHistory,sideNavigationBar }, testInfo) => {
+test("VerifyInstantTestHistoryPageScreenshotByLeftNav @Screenshot", async ({ page, screenShotVerification, util, instantTestHistory,sideNavigationBar,alertLogPage }, testInfo) => {
+  let stringArray = testInfo.title.split(" ");
+  let screenShotName = stringArray[0];
+  await alertLogPage.LoginToAlertsPage();
   await sideNavigationBar.navigateToInstantTestHistoryFromSideNavigation();
-  await util.delay(5000);
-  const maskedElement1 = await page.locator(instantTestHistory.instantTestHistoryListLocator);
-  const maskedElements = [maskedElement1];
-  await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement(maskedElements, testInfo.title + '-screenshot.png');
+  const maskedElements = [await page.locator(instantTestHistory.instantTestHistoryListLocator)];
+  await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement(maskedElements, screenShotName + '.png');
 })
 /*
    CP-84771 : Verify Node InstantTest Page Screenshot navigating by left navigation
 */
-test("VerifyNodeInstantTestPageScreenshotByLeftNav @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util,sideNavigationBar }, testInfo) => {
-  await util.delay(3000);
+test("VerifyNodeInstantTestPageScreenshotByLeftNav @Screenshot", async ({ page, screenShotVerification, util,sideNavigationBar,alertLogPage }, testInfo) => {
+  let stringArray = testInfo.title.split(" ");
+  let screenShotName = stringArray[0];
+  await alertLogPage.LoginToAlertsPage();
   await sideNavigationBar.navigateToNewInstantTestFromSideNavigation();
-  await util.delay(5000);
-  await screenShotVerification.verifyScreenShotOfFullPage(testInfo.title + '-screenshot.png');
+  await screenShotVerification.verifyScreenShotOfFullPage(screenShotName + '.png');
 
 })
 /*
   CP-84772 : Verify Endpoint InstantTest Page Screenshot navigating by left navigation
 */
-test("VerifyEndpointInstantTestHistoryPageScreenshotByLeftNav @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util,sideNavigationBar }, testInfo) => {
-  await util.delay(3000);
+test("VerifyEndpointInstantTestHistoryPageScreenshotByLeftNav @Screenshot", async ({ page, screenShotVerification, util,sideNavigationBar ,alertLogPage}, testInfo) => {
+  let stringArray = testInfo.title.split(" ");
+  let screenShotName = stringArray[0];
+  await alertLogPage.LoginToAlertsPage();
   await sideNavigationBar.navigateToEndpointInstantTestHistoryFromSideNavigation();
-  await util.delay(5000);
-  await screenShotVerification.verifyScreenShotOfFullPage(testInfo.title + '-screenshot.png');
+  await screenShotVerification.verifyScreenShotOfFullPage(screenShotName + '.png');
 })
 /*
   CP-84927 : Verify Endpoint Instant Test Create Page Screenshot by left nav
 */
-test("VerifyEndpointInstantTestCreatePageScreenshotByLeftNav @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, endpointInstantTestPage ,instantTestHistory,sideNavigationBar}, testInfo) => {
+test("VerifyEndpointInstantTestCreatePageScreenshotByLeftNav @Screenshot", async ({ page, screenShotVerification, util, endpointInstantTestPage ,alertLogPage,sideNavigationBar}, testInfo) => {
+  let stringArray = testInfo.title.split(" ");
+  let screenShotName = stringArray[0];
+  await alertLogPage.LoginToAlertsPage();
   await sideNavigationBar.navigateToEndpointInstantTestHistoryFromSideNavigation();
   await util.delay(1000);
   await endpointInstantTestPage.clickOnCreateInstantTest()
-  await util.delay(2000);
-  await screenShotVerification.verifyScreenShotOfFullPage(testInfo.title + '-screenshot.png');
+  await screenShotVerification.verifyScreenShotOfFullPage(screenShotName + '.png');
 })

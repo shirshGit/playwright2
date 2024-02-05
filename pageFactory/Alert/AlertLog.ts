@@ -2,9 +2,13 @@ import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
 import { BrowserContext, Page } from "@playwright/test";
 import { DataForEnv } from "@lib/DataForEnvironment";
+import { testConfig } from '../../testConfig';
+import { LoginPageObjects } from "@objects/LoginPageObjects";
+import { LoginPage } from "@pageobjects/Login/LoginPage";
 
 let webActions: WebActions;
 let util: Utility;
+let login: LoginPage;
 
 export class AlertLogPage {
     readonly page: Page;
@@ -13,7 +17,9 @@ export class AlertLogPage {
         this.page = page;
         webActions = new WebActions(this.page);
         util = new Utility();
+        login = new LoginPage(this.page);
     }
+    loginPageObjects = new LoginPageObjects();
 
     //#region This region is for getter
     private _alertsForTests = '//span[text()="Tests"]';
@@ -24,33 +30,33 @@ export class AlertLogPage {
     private _alertsLogList = '//div[@class="ms-List-page"][1]'
     private _internetSonarTab = '//span[text()="Internet Sonar"]';
 
-    public get alertSectionForTestsLocator(){
+    public get alertSectionForTestsLocator() {
         return this._alertsForTests;
     }
 
-    public get alertSectionForRumLocator(){
+    public get alertSectionForRumLocator() {
         return this._alertsForRum;
     }
 
-    public get testIDHeaderInAlertLogListLocator(){
+    public get testIDHeaderInAlertLogListLocator() {
         return this._testIDInAlertLogTable;
     }
 
-    public get searchBoxLocator(){
+    public get searchBoxLocator() {
         return this._searchBox;
     }
-    public get threeDotMenuLocator(){
-        return (text:number) => { return `//div[@data-selection-index="${text}"]//span[@data-automationid="splitbuttonprimary"]`}
+    public get threeDotMenuLocator() {
+        return (text: number) => { return `//div[@data-selection-index="${text}"]//span[@data-automationid="splitbuttonprimary"]` }
     }
 
-    public get threeDotMenuItemLocator(){
-        return (text:string) => { return `//span[contains(@class,'ms-ContextualMenu-itemText')][normalize-space()='${text}']`}
+    public get threeDotMenuItemLocator() {
+        return (text: string) => { return `//span[contains(@class,'ms-ContextualMenu-itemText')][normalize-space()='${text}']` }
     }
 
-    public get alertLogListLocator(){
+    public get alertLogListLocator() {
         return this._alertsLogList;
     }
-    public get internetSonarTabLocator(){
+    public get internetSonarTabLocator() {
         return this._internetSonarTab
     }
 
@@ -60,13 +66,13 @@ export class AlertLogPage {
     //#endregion
 
     //#region This region is to have the functions
-    
-    async clickOnThreeDotMenu(num:number,threeDotMenuItem:string){
+
+    async clickOnThreeDotMenu(num: number, threeDotMenuItem: string) {
         await this.hoverOnThreeDotMenu(num)
         await webActions.clickElement(this.threeDotMenuItemLocator(threeDotMenuItem))
     }
 
-    async hoverOnThreeDotMenu(num:number){
+    async hoverOnThreeDotMenu(num: number) {
         await webActions.hoverOnElement(this.threeDotMenuLocator(num))
         await util.delay(1000)
         await webActions.clickElement(this.threeDotMenuLocator(num))
@@ -80,7 +86,7 @@ export class AlertLogPage {
         return await webActions.getCurrentPageUrl();
     }
 
-    async clickOnRumTab(){
+    async clickOnRumTab() {
         return await webActions.clickElement(this.alertSectionForRumLocator);
     }
 
@@ -88,10 +94,17 @@ export class AlertLogPage {
         let data = new DataForEnv();
         let baseURL = await data.getValueOfTheParameter('baseURL');
         await webActions.navigateToURL(baseURL + 'Alerts/Test');
-        await util.delay(5000);
+        //await webActions.waitForElementAttached(this.alertLogListLocator);
     }
-    async clickOnInternetSonarTab(){
+    async clickOnInternetSonarTab() {
         return await webActions.clickElement(this.internetSonarTabLocator);
+    }
+    async LoginToAlertsPage() {
+        this.navigateToTestAlertsPageByURL()
+        await webActions.enterElementText(login.emailInputLocator, testConfig.cpun);
+        await webActions.enterElementText(login.passwordInputLocator, testConfig.cppwd);
+        await webActions.clickElement(login.loginBtnLocator);
+        await webActions.waitForElementAttached(this.alertLogListLocator);
     }
 
 

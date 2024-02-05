@@ -2,9 +2,13 @@ import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
 import { BrowserContext, Page } from "@playwright/test";
 import { DataForEnv } from "@lib/DataForEnvironment";
+import { testConfig } from '../../testConfig';
+import { LoginPageObjects } from "@objects/LoginPageObjects";
+import { LoginPage } from "@pageobjects/Login/LoginPage";
 
 let webActions: WebActions;
 let util: Utility;
+let login : LoginPage;
 
 export class MapPage {
     readonly page: Page;
@@ -13,6 +17,7 @@ export class MapPage {
         this.page = page;
         webActions = new WebActions(this.page);
         util = new Utility();
+        login = new LoginPage(this.page);
     }
 
     //#region This region is for getter
@@ -62,6 +67,13 @@ export class MapPage {
         let baseURL = await data.getValueOfTheParameter('baseURL');
         await webActions.navigateToURL(baseURL + 'Nodes/NodeInformation');
         await util.delay(5000);
+    }
+    async LoginToNodeMapPage() {
+        this.navigateToNodeMapPageByURL();
+        await webActions.enterElementText(login.emailInputLocator, testConfig.cpun);
+        await webActions.enterElementText(login.passwordInputLocator, testConfig.cppwd);
+        await webActions.clickElement(login.loginBtnLocator);
+        await webActions.waitForElementAttached(this.mapLocator);
     }
 
     
