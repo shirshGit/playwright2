@@ -2,9 +2,13 @@ import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
 import { Page } from "@playwright/test";
 import { DataForEnv } from "@lib/DataForEnvironment";
+import { testConfig } from '../../testConfig';
+import { LoginPageObjects } from "@objects/LoginPageObjects";
+import { LoginPage } from "@pageobjects/Login/LoginPage";
 
 let webActions: WebActions;
 let util: Utility;
+let login : LoginPage;
 
 export class RumControlCenterPage {
     readonly page: Page;
@@ -13,6 +17,7 @@ export class RumControlCenterPage {
         this.page = page;
         webActions = new WebActions(this.page);
         util = new Utility();
+        login = new LoginPage(this.page);
     }
 
     //#region This region is for getter
@@ -36,7 +41,13 @@ export class RumControlCenterPage {
         let data = new DataForEnv();
         let baseURL = await data.getValueOfTheParameter('baseURL');
         await webActions.navigateToURL(baseURL + 'ControlCenter/Endpoint');
-        await util.delay(5000);
+    }
+    async LoginToRUMCCPage() {
+        this.navigateToRUMPageByURL()
+        await webActions.enterElementText(login.emailInputLocator, testConfig.cpun);
+        await webActions.enterElementText(login.passwordInputLocator, testConfig.cppwd);
+        await webActions.clickElement(login.loginBtnLocator);
+        await webActions.waitForElementAttached(this.rumListLocator)
     }
 
 

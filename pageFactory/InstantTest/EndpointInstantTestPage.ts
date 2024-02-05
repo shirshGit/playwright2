@@ -2,9 +2,13 @@ import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
 import { BrowserContext, Page } from "@playwright/test";
 import { DataForEnv } from "@lib/DataForEnvironment";
+import { testConfig } from '../../testConfig';
+import { LoginPageObjects } from "@objects/LoginPageObjects";
+import { LoginPage } from "@pageobjects/Login/LoginPage";
 
 let webActions: WebActions;
 let util: Utility;
+let login : LoginPage;
 
 export class EndpointInstantTestPage {
     readonly page: Page;
@@ -13,12 +17,14 @@ export class EndpointInstantTestPage {
         this.page = page;
         webActions = new WebActions(this.page);
         util = new Utility();
+        login = new LoginPage(this.page);
     }
 
     //#region This region is for getter
     
     private _loading = '//div[text()="Loading..."]'
     private _createButton = '//button[text()="New Instant Test"]'
+    private _endpointTestTable = '//div[contains(@class,"ActionTable_customDataCont_")]'
     
     public get commonLocator(){
         return (text:string) => {return `//span[text()="${text}"]`}
@@ -29,6 +35,9 @@ export class EndpointInstantTestPage {
     }
     public get createButtonLocator(){
         return this._createButton
+    }
+    public get testListTableLocator(){
+        return this._endpointTestTable
     }
     
     
@@ -58,7 +67,13 @@ export class EndpointInstantTestPage {
         await util.delay(5000);
     }
     async clickOnCreateInstantTest() {
-        return await webActions.clickElement(this.createButtonLocator);
+         await webActions.clickElement(this.createButtonLocator);
+         await webActions.waitForElementAttached(this.commonLocator('Traceroute'));
+    }
+    async LoginToEndpointInstantTestHistoryPage() {
+        this.navigateToEndpointInstantTestPageByURL();
+        await login.enterLoginCredential();
+        await webActions.waitForElementAttached(this.testListTableLocator)
     }
 
 

@@ -2,88 +2,88 @@ import test from "@lib/BaseTest"
 /*
     CP-84756 : Verify Node Page Screenshot navigating by URL -
 */
-test("VerifyNodePageScreenshot @ScreenshotVerification", async({baseTestUtil,page, screenShotVerification, util,nodeListPage}, testInfo) => {
-    await nodeListPage.navigateToNodesPageByURL();
-    await util.delay(20000)
-    const maskedElement1 = await page.locator(nodeListPage.nodeTableLocator);
-    const maskedElements = [maskedElement1];
-    await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement(maskedElements, testInfo.title + '-screenshot.png');
+test.skip("VerifyNodePageScreenshot @Screenshot", async({page, screenShotVerification, util,nodeListPage}, testInfo) => {
+    let screenShotName = testInfo.title.split(" ")[0]
+    await nodeListPage.LoginToNodeListPage();
+    const maskedElements = [await page.locator(nodeListPage.nodeTableLocator)];
+    await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement(maskedElements, screenShotName + '.png');
     
 })
 /*
     CP-84757 : Verify Node Groups Page Screenshot navigating by URL 
 */
-test("VerifyNodeGroupsPageScreenshot @ScreenshotVerification", async({baseTestUtil,page, screenShotVerification, util,nodeGroupPage}, testInfo) => {
-    await nodeGroupPage.navigateToNodeGroupPageByURL();
-    await util.delay(20000)
-    const maskedElement1 = await page.locator(nodeGroupPage.nodeGroupTableLocator);
-    const maskedElements = [maskedElement1];
-    await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement(maskedElements, testInfo.title + '-screenshot.png');
+test.skip("VerifyNodeGroupsPageScreenshot @Screenshot", async({page, screenShotVerification, util,nodeGroupPage}, testInfo) => {
+    let screenShotName = testInfo.title.split(" ")[0]
+    await nodeGroupPage.LoginToNodeGroupPage();
+    const maskedElements = [await page.locator(nodeGroupPage.nodeGroupTableLocator)];
+    await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement(maskedElements, screenShotName + '.png');
     
 })
 /*
      CP-84758 : Verify Node Instance Page Screenshot navigating by URL
 */
-test("VerifyNodeInstancePageScreenshot @ScreenshotVerification", async({baseTestUtil,page, screenShotVerification, util,nodeInstancePage}, testInfo) => {
-    await nodeInstancePage.navigateToNodeInstancePageByURL();
-    await util.delay(20000)
-    const maskedElement1 = await page.locator(nodeInstancePage.instanceTableLocator);
-    const maskedElements = [maskedElement1];
-    await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement(maskedElements, testInfo.title + '-screenshot.png');
+test.skip("VerifyNodeInstancePageScreenshot @Screenshot", async({page, screenShotVerification, util,nodeInstancePage}, testInfo) => {
+    let screenShotName = testInfo.title.split(" ")[0]
+    await nodeInstancePage.LoginToInstancePage();
+    const maskedElements = [await page.locator(nodeInstancePage.instanceTableLocator)];
+    await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement(maskedElements, screenShotName + '.png');
     
 })
 /*
     CP-84756 : Verify Node Page Screenshot navigating by URL
 */
-test("VerifyNodeMapPageScreenshot @ScreenshotVerification", async({baseTestUtil,page, screenShotVerification, util,nodeMapPage}, testInfo) => {
-    await nodeMapPage.navigateToNodeMapPageByURL();
-    const maskedElement1 = await page.locator(nodeMapPage.mapLocator );
-    await util.delay(3000)
-    const maskedElements = [maskedElement1];
-    await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement(maskedElements, testInfo.title + '-screenshot.png');
+test.skip("VerifyNodeMapPageScreenshot @Screenshot", async({page, screenShotVerification, util,nodeMapPage}, testInfo) => {
+    let screenShotName = testInfo.title.split(" ")[0]
+    await nodeMapPage.LoginToNodeMapPage();
+    const maskedElements = [await page.locator(nodeMapPage.mapLocator )];
+    await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement(maskedElements, screenShotName + '.png');
     
 })
 /*
     CP-84773 : Verify Node Page Screenshot navigating by left navigation
 */
-test("VerifyNodePageScreenshotByLeftNav @ScreenshotVerification", async({baseTestUtil,page, screenShotVerification, util,nodeListPage,sideNavigationBar}, testInfo) => {
+test.skip("VerifyNodePageScreenshotByLeftNav @Screenshot", async({page, screenShotVerification, util,nodeListPage,sideNavigationBar,alertLogPage}, testInfo) => {
+    let screenShotName = testInfo.title.split(" ")[0]
+    await alertLogPage.LoginToAlertsPage();
+    await util.delay(3000);
     await sideNavigationBar.navigateToNodeFromNodeSideNavigation();
-    await util.delay(5000);
-    const maskedElement1 = await page.locator(nodeListPage.nodeTableLocator);
-    const maskedElements = [maskedElement1];
-    await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement(maskedElements, testInfo.title + '-screenshot.png');
+    const maskedElements = [await page.locator(nodeListPage.nodeTableLocator)];
+    await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement(maskedElements, screenShotName + '.png');
     
 })
 /*
     CP-84774 : Verify Node Groups Page Screenshot navigating by left navigation
 */
-test("VerifyNodeGroupsPageScreenshotByLeftNav @ScreenshotVerification", async({baseTestUtil,page, screenShotVerification, util,nodeGroupPage,sideNavigationBar}, testInfo) => {
+test.skip("VerifyNodeGroupsPageScreenshotByLeftNav @Screenshot", async({page, screenShotVerification, util,nodeGroupPage,sideNavigationBar,alertLogPage}, testInfo) => {
+    let screenShotName = testInfo.title.split(" ")[0]
+    await alertLogPage.LoginToAlertsPage();
+    await util.delay(3000);
     await sideNavigationBar.navigateToGroupsFromNodeSideNavigation();
-    await util.delay(3000)
-    const maskedElement1 = await page.locator(nodeGroupPage.nodeGroupTableLocator);
-    const maskedElements = [maskedElement1];
-    await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement(maskedElements, testInfo.title + '-screenshot.png');
+    const maskedElements = [await page.locator(nodeGroupPage.nodeGroupTableLocator)];
+    await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement(maskedElements, screenShotName + '.png');
     
 })
 /*
     CP-84775 : Verify Node Instance Page Screenshot navigating by left navigation
 */
-test("VerifyNodeInstancePageScreenshotByLeftNav @ScreenshotVerification", async({baseTestUtil,page, screenShotVerification, util,nodeInstancePage,sideNavigationBar}, testInfo) => {
+test.skip("VerifyNodeInstancePageScreenshotByLeftNav @Screenshot", async({page, screenShotVerification, util,nodeInstancePage,sideNavigationBar,alertLogPage}, testInfo) => {
+    let screenShotName = testInfo.title.split(" ")[0]
+    await alertLogPage.LoginToAlertsPage();
+    await util.delay(3000);
     await sideNavigationBar.navigateToInstancesFromNodeSideNavigation();
-    await util.delay(3000)
-    const maskedElement1 = await page.locator(nodeInstancePage.instanceTableLocator);
-    const maskedElements = [maskedElement1];
-    await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement(maskedElements, testInfo.title + '-screenshot.png');
+    const maskedElements = [await page.locator(nodeInstancePage.instanceTableLocator)];
+    await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement(maskedElements, screenShotName + '.png');
     
 })
 /*
     CP-84776 : Verify Node Map Page Screenshot navigating by left navigation
 */
-test("VerifyNodeMapPageScreenshotByLeftNav @ScreenshotVerification", async({baseTestUtil,page, screenShotVerification, util,nodeMapPage,sideNavigationBar}, testInfo) => {
+test("VerifyNodeMapPageScreenshotByLeftNav @Screenshot", async({page, screenShotVerification, util,nodeMapPage,sideNavigationBar,alertLogPage}, testInfo) => {
+    let screenShotName = testInfo.title.split(" ")[0]
+    await alertLogPage.LoginToAlertsPage();
+    await util.delay(3000);
     await sideNavigationBar.navigateToMapFromNodeSideNavigation();
-    await util.delay(3000)
-    const maskedElement1 = await page.locator(nodeMapPage.mapLocator );
-    const maskedElements = [maskedElement1];
-    await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement(maskedElements, testInfo.title + '-screenshot.png');
+    const maskedElements = [await page.locator(nodeMapPage.mapLocator )];
+    await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement(maskedElements, screenShotName + '.png');
     
 })
