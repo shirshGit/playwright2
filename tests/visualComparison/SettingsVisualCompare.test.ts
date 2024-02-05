@@ -4,7 +4,7 @@ import { DataForEnv } from "@lib/DataForEnvironment";
 /*
     CP-84760 : Verify Division Page Screenshot navigating by URL
 */
-test.skip("VerifyDivisionPageScreenshot @Screenshot", async({page, screenShotVerification, util,divisionPage}, testInfo) => {
+test("VerifyDivisionPageScreenshot @Screenshot", async({page, screenShotVerification, util,divisionPage}, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await divisionPage.LoginToDivisionsPage();
     const maskedElement1 = await page.locator(divisionPage.divisionTableLocator);
@@ -15,7 +15,7 @@ test.skip("VerifyDivisionPageScreenshot @Screenshot", async({page, screenShotVer
 /*
     CP-84761 : Verify Schedule Page Screenshot navigating by URL
 */
-test.skip("VerifySchedulePageScreenshot @Screenshot", async({page, screenShotVerification, util,schedulePage}, testInfo) => {
+test("VerifySchedulePageScreenshot @Screenshot", async({page, screenShotVerification, util,schedulePage}, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await schedulePage.LoginToSchedulePage();
     const maskedElement1 = await page.locator(schedulePage.scheduleTableLocator);
@@ -26,7 +26,7 @@ test.skip("VerifySchedulePageScreenshot @Screenshot", async({page, screenShotVer
 /*
     CP-84762 : Verify Userrole Page Screenshot navigating by URL
 */
-test.skip("VerifyUserrolePageScreenshot @Screenshot", async({page, screenShotVerification, util,userrolePage}, testInfo) => {
+test("VerifyUserrolePageScreenshot @Screenshot", async({page, screenShotVerification, util,userrolePage}, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await userrolePage.LoginToUserrolePage();
     const maskedElement1 = await page.locator(userrolePage.userroleTableLocator);
@@ -37,7 +37,7 @@ test.skip("VerifyUserrolePageScreenshot @Screenshot", async({page, screenShotVer
 /*
     CP-84763 : Verify Index Page Screenshot navigating by URL
 */
-test.skip("VerifyIndexPageScreenshot @Screenshot", async({page, screenShotVerification, util,indexPage}, testInfo) => {
+test("VerifyIndexPageScreenshot @Screenshot", async({page, screenShotVerification, util,indexPage}, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await indexPage.LoginToIndexPage();
     const maskedElement1 = await page.locator(indexPage.indexTableLocator);
@@ -48,7 +48,7 @@ test.skip("VerifyIndexPageScreenshot @Screenshot", async({page, screenShotVerifi
 /*
     CP-84764 : Verify Zone Page Screenshot navigating by URL 
 */
-test.skip("VerifyZonePageScreenshot @Screenshot", async({page, screenShotVerification, util,zonePage}, testInfo) => {
+test("VerifyZonePageScreenshot @Screenshot", async({page, screenShotVerification, util,zonePage}, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await zonePage.LoginToZonePage();
     const maskedElement1 = await page.locator(zonePage.zonesTableLocator);
@@ -83,7 +83,7 @@ test("VerifySchedulePageScreenshotByLeftNav @Screenshot", async({page, screenSho
 /*
     CP-84779 : Verify Userrole Page Screenshot navigating by left navigation
 */
-test.skip("VerifyUserrolePageScreenshotByLeftNav @Screenshot", async({page, screenShotVerification, util,userrolePage,sideNavigationBar,alertLogPage}, testInfo) => {
+test("VerifyUserrolePageScreenshotByLeftNav @Screenshot", async({page, screenShotVerification, util,userrolePage,sideNavigationBar,alertLogPage}, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await alertLogPage.LoginToAlertsPage();
     await sideNavigationBar.navigateToUserrolePageFromSideNavigation();
@@ -95,7 +95,7 @@ test.skip("VerifyUserrolePageScreenshotByLeftNav @Screenshot", async({page, scre
 /*
     CP-84780 : Verify Index Page Screenshot navigating by left navigation
 */
-test.skip("VerifyIndexPageScreenshotByLeftNav @Screenshot", async({page, screenShotVerification, util,indexPage,sideNavigationBar,alertLogPage}, testInfo) => {
+test("VerifyIndexPageScreenshotByLeftNav @Screenshot", async({page, screenShotVerification, util,indexPage,sideNavigationBar,alertLogPage}, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await alertLogPage.LoginToAlertsPage();
     await sideNavigationBar.navigateToIndexesPageFromSideNavigation();
@@ -107,7 +107,7 @@ test.skip("VerifyIndexPageScreenshotByLeftNav @Screenshot", async({page, screenS
 /*
     CP-84781 : Verify Zone Page Screenshot navigating by left navigation
 */
-test.skip("VerifyZonePageScreenshotByLeftNav @Screenshot", async({page, screenShotVerification, util,zonePage,sideNavigationBar,alertLogPage}, testInfo) => {
+test("VerifyZonePageScreenshotByLeftNav @Screenshot", async({page, screenShotVerification, util,zonePage,sideNavigationBar,alertLogPage}, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await alertLogPage.LoginToAlertsPage();
     await sideNavigationBar.navigateToZoneFromSideNavigation();

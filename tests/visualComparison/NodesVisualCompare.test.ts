@@ -2,7 +2,7 @@ import test from "@lib/BaseTest"
 /*
     CP-84756 : Verify Node Page Screenshot navigating by URL -
 */
-test.skip("VerifyNodePageScreenshot @Screenshot", async({page, screenShotVerification, util,nodeListPage}, testInfo) => {
+test("VerifyNodePageScreenshot @Screenshot", async({page, screenShotVerification, util,nodeListPage}, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await nodeListPage.LoginToNodeListPage();
     const maskedElements = [await page.locator(nodeListPage.nodeTableLocator)];
@@ -12,7 +12,7 @@ test.skip("VerifyNodePageScreenshot @Screenshot", async({page, screenShotVerific
 /*
     CP-84757 : Verify Node Groups Page Screenshot navigating by URL 
 */
-test.skip("VerifyNodeGroupsPageScreenshot @Screenshot", async({page, screenShotVerification, util,nodeGroupPage}, testInfo) => {
+test("VerifyNodeGroupsPageScreenshot @Screenshot", async({page, screenShotVerification, util,nodeGroupPage}, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await nodeGroupPage.LoginToNodeGroupPage();
     const maskedElements = [await page.locator(nodeGroupPage.nodeGroupTableLocator)];
@@ -22,7 +22,7 @@ test.skip("VerifyNodeGroupsPageScreenshot @Screenshot", async({page, screenShotV
 /*
      CP-84758 : Verify Node Instance Page Screenshot navigating by URL
 */
-test.skip("VerifyNodeInstancePageScreenshot @Screenshot", async({page, screenShotVerification, util,nodeInstancePage}, testInfo) => {
+test("VerifyNodeInstancePageScreenshot @Screenshot", async({page, screenShotVerification, util,nodeInstancePage}, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await nodeInstancePage.LoginToInstancePage();
     const maskedElements = [await page.locator(nodeInstancePage.instanceTableLocator)];
@@ -32,7 +32,7 @@ test.skip("VerifyNodeInstancePageScreenshot @Screenshot", async({page, screenSho
 /*
     CP-84756 : Verify Node Page Screenshot navigating by URL
 */
-test.skip("VerifyNodeMapPageScreenshot @Screenshot", async({page, screenShotVerification, util,nodeMapPage}, testInfo) => {
+test("VerifyNodeMapPageScreenshot @Screenshot", async({page, screenShotVerification, util,nodeMapPage}, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await nodeMapPage.LoginToNodeMapPage();
     const maskedElements = [await page.locator(nodeMapPage.mapLocator )];
@@ -42,7 +42,7 @@ test.skip("VerifyNodeMapPageScreenshot @Screenshot", async({page, screenShotVeri
 /*
     CP-84773 : Verify Node Page Screenshot navigating by left navigation
 */
-test.skip("VerifyNodePageScreenshotByLeftNav @Screenshot", async({page, screenShotVerification, util,nodeListPage,sideNavigationBar,alertLogPage}, testInfo) => {
+test("VerifyNodePageScreenshotByLeftNav @Screenshot", async({page, screenShotVerification, util,nodeListPage,sideNavigationBar,alertLogPage}, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await alertLogPage.LoginToAlertsPage();
     await util.delay(3000);
@@ -54,7 +54,7 @@ test.skip("VerifyNodePageScreenshotByLeftNav @Screenshot", async({page, screenSh
 /*
     CP-84774 : Verify Node Groups Page Screenshot navigating by left navigation
 */
-test.skip("VerifyNodeGroupsPageScreenshotByLeftNav @Screenshot", async({page, screenShotVerification, util,nodeGroupPage,sideNavigationBar,alertLogPage}, testInfo) => {
+test("VerifyNodeGroupsPageScreenshotByLeftNav @Screenshot", async({page, screenShotVerification, util,nodeGroupPage,sideNavigationBar,alertLogPage}, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await alertLogPage.LoginToAlertsPage();
     await util.delay(3000);
@@ -66,7 +66,7 @@ test.skip("VerifyNodeGroupsPageScreenshotByLeftNav @Screenshot", async({page, sc
 /*
     CP-84775 : Verify Node Instance Page Screenshot navigating by left navigation
 */
-test.skip("VerifyNodeInstancePageScreenshotByLeftNav @Screenshot", async({page, screenShotVerification, util,nodeInstancePage,sideNavigationBar,alertLogPage}, testInfo) => {
+test("VerifyNodeInstancePageScreenshotByLeftNav @Screenshot", async({page, screenShotVerification, util,nodeInstancePage,sideNavigationBar,alertLogPage}, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await alertLogPage.LoginToAlertsPage();
     await util.delay(3000);
