@@ -87,9 +87,7 @@ export class ContactGroupPage {
     }
     async LoginToContactGroupPage() {
         this.navigateToContactsGroupPageByURL();
-        await webActions.enterElementText(login.emailInputLocator, testConfig.cpun);
-        await webActions.enterElementText(login.passwordInputLocator, testConfig.cppwd);
-        await webActions.clickElement(login.loginBtnLocator);
+        await login.enterLoginCredential();
         await webActions.waitForElementAttached(this.contactGroupLocator);
     }
 

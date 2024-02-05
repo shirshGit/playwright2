@@ -100,10 +100,8 @@ export class AlertLogPage {
         return await webActions.clickElement(this.internetSonarTabLocator);
     }
     async LoginToAlertsPage() {
-        this.navigateToTestAlertsPageByURL()
-        await webActions.enterElementText(login.emailInputLocator, testConfig.cpun);
-        await webActions.enterElementText(login.passwordInputLocator, testConfig.cppwd);
-        await webActions.clickElement(login.loginBtnLocator);
+        this.navigateToTestAlertsPageByURL();
+        await login.enterLoginCredential();
         await webActions.waitForElementAttached(this.alertLogListLocator);
     }
 

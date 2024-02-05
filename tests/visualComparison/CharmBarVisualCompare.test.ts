@@ -4,7 +4,7 @@ import { DefaultDashboardPage } from "@pageobjects/OverviewDashboard/DefaultDash
 /*
     CP-84765 : Verify CharmBar ScreenShot
 */
-test("VerifyCharmBarScreenShot @ScreenshotVerification", async ({ baseTestUtil, page, screenShotVerification, util, defaultDashboardPage }, testInfo) => {
+test("VerifyCharmBarScreenShot @Screenshot", async ({ baseTestUtil, page, screenShotVerification, util, defaultDashboardPage }, testInfo) => {
     await util.delay(5000);
     await screenShotVerification.verifyScreenShotOfAComponent(defaultDashboardPage.charmBarLocator, testInfo.title + '-screenshot.png');
 })
