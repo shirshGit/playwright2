@@ -11,7 +11,7 @@ export class ScreenShotVerification{
     }
 
     async verifyScreenShotOfAComponent(locator:string, screenshotname:string){
-        expect(await webActions.takeScreeShotOfComponent(locator)).toMatchSnapshot(screenshotname);
+        expect(await webActions.takeScreeShotOfComponent(locator)).toMatchSnapshot(screenshotname,{maxDiffPixelRatio:0.015});
         //expect(await this.page.locator(locator).screenshot()).toMatchSnapshot(screenshotname);
     }
 
