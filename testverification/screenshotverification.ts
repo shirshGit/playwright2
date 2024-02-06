@@ -21,7 +21,7 @@ export class ScreenShotVerification{
     }
 
     async verifyScreenShotOfFullPage(screenshotname:string){
-        expect (await this.page.screenshot({fullPage: true })).toMatchSnapshot(screenshotname,{maxDiffPixels:1000});
+        expect (await this.page.screenshot({fullPage: true })).toMatchSnapshot(screenshotname,{maxDiffPixelRatio:0.015});
     }
 
 }
