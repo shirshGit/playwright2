@@ -25,7 +25,8 @@ export class DivisionPage {
     private _nameText = '//span[text()="Name"]';
     private _statusText = '//span[text()="Status"]';
     private _lastUpdatedText = '//span[text()="Last Updated"]';
-    private _divisionTable = "//div[@class='ms-List-surface']"
+    private _divisionTable = "//div[@class='ms-List-surface']";
+    private _download = '//span[text()="Download"]';
 
 
     
@@ -46,6 +47,9 @@ export class DivisionPage {
     }
     public get divisionTableLocator() {
         return this._divisionTable;
+    }
+    public get downloadLocator(){
+        return this._download
     }
 
     
@@ -69,10 +73,9 @@ export class DivisionPage {
     }
     async LoginToDivisionsPage() {
         this.navigateToDivisionPageByURL();
-        await webActions.enterElementText(login.emailInputLocator, testConfig.cpun);
-        await webActions.enterElementText(login.passwordInputLocator, testConfig.cppwd);
-        await webActions.clickElement(login.loginBtnLocator);
+        await login.enterLoginCredential();
         await webActions.waitForElementAttached(this.divisionTableLocator);
+        await webActions.waitForElementAttached(this.downloadLocator);
     }
    
 

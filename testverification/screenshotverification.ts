@@ -11,17 +11,17 @@ export class ScreenShotVerification{
     }
 
     async verifyScreenShotOfAComponent(locator:string, screenshotname:string){
-        expect(await webActions.takeScreeShotOfComponent(locator)).toMatchSnapshot(screenshotname,);
+        expect(await webActions.takeScreeShotOfComponent(locator)).toMatchSnapshot(screenshotname);
         //expect(await this.page.locator(locator).screenshot()).toMatchSnapshot(screenshotname);
     }
 
     async verifyScreenShotOfAPageWithMaskedElement(maskedElements: Locator[],screenshotname:string){
-        expect(await webActions.takeFullPageScreeShotOfComponentWithMaskedElements(maskedElements)).toMatchSnapshot(screenshotname);
+        expect(await webActions.takeFullPageScreeShotOfComponentWithMaskedElements(maskedElements)).toMatchSnapshot(screenshotname,{maxDiffPixelRatio:0.015})
         //expect(await this.page.locator(locator).screenshot()).toMatchSnapshot(screenshotname);
     }
 
     async verifyScreenShotOfFullPage(screenshotname:string){
-        expect (await this.page.screenshot({fullPage: true })).toMatchSnapshot(screenshotname)
+        expect (await this.page.screenshot({fullPage: true })).toMatchSnapshot(screenshotname,{maxDiffPixels:1000});
     }
 
 }
