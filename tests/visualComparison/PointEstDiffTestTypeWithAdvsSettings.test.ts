@@ -225,7 +225,7 @@ test("BGPTestPointEst @Screenshot@PointEst", async ({  page, screenShotVerificat
 /*
     CP-84995 : NTN Test Point Est
 */
-test("NTNTestPointEst @Screenshot@PointEsts", async ({  page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
+test("NTNTestPointEst @Screenshot@PointEst", async ({  page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     let testID = await data.getValueOfTheParameter('ntnTestIDWithAdvsSettings');
     await synCCPage.LoginToCCPage()
