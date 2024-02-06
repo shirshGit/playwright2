@@ -74,10 +74,8 @@ export class RumAlertLogPage {
     }
     async LoginToRumAlertsPage() {
         this.navigateToRUMAlertsTestPageByURL()
-        await webActions.enterElementText(login.emailInputLocator, testConfig.cpun);
-        await webActions.enterElementText(login.passwordInputLocator, testConfig.cppwd);
-        await webActions.clickElement(login.loginBtnLocator);
-        await webActions.waitForElementAttached(this.rumAlertsListLocator);
+        await login.enterLoginCredential();
+        //await webActions.waitForElementAttached(this.rumAlertsListLocator);
     }
 
 

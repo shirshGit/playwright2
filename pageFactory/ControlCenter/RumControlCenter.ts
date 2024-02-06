@@ -40,13 +40,11 @@ export class RumControlCenterPage {
     async navigateToRUMPageByURL() {
         let data = new DataForEnv();
         let baseURL = await data.getValueOfTheParameter('baseURL');
-        await webActions.navigateToURL(baseURL + 'ControlCenter/Endpoint');
+        await webActions.navigateToURL(baseURL + 'ControlCenter/Rum');
     }
     async LoginToRUMCCPage() {
         this.navigateToRUMPageByURL()
-        await webActions.enterElementText(login.emailInputLocator, testConfig.cpun);
-        await webActions.enterElementText(login.passwordInputLocator, testConfig.cppwd);
-        await webActions.clickElement(login.loginBtnLocator);
+        await login.enterLoginCredential();
         await webActions.waitForElementAttached(this.rumListLocator)
     }
 

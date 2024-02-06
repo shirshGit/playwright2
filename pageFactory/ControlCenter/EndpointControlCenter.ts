@@ -68,10 +68,8 @@ export class EndpointControlCenterPage {
     }
 
     async LoginToEndpointCCPage() {
-        this.navigateToEndpointsPageByURL()
-        await webActions.enterElementText(login.emailInputLocator, testConfig.cpun);
-        await webActions.enterElementText(login.passwordInputLocator, testConfig.cppwd);
-        await webActions.clickElement(login.loginBtnLocator);
+        this.navigateToEndpointsPageByURL();
+        await login.enterLoginCredential();
         await webActions.waitForElementAttached(this.endpointsListLocator)
     }
 

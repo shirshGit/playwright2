@@ -32,7 +32,8 @@ export class DefaultDashboardPage {
     private _explorerUnderThreeDotMenuInTableWidget = '(//span[text()="Explorer"])[2]'
     private _scatterPlotUnderThreeDotMenuInTableWidget =  '//span[text()="Scatterplot"]'
     private _charmBar = '//div[@data-testid="main-charm-bar"]'
-    private _nodeMapLocator = '(//div[contains(@class,"NodePerformanceOverview_container_")])[1]'
+    private _nodeMapLocator = '(//div[contains(@class,"NodePerformanceOverview_container_")])[1]';
+    private _notificationSection = '//div[@data-testid="help-section-root"]';
     public get overviewDashboardLocator() {
         return this._overviewDashboard;
     }
@@ -113,6 +114,9 @@ export class DefaultDashboardPage {
     }
     public get nodeMapLocator(){
         return this._nodeMapLocator
+    }
+    public get charmBarNotificationSection(){
+        return this._notificationSection
     }
 
 

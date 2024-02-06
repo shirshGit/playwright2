@@ -22,7 +22,7 @@ export class SideNavBar {
     private _sideNavExplorer = '//span[text()="Explorer"]'
     private _homesection = '#homesection'
     private _dashboard = '//a[text()="Dashboard"]'
-    private _sideNavSettings = '//div[@id="settingssection"]//i//div'
+    private _sideNavSettings = '//div[@id="settingssection"]'
     private _sideNavUserrole = '//span[text()="User Roles"]'
     private _sideNavContactIcon = '//div[@id="contactsection"]//i//div'
     private _sideNavContacts = '(//span[text()="Contacts"])[2]'
@@ -523,7 +523,7 @@ export class SideNavBar {
         await webActions.clickElement(this.alertNavBarLocator)
         await webActions.waitForElementAttached(this.rumTabInAlertsPageLocator)
         await webActions.clickElement(this.rumTabInAlertsPageLocator)
-        await webActions.waitForElementAttached(this.rumAlertsListLocator)
+        //await webActions.waitForElementAttached(this.rumAlertsListLocator)
     }
     async navigateToInternetSonarAlertLogFromSideNavigation() {
         await webActions.waitForElementAttached(this.alertNavBarLocator)

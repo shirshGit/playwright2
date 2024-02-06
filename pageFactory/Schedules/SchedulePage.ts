@@ -77,9 +77,7 @@ export class SchedulePage {
     }
     async LoginToSchedulePage() {
         this.navigateToSchedulePageByURL();
-        await webActions.enterElementText(login.emailInputLocator, testConfig.cpun);
-        await webActions.enterElementText(login.passwordInputLocator, testConfig.cppwd);
-        await webActions.clickElement(login.loginBtnLocator);
+        await login.enterLoginCredential();
         await webActions.waitForElementAttached(this.scheduleTableLocator);
     }
 

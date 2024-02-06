@@ -3,7 +3,7 @@ import { DataForEnv } from "@lib/DataForEnvironment";
 
 let data = new DataForEnv();
 /*
-    
+    CP-84975 : Web Test Point Est
 */
 test("WebTestPointEst @Screenshot", async ({  page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('webTestIDWithAdvsSettings');
@@ -13,7 +13,7 @@ test("WebTestPointEst @Screenshot", async ({  page, screenShotVerification, util
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '.png');
 })
 /*
-    
+    CP-84976 : Transaction Test Point Est 
 */
 test("TransactionTestPointEst @Screenshot", async ({  page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('transactionTestIDWithAdvsSettings');
@@ -23,7 +23,7 @@ test("TransactionTestPointEst @Screenshot", async ({  page, screenShotVerificati
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '.png');
 })
 /*
-    
+    CP-84977 : Playwright Test Point Est
 */
 test("PlaywrightTestPointEst @Screenshot", async ({  page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('playwrightTestIDWitoutMonitor');
@@ -33,7 +33,7 @@ test("PlaywrightTestPointEst @Screenshot", async ({  page, screenShotVerificatio
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '.png');
 })
 /*
-    
+    CP-84978 : Puppeteer Test Point Est
 */
 test("PuppeteerTestPointEst @Screenshot", async ({  page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('pupperteerTestIDWithAdvsSettings');
@@ -43,7 +43,7 @@ test("PuppeteerTestPointEst @Screenshot", async ({  page, screenShotVerification
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '.png');
 })
 /*
-    
+    CP-84979 : HTML Test Point Est 
 */
 test("HTMLTestPointEst @Screenshot", async ({  page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('hTMLTestIDWithAdvsSettings');
@@ -53,7 +53,7 @@ test("HTMLTestPointEst @Screenshot", async ({  page, screenShotVerification, uti
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '.png');
 })
 /*
-    
+    CP-84980 : API Test Point Est 
 */
 test("APITestPointEst @Screenshot", async ({  page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('aPITestIDWithAdvsSettings');
@@ -63,7 +63,7 @@ test("APITestPointEst @Screenshot", async ({  page, screenShotVerification, util
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '.png');
 })
 /*
-    
+    CP-84981 : WebSocket Test Point Est 
 */
 test("WebSocketTestPointEst @Screenshot", async ({  page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('webSocketTestIDWithAdvsSettings');
@@ -73,7 +73,7 @@ test("WebSocketTestPointEst @Screenshot", async ({  page, screenShotVerification
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '.png');
 })
 /*
-    
+    CP-84982 : Streaming Test Point Est -
 */
 test("StreamingTestPointEst @Screenshot", async ({  page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('streamingTestIDWithAdvsSettings');
@@ -83,7 +83,7 @@ test("StreamingTestPointEst @Screenshot", async ({  page, screenShotVerification
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '.png');
 })
 /*
-    
+    CP-84983 : DNS Test Point Est
 */
 test("DNSTestPointEst @Screenshot", async ({  page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('dnsTestIDWithAdvsSettings');
@@ -93,7 +93,7 @@ test("DNSTestPointEst @Screenshot", async ({  page, screenShotVerification, util
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '.png');
 })
 /*
-    
+    CP-84985 : FTP Test Point Est
 */
 test("FTPTestPointEst @Screenshot", async ({  page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('ftpTestIDWithAdvsSettings');
@@ -103,7 +103,7 @@ test("FTPTestPointEst @Screenshot", async ({  page, screenShotVerification, util
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '.png');
 })
 /*
-    
+     CP-84984 : Transport Test Point Est -
 */
 test("TransportTestPointEst @Screenshot", async ({  page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('transportTestIDWithAdvsSettings');
@@ -113,7 +113,7 @@ test("TransportTestPointEst @Screenshot", async ({  page, screenShotVerification
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '.png');
 })
 /*
-    
+    CP-84986 : SMTP Test Point Est 
 */
 test("SMTPTestPointEst @Screenshot", async ({  page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('smtpTestIDWithAdvsSettings');
@@ -123,7 +123,7 @@ test("SMTPTestPointEst @Screenshot", async ({  page, screenShotVerification, uti
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '.png');
 })
 /*
-    
+     CP-84987 : Ping Test Point Est 
 */
 test("PingTestPointEst @Screenshot", async ({  page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('pingTestIDWithAdvsSettings');
@@ -133,7 +133,7 @@ test("PingTestPointEst @Screenshot", async ({  page, screenShotVerification, uti
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '.png');
 })
 /*
-    
+     CP-84988 : Traceroute Test Point Est
 */
 test("TracerouteTestPointEst @Screenshot", async ({  page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('tracerouteTestIDWithAdvsSettings');
@@ -143,7 +143,7 @@ test("TracerouteTestPointEst @Screenshot", async ({  page, screenShotVerificatio
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '.png');
 })
 /*
-    
+    CP-84989 : Custom Test Point Est 
 */
 test("CustomTestPointEst @Screenshot", async ({  page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('customTestIDWithAdvsSettings');
@@ -153,7 +153,7 @@ test("CustomTestPointEst @Screenshot", async ({  page, screenShotVerification, u
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '.png');
 })
 /*
-    
+    CP-84990 : NTP Test Point Est 
 */
 test("NTPTestPointEst @Screenshot", async ({  page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('ntpTestIDWithAdvsSettings');
@@ -163,7 +163,7 @@ test("NTPTestPointEst @Screenshot", async ({  page, screenShotVerification, util
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '.png');
 })
 /*
-    
+    CP-84991 : IMAP Test Point Est
 */
 test("IMAPTestPointEst @Screenshot", async ({  page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('imapTestIDWithAdvsSettings');
@@ -173,7 +173,7 @@ test("IMAPTestPointEst @Screenshot", async ({  page, screenShotVerification, uti
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '.png');
 })
 /*
-    
+    CP-84992 : MQTT Test Point Est 
 */
 test("MQTTTestPointEst @Screenshot", async ({  page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('mqttTestIDWithAdvsSettings');
@@ -183,7 +183,7 @@ test("MQTTTestPointEst @Screenshot", async ({  page, screenShotVerification, uti
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '.png');
 })
 /*
-    
+    CP-84993 : SSL Test Point Est
 */
 test("SSLTestPointEst @Screenshot", async ({  page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('sslTestIDWithAdvsSettings');
@@ -193,7 +193,7 @@ test("SSLTestPointEst @Screenshot", async ({  page, screenShotVerification, util
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '.png');
 })
 /*
-    
+    CP-84994 : BGP Test Point Est 
 */
 test("BGPTestPointEst @Screenshot", async ({  page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('bgpTestIDWithAdvsSettings');
@@ -203,7 +203,7 @@ test("BGPTestPointEst @Screenshot", async ({  page, screenShotVerification, util
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, testInfo.title + '.png');
 })
 /*
-    
+    CP-84995 : NTN Test Point Est
 */
 test("NTNTestPointEst @Screenshot", async ({  page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let testID = await data.getValueOfTheParameter('ntnTestIDWithAdvsSettings');
