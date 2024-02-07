@@ -6,8 +6,7 @@ export const qadata = {
 
     'baseURL' : 'https://qaportal.catchpoint.com/ui/Symphony/',
     'bgpTest' : '200723',
-    'bgpTestIDWithoutAdvsSettings' : '',
-    'bgpTestIDWithAdvsSettings' : '',
+    'bgpTestIDWithoutAdvsSettings' : '200723',
 
     'customTestIDWithoutAdvsSettings' : '',
     'customTestIDWithAdvsSettings' : '',
