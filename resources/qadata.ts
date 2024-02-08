@@ -96,6 +96,14 @@ export const qadata = {
     'webSocketTestIDWithoutAdvsSettings' : '',
     'webTestIDWithAdvsSettings' : '',
     'webSocketTestIDWithAdvsSettings' : '',
+    'webObject' : '476067',
+    'webEmulated' : '476068',
+    'webPlayback' : '476069',
+    'webMobilePlayback' : '476070',
+    'webIE' : '476071',
+    'webMobile' : '476072',
+    'webEdge' : '476073',
+    'webChrome' : '',
 
     'zoneName' : 'UIAutomationDND',
     
