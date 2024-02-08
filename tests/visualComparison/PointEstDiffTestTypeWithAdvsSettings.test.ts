@@ -27,7 +27,7 @@ test("TransactionTestPointEst @Screenshot@PointEst", async ({  page, screenShotV
 /*
     CP-84977 : Playwright Test Point Est
 */
-test("PlaywrightTestPointEst @Screenshot@PointEsts", async ({  page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
+test("PlaywrightTestPointEst @Screenshot@PointEst", async ({  page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     let testID = await data.getValueOfTheParameter('playwrightTestIDWithAdvsSettings');
     await synCCPage.LoginToCCPage()
@@ -126,7 +126,7 @@ test("TransportTestPointEst @Screenshot@PointEst", async ({  page, screenShotVer
 /*
     CP-84986 : SMTP Test Point Est 
 */
-test("SMTPTestPointEst @Screenshot@PointEsts", async ({  page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
+test("SMTPTestPointEst @Screenshot@PointEst", async ({  page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     let testID = await data.getValueOfTheParameter('smtpTestIDWithAdvsSettings');
     await synCCPage.LoginToCCPage()
