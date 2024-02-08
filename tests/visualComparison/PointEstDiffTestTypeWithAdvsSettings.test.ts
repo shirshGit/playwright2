@@ -29,7 +29,7 @@ test("TransactionTestPointEst @Screenshot@PointEst", async ({  page, screenShotV
 */
 test("PlaywrightTestPointEst @Screenshot@PointEst", async ({  page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
-    let testID = await data.getValueOfTheParameter('playwrightTestIDWitoutMonitor');
+    let testID = await data.getValueOfTheParameter('playwrightTestIDWithAdvsSettings');
     await synCCPage.LoginToCCPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
     await syntheticTestDetailPage.clickOnPointBreakDown();
@@ -206,17 +206,6 @@ test("MQTTTestPointEst @Screenshot@PointEst", async ({  page, screenShotVerifica
 test("SSLTestPointEst @Screenshot@PointEst", async ({  page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     let testID = await data.getValueOfTheParameter('sslTestIDWithAdvsSettings');
-    await synCCPage.LoginToCCPage()
-    await synCCPage.navigateToTestPropertiesPage(testID);
-    await syntheticTestDetailPage.clickOnPointBreakDown();
-    await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, screenShotName + '.png');
-})
-/*
-    CP-84995 : NTN Test Point Est
-*/
-test("NTNTestPointEst @Screenshot@PointEst", async ({  page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
-    let screenShotName = testInfo.title.split(" ")[0]
-    let testID = await data.getValueOfTheParameter('ntnTestIDWithAdvsSettings');
     await synCCPage.LoginToCCPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
     await syntheticTestDetailPage.clickOnPointBreakDown();

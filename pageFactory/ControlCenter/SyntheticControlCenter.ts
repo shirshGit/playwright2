@@ -539,6 +539,18 @@ export class SynControlCenterPage {
         await webActions.waitForElementAttached(this.synDetailListLocator)
         await webActions.waitForElementAttached(this.synNavigationTreeLocator)
     }
+    async LoginToCCProductPage(prodID : number){
+        this.navigateToCCProductPageByURL(prodID)
+        await login.enterLoginCredential();
+        await webActions.waitForElementAttached(this.synDetailListLocator)
+        await webActions.waitForElementAttached(this.synNavigationTreeLocator)
+    }
+    async navigateToCCProductPageByURL(prodID : number) {
+        let data = new DataForEnv();
+        let baseURL = await data.getValueOfTheParameter('baseURL');
+        await webActions.navigateToURL(baseURL + 'ControlCenter/Tests/Product/'+prodID);
+        
+    }
 
    
 

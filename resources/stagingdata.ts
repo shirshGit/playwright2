@@ -59,7 +59,7 @@ export const stagedata = {
     'smtpTestIDWithoutAdvsSettings' : '427534',
     'sslTestIDWithoutAdvsSettings' : '427555',
     'streamingTestIDWithAdvsSettings' : '427526',
-    'smtpTestIDWithAdvsSettings' : '427534',
+    'smtpTestIDWithAdvsSettings' : '427535',
     'sslTestIDWithAdvsSettings' : '427554',
 
     'testID' : '240905', // used for automation scripts where test are not being created.
@@ -98,6 +98,14 @@ export const stagedata = {
     'webTestIDWithAdvsSettings' : '427504',
     'webSocketTestIDWithAdvsSettings' : '427524',
     'wptFolderID' : '3597',
+    'webObject' : '432754',
+    'webEmulated' : '432755',
+    'webPlayback' : '432756',
+    'webMobilePlayback' : '432757',
+    'webIE' : '432758',
+    'webMobile' : '432759',
+    'webEdge' : '432760',
+    'webChrome' : '427524',
 
     'zoneName' : 'UIAutomationDND',
 }
