@@ -3,9 +3,11 @@ import test from "@lib/BaseTest";
 /*
     CP-44216 : Verify Node map navigation
 */
-test("VerifyNodeMapLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil, sideNavigationBar, verification,nodeMapPage, util}) => {
+test("VerifyNodeMapLoads @PageNavigation@ProductionSmoke@Smoke", async({alertLogPage, sideNavigationBar, verification,nodeMapPage, util}) => {
+    //login to alerts page
+    await alertLogPage.LoginToAlertsPage();
+    //navigate to instant test history page by side navigation
     await sideNavigationBar.navigateToMapFromNodeSideNavigation();
-    await util.delay(2000);
     //validation for errors
     await verification.validationsForPage();
     await verification.verifyIfElementIsPresent(nodeMapPage.mapContainerLocator, 'Map is not present');
@@ -17,9 +19,11 @@ test("VerifyNodeMapLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTest
 /*
     CP-44217 : Verify Node list page navigation
 */
-test("VerifyNodeGroupPageLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil, sideNavigationBar, verification,nodeGroupPage, util}) => {
+test("VerifyNodeGroupPageLoads @PageNavigation@ProductionSmoke@Smoke", async({alertLogPage, sideNavigationBar, verification,nodeGroupPage, util}) => {
+    //login to alerts page
+    await alertLogPage.LoginToAlertsPage();
+    //navigate to instant test history page by side navigation
     await sideNavigationBar.navigateToGroupsFromNodeSideNavigation();
-    await util.delay(2000);
     //validation for errors
     await verification.validationsForPage();
     await verification.verifyIfElementIsPresent(nodeGroupPage.descriptionHeaderInTableLocator, 'Node Group Table Not Present');
@@ -31,9 +35,11 @@ test("VerifyNodeGroupPageLoads @PageNavigation@ProductionSmoke@Smoke", async({ba
 /*
     CP-44218 : Verify Node group page navigation
 */
-test("VerifyNodeListPageLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil, sideNavigationBar, verification,nodeListPage, util}) => {
+test("VerifyNodeListPageLoads @PageNavigation@ProductionSmoke@Smoke", async({alertLogPage, sideNavigationBar, verification,nodeListPage, util}) => {
+    //login to alerts page
+    await alertLogPage.LoginToAlertsPage();
+    //navigate to instant test history page by side navigation
     await sideNavigationBar.navigateToNodeFromNodeSideNavigation();
-    await util.delay(2000);
     //validation for errors
     await verification.validationsForPage();
     await verification.verifyIfElementIsPresent(nodeListPage.nodeNameHeaderInNodeListTableLocator, 'Node List Table Not Present');
@@ -45,9 +51,11 @@ test("VerifyNodeListPageLoads @PageNavigation@ProductionSmoke@Smoke", async({bas
 /*
     CP-44219 : Verify Instance list page navigation
 */
-test("VerifyNodeInstancesListPageLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil, sideNavigationBar, verification,nodeInstancePage, util}) => {
+test("VerifyNodeInstancesListPageLoads @PageNavigation@ProductionSmoke@Smoke", async({alertLogPage, sideNavigationBar, verification,nodeInstancePage, util}) => {
+    //login to alerts page
+    await alertLogPage.LoginToAlertsPage();
+    //navigate to instant test history page by side navigation
     await sideNavigationBar.navigateToInstancesFromNodeSideNavigation();
-    await util.delay(2000);
     //validation for errors
     await verification.validationsForPage();
     await verification.verifyIfElementIsPresent(nodeInstancePage.hardwareHeaderHeaderInInstancesListLocator, 'Node Instance List Table Not Present');

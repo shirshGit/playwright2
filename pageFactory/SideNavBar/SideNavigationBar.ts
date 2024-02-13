@@ -18,11 +18,11 @@ export class SideNavBar {
     //#region This region is for locators as Property
     private _sideNavControlCenter = '#controlcentersection'
     private _sideNavCCTest = '//button/a[text()="Tests"]'
-    private _sideNavAnalytics = '#analysissection'
+    private _sideNavAnalytics = '//div[@id="analysissection"]//div[contains(@class,"fabricIcons_analysisSiteNav_")]';
     private _sideNavExplorer = '//span[text()="Explorer"]'
     private _homesection = '#homesection'
     private _dashboard = '//a[text()="Dashboard"]'
-    private _sideNavSettings = '//div[@id="settingssection"]'
+    private _sideNavSettings = '//div[@id="settingssection"]//div[contains(@class,"fabricIcons_settingsSiteNav_")]';
     private _sideNavUserrole = '//span[text()="User Roles"]'
     private _sideNavContactIcon = '//div[@id="contactsection"]//i//div'
     private _sideNavContacts = '(//span[text()="Contacts"])[2]'
@@ -44,7 +44,7 @@ export class SideNavBar {
     private _reportTemplateSideNav = '//span[text()="Templates"]'
     private _alertSideNav = "#alertsection"
     private _alertNavigation = '//a[text()="Alert Log"]'
-    private _nodesSideNavMenu = '//div[@id="nodesection"]'
+    private _nodesSideNavMenu = '//div[@id="nodesection"]//div[contains(@class,"fabricIcons_nodesSiteNav_")]'
     private _mapNavigationFromNodesMenu = '//span[text()="Node Map"]'
     private _groupNavigationFromNodeMenu = '//span[text()="Node Groups"]'
     private _nodeListNavigationFromNodeMenu = '(//span[text()="Nodes"])[2]'
