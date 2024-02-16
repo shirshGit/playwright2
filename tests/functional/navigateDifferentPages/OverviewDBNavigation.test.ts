@@ -1,10 +1,14 @@
 import test from "@lib/BaseTest"
+import { SideNavBar } from "@pageobjects/SideNavBar/SideNavigationBar";
 
 /*
   CP-44294 : Verify Widgets in default overview dashboard page
 */
-test("VerifyOverviewDashboardLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil, defaultDashboardPage, verification, util}) => {
-     await util.delay(5000);
+test("VerifyOverviewDashboardLoads @PageNavigation@ProductionSmoke@Smoke", async({alertLogPage, defaultDashboardPage, verification, util,sideNavigationBar}) => {
+    //login to alerts page
+    await alertLogPage.LoginToAlertsPage();
+    //navigate to dashboard page by left nav
+    await sideNavigationBar.navigateToDashboardFromSideNavigation();
     //validation for errors
     await verification.validationsForPage();
     await verification.verifyIfElementIsPresent(defaultDashboardPage.errorSectionOverviewDashboardLocator, 'Error Section is not Present');
@@ -18,7 +22,11 @@ test("VerifyOverviewDashboardLoads @PageNavigation@ProductionSmoke@Smoke", async
 /*
   CP-44295 : Verify Widgets in test overview dashboard page
 */
-test("VerifyTestOverviewDashboardLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil, defaultDashboardPage, verification, util,testOverviewDashboard, dashboardBlade}) => {
+test("VerifyTestOverviewDashboardLoads @PageNavigation@ProductionSmoke@Smoke", async({alertLogPage, defaultDashboardPage, verification, util,testOverviewDashboard, sideNavigationBar}) => {
+    //login to alerts page
+    await alertLogPage.LoginToAlertsPage();
+   //navigate to dashboard page by left nav
+   await sideNavigationBar.navigateToDashboardFromSideNavigation();
     await defaultDashboardPage.clickOnTab('Tests');
     //validation for errors
     await verification.validationsForPage();
@@ -35,7 +43,11 @@ test("VerifyTestOverviewDashboardLoads @PageNavigation@ProductionSmoke@Smoke", a
     CP-29418 : Verify User Landing in new Endpoint monitoring overview dashboard page
 */
 
-test("VerifyEndpointOverviewDBLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil, defaultDashboardPage, verification, util,testOverviewDashboard, dashboardBlade, endpointOverviewDB}) => {
+test("VerifyEndpointOverviewDBLoads @PageNavigation@ProductionSmoke@Smoke", async({alertLogPage, defaultDashboardPage, verification, util,testOverviewDashboard, sideNavigationBar, endpointOverviewDB}) => {
+    //login to alerts page
+    await alertLogPage.LoginToAlertsPage();
+    //navigate to dashboard page by left nav
+    await sideNavigationBar.navigateToDashboardFromSideNavigation();
     await defaultDashboardPage.clickOnEndpointdashboard();
     await util.delay(2000);
     //validation for errors
@@ -51,7 +63,11 @@ test("VerifyEndpointOverviewDBLoads @PageNavigation@ProductionSmoke@Smoke", asyn
 /*
     CP-39997 : To Validate BGP Metric Cards RPKI Status, %Reachability, #Hijacks , #Neighboring Peers , # Prefix withdrawn in BGP Dashboard
 */
-test("VerifyBGPOverviewDBLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil, defaultDashboardPage, verification, util,testOverviewDashboard, dashboardBlade, bgpOverviewDB}) => {
+test("VerifyBGPOverviewDBLoads @PageNavigation@ProductionSmoke@Smoke", async({alertLogPage, defaultDashboardPage, verification, util,testOverviewDashboard, sideNavigationBar, bgpOverviewDB}) => {
+    //login to alerts page
+    await alertLogPage.LoginToAlertsPage();
+    //navigate to dashboard page by left nav
+    await sideNavigationBar.navigateToDashboardFromSideNavigation();
     await defaultDashboardPage.clickOnBGPdashboard();
     //validation for errors
     await verification.validationsForPage();

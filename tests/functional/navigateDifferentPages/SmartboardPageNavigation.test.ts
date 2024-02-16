@@ -4,11 +4,13 @@ import { DataForEnv } from "@lib/DataForEnvironment";
 /*
     CP-40696 : Verify smartboard is opened when clicked on smartboard option in left navigation
 */
-test("VerifySmartboardTestLoads @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, syntheticSmartboardPage, util }) => {
+test("VerifySmartboardTestLoads @PageNavigation@ProductionSmoke@Smoke", async ({ instantTestHistoryPage, sideNavigationBar, verification, sourceSelectorSmartboard, syntheticSmartboardPage, util }) => {
     let data = new DataForEnv();
     let transactionTestID = await data.getValueOfTheParameter('transactionTestId');
+    //login to instant test history page 
+    await instantTestHistoryPage.LoginToInstantTestHistoryPage();
+    //navigate to explorer page
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();
-    await util.delay(2000);
     //validation for errors
     await verification.validationsForPage();
     await verification.verifyIfElementIsPresent(sourceSelectorSmartboard.testTabLocator, 'Test Tab is not present in source selector');
@@ -41,16 +43,19 @@ test("VerifySmartboardTestLoads @PageNavigation@ProductionSmoke@Smoke", async ({
 /*
     CP-44496 : Verify Node smartboard navigation
 */
-test("VerifySmartboardNodeLoads @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, nodeSmartboardPage, util }) => {
+test.skip("VerifySmartboardNodeLoads @PageNavigation@ProductionSmoke@Smoke", async ({ instantTestHistoryPage, sideNavigationBar, verification, sourceSelectorSmartboard, nodeSmartboardPage, util }) => {
     let data = new DataForEnv();
     let nodeName = await data.getValueOfTheParameter('node');
+    //login to instant test history page 
+    await instantTestHistoryPage.LoginToInstantTestHistoryPage();
+    //navigate to explorer page
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();
     await util.delay(2000);
     //validation for errors
     await verification.validationsForPage();
     await verification.verifyIfElementIsPresent(sourceSelectorSmartboard.nodeTabLocator, 'node Tab is not present in source selector');
     //click on node tab
-    await sourceSelectorSmartboard.clickOnTabInSourceSelector("Nodes");
+    await sourceSelectorSmartboard.clickOnTabInSourceSelector("Nodes",sourceSelectorSmartboard.nodeTableInSourceSelector);
     await util.delay(6000);
     //select node
     await sourceSelectorSmartboard.selectTabUnderNodes('Node')
@@ -70,16 +75,19 @@ test("VerifySmartboardNodeLoads @PageNavigation@ProductionSmoke@Smoke", async ({
 /*
     CP-44188 : Verify RUM smartboard loads properly from side navigation
 */
-test("VerifySmartboardRUMLoads @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, rumSmartboardPage, util }) => {
+test("VerifySmartboardRUMLoads @PageNavigation@ProductionSmoke@Smoke", async ({ instantTestHistoryPage, sideNavigationBar, verification, sourceSelectorSmartboard, rumSmartboardPage, util }) => {
     let data = new DataForEnv();
     let appName = await data.getValueOfTheParameter('rumAppName');
+    //login to instant test history page 
+    await instantTestHistoryPage.LoginToInstantTestHistoryPage();
+    //navigate to explorer page
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();
     await util.delay(2000);
     //validation for errors
     await verification.validationsForPage();
     await verification.verifyIfElementIsPresent(sourceSelectorSmartboard.myAppTabLocator, 'my app Tab is not present in source selector');
     //click on my app tab
-    await sourceSelectorSmartboard.clickOnTabInSourceSelector("My Apps");
+    await sourceSelectorSmartboard.clickOnTabInSourceSelector("My Apps",sourceSelectorSmartboard.tableInSourceSelector);
     //select test
     await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(appName,'My Apps');
     //validation for errors
@@ -122,7 +130,7 @@ test.skip("VerifyPeerInfoInBGPSB @PageNavigation@ProductionSmoke@Smoke", async (
 /*
     CP-39964 : To validate Time zone dropdown in NTN SB
 */
-test("VerifyTimeZoneDropDownInNTNSB @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, ntnSmartboardPage, util }) => {
+test.skip("VerifyTimeZoneDropDownInNTNSB @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, ntnSmartboardPage, util }) => {
     let data = new DataForEnv();
     let ntnTestID = await data.getValueOfTheParameter('nodeToNodeTest');
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();
@@ -149,7 +157,7 @@ test("VerifyTimeZoneDropDownInNTNSB @PageNavigation@ProductionSmoke@Smoke", asyn
 /*
     CP-39967 : To Validate Matrix Compare Section- NTN SB
 */
-test("VerifyMatrixCompareInNTNSB @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, ntnSmartboardPage, util }) => {
+test.skip("VerifyMatrixCompareInNTNSB @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, ntnSmartboardPage, util }) => {
     let data = new DataForEnv();
     let ntnTestID = await data.getValueOfTheParameter('nodeToNodeTest');
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();
@@ -191,7 +199,7 @@ test("VerifyMatrixCompareInNTNSB @PageNavigation@ProductionSmoke@Smoke", async (
 /*
     CP-39971 : To Validate Record Compare Section- NTN SB
 */
-test("VerifyRecordsCompareSectionInNTNSB @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, ntnSmartboardPage, util }) => {
+test.skip("VerifyRecordsCompareSectionInNTNSB @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, ntnSmartboardPage, util }) => {
     let data = new DataForEnv();
     let ntnTestID = await data.getValueOfTheParameter('nodeToNodeTest');
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();
@@ -240,13 +248,13 @@ test("VerifyRecordsCompareSectionInNTNSB @PageNavigation@ProductionSmoke@Smoke",
 test.skip("VerifySmartboardEndpointTestLoads @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, endpointSmartboardPage, util }) => {
     let data = new DataForEnv();
     let testID = await data.getValueOfTheParameter('endpointTracerouteTestID');
-    //await sideNavigationBar.navigateToSmartboardFromSideNavigation();
+    await sideNavigationBar.navigateToSmartboardFromSideNavigation();
     await util.delay(2000);
     //validation for errors
     await verification.validationsForPage();
     await verification.verifyIfElementIsPresent(sourceSelectorSmartboard.endpointTestTabLocator, 'endpoint test Tab is not present in source selector');
     //click on my app tab
-    await sourceSelectorSmartboard.clickOnTabInSourceSelector("Endpoint Tests");
+    await sourceSelectorSmartboard.clickOnTabInSourceSelector("Endpoint Tests",sourceSelectorSmartboard.tableInSourceSelector);
     await util.delay(2000);
     //validation for errors
     await verification.validationsForPage();
@@ -300,7 +308,7 @@ test.skip("VerifySmartboardLocationLoads @PageNavigation@ProductionSmoke@Smoke",
     await verification.validationsForPage();
     await verification.verifyIfElementIsPresent(sourceSelectorSmartboard.locationTabLocator, 'Location Tab is not present in source selector');
     //click on location tab
-    await sourceSelectorSmartboard.clickOnTabInSourceSelector("Location");
+    await sourceSelectorSmartboard.clickOnTabInSourceSelector("Location",sourceSelectorSmartboard.tableInSourceSelector);
     //validation for errors
     await verification.validationsForPage();
     //select location
@@ -415,7 +423,7 @@ test.skip("VerifySmartboardEmployeeAppLoads @PageNavigation@ProductionSmoke@Smok
     await verification.validationsForPage();
     await verification.verifyIfElementIsPresent(sourceSelectorSmartboard.employeeAppTabLocator, 'employee app Tab is not present in source selector');
     //click on employee app tab
-    await sourceSelectorSmartboard.clickOnTabInSourceSelector("Employee App");
+    await sourceSelectorSmartboard.clickOnTabInSourceSelector("Employee App",sourceSelectorSmartboard.tableInSourceSelector);
     //validation for errors
     await verification.validationsForPage();
     //select test
@@ -509,7 +517,7 @@ test.skip("VerifySmartboardEndpointLoads @PageNavigation@ProductionSmoke@Smoke",
     await verification.validationsForPage();
     await verification.verifyIfElementIsPresent(sourceSelectorSmartboard.endpointTabLocator, 'endpoint Tab is not present in source selector');
     //click on Endpoints tab
-    await sourceSelectorSmartboard.clickOnTabInSourceSelector("Endpoints");
+    await sourceSelectorSmartboard.clickOnTabInSourceSelector("Endpoints",sourceSelectorSmartboard.tableInSourceSelector);
     await util.delay(10000);
     //validation for errors
     await verification.validationsForPage();

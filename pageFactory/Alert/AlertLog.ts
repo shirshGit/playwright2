@@ -25,7 +25,7 @@ export class AlertLogPage {
     private _alertsForTests = '//span[text()="Tests"]';
     private _alertsForRum = '//span[text()="RUM"]';
     private _testIDInAlertLogTable = '//span[text()="Test ID"]';
-    private _searchBox = '(//input[@id="fabric-search-box"])[2]';
+    private _searchBox = '//input[@data-testid="fabricsearchbox"]';
     private _threeDotMenu = '//div[@data-selection-index="0"]//span[@data-automationid="splitbuttonprimary"]';
     private _alertsLogList = '//div[@class="ms-List-page"][1]'
     private _internetSonarTab = '//span[text()="Internet Sonar"]';

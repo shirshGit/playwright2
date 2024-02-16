@@ -28,7 +28,7 @@ export class SyntheticRecordsPage {
     private _nodeIP = '//span[text()="Node IP"]/..//span[2]';
     private _firstDataPoint = '//*[name()="svg"][1]/*[name()="g"][1]/*[name()="g"][3]/*[name()="g"][2]/*[name()="circle"][1]';
     private _monitor = '//span[text()="Monitor"]/..//span[2]';
-    private _searchBoxOfGanttChart = '(//input[@id="fabric-search-box"])[2]';
+    private _searchBoxOfGanttChart = '//input[@id="fabric-search-box"]';
     private _wiredRequestMetrics = '//div[text()="# Wire Requests"]';
     private _hostMetrics = '//div[text()="# Hosts"]';
     private _requestFilterDD = '//label[text()="Request"]/..//i[@data-icon-name="chevron"]';

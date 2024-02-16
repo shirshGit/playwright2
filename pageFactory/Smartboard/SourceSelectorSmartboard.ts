@@ -14,8 +14,9 @@ export class SourceSelectorSmartboard extends SyntheticSmartboardPage{
     }
 
     //#region This region is for getter
-    private _searchBox1 = '//input[@data-testid="searchText"]';
-    private _searchBox2 = '(//input[@data-testid="fabricsearchbox"])[2]';
+    private _testSearchBox = '//input[@data-testid="searchText"]';
+    private _appSearchBox = '//input[@id="rum-source-selector-search-box"]';
+    private _nodeSearchBox = '//input[@id="fabric-search-box"]';
     private _firstRowSearchCheckBoxInSelectorPage1 = '//i[@data-icon-name="StatusCircleCheckmark"]/div';
     private _firstRowSearchCheckBoxInSelectorPage2 = '//div[@data-automationid="DetailsRowCheck"]//label'
     private _nodeTab = '//li[text()="Nodes"]';
@@ -26,13 +27,17 @@ export class SourceSelectorSmartboard extends SyntheticSmartboardPage{
     private _LocationTab = '//li[text()="Tests"]';
     private _endpointTestTab = '//li[text()="Endpoint Tests"]';
     private _sbPillInSourceSelector = '//div[contains(@class,"AutoCompletePillPicker_pillWrapper")]'
+    private _nodeTableInSourceSelector = '//div[@id="node-tree-blade-pivot"]'
+    private _tableInSourceSelector = '//div[@class="ms-List"]'
 
-
-    public get searchBox1() {
-        return this._searchBox1;
+    public get appSearchBox() {
+        return this._appSearchBox;
     }
-    public get searchBox2() {
-        return this._searchBox2;
+    public get testSearchBox() {
+        return this._testSearchBox;
+    }
+    public get nodeSearchBox() {
+        return this._nodeSearchBox;
     }
 
     public get firstRowSearchCheckBoxInSelectorPage1() {
@@ -78,6 +83,12 @@ export class SourceSelectorSmartboard extends SyntheticSmartboardPage{
     public get pillItem(){
         return this._sbPillInSourceSelector;
     }
+    public get nodeTableInSourceSelector(){
+        return this._nodeTableInSourceSelector;
+    }
+    public get tableInSourceSelector(){
+        return this._tableInSourceSelector;
+    }
 
 
   
@@ -98,10 +109,12 @@ export class SourceSelectorSmartboard extends SyntheticSmartboardPage{
 
     async searchItem(item: string, parentName:string) {
         let xpath = null;
-        if (parentName === 'Nodes' || parentName === 'My Apps') {
-            xpath = this.searchBox2;
-        }else{
-            xpath = this.searchBox1;
+        if (parentName === 'Nodes') {
+            xpath = this.nodeSearchBox;
+        }else if(parentName === 'My Apps'){
+            xpath = this.appSearchBox;
+        }else if(parentName === 'Tests'){
+            xpath = this.testSearchBox;
         }
         await webActions.waitForElementAttached(xpath);
         await webActions.clickElement(xpath);
@@ -113,8 +126,9 @@ export class SourceSelectorSmartboard extends SyntheticSmartboardPage{
     }
 
     
-    async clickOnTabInSourceSelector(item : string){
+    async clickOnTabInSourceSelector(item : string, waitElement:string){
         await webActions.clickElement(this.tabLocatorInSourceSelector(item));
+        await webActions.waitForElementAttached(waitElement)
     }
 
     async clickOnTab(item : string){

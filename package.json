@@ -9,8 +9,7 @@
     "test:single:chrome": "npx playwright test /tests/functional/ --project=Chrome",
     "test:single:edge": "npx playwright test /tests/functional/ --project=Edge",
     "test:single:firefox": "npx playwright test /tests/functional/ --project=Firefox"
-    
-   },
+  },
   "dependencies": {
     "@playwright/test": "^1.29.1",
     "@types/adm-zip": "^0.5.0",

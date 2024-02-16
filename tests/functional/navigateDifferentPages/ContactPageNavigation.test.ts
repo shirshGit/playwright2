@@ -4,9 +4,10 @@ import { DataForEnv } from "@lib/DataForEnvironment";
 /*
      CP-44298 : Verify left navigation of Contacts Page
 */
-test("VerifyContactLoads @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification, contactsPage, util }) => {
-    //navigate to contacts page
-    await util.delay(4000);
+test("VerifyContactLoads @PageNavigation@ProductionSmoke@Smoke", async ({ instantTestHistoryPage, sideNavigationBar, verification, contactsPage, util }) => {
+    //login to instant test history page 
+    await instantTestHistoryPage.LoginToInstantTestHistoryPage();
+    //navigate to contact page by left nav
     await sideNavigationBar.navigateToContactPageFromSideNavigation();
     //validation for errors
     await verification.validationsForPage();
@@ -25,9 +26,10 @@ test("VerifyContactLoads @PageNavigation@ProductionSmoke@Smoke", async ({ baseTe
 /*
      CP-44300 : Verify left navigation for Contacts group Page
 */
-test("VerifyContactGroupLoads @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification,contactGroupPage, util }) => {
-    //navigate to contacts page
-    await util.delay(4000);
+test("VerifyContactGroupLoads @PageNavigation@ProductionSmoke@Smoke", async ({ instantTestHistoryPage, sideNavigationBar, verification,contactGroupPage, util }) => {
+    //login to instant test history page 
+    await instantTestHistoryPage.LoginToInstantTestHistoryPage();
+    //navigate to contact page by left nav
     await sideNavigationBar.navigateToContactGroupPageFromSideNavigation();
     //validation for errors
     await verification.validationsForPage();

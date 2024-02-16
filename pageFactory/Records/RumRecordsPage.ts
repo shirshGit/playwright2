@@ -16,7 +16,7 @@ export class RumRecordsPage {
     //#region This region is for getter
 
     private _changeSessionTab = '//button[text()="Change Session"]';
-    private _ganttChartSearchBox = '(//input[@data-testid="fabricsearchbox"])[2]';
+    private _ganttChartSearchBox = '(//input[@data-testid="fabricsearchbox"])';
     private _zoneFilterDD = '//label[text()="Zone"]/..//i[@data-icon-name="chevron"]';
     private _testInSourceSelector = '//div[@data-testid="custom-picker-pill-container"]//span';
     private _appInSourceSelector = '//div[contains(@class,"Pill_pillContent")]//span';
