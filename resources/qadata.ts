@@ -11,7 +11,7 @@ export const qadata = {
 
     'customTestIDWithoutAdvsSettings' : '481063',
     'customTestIDWithAdvsSettings' : '481062',
-    'customTest' : '',
+    'customTest' : '482927',
     'customSSHTest' : '481063',
 
     'defaultUserrole' : 'Client Administrator',//for contact default system access
