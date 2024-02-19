@@ -6,14 +6,19 @@ export const stagedata = {
 
     'baseURL' : 'https://portalstage.catchpoint.com/ui/Symphony/',
     'bgpTest' : '187860',
-    'bgpTestIDWithoutAdvsSettings' : '187860',
+    'bgpStandardTest' : '437882',
+    'bgpBasicTest' : '437988',
 
     'customTestIDWithoutAdvsSettings' : '427543',
     'customTestIDWithAdvsSettings' : '427545',
+    'customTest' : '',
+    'customSSHTest' : '427543',
 
     'defaultUserrole' : 'Client Administrator',//for contact default system access
     'dnsTestIDWithoutAdvsSettings' : '427528', 
     'dnsTestIDWithAdvsSettings' : '427527', 
+    'dnsExperienceTest' : '437881',
+    'dnsDirectTest' : '427528',
 
     'endpointTracerouteTestID' : '5599',
     'endpointLocationID' : '4723',
@@ -25,6 +30,10 @@ export const stagedata = {
 
     'hTMLTestIDWithoutAdvsSettings' : '427520',
     'hTMLTestIDWithAdvsSettings' : '427519',
+    'htmlEmulatedTest' : '437884',
+    'htmlMobileTest' : '437886',
+    'htmlIETest' : '437885',
+    'htmlChrome' : '427520',
 
     'imapTestID' : '249840', // used for records automation
     'imapTestIDWithoutAdvsSettings' : '427551',
@@ -38,9 +47,10 @@ export const stagedata = {
     'ntpTestID' : '249659',// used for records automation
     'nodeToNodeTest' : '266461',
     'ntpTestIDWithoutAdvsSettings' : '427548',
-    'ntnTestIDWithoutAdvsSettings' : '427556',
+    'ntnTest' : '427556',
     'ntpTestIDWithAdvsSettings' : '427546',
-    'ntnTestIDWithAdvsSettings' : '427557',
+    'ntnWithTracerouteMonitorTest' : '437883',
+    'ntnWithPingMonitorTest' : '427556',
     
     'productForJunkItems' : '12511', //for creating folder and test for automation.
     'productForCopyTest' : 'ProductForCopyScenariosDoNotDelete',//product for copy test scenarios
@@ -51,6 +61,8 @@ export const stagedata = {
     'playwrightTestIDWithAdvsSettings' : '427513',
     'pupperteerTestIDWithAdvsSettings' : '427516',
     'pingTestIDWithAdvsSettings' : '427538',
+    'playwrightEdgeTest' : '437880',
+    'playwrightChromeTest' : '427514',
 
     'rumAppName' : 'Automation_WebApp_DoNotEdit',//used for automation
     'rumAppId' : '59',
@@ -77,6 +89,10 @@ export const stagedata = {
     'transactionTestIDWithAdvsSettings' : '427511',
     'transportTestIDWithAdvsSettings' : '427532',
     'tracerouteTestIDWithAdvsSettings' : '427540',
+    'transactionEmulatedTest' : '437877',
+    'transactionIETest' : '437878',
+    'transactionChromeTest' : '427510',
+    'transactionMobileTest' : '437879',
 
     'userRoleManageTests' : 'OnlyManageTestPermission',//user role with only test and test templates permission
 	'userRoleManageRumAndTestTemplate' : 'OnlyManageRumAndTestTemplatePermission',// userrole with only rum and test templates permission
@@ -98,14 +114,15 @@ export const stagedata = {
     'webTestIDWithAdvsSettings' : '427504',
     'webSocketTestIDWithAdvsSettings' : '427524',
     'wptFolderID' : '3597',
-    'webObject' : '432754',
-    'webEmulated' : '432755',
-    'webPlayback' : '432756',
-    'webMobilePlayback' : '432757',
-    'webIE' : '432758',
-    'webMobile' : '432759',
-    'webEdge' : '432760',
-    'webChrome' : '427524',
+    'webObjectTest' : '432754',
+    'webEmulatedTest' : '432755',
+    'webPlaybackTest' : '432756',
+    'webMobilePlaybackTest' : '432757',
+    'webIETest' : '432758',
+    'webMobileTest' : '432759',
+    'webEdgeTest' : '432760',
+    'webChromeTest' : '427524',
+    
 
     'zoneName' : 'UIAutomationDND',
 }

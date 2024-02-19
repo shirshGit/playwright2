@@ -229,7 +229,7 @@ test("SSLTestPointEst @Screenshot@PointEst", async ({ page, screenShotVerificati
 */
 test("BGPTestPointEst @Screenshot@PointEst", async ({ page, screenShotVerification, util, synCCPage, syntheticTestDetailPage }, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0];
-    let testID = await data.getValueOfTheParameter('bgpTestIDWithoutAdvsSettings');
+    let testID = await data.getValueOfTheParameter('bgpTest');
     await synCCPage.LoginToCCPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
     await syntheticTestDetailPage.clickOnPointBreakDown();
@@ -240,7 +240,7 @@ test("BGPTestPointEst @Screenshot@PointEst", async ({ page, screenShotVerificati
 */
 test("NTNTestPointEst @Screenshot@PointEst", async ({ page, screenShotVerification, util, synCCPage, syntheticTestDetailPage }, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0];
-    let testID = await data.getValueOfTheParameter('ntnTestIDWithoutAdvsSettings');
+    let testID = await data.getValueOfTheParameter('ntnTest');
     await synCCPage.LoginToCCPage()
     await synCCPage.navigateToTestPropertiesPage(testID);
     await syntheticTestDetailPage.clickOnPointBreakDown();
