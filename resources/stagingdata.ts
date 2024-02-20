@@ -92,7 +92,7 @@ export const stagedata = {
     'webTestWithRefrenceHostOnFailure' : '233620',
     'webTestWithWarningAndError' : '266287',
     'webTest40X50XMarkedPass' : '64429', //40X50XErrorMarked as successful
-    'webTestForSmoke':'276855',//used for smoke scenarios
+    'webTestForSmoke':'397186',//used for smoke scenarios
     'webTestIDWithoutAdvsSettings' : '427502',
     'webSocketTestIDWithoutAdvsSettings' : '427523',
     'webTestIDWithAdvsSettings' : '427504',
