@@ -54,7 +54,7 @@ export class SynControlCenterPage {
     private _moveButtonInHeaderSection = '//button[text()="Move"]';
     private _moveButtonInTestLocationBlade = '//button[@type="button"]//span[text()="Move"]';
     private _divisionLevelDDInRootSection = '//label[text()="Division"]/..//i[@data-icon-name="chevrondown"]';
-    private _clientLevelInDivisionDropDown = '//button[@title="Client Level"]';
+    private _selectedItemInDivisionDD = '//span[text()="Client Level"]';
     private _closeMasterBlade = '//div[@data-testid="cancel-icon"]';
     private _statusOfFirstItem = '//div[@data-automation-key="Status_4"]';
     private _getItemLocation = '(//span[contains(@class,"ms-Breadcrumb-item")])[2]/div';
@@ -238,7 +238,7 @@ export class SynControlCenterPage {
         return this._testsTreeSideSideNav;
     }
     public get selectedItemLocatorInDivDropDown(){
-        return this._clientLevelInDivisionDropDown;
+        return this._selectedItemInDivisionDD;
     }
     public get activeStatsLocatorOfFirstSearchedItem(){
         return this._activeStatusOfFirstSearchedItem;
