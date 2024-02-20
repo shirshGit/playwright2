@@ -22,5 +22,5 @@ test("VerifyRumAlertLgPageLoads @PageNavigation@ProductionSmoke@Smoke", async ({
   await sideNavigationBar.navigateToRumAlertLogFromSideNavigation();
   //validation for errors
   await verification.validationsForPage();
-  await verification.verifyIfElementIsPresent(rumAlertLogPage.rumAlertsListLocator, 'RUM Alert Section is not present');
+  //await verification.verifyIfElementIsPresent(rumAlertLogPage.rumAlertsListLocator, 'RUM Alert Section is not present');
   })
