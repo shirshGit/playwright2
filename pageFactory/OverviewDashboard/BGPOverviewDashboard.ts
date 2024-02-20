@@ -16,7 +16,7 @@ export class BGPOverviewDashboard extends DefaultDashboardPage{
     }
 
     //#region This region is for getter
-    private _RPKIStatus = '//div[text()="RPKI"]';
+    private _RPKIStatus = '//div[text()="RPKI Status"]';
     private _reachabilityField = '//div[@data-testid="data-cards"]//div[text()="% Reachability"]';
     private _hijacksField = '//div[@data-testid="data-cards"]//div[text()="# Hijacks"]';
     private _neighboringPeers = '//div[@data-testid="data-cards"]//div[text()="# Neighboring Peers"]';
