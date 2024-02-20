@@ -19,8 +19,8 @@ export class SyntheticProductDetailPage extends SyntheticDetailPage {
 
      private _productNameField = '#name-input';
      private _addNodeField = '//input[contains(@placeholder ,"Add Node")]';
-     private _testDataWebhookToogleButton = '//button[@id = "test-webhook-toggle"]';
-     private _newDataWebhookDropdown = '//span[text() = "New Webhook"]';
+     private _testDataWebhookToogleButton = '//button[@data-testid="test-webhook-toggle"]';
+     private _newDataWebhookDropdown = '//div[@data-testid="test-data-webhook"]//i[@data-icon-name="chevrondown"]//div';
      private _getSelectedWebhookText = '//div[@data-testid = "test-webhook-dropdown"]/span/div/span';
      private _addAdvanceSettingsTitle = '//button[@title = "Add Advanced Setting"]';
      
