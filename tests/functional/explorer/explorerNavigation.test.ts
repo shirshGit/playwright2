@@ -6,7 +6,7 @@ import { DataForEnv } from "@lib/DataForEnvironment";
 /*
     CP-26760 : Verify Source selection Blade display ALL Tab selected when its division wide
 */
-test("VerifyScoreSelectionBladeDisplayAllTabSelectedWhenItsDivisionWide @PageNavigation@Explorer", async({baseTestUtil,sideNavigationBar, verification, testUtility,dashboardBlade,customDBPage,explorerPage, util}) => {
+test("VerifyScoreSelectionBladeDisplayAllTabSelectedWhenItsDivisionWide @Explorer", async({baseTestUtil,sideNavigationBar, verification, testUtility,dashboardBlade,customDBPage,explorerPage, util}) => {
     let metrics : string[] = ['Test Time (ms)'];
     let vizName = 'Tile';
     let endpointName = 'Test';
@@ -40,7 +40,7 @@ test("VerifyScoreSelectionBladeDisplayAllTabSelectedWhenItsDivisionWide @PageNav
 /*
     CP-32443 : Verify Test name is displayed in explorer page source selector while navigating from control centre
 */
-test("VerifyTestNameIsDisplayedInExplorerPageSourceSelectorWhileNavigateFromCC @PageNavigation@Explorer", async({baseTestUtil,sideNavigationBar, verification, explorerSyntheticDetails,synCCPage, util,explorerPage}) => {
+test("VerifyTestNameIsDisplayedInExplorerPageSourceSelectorWhileNavigateFromCC @Explorer", async({baseTestUtil,sideNavigationBar, verification, explorerSyntheticDetails,synCCPage, util,explorerPage}) => {
     let data = new DataForEnv();
     let testID = await data.getValueOfTheParameter('transactionTestId');
     let testName = await data.getValueOfTheParameter('testName');
@@ -87,7 +87,7 @@ test("VerifyTestNameIsDisplayedInExplorerPageSourceSelectorWhileNavigateFromCC @
 /*
     CP-26758 : Verify User shouldn't seeing any banner message when navigate from CD to Explore
 */
-test.skip("VerifyUserShouldNotSeeAnyBannerMessageWhenNavigateFromCDToExplorer @PageNavigation@Explorer", async({baseTestUtil,sideNavigationBar, verification, dashboardBlade,testUtility,customDBPage,explorerPage, util}) => {
+test.skip("VerifyUserShouldNotSeeAnyBannerMessageWhenNavigateFromCDToExplorer @Explorer", async({baseTestUtil,sideNavigationBar, verification, dashboardBlade,testUtility,customDBPage,explorerPage, util}) => {
     let metrics : string[] = ['Test Time (ms)'];
     let otherFilters : string = 'City';
     let otherFilterOptions : string[] = ['Boston'];
@@ -150,7 +150,7 @@ test.skip("VerifyUserShouldNotSeeAnyBannerMessageWhenNavigateFromCDToExplorer @P
 /*
     CP-44783 : Scenario:Verify when navigation from dashboard to explorer time frame should be selected
 */
-test("VerifySelectedTimeFrameShouldPassWhenUserNavigateFromCDToExplorer @PageNavigation@Explorer", async({baseTestUtil,sideNavigationBar, verification, defaultDashboardPage,customDBPage,explorerPage, util}) => {
+test("VerifySelectedTimeFrameShouldPassWhenUserNavigateFromCDToExplorer @Explorer", async({baseTestUtil,sideNavigationBar, verification, defaultDashboardPage,customDBPage,explorerPage, util}) => {
     //validation for Three dot menu explorer navigation
     //get todays date
     let timeNow = await util.getUTCTime();
@@ -198,7 +198,7 @@ test("VerifySelectedTimeFrameShouldPassWhenUserNavigateFromCDToExplorer @PageNav
 /*
      CP-44784 : Scenario: Verify Navigation from test overview page to Explorer
 */
-test("VerifySelectedTimeFrameShouldPassWhenUserNavigateFromTestOVDBToExplorer @PageNavigation@Explorer", async({baseTestUtil,sideNavigationBar, verification, defaultDashboardPage,testOverviewDashboard,explorerPage, util}) => {
+test("VerifySelectedTimeFrameShouldPassWhenUserNavigateFromTestOVDBToExplorer @Explorer", async({baseTestUtil,sideNavigationBar, verification, defaultDashboardPage,testOverviewDashboard,explorerPage, util}) => {
     //get todays date
     let timeNow = await util.getUTCTime();
     let date = await util.getDate(0,'mmm dd yyyy');
@@ -246,7 +246,7 @@ test("VerifySelectedTimeFrameShouldPassWhenUserNavigateFromTestOVDBToExplorer @P
 /*
     CP-27083 : Correct error code filter should pass to explorer page from overview pages
 */
-test("VerifyCorrectErrorCodeFilterShouldPassToExplorerPageFromOVDBPage @PageNavigation@Explorer", async({baseTestUtil,sideNavigationBar, verification, testOverviewDashboard,explorerPage, util}) => {
+test("VerifyCorrectErrorCodeFilterShouldPassToExplorerPageFromOVDBPage @Explorer", async({baseTestUtil,sideNavigationBar, verification, testOverviewDashboard,explorerPage, util}) => {
     let errorName = await testOverviewDashboard.getTextOfElement(testOverviewDashboard.errorWidgetErrorLocator(1));
     await testOverviewDashboard.clickOnErrorInErrorWidget(1);
     await util.delay(4000);
