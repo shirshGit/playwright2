@@ -37,7 +37,8 @@ export class SyntheticRecordsPage {
     private _recordFirstRow = '//div[contains(@class,"RecordsTable_table")]//div[@data-list-index="0"]';
     private _errorMessageFieldForDatePoint = '//div[contains(@class,"ms-MessageBar-content")]'
     private _errorCodeLocator = '//div[contains(@class,"GanttChart_numericCell")]'
-
+    private _pointEstimationInPropertiesPageLoc = '//div[contains(@class,"PointsEstimation_number_")]'
+    
     public get waterFallTabLocator() {
         return this._waterFallTab;
     }
@@ -140,6 +141,9 @@ export class SyntheticRecordsPage {
     public get errorCodeLocator(){
         return this._errorCodeLocator
     }
+    public get pointEstimationLocator(){
+        return this._pointEstimationInPropertiesPageLoc;
+    }
 
 
     //#endregion
@@ -216,6 +220,10 @@ export class SyntheticRecordsPage {
         let text = await webActions.getElementText(loc);
         return text;
     }
+    async waitForElement(locator:string){
+        await webActions.waitForElementAttached(locator);
+    }
+
 
    
 }

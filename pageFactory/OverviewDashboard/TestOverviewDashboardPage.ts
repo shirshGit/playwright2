@@ -2,8 +2,11 @@ import { WebActions } from "@lib/WebActions";
 import { BrowserContext, Page } from "@playwright/test";
 import { Utility } from "@util/Utility";
 import { DefaultDashboardPage } from "./DefaultDashboardPage";
+import { LoginPage } from "@pageobjects/Login/LoginPage";
+import { DataForEnv } from "@lib/DataForEnvironment";
 let webActions: WebActions;
 let util: Utility
+let login : LoginPage;
 
 export class TestOverviewDashboard extends DefaultDashboardPage{
 
@@ -12,6 +15,7 @@ export class TestOverviewDashboard extends DefaultDashboardPage{
         super(page);
         webActions = new WebActions(this.page);
         util = new Utility();
+        login = new LoginPage(this.page);
     }
 
     //#region This region is for getter
@@ -26,8 +30,8 @@ export class TestOverviewDashboard extends DefaultDashboardPage{
     private _firstSearchedItemCheckBox = '(//div[contains(@class,"fabricIcons_tableCheckMark_")])[2]';
     private _allItemCheckBox = '(//div[contains(@class,"fabricIcons_tableCheckMark_")])[1]'
     private _applyButton = '//button[text()="Apply"]';
-    private _tileWidgetTimeFrameDD = '(//button[@type="button"][normalize-space()="Last Hour"])[2]'
-
+    private _tileWidgetTimeFrameDD = '(//button[@type="button"][normalize-space()="Last Hour"])[2]';
+    private _propertiesOptionInTileWidget = '//div[contains(@class,"Link_testProperties_")]';
     public get tabLocator() {
         return (text: string) => { return `(//span[text()="${text}"])[1]` }
     }
@@ -41,7 +45,7 @@ export class TestOverviewDashboard extends DefaultDashboardPage{
         return (text: string) => { return `//span[text()="${text}"]` }
     }
     public get tileWidgetTestNameLocator() {
-        return (text: number) => { return `(//p[contains(@class,"Tiles_name_")])[${text}]` }
+        return (text: number) => { return `(//header[contains(@class,'Tiles_tooltipHeader_')]//a)[${text}]` }
     }
     public get tileWidgetOptionLocator() {
         return (text: string) => { return `//div[contains(text(),'${text}')]` }
@@ -88,6 +92,13 @@ export class TestOverviewDashboard extends DefaultDashboardPage{
     public get tileWidgetTimeFrameDDLocator() {
         return this._tileWidgetTimeFrameDD;
     }
+    public get tileWidgetLocator(){
+        return (text:number) => {return `(//ul[contains(@class,"Tiles_tiles_")]//li//a)[${text}]`}
+    }
+    public get propertiesOptionInTileWiget(){
+        return this._propertiesOptionInTileWidget
+    }
+    
    
     //#endregion
 
@@ -102,11 +113,12 @@ export class TestOverviewDashboard extends DefaultDashboardPage{
     }
 
     async hoverOnTileWidgetTestName(tileNum: number) {
-        await webActions.hoverOnElement(this.tileWidgetTestNameLocator(tileNum));
+        await webActions.hoverOnElement(this.tileWidgetLocator(tileNum));
     }
 
-    async clickOnTileWidgetOptions(optionName:string){
-        await webActions.clickElement(this.tileWidgetOptionLocator(optionName))
+    async clickOnTileWidgetOptions(optionLoc:string){
+        await webActions.clickElement(optionLoc)
+        await webActions.waitForElementAttached(this.pointEstimationLocator)
     }
     async getTileWidgetTestName(tileNum: number){
         return await webActions.getElementText(this.tileWidgetTestNameLocator(tileNum));
@@ -151,6 +163,18 @@ export class TestOverviewDashboard extends DefaultDashboardPage{
     async selectTimeFrameForTileTestWidget(timeframe: string) {
         await webActions.clickElement(this.tileWidgetTimeFrameDDLocator);
         await webActions.clickElement(this.commoNLocator(timeframe))
+    }
+    async LoginToTestDBPage() {
+        this.navigateToTestDBPageByURL()
+        await login.enterLoginCredential();
+        await webActions.waitForElementAttached(this.nodePerformanceLocator)
+        
+    }
+    async navigateToTestDBPageByURL() {
+        let data = new DataForEnv();
+        let baseURL = await data.getValueOfTheParameter('baseURL');
+        await webActions.navigateToURL(baseURL + 'Dashboard/Test');
+        
     }
 
 

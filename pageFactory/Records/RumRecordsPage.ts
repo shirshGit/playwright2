@@ -20,7 +20,7 @@ export class RumRecordsPage {
     private _zoneFilterDD = '//label[text()="Zone"]/..//i[@data-icon-name="chevron"]';
     private _testInSourceSelector = '//div[@data-testid="custom-picker-pill-container"]//span';
     private _appInSourceSelector = '//div[contains(@class,"Pill_pillContent")]//span';
-   
+    private _rumGanttChart = '//div[contains(@class,"RumGanttChartstyles__GanttContainer-")]';
 
     
 
@@ -40,6 +40,9 @@ export class RumRecordsPage {
     public get appInSourceSelectorLocator() {
         return this._appInSourceSelector;
     }
+    public get ganttChartLocator() {
+        return this._rumGanttChart;
+    }
 
 
     //#endregion
@@ -50,6 +53,9 @@ export class RumRecordsPage {
     }
     async getUrl() {
         return await webActions.getCurrentPageUrl();
+    }
+    async waitForElement(locator:string){
+        await webActions.waitForElementAttached(locator)
     }
 
    

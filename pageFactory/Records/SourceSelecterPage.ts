@@ -23,6 +23,7 @@ export class SourceSelectorPage extends SyntheticRecordsPage {
     private _sbPillInSourceSelector = '//div[contains(@class,"AutoCompletePillPicker_pillWrapper")]'
     private _scatterplotSection = '//div[contains(@class,"SyntheticRecordstyles__ScatterPlotCont-")]'
     private _cardDataSection = '//div[contains(@class,"SyntheticRecordstyles__DataSection-")]'
+    
     public get searchBoxLocator() {
         return this._searchBoxForTest;
     }
@@ -76,7 +77,6 @@ export class SourceSelectorPage extends SyntheticRecordsPage {
     async clickOnFirstSearchedAPPInSelectorPage(itemId: string) {
         await this.searchApp(itemId);
         await webActions.clickElementJS(this.firstSearchedAppCheckBoxLocator);
-        
     }
 
     async searchTest(item: string) {

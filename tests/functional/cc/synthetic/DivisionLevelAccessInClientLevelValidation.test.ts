@@ -10,7 +10,7 @@ test("VerifyClientLevelShouldBeSelectedByDefaultUnderDivisionDropDown @Synthetic
     //login to CC page[for saving login time we are directly login to CC page]
     await synCCPage.LoginToCCPage();
     //validation for division drop down 
-    await page.locator(synCCPage.selectedItemLocatorInDivDropDown).isVisible();
+    await verification.verifyIfElementIsPresent(synCCPage.selectedItemLocatorInDivDropDown,'Division level DD is not present.');
     
 })
 

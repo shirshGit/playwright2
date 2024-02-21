@@ -28,8 +28,8 @@ export class SourceSelectorSmartboard extends SyntheticSmartboardPage{
     private _endpointTestTab = '//li[text()="Endpoint Tests"]';
     private _sbPillInSourceSelector = '//div[contains(@class,"AutoCompletePillPicker_pillWrapper")]'
     private _nodeTableInSourceSelector = '//div[@id="node-tree-blade-pivot"]'
-    private _tableInSourceSelector = '//div[@class="ms-List"]'
-
+    private _tableInSourceSelector = '//div[@class="ms-List"]';
+    
     public get appSearchBox() {
         return this._appSearchBox;
     }
@@ -89,7 +89,7 @@ export class SourceSelectorSmartboard extends SyntheticSmartboardPage{
     public get tableInSourceSelector(){
         return this._tableInSourceSelector;
     }
-
+    
 
   
     //#endregion
@@ -105,6 +105,7 @@ export class SourceSelectorSmartboard extends SyntheticSmartboardPage{
             xpath = this.firstRowSearchCheckBoxInSelectorPage1;
         }
         await webActions.clickElement(xpath);
+        await webActions.waitForElementAttached(this.timeLineGraph);
     }
 
     async searchItem(item: string, parentName:string) {
