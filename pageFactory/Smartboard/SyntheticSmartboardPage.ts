@@ -1,9 +1,13 @@
 import { WebActions } from "@lib/WebActions"
 import { BrowserContext, Page } from "@playwright/test"
 import { Utility } from "@util/Utility"
+import { LoginPageObjects } from "@objects/LoginPageObjects";
+import { LoginPage } from "@pageobjects/Login/LoginPage";
+import { DataForEnv } from "@lib/DataForEnvironment";
 
 let webActions: WebActions
-let util: Utility
+let util: Utility;
+let login : LoginPage;
 
 export class SyntheticSmartboardPage {
     readonly page: Page
@@ -11,7 +15,8 @@ export class SyntheticSmartboardPage {
     constructor(page: Page) {
         this.page = page
         webActions = new WebActions(this.page)
-        util = new Utility()
+        util = new Utility();
+        login = new LoginPage(this.page);
     }
     //#region This region is for getter
 
@@ -33,7 +38,9 @@ export class SyntheticSmartboardPage {
     private _getTestNameFromSourceSelector = '//div[contains(@class,"Pill_pillContent_")]'
     private _createdLinksTextInShareExplorer = '//span[text()="Created Links"]'
     private _LastSixHourTimeFrame = '//input[@value="Last 6 Hours"]'
-
+    private _pointEstimationInPropertiesPageLoc = '//div[contains(@class,"PointsEstimation_number_")]'
+    private _sourceBladeWrapper = '//div[contains(@class,"SourceSelectorBlade_tabWrapper_")]';
+    private  _timeLineGraph= '//div[@data-testid="smartboard-timeline"]'
 
     public get commonLocator() {
         return (text: string) => { return `//span[text()="${text}"]` }
@@ -99,6 +106,15 @@ export class SyntheticSmartboardPage {
     public get lastSixHourTimeFrame() {
         return this._LastSixHourTimeFrame
     }
+    public get pointEstimationLocator(){
+        return this._pointEstimationInPropertiesPageLoc;
+    }
+    public get sourceListLocator(){
+        return this._sourceBladeWrapper;
+    }
+    public get timeLineGraph(){
+        return this._timeLineGraph
+    }
 
 
 
@@ -142,7 +158,18 @@ export class SyntheticSmartboardPage {
     }
     async getElementText(locator:string){
         let text = await webActions.getElementText(locator)
-        return text
+        return text;
+    }
+    async LoginToTestSBPage() {
+        this.navigateToTestSBPageByURL()
+        await login.enterLoginCredential();
+        await webActions.waitForElementAttached(this.sourceListLocator);
+    }
+    async navigateToTestSBPageByURL() {
+        let data = new DataForEnv();
+        let baseURL = await data.getValueOfTheParameter('baseURL');
+        await webActions.navigateToURL(baseURL + 'Smartboard/Test');
+        
     }
     
 

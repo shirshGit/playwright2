@@ -1,11 +1,12 @@
 import { WebActions } from "@lib/WebActions";
 import { Page } from "@playwright/test";
 import { Utility } from "@util/Utility";
+import { ExplorerPage } from "./ExplorerPage";
 
 let webActions: WebActions;
 let util: Utility
 
-export class ExplorerSyntheticDetails {
+export class ExplorerSyntheticDetails{
     readonly page: Page;
 
     constructor(page: Page) {
@@ -22,7 +23,9 @@ export class ExplorerSyntheticDetails {
     private _testTimeMetricsValue = '//div[@data-automation-key="Avg. Test Time (ms)_2"]';
     private _availabilityMetricsValue = '//div[@data-automation-key="% Availability_3"]';
     private _last24HourTimeFrame = '//input[@value="Last 24 Hours"]';
-
+    private _syntheticGraphLocator = '//div[contains(@class,"Explorer_charting_")]';
+    private _last6HourTimeFrame = '//input[@value="Last 6 Hours"]';
+    private _pointEstimationLoc = '//div[contains(@class,"PointsEstimation_number_")]'
     public get runMetricsTextLocator() {
         return this._runMetricsText;
     }
@@ -44,10 +47,21 @@ export class ExplorerSyntheticDetails {
     public get last24HourTimeFrameLocator(){
         return this._last24HourTimeFrame;
     }
+    public get last6HourTimeFrameLocator(){
+        return this._last6HourTimeFrame;
+    }
 
     public get summaryTabMetricsLocator(){
         return (text:string) => { return `//span[text()="${text}"]`}
     }
-
-     //#endregion
+    public get syntheticGraphLocator(){
+        return this._syntheticGraphLocator;
+    }
+    public get pointEstimationLocator(){
+        return this._pointEstimationLoc
+    }
+    //#endregion
+    async waitForElement(locator:string){
+        await webActions.waitForElementAttached(locator);
+    }
 }

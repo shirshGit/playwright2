@@ -566,6 +566,9 @@ export class SynControlCenterPage {
     async clickOnRUMFromEndpointPage(){
         await webActions.clickElement(this.rumTabInEndpointPageLocator);
    }
+   async waitForElement(locator:string){
+    await webActions.waitForElementAttached(locator);
+   }
 
    
 

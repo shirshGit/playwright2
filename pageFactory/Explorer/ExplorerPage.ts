@@ -1,9 +1,13 @@
 import { WebActions } from "@lib/WebActions";
 import { BrowserContext, Page } from "@playwright/test";
+import { LoginPageObjects } from "@objects/LoginPageObjects";
+import { LoginPage } from "@pageobjects/Login/LoginPage";
+import { DataForEnv } from "@lib/DataForEnvironment";
 import { Utility } from "@util/Utility";
 
 let webActions: WebActions;
-let util: Utility
+let util: Utility;
+let login : LoginPage;
 
 export class ExplorerPage {
     readonly page: Page;
@@ -12,6 +16,7 @@ export class ExplorerPage {
         this.page = page;
         webActions = new WebActions(this.page);
         util = new Utility();
+        login = new LoginPage(this.page);
     }
     //#region This region is for getter
 
@@ -30,7 +35,8 @@ export class ExplorerPage {
     private _filterNameLocator = '//div[contains(@class,"FilterPillsContainer_container_")]'
     private _filterValueLocator =  '//div[contains(@class,"FilterPillsContainer_valueText_")]'
     private _sourceTab = '//button[text()="Source"]'
-    private _getSelectedTimeFrame = '//input[@value="Today"]'
+    private _getSelectedTimeFrame = '//input[@value="Today"]';
+    private _synSourceList = '//div[contains(@class,"SyntheticSourceSelectorTreeTable_container_")]';
 
     public get errorTabLocator() {
         return this._errorTab;
@@ -106,6 +112,9 @@ export class ExplorerPage {
     }
     public get getSelectedTimeFrameLocator(){
         return this._getSelectedTimeFrame
+    }
+    public get synSourceListInSourcePage(){
+        return this._synSourceList;
     }
 
 
@@ -183,4 +192,19 @@ export class ExplorerPage {
     async getAttributeProperty(locator:string,attributeName:string){
         return await webActions.getElementAttributeValue(locator,attributeName)
     }
+    async LoginToExplorerPage() {
+        this.navigateToExplorerPageByURL()
+        await login.enterLoginCredential();
+        await webActions.waitForElementAttached(this.synSourceListInSourcePage);
+    }
+    async navigateToExplorerPageByURL() {
+        let data = new DataForEnv();
+        let baseURL = await data.getValueOfTheParameter('baseURL');
+        await webActions.navigateToURL(baseURL + 'Explorer');
+        
+    }
+    async waitForElement(locator:string){
+        await webActions.waitForElementAttached(locator);
+    }
+
 }

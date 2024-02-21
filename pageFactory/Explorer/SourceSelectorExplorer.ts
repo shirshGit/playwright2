@@ -23,6 +23,7 @@ export class SourceSelectorExplorer extends ExplorerPage{
     private _allCheckBoxForApp = '//div[@data-item-index="0"]//i[@data-icon-name="CircleRing"]';
     private _explorerPillInSourceSelector = '//div[@data-testid="custom-picker-pill-container"]'
     private _searchBoxForRum = '//input[@id="rum-source-selector-search-box"]';
+    private _graphSection = '//div[contains(@class,"VisualizationChartContainer_cont_")]';
     
     public get testSearchBoxLocator() {
         return this._searchBoxForTest;
@@ -59,6 +60,9 @@ export class SourceSelectorExplorer extends ExplorerPage{
     public get pillItem(){
         return this._explorerPillInSourceSelector;
     }
+    public get graphSection(){
+        return this._graphSection
+    }
 
    
 
@@ -72,6 +76,7 @@ export class SourceSelectorExplorer extends ExplorerPage{
         await util.delay(3000);
         await webActions.clickElement(this.firstSearchedItemLocator);
         await webActions.clickElement(this.selectButtonLocator);
+        await webActions.waitForElementAttached(this.graphSection)
     }
 
     async clickOnFirstSearchAppInSelectorPage(itemId: string) {
