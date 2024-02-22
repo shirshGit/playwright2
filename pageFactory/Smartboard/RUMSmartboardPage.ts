@@ -21,7 +21,7 @@ export class RUMSmartboardPage {
     private _filterButton = '//button[text()="Filters"]';
     private _responseMetricsValue = '((//div[text()="Response (ms)"])[1]/..//div)[2]';
     private _domInteractiveMetricsValue = '((//div[text()="DOM Interactive (ms)"])[1]/..//div)[2]';
-
+    private _timeLineGraph = '//div[contains(@class,"Timeline_cont_")]';
     public get pageViewsMetricsValueLocator(){
         return this._pageViewsMetricsValue;
     }
@@ -51,10 +51,16 @@ export class RUMSmartboardPage {
     public get commoNLocator(){
         return (text:string) => { return `(//div[text()="${text}"])[1]`}
     }
+    public get timeLineGraphLocator(){
+        return this._timeLineGraph;
+    }
 
    
     //#endregion
-
+     
+    async waitForElement(locator:string){
+        await webActions.waitForElementAttached(locator);
+    }
     
    
     

@@ -171,6 +171,9 @@ export class SyntheticSmartboardPage {
         await webActions.navigateToURL(baseURL + 'Smartboard/Test');
         
     }
+    async waitForElement(locator:string){
+        await webActions.waitForElementAttached(locator);
+    }
     
 
 

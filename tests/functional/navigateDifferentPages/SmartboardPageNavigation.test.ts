@@ -16,6 +16,7 @@ test("VerifySmartboardTestLoads @PageNavigation@ProductionSmoke@Smoke", async ({
     await verification.verifyIfElementIsPresent(sourceSelectorSmartboard.testTabLocator, 'Test Tab is not present in source selector');
     //select test
     await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(transactionTestID,'Tests');
+    await syntheticSmartboardPage.waitForElement(syntheticSmartboardPage.timeLineGraph);
     //validation for errors
     await verification.validationsForPage();
     //validation for time line metrics
@@ -50,7 +51,6 @@ test.skip("VerifySmartboardNodeLoads @PageNavigation@ProductionSmoke@Smoke", asy
     await instantTestHistoryPage.LoginToInstantTestHistoryPage();
     //navigate to explorer page
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();
-    await util.delay(2000);
     //validation for errors
     await verification.validationsForPage();
     await verification.verifyIfElementIsPresent(sourceSelectorSmartboard.nodeTabLocator, 'node Tab is not present in source selector');
@@ -62,6 +62,7 @@ test.skip("VerifySmartboardNodeLoads @PageNavigation@ProductionSmoke@Smoke", asy
     await util.delay(4000);
     //select test
     await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(nodeName,'Nodes');
+    await nodeSmartboardPage.waitForElement(nodeSmartboardPage.timeLineGraph);
     //validation for errors
     await verification.validationsForPage();
     //validation for metrics
@@ -90,6 +91,7 @@ test("VerifySmartboardRUMLoads @PageNavigation@ProductionSmoke@Smoke", async ({ 
     await sourceSelectorSmartboard.clickOnTabInSourceSelector("My Apps",sourceSelectorSmartboard.tableInSourceSelector);
     //select test
     await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(appName,'My Apps');
+    await rumSmartboardPage.waitForElement(rumSmartboardPage.timeLineGraphLocator);
     //validation for errors
     await verification.validationsForPage();
     //validation for time line metrics and filters
@@ -119,6 +121,7 @@ test.skip("VerifyPeerInfoInBGPSB @PageNavigation@ProductionSmoke@Smoke", async (
     await verification.verifyIfElementIsPresent(sourceSelectorSmartboard.testTabLocator, 'Test Tab is not present in source selector');
     //select test
     await sourceSelectorSmartboard.clickOnFirstSearchedItemInSelectorPage(bgpTestID,'Tests');
+    await bgpSmartboardPage.waitForElement(bgpSmartboardPage.timeLineGraph);
     //validation 
     await verification.verifyIfElementIsPresent(bgpSmartboardPage.selectedTimeInTimeFrameLocator, "24 hour time frame is not selected");
     await verification.verifyIfElementIsPresent(bgpSmartboardPage.peerInfoWidgetLocator, "peer info widget is not present")

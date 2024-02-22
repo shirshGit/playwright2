@@ -21,6 +21,7 @@ export class BGPSmartboardPage {
     private _peerCountInFilterBlade = '(//div[contains(@class,"ListViewItem_bubble_")])[1]//span';
     private _isCheckPeerCount = '//div[contains(@class,"ms-Check is-checked")]';
     private _filterTextInFilterPage = '(//span[text()="Filters"])[2]';
+    private  _timeLineGraph= '//div[contains(@class,"BGPTimelineQuerystyles__LineBarContainer-sc-")]';
 
     public get selectedTimeInTimeFrameLocator(){
         return this._selectedTimeInTimeFrame;
@@ -37,7 +38,9 @@ export class BGPSmartboardPage {
     public get filterTextLocator(){
         return this._filterTextInFilterPage;
     }
-
+    public get timeLineGraph(){
+        return this._timeLineGraph
+    }
  
    
     //#endregion
@@ -70,6 +73,9 @@ export class BGPSmartboardPage {
               twoBoundingBox.y + twoBoundingBox.height / 2,)
             await this.page.mouse.up()
           }
+    }
+    async waitForElement(locator:string){
+        await webActions.waitForElementAttached(locator);
     }
 
     
