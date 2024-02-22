@@ -105,7 +105,6 @@ export class SourceSelectorSmartboard extends SyntheticSmartboardPage{
             xpath = this.firstRowSearchCheckBoxInSelectorPage1;
         }
         await webActions.clickElement(xpath);
-        await webActions.waitForElementAttached(this.timeLineGraph);
     }
 
     async searchItem(item: string, parentName:string) {
@@ -138,6 +137,7 @@ export class SourceSelectorSmartboard extends SyntheticSmartboardPage{
     async selectTabUnderNodes(item : string){
         await webActions.clickElement(this.commonLocator(item));
     }
+
     
 
     
