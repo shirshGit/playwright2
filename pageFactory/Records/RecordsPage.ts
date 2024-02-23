@@ -1,9 +1,12 @@
 import { WebActions } from "@lib/WebActions";
 import { Utility } from "@util/Utility";
 import { BrowserContext, Page } from "@playwright/test";
+import { LoginPage } from "@pageobjects/Login/LoginPage";
+import { DataForEnv } from "@lib/DataForEnvironment";
 
 let webActions: WebActions;
-let util: Utility
+let util: Utility;
+let login : LoginPage;
 
 export class RecordsPage {
     readonly page: Page;
@@ -12,6 +15,7 @@ export class RecordsPage {
         this.page = page;
         webActions = new WebActions(this.page);
         util = new Utility();
+        login = new LoginPage(this.page);
     }
     //#region This region is for getter
 
@@ -65,6 +69,8 @@ export class RecordsPage {
     private _allFilterUnderFileTypeDD = '(//span[text()="All"])[4]';
     private _allFilterUnderRequestDD = '(//span[text()="All"])[3]';
     private _failedRequestFilter = '//span[text()="Failed Requests"]'
+    private _synRecordList = '//div[contains(@class,"RecordSourceSelectorBlade_tabWrapper_")]';
+    private _pointEstimationInPropertiesPageLoc = '//div[contains(@class,"PointsEstimation_number_")]'
     
 
     public get waterFallTabLocator() {
@@ -351,6 +357,12 @@ export class RecordsPage {
     }
     public get failedRequestFilterUnderRequestDDLocator(){
         return this._failedRequestFilter
+    }
+    public get synRecordList(){
+        return this._synRecordList
+    }
+    public get pointEstimationLocator(){
+        return this._pointEstimationInPropertiesPageLoc;
     }
 
     //#endregion
@@ -692,6 +704,19 @@ export class RecordsPage {
     async selectRequestFilter(filterType:string,filterName:string){
         await this.clickOnFilterDropDown(filterType);
         await webActions.clickElement(this.getFileTypeFilterLocator(filterName));
+    }
+    async LoginToRecordsPage() {
+        this.navigateToRecordsPageByURL()
+        await login.enterLoginCredential();
+        await webActions.waitForElementAttached(this.synRecordList);
+    }
+    async navigateToRecordsPageByURL() {
+        let data = new DataForEnv();
+        let baseURL = await data.getValueOfTheParameter('baseURL');
+        await webActions.navigateToURL(baseURL + 'Record/Test');
+    }
+    async waitForElement(locator:string){
+        await webActions.waitForElementAttached(locator);
     }
 
 }

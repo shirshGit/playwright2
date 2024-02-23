@@ -6,14 +6,14 @@ import { DataForEnv } from "@lib/DataForEnvironment";
     CP-8430 : Verify tests are moved
 */
 
-test("VerifyMoveTestInOtherLocation @SyntheticControlCenter@ControlCenter", async({baseTestUtil, syntheticTestDetailPage,page, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
+test("VerifyMoveTestInOtherLocation @SyntheticControlCenter@ControlCenter", async({syntheticTestDetailPage,page, sideNavigationBar,util,testUtility,synCCPage, verification,contactsPage}) => {
     let data = new DataForEnv();
     let prodForTestCreate = await data.getValueOfTheParameter('productForJunkItems');
     let prodForMoveTest = await data.getValueOfTheParameter('productForCopyTest');
     let testName = await testUtility.getTestName();
     let url = await data.getValueOfTheParameter('url');
-    //navigate to cc test page
-    await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
+    //login to CC page[for saving login time we are directly login to CC page]
+    await synCCPage.LoginToCCPage();
     //create web test
     await syntheticTestDetailPage.createWebChromeTests(prodForTestCreate, testName, url);
     //save test

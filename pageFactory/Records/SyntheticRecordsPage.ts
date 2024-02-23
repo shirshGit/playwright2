@@ -28,7 +28,7 @@ export class SyntheticRecordsPage {
     private _nodeIP = '//span[text()="Node IP"]/..//span[2]';
     private _firstDataPoint = '//*[name()="svg"][1]/*[name()="g"][1]/*[name()="g"][3]/*[name()="g"][2]/*[name()="circle"][1]';
     private _monitor = '//span[text()="Monitor"]/..//span[2]';
-    private _searchBoxOfGanttChart = '(//input[@id="fabric-search-box"])[2]';
+    private _searchBoxOfGanttChart = '//input[@id="fabric-search-box"]';
     private _wiredRequestMetrics = '//div[text()="# Wire Requests"]';
     private _hostMetrics = '//div[text()="# Hosts"]';
     private _requestFilterDD = '//label[text()="Request"]/..//i[@data-icon-name="chevron"]';
@@ -37,7 +37,8 @@ export class SyntheticRecordsPage {
     private _recordFirstRow = '//div[contains(@class,"RecordsTable_table")]//div[@data-list-index="0"]';
     private _errorMessageFieldForDatePoint = '//div[contains(@class,"ms-MessageBar-content")]'
     private _errorCodeLocator = '//div[contains(@class,"GanttChart_numericCell")]'
-
+    private _pointEstimationInPropertiesPageLoc = '//div[contains(@class,"PointsEstimation_number_")]'
+    
     public get waterFallTabLocator() {
         return this._waterFallTab;
     }
@@ -140,6 +141,9 @@ export class SyntheticRecordsPage {
     public get errorCodeLocator(){
         return this._errorCodeLocator
     }
+    public get pointEstimationLocator(){
+        return this._pointEstimationInPropertiesPageLoc;
+    }
 
 
     //#endregion
@@ -216,6 +220,10 @@ export class SyntheticRecordsPage {
         let text = await webActions.getElementText(loc);
         return text;
     }
+    async waitForElement(locator:string){
+        await webActions.waitForElementAttached(locator);
+    }
+
 
    
 }

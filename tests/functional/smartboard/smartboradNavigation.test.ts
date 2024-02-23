@@ -7,7 +7,7 @@ import { ExplorerPage } from "@pageobjects/Explorer/ExplorerPage";
 /*
     CP-40695 : Verify smartboard option is displayed in left navigation 
 */
-test("VerifySmartboardOptionIsDisplayedInLeftNavigation @PageNavigation@CustomDashboard", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,syntheticSmartboardPage, util}) => {
+test("VerifySmartboardOptionIsDisplayedInLeftNavigation @Smartboard", async({sideNavigationBar, verification, sourceSelectorSmartboard,syntheticSmartboardPage, util}) => {
     //verification for home icon
     await verification.verifyIfElementIsPresent(sideNavigationBar.sideNavHome,'home section icon is not present');
     //click on home Icon
@@ -20,7 +20,7 @@ test("VerifySmartboardOptionIsDisplayedInLeftNavigation @PageNavigation@CustomDa
 /*
     CP-40696 : Verify smartboard is opened when clicked on smartboard option in left navigation 
 */
-test("VerifySmartboardOpenWhenClickedOnSBOptionInInLeftNavigation @PageNavigation@CustomDashboard@CustomDashboard", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorSmartboard,syntheticSmartboardPage, util}) => {
+test("VerifySmartboardOpenWhenClickedOnSBOptionInInLeftNavigation @Smartboard@CustomDashboard", async({sideNavigationBar, verification, sourceSelectorSmartboard,syntheticSmartboardPage, util}) => {
     //navigate to smartboard by left navigation
     await sideNavigationBar.navigateToSmartboardFromSideNavigation();
     //validation for smartboard page
@@ -33,7 +33,7 @@ test("VerifySmartboardOpenWhenClickedOnSBOptionInInLeftNavigation @PageNavigatio
 /*
     CP-41008 : Verify applied other filter is passed as filter in smartboard when navigated from CD
 */
-test("VerifyAppliedFilterIsPassedIsAsFilterInSB @PageNavigation@CustomDashboard", async({baseTestUtil, verification, util,testUtility,customDBPage,syntheticSmartboardPage,dashboardBlade,sideNavigationBar}) => {
+test("VerifyAppliedFilterIsPassedIsAsFilterInSB @Smartboard", async({ verification, util,testUtility,customDBPage,syntheticSmartboardPage,dashboardBlade,sideNavigationBar}) => {
     let metrics : string[] = ['Test Time (ms)'];
     let otherFilters : string = 'Country';
     let otherFilterOptions : string[] = ['United State'];
@@ -67,7 +67,7 @@ test("VerifyAppliedFilterIsPassedIsAsFilterInSB @PageNavigation@CustomDashboard"
 /*
     CP-41009 : Verify applied filter is passed as filter in smartboard when navigated from test overview dashboard
 */
-test("VerifyAppliedFilterIsPassedIsAsFilterInSBWhenNavigateFromTestOVDB @PageNavigation@CustomDashboard", async({baseTestUtil,sideNavigationBar, verification, defaultDashboardPage, util,testOverviewDashboard}) => {
+test("VerifyAppliedFilterIsPassedIsAsFilterInSBWhenNavigateFromTestOVDB @Smartboard", async({sideNavigationBar, verification, defaultDashboardPage, util,testOverviewDashboard}) => {
     //click on test over view dashboard
     await defaultDashboardPage.clickOnTab('Tests');
     await util.delay(3000);
@@ -93,7 +93,7 @@ test("VerifyAppliedFilterIsPassedIsAsFilterInSBWhenNavigateFromTestOVDB @PageNav
 /*
     CP-41010 :Verify when clicked on smartboard in table viz in explorer then able to navigate to smartboard 
 */
-test("VerifyClickTableVizInExplorerNavigateToSB @PageNavigation@CustomDashboard", async({baseTestUtil,sideNavigationBar, verification, sourceSelectorExplorer, util,explorerPage,syntheticSmartboardPage,context}) => {
+test("VerifyClickTableVizInExplorerNavigateToSB @Smartboard", async({sideNavigationBar, verification, sourceSelectorExplorer, util,explorerPage,syntheticSmartboardPage,context}) => {
     //navigate to explorer page
     await sideNavigationBar.navigateToExplorerFromSideNavigation();
     let data = new DataForEnv();
@@ -117,7 +117,7 @@ test("VerifyClickTableVizInExplorerNavigateToSB @PageNavigation@CustomDashboard"
 /*
     CP-41011 : Verify gauge tile navigation to smartboard 
 */
-test("VerifyGaugeTileNavigationToSB @PageNavigation@CustomDashboard", async({baseTestUtil,sideNavigationBar, verification, defaultDashboardPage,synWidgetPropertyPage, util,testUtility,customDBPage,syntheticSmartboardPage,dashboardBlade}) => {
+test("VerifyGaugeTileNavigationToSB @Smartboard", async({sideNavigationBar, verification, defaultDashboardPage,synWidgetPropertyPage, util,testUtility,customDBPage,syntheticSmartboardPage,dashboardBlade}) => {
     let metrics : string[] = ['Experience Score'];
     let otherFilters : string = null
     let otherFilterOptions : string[] = null
@@ -149,7 +149,7 @@ test("VerifyGaugeTileNavigationToSB @PageNavigation@CustomDashboard", async({bas
 /*
     CP-41012 : Verify gauge tile navigation to smartboard BY 3DOT MENU
 */
-test("VerifyGuageTileNavigationToSBByThreeDotMenu @PageNavigation@CustomDashboard", async({baseTestUtil,sideNavigationBar, verification, defaultDashboardPage,synWidgetPropertyPage, util,testUtility,customDBPage,syntheticSmartboardPage,dashboardBlade}) => {
+test("VerifyGuageTileNavigationToSBByThreeDotMenu @Smartboard", async({sideNavigationBar, verification, defaultDashboardPage,synWidgetPropertyPage, util,testUtility,customDBPage,syntheticSmartboardPage,dashboardBlade}) => {
     let metrics : string[] = ['Experience Score'];
     let otherFilters : string = null;
     let otherFilterOptions : string[] = null;
@@ -182,7 +182,7 @@ test("VerifyGuageTileNavigationToSBByThreeDotMenu @PageNavigation@CustomDashboar
 /*
     CP-41013 : Verify tile navigation to smartboard BY 3DOT MENU
 */
-test("VerifyTileNavigationToSBByThreeDotMenu @PageNavigation@CustomDashboard", async({baseTestUtil,sideNavigationBar, verification, defaultDashboardPage,synWidgetPropertyPage, util,testUtility,customDBPage,syntheticSmartboardPage,dashboardBlade}) => {
+test("VerifyTileNavigationToSBByThreeDotMenu @Smartboard", async({sideNavigationBar, verification, defaultDashboardPage,synWidgetPropertyPage, util,testUtility,customDBPage,syntheticSmartboardPage,dashboardBlade}) => {
     let metrics : string[] = ['Test Time (ms)'];
     let otherFilters : string = 'Country';
     let otherFilterOptions : string[] = ['United State'];
@@ -215,7 +215,7 @@ test("VerifyTileNavigationToSBByThreeDotMenu @PageNavigation@CustomDashboard", a
 /*
     CP-41014 : Verify tile navigation to smartboard 
 */
-test("VerifyTileNavigationToSB @PageNavigation@CustomDashboard", async({baseTestUtil,sideNavigationBar, verification, defaultDashboardPage,synWidgetPropertyPage, util,testUtility,customDBPage,syntheticSmartboardPage,dashboardBlade}) => {
+test("VerifyTileNavigationToSB @Smartboard", async({sideNavigationBar, verification, defaultDashboardPage,synWidgetPropertyPage, util,testUtility,customDBPage,syntheticSmartboardPage,dashboardBlade}) => {
     let metrics : string[] = ['Test Time (ms)'];
     let otherFilters : string = null
     let otherFilterOptions : string[] = null
@@ -249,7 +249,7 @@ test("VerifyTileNavigationToSB @PageNavigation@CustomDashboard", async({baseTest
 /*
     CP-41015 : Verify table navigation to smartboard 
 */
-test("VerifyTableNavigationToSB @PageNavigation@CustomDashboard", async({baseTestUtil,sideNavigationBar, verification, defaultDashboardPage,synWidgetPropertyPage, util,testUtility,customDBPage,syntheticSmartboardPage,dashboardBlade}) => {
+test("VerifyTableNavigationToSB @Smartboard", async({sideNavigationBar, verification, defaultDashboardPage,synWidgetPropertyPage, util,testUtility,customDBPage,syntheticSmartboardPage,dashboardBlade}) => {
     let metrics : string[] = ['Test Time (ms)'];
     let dimension : string[] = ['Test'];
     let otherFilters : string = null
@@ -283,7 +283,7 @@ test("VerifyTableNavigationToSB @PageNavigation@CustomDashboard", async({baseTes
 /*
     CP-41016 : Verify SLA widget navigation to smartboard 
 */
-test("VerifySLANavigationToSB @PageNavigation@CustomDashboard", async({baseTestUtil,sideNavigationBar, verification, defaultDashboardPage,synWidgetPropertyPage, util,testUtility,customDBPage,syntheticSmartboardPage,dashboardBlade}) => {
+test("VerifySLANavigationToSB @Smartboard", async({sideNavigationBar, verification, defaultDashboardPage,synWidgetPropertyPage, util,testUtility,customDBPage,syntheticSmartboardPage,dashboardBlade}) => {
     let metrics : string[] = ['Test Time (ms)'];
     let otherFilters : string = null
     let otherFilterOptions : string[] = null
@@ -318,7 +318,7 @@ test("VerifySLANavigationToSB @PageNavigation@CustomDashboard", async({baseTestU
 /*
     CP-41017 : Verify test widget navigation to smartboard in overview dashboard
 */
-test("VerifyTestWidgetNavigationToSBInOVDB @PageNavigation@CustomDashboard", async({baseTestUtil, verification, defaultDashboardPage,testOverviewDashboard,syntheticSmartboardPage, util}) => {
+test("VerifyTestWidgetNavigationToSBInOVDB @Smartboard", async({ verification, defaultDashboardPage,testOverviewDashboard,syntheticSmartboardPage, util}) => {
     await util.delay(4000);
     //click on test in test widget page
     await defaultDashboardPage.clickOnTestInTableTestWidget(1);
@@ -334,7 +334,7 @@ test("VerifyTestWidgetNavigationToSBInOVDB @PageNavigation@CustomDashboard", asy
 /*
     CP-41018 :Verify tile widget navigation to smartboard in Test overview dashboard
 */
-test("VerifyTileWidgetNavigationToSBInOVDB @PageNavigation@CustomDashboard", async({baseTestUtil,sideNavigationBar, verification, defaultDashboardPage,testOverviewDashboard, util,syntheticSmartboardPage}) => {
+test("VerifyTileWidgetNavigationToSBInOVDB @Smartboard", async({sideNavigationBar, verification, defaultDashboardPage,testOverviewDashboard, util,syntheticSmartboardPage}) => {
     //click on test over view dashboard
     await util.delay(4000);
     await defaultDashboardPage.clickOnTab('Tests');
@@ -351,7 +351,7 @@ test("VerifyTileWidgetNavigationToSBInOVDB @PageNavigation@CustomDashboard", asy
 /*
     CP-41019 : Verify alert page navigation to smartboard
 */
-test("VerifyAlertPageNavigationToSB @PageNavigation@CustomDashboard", async({baseTestUtil,sideNavigationBar,util, verification,syntheticSmartboardPage, alertLogPage}) => {
+test("VerifyAlertPageNavigationToSB @Smartboard", async({sideNavigationBar,util, verification,syntheticSmartboardPage, alertLogPage}) => {
     //navigate to records page
     await sideNavigationBar.navigateToAlertLogFromSideNavigation();
     //click hover first test three dot menu amd click on smartboard
@@ -367,7 +367,7 @@ test("VerifyAlertPageNavigationToSB @PageNavigation@CustomDashboard", async({bas
 /*
     CP-41379 : Verify Smartboard navigation from CC 
 */
-test("VerifySmartboardNavigationToCC @PageNavigation@CustomDashboard", async({baseTestUtil,sideNavigationBar,util, verification, syntheticTestDetailPage,syntheticSmartboardPage,synCCPage}) => {
+test("VerifySmartboardNavigationToCC @Smartboard", async({sideNavigationBar,util, verification, syntheticTestDetailPage,syntheticSmartboardPage,synCCPage}) => {
     let data = new DataForEnv();
     let testID = await data.getValueOfTheParameter('transactionTestId');
     //navigate to CC page

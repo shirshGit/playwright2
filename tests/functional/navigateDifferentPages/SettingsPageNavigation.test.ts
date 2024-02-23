@@ -4,9 +4,10 @@ import { DataForEnv } from "@lib/DataForEnvironment";
 /*
   CP-44302 : Verify navigation to User role Page
 */
-test("VerifySettingsUserroleLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, userrolePage, util}) => {
-    //navigate to userrole page
-    await util.delay(3000);
+test("VerifySettingsUserroleLoads @PageNavigation@ProductionSmoke@Smoke", async({alertLogPage,sideNavigationBar, verification, userrolePage, util}) => {
+    //login to alerts page
+    await alertLogPage.LoginToAlertsPage();
+    //navigate to Userrole page by left nav
     await sideNavigationBar.navigateToUserrolePageFromSideNavigation();
     //validation for errors
     await verification.validationsForPage();
@@ -26,9 +27,10 @@ test("VerifySettingsUserroleLoads @PageNavigation@ProductionSmoke@Smoke", async(
 /*
     CP-44303 : Verify navigation to Divisions Page 
 */
-test("VerifySettingsDivisionLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, divisionPage, util}) => {
-    //navigate to userrole page
-    await util.delay(3000);
+test("VerifySettingsDivisionLoads @PageNavigation@ProductionSmoke@Smoke", async({alertLogPage,sideNavigationBar, verification, divisionPage, util}) => {
+    //login to alerts page
+    await alertLogPage.LoginToAlertsPage();
+    //navigate to division page by left nav
     await sideNavigationBar.navigateToDivisionFromSideNavigation();
     //validation for errors
     await verification.validationsForPage();
@@ -46,9 +48,10 @@ test("VerifySettingsDivisionLoads @PageNavigation@ProductionSmoke@Smoke", async(
 /*
     CP-44304 : Verify navigation to Schedules Page
 */
-test("VerifySettingsSchedulesLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, schedulePage, util}) => {
-    //navigate to userrole page
-    await util.delay(5000);
+test("VerifySettingsSchedulesLoads @PageNavigation@ProductionSmoke@Smoke", async({alertLogPage,sideNavigationBar, verification, schedulePage, util}) => {
+    ///login to alerts page
+    await alertLogPage.LoginToAlertsPage();
+    //navigate to schedule page by left nav
     await sideNavigationBar.navigateToSchedulesPageFromSideNavigation();
     //validation for errors
     await verification.validationsForPage();
@@ -68,9 +71,10 @@ test("VerifySettingsSchedulesLoads @PageNavigation@ProductionSmoke@Smoke", async
 /*
     CP-44301 : Verify navigation to Indexes Page 
 */
-test("VerifySettingsIndexesLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, indexPage, util}) => {
-    //navigate to userrole page
-    await util.delay(5000);
+test("VerifySettingsIndexesLoads @PageNavigation@ProductionSmoke@Smoke", async({alertLogPage,sideNavigationBar, verification, indexPage, util}) => {
+    //login to alerts page
+    await alertLogPage.LoginToAlertsPage();
+    //navigate to index page by left nav
     await sideNavigationBar.navigateToIndexesPageFromSideNavigation();
     //validation for errors
     await verification.validationsForPage();
@@ -80,5 +84,20 @@ test("VerifySettingsIndexesLoads @PageNavigation@ProductionSmoke@Smoke", async({
     await verification.verifyIfElementIsPresent(indexPage.idTextLocator,"id text is not present");
     await verification.verifyIfElementIsPresent(indexPage.descrptionTextLocator,"description text is not present");
     await verification.verifyIfElementIsPresent(indexPage.noOfTestTextLocator,"no. of test text is not present");
+    
+})
+
+/*
+    
+*/
+test("VerifySettingsZoneLoads @PageNavigation@ProductionSmoke@Smoke", async({alertLogPage,sideNavigationBar, verification, zonePage, util}) => {
+    //login to alerts page
+    await alertLogPage.LoginToAlertsPage();
+    //navigate to zone page by left nav
+    await sideNavigationBar.navigateToZoneFromSideNavigation();
+    //validation for errors
+    await verification.validationsForPage();
+    //validation 
+    await verification.verifyIfElementIsPresent(zonePage.zonesTableLocator,"zone table is not present");
     
 })

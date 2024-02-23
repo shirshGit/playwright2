@@ -14,7 +14,7 @@ export class SourceSelectorExplorer extends ExplorerPage{
     }
 
     //#region This region is for getter
-    private _searchBox = '(//input[@id="fabric-search-box"])[2]';
+    private _searchBoxForTest = '//input[@id="synthetic-source-selector-search-box"]';
     private _allcheckCheckBox = '//div[text()="Name"]/..//div[contains(@class,"TreeTable_checkboxCell_")]';
     private _selectButton = '//span[text()="Select"]';
     private _clearButton = '//i[@data-icon-name="Clear"]';
@@ -22,10 +22,14 @@ export class SourceSelectorExplorer extends ExplorerPage{
     private _myAppTabInSourceSelector = '//li[text()="My Apps"]';
     private _allCheckBoxForApp = '//div[@data-item-index="0"]//i[@data-icon-name="CircleRing"]';
     private _explorerPillInSourceSelector = '//div[@data-testid="custom-picker-pill-container"]'
-
+    private _searchBoxForRum = '//input[@id="rum-source-selector-search-box"]';
+    private _graphSection = '//div[contains(@class,"VisualizationChartContainer_cont_")]';
     
-    public get searchBoxLocator() {
-        return this._searchBox;
+    public get testSearchBoxLocator() {
+        return this._searchBoxForTest;
+    }
+    public get rumSearchBoxLocator() {
+        return this._searchBoxForRum;
     }
 
     public get firstSearchedItemLocator(){
@@ -56,6 +60,9 @@ export class SourceSelectorExplorer extends ExplorerPage{
     public get pillItem(){
         return this._explorerPillInSourceSelector;
     }
+    public get graphSection(){
+        return this._graphSection
+    }
 
    
 
@@ -65,25 +72,33 @@ export class SourceSelectorExplorer extends ExplorerPage{
     //#region This region is to have the functions
 
     async clickOnFirstSearchedItemInSelectorPage(itemId: string) {
-        await this.searchItem(itemId);
+        await this.searchTest(itemId);
         await util.delay(3000);
         await webActions.clickElement(this.firstSearchedItemLocator);
         await webActions.clickElement(this.selectButtonLocator);
+        await webActions.waitForElementAttached(this.graphSection)
     }
 
     async clickOnFirstSearchAppInSelectorPage(itemId: string) {
         await util.delay(2000);
-        await this.searchItem(itemId);
+        await this.searchRumApp(itemId);
         await util.delay(2000);
         await webActions.clickElementJS(this.allCheckLocatorForApp);
         await webActions.clickElement(this.selectButtonLocator);
     }
 
-    async searchItem(item: string) {
-        await webActions.waitForElementAttached(this.searchBoxLocator);
-        await webActions.clickElement(this.searchBoxLocator);
-        await webActions.enterElementText(this.searchBoxLocator, item);
-        await webActions.keyPress(this.searchBoxLocator, 'Enter')
+    async searchTest(item: string) {
+        await webActions.waitForElementAttached(this.testSearchBoxLocator);
+        await webActions.clickElement(this.testSearchBoxLocator);
+        await webActions.enterElementText(this.testSearchBoxLocator, item);
+        await webActions.keyPress(this.testSearchBoxLocator, 'Enter')
+        await webActions.onlyKeyPress('Enter');
+    }
+    async searchRumApp(item: string) {
+        await webActions.waitForElementAttached(this.rumSearchBoxLocator);
+        await webActions.clickElement(this.rumSearchBoxLocator);
+        await webActions.enterElementText(this.rumSearchBoxLocator, item);
+        await webActions.keyPress(this.rumSearchBoxLocator, 'Enter')
         await webActions.onlyKeyPress('Enter');
     }
 

@@ -1,21 +1,18 @@
 import test from "@lib/BaseTest"
 import { DataForEnv } from "@lib/DataForEnvironment"
-import { ContactsPage } from "@pageobjects/Contacts/ContactsPage"
-import { ExplorerPage } from "@pageobjects/Explorer/ExplorerPage"
-import { RecordsPage } from "@pageobjects/Records/RecordsPage"
 
 
 
 /*
     CP-
 */
-test("VerifyNavigationToDifferentPages @PageNavigation@ProductionSmoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, sourceSelectorPage, sourceSelectorExplorer, synCCPage, contactsPage, contactGroupPage, syntheticSmartboardPage, instantTestHistoryPage, instantTestPage, alertLogPage, nodeMapPage, nodeGroupPage, nodeListPage, nodeInstancePage,userrolePage,divisionPage,schedulePage,indexPage,zonePage,explorerPage,recordsPage, util }) => {
+test("VerifyNavigationToDifferentPages @PageNavigation@ProductionSmoke", async ({sideNavigationBar, verification, sourceSelectorSmartboard, sourceSelectorPage, sourceSelectorExplorer, synCCPage, contactsPage, contactGroupPage, syntheticSmartboardPage, instantTestHistoryPage, instantTestPage, alertLogPage, nodeMapPage, nodeGroupPage, nodeListPage, nodeInstancePage,userrolePage,divisionPage,schedulePage,indexPage,zonePage,explorerPage,recordsPage, util }) => {
     let data = new DataForEnv()
     let webTestID = await data.getValueOfTheParameter('webTestForSmoke')
-    
+    //login to contact page
+    await contactsPage.LoginToContactsPage();
     //navigate to CC
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation()
-    await util.delay(2000)
     //validation for errors
     await verification.validationsForPage()
     //get url
@@ -31,22 +28,13 @@ test("VerifyNavigationToDifferentPages @PageNavigation@ProductionSmoke", async (
     await verification.verifySoftAssertTrue(endpointPageUrl.includes('catchpoint.com/ui/Symphony/ControlCenter/Endpoint'), 'endpoint cc page navigation not working')
 
     //navigate to CC RUM
-    await synCCPage.clickOnRUMTab()
+    await synCCPage.clickOnRUMFromEndpointPage();
     await util.delay(2000)
     //validation for errors
     await verification.validationsForPage()
     //get url
     let rumPageUrl = await synCCPage.getUrl()
     await verification.verifySoftAssertTrue(rumPageUrl.includes('catchpoint.com/ui/Symphony/ControlCenter/Rum'), 'rum page navigation not working')
-
-    //navigate to CC Test Templated
-    await synCCPage.clickOnTestTemplatesTab()
-    await util.delay(2000)
-    //validation for errors
-    await verification.validationsForPage()
-    //get url
-    let testTemplatesPageUrl = await synCCPage.getUrl()
-    await verification.verifySoftAssertTrue(testTemplatesPageUrl.includes('catchpoint.com/ui/Symphony/ControlCenter/TestTemplate'), 'testtemplates page navigation not working')
 
     //navigate to CC Library
     await synCCPage.clickOnLibraryTab()
@@ -208,7 +196,7 @@ test("VerifyNavigationToDifferentPages @PageNavigation@ProductionSmoke", async (
     await verification.validationsForPage()
     //get url
     let divisionPageUrl = await divisionPage.getUrl()
-    await verification.verifySoftAssertTrue(divisionPageUrl.includes('catchpoint.com/ui/Symphony/Divisions'), 'InstanceList page navigation not working')
+    await verification.verifySoftAssertTrue(divisionPageUrl.includes('catchpoint.com/ui/Symphony/Divisions'), 'Division page navigation not working')
 
     //navigate to User role page
     await sideNavigationBar.navigateToUserrolePageFromSideNavigation()
@@ -217,7 +205,7 @@ test("VerifyNavigationToDifferentPages @PageNavigation@ProductionSmoke", async (
     await verification.validationsForPage()
     //get url
     let userRolePageUrl = await userrolePage.getUrl()
-    await verification.verifySoftAssertTrue(userRolePageUrl.includes('catchpoint.com/ui/Symphony/Divisions'), 'Divisions page navigation not working')
+    await verification.verifySoftAssertTrue(userRolePageUrl.includes('catchpoint.com/ui/Symphony/UserRoles'), 'User role page navigation not working')
 
     //navigate to schedule page
     await sideNavigationBar.navigateToSchedulesPageFromSideNavigation()

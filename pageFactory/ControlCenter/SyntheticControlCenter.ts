@@ -54,7 +54,7 @@ export class SynControlCenterPage {
     private _moveButtonInHeaderSection = '//button[text()="Move"]';
     private _moveButtonInTestLocationBlade = '//button[@type="button"]//span[text()="Move"]';
     private _divisionLevelDDInRootSection = '//label[text()="Division"]/..//i[@data-icon-name="chevrondown"]';
-    private _clientLevelInDivisionDropDown = '//button[@title="Client Level"]';
+    private _selectedItemInDivisionDD = '//span[text()="Client Level"]';
     private _closeMasterBlade = '//div[@data-testid="cancel-icon"]';
     private _statusOfFirstItem = '//div[@data-automation-key="Status_4"]';
     private _getItemLocation = '(//span[contains(@class,"ms-Breadcrumb-item")])[2]/div';
@@ -67,13 +67,16 @@ export class SynControlCenterPage {
     private _copyTestProductName = '//div[text()="ProductForCopyScenariosDoNotDelete"]'
     private _activeStatusOfFirstSearchedItem = '//span[text()="Active"]';
     private _endpointInTestTree = '//div[contains(@class,"stickyBelowItems")]//div//div//div[contains(@class,"NavigationTree_navGroupText_")][normalize-space()="Endpoint"]'
-    private _rumInTestTree = '(//div[contains(text(),"RUM")])[2]'
+    private _rumInTestTree = '(//div[1][contains(@class,"NavigationTree_navGroupText_")][normalize-space()="RUM"])[2]';
     private _testTemplatesInTestTree = '//div[contains(text(),"Test Templates")]'
     private _libraryInTestTree = '(//div[contains(text(),"Library")])[2]'
     private _synNavigationTreeLocator = '//ul[contains(@class,"ms-Nav-navItems navItems-")]'
     private _synDetailList = '//div[contains(@class,"ms-DetailsList-contentWrapper")]'
     private _internetSonarInTestTree = '(//div[contains(text(),"Internet Sonar")])[2]'
     private _pointEstimationLoc = '//div[contains(@class,"PointsEstimation_number_")]'
+    private _rumTabInEndpointsPage = '//div[contains(text(),"RUM")]';
+    private _libraryTabInCCPage = '//div[contains(text(),"Library")]';
+    private _internetSonarTabInCCPage = '//div[contains(text(),"Internet Sonar")]';
 
     public get newItemCreationLocator() {
         return this._newItemCreation;
@@ -235,7 +238,7 @@ export class SynControlCenterPage {
         return this._testsTreeSideSideNav;
     }
     public get selectedItemLocatorInDivDropDown(){
-        return this._clientLevelInDivisionDropDown;
+        return this._selectedItemInDivisionDD;
     }
     public get activeStatsLocatorOfFirstSearchedItem(){
         return this._activeStatusOfFirstSearchedItem;
@@ -266,6 +269,15 @@ export class SynControlCenterPage {
     }
     public get pointEstimationLocator(){
         return this._pointEstimationLoc
+    }
+    public get rumTabInEndpointPageLocator(){
+        return this._rumTabInEndpointsPage
+    }
+    public get libraryTabInCCPageLocator(){
+        return this._libraryTabInCCPage
+    }
+    public get internetSonarTabInCCLocator(){
+        return this._internetSonarTabInCCPage
     }
 
 
@@ -510,7 +522,7 @@ export class SynControlCenterPage {
         await webActions.clickElement(this.testTemplatesTabLocator);
     }
     async clickOnLibraryTab(){
-        await webActions.clickElement(this.libraryTabLocator);
+        await webActions.clickElement(this.libraryTabInCCPageLocator);
     }
     async clickOnInternetSonarTab(){
         await webActions.clickElement(this.libraryTabLocator);
@@ -551,6 +563,12 @@ export class SynControlCenterPage {
         await webActions.navigateToURL(baseURL + 'ControlCenter/Tests/Product/'+prodID);
         
     }
+    async clickOnRUMFromEndpointPage(){
+        await webActions.clickElement(this.rumTabInEndpointPageLocator);
+   }
+   async waitForElement(locator:string){
+    await webActions.waitForElementAttached(locator);
+   }
 
    
 

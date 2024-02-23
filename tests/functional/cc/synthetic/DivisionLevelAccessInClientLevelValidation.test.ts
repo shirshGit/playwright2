@@ -6,14 +6,11 @@ import { DataForEnv } from "@lib/DataForEnvironment";
     CP-34475 : Verify "Client Level" should be selected by default under Division dropdown
 */
 
-test("VerifyClientLevelShouldBeSelectedByDefaultUnderDivisionDropDown @SyntheticControlCenter@ControlCenter", async({baseTestUtil, syntheticTestDetailPage,page, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
-    //navigate to cc test page
-    await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
-    //click on division drop down
-    await synCCPage.clickDivisionDropDown();
-    let classProperty = await synCCPage.getAttributeProperty(synCCPage.selectedItemLocatorInDivDropDown)
+test("VerifyClientLevelShouldBeSelectedByDefaultUnderDivisionDropDown @SyntheticControlCenter@ControlCenter", async({synCCPage, verification,page}) => {
+    //login to CC page[for saving login time we are directly login to CC page]
+    await synCCPage.LoginToCCPage();
     //validation for division drop down 
-    await verification.verifySoftAssertTrue(classProperty.includes('dropdownItemSelected') ,"Client Level is not selected in division drop down.");
+    await verification.verifyIfElementIsPresent(synCCPage.selectedItemLocatorInDivDropDown,'Division level DD is not present.');
     
 })
 
@@ -21,10 +18,9 @@ test("VerifyClientLevelShouldBeSelectedByDefaultUnderDivisionDropDown @Synthetic
     CP-34477 : Verify reset the dropdown to be set to "Client Level" and disable the dropdown when user click other
 */
 
-test("VerifyResetDivisionDropDownToBeSetClientLevel @SyntheticControlCenter@ControlCenter", async({baseTestUtil,syntheticTestDetailPage, contactDetailsPage,loginPage, sideNavigationBar,util,testUtility,synCCPage,contactsPage, verification}) => {
+test("VerifyResetDivisionDropDownToBeSetClientLevel @SyntheticControlCenter@ControlCenter", async({contactDetailsPage,loginPage, sideNavigationBar,util,synCCPage,contactsPage, verification}) => {
     let data = new DataForEnv();
-    //navigate to contacts page
-    await sideNavigationBar.navigateToContactPageFromSideNavigation();
+    await contactsPage.LoginToContactsPage();
     let userroleName = await data.getValueOfTheParameter('userRoleManageDivisionLevel');
     let email = await data.getValueOfTheParameter('automationContact');
     let password = await data.getValueOfTheParameter('password');
@@ -55,10 +51,10 @@ test("VerifyResetDivisionDropDownToBeSetClientLevel @SyntheticControlCenter@Cont
     CP-34474 : Verify Division dropdown is not present in the UI when client has no divisions 
 */
 
-test("VerifyDivisionDropDownIsNotPresentInTheUIWhenClientHasNoDivisionAccess @SyntheticControlCenter@ControlCenter", async({baseTestUtil,syntheticTestDetailPage, contactDetailsPage,loginPage, sideNavigationBar,util,testUtility,synCCPage,contactsPage, verification}) => {
+test("VerifyDivisionDropDownIsNotPresentInTheUIWhenClientHasNoDivisionAccess @SyntheticControlCenter@ControlCenter", async({ contactDetailsPage,loginPage, sideNavigationBar,util,testUtility,synCCPage,contactsPage, verification}) => {
     let data = new DataForEnv();
-    //navigate to contacts page
-    await sideNavigationBar.navigateToContactPageFromSideNavigation();
+    //login to Contact page
+    await contactsPage.LoginToContactsPage();
     let userroleName = await data.getValueOfTheParameter('userRoleDoNotHavePermissionForDivision');
     let email = await data.getValueOfTheParameter('automationContact');
     let password = await data.getValueOfTheParameter('password');

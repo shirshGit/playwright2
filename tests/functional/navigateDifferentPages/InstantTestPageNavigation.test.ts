@@ -3,8 +3,10 @@ import test from "@lib/BaseTest"
 /*
    CP-44296 : verify left navigation of instant test page.
 */
-test("InstantPageTestNavigation @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, instantTest, util}) => {
-    await util.delay(3000);
+test("InstantPageTestNavigation @PageNavigation@ProductionSmoke@Smoke", async({alertLogPage,sideNavigationBar, verification, instantTest, util}) => {
+    //login to alerts page
+    await alertLogPage.LoginToAlertsPage();
+    //navigate to instant test page by side navigation
     await sideNavigationBar.navigateToNewInstantTestFromSideNavigation();
     //validation for errors
     await verification.validationsForPage();
@@ -17,8 +19,10 @@ test("InstantPageTestNavigation @PageNavigation@ProductionSmoke@Smoke", async({b
 /*
    CP-44297 : verify left navigation of instant test history page.
 */
-test("InstantTestHistoryiNavigation @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil,sideNavigationBar, verification, instantTestHistory, util}) => {
-    await util.delay(3000);
+test("InstantTestHistoryiNavigation @PageNavigation@ProductionSmoke@Smoke", async({alertLogPage,sideNavigationBar, verification, instantTestHistory, util}) => {
+    //login to alerts page
+    await alertLogPage.LoginToAlertsPage();
+    //navigate to instant test history page by side navigation
     await sideNavigationBar.navigateToInstantTestHistoryFromSideNavigation();
     //validation for errors
     await verification.validationsForPage();

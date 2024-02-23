@@ -7,15 +7,15 @@ import { expect } from "@playwright/test";
     CP-16894 : Verify Settings should be Inherited
 */
 
-test("AfterCopyATestProductSettingsShouldBeInheritedInTest @SyntheticControlCenter@ControlCenter", async({baseTestUtil, syntheticTestDetailPage, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
+test("AfterCopyATestProductSettingsShouldBeInheritedInTest @SyntheticControlCenter@ControlCenter", async({syntheticTestDetailPage, sideNavigationBar,util,testUtility,synCCPage, verification}) => {
     let data = new DataForEnv();
     let prodForTestCreate = await data.getValueOfTheParameter('productForJunkItems');
     let prodForCopyTest = await data.getValueOfTheParameter('productForCopyTest');
     let testName = await testUtility.getTestName();
     let url = await data.getValueOfTheParameter('url');
     let copyTestName = 'Copy of - '+testName;
-    //navigate to cc test page
-    await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
+    //login to CC page[for saving login time we are directly login to CC page]
+    await synCCPage.LoginToCCPage();
     //create web test
     await syntheticTestDetailPage.createWebChromeTests(prodForTestCreate, testName, url);
     //save test

@@ -19,9 +19,11 @@ export class SourceSelectorPage extends SyntheticRecordsPage {
     private _testTab = '//li[@data-testid="Tests"]';
     private _myAppTab = '//li[@data-testid="My Apps"]';
     private _firstSearchedAppChechBox = '//div[@data-item-index="0"]//i[@data-icon-name="StatusCircleCheckmark"]';
-    private _searchBoxForApp = '(//input[@id="fabric-search-box"])[2]';
+    private _searchBoxForApp = '//input[@id="rum-source-selector-search-box"]';
     private _sbPillInSourceSelector = '//div[contains(@class,"AutoCompletePillPicker_pillWrapper")]'
-
+    private _scatterplotSection = '//div[contains(@class,"SyntheticRecordstyles__ScatterPlotCont-")]'
+    private _cardDataSection = '//div[contains(@class,"SyntheticRecordstyles__DataSection-")]'
+    
     public get searchBoxLocator() {
         return this._searchBoxForTest;
     }
@@ -43,6 +45,12 @@ export class SourceSelectorPage extends SyntheticRecordsPage {
     public get pillItem(){
         return this._sbPillInSourceSelector;
     }
+    public get scatterPlotSectionLocator(){
+        return this._scatterplotSection
+    }
+    public get cardDataSectionLocator(){
+        return this._cardDataSection
+    }
 
 
     //#endregion
@@ -52,6 +60,8 @@ export class SourceSelectorPage extends SyntheticRecordsPage {
     async clickOnFirstSearchedTestInSelectorPage(itemName: string) {
         await this.searchTest(itemName);
         await webActions.clickElement(this.firstRowSearchCheckBoxInSelectorPageLocator);
+        await webActions.waitForElementAttached(this.scatterPlotSectionLocator);
+        await webActions.waitForElementAttached(this.cardDataSectionLocator);
     }
 
     async searchItem(item: string) {

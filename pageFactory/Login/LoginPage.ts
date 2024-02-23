@@ -24,7 +24,7 @@ export class LoginPage {
     private _loginBtn = '#user-login-button';
     private _dashboardDDLabel = 'div[ id = "header"] label[class *= "DashboardHeader_dashboardLabel"]';
     private _Persona = '//div[@id="persona"]';
-    private _logoutButton = '//button[@id="sign-out"]';
+    private _logoutButton = '//span[text()="Sign out"]';
     
     public get emailInputLocator() {
         return this._emailInput;

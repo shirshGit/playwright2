@@ -1,11 +1,13 @@
 import { WebActions } from "@lib/WebActions";
 import { Page } from "@playwright/test";
 import { Utility } from "@util/Utility";
-import { LoginPageObjects } from "@objects/LoginPageObjects";
-import { testConfig } from '../../testConfig';
 import { DataForEnv } from "@lib/DataForEnvironment";
+import { testConfig } from '../../testConfig';
+import { LoginPageObjects } from "@objects/LoginPageObjects";
+import { LoginPage } from "@pageobjects/Login/LoginPage";
 let webActions: WebActions;
 let util: Utility
+let login : LoginPage;
 
 export class DefaultDashboardPage {
     readonly page: Page
@@ -13,7 +15,8 @@ export class DefaultDashboardPage {
     constructor(page: Page) {
         this.page = page
         webActions = new WebActions(this.page)
-        util = new Utility()
+        util = new Utility();
+        login = new LoginPage(this.page);
     }
     loginPageObjects = new LoginPageObjects();
 
@@ -34,6 +37,8 @@ export class DefaultDashboardPage {
     private _charmBar = '//div[@data-testid="main-charm-bar"]'
     private _nodeMapLocator = '(//div[contains(@class,"NodePerformanceOverview_container_")])[1]';
     private _notificationSection = '//div[@data-testid="help-section-root"]';
+    private _nodePerformanceSection = '//div[contains(@class,"NodePerformanceOverview_mapContainer_")]'
+    private _pointEstimationInPropertiesPageLoc = '//div[contains(@class,"PointsEstimation_number_")]'
     public get overviewDashboardLocator() {
         return this._overviewDashboard;
     }
@@ -43,7 +48,7 @@ export class DefaultDashboardPage {
     }
 
     public get testNameLocator() {
-        return (text: number) => { return `(//div[contains(@class,"ms-DetailsRow-fields fields")]//a)[${text}]` }
+        return (text: number) => { return `//div[contains(@class,"TestPerformance_tableContainer_")]//div[@data-item-index="${text}"]//a` }
     }
     public get errorSectionOverviewDashboardLocator() {
         return this._errorSectionOverviewDashboard;
@@ -118,6 +123,12 @@ export class DefaultDashboardPage {
     public get charmBarNotificationSection(){
         return this._notificationSection
     }
+    public get nodePerformanceLocator(){
+        return this._nodePerformanceSection;
+    }
+    public get pointEstimationLocator(){
+        return this._pointEstimationInPropertiesPageLoc;
+    }
 
 
     //#endregion
@@ -175,6 +186,17 @@ export class DefaultDashboardPage {
         await webActions.enterElementText(this.loginPageObjects.CP_PASSWORD_FIELD, testConfig.cppwd);
         await webActions.clickElement(this.loginPageObjects.CP_LOGIN_BTN);
         await webActions.waitForElementAttached(this.nodeMapLocator)
+    }
+    async LoginToDefaultDBPage() {
+        this.navigateToDefaultDBPageByURL()
+        await login.enterLoginCredential();
+        await webActions.waitForElementAttached(this.nodePerformanceLocator);
+    }
+    async navigateToDefaultDBPageByURL() {
+        let data = new DataForEnv();
+        let baseURL = await data.getValueOfTheParameter('baseURL');
+        await webActions.navigateToURL(baseURL + 'Dashboard');
+        
     }
 
 

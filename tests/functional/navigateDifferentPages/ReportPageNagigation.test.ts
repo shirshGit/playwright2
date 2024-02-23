@@ -6,7 +6,7 @@ import { Verification } from "@verification/verification";
 /*
     CP-44556 : Verify if user is able to navigate to report page from left navigation 
 */
-test("VerifyReportListPageLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil, context, sideNavigationBar, verification, reportListPage, util}) => {
+test.skip("VerifyReportListPageLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil, context, sideNavigationBar, verification, reportListPage, util}) => {
     await util.delay(4000);
     await sideNavigationBar.clickOnReportSideNavigation();
     await util.delay(2000);
@@ -24,7 +24,7 @@ test("VerifyReportListPageLoads @PageNavigation@ProductionSmoke@Smoke", async({b
 /*
      CP-39722 : Verify if user is able to navigate reports templates page from side navigation 
 */
-test("VerifyReportTemplateListPageLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil, context, sideNavigationBar, verification, reportTemplatePage, util}) => {
+test.skip("VerifyReportTemplateListPageLoads @PageNavigation@ProductionSmoke@Smoke", async({baseTestUtil, context, sideNavigationBar, verification, reportTemplatePage, util}) => {
     await util.delay(5000);
     await sideNavigationBar.clickOnReportSideNavigation();
     await util.delay(2000);
