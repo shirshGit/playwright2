@@ -35,7 +35,7 @@ export class SynControlCenterPage {
     private _popUpDeleteBtn = '//div[contains(@class, "DialogPopup")]//button[text()="Delete"]';
     private _locatorToClickOnSearchedItem = '//div[@data-testid = "table_row"]//div[@data-automationid = "DetailsRowCell"]//a';
     private _deactivateBtnInContainer = '//button[text()="Deactivate"]/..';
-    private _threeDotMenuOfSearchedItem = '//div[@data-testid="icon-menu-cell"]//i';
+    private _threeDotMenuOfSearchedItem = '(//div[@data-testid="icon-menu-cell"]//i)[1]';
     private _propertiesAfterThreeDotMenu = '//i[@data-icon-name="properties"]';
     private _deleteOptionAfterThreeDotMenu = '//i[@data-icon-name="delete"]';
     private _webChromeTest = '//p[text() = "Web"]/../../..//p[text() = "Chrome"]';
@@ -319,11 +319,12 @@ export class SynControlCenterPage {
         const [searchItem] = await Promise.all([
             this.searchItem(productName)
         ]);
-        await util.delay(2000);
+        await webActions.waitForElementAttached(this.threeDotMenuOfSearchedItemLocator);
         await webActions.hoverOnElement(this.threeDotMenuOfSearchedItemLocator);
         await webActions.clickElement(this.threeDotMenuOfSearchedItemLocator);
+        await webActions.waitForElementAttached(this.deleteOptionInThreeDotMenuLocator);
         await webActions.clickElement(this.deleteOptionInThreeDotMenuLocator);
-        await util.delay(2000);
+        await webActions.waitForElementAttached(this.popUpDeleteBtnLocator);
         await webActions.clickElement(this.popUpDeleteBtnLocator);
     }
 
