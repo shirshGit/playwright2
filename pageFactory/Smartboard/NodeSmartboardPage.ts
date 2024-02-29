@@ -19,6 +19,7 @@ export class NodeSmartboardPage {
     private _networkType = '(//div[text()="Network Type"]/..//div)[1]';
     private _location = '(//div[text()="Location"]/..//div)[1]';
     private _networkRadarGrph = "//*[name()='path' and contains(@class,'PieChart_s')]";
+    private  _timeLineGraph= '//div[@data-testid="smartboard-timeline"]'
 
     public get nodeNameLocator(){
         return this._nodeName;
@@ -35,11 +36,15 @@ export class NodeSmartboardPage {
     public get networkRadarLocator(){
         return this._networkRadarGrph;
     }
-
+    public get timeLineGraph(){
+        return this._timeLineGraph
+    }
    
     //#endregion
 
-   
+    async waitForElement(locator:string){
+        await webActions.waitForElementAttached(locator);
+    }
 
    
    

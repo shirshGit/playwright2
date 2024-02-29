@@ -42,6 +42,7 @@ export class EndpointSmartboardPage {
     private _networkWidget = '//div[contains(@class,"EndpointNetworkVizContainerstyles__EndpointNetworkViz")]';
     private _hopByHopText = '//span[text()="Hop-by-Hop"]';
     private _hopBtHopWidget = '//div[@data-testid="hop-traceroute"]';
+    private  _timeLineGraph= '//div[@data-testid="smartboard-timeline"]'
 
     public get endpointWidgetLocator(){
         return this._endpointWidget;
@@ -133,6 +134,9 @@ export class EndpointSmartboardPage {
     public get tabLocator() {
         return (text:string) => {return `//span[text()="${text}"]`};
     }
+    public get timeLineGraph(){
+        return this._timeLineGraph
+    }
     //#endregion
 
     //#region This region is to have the functions
@@ -147,6 +151,9 @@ export class EndpointSmartboardPage {
 
     async clickOnTab(item : string){
         await webActions.clickElement(this.tabLocator(item));
+    }
+    async waitForElement(locator:string){
+        await webActions.waitForElementAttached(locator);
     }
 
 

@@ -109,7 +109,7 @@ test("VerifySmartboardRUMLoads @PageNavigation@ProductionSmoke@Smoke", async ({ 
 })
 
 /*
-     CP-39984 : To Validate Peer Information Card in BGP SB
+    CP-39984 : To Validate Peer Information Card in BGP SB
 */
 test.skip("VerifyPeerInfoInBGPSB @PageNavigation@ProductionSmoke@Smoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, bgpSmartboardPage, util }) => {
     let data = new DataForEnv();
