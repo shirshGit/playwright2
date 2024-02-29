@@ -42,7 +42,7 @@ export class SyntheticDetailPage extends SynControlCenterPage {
     private _changeLogButton = '//span[text()="Change Log"]/../../i'
     private _pointBreakDown = '//span[text()="Points Breakdown"]'
     private _propertiesBladeLocator = '//div[contains(@class,"ms-Panel-scrollableContent")]'
-    
+    private _changeLogDetailSection = '//div[contains(@class,"ChangeLogContent_mainSection_")]';
 
     public get saveButtonLoctor() {
         return this._saveButton;
@@ -127,6 +127,10 @@ export class SyntheticDetailPage extends SynControlCenterPage {
     public get propertiesBladeLocator(){
         return this._propertiesBladeLocator;
     }
+    public get changeLogDetailSectionLoctor() {
+        return this._changeLogDetailSection;
+    }
+
 
     
 
