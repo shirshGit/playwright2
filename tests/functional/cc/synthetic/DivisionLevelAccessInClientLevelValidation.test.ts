@@ -1,14 +1,16 @@
 import test from "@lib/BaseTest"
 import { DataForEnv } from "@lib/DataForEnvironment";
+import { utils } from "xlsx";
 
 
 /*
     CP-34475 : Verify "Client Level" should be selected by default under Division dropdown
 */
 
-test("VerifyClientLevelShouldBeSelectedByDefaultUnderDivisionDropDown @SyntheticControlCenter@ControlCenter", async({synCCPage, verification,page}) => {
+test("VerifyClientLevelShouldBeSelectedByDefaultUnderDivisionDropDown @SyntheticControlCenter@ControlCenter@CC", async({synCCPage, verification,util}) => {
     //login to CC page[for saving login time we are directly login to CC page]
     await synCCPage.LoginToCCPage();
+    await util.delay(3000);
     //validation for division drop down 
     await verification.verifyIfElementIsPresent(synCCPage.selectedItemLocatorInDivDropDown,'Division level DD is not present.');
     
