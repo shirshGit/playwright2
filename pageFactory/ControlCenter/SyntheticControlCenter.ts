@@ -35,7 +35,7 @@ export class SynControlCenterPage {
     private _popUpDeleteBtn = '//div[contains(@class, "DialogPopup")]//button[text()="Delete"]';
     private _locatorToClickOnSearchedItem = '//div[@data-testid = "table_row"]//div[@data-automationid = "DetailsRowCell"]//a';
     private _deactivateBtnInContainer = '//button[text()="Deactivate"]/..';
-    private _threeDotMenuOfSearchedItem = '(//div[@data-testid="icon-menu-cell"]//i)[1]';
+    private _threeDotMenuOfSearchedItem = '//div[@data-testid="icon-menu-cell"]//i';
     private _propertiesAfterThreeDotMenu = '//i[@data-icon-name="properties"]';
     private _deleteOptionAfterThreeDotMenu = '//i[@data-icon-name="delete"]';
     private _webChromeTest = '//p[text() = "Web"]/../../..//p[text() = "Chrome"]';
