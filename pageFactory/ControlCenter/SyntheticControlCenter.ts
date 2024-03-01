@@ -319,10 +319,9 @@ export class SynControlCenterPage {
         const [searchItem] = await Promise.all([
             this.searchItem(productName)
         ]);
-        await webActions.waitForElementAttached(this.threeDotMenuOfSearchedItemLocator);
+        await util.delay(3000);
         await webActions.hoverOnElement(this.threeDotMenuOfSearchedItemLocator);
         await webActions.clickElement(this.threeDotMenuOfSearchedItemLocator);
-        await webActions.waitForElementAttached(this.deleteOptionInThreeDotMenuLocator);
         await webActions.clickElement(this.deleteOptionInThreeDotMenuLocator);
         await webActions.waitForElementAttached(this.popUpDeleteBtnLocator);
         await webActions.clickElement(this.popUpDeleteBtnLocator);
