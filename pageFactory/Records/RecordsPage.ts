@@ -69,8 +69,8 @@ export class RecordsPage {
     private _allFilterUnderFileTypeDD = '(//span[text()="All"])[4]';
     private _allFilterUnderRequestDD = '(//span[text()="All"])[3]';
     private _failedRequestFilter = '//span[text()="Failed Requests"]'
-    private _synRecordList = '//div[contains(@class,"RecordSourceSelectorBlade_tabWrapper_")]';
     private _pointEstimationInPropertiesPageLoc = '//div[contains(@class,"PointsEstimation_number_")]'
+    private _synRecordList = '//div[contains(@class,"RecordSourceSelectorBlade_tabWrapper_")]';
     
 
     public get waterFallTabLocator() {
@@ -358,13 +358,14 @@ export class RecordsPage {
     public get failedRequestFilterUnderRequestDDLocator(){
         return this._failedRequestFilter
     }
-    public get synRecordList(){
-        return this._synRecordList
-    }
+    
     public get pointEstimationLocator(){
         return this._pointEstimationInPropertiesPageLoc;
     }
-
+    public get synRecordList(){
+        return this._synRecordList
+    }
+    
     //#endregion
 
     async clickOnFileTypeFilterDropDown(){
@@ -532,8 +533,7 @@ export class RecordsPage {
         await webActions.waitForElementAttached(this.ganttSearchBoxLocator);
         await webActions.clickElement(this.ganttSearchBoxLocator);
         await webActions.enterElementText(this.ganttSearchBoxLocator, item);
-        await util.delay(1000);
-        await webActions.clickElement(this.ganttSearchBoxLocator);
+         await webActions.clickElement(this.ganttSearchBoxLocator);
         await webActions.keyPress(this.ganttSearchBoxLocator, 'Enter')
         await webActions.onlyKeyPress('Enter');
     }

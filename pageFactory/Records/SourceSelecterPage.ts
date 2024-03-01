@@ -22,7 +22,8 @@ export class SourceSelectorPage extends SyntheticRecordsPage {
     private _searchBoxForApp = '//input[@id="rum-source-selector-search-box"]';
     private _sbPillInSourceSelector = '//div[contains(@class,"AutoCompletePillPicker_pillWrapper")]'
     private _scatterplotSection = '//div[contains(@class,"SyntheticRecordstyles__ScatterPlotCont-")]'
-    private _cardDataSection = '//div[contains(@class,"SyntheticRecordstyles__DataSection-")]'
+    private _synRecordList = '//div[contains(@class,"RecordSourceSelectorBlade_tabWrapper_")]';
+    private _divisionDD = '//div[contains(@class,"RecordSourceSelectorBlade_divisionContainer_")]//i//div';
     
     public get searchBoxLocator() {
         return this._searchBoxForTest;
@@ -48,9 +49,16 @@ export class SourceSelectorPage extends SyntheticRecordsPage {
     public get scatterPlotSectionLocator(){
         return this._scatterplotSection
     }
-    public get cardDataSectionLocator(){
-        return this._cardDataSection
+    public get synRecordList(){
+        return this._synRecordList
     }
+    public get divisionLocator() {
+        return (text: string) => { return `//span[text()="${text}"]` };
+    }
+    public get divisionDDLocator() {
+        return this._divisionDD;
+    }
+
 
 
     //#endregion
@@ -101,6 +109,10 @@ export class SourceSelectorPage extends SyntheticRecordsPage {
 
     async clickOnMyAppTab() {
         await webActions.clickElement(this.myAppTabLocator);
+    }
+    async selectDivision(division : string){
+        await webActions.clickElement(this.divisionDDLocator);
+        await webActions.clickElement(this.divisionLocator(division));
     }
 
 
