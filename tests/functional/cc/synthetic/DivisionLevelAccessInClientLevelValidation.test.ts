@@ -7,7 +7,7 @@ import { utils } from "xlsx";
     CP-34475 : Verify "Client Level" should be selected by default under Division dropdown
 */
 
-test("VerifyClientLevelShouldBeSelectedByDefaultUnderDivisionDropDown @SyntheticControlCenter@ControlCenter", async({synCCPage, verification,util}) => {
+test("VerifyClientLevelShouldBeSelectedByDefaultUnderDivisionDropDown @SyntheticControlCenter", async({synCCPage, verification,util}) => {
     //login to CC page[for saving login time we are directly login to CC page]
     await synCCPage.LoginToCCPage();
     await util.delay(3000);
@@ -20,7 +20,7 @@ test("VerifyClientLevelShouldBeSelectedByDefaultUnderDivisionDropDown @Synthetic
     CP-34477 : Verify reset the dropdown to be set to "Client Level" and disable the dropdown when user click other
 */
 
-test("VerifyResetDivisionDropDownToBeSetClientLevel @SyntheticControlCenter@ControlCenter", async({contactDetailsPage,loginPage, sideNavigationBar,util,synCCPage,contactsPage, verification}) => {
+test("VerifyResetDivisionDropDownToBeSetClientLevel @SyntheticControlCenter", async({contactDetailsPage,loginPage, sideNavigationBar,util,synCCPage,contactsPage, verification}) => {
     let data = new DataForEnv();
     await contactsPage.LoginToContactsPage();
     let userroleName = await data.getValueOfTheParameter('userRoleManageDivisionLevel');
@@ -53,7 +53,7 @@ test("VerifyResetDivisionDropDownToBeSetClientLevel @SyntheticControlCenter@Cont
     CP-34474 : Verify Division dropdown is not present in the UI when client has no divisions 
 */
 
-test("VerifyDivisionDropDownIsNotPresentInTheUIWhenClientHasNoDivisionAccess @SyntheticControlCenter@ControlCenter", async({ contactDetailsPage,loginPage, sideNavigationBar,util,testUtility,synCCPage,contactsPage, verification}) => {
+test("VerifyDivisionDropDownIsNotPresentInTheUIWhenClientHasNoDivisionAccess @SyntheticControlCenter", async({ contactDetailsPage,loginPage, sideNavigationBar,util,testUtility,synCCPage,contactsPage, verification}) => {
     let data = new DataForEnv();
     //login to Contact page
     await contactsPage.LoginToContactsPage();

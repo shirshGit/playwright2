@@ -42,7 +42,7 @@ export class RecordsPage {
     private _contentType = '//div[@data-testid="contentType"]';
     private _tracepoint = '//div[text()="TR-Cache Control"]';
     private _indicator = '//div[text()="IND-Test"]'
-    private _searchBoxGanttSection = '(//input[@data-testid="fabricsearchbox"])[2]';
+    private _searchBoxGanttSection = '//input[@id="fabric-search-box"]';
     private _firstIPAddressValue = '(//div[contains(@class,"GanttChart_cell-ip_")])[2]';
     private _nodeIPLabel = '//span[text()="Node IP"]';
     private _getRowCount = '//div[contains(@class,"GanttChart_tableBody")]//div[contains(@class,"GanttChart_tableRow_")]';
