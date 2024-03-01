@@ -26,10 +26,10 @@ test("VerifyUserShouldAbleToSelectTestIsSourceBlade  @Records", async ({ baseTes
 */
 test("VerifyUserShouldAbleToSearchTestUnderSelectedDivision @Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util,sourceSelectorPage , recordsPage, page,charmBar, verification }) => {
     let data = new DataForEnv();
-    await sideNavigationBar.navigateToRecordsFromSideNavigation();
     let testID = await data.getValueOfTheParameter('webPingTestIDForDivision');
-    await charmBar.selectDivFromCharmbar('ToCreateFromAutomation');
-    await util.delay(3000);
+    await sideNavigationBar.navigateToRecordsFromSideNavigation();
+    await sourceSelectorPage.selectDivision('ToCreateFromAutomation');
+    await util.delay(1000);
     await sourceSelectorPage.clickOnFirstSearchedTestInSelectorPage(testID);
     let pageURL = await baseTestUtil.getUrl();
     //validation for selected test

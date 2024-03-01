@@ -32,6 +32,14 @@ export class TestOverviewDashboard extends DefaultDashboardPage{
     private _applyButton = '//button[text()="Apply"]';
     private _tileWidgetTimeFrameDD = '(//button[@type="button"][normalize-space()="Last Hour"])[2]';
     private _propertiesOptionInTileWidget = '//div[contains(@class,"Link_testProperties_")]';
+    private _recordsInTileToolTip = '//div[contains(@class,"Link_waterfall_")]';
+    private _smartboardPlotInTileToolTip = '//div[contains(@class,"Link_smartboard")]';
+    private _performanceInTileToolTip = '//div[contains(@class,"Link_performance")]';
+    private _propertiesInTileToolTip = '//div[contains(@class,"Link_testProperties_")]';
+    private _scatterPlotInTileToolTip = '//div[contains(@class,"Link_scatterplot_")]';
+    private _alertsInTileToolTip = '//div[contains(@class,"Link_alerts_")]';
+    
+    
     public get tabLocator() {
         return (text: string) => { return `(//span[text()="${text}"])[1]` }
     }
@@ -97,6 +105,24 @@ export class TestOverviewDashboard extends DefaultDashboardPage{
     }
     public get propertiesOptionInTileWiget(){
         return this._propertiesOptionInTileWidget
+    }
+    public get recordOptionInTileToolTipLocator(){
+        return this._recordsInTileToolTip
+    }
+    public get smartboardOptionInTileToolTipLocator(){
+        return this._smartboardPlotInTileToolTip
+    }
+    public get performanceOptionInTileToolTipLocator(){
+        return this._performanceInTileToolTip
+    }
+    public get scatterPlotOptionInTileToolTipLocator(){
+        return this._scatterPlotInTileToolTip
+    }
+    public get alertOptionInTileToolTipLocator(){
+        return this._alertsInTileToolTip
+    }
+    public get propertiesOptionInTileToolTipLocator(){
+        return this._propertiesInTileToolTip
     }
     
    

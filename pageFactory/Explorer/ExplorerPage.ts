@@ -48,7 +48,7 @@ export class ExplorerPage {
         return this._recordsInThreeDotMenuInErrorTab;
     }
     public get errorTabRowWiseTimeLocator() {
-        return (text: number) => { return `//div[@data-item-index="${text}"]//div[@aria-colindex="3"]//div` };
+        return (text: number) => { return `(//div[@data-automationid="DetailsRowFields"]//div[@data-automation-key="Time_2"]//div)[${text}]` };
     }
     public get summaryTabLocator() {
         return this._summeryTab;
@@ -205,6 +205,11 @@ export class ExplorerPage {
     }
     async waitForElement(locator:string){
         await webActions.waitForElementAttached(locator);
+    }
+    async LoginToRumExplorerPage() {
+        this.navigateToExplorerPageByURL()
+        await login.enterLoginCredential();
+        await webActions.waitForElementAttached(this.synSourceListInSourcePage);
     }
 
 }
