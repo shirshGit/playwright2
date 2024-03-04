@@ -104,6 +104,9 @@ export class AlertLogPage {
         await login.enterLoginCredential();
         await webActions.waitForElementAttached(this.alertLogListLocator);
     }
+    async waitForElement(locator:string){
+        await webActions.waitForElementAttached(locator);
+    }
 
 
     //#endregion
