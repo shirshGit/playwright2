@@ -51,9 +51,8 @@ test("VerifyIndexPageScreenshot @Screenshot", async({page, screenShotVerificatio
 test("VerifyZonePageScreenshot @Screenshot", async({page, screenShotVerification, util,zonePage}, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await zonePage.LoginToZonePage();
-    const maskedElement1 = await page.locator(zonePage.zonesTableLocator);
-    const maskedElements = [maskedElement1];
-    await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement(maskedElements, screenShotName + '.png');
+    await zonePage.waitForElement(zonePage.commonLocator('Download'));
+    await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement([await page.locator(zonePage.zonesTableLocator)], screenShotName + '.png');
     
 })
 /*
@@ -99,6 +98,7 @@ test("VerifyIndexPageScreenshotByLeftNav @Screenshot", async({page, screenShotVe
     let screenShotName = testInfo.title.split(" ")[0]
     await alertLogPage.LoginToAlertsPage();
     await sideNavigationBar.navigateToIndexesPageFromSideNavigation();
+    await indexPage.waitForElement(indexPage.commonLocator('Download'));
     const maskedElement1 = await page.locator(indexPage.indexTableLocator);
     const maskedElements = [maskedElement1];
     await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement(maskedElements, screenShotName + '.png');
@@ -111,8 +111,7 @@ test("VerifyZonePageScreenshotByLeftNav @Screenshot", async({page, screenShotVer
     let screenShotName = testInfo.title.split(" ")[0]
     await alertLogPage.LoginToAlertsPage();
     await sideNavigationBar.navigateToZoneFromSideNavigation();
-    const maskedElement1 = await page.locator(zonePage.zonesTableLocator);
-    const maskedElements = [maskedElement1];
-    await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement(maskedElements, screenShotName + '.png');
+    await zonePage.waitForElement(zonePage.commonLocator('Download'));
+    await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement([await page.locator(zonePage.zonesTableLocator)], screenShotName + '.png');
     
 })
