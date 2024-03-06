@@ -42,7 +42,7 @@ export class RecordsPage {
     private _contentType = '//div[@data-testid="contentType"]';
     private _tracepoint = '//div[text()="TR-Cache Control"]';
     private _indicator = '//div[text()="IND-Test"]'
-    private _searchBoxGanttSection = '(//input[@data-testid="fabricsearchbox"])[2]';
+    private _searchBoxGanttSection = '//input[@id="fabric-search-box"]';
     private _firstIPAddressValue = '(//div[contains(@class,"GanttChart_cell-ip_")])[2]';
     private _nodeIPLabel = '//span[text()="Node IP"]';
     private _getRowCount = '//div[contains(@class,"GanttChart_tableBody")]//div[contains(@class,"GanttChart_tableRow_")]';
@@ -69,8 +69,8 @@ export class RecordsPage {
     private _allFilterUnderFileTypeDD = '(//span[text()="All"])[4]';
     private _allFilterUnderRequestDD = '(//span[text()="All"])[3]';
     private _failedRequestFilter = '//span[text()="Failed Requests"]'
-    private _synRecordList = '//div[contains(@class,"RecordSourceSelectorBlade_tabWrapper_")]';
     private _pointEstimationInPropertiesPageLoc = '//div[contains(@class,"PointsEstimation_number_")]'
+    private _synRecordList = '//div[contains(@class,"RecordSourceSelectorBlade_tabWrapper_")]';
     
 
     public get waterFallTabLocator() {
@@ -358,13 +358,14 @@ export class RecordsPage {
     public get failedRequestFilterUnderRequestDDLocator(){
         return this._failedRequestFilter
     }
-    public get synRecordList(){
-        return this._synRecordList
-    }
+    
     public get pointEstimationLocator(){
         return this._pointEstimationInPropertiesPageLoc;
     }
-
+    public get synRecordList(){
+        return this._synRecordList
+    }
+    
     //#endregion
 
     async clickOnFileTypeFilterDropDown(){
@@ -532,8 +533,7 @@ export class RecordsPage {
         await webActions.waitForElementAttached(this.ganttSearchBoxLocator);
         await webActions.clickElement(this.ganttSearchBoxLocator);
         await webActions.enterElementText(this.ganttSearchBoxLocator, item);
-        await util.delay(1000);
-        await webActions.clickElement(this.ganttSearchBoxLocator);
+         await webActions.clickElement(this.ganttSearchBoxLocator);
         await webActions.keyPress(this.ganttSearchBoxLocator, 'Enter')
         await webActions.onlyKeyPress('Enter');
     }

@@ -38,6 +38,7 @@ export class SyntheticRecordsPage {
     private _errorMessageFieldForDatePoint = '//div[contains(@class,"ms-MessageBar-content")]'
     private _errorCodeLocator = '//div[contains(@class,"GanttChart_numericCell")]'
     private _pointEstimationInPropertiesPageLoc = '//div[contains(@class,"PointsEstimation_number_")]'
+    private _cardDataSection = '//div[contains(@class,"SyntheticRecordstyles__DataSection-")]'
     
     public get waterFallTabLocator() {
         return this._waterFallTab;
@@ -144,6 +145,10 @@ export class SyntheticRecordsPage {
     public get pointEstimationLocator(){
         return this._pointEstimationInPropertiesPageLoc;
     }
+    public get cardDataSectionLocator(){
+        return this._cardDataSection
+    }
+
 
 
     //#endregion

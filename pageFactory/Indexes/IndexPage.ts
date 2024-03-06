@@ -26,7 +26,7 @@ export class IndexPage {
     private _descriptionText = '//span[text()="Description"]';
     private _IDText = '//span[text()="ID"]';
     private _numberOfTestText = '//span[text()="Number of Tests"]';
-    private _indexTable = "//div[@class='ms-List-page']"
+    private _indexTable = "//div[@class='ms-List-page']";
 
 
    
@@ -53,6 +53,12 @@ export class IndexPage {
     public get indexTableLocator() {
         return this._indexTable;
     }
+    public get commonLocator() {
+        return (text: string) => { return `//span[text()="${text}"]` }
+    }
+    public get commoNLocator() {
+        return (text: string) => { return `//div[text()="${text}"]` }
+    }
 
 
     //#endregion
@@ -76,6 +82,9 @@ export class IndexPage {
         this.navigateToIndexPageByURL();
         await login.enterLoginCredential();
         await webActions.waitForElementAttached(this.indexTableLocator);
+    }
+    async waitForElement(locator:string){
+        await webActions.waitForElementAttached(locator);
     }
 
     //#endregion

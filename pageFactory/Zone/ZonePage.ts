@@ -51,6 +51,15 @@ export class ZonePage {
         await login.enterLoginCredential();
         await webActions.waitForElementAttached(this.zonesTableLocator);
     }
+    public get commonLocator() {
+        return (text: string) => { return `//span[text()="${text}"]` }
+    }
+    public get commoNLocator() {
+        return (text: string) => { return `//div[text()="${text}"]` }
+    }
+    async waitForElement(locator:string){
+        await webActions.waitForElementAttached(locator);
+    }
 
 
 

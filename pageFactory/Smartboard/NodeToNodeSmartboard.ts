@@ -44,6 +44,7 @@ export class NodeToNodeSmartboardPage {
     private _firstRecordSheduleTimeInSecondWgt = '((//div[@data-selection-index="0"])[3]//div[@data-automation-key="Schedule Time_0"]//div)[1]';
     private _recordSheduleTimeFirstWgt = '(//label[@data-testid="selected-label"])[1]';
     private _recordSheduleTimeSecondWgt = '(//label[@data-testid="selected-label"])[2]';
+    private  _timeLineGraph= '//div[@data-testid="smartboard-timeline"]'
 
     public get firstRecordSheduleTimeInFirstWgtLocator(){
         return this._firstRecordSheduleTimeInFirstWgt;
@@ -143,6 +144,9 @@ export class NodeToNodeSmartboardPage {
     public get timingTabMetricsValueLocator() {
         return (text: string) => { return `//td[text()="${text}"]/..//td[2]` };
     }
+    public get timeLineGraph(){
+        return this._timeLineGraph
+    }
 
    
    
@@ -184,7 +188,9 @@ export class NodeToNodeSmartboardPage {
         await webActions.clickElement(this.recordsCompareButtonLocator);
     }
 
-   
+    async waitForElement(locator:string){
+        await webActions.waitForElementAttached(locator);
+    }
 
    
    

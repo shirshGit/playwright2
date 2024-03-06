@@ -6,7 +6,7 @@ import { DataForEnv } from "@lib/DataForEnvironment";
     CP-26410 : Verify user should see Change Log option on the test update properties
 */
 
-test("VerifyUserShouldSeeChangeLogOptionOnTestPropertyPage @SyntheticControlCenter@ControlCenter", async ({ baseTestUtil, syntheticTestDetailPage, page, sideNavigationBar, util, testUtility, synCCPage, verification }) => {
+test("VerifyUserShouldSeeChangeLogOptionOnTestPropertyPage @SyntheticControlCenter", async ({ baseTestUtil, syntheticTestDetailPage, page, sideNavigationBar, util, testUtility, synCCPage, verification }) => {
     let data = new DataForEnv();
     let testID = await data.getValueOfTheParameter('testID');
     //navigate to CC page
@@ -24,7 +24,7 @@ test("VerifyUserShouldSeeChangeLogOptionOnTestPropertyPage @SyntheticControlCent
 /*
     CP-35379 : Verify Changelog should capturing correctly for "All" and "Nodes" under Ru
 */
-test("VerifyChangeLogShouldCaptureCorrectDataAfterUpdate @SyntheticControlCenter@ControlCenter", async ({ baseTestUtil, syntheticTestDetailPage, syntheticDetailsPage, sideNavigationBar, util, testUtility, synCCPage, verification }) => {
+test("VerifyChangeLogShouldCaptureCorrectDataAfterUpdate @SyntheticControlCenter", async ({ baseTestUtil, syntheticTestDetailPage, syntheticDetailsPage, sideNavigationBar, util, testUtility, synCCPage, verification }) => {
     let data = new DataForEnv();
     let prodForTestCreate = await data.getValueOfTheParameter('productForJunkItems');
     let testName = await testUtility.getTestName();
@@ -52,12 +52,12 @@ test("VerifyChangeLogShouldCaptureCorrectDataAfterUpdate @SyntheticControlCenter
     await syntheticTestDetailPage.enterValueInSubsetOfNodeInputBox('2');
     //save test
     await syntheticTestDetailPage.clickSaveButton();
-    await util.delay(2000);
+    await synCCPage.waitForElement(synCCPage.synNavigationTreeLocator);
     //search and click test
     await synCCPage.clickOnSearchedItemInCC(testName);
     //click on change log
     await syntheticDetailsPage.clickOnChangeLogButton();
-    await util.delay(5000);
+    await synCCPage.waitForElement(syntheticDetailsPage.changeLogDetailSectionLoctor);
     //validation
     let getRunOnText = await syntheticTestDetailPage.getElementText(syntheticTestDetailPage.changeLogRunOnLocator);
     let getNodeSetText = await syntheticTestDetailPage.getElementText(syntheticTestDetailPage.changeLogRunOnValueLocator);
@@ -68,7 +68,7 @@ test("VerifyChangeLogShouldCaptureCorrectDataAfterUpdate @SyntheticControlCenter
     //close test property page
     await syntheticTestDetailPage.closePropertyPage();
     //delete test
-    await util.delay(2000);
+    await synCCPage.waitForElement(synCCPage.synNavigationTreeLocator);
     await syntheticTestDetailPage.deleteItemFromThreeDotMenu(testName);
 })
 

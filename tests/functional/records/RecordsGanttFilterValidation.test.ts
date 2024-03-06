@@ -214,14 +214,13 @@ test("VerifyTimingTabMetrics @Records", async ({ baseTestUtil, sideNavigationBar
 /*
     CP-21649 : 117539 DES Unable to search by host name or file name using search box in search bar 
 */
-test("VerifySearchBoxInGanttChart @Records", async ({ baseTestUtil, sideNavigationBar, loginPage, util, sourceSelectorPage, recordsPage, page, verification, ganttBladePage }) => {
-    //navigate to records page
-    await sideNavigationBar.navigateToRecordsFromSideNavigation();
+test("VerifySearchBoxInGanttChart @Records", async ({sourceSelectorPage, recordsPage, page, verification, ganttBladePage }) => {
+    //login to records page
+    await recordsPage.LoginToRecordsPage();
     let data = new DataForEnv();
     let testID = await data.getValueOfTheParameter('transactionTestWithRefrenceHostOnFailure');
     //search test
     await sourceSelectorPage.clickOnFirstSearchedTestInSelectorPage(testID);
-    await util.delay(3000);
     //click and search in gantt chart search box
     await recordsPage.searchInGanttSearchBox('www.gstatic.com');
     //verification

@@ -115,7 +115,7 @@ test("VerifyTestPropertiesPageOpenFromRecordsPage @SyntheticControlCenter", asyn
 /*
     CP-44582 : Scenario: Verify App properties open up from Explorer page 
 */
-test("VerifyAppPropertiesPageOpenFromExplorerPage @SyntheticControlCenter", async ({  explorerPage, page, context, sourceSelectorExplorer, util, verification, rumRecordsPage }) => {
+test("VerifyAppPropertiesPageOpenFromExplorerPage @Rum", async ({  explorerPage, page, context, sourceSelectorExplorer, util, verification, rumRecordsPage }) => {
     //login to explorer
     await explorerPage.LoginToExplorerPage();
     let data = new DataForEnv();
@@ -138,7 +138,7 @@ test("VerifyAppPropertiesPageOpenFromExplorerPage @SyntheticControlCenter", asyn
 /*
     CP-44581 : Scenario: Verify App properties open up from Records page 
 */
-test("VerifyAppPropertiesPageOpenFromRecordsPage @SyntheticControlCenter", async ({  recordsPage, page, context, sourceSelectorPage, util, verification, rumRecordsPage }) => {
+test("VerifyAppPropertiesPageOpenFromRecordsPage @Rum", async ({  recordsPage, page, context, sourceSelectorPage, util, verification, rumRecordsPage }) => {
     let data = new DataForEnv();
     let rumAppId = await data.getValueOfTheParameter('rumAppId');
     //login to explorer
@@ -277,7 +277,7 @@ test("VerifyTestPropertyOpenUpFromTestsAlertsLog @SyntheticControlCenter", async
 /*
     CP-44580 : Scenario: Verify App properties open up from RUM Alert log
 */
-test("VerifyRumPropertyOpenUpFromRumAlertsLog @SyntheticControlCenter", async ({  rumAlertLogPage, page, context, sourceSelectorExplorer, util, verification, alertLogPage }) => {
+test("VerifyRumPropertyOpenUpFromRumAlertsLog @Rum", async ({  rumAlertLogPage, page, context, sourceSelectorExplorer, util, verification, alertLogPage }) => {
     //login to rum alerts page
     await rumAlertLogPage.LoginToRumAlertsPage();
     //click hover first test three dot menu
