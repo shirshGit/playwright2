@@ -26,15 +26,15 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
     private _overrideForTargetAndSchedulPage = '//div[@id="#targeting_and_scheduling"]//span[text()="Override"]';
     private _subSetOfNode = '//span[text()="Subset of nodes"]';
     private _subSetOfNodeValueBox = '//input[@id="text-field"]';
-    private _addNodeField = '//input[contains(@placeholder ,"Add Node")]';
+    private _addNodeTextField = '//input[contains(@placeholder ,"Add Node")]';
     private _changeLogRunOn = '//td[text()="Run On"]';
     private _changeLogRunOnValue = '//td[text()="Run On"]//following-sibling::td[text()="2"]';
     private _transactionTestScriptEditorField = '//div[@data-mode-id = "transaction"]//div[contains(@class, "monaco-scrollable-element editor-scrollable vs")]'
-
+    private _addNodeList = '//div[contains(@class,"TargetingSchedulingSection__StyledListButton")]//div';
+    private _nodeTypeDDInNodePage = '//div[contains(@class,"NodeTab__FilterContainer-sc-")]//i[@data-icon-name="chevrondown"]//div';
     public get alertOverrideToogleBtnLocator() {
         return this._alertOverrideToogleBtn;
     }
-
     public get testNameFiledLocator() {
         return this._testNameField;
     }
@@ -88,7 +88,7 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
     }
 
     public get addNodeFileldLocator() {
-        return this._addNodeField;
+        return this._addNodeTextField;
     }
 
     public get changeLogRunOnLocator() {
@@ -97,6 +97,12 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
 
     public get changeLogRunOnValueLocator() {
         return this._changeLogRunOnValue;
+    }
+    public get addNodeListLocator() {
+        return this._addNodeList;
+    }
+    public get nodeTypeDropDown(){
+        return this._nodeTypeDDInNodePage;
     }
 
 
@@ -208,7 +214,7 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
         await webActions.enterElementText(this.subSetNodeTextBoxLocator, value);
     }
 
-    async addNodesInTest(nodeName: string[]) {
+    async addNodesInTestFromTextBox(nodeName: string[]) {
         for (let index = 0; index < nodeName.length; index++) {
             const element = nodeName[index];
             await webActions.enterElementText(this.addNodeFileldLocator, element);
@@ -228,6 +234,12 @@ export class SyntheticTestDetailPage extends SyntheticDetailPage {
         return text;
 
     }
+    // async  addNodeFromNodeList(nodeName : string[],tabListItem:string,nodeType:string){
+    //     await webActions.clickElement(this.addNodeListLocator);
+    //     await webActions.clickElement(this.commonLocator(tabListItem));
+    //     await webActions.clickElement(this.nodeTypeDropDown);
+    //     await webActions.clickElement(this.commonLocator(nodeType));
+    // }
 
 
 

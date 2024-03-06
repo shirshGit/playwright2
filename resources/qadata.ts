@@ -3,11 +3,13 @@ export const qadata = {
     'automationContact' : 'userrole9_DoNOTDeleteqaautomationxclient-clientadministrator@catchpoint.com', //contact used for automation, where assiging other userrole is required
 	'aPITestIDWithoutAdvsSettings' : '478304',
     'aPITestIDWithAdvsSettings' : '478303',
+    'apiTestWithWirelessNode' : '484235',
 
     'baseURL' : 'https://qaportal.catchpoint.com/ui/Symphony/',
     'bgpTest' : '200723',
     'bgpStandardTest' : '482563',
     'bgpBasicTest' : '482570',
+    'tracerouteTestWithBackboneIP4' : '484178',
 
     'customTestIDWithoutAdvsSettings' : '481063',
     'customTestIDWithAdvsSettings' : '481062',
@@ -19,6 +21,7 @@ export const qadata = {
     'dnsTestIDWithAdvsSettings' : '478311', 
     'dnsExperienceTest' : '482562',
     'dnsDirectTest' : '478312',
+    'dnsTestWithLastMileNode' : '484171',
 
     'endpointTracerouteTestID' : '3892',
     'endpointLocationID' : '7003',
@@ -63,6 +66,7 @@ export const qadata = {
     'pingTestIDWithAdvsSettings' : '478319',
     'playwrightEdgeTest' : '482561',
     'playwrightChromeTest' : '476178',
+    'prodForUIAutomation' : '21847',
 
     'rumAppName' : 'Automation_WebApp_DoNotEdits',//used for automation
     'rumAppId' : '3918',
@@ -93,6 +97,7 @@ export const qadata = {
     'transactionIETest' : '482558',
     'transactionChromeTest' : '476111',
     'transactionMobileTest' : '482559',
+    'transationTestWithEnterprisePTNode' : '484236',
 
     'userRoleManageTests' : 'OnlyManageTestPermission',//user role with only test and test templates permission
 	'userRoleManageRumAndTestTemplate' : 'OnlyManageRumAndTestTemplatePermission',// userrole with only rum and test templates permission
@@ -121,6 +126,8 @@ export const qadata = {
     'webMobileTest' : '476072',
     'webEdgeTest' : '476073',
     'webChromeTest' : '476106',
+    'webTestWithCloudNode' : '484170',
+    'webTestWithEnterPrisePtNode' : '488011',
     
     'zoneName' : 'UIAutomationDND',
     
