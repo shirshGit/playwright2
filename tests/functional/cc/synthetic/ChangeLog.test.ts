@@ -45,7 +45,7 @@ test("VerifyChangeLogShouldCaptureCorrectDataAfterUpdate @SyntheticControlCenter
     await syntheticTestDetailPage.clickOverrideButtonForTargetAndSchedul();
     //add nodes in test
     await util.delay(2000);
-    await syntheticTestDetailPage.addNodesInTest(nodesName);
+    await syntheticTestDetailPage.addNodesInTestFromTextBox(nodesName);
     //click on sub set of node and enter value
     await syntheticTestDetailPage.clickOnSubSetOfNode();
     await syntheticTestDetailPage.clickOnSubsetOfNodeInputBox();
