@@ -8,6 +8,8 @@ export const stagedata = {
     'bgpTest' : '187860',
     'bgpStandardTest' : '437882',
     'bgpBasicTest' : '437988',
+    'tracerouteTestWithBackboneIP4' : '439854',
+    'apiTestWithWirelessNode' : '439856',
 
     'customTestIDWithoutAdvsSettings' : '427543',
     'customTestIDWithAdvsSettings' : '427545',
@@ -19,6 +21,7 @@ export const stagedata = {
     'dnsTestIDWithAdvsSettings' : '427527', 
     'dnsExperienceTest' : '437881',
     'dnsDirectTest' : '427528',
+    'dnsTestWithLastMileNode' : '439853',
 
     'endpointTracerouteTestID' : '5599',
     'endpointLocationID' : '4723',
@@ -93,6 +96,7 @@ export const stagedata = {
     'transactionIETest' : '437878',
     'transactionChromeTest' : '427510',
     'transactionMobileTest' : '437879',
+    'transationTestWithEnterprisePTNode' : '439857',
 
     'userRoleManageTests' : 'OnlyManageTestPermission',//user role with only test and test templates permission
 	'userRoleManageRumAndTestTemplate' : 'OnlyManageRumAndTestTemplatePermission',// userrole with only rum and test templates permission
@@ -122,6 +126,8 @@ export const stagedata = {
     'webMobileTest' : '432759',
     'webEdgeTest' : '432760',
     'webChromeTest' : '427524',
+    'webTestWithCloudNode' : '439798',
+    'webTestWithEnterPrisePtNode' : '444351',
     
 
     'zoneName' : 'UIAutomationDND',
