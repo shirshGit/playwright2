@@ -69,6 +69,7 @@ test("VerifyChangeLogShouldCaptureCorrectDataAfterUpdate @SyntheticControlCenter
     await syntheticTestDetailPage.closePropertyPage();
     //delete test
     await synCCPage.waitForElement(synCCPage.synNavigationTreeLocator);
+    await util.delay(3000);
     await syntheticTestDetailPage.deleteItemFromThreeDotMenu(testName);
 })
 
