@@ -38,7 +38,7 @@ test("BackboneIPV6NodePointEstForTracerouteTest @Screenshot@PointEst", async ({ 
 /*
     CP-85157 : Check Point Estimation for API test with WIreless nod
 */
-test("WirelessNodePointEstForAPITest @Screenshot@PointEst@P1", async ({  page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
+test("WirelessNodePointEstForAPITest @Screenshot@PointEst", async ({  page, screenShotVerification, util, synCCPage,syntheticTestDetailPage }, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     let testID = await data.getValueOfTheParameter('apiTestWithWirelessNode');
     await synCCPage.LoginToCCPage()
