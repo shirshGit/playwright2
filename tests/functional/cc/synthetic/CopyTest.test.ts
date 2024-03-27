@@ -90,16 +90,16 @@ test("UserIsAbleToSelectLocationOnSyntheticTestLocation @SyntheticControlCenter"
     await syntheticTestDetailPage.createWebChromeTests(prodForTestCreate, testName, url);
     //save test
     await syntheticTestDetailPage.clickSaveButton();
-    await util.delay(2000);
+    await synCCPage.waitForElement(synCCPage.synDetailListLocator);
     //copy from three dot menu
     await syntheticTestDetailPage.copyItemFromThreeDotMenu(testName,prodForCopyTest);
     //save test
     await syntheticTestDetailPage.clickSaveButton();
-    await util.delay(3000);
+    await synCCPage.waitForElement(synCCPage.synDetailListLocator);
     //search test
     await synCCPage.clickOnSearchedItemInCC(copyTestName);
     //validation for Tests Location 
-    await util.delay(3000);
+    await synCCPage.waitForElement(synCCPage.pointEstimationLocator);
     await verification.verifyIfElementIsPresent(synCCPage.copyTestproductNameInTestPropertyPageLocator ,"Tests Location is not present");
     //close test property page by clicking on cross icon
     await util.delay(2000);
@@ -126,15 +126,16 @@ test("VeriftTestNameOfCopyTest @SyntheticControlCenter@Test", async({baseTestUti
     await syntheticTestDetailPage.createWebChromeTests(prodForTestCreate, testName, url);
     //save test
     await syntheticTestDetailPage.clickSaveButton();
-    await util.delay(2000);
+    await synCCPage.waitForElement(synCCPage.synDetailListLocator);
     //copy from three dot menu
     await syntheticTestDetailPage.copyItemFromThreeDotMenu(testName,prodForCopyTest);
     //save test
     await syntheticTestDetailPage.clickSaveButton();
-    await util.delay(2000);
+    await synCCPage.waitForElement(synCCPage.synDetailListLocator);
     //search test
     await synCCPage.clickOnSearchedItemInCC(copiedTestName);
     //get test name
+    await synCCPage.waitForElement(synCCPage.pointEstimationLocator);
     let TestName = await syntheticTestDetailPage.fetchTestName();
     //validation for copy test name 
     await verification.verifySoftAssertTrue(TestName === copiedTestName,"Test is not copied successfully");

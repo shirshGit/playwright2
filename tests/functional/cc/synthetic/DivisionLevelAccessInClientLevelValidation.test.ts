@@ -20,7 +20,7 @@ test("VerifyClientLevelShouldBeSelectedByDefaultUnderDivisionDropDown @Synthetic
     CP-34477 : Verify reset the dropdown to be set to "Client Level" and disable the dropdown when user click other
 */
 
-test("VerifyResetDivisionDropDownToBeSetClientLevel @SyntheticControlCenter", async({contactDetailsPage,loginPage, sideNavigationBar,util,synCCPage,contactsPage, verification}) => {
+test("VerifyResetDivisionDropDownToBeSetClientLevel @SyntheticControlCenter@N1", async({contactDetailsPage,loginPage, sideNavigationBar,util,synCCPage,contactsPage, verification}) => {
     let data = new DataForEnv();
     await contactsPage.LoginToContactsPage();
     let userroleName = await data.getValueOfTheParameter('userRoleManageDivisionLevel');
@@ -34,13 +34,16 @@ test("VerifyResetDivisionDropDownToBeSetClientLevel @SyntheticControlCenter", as
     await loginPage.logOutFromBrowser();
     //login with changed system access contact
     await loginPage.loginWithOtherContact(email, password);
-    await util.delay(3000);
+    await util.delay(4000);
     //navigate to CC
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
+    await synCCPage.waitForElement(synCCPage.synDetailListLocator);
+    await synCCPage.waitForElement(synCCPage.synNavigationTreeLocator);
     //click on division drop down
     await synCCPage.clickDivisionDropDown();
     //select division
     await synCCPage.selectGivenDivisionFromDivisionDropDownInRoot('ToCreateFromAutomation');
+    await util.delay(2000);
     //click on rum
     await synCCPage.clickOnRumInRootBlade();
     await util.delay(2000);
@@ -53,8 +56,9 @@ test("VerifyResetDivisionDropDownToBeSetClientLevel @SyntheticControlCenter", as
     CP-34474 : Verify Division dropdown is not present in the UI when client has no divisions 
 */
 
-test("VerifyDivisionDropDownIsNotPresentInTheUIWhenClientHasNoDivisionAccess @SyntheticControlCenter", async({ contactDetailsPage,loginPage, sideNavigationBar,util,testUtility,synCCPage,contactsPage, verification}) => {
+test("VerifyDivisionDropDownIsNotPresentInTheUIWhenClientHasNoDivisionAccess @SyntheticControlCenter", async({ contactDetailsPage,loginPage, sideNavigationBar,util,screenShotVerification,synCCPage,contactsPage, verification,page},testInfo) => {
     let data = new DataForEnv();
+    let screenShotName = testInfo.title.split(" ")[0];
     //login to Contact page
     await contactsPage.LoginToContactsPage();
     let userroleName = await data.getValueOfTheParameter('userRoleDoNotHavePermissionForDivision');
@@ -73,7 +77,7 @@ test("VerifyDivisionDropDownIsNotPresentInTheUIWhenClientHasNoDivisionAccess @Sy
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
     //validation for division drop down
     await verification.verifyElementIsNotPresent(synCCPage.divLevelDropdownLocator ,"Division Level drop down is present.");
-    
+   
 })
 
 
