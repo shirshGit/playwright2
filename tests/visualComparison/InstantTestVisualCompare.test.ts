@@ -79,12 +79,13 @@ test("VerifyEndpointInstantTestHistoryPageScreenshotByLeftNav @Screenshot", asyn
 /*
   CP-84927 : Verify Endpoint Instant Test Create Page Screenshot by left nav
 */
-test("VerifyEndpointInstantTestCreatePageScreenshotByLeftNav @Screenshot", async ({ page, screenShotVerification, util, endpointInstantTestPage ,alertLogPage,sideNavigationBar}, testInfo) => {
+test("VerifyEndpointInstantTestCreatePageScreenshotByLeftNav @Screenshot@P1", async ({ page, screenShotVerification, util, endpointInstantTestPage ,alertLogPage,sideNavigationBar}, testInfo) => {
   let stringArray = testInfo.title.split(" ");
   let screenShotName = stringArray[0];
   await alertLogPage.LoginToAlertsPage();
   await sideNavigationBar.navigateToEndpointInstantTestHistoryFromSideNavigation();
   await util.delay(1000);
-  await endpointInstantTestPage.clickOnCreateInstantTest()
+  await endpointInstantTestPage.clickOnCreateInstantTest();
+  await endpointInstantTestPage.waitForElement(endpointInstantTestPage.endpointInputBoxLocator);
   await screenShotVerification.verifyScreenShotOfFullPage(screenShotName + '.png');
 })

@@ -25,7 +25,7 @@ export class EndpointInstantTestPage {
     private _loading = '//div[text()="Loading..."]'
     private _createButton = '//button[text()="New Instant Test"]'
     private _endpointTestTable = '//div[contains(@class,"ActionTable_customDataCont_")]'
-    
+    private _endpointInputBox = '//input[contains(@class,"ms-BasePicker-input pickerInput")]';
     public get commonLocator(){
         return (text:string) => {return `//span[text()="${text}"]`}
     }
@@ -38,6 +38,9 @@ export class EndpointInstantTestPage {
     }
     public get testListTableLocator(){
         return this._endpointTestTable
+    }
+    public get endpointInputBoxLocator(){
+        return this._endpointInputBox
     }
     
     
@@ -74,6 +77,9 @@ export class EndpointInstantTestPage {
         this.navigateToEndpointInstantTestPageByURL();
         await login.enterLoginCredential();
         await webActions.waitForElementAttached(this.testListTableLocator)
+    }
+    async waitForElement(loc:string){
+        await webActions.waitForElementAttached(loc)
     }
 
 
