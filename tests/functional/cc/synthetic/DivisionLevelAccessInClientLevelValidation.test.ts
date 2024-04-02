@@ -75,6 +75,7 @@ test("VerifyDivisionDropDownIsNotPresentInTheUIWhenClientHasNoDivisionAccess @Sy
     await util.delay(3000);
     //navigate to CC
     await sideNavigationBar.navigateToSyntheticCCFromSideNavigation();
+    await util.delay(5000);
     //validation for division drop down
     await verification.verifyElementIsNotPresent(synCCPage.divLevelDropdownLocator ,"Division Level drop down is present.");
    
