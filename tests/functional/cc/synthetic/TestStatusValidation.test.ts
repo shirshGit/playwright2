@@ -22,7 +22,7 @@ test("ActiveTestsAreChangingToInactiveOnceWehenRefreshPage  @ProductionDefect@Sy
     await syntheticTestDetailPage.createTestWithEndDate(prodForTestCreate, testName, url, endDate);
     //save test
     await syntheticTestDetailPage.clickSaveButton();
-    await util.delay(2000);
+    await synCCPage.waitForElement(synCCPage.synDetailListLocator);
     //search and click created test
     await synCCPage.clickOnSearchedItemInCC(testName);
     //clear end date
