@@ -23,7 +23,7 @@ export class InternetSonarAlertLogPage {
     //#region This region is for getter
     
     private _searchBox = '(//input[@id="fabric-search-box"])[2]';
-    private _internetSonarAlertList = '//div[@class="ms-List-page"][1]'
+    private _internetSonarAlertList = '//div[@class="ms-List"]';
     
 
   

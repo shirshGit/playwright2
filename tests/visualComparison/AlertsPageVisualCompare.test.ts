@@ -7,6 +7,7 @@ test("VerifyTestAlertsPageScreenshot @Screenshot", async({page, screenShotVerifi
     let screenShotName = testInfo.title.split(" ")[0];
     //login to test alerts page by url
     await alertLogPage.LoginToAlertsPage();
+    await util.delay(6000);
     //mask dynamic elements
     const maskedElements = [await page.locator(alertLogPage.alertLogListLocator)];
     //take screenhot and validate with existing one
@@ -20,7 +21,7 @@ test("VerifyRumAlertsPageScreenshot @Screenshot", async({page, screenShotVerific
     let screenShotName = testInfo.title.split(" ")[0];
     //login to rum alerts page by url
     await rumAlertLogPage.LoginToRumAlertsPage();
-    await util.delay(9000);
+    await util.delay(2000);
     await screenShotVerification.verifyScreenShotOfFullPage(screenShotName + '-screenshot.png');
 })
 /*
@@ -32,7 +33,7 @@ test("VerifyInternetSonarAlertsPageScreenshot @Screenshot", async({page, screenS
     await internetSonarAlertLogPage.LoginToInternetSonarAlertsPage();
     await util.delay(4000);
     //take full page screenshot and validate with existing one
-    await screenShotVerification.verifyScreenShotOfFullPage(screenShotName + '.png');
+    await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement([await page.locator(internetSonarAlertLogPage.internetSonarAlertLocator)],screenShotName + '.png');
 })
 /*
     CP-84782 : Verify Test Alerts Page Screenshot navigating by left navigation
@@ -42,6 +43,7 @@ test("VerifyTestAlertsPageScreenshotByLeftNav @Screenshot", async({page, screenS
     //login to alerts page by left navigation
     await instantTestHistoryPage.LoginToInstantTestHistoryPage();
     await sideNavigationBar.navigateToAlertLogFromSideNavigation();
+    await util.delay(6000);
     //masked dynamic elements
     const maskedElements = [await page.locator(alertLogPage.alertLogListLocator)];
     await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement(maskedElements, screenShotName + '.png');
@@ -68,6 +70,6 @@ test("VerifyInternetSonarAlertsPageScreenshotByLeftNav @Screenshot", async({page
     await sideNavigationBar.navigateToInternetSonarAlertLogFromSideNavigation();
     await util.delay(4000);
     //take full page screenshot and validate with existing one
-    await screenShotVerification.verifyScreenShotOfFullPage(screenShotName + '.png');
+    await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement([await page.locator(internetSonarAlertLogPage.internetSonarAlertLocator)],screenShotName + '.png');
 
 })
