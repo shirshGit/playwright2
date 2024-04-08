@@ -3,7 +3,7 @@ import test from "@lib/BaseTest"
 /*
     CP-84908 : Verify Web Instant Test Screenshot 
 */
-test("VerifyWebInstantTestScreenshot @Screenshot", async ({page, screenShotVerification, util, instantTest }, testInfo) => {
+test("VerifyWebInstantTestScreenshot @Screenshot@P1", async ({page, screenShotVerification, util, instantTest }, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await instantTest.LoginToNewInstantTestPage();
     await util.delay(3000)
@@ -12,7 +12,7 @@ test("VerifyWebInstantTestScreenshot @Screenshot", async ({page, screenShotVerif
 /*
     CP-84909 : Verify Transaction Instant Test Screenshot 
 */
-test("VerifyTransactionInstantTestScreenshot @Screenshot", async ({page, screenShotVerification, util, instantTest }, testInfo) => {
+test("VerifyTransactionInstantTestScreenshot @Screenshot@P1", async ({page, screenShotVerification, util, instantTest }, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await instantTest.LoginToNewInstantTestPage();
     await instantTest.selectTestTypeInInstantTestPage('Transaction');
@@ -22,7 +22,7 @@ test("VerifyTransactionInstantTestScreenshot @Screenshot", async ({page, screenS
 /*
      CP-84910 : Verify Playwright Instant Test Screenshot 
 */
-test("VerifyPlaywrightInstantTestScreenshot @Screenshot", async ({page, screenShotVerification, util, instantTest }, testInfo) => {
+test("VerifyPlaywrightInstantTestScreenshot @Screenshot@P1", async ({page, screenShotVerification, util, instantTest }, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await instantTest.LoginToNewInstantTestPage();
     await instantTest.selectTestTypeInInstantTestPage('Playwright');
@@ -32,7 +32,7 @@ test("VerifyPlaywrightInstantTestScreenshot @Screenshot", async ({page, screenSh
 /*
      CP-84911 : Verify Puppeteer Instant Test Full page Screenshot
 */
-test("VerifyPuppeteerInstantTestScreenshot @Screenshot", async ({page, screenShotVerification, util, instantTest }, testInfo) => {
+test("VerifyPuppeteerInstantTestScreenshot @Screenshot@P1", async ({page, screenShotVerification, util, instantTest }, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await instantTest.LoginToNewInstantTestPage();
     await instantTest.selectTestTypeInInstantTestPage('Puppeteer');
@@ -42,7 +42,7 @@ test("VerifyPuppeteerInstantTestScreenshot @Screenshot", async ({page, screenSho
 /*
      CP-84912 : Verify Traceroute Instant Test Full page Screenshot
 */
-test("VerifyTracerouteInstantTestScreenshot @Screenshot", async ({page, screenShotVerification, util, instantTest }, testInfo) => {
+test("VerifyTracerouteInstantTestScreenshot @Screenshot@P1", async ({page, screenShotVerification, util, instantTest }, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await instantTest.LoginToNewInstantTestPage();
     await instantTest.selectTestTypeInInstantTestPage('Traceroute');
@@ -52,7 +52,7 @@ test("VerifyTracerouteInstantTestScreenshot @Screenshot", async ({page, screenSh
 /*
     CP-84913 : Verify API Instant Test Full page Screenshot
 */
-test("VerifyAPIInstantTestScreenshot @Screenshot", async ({page, screenShotVerification, util, instantTest }, testInfo) => {
+test("VerifyAPIInstantTestScreenshot @Screenshot@P1", async ({page, screenShotVerification, util, instantTest }, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await instantTest.LoginToNewInstantTestPage();
     await instantTest.clickOnAPITestTypeInInstantTestDD();
@@ -62,7 +62,7 @@ test("VerifyAPIInstantTestScreenshot @Screenshot", async ({page, screenShotVerif
 /*
     CP-84914 : Verify Ping Instant Test Full page Screenshot 
 */
-test("VerifyPingInstantTestScreenshot @Screenshot", async ({page, screenShotVerification, util, instantTest }, testInfo) => {
+test("VerifyPingInstantTestScreenshot @Screenshot@P1", async ({page, screenShotVerification, util, instantTest }, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await instantTest.LoginToNewInstantTestPage();
     await instantTest.selectTestTypeInInstantTestPage('Ping');
@@ -72,7 +72,7 @@ test("VerifyPingInstantTestScreenshot @Screenshot", async ({page, screenShotVeri
 /*
      CP-84915 : Verify DNS Instant Test Full page Screenshot 
 */
-test("VerifyDNSInstantTestScreenshot @Screenshot", async ({page, screenShotVerification, util, instantTest }, testInfo) => {
+test("VerifyDNSInstantTestScreenshot @Screenshot@P1", async ({page, screenShotVerification, util, instantTest }, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await instantTest.LoginToNewInstantTestPage();
     await instantTest.selectTestTypeInInstantTestPage('DNS');
@@ -82,7 +82,7 @@ test("VerifyDNSInstantTestScreenshot @Screenshot", async ({page, screenShotVerif
 /*
     CP-84916 : Verify HTML Code Instant Test Full page Screenshot 
 */
-test("VerifyHTMLInstantTestScreenshot @Screenshot", async ({page, screenShotVerification, util, instantTest }, testInfo) => {
+test("VerifyHTMLInstantTestScreenshot @Screenshot@P1", async ({page, screenShotVerification, util, instantTest }, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await instantTest.LoginToNewInstantTestPage();
     await instantTest.selectTestTypeInInstantTestPage('HTML Code');
@@ -92,7 +92,7 @@ test("VerifyHTMLInstantTestScreenshot @Screenshot", async ({page, screenShotVeri
 /*
      CP-84917 : Verify FTP Instant Test Full page Screenshot 
 */
-test("VerifyFTPInstantTestScreenshot @Screenshot", async ({page, screenShotVerification, util, instantTest }, testInfo) => {
+test("VerifyFTPInstantTestScreenshot @Screenshot@P1", async ({page, screenShotVerification, util, instantTest }, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await instantTest.LoginToNewInstantTestPage();
     await instantTest.selectTestTypeInInstantTestPage('FTP');
@@ -102,7 +102,7 @@ test("VerifyFTPInstantTestScreenshot @Screenshot", async ({page, screenShotVerif
 /*
     CP-84918 : Verify IMAP Instant Test Full page Screenshot
 */
-test("VerifyIMAPInstantTestScreenshot @Screenshot", async ({page, screenShotVerification, util, instantTest }, testInfo) => {
+test("VerifyIMAPInstantTestScreenshot @Screenshot@P1", async ({page, screenShotVerification, util, instantTest }, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await instantTest.LoginToNewInstantTestPage();
     await instantTest.selectTestTypeInInstantTestPage('IMAP');
@@ -112,7 +112,7 @@ test("VerifyIMAPInstantTestScreenshot @Screenshot", async ({page, screenShotVeri
 /*
      CP-84919 : Verify SMTP Instant Test Full page Screenshot
 */
-test("VerifySMTPInstantTestScreenshot @Screenshot", async ({page, screenShotVerification, util, instantTest }, testInfo) => {
+test("VerifySMTPInstantTestScreenshot @Screenshot@P1", async ({page, screenShotVerification, util, instantTest }, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await instantTest.LoginToNewInstantTestPage();
     await instantTest.selectTestTypeInInstantTestPage('SMTP');
@@ -122,7 +122,7 @@ test("VerifySMTPInstantTestScreenshot @Screenshot", async ({page, screenShotVeri
 /*
     CP-84920 : Verify SSL Instant Test Full page Screenshot 
 */
-test("VerifySSLInstantTestScreenshot @Screenshot", async ({page, screenShotVerification, util, instantTest }, testInfo) => {
+test("VerifySSLInstantTestScreenshot @Screenshot@P1", async ({page, screenShotVerification, util, instantTest }, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await instantTest.LoginToNewInstantTestPage();
     await instantTest.selectTestTypeInInstantTestPage('SSL');
@@ -132,7 +132,7 @@ test("VerifySSLInstantTestScreenshot @Screenshot", async ({page, screenShotVerif
 /*
     CP-84921 : Verify MQTT Instant Test Full page Screenshot 
 */
-test("VerifyMQTTInstantTestScreenshot @Screenshot", async ({page, screenShotVerification, util, instantTest }, testInfo) => {
+test("VerifyMQTTInstantTestScreenshot @Screenshot@P1", async ({page, screenShotVerification, util, instantTest }, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await instantTest.LoginToNewInstantTestPage();
     await instantTest.selectTestTypeInInstantTestPage('MQTT');
@@ -142,7 +142,7 @@ test("VerifyMQTTInstantTestScreenshot @Screenshot", async ({page, screenShotVeri
 /*
     CP-84922 : Verify NTP Instant Test Full page Screenshot
 */
-test("VerifyNTPInstantTestScreenshot @Screenshot", async ({page, screenShotVerification, util, instantTest }, testInfo) => {
+test("VerifyNTPInstantTestScreenshot @Screenshot@P1", async ({page, screenShotVerification, util, instantTest }, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await instantTest.LoginToNewInstantTestPage();
     await instantTest.selectTestTypeInInstantTestPage('NTP');
@@ -152,7 +152,7 @@ test("VerifyNTPInstantTestScreenshot @Screenshot", async ({page, screenShotVerif
 /*
     CP-84923 : Verify Custom Instant Test Full page Screenshot
 */
-test("VerifyCustomInstantTestScreenshot @Screenshot", async ({page, screenShotVerification, util, instantTest }, testInfo) => {
+test("VerifyCustomInstantTestScreenshot @Screenshot@P1", async ({page, screenShotVerification, util, instantTest }, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await instantTest.LoginToNewInstantTestPage();
     await instantTest.selectTestTypeInInstantTestPage('Custom')
@@ -162,7 +162,7 @@ test("VerifyCustomInstantTestScreenshot @Screenshot", async ({page, screenShotVe
 /*
      CP-84924 : Verify Streaming Instant Test Full page Screenshot
 */
-test("VerifyStreamingInstantTestScreenshot @Screenshot", async ({page, screenShotVerification, util, instantTest }, testInfo) => {
+test("VerifyStreamingInstantTestScreenshot @Screenshot@P1", async ({page, screenShotVerification, util, instantTest }, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await instantTest.LoginToNewInstantTestPage();
     await instantTest.selectTestTypeInInstantTestPage('Streaming');
@@ -172,7 +172,7 @@ test("VerifyStreamingInstantTestScreenshot @Screenshot", async ({page, screenSho
 /*
     CP-84925 : Verify WebSocket Instant Test Full page Screenshot 
 */
-test("VerifyWebSocketInstantTestScreenshot @Screenshot", async ({page, screenShotVerification, util, instantTest }, testInfo) => {
+test("VerifyWebSocketInstantTestScreenshot @Screenshot@P1", async ({page, screenShotVerification, util, instantTest }, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await instantTest.LoginToNewInstantTestPage();
     await instantTest.selectTestTypeInInstantTestPage('Web Socket');
@@ -182,7 +182,7 @@ test("VerifyWebSocketInstantTestScreenshot @Screenshot", async ({page, screenSho
 /*
     CP-84926 : Verify Transport Instant Test Full page Screenshot
 */
-test("VerifyTransportInstantTestScreenshot @Screenshot", async ({page, screenShotVerification, util, instantTest }, testInfo) => {
+test("VerifyTransportInstantTestScreenshot @Screenshot@P1", async ({page, screenShotVerification, util, instantTest }, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await instantTest.LoginToNewInstantTestPage();
     await instantTest.selectTestTypeInInstantTestPage('Transport');
