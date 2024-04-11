@@ -3,7 +3,7 @@ import { expect } from "@playwright/test";
 /*
   CP-84753 : Verify Instant Test History Page Screenshot navigating by URL
 */
-test("VerifyInstantTestHistoryPageScreenshot @Screenshot", async ({ page, screenShotVerification, util, instantTestHistory,alertLogPage }, testInfo) => {
+test("VerifyInstantTestHistoryPageScreenshot @Screenshot@P1", async ({ page, screenShotVerification, util, instantTestHistory,alertLogPage }, testInfo) => {
   let stringArray = testInfo.title.split(" ");
   let screenShotName = stringArray[0];
   await instantTestHistory.LoginToInstantTestHistoryPage();
@@ -14,7 +14,7 @@ test("VerifyInstantTestHistoryPageScreenshot @Screenshot", async ({ page, screen
 /*
   CP-84754 : Verify Node InstantTest Page Screenshot navigating by URL
 */
-test("VerifyNodeInstantTestPageScreenshot @Screenshot", async ({ page, screenShotVerification, util, instantTest }, testInfo) => {
+test("VerifyNodeInstantTestPageScreenshot @Screenshot@P1", async ({ page, screenShotVerification, util, instantTest }, testInfo) => {
   let stringArray = testInfo.title.split(" ");
   let screenShotName = stringArray[0];
   await instantTest.LoginToNewInstantTestPage();
@@ -24,7 +24,7 @@ test("VerifyNodeInstantTestPageScreenshot @Screenshot", async ({ page, screenSho
 /*
   CP-84755 : Verify Endpoint InstantTest History Page Screenshot navigating by URL
 */
-test("VerifyEndpointInstantTestHistoryPageScreenshot @Screenshot", async ({ page, screenShotVerification, util, endpointInstantTestPage,instantTestHistory }, testInfo) => {
+test("VerifyEndpointInstantTestHistoryPageScreenshot @Screenshot@P1", async ({ page, screenShotVerification, util, endpointInstantTestPage,instantTestHistory }, testInfo) => {
   let stringArray = testInfo.title.split(" ");
   let screenShotName = stringArray[0];
   await endpointInstantTestPage.LoginToEndpointInstantTestHistoryPage();
@@ -34,7 +34,7 @@ test("VerifyEndpointInstantTestHistoryPageScreenshot @Screenshot", async ({ page
 /*
   CP-84928 : Verify Endpoint Instant Test Create Page Screenshot by URL
 */
-test("VerifyEndpointInstantTestCreatePageScreenshot @Screenshot", async ({ page, screenShotVerification, util, endpointInstantTestPage,instantTestHistory }, testInfo) => {
+test("VerifyEndpointInstantTestCreatePageScreenshot @Screenshot@P1", async ({ page, screenShotVerification, util, endpointInstantTestPage,instantTestHistory }, testInfo) => {
   let stringArray = testInfo.title.split(" ");
   let screenShotName = stringArray[0];
   await endpointInstantTestPage.LoginToEndpointInstantTestHistoryPage();
@@ -47,7 +47,7 @@ test("VerifyEndpointInstantTestCreatePageScreenshot @Screenshot", async ({ page,
 /*
   CP-84770 : Verify Instant Test History Page Screenshot navigating by left navigation
 */
-test("VerifyInstantTestHistoryPageScreenshotByLeftNav @Screenshot", async ({ page, screenShotVerification, util, instantTestHistory,sideNavigationBar,alertLogPage }, testInfo) => {
+test("VerifyInstantTestHistoryPageScreenshotByLeftNav @Screenshot@P1", async ({ page, screenShotVerification, util, instantTestHistory,sideNavigationBar,alertLogPage }, testInfo) => {
   let stringArray = testInfo.title.split(" ");
   let screenShotName = stringArray[0];
   await alertLogPage.LoginToAlertsPage();
@@ -58,7 +58,7 @@ test("VerifyInstantTestHistoryPageScreenshotByLeftNav @Screenshot", async ({ pag
 /*
    CP-84771 : Verify Node InstantTest Page Screenshot navigating by left navigation
 */
-test("VerifyNodeInstantTestPageScreenshotByLeftNav @Screenshot", async ({ page, screenShotVerification, util,sideNavigationBar,alertLogPage }, testInfo) => {
+test("VerifyNodeInstantTestPageScreenshotByLeftNav @Screenshot@P1", async ({ page, screenShotVerification, util,sideNavigationBar,alertLogPage }, testInfo) => {
   let stringArray = testInfo.title.split(" ");
   let screenShotName = stringArray[0];
   await alertLogPage.LoginToAlertsPage();
@@ -69,7 +69,7 @@ test("VerifyNodeInstantTestPageScreenshotByLeftNav @Screenshot", async ({ page, 
 /*
   CP-84772 : Verify Endpoint InstantTest Page Screenshot navigating by left navigation
 */
-test("VerifyEndpointInstantTestHistoryPageScreenshotByLeftNav @Screenshot", async ({ page, screenShotVerification, util,sideNavigationBar ,alertLogPage}, testInfo) => {
+test("VerifyEndpointInstantTestHistoryPageScreenshotByLeftNav @Screenshot@P1", async ({ page, screenShotVerification, util,sideNavigationBar ,alertLogPage}, testInfo) => {
   let stringArray = testInfo.title.split(" ");
   let screenShotName = stringArray[0];
   await alertLogPage.LoginToAlertsPage();
@@ -79,7 +79,7 @@ test("VerifyEndpointInstantTestHistoryPageScreenshotByLeftNav @Screenshot", asyn
 /*
   CP-84927 : Verify Endpoint Instant Test Create Page Screenshot by left nav
 */
-test("VerifyEndpointInstantTestCreatePageScreenshotByLeftNav @Screenshot", async ({ page, screenShotVerification, util, endpointInstantTestPage ,alertLogPage,sideNavigationBar}, testInfo) => {
+test("VerifyEndpointInstantTestCreatePageScreenshotByLeftNav @Screenshot@P1", async ({ page, screenShotVerification, util, endpointInstantTestPage ,alertLogPage,sideNavigationBar}, testInfo) => {
   let stringArray = testInfo.title.split(" ");
   let screenShotName = stringArray[0];
   await alertLogPage.LoginToAlertsPage();
