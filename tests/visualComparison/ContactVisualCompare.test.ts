@@ -43,3 +43,15 @@ test("VerifyContactGroupsPageScreenshotByLeftNav @Screenshot", async({page, scre
     await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement(maskedElements, screenShotName + '.png');
     
 })
+
+/*
+
+*/
+test("VerifyCreateContactPageScreenshot @Screenshot", async({page, screenShotVerification, util,contactsPage}, testInfo) => {
+    let screenShotName = testInfo.title.split(" ")[0]
+    await contactsPage.LoginToContactsPage();
+    await contactsPage.Click(contactsPage.createButtonLocator);
+    const componentScreenshot = (contactsPage.createcontactPageLocator);
+    await screenShotVerification.verifyScreenShotOfAComponent(componentScreenshot, screenShotName + '.png');
+    
+})

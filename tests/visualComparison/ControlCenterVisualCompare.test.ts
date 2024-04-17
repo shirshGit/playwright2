@@ -1,4 +1,5 @@
 import test from "@lib/BaseTest"
+import { SynControlCenterPage } from "@pageobjects/ControlCenter/SyntheticControlCenter";
 import { DefaultDashboardPage } from "@pageobjects/OverviewDashboard/DefaultDashboardPage";
 /*
     CP-84748 : Verify CC Page Screenshot navigating by URL 
@@ -104,6 +105,92 @@ test("VerifyInternetSonarPageScreenshotByLeftNav @Screenshot", async({page, scre
     let screenShotName = testInfo.title.split(" ")[0];
     await sideNavigationBar.navigateToInternetSonarCCFromSideNavigation();
     const maskedElements = [await page.locator(internetSonarCenterPage.internetSonarListLocator)];
+    await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement(maskedElements, screenShotName + '.png');
+    
+})
+
+/*
+
+*/
+
+test("VerifyControlCenterNewEndpointScreenshot @Screenshot", async({page, screenShotVerification, util,synCCPage}, testInfo) => {
+    let screenShotName = testInfo.title.split(" ")[0]
+    await synCCPage.LoginToCCPage();
+    await synCCPage.click(synCCPage.newItemCreationLocator);   
+    await synCCPage.click(synCCPage.endpointcreateButtonLocator);
+    const componentScreenshot =(synCCPage.endpointcreateBladeLocator);
+    await screenShotVerification.verifyScreenShotOfAComponent(componentScreenshot, screenShotName + '.png');
+    
+})
+
+
+/*
+
+*/
+
+test("VerifyControlCenterNewRUMScreenshot @Screenshots", async({page, screenShotVerification, util,synCCPage}, testInfo) => {
+    let screenShotName = testInfo.title.split(" ")[0]
+    await synCCPage.LoginToCCPage();
+    await synCCPage.click(synCCPage.newItemCreationLocator);   
+    await synCCPage.click(synCCPage.RUMcreateButtonLocator);
+    const componentScreenshot =(synCCPage.RUMcreateBladeLocator);
+    await screenShotVerification.verifyScreenShotOfAComponent(componentScreenshot, screenShotName + '.png');
+    
+})
+/*
+
+*/
+
+test("VerifyControlCenterNewLibraryScreenshot @Screenshot", async({page, screenShotVerification, util,synCCPage}, testInfo) => {
+    let screenShotName = testInfo.title.split(" ")[0]
+    await synCCPage.LoginToCCPage();
+    await synCCPage.click(synCCPage.newItemCreationLocator);   
+    await synCCPage.click(synCCPage.LibrarycreateButtonLocator);
+    const componentScreenshot =(synCCPage.LibrarycreateBladeLocator);
+    await screenShotVerification.verifyScreenShotOfAComponent(componentScreenshot, screenShotName + '.png');
+    
+})
+
+/*
+
+*/
+
+test("VerifyControlCenterNewTracingScreenshot @Screenshot", async({page, screenShotVerification, util,synCCPage}, testInfo) => {
+    let screenShotName = testInfo.title.split(" ")[0]
+    await synCCPage.LoginToCCPage();
+    await synCCPage.click(synCCPage.newItemCreationLocator);   
+    await synCCPage.click(synCCPage.TracingcreateButtonLocator);
+    const componentScreenshot =(synCCPage.TracingcreateBladeLocator);
+    await screenShotVerification.verifyScreenShotOfAComponent(componentScreenshot, screenShotName + '.png');
+    
+})
+
+/*
+
+*/
+
+test("VerifyControlCenterNewTestScreenshot @Screenshot", async({page, screenShotVerification, util,synCCPage}, testInfo) => {
+    let screenShotName = testInfo.title.split(" ")[0]
+    await synCCPage.LoginToCCPage();
+    await synCCPage.click(synCCPage.newItemCreationLocator);   
+    await synCCPage.click(synCCPage.TestcreateButtonLocator);
+    const componentScreenshot =(synCCPage.TestcreateBladeLocator);
+    await screenShotVerification.verifyScreenShotOfAComponent(componentScreenshot, screenShotName + '.png');
+    
+})
+
+/*
+   
+*/
+test("VerifyControlCenterNewTemplateScreenshot @Screenshot@P22", async({page, screenShotVerification, util,synCCPage}, testInfo) => {
+    let screenShotName = testInfo.title.split(" ")[0]
+    await synCCPage.LoginToCCPage();
+    await synCCPage.click(synCCPage.newItemCreationLocator);
+    await synCCPage.click(synCCPage.ScriptTemplateButtonLocator);
+    await util.delay(3000);
+    //await synCCPage.hover(synCCPage.ScriptTemplateBladeLocator);
+    const maskedElements = [await page.locator(synCCPage.ScriptTemplateListViewLocator)];
+    await util.delay(3000);
     await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement(maskedElements, screenShotName + '.png');
     
 })
