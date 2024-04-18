@@ -28,6 +28,8 @@ export class SynControlCenterPage {
     private _newItemCreation = '//button[text()="New"]';
     private _searchBox = '//div[contains(@class,"FilterPanel_filter_")]//input[@data-testid="fabricsearchbox"]';
     private _newProductItem = '//p[text()="Product"]';
+    private _newProductproperties ='//div[@id="blade"]/div[2]/div[2]/div/div[2]/div/div/div/div/div/div/nav/div/div/ul/li/div//a[contains(@href, "properties")]';
+    private _newProductpage ='//div[contains(@class,"SyntheticProperties_detailSection_1IRNz")]';
     private _newFolderItem = '//p[text()="Folder"]';
     private _firstRowSearchResult = '//div[@data-testid = "table_row"]//a';
     private _firstRowCheckBoxOfContainer = '//div[@data-testid = "table_row"]//i[@data-icon-name = "StatusCircleCheckmark"]'
@@ -91,17 +93,40 @@ export class SynControlCenterPage {
     private _ScriptTemplateButton ='//span[text()="Script Template"]';
     private _ScriptTemplateBlade ='//div[contains(@class,"OptionListstyles__TopSection-sc-1p8wfb1-0")]';
     private _ScriptTemplateListView ='//div[contains(@class, "OptionListstyles__BottomSection-sc-1p8wfb1-1")]';
+    private _TestsuiteButton ='//span[text()="Test Suite"]';
+    private _TestsuiteBlade = '//div[contains(@class,"ms-Layer")]';
 
+
+    
     public get newItemCreationLocator() {
         return this._newItemCreation;
     }
 
+    
+
+    public get newProductpropertiesLocator() {
+        return this._newProductproperties;
+    }
+
+    public get newProductpageLocator() {
+        return this._newProductpage;
+    }
+    
     public get threeDotMenuItemsLocator() {
         return (text: string) => { return `//ul[contains(@class,"ms-ContextualMenu-list is-open")]//span[text()="${text}"]` };
     }
     public get ScriptTemplateListViewLocator() {
         return this._ScriptTemplateListView;
     }
+
+    public get TestSuiteButtonLocator() {
+        return this._TestsuiteButton;
+    }
+
+    public get TestSuiteLocator() {
+        return this._TestsuiteBlade;
+    }
+    
     public get ScriptTemplateButtonLocator() {
         return this._ScriptTemplateButton;
     }

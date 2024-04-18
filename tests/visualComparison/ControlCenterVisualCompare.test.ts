@@ -128,7 +128,7 @@ test("VerifyControlCenterNewEndpointScreenshot @Screenshot", async({page, screen
 
 */
 
-test("VerifyControlCenterNewRUMScreenshot @Screenshots", async({page, screenShotVerification, util,synCCPage}, testInfo) => {
+test("VerifyControlCenterNewRUMScreenshot @Screenshots@E1", async({page, screenShotVerification, util,synCCPage}, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await synCCPage.LoginToCCPage();
     await synCCPage.click(synCCPage.newItemCreationLocator);   
@@ -166,7 +166,7 @@ test("VerifyControlCenterNewTracingScreenshot @Screenshot", async({page, screenS
 })
 
 /*
-
+//
 */
 
 test("VerifyControlCenterNewTestScreenshot @Screenshot", async({page, screenShotVerification, util,synCCPage}, testInfo) => {
@@ -182,7 +182,7 @@ test("VerifyControlCenterNewTestScreenshot @Screenshot", async({page, screenShot
 /*
    
 */
-test("VerifyControlCenterNewTemplateScreenshot @Screenshot@P22", async({page, screenShotVerification, util,synCCPage}, testInfo) => {
+test("VerifyControlCenterNewTemplateScreenshot @Screenshot", async({page, screenShotVerification, util,synCCPage}, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await synCCPage.LoginToCCPage();
     await synCCPage.click(synCCPage.newItemCreationLocator);
@@ -194,3 +194,20 @@ test("VerifyControlCenterNewTemplateScreenshot @Screenshot@P22", async({page, sc
     await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement(maskedElements, screenShotName + '.png');
     
 })
+
+/*
+   
+*/
+test("VerifyControlCenterNewTestSuiteScreenshot @Screenshot @P111", async({page, screenShotVerification, util,synCCPage}, testInfo) => {
+    let screenShotName = testInfo.title.split(" ")[0]
+    await synCCPage.LoginToCCPage();
+    await synCCPage.click(synCCPage.newItemCreationLocator);
+    await synCCPage.click(synCCPage.TestSuiteButtonLocator);
+    //await synCCPage.click(synCCPage.TestSuiteLocator);
+    //await util.delay(3000);
+    const componentScreenshot =(synCCPage.TestSuiteLocator);
+    //await util.delay(3000);
+    await screenShotVerification.verifyScreenShotOfAComponent(componentScreenshot, screenShotName + '.png');
+    
+})
+
