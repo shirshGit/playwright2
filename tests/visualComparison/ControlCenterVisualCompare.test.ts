@@ -14,7 +14,7 @@ test("VerifyCCPageScreenshot @Screenshot", async({page, screenShotVerification, 
 /*
     CP-84749 : Verify Endpoint Page Screenshot navigating by URL
 */
-test("VerifyEndpointPageScreenshot @Screenshot", async({page, screenShotVerification, util,endpointControlCenter,synCCPage}, testInfo) => {
+test("VerifyEndpointPageScreenshot @Screenshot@P1", async({page, screenShotVerification, util,endpointControlCenter,synCCPage}, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await endpointControlCenter.LoginToEndpointCCPage();
     const maskedElements = [await page.locator(endpointControlCenter.endPointNavigationTreeLocator),await page.locator(endpointControlCenter.endpointsListLocator)];
@@ -110,7 +110,7 @@ test("VerifyInternetSonarPageScreenshotByLeftNav @Screenshot", async({page, scre
 })
 
 /*
-
+CP-88546 : Take a screenhot for Endpoint Section in Master create blade by clicking on left navigation 
 */
 
 test("VerifyControlCenterNewEndpointScreenshot @Screenshot", async({page, screenShotVerification, util,synCCPage}, testInfo) => {
@@ -125,7 +125,7 @@ test("VerifyControlCenterNewEndpointScreenshot @Screenshot", async({page, screen
 
 
 /*
-
+ CP-88547 : Take a screenshot for RUM Section in Master create blade by clicking on left navigation 
 */
 
 test("VerifyControlCenterNewRUMScreenshot @Screenshots@E1", async({page, screenShotVerification, util,synCCPage}, testInfo) => {
@@ -137,7 +137,9 @@ test("VerifyControlCenterNewRUMScreenshot @Screenshots@E1", async({page, screenS
     await screenShotVerification.verifyScreenShotOfAComponent(componentScreenshot, screenShotName + '.png');
     
 })
+
 /*
+CP-88566 :  Take a screenhot for Library Section in Master create blade by clicking on left navigation 
 
 */
 
@@ -152,7 +154,7 @@ test("VerifyControlCenterNewLibraryScreenshot @Screenshot", async({page, screenS
 })
 
 /*
-
+CP-88569 : Take a screenshot for Tracing Section in Master create blade by clicking on left navigation
 */
 
 test("VerifyControlCenterNewTracingScreenshot @Screenshot", async({page, screenShotVerification, util,synCCPage}, testInfo) => {
@@ -166,7 +168,8 @@ test("VerifyControlCenterNewTracingScreenshot @Screenshot", async({page, screenS
 })
 
 /*
-//
+CP-88572 : Take a screenhot for Test Section in Master create blade by clicking on left navigation 
+
 */
 
 test("VerifyControlCenterNewTestScreenshot @Screenshot", async({page, screenShotVerification, util,synCCPage}, testInfo) => {
@@ -180,6 +183,7 @@ test("VerifyControlCenterNewTestScreenshot @Screenshot", async({page, screenShot
 })
 
 /*
+CP-88573 : Take a screenshot for Script Template Section in Master create blade by clicking on left navigation
    
 */
 test("VerifyControlCenterNewTemplateScreenshot @Screenshot", async({page, screenShotVerification, util,synCCPage}, testInfo) => {
@@ -196,14 +200,14 @@ test("VerifyControlCenterNewTemplateScreenshot @Screenshot", async({page, screen
 })
 
 /*
-   
+    CP-88574 : Take a screenshot for Test Suite Section in Master create blade by clicking on left navigation
 */
-test("VerifyControlCenterNewTestSuiteScreenshot @Screenshot @P111", async({page, screenShotVerification, util,synCCPage}, testInfo) => {
+test("VerifyControlCenterNewTestSuiteScreenshot @Screenshot@P111", async({page, screenShotVerification, util,synCCPage}, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await synCCPage.LoginToCCPage();
     await synCCPage.click(synCCPage.newItemCreationLocator);
     await synCCPage.click(synCCPage.TestSuiteButtonLocator);
-    //await synCCPage.click(synCCPage.TestSuiteLocator);
+    await synCCPage.click(synCCPage.TestSuiteLocator);
     //await util.delay(3000);
     const componentScreenshot =(synCCPage.TestSuiteLocator);
     //await util.delay(3000);

@@ -94,7 +94,7 @@ export class SynControlCenterPage {
     private _ScriptTemplateBlade ='//div[contains(@class,"OptionListstyles__TopSection-sc-1p8wfb1-0")]';
     private _ScriptTemplateListView ='//div[contains(@class, "OptionListstyles__BottomSection-sc-1p8wfb1-1")]';
     private _TestsuiteButton ='//span[text()="Test Suite"]';
-    private _TestsuiteBlade = '//div[contains(@class,"ms-Layer")]';
+    private _TestsuiteBlade = '//div[contains(@class,"ms-Panel-main")]';
 
 
     
