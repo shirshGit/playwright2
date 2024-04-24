@@ -25,17 +25,21 @@ export class UserrolePage {
     private _firstRowSearchCheckBoxInUserroleDetailPage = '//div[@data-list-index="1"]';
     private _firstRowSearchCheckBoxInUserrolePage = '//a[text()="abc"]/../../../..//i[@data-icon-name="StatusCircleCheckmark"]';
     private _deleteButtonInURPage = '//button[text()="Delete"]';
+
     private _deactivateBtnInContainer = '//button[text()="Deactivate"]/..';
     private _threeDotMenuOfSearchedItem = '//div[@data-testid="icon-menu-cell"]//i';
     private _firstRowCheckBoxOfContainer = '//div[@data-testid = "table_row"]//i[@data-icon-name = "StatusCircleCheckmark"]'
     private _popUpDeleteBtn = '//div[contains(@class, "DialogPopup")]//button[text()="Delete"]';
     private _deleteOptionAfterThreeDotMenu = '//i[@data-icon-name="delete"]';
     private _createIcon = '//button[text()="Create"]';
+    private _UserRolePropertiesBlade = '//div[contains(@class,"ms-Panel-main")]';
     private _nameText = '//span[text()="Name"]';
     private _divisionText = '//span[text()="Division"]';
     private _activeContactText = '//span[text()="Active Contacts"]';
     private _inactiveContactText = '//span[text()="Inactive Contacts"]';
-    private _userroleTable = "//div[@class='ms-List-page']"
+    private _userroleTable = "//div[@class='ms-List-page']";
+
+    
 
     public get searchBoxLocator() {
         return this._searchBox;
@@ -88,7 +92,13 @@ export class UserrolePage {
     public get userroleTableLocator() {
         return this._userroleTable;
     }
-  
+
+    public get UserRolePropertiesBladeLoacator() {
+        return this._UserRolePropertiesBlade;
+    }
+
+
+    
 
     //#endregion
 
@@ -137,6 +147,9 @@ export class UserrolePage {
         await webActions.waitForElementAttached(this.userroleTableLocator);
     }
 
+    async click(locator:string) {
+        await webActions.clickElement(locator);
+    }
     
 
     //#endregion

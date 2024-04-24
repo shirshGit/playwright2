@@ -39,8 +39,8 @@ export class ContactsPage {
     private _companyName    = '//span[text()="Company Name"]';
     private _systemAccess = '//span[text()="System Access"]';
     private _division  = '//span[text()="Division"]';
-    private _contactTable = '//div[@class="ms-List"]'
-
+    private _contactTable = '//div[@class="ms-List"]';
+    private _createcontactPage = '//div[contains(@class,"ms-Panel-main")]';
 
 
 
@@ -90,7 +90,10 @@ export class ContactsPage {
     public get contactTableLocator() {
         return this._contactTable;
     }
-
+    
+    public get createcontactPageLocator() {
+        return this._createcontactPage;
+    }
 
 
     //#endregion
@@ -132,6 +135,9 @@ export class ContactsPage {
         await webActions.waitForElementAttached(this.contactTableLocator);
     }
 
+    async Click(locator:string) {
+        await webActions.clickElement(locator);
+    }
 
 
 

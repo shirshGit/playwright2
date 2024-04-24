@@ -22,10 +22,20 @@ export class ZonePage {
     //#region This region is for getter
 
     private _zoneTable = "//div[@class='ms-List-page']"
+    private _zoneCreateButton ='//button[text()="Create"]';
+    private _zoneCreateBlade ='//div[contains(@class,"ms-Panel-main")]';
 
 
     public get zonesTableLocator() {
         return this._zoneTable;
+    }
+
+    public get zonesCreateButtonLocator() {
+        return this._zoneCreateButton;
+    }
+
+    public get zoneCreateBladeLocator() {
+        return this._zoneCreateBlade;
     }
 
     //#endregion
@@ -61,7 +71,10 @@ export class ZonePage {
         await webActions.waitForElementAttached(locator);
     }
 
-
+    async click(locator:string) {
+        await webActions.clickElement(locator);
+    }
+    
 
     //#endregion
 

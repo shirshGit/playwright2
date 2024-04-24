@@ -28,6 +28,8 @@ export class SynControlCenterPage {
     private _newItemCreation = '//button[text()="New"]';
     private _searchBox = '//div[contains(@class,"FilterPanel_filter_")]//input[@data-testid="fabricsearchbox"]';
     private _newProductItem = '//p[text()="Product"]';
+    private _newProductproperties ='//a[contains(@href, "properties")]';
+    private _newProductpage ='//div[contains(@class,"SyntheticProperties_detailSection")]';
     private _newFolderItem = '//p[text()="Folder"]';
     private _firstRowSearchResult = '//div[@data-testid = "table_row"]//a';
     private _firstRowCheckBoxOfContainer = '//div[@data-testid = "table_row"]//i[@data-icon-name = "StatusCircleCheckmark"]'
@@ -39,6 +41,7 @@ export class SynControlCenterPage {
     private _propertiesAfterThreeDotMenu = '//i[@data-icon-name="properties"]';
     private _deleteOptionAfterThreeDotMenu = '//i[@data-icon-name="delete"]';
     private _webChromeTest = '//p[text() = "Web"]/../../..//p[text() = "Chrome"]';
+    private _webObjectTest = '//p[text() = "Web"]/../../..//p[text() = "Object"]';
     private _transactionChromeTest = '//p[text() = "Transaction"]/../../..//p[text() = "Chrome"]';
     private _pendoCloseForNewFeature = '//button[contains(@id, "pendo-close-guide")]';
     private _targetScheduletab = '//div[@id="#targeting_and_scheduling"]//span[text()="Targeting & Scheduling"]';
@@ -77,13 +80,83 @@ export class SynControlCenterPage {
     private _rumTabInEndpointsPage = '//div[contains(text(),"RUM")]';
     private _libraryTabInCCPage = '//div[contains(text(),"Library")]';
     private _internetSonarTabInCCPage = '//div[contains(text(),"Internet Sonar")]';
+    private _endpointCreateButton = '//span[text()="Endpoint"]';
+    private _endpointCreateBlade = '//div[contains(@class,"ms-Panel-main")]';
+    private _RUMCreateButton = '//span[text()="RUM"]';
+    private _RUMCreateBlade = '//div[contains(@class,"ms-Panel-main")]';
+    private _LibraryCreateBlade ='//div[@data-testid = "library-container"]';
+    private _LibraryCreateButton = '//span[text()="Library"]'; 
+    private _TracingCreateBlade ='//div[contains(@class,"ms-Layer")]';
+    private _TracingCreateButton = '//span[text()="Tracing"]';
+    private _TestsCreateButton = '//span[text()="Tests"]'; 
+    private _TestsCreateBlade ='//div[contains(@class,"MasterPage__RootDiv")]';
+    private _ScriptTemplateButton ='//span[text()="Script Template"]';
+    private _ScriptTemplateBlade ='//div[contains(@class,"OptionListstyles__TopSection")]';
+    private _ScriptTemplateListView ='//div[contains(@class, "OptionListstyles__BottomSection")]';
+    private _TestsuiteButton ='//span[text()="Test Suite"]';
+    private _TestsuiteBlade = '//div[contains(@class,"ms-Panel-main")]';
+    private _NewProductButton =  '//a[contains(@href,"/ui/Symphony/ControlCenter/Tests/Product/0/New")]';
+    private _NewProductPropertiesSection = '//div[contains(@class,"SyntheticProperties_detailSection")]';
+    private _NewAdvancesettingSection = '//span[text()="Advanced Settings"]';
+    private _addAdvanceSettingsTitle = '//button[@title = "Add Advanced Setting"]';
+    private _addAdvanceSettingsCheckboxS ='//div[@data-testid = "advancedsettingsblade"]//span//div[@data-automationid = "DetailsRowCheck"]//i[@data-icon-name="StatusCircleCheckmark"]"]';
+    private _applybutton ='//button[@data-testid="primary-button"]//span[text()="Apply"]';
 
+    public get NewProductButtonLocator() {
+        return this._NewProductButton;
+   }
+
+   public get NewProductPropertiesLocator() {
+        return this._NewProductPropertiesSection;
+   }
+   public get NewAdvancesettingSectionLocator() {
+    return this._NewAdvancesettingSection;
+   }
+   public get _addAdvanceSettingsTitleLocator() {
+    return this._addAdvanceSettingsTitle;
+    }
+    public get applybuttonLocator() {
+        return this._applybutton;
+    }
+
+        public get addAdvanceSettingsCheckboxLocator() {
+            return this._addAdvanceSettingsCheckboxS;
+            }
+    
     public get newItemCreationLocator() {
         return this._newItemCreation;
     }
 
+
+    public get newProductpropertiesLocator() {
+        return this._newProductproperties;
+    }
+
+    public get newProductpageLocator() {
+        return this._newProductpage;
+    }
+    
     public get threeDotMenuItemsLocator() {
         return (text: string) => { return `//ul[contains(@class,"ms-ContextualMenu-list is-open")]//span[text()="${text}"]` };
+    }
+    public get ScriptTemplateListViewLocator() {
+        return this._ScriptTemplateListView;
+    }
+
+    public get TestSuiteButtonLocator() {
+        return this._TestsuiteButton;
+    }
+
+    public get TestSuiteLocator() {
+        return this._TestsuiteBlade;
+    }
+    
+    public get ScriptTemplateButtonLocator() {
+        return this._ScriptTemplateButton;
+    }
+    
+    public get ScriptTemplateBladeLocator() {
+        return this._ScriptTemplateBlade;
     }
 
     public get searchBoxLocator() {
@@ -249,6 +322,47 @@ export class SynControlCenterPage {
     public get endpointTabLocator(){
         return this._endpointInTestTree
     }
+
+    public get endpointcreateButtonLocator() {
+        return this._endpointCreateButton
+    }
+
+    public get endpointcreateBladeLocator() {
+        return this._endpointCreateBlade
+    }
+
+    public get RUMcreateBladeLocator() {
+        return this._RUMCreateBlade
+    }
+    
+    public get RUMcreateButtonLocator() {
+        return this._RUMCreateButton
+    }
+
+    public get LibrarycreateBladeLocator() {
+        return this._LibraryCreateBlade 
+    }
+    
+    public get LibrarycreateButtonLocator() {
+        return this._LibraryCreateButton
+    }
+
+    public get TracingcreateBladeLocator() {
+        return this._TracingCreateBlade 
+    }
+    
+    public get TracingcreateButtonLocator() {
+        return this._TracingCreateButton
+    }
+    public get TestcreateBladeLocator() {
+        return this._TestsCreateBlade 
+    }
+    
+    public get TestcreateButtonLocator() {
+        return this._TestsCreateButton
+    }
+
+
     public get rumTabLocator(){
         return this._rumInTestTree
     }
@@ -570,7 +684,14 @@ export class SynControlCenterPage {
     await webActions.waitForElementAttached(locator);
    }
 
-   
+   async click(locator:string) {
+    await webActions.clickElement(locator);
+}
+
+async hover(locator:string) {
+    await webActions.hoverOnElement(locator);
+}
+
 
 
 

@@ -9,6 +9,15 @@ test("VerifyNodePageScreenshot @Screenshot", async({page, screenShotVerification
     await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement(maskedElements, screenShotName + '.png');
     
 })
+test("VerifyCreateNodePageScreenshot @Screenshot", async({page, screenShotVerification, util,nodeListPage}, testInfo) => {
+    let screenShotName = testInfo.title.split(" ")[0]
+    await nodeListPage.navigateToNodesPageByURL();
+    await nodeListPage.click(nodeListPage.NewNodeIconLocator);
+    await nodeListPage.click(nodeListPage.NewButtonLocator)
+    const componentScreenshot =(nodeListPage.NewNodeBladeLocator);
+    await screenShotVerification.verifyScreenShotOfAComponent(componentScreenshot, screenShotName + '.png');
+    
+})
 /*
     CP-84757 : Verify Node Groups Page Screenshot navigating by URL 
 */

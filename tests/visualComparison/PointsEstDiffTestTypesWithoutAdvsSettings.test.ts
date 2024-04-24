@@ -2,8 +2,9 @@ import test from "@lib/BaseTest"
 import { DataForEnv } from "@lib/DataForEnvironment";
 
 let data = new DataForEnv();
+
 /*
-    CP-84996 : Web Test Point Est
+CP-84996 : Web Test Point Est
 */
 test("WebTestPointEst @Screenshot@PointEst", async ({ page, screenShotVerification, util, synCCPage, syntheticTestDetailPage }, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
@@ -13,6 +14,7 @@ test("WebTestPointEst @Screenshot@PointEst", async ({ page, screenShotVerificati
     await syntheticTestDetailPage.clickOnPointBreakDown();
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, screenShotName + '.png');
 })
+
 /*
     CP-84997 : Transaction Test Point Est -
 */

@@ -39,13 +39,21 @@ export class SyntheticDetailPage extends SynControlCenterPage {
     private _cancelItemDetailPage = '//span[text()="Cancel"]';
     private _rumInMasterTestBlade = '//span[text()="RUM"]';
     private _testsInMasterTestBlade = '//span[text()="Tests"]';
-    private _changeLogButton = '//span[text()="Change Log"]/../../i'
-    private _pointBreakDown = '//span[text()="Points Breakdown"]'
+    private _changeLogButton = '//span[text()="Change Log"]/../../i';
+    private _pointBreakDown = '//span[text()="Points Breakdown"]';
+    private _Threshold = '//span[text()="Thresholds"]';
+    private _AdvancedSettings = '//span[text()="Advanced Settings"]';
     private _propertiesBladeLocator = '//div[contains(@class,"ms-Panel-scrollableContent")]'
     private _changeLogDetailSection = '//div[contains(@class,"ChangeLogContent_mainSection_")]';
 
     public get saveButtonLoctor() {
         return this._saveButton;
+    }
+    public get AdvancedSettingsLocator() {
+        return this._AdvancedSettings;
+    }
+    public get ThresholdLocator() {
+        return this._Threshold;
     }
 
     public get propertiesBladeCancelButtonLocator() {
@@ -176,7 +184,12 @@ export class SyntheticDetailPage extends SynControlCenterPage {
     async clickOnPointBreakDown(){
         await webActions.clickElement(this.pointBreakDownLocator);
     }
-
-
+    async clickOnThreshold(){
+        await webActions.clickElement(this.ThresholdLocator);
+    }
+    
+    async ClickonAdvancedSettingsLocator(){
+        await webActions.clickElement(this.AdvancedSettingsLocator);
+    }
     //#endregion
 }

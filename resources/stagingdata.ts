@@ -1,8 +1,9 @@
 export const stagedata = {
     'alertRecipientName' : 'Client Admin DoNotDelete', //for creating items which needed contact.
     'automationContact' : 'userrole9_DoNOTDeleteqaautomationxclient-clientadministrator@catchpoint.com', //contact used for automation, where assiging other userrole is required
-	'aPITestIDWithoutAdvsSettings' : '427522',
+	'aPITestIDWithoutAdvsSettings' : '427522', 
     'aPITestIDWithAdvsSettings' : '427521',
+    'apiTest': '427522',
 
     'baseURL' : 'https://portalstage.catchpoint.com/ui/Symphony/',
     'bgpTest' : '187860',
