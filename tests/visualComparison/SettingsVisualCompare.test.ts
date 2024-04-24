@@ -115,3 +115,42 @@ test("VerifyZonePageScreenshotByLeftNav @Screenshot", async({page, screenShotVer
     await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement([await page.locator(zonePage.zonesTableLocator)], screenShotName + '.png');
     
 })
+
+/*
+CP-88790 : Take a screenshot for Create User Role page
+
+*/
+    test("VerifyUserrolecreatePageScreenshot @Screenshot", async({page, screenShotVerification, util,userrolePage}, testInfo) => {
+    let screenShotName = testInfo.title.split(" ")[0]
+    await userrolePage.LoginToUserrolePage();
+    await userrolePage.click(userrolePage.userroleTableLocator);
+    await userrolePage.click(userrolePage.createIconLocator);
+    await util.delay(3000);
+    const componentScreenshot =(userrolePage.UserRolePropertiesBladeLoacator);
+    await screenShotVerification.verifyScreenShotOfAComponent(componentScreenshot, screenShotName + '.png');
+    
+})
+
+/*
+ CP-88791 : Take a screenshot for Create Index page 
+*/
+test("VerifyIndexcreatePageScreenshot @Screenshot", async({page, screenShotVerification, util,indexPage}, testInfo) => {
+    let screenShotName = testInfo.title.split(" ")[0]
+    await indexPage.LoginToIndexPage();
+    await indexPage.click(indexPage.NewButtonLocator);
+    const componentScreenshot =(indexPage.NewindexBladeLocator);
+    await screenShotVerification.verifyScreenShotOfAComponent(componentScreenshot, screenShotName + '.png');
+ 
+})
+
+/*
+CP-88792 : Take a screenshot for Create Zone page 
+*/
+test("VerifyZoneCreatePageScreenshot @Screenshot", async({page, screenShotVerification, util,zonePage}, testInfo) => {
+    let screenShotName = testInfo.title.split(" ")[0]
+    await zonePage.LoginToZonePage();
+    await zonePage.click(zonePage.zonesCreateButtonLocator);
+    const componentScreenshot =(zonePage.zoneCreateBladeLocator);
+    await screenShotVerification.verifyScreenShotOfAComponent(componentScreenshot, screenShotName + '.png');
+    
+})

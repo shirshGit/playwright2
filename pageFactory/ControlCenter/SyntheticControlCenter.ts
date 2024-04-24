@@ -89,20 +89,44 @@ export class SynControlCenterPage {
     private _TracingCreateBlade ='//div[contains(@class,"ms-Layer")]';
     private _TracingCreateButton = '//span[text()="Tracing"]';
     private _TestsCreateButton = '//span[text()="Tests"]'; 
-    private _TestsCreateBlade ='//div[contains(@class,"MasterPage__RootDiv-sc-1k7hjmx-1 kwzzDT")]';
+    private _TestsCreateBlade ='//div[contains(@class,"MasterPage__RootDiv-sc")]';
     private _ScriptTemplateButton ='//span[text()="Script Template"]';
-    private _ScriptTemplateBlade ='//div[contains(@class,"OptionListstyles__TopSection-sc-1p8wfb1-0")]';
-    private _ScriptTemplateListView ='//div[contains(@class, "OptionListstyles__BottomSection-sc-1p8wfb1-1")]';
+    private _ScriptTemplateBlade ='//div[contains(@class,"OptionListstyles__TopSection")]';
+    private _ScriptTemplateListView ='//div[contains(@class, "OptionListstyles__BottomSection")]';
     private _TestsuiteButton ='//span[text()="Test Suite"]';
     private _TestsuiteBlade = '//div[contains(@class,"ms-Panel-main")]';
+    private _NewProductButton =  '//a[contains(@href,"/ui/Symphony/ControlCenter/Tests/Product/0/New")]';
+    private _NewProductPropertiesSection = '//div[contains(@class,"SyntheticProperties_detailSection")]';
+    private _NewAdvancesettingSection = '//span[text()="Advanced Settings"]';
+    private _addAdvanceSettingsTitle = '//button[@title = "Add Advanced Setting"]';
+    private _addAdvanceSettingsCheckboxS ='//div[@data-testid = "advancedsettingsblade"]//span//div[@data-automationid = "DetailsRowCheck"]//i[@data-icon-name="StatusCircleCheckmark"]"]';
+    private _applybutton ='//button[@data-testid="primary-button"]//span[text()="Apply"]';
 
+    public get NewProductButtonLocator() {
+        return this._NewProductButton;
+   }
 
+   public get NewProductPropertiesLocator() {
+        return this._NewProductPropertiesSection;
+   }
+   public get NewAdvancesettingSectionLocator() {
+    return this._NewAdvancesettingSection;
+   }
+   public get _addAdvanceSettingsTitleLocator() {
+    return this._addAdvanceSettingsTitle;
+    }
+    public get applybuttonLocator() {
+        return this._applybutton;
+    }
+
+        public get addAdvanceSettingsCheckboxLocator() {
+            return this._addAdvanceSettingsCheckboxS;
+            }
     
     public get newItemCreationLocator() {
         return this._newItemCreation;
     }
 
-    
 
     public get newProductpropertiesLocator() {
         return this._newProductproperties;
@@ -667,6 +691,7 @@ export class SynControlCenterPage {
 async hover(locator:string) {
     await webActions.hoverOnElement(locator);
 }
+
 
 
 

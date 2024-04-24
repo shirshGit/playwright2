@@ -27,8 +27,8 @@ export class IndexPage {
     private _IDText = '//span[text()="ID"]';
     private _numberOfTestText = '//span[text()="Number of Tests"]';
     private _indexTable = "//div[@class='ms-List-page']";
-
-
+    private _indexBlade ='//div[contains(@class,"ms-Panel-main")]';
+    private _NewButton = '//button[text()="New"]';
    
 
     public get newIconLocator() {
@@ -59,7 +59,12 @@ export class IndexPage {
     public get commoNLocator() {
         return (text: string) => { return `//div[text()="${text}"]` }
     }
-
+    public get NewButtonLocator() {
+        return this._NewButton;
+    }
+    public get NewindexBladeLocator() {
+        return this._indexBlade;
+    }
 
     //#endregion
 
@@ -86,6 +91,10 @@ export class IndexPage {
     async waitForElement(locator:string){
         await webActions.waitForElementAttached(locator);
     }
+    async click(locator:string) {
+        await webActions.clickElement(locator);
+    }
+    
 
     //#endregion
 

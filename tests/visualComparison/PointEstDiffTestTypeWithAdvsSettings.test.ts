@@ -13,6 +13,9 @@ test("WebTestPointEst @Screenshot@PointEst", async ({  page, screenShotVerificat
     await syntheticTestDetailPage.clickOnPointBreakDown();
     await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, screenShotName + '.png');
 })
+
+
+
 /*
     CP-84976 : Transaction Test Point Est 
 */

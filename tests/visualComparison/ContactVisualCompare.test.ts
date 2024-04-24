@@ -45,7 +45,7 @@ test("VerifyContactGroupsPageScreenshotByLeftNav @Screenshot", async({page, scre
 })
 
 /*
-
+CP-88751 : Take a screenshot for Create Contact page
 */
 test("VerifyCreateContactPageScreenshot @Screenshot", async({page, screenShotVerification, util,contactsPage}, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]

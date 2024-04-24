@@ -1,6 +1,11 @@
 import test from "@lib/BaseTest"
 import { SynControlCenterPage } from "@pageobjects/ControlCenter/SyntheticControlCenter";
+import { SyntheticDetailPage } from "@pageobjects/ControlCenter/SyntheticDetailsPage";
 import { DefaultDashboardPage } from "@pageobjects/OverviewDashboard/DefaultDashboardPage";
+import { SyntheticProductDetailPage } from "@pageobjects/ControlCenter/SyntheticProductDeatils";
+import { DataForEnv } from "@lib/DataForEnvironment";
+
+let data = new DataForEnv();
 /*
     CP-84748 : Verify CC Page Screenshot navigating by URL 
 */
@@ -14,7 +19,7 @@ test("VerifyCCPageScreenshot @Screenshot", async({page, screenShotVerification, 
 /*
     CP-84749 : Verify Endpoint Page Screenshot navigating by URL
 */
-test("VerifyEndpointPageScreenshot @Screenshot@P1", async({page, screenShotVerification, util,endpointControlCenter,synCCPage}, testInfo) => {
+test("VerifyEndpointPageScreenshot @Screenshot", async({page, screenShotVerification, util,endpointControlCenter,synCCPage}, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await endpointControlCenter.LoginToEndpointCCPage();
     const maskedElements = [await page.locator(endpointControlCenter.endPointNavigationTreeLocator),await page.locator(endpointControlCenter.endpointsListLocator)];
@@ -128,7 +133,7 @@ test("VerifyControlCenterNewEndpointScreenshot @Screenshot", async({page, screen
  CP-88547 : Take a screenshot for RUM Section in Master create blade by clicking on left navigation 
 */
 
-test("VerifyControlCenterNewRUMScreenshot @Screenshots@E1", async({page, screenShotVerification, util,synCCPage}, testInfo) => {
+test("VerifyControlCenterNewRUMScreenshot @Screenshots", async({page, screenShotVerification, util,synCCPage}, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await synCCPage.LoginToCCPage();
     await synCCPage.click(synCCPage.newItemCreationLocator);   
@@ -192,7 +197,6 @@ test("VerifyControlCenterNewTemplateScreenshot @Screenshot", async({page, screen
     await synCCPage.click(synCCPage.newItemCreationLocator);
     await synCCPage.click(synCCPage.ScriptTemplateButtonLocator);
     await util.delay(3000);
-    //await synCCPage.hover(synCCPage.ScriptTemplateBladeLocator);
     const maskedElements = [await page.locator(synCCPage.ScriptTemplateListViewLocator)];
     await util.delay(3000);
     await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement(maskedElements, screenShotName + '.png');
@@ -202,15 +206,14 @@ test("VerifyControlCenterNewTemplateScreenshot @Screenshot", async({page, screen
 /*
     CP-88574 : Take a screenshot for Test Suite Section in Master create blade by clicking on left navigation
 */
-test("VerifyControlCenterNewTestSuiteScreenshot @Screenshot@P111", async({page, screenShotVerification, util,synCCPage}, testInfo) => {
+test("VerifyControlCenterNewTestSuiteScreenshot @Screenshot", async({page, screenShotVerification, util,synCCPage}, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await synCCPage.LoginToCCPage();
     await synCCPage.click(synCCPage.newItemCreationLocator);
     await synCCPage.click(synCCPage.TestSuiteButtonLocator);
     await synCCPage.click(synCCPage.TestSuiteLocator);
-    //await util.delay(3000);
     const componentScreenshot =(synCCPage.TestSuiteLocator);
-    //await util.delay(3000);
+    await util.delay(3000);
     await screenShotVerification.verifyScreenShotOfAComponent(componentScreenshot, screenShotName + '.png');
     
 })

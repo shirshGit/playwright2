@@ -25,6 +25,9 @@ export class NodeListPage {
     private _statusHeaderInNodeListPage = '//span[text()="Status"]';
     private _runRateHeaderInNodeListPage = '//span[text()="Run Rate"]';
     private _nodeTable = '//div[@class="ms-List-page"][1]'
+    private _NewButton ='//button[text()="New"]';
+    private _NewNodeBlade ='//div[contains(@class,"ms-Panel-main")]';
+    private _NewNodeIcon ='//div[@id="nodesection"]';
 
     public get nodeNameHeaderInNodeListTableLocator(){
         return this._nodeNameHeaderInNodeListTable;
@@ -33,7 +36,17 @@ export class NodeListPage {
     public get statusHeaderInNodeListPageLocator(){
         return this._statusHeaderInNodeListPage;
     }
+    public get NewNodeIconLocator(){
+        return this._NewNodeIcon;
+    } 
 
+    public get NewButtonLocator(){
+        return this._NewButton;
+    }
+    public get NewNodeBladeLocator(){
+        return this._NewNodeBlade;
+    }
+  
     public get runRateHeaderInNodeListPageLocator(){
         return this._runRateHeaderInNodeListPage;
     }
@@ -64,6 +77,16 @@ export class NodeListPage {
         this.navigateToNodesPageByURL();
         await login.enterLoginCredential();
         await webActions.waitForElementAttached(this.nodeTableLocator);
+    }
+
+    async LoginToNodePage() {
+        this.navigateToNodesPageByURL();
+        await login.enterLoginCredential();
+        await webActions.waitForElementAttached(this.nodeTableLocator);
+    }
+
+    async click(locator:string) {
+        await webActions.clickElement(locator);
     }
     
     //#endregion
