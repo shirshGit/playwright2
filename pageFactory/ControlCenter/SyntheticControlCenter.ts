@@ -28,8 +28,8 @@ export class SynControlCenterPage {
     private _newItemCreation = '//button[text()="New"]';
     private _searchBox = '//div[contains(@class,"FilterPanel_filter_")]//input[@data-testid="fabricsearchbox"]';
     private _newProductItem = '//p[text()="Product"]';
-    private _newProductproperties ='//div[@id="blade"]/div[2]/div[2]/div/div[2]/div/div/div/div/div/div/nav/div/div/ul/li/div//a[contains(@href, "properties")]';
-    private _newProductpage ='//div[contains(@class,"SyntheticProperties_detailSection_1IRNz")]';
+    private _newProductproperties ='//a[contains(@href, "properties")]';
+    private _newProductpage ='//div[contains(@class,"SyntheticProperties_detailSection")]';
     private _newFolderItem = '//p[text()="Folder"]';
     private _firstRowSearchResult = '//div[@data-testid = "table_row"]//a';
     private _firstRowCheckBoxOfContainer = '//div[@data-testid = "table_row"]//i[@data-icon-name = "StatusCircleCheckmark"]'
@@ -89,7 +89,7 @@ export class SynControlCenterPage {
     private _TracingCreateBlade ='//div[contains(@class,"ms-Layer")]';
     private _TracingCreateButton = '//span[text()="Tracing"]';
     private _TestsCreateButton = '//span[text()="Tests"]'; 
-    private _TestsCreateBlade ='//div[contains(@class,"MasterPage__RootDiv-sc")]';
+    private _TestsCreateBlade ='//div[contains(@class,"MasterPage__RootDiv")]';
     private _ScriptTemplateButton ='//span[text()="Script Template"]';
     private _ScriptTemplateBlade ='//div[contains(@class,"OptionListstyles__TopSection")]';
     private _ScriptTemplateListView ='//div[contains(@class, "OptionListstyles__BottomSection")]';

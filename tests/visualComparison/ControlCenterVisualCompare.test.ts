@@ -218,3 +218,15 @@ test("VerifyControlCenterNewTestSuiteScreenshot @Screenshot", async({page, scree
     
 })
 
+/*
+  
+*/
+
+test("transportTestTT @Screenshot@PointEst@123", async ({ page, screenShotVerification, util, synCCPage, syntheticTestDetailPage }, testInfo) => {
+    let screenShotName = testInfo.title.split(" ")[0]
+    let testID = await data.getValueOfTheParameter('transportTestIDWithoutAdvsSettings');
+    await synCCPage.LoginToCCPage()
+    await synCCPage.navigateToTestPropertiesPage(testID);
+    await syntheticTestDetailPage.clickOnThreshold();
+    await screenShotVerification.verifyScreenShotOfAComponent(syntheticTestDetailPage.propertiesBladeLocator, screenShotName + '.png');
+})
