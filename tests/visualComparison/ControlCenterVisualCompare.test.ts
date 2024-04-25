@@ -222,7 +222,7 @@ test("VerifyControlCenterNewTestSuiteScreenshot @Screenshot", async({page, scree
   CP-88906 : Take Web Test with Adv setting Screenshot 
 */
 
-test("webTestadvsettings @Screenshot@PointEst@adv12", async ({ page, screenShotVerification, util, synCCPage, syntheticTestDetailPage }, testInfo) => {
+test("webChromeTestadvsettings @Screenshot@PointEst@adv12", async ({ page, screenShotVerification, util, synCCPage, syntheticTestDetailPage }, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     let testID = await data.getValueOfTheParameter('webTestIDWithAdvsSettings');
     await synCCPage.LoginToCCPage();
@@ -436,3 +436,85 @@ test("sslTestadvsettings @Screenshot@PointEst", async ({ page, screenShotVerific
     await synCCPage.click(synCCPage.NewAdvancesettingSectionLocator);
     await screenShotVerification.verifyScreenShotOfAComponent(synCCPage.AdvsettingSectionLocator, screenShotName + '.png');
 })
+/*
+ CP-88961 : Take CustomTest with Adv setting Screenshot 
+*/
+test("customMonitorTestadvsettings @Screenshot@PointEst", async ({ page, screenShotVerification, util, synCCPage, syntheticTestDetailPage }, testInfo) => {
+    let screenShotName = testInfo.title.split(" ")[0]
+    let testID = await data.getValueOfTheParameter('customMonitorTestIDWithAdvsSettings');
+    await synCCPage.LoginToCCPage();
+    await synCCPage.navigateToTestPropertiesPage(testID);
+    await synCCPage.click(synCCPage.NewAdvancesettingSectionLocator);
+    await screenShotVerification.verifyScreenShotOfAComponent(synCCPage.AdvsettingSectionLocator, screenShotName + '.png');
+})
+
+/*
+ CP-88962 : Take DNS Experience Test with Adv setting Screenshot
+*/
+test("dnsexperienceTestadvsettings @Screenshot@PointEst", async ({ page, screenShotVerification, util, synCCPage, syntheticTestDetailPage }, testInfo) => {
+    let screenShotName = testInfo.title.split(" ")[0]
+    let testID = await data.getValueOfTheParameter('dnsexperienceTestIDWithAdvsSettings');
+    await synCCPage.LoginToCCPage();
+    await synCCPage.navigateToTestPropertiesPage(testID);
+    await synCCPage.click(synCCPage.NewAdvancesettingSectionLocator);
+    await screenShotVerification.verifyScreenShotOfAComponent(synCCPage.AdvsettingSectionLocator, screenShotName + '.png');
+})
+
+/*
+ CP-88963 : Take Html Emulated Test with Adv setting Screenshot
+*/
+test("htmlEmulatedTestadvsettings @Screenshot@PointEst", async ({ page, screenShotVerification, util, synCCPage, syntheticTestDetailPage }, testInfo) => {
+    let screenShotName = testInfo.title.split(" ")[0]
+    let testID = await data.getValueOfTheParameter('hTMLEmulatedTestIDWithAdvsSettings');
+    await synCCPage.LoginToCCPage();
+    await synCCPage.navigateToTestPropertiesPage(testID);
+    await synCCPage.click(synCCPage.NewAdvancesettingSectionLocator);
+    await screenShotVerification.verifyScreenShotOfAComponent(synCCPage.AdvsettingSectionLocator, screenShotName + '.png');
+})
+/*
+ CP-88964 : Take Html IE Test with Adv setting Screenshot
+*/
+test("htmlIETestadvsettings @Screenshot@PointEst", async ({ page, screenShotVerification, util, synCCPage, syntheticTestDetailPage }, testInfo) => {
+    let screenShotName = testInfo.title.split(" ")[0]
+    let testID = await data.getValueOfTheParameter('hTMLIETestIDWithAdvsSettings');
+    await synCCPage.LoginToCCPage();
+    await synCCPage.navigateToTestPropertiesPage(testID);
+    await synCCPage.click(synCCPage.NewAdvancesettingSectionLocator);
+    await screenShotVerification.verifyScreenShotOfAComponent(synCCPage.AdvsettingSectionLocator, screenShotName + '.png');
+})
+
+/*
+  CP-88965 : Take Html Mobile Test with Adv setting Screenshot 
+*/
+test("htmlMobileTestadvsettings @Screenshot@PointEst", async ({ page, screenShotVerification, util, synCCPage, syntheticTestDetailPage }, testInfo) => {
+    let screenShotName = testInfo.title.split(" ")[0]
+    let testID = await data.getValueOfTheParameter('hTMLMobileTestIDWithAdvsSettings');
+    await synCCPage.LoginToCCPage();
+    await synCCPage.navigateToTestPropertiesPage(testID);
+    await synCCPage.click(synCCPage.NewAdvancesettingSectionLocator);
+    await screenShotVerification.verifyScreenShotOfAComponent(synCCPage.AdvsettingSectionLocator, screenShotName + '.png');
+})
+
+/*
+  CP-88966 : Take Ping TCP Test with Adv setting Screenshot -
+*/
+test("pingTCPTestadvsettings @Screenshot@PointEst", async ({ page, screenShotVerification, util, synCCPage, syntheticTestDetailPage }, testInfo) => {
+    let screenShotName = testInfo.title.split(" ")[0]
+    let testID = await data.getValueOfTheParameter('pingTCPTestIDWithAdvsSettings');
+    await synCCPage.LoginToCCPage();
+    await synCCPage.navigateToTestPropertiesPage(testID);
+    await synCCPage.click(synCCPage.NewAdvancesettingSectionLocator);
+    await screenShotVerification.verifyScreenShotOfAComponent(synCCPage.AdvsettingSectionLocator, screenShotName + '.png');
+})
+/*
+ CP-88967 : Take Playwright EdgeTest with Adv setting Screenshot
+*/
+test("playwrightEdgeTestadvsettings @Screenshot@PointEst", async ({ page, screenShotVerification, util, synCCPage, syntheticTestDetailPage }, testInfo) => {
+    let screenShotName = testInfo.title.split(" ")[0]
+    let testID = await data.getValueOfTheParameter('playwrightEdgeTestIDWithAdvsSettings');
+    await synCCPage.LoginToCCPage();
+    await synCCPage.navigateToTestPropertiesPage(testID);
+    await synCCPage.click(synCCPage.NewAdvancesettingSectionLocator);
+    await screenShotVerification.verifyScreenShotOfAComponent(synCCPage.AdvsettingSectionLocator, screenShotName + '.png');
+})
+
