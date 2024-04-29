@@ -21,8 +21,8 @@ export class SyntheticProductDetailPage extends SyntheticDetailPage {
      private _addNodeField = '//input[contains(@placeholder ,"Add Node")]';
      private _testDataWebhookToogleButton = '//button[@data-testid="test-webhook-toggle"]';
      private _newDataWebhookDropdown = '//div[@data-testid="test-data-webhook"]//i[@data-icon-name="chevrondown"]//div';
-    // private _getSelectedWebhookText = '//div[@data-testid = "test-webhook-dropdown"]/span/div/span';
-    // private _addAdvanceSettingsTitle = '//button[@title = "Add Advanced Setting"]';
+     private _getSelectedWebhookText = '//div[@data-testid = "test-webhook-dropdown"]/span/div/span';
+     private _addAdvanceSettings = '//button[@title = "Add Advanced Setting"]';
      
 
 
@@ -46,14 +46,14 @@ export class SyntheticProductDetailPage extends SyntheticDetailPage {
           return this._newDataWebhookDropdown;
      }
 
-  /*   public get getSelectedWebhookText() {
+    public get getSelectedWebhookText() {
           return this._getSelectedWebhookText;
      }
 
      public get addAdvanceSettingsTitle() {
-          return this._addAdvanceSettingsTitle;
+          return this._addAdvanceSettings;
      }
-     */
+     
 
 
      //#endregion

@@ -20,7 +20,7 @@ test("VerifyClientLevelShouldBeSelectedByDefaultUnderDivisionDropDown @Synthetic
     CP-34477 : Verify reset the dropdown to be set to "Client Level" and disable the dropdown when user click other
 */
 
-test("VerifyResetDivisionDropDownToBeSetClientLevel @SyntheticControlCenter@N1", async({contactDetailsPage,loginPage, sideNavigationBar,util,synCCPage,contactsPage, verification}) => {
+test("VerifyResetDivisionDropDownToBeSetClientLevel @SyntheticControlCenter", async({contactDetailsPage,loginPage, sideNavigationBar,util,synCCPage,contactsPage, verification}) => {
     let data = new DataForEnv();
     await contactsPage.LoginToContactsPage();
     let userroleName = await data.getValueOfTheParameter('userRoleManageDivisionLevel');
