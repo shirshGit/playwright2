@@ -1,8 +1,4 @@
 import test from "@lib/BaseTest"
-import { SynControlCenterPage } from "@pageobjects/ControlCenter/SyntheticControlCenter";
-import { SyntheticDetailPage } from "@pageobjects/ControlCenter/SyntheticDetailsPage";
-import { DefaultDashboardPage } from "@pageobjects/OverviewDashboard/DefaultDashboardPage";
-import { SyntheticProductDetailPage } from "@pageobjects/ControlCenter/SyntheticProductDeatils";
 import { DataForEnv } from "@lib/DataForEnvironment";
 
 let data = new DataForEnv();

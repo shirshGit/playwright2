@@ -6,7 +6,7 @@ import { DataForEnv } from "@lib/DataForEnvironment"
 /*
     CP-
 */
-test("VerifyNavigationToDifferentPages @PageNavigation@ProductionSmoke", async ({sideNavigationBar, verification, sourceSelectorSmartboard, sourceSelectorPage, sourceSelectorExplorer, synCCPage, contactsPage, contactGroupPage, syntheticSmartboardPage, instantTestHistoryPage, instantTestPage, alertLogPage, nodeMapPage, nodeGroupPage, nodeListPage, nodeInstancePage,userrolePage,divisionPage,schedulePage,indexPage,zonePage,explorerPage,recordsPage, util }) => {
+test("VerifyNavigationToDifferentPages ", async ({sideNavigationBar, verification, sourceSelectorSmartboard, sourceSelectorPage, sourceSelectorExplorer, synCCPage, contactsPage, contactGroupPage, syntheticSmartboardPage, instantTestHistoryPage, instantTestPage, alertLogPage, nodeMapPage, nodeGroupPage, nodeListPage, nodeInstancePage,userrolePage,divisionPage,schedulePage,indexPage,zonePage,explorerPage,recordsPage, util }) => {
     let data = new DataForEnv()
     let webTestID = await data.getValueOfTheParameter('webTestForSmoke')
     //login to contact page
