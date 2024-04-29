@@ -25,7 +25,7 @@ test("VerifyWPTLoginPage @WPTOrg", async ({ wptOrgLoginPage, page, util, testUti
 /*
      CP-9482 : Verify Login and Log-out experience of the wpt app 
 */
-test("VerifyWPTLoginAndLogOut @WPTOrg", async ({ baseTestWPTUtil, page, util, testUtility, wptLoginPage, verification, wptPage,homePage }) => {
+test("VerifyWPTLoginAndLogOut @WPTOrg@W123", async ({ baseTestWPTUtil, page, util, testUtility, wptLoginPage, verification, wptPage,homePage }) => {
     await util.delay(4000);
     await homePage.clickItem(wptPage.threeLineLocator)
     await util.delay(2000)

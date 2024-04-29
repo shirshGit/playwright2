@@ -72,3 +72,4 @@ test("VerifyRequirmentsForPasswordField @WPTOrg", async ({ wptOrgLoginPage, page
     await verification.verifyIsDisabled(signUpPage.signUpButtonLocator)
     
 })
+

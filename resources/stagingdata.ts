@@ -152,7 +152,7 @@ export const stagedata = {
     'webMobileTestWithAdvsSettings' : '470850',
     'webMobilePlaybackTestWithAdvsSettings' : '470854',
     'webPlaybackTestWithAdvsSettings' : '470856',
-    'webObjTestWithAdvsSettings' : '470856',
+    'webObjTestWithAdvsSettings' : '470855',
     'zoneName' : 'UIAutomationDND',
 }
 

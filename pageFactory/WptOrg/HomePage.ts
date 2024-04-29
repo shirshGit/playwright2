@@ -24,11 +24,61 @@ export class HomePage {
     private _repeatView = '//label[@for="rv"]'
     private _lightHouseAudit = '//label[@for="lighthouse-simple"]'
     private _startTestButton = '//div[@class="test_presets_easy_submit"]//input[@name="submit"]'
-   
+    private _testsettingstabButton ='//a[contains(@href,"#test-settings")]';
+    private _testsettingstab = '//div[contains(@id ,"test-settings")]';
+    private _advancedtabButton ='//a[contains(@href,"#advanced-settings")]';
+    private _advancedtab ='//div[contains(@id ,"advanced-settings")]';
+    private _ChromiumtabButton ='//a[contains(@href,"#advanced-chrome")]';
+    private _Chromiumtab ='//div[contains(@id ,"advanced-chrome")]';
+    private _AuthtabButton ='//a[contains(@href,"#auth")]';
+    private _Authtab ='//div[contains(@id ,"auth")]';
+    private _BlocktabButton ='//a[contains(@href,"#block")]';
+    private _Blocktab ='//div[contains(@id ,"block")]';
+    private _SpoftabButton ='//a[contains(@href,"#spof")]';
+    private _Spoftab ='//div[contains(@id ,"spof")]';
+
     public get threeLineLocator() {
         return this._threeLine;
     }
-    
+    public get SpoftabButtonLocator() {
+        return this._SpoftabButton;
+    }
+    public get _SpoftabLocator() {
+        return this._Spoftab;
+    }
+    public get BlocktabButtonLocator() {
+        return this._BlocktabButton;
+    }
+
+    public get BlocktabLocator() {
+        return this._Blocktab;
+    }
+
+    public get AuthtabLocator() {
+        return this._Authtab;
+    }
+    public get AuthtabButtonLocator() {
+        return this._AuthtabButton;
+    }
+    public get ChromiumtabButtonLocator() {
+        return this._ChromiumtabButton;
+    }
+    public get ChromiumtabLocator() {
+        return this._Chromiumtab;
+    }
+    public get testsettingsLocator() {
+        return this._testsettingstabButton;
+    }
+    public get testsettingstabLocator() {
+        return this._testsettingstab;
+    }
+    public get advancedtabButtonLocator() {
+        return this._advancedtabButton;
+    }
+    public get advancedtabLocator() {
+        return this._advancedtab;
+    }
+
     public get myAccountLinkLocator() {
         return this._myAccount;
     }
