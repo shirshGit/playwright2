@@ -13,7 +13,7 @@ import { SyntheticSmartboardPage } from "@pageobjects/Smartboard/SyntheticSmartb
 /*
     CP-68028 : Verify Create And Navigate Smartboard Public Link
 */
-test("VerifySmartboardPublicLink @ProductionSmoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, context, syntheticSmartboardPage, sbPublicLinkPage, sbSharedLinkPage, util }) => {
+test("VerifySmartboardPublicLink @Smoke@PublicLink", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, context, syntheticSmartboardPage, sbPublicLinkPage, sbSharedLinkPage, util }) => {
     let data = new DataForEnv()
     let webTestID = await data.getValueOfTheParameter('webTestForSmoke')
     //navigate to SB 
@@ -51,7 +51,7 @@ test("VerifySmartboardPublicLink @ProductionSmoke", async ({ baseTestUtil, sideN
 /*
     CP-68031 : Verify Create And Navigate Explorer Public Link 
 */
-test("VerifyExplorerPublicLink @ProductionSmoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorExplorer, context, explorerPage, explorerSharedLinkPage, explorerPublicLinkPage, util }) => {
+test("VerifyExplorerPublicLink @Smoke@PublicLink", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorExplorer, context, explorerPage, explorerSharedLinkPage, explorerPublicLinkPage, util }) => {
     let data = new DataForEnv()
     let webTestID = await data.getValueOfTheParameter('webTestForSmoke')
     //navigate to Explorer 
@@ -91,7 +91,7 @@ test("VerifyExplorerPublicLink @ProductionSmoke", async ({ baseTestUtil, sideNav
 /*
     CP-68034 : Verify Create And Navigate Records Public Link -
 */
-test("VerifyRecordsPublicLink @ProductionSmoke", async ({ baseTestUtil, sideNavigationBar, verification, recordsPage, context, sourceSelectorPage, recordsPublicLinkPage, util }) => {
+test("VerifyRecordsPublicLink @Smoke@PublicLink", async ({ baseTestUtil, sideNavigationBar, verification, recordsPage, context, sourceSelectorPage, recordsPublicLinkPage, util }) => {
     let data = new DataForEnv()
     let webTestID = await data.getValueOfTheParameter('webTestForSmoke')
     //navigate to Records
@@ -128,7 +128,7 @@ test("VerifyRecordsPublicLink @ProductionSmoke", async ({ baseTestUtil, sideNavi
 /*
      CP-68027 : Verify Create And Navigate DB Public Link
 */
-test("VerifyDBPublicLink @ProductionSmoke", async ({ baseTestUtil, sideNavigationBar, verification, dashboardBlade, context, customDBPage, dbSharedLinkPage, dbPublicLinkPage, util }) => {
+test("VerifyDBPublicLink @Smoke@PublicLink", async ({ baseTestUtil, sideNavigationBar, verification, dashboardBlade, context, customDBPage, dbSharedLinkPage, dbPublicLinkPage, util }) => {
 
     //click on overview DB
     await dashboardBlade.clickOnOverviewDashboard();
@@ -164,7 +164,7 @@ test("VerifyDBPublicLink @ProductionSmoke", async ({ baseTestUtil, sideNavigatio
 /*
     CP-68033 : Verify Create And Navigate To Instant Test Public Link
 */
-test("VerifyInstantTestPublicLink @ProductionSmoke", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, context, syntheticSmartboardPage, instantTestPage, instantTestHistoryPage, instantTestPublicLinkPage, util }) => {
+test("VerifyInstantTestPublicLink @Smoke@PublicLink", async ({ baseTestUtil, sideNavigationBar, verification, sourceSelectorSmartboard, context, syntheticSmartboardPage, instantTestPage, instantTestHistoryPage, instantTestPublicLinkPage, util }) => {
     let data = new DataForEnv();
     let nodeName = await data.getValueOfTheParameter('node')
     let nodeNaleList: string[] = [nodeName]
