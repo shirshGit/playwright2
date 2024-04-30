@@ -28,7 +28,8 @@ export class CustomDBPage extends SynWidgetPropertyPage{
     private _tileHeaderForTile = '(//div[contains(@class,"BigMetricTile_tileHeader_")])[1]'
     private _SLAWidgetTest = '(//tr[@class="ant-table-row ant-table-row-level-0"]//a[contains(@class,"InfoBlock_text_")])[1]'
     private _editWidgetThreeDotMenu = '//div[contains(@class,"CommandBar_button_")]//i';
-
+    private _shareButton = '//i[@data-icon-name="share"]';
+    private _moreOptionInCD = '//i[@data-icon-name="More"]';
     public get overviewDashboardLocator(){
         return this._overviewDashboard;
     }
@@ -86,6 +87,12 @@ export class CustomDBPage extends SynWidgetPropertyPage{
     }
     public get getDBNameLocator(){
         return this._dbName
+    }
+    public get shareButtonLocator(){
+        return this._shareButton;
+    }
+    public get moreOptionLocator(){
+        return this._moreOptionInCD;
     }
 
   
@@ -184,6 +191,12 @@ export class CustomDBPage extends SynWidgetPropertyPage{
     }
     async saveWidget() {
         await webActions.clickElement(this.saveWidgetLocator);
+    }
+    async navigateFromThreedotMenuInCD(locator:string){
+        await webActions.hoverOnElement(this.moreOptionLocator);
+        await webActions.clickElement(this.moreOptionLocator);
+        await webActions.clickElementJS(locator);
+
     }
     
     

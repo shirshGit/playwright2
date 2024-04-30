@@ -91,35 +91,33 @@ test("VerifyExplorerPublicLink @Smoke@PublicLink", async ({ baseTestUtil, sideNa
 /*
     CP-68034 : Verify Create And Navigate Records Public Link -
 */
-test("VerifyRecordsPublicLink @Smoke@PublicLink", async ({ baseTestUtil, sideNavigationBar, verification, recordsPage, context, sourceSelectorPage, recordsPublicLinkPage, util }) => {
+test("VerifyRecordsPublicLink @Smoke@PublicLink@p3", async ({ sideNavigationBar, verification, recordsPage, context, sourceSelectorPage, recordsPublicLinkPage, util }) => {
     let data = new DataForEnv()
     let webTestID = await data.getValueOfTheParameter('webTestForSmoke')
     //navigate to Records
-    await sideNavigationBar.navigateToRecordsFromSideNavigation()
-    await util.delay(2000)
+    await recordsPage.LoginToRecordsPage();
     //validation for errors
     await verification.validationsForPage()
     //select test
     await sourceSelectorPage.clickOnFirstSearchedTestInSelectorPage(webTestID)
-    await util.delay(3000)
     //fetch test name
     let getTestName = await recordsPage.getElementText(recordsPage.gettestNameFromSourceSelectorBoxLocator)
     //fetch test name
     let getPublicLink = await recordsPage.getPublicLink()
     //click on share button
     let getNewPage = await recordsPage.getNewWindow(context, recordsPage.shareButtonLocator)
-    await util.delay(3000)
+    await util.delay(8000)
     let publicLinkPage = new RecordsPage(getNewPage)
     //fetch url name
     let publicLinkPageUrl = await publicLinkPage.getUrl()
     //verification
     await verification.verifySoftAssertTrue(publicLinkPageUrl === getPublicLink, 'url is not matching')
     //validation for errors
-    await verification.validationsForPage()
+    await verification.validationsForPage();
     //fetch source name
     let fetchSourceName = await recordsPage.getElementText(recordsPublicLinkPage.getSourceNameFromPublicLinkPageLocator)
     //verification
-    await verification.verifySoftAssertTrue(getTestName === fetchSourceName, 'source name is not matching')
+    await verification.verifySoftAssertTrue('Record: '+getTestName === fetchSourceName, 'source name is not matching')
 
 
 
@@ -128,16 +126,16 @@ test("VerifyRecordsPublicLink @Smoke@PublicLink", async ({ baseTestUtil, sideNav
 /*
      CP-68027 : Verify Create And Navigate DB Public Link
 */
-test("VerifyDBPublicLink @Smoke@PublicLink", async ({ baseTestUtil, sideNavigationBar, verification, dashboardBlade, context, customDBPage, dbSharedLinkPage, dbPublicLinkPage, util }) => {
+test("VerifyDBPublicLink @Smoke@PublicLink@p3", async ({ baseTestUtil, sideNavigationBar, verification, dashboardBlade, context, customDBPage, dbSharedLinkPage, dbPublicLinkPage, util }) => {
 
     //click on overview DB
     await dashboardBlade.clickOnOverviewDashboard();
     //open db
-    await dashboardBlade.selectDashboard('UI ShareLinkAutomation Do not Delete')
+    await dashboardBlade.selectDashboard('UIAutomation_DoNotDelete');
     //fetch test name
     let fetchDBName = await customDBPage.getElementText(customDBPage.getDBNameLocator)
     //click on share DB
-    await customDBPage.click(customDBPage.commomLocator('Share'))
+    await customDBPage.navigateFromThreedotMenuInCD(customDBPage.shareButtonLocator);
     //generate link
     await dbSharedLinkPage.click(dbSharedLinkPage.generateLinkButtonLocator)
     //click on created link
