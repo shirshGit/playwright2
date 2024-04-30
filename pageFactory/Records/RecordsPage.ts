@@ -61,7 +61,7 @@ export class RecordsPage {
     private _fileTypeFilterDropDown = '(//i[@data-icon-name="chevron"])[2]//div';
     private _responsecodeValueInGaantChart = '//div[contains(@class,"GanttChart_numericCell")]'
     private _getTestNameFromSourceSelector = '//div[contains(@class,"Pill_pillContent_")]'
-    private _shareButton = '//button[text()="Share"]'
+    private _shareButton = '//i[@data-icon-name="share"]';
     private _zoneFilterDD = '(//div[contains(@class,"fabricIcons_chevron_")])[4]'
     private _fileTypeFilterDD = '(//div[contains(@class,"fabricIcons_chevron_")])[2]'
     private _requestFilterDD = '(//div[contains(@class,"fabricIcons_chevron_")])[3]'
