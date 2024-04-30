@@ -382,7 +382,7 @@ test("TracerouteTestadvsettings @Screenshot", async ({ page, screenShotVerificat
 /*
   
 */
-test("CustomTestadvsettings @Screenshot@show123", async ({ page, screenShotVerification, util, synCCPage, syntheticTestDetailPage }, testInfo) => {
+test("CustomTestadvsettings @Screenshot", async ({ page, screenShotVerification, util, synCCPage, syntheticTestDetailPage }, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     let testID = await data.getValueOfTheParameter('customTestIDWithAdvsSettings');
     await synCCPage.LoginToCCPage();
@@ -393,7 +393,7 @@ test("CustomTestadvsettings @Screenshot@show123", async ({ page, screenShotVerif
 /*
   CP-88921 : Take NTP Test with Adv setting Screenshot 
 */
-test("NtpTestadvsettings @Screenshot@show123", async ({ page, screenShotVerification, util, synCCPage, syntheticTestDetailPage }, testInfo) => {
+test("NtpTestadvsettings @Screenshot", async ({ page, screenShotVerification, util, synCCPage, syntheticTestDetailPage }, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     let testID = await data.getValueOfTheParameter('ntpTestIDWithAdvsSettings');
     await synCCPage.LoginToCCPage();
@@ -405,7 +405,7 @@ test("NtpTestadvsettings @Screenshot@show123", async ({ page, screenShotVerifica
 /*
    CP-88922 : Take IMAP Test with Adv setting Screenshot 
 */
-test("ImapTestadvsettings @Screenshot@show123", async ({ page, screenShotVerification, util, synCCPage, syntheticTestDetailPage }, testInfo) => {
+test("ImapTestadvsettings @Screenshot", async ({ page, screenShotVerification, util, synCCPage, syntheticTestDetailPage }, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     let testID = await data.getValueOfTheParameter('imapTestIDWithAdvsSettings');
     await synCCPage.LoginToCCPage();
@@ -416,7 +416,7 @@ test("ImapTestadvsettings @Screenshot@show123", async ({ page, screenShotVerific
 /*
   CP-88923 : Take MQTT Test with Adv setting Screenshot 
 */
-test("MqttTestadvsettings @Screenshot@show123", async ({ page, screenShotVerification, util, synCCPage, syntheticTestDetailPage }, testInfo) => {
+test("MqttTestadvsettings @Screenshot", async ({ page, screenShotVerification, util, synCCPage, syntheticTestDetailPage }, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     let testID = await data.getValueOfTheParameter('mqttTestIDWithAdvsSettings');
     await synCCPage.LoginToCCPage();
@@ -428,7 +428,7 @@ test("MqttTestadvsettings @Screenshot@show123", async ({ page, screenShotVerific
 /*
   CP-88924 : Take SSL Test with Adv setting Screenshot 
 */
-test("SslTestadvsettings @Screenshot@show123", async ({ page, screenShotVerification, util, synCCPage, syntheticTestDetailPage }, testInfo) => {
+test("SslTestadvsettings @Screenshot", async ({ page, screenShotVerification, util, synCCPage, syntheticTestDetailPage }, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     let testID = await data.getValueOfTheParameter('sslTestIDWithAdvsSettings');
     await synCCPage.LoginToCCPage();
@@ -439,7 +439,7 @@ test("SslTestadvsettings @Screenshot@show123", async ({ page, screenShotVerifica
 /*
  CP-88961 : Take CustomTest with Adv setting Screenshot 
 */
-test("CustomMonitorTestadvsettings @Screenshot@show123", async ({ page, screenShotVerification, util, synCCPage, syntheticTestDetailPage }, testInfo) => {
+test("CustomMonitorTestadvsettings @Screenshot", async ({ page, screenShotVerification, util, synCCPage, syntheticTestDetailPage }, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     let testID = await data.getValueOfTheParameter('customMonitorTestIDWithAdvsSettings');
     await synCCPage.LoginToCCPage();
@@ -451,7 +451,7 @@ test("CustomMonitorTestadvsettings @Screenshot@show123", async ({ page, screenSh
 /*
  CP-88962 : Take DNS Experience Test with Adv setting Screenshot
 */
-test("DnsexperienceTestadvsettings @Screenshot@show123", async ({ page, screenShotVerification, util, synCCPage, syntheticTestDetailPage }, testInfo) => {
+test("DnsexperienceTestadvsettings @Screenshot", async ({ page, screenShotVerification, util, synCCPage, syntheticTestDetailPage }, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     let testID = await data.getValueOfTheParameter('dnsexperienceTestIDWithAdvsSettings');
     await synCCPage.LoginToCCPage();
@@ -463,7 +463,7 @@ test("DnsexperienceTestadvsettings @Screenshot@show123", async ({ page, screenSh
 /*
  CP-88963 : Take Html Emulated Test with Adv setting Screenshot
 */
-test("HtmlEmulatedTestadvsettings @Screenshot@show123", async ({ page, screenShotVerification, util, synCCPage, syntheticTestDetailPage }, testInfo) => {
+test("HtmlEmulatedTestadvsettings @Screenshot", async ({ page, screenShotVerification, util, synCCPage, syntheticTestDetailPage }, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     let testID = await data.getValueOfTheParameter('hTMLEmulatedTestIDWithAdvsSettings');
     await synCCPage.LoginToCCPage();
