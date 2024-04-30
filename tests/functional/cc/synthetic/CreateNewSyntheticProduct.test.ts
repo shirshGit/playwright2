@@ -8,7 +8,7 @@ let data = new DataForEnv();
   CP-30507 : Verify User can create a product with all settings and configuration using Control Center
 */
 
-test("CreateASyntheticProductInCC @Smoke@SyntheticControlCenter", async ({testUtility, verification, syntheticProductDetailPage, synCCPage, util  }) => {
+test("CreateASyntheticProductInCC @SyntheticControlCenter", async ({testUtility, verification, syntheticProductDetailPage, synCCPage, util  }) => {
   //login to CC page[for saving login time we are directly login to CC page]
   await synCCPage.LoginToCCPage();
   await syntheticProductDetailPage.goToNewProductCreate();
