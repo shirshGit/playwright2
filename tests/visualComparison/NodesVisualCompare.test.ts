@@ -5,6 +5,7 @@ import test from "@lib/BaseTest"
 test("VerifyNodePageScreenshot @Screenshot", async({page, screenShotVerification, util,nodeListPage}, testInfo) => {
     let screenShotName = testInfo.title.split(" ")[0]
     await nodeListPage.LoginToNodeListPage();
+    await util.delay(3000);
     const maskedElements = [await page.locator(nodeListPage.nodeTableLocator)];
     await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement(maskedElements, screenShotName + '.png');
     
@@ -94,5 +95,17 @@ test("VerifyNodeMapPageScreenshotByLeftNav @Screenshot", async({page, screenShot
     await sideNavigationBar.navigateToMapFromNodeSideNavigation();
     const maskedElements = [await page.locator(nodeMapPage.mapLocator )];
     await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement(maskedElements, screenShotName + '.png');
+    
+})
+
+/*
+    
+*/
+test("VerifyNodeGroupsPageScreenshot @Screenshot@N123", async({page, screenShotVerification, util,nodeGroupPage}, testInfo) => {
+    let screenShotName = testInfo.title.split(" ")[0]
+    await nodeGroupPage.LoginToNodeGroupPage();
+    await util.delay(3000);
+  //  const maskedElements = [await page.locator(nodeGroupPage.nodeGroupTableLocator)];
+   // await screenShotVerification.verifyScreenShotOfAPageWithMaskedElement(maskedElements, screenShotName + '.png');
     
 })

@@ -14,12 +14,14 @@ export const stagedata = {
 
     'customTestIDWithoutAdvsSettings' : '427543',
     'customTestIDWithAdvsSettings' : '427545',
+    'customMonitorTestIDWithAdvsSettings' : '470879',
     'customTest' : '438265',
     'customSSHTest' : '427543',
 
     'defaultUserrole' : 'Client Administrator',//for contact default system access
     'dnsTestIDWithoutAdvsSettings' : '427528', 
-    'dnsTestIDWithAdvsSettings' : '427527', 
+    'dnsTestIDWithAdvsSettings' : '427527',
+    'dnsexperienceTestIDWithAdvsSettings' : '470865', 
     'dnsExperienceTest' : '437881',
     'dnsDirectTest' : '427528',
     'dnsTestWithLastMileNode' : '439853',
@@ -34,6 +36,9 @@ export const stagedata = {
 
     'hTMLTestIDWithoutAdvsSettings' : '427520',
     'hTMLTestIDWithAdvsSettings' : '427519',
+    'hTMLEmulatedTestIDWithAdvsSettings' : '470862',
+    'hTMLIETestIDWithAdvsSettings' : '470864',
+    'hTMLMobileTestIDWithAdvsSettings' : '470863',
     'htmlEmulatedTest' : '437884',
     'htmlMobileTest' : '437886',
     'htmlIETest' : '437885',
@@ -63,8 +68,11 @@ export const stagedata = {
     'pupperteerTestIDWithoutAdvsSettings' : '427518',
     'pingTestIDWithoutAdvsSettings' : '427537',
     'playwrightTestIDWithAdvsSettings' : '427513',
+    'playwrightEdgeTestIDWithAdvsSettings' : '470861',
     'pupperteerTestIDWithAdvsSettings' : '427516',
     'pingTestIDWithAdvsSettings' : '427538',
+    'pingTCPTestIDWithAdvsSettings' : '470867',
+    'pingUDPTestIDWithAdvsSettings' : '470868',
     'playwrightEdgeTest' : '437880',
     'playwrightChromeTest' : '427514',
 
@@ -93,6 +101,14 @@ export const stagedata = {
     'transactionTestIDWithAdvsSettings' : '427511',
     'transportTestIDWithAdvsSettings' : '427532',
     'tracerouteTestIDWithAdvsSettings' : '427540',
+    'tracerouteInsessionTestIDWithAdvsSettings' : '470877',
+    'tracerouteQuickTestIDWithAdvsSettings' : '470878',
+    'tracerouteTCPTestIDWithAdvsSettings' : '470871',
+    'tracerouteUDPTestIDWithAdvsSettings' : '470869',
+    'transactionEmulatedTestIDWithAdvsSettings' : '470859',
+    'transactionIETestIDWithAdvsSettings' : '470881',
+    'transactionMobileTestIDWithAdvsSettings' : '470860',
+    'transportUdpTestIDWithAdvsSettings' : '470866',
     'transactionEmulatedTest' : '437877',
     'transactionIETest' : '437878',
     'transactionChromeTest' : '427510',
@@ -118,6 +134,7 @@ export const stagedata = {
     'webSocketTestIDWithoutAdvsSettings' : '427523',
     'webTestIDWithAdvsSettings' : '427504',
     'webSocketTestIDWithAdvsSettings' : '427524',
+    'webEdgeTestIDWithAdvsSettings' : '',
     'wptFolderID' : '3597',
     'webObjectTest' : '432754',
     'webEmulatedTest' : '432755',
@@ -129,8 +146,13 @@ export const stagedata = {
     'webChromeTest' : '427524',
     'webTestWithCloudNode' : '439798',
     'webTestWithEnterPrisePtNode' : '444351',
-    
-
+    'webEdgeTestWithAdvsSettings' : '470841',
+    'webEmulatedTestWithAdvsSettings' : '470849',
+    'webIETestWithAdvsSettings' : '470880',
+    'webMobileTestWithAdvsSettings' : '470850',
+    'webMobilePlaybackTestWithAdvsSettings' : '470854',
+    'webPlaybackTestWithAdvsSettings' : '470856',
+    'webObjTestWithAdvsSettings' : '470855',
     'zoneName' : 'UIAutomationDND',
 }
 

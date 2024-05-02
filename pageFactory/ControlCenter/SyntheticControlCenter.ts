@@ -97,7 +97,9 @@ export class SynControlCenterPage {
     private _TestsuiteBlade = '//div[contains(@class,"ms-Panel-main")]';
     private _NewProductButton =  '//a[contains(@href,"/ui/Symphony/ControlCenter/Tests/Product/0/New")]';
     private _NewProductPropertiesSection = '//div[contains(@class,"SyntheticProperties_detailSection")]';
-    private _NewAdvancesettingSection = '//span[text()="Advanced Settings"]';
+    private _NewAdvancesettingSection = '//a[contains(@href,"#advanced_settings")]';
+    private _NewAdvsettingSectionbutton ='//span[contains(@class, "CollapsibleContainer_clickable") and text() = "Advanced Settings"';
+    private _AdvsettingSection ='//div[@id="#advanced_settings"]';
     private _addAdvanceSettingsTitle = '//button[@title = "Add Advanced Setting"]';
     private _addAdvanceSettingsCheckboxS ='//div[@data-testid = "advancedsettingsblade"]//span//div[@data-automationid = "DetailsRowCheck"]//i[@data-icon-name="StatusCircleCheckmark"]"]';
     private _applybutton ='//button[@data-testid="primary-button"]//span[text()="Apply"]';
@@ -106,6 +108,14 @@ export class SynControlCenterPage {
         return this._NewProductButton;
    }
 
+   public get NewAdvsettingSectionbutton() {
+    return this._NewAdvsettingSectionbutton;
+}
+
+   public get AdvsettingSectionLocator() {
+    return this._AdvsettingSection;
+    }
+   
    public get NewProductPropertiesLocator() {
         return this._NewProductPropertiesSection;
    }
