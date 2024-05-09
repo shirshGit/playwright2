@@ -53,7 +53,7 @@ export class LoginPage {
     async navigateToCPUrl(): Promise<void> {
 
         if (ENV === 'qa') {
-            await webActions.navigateToURL(`https://ioqa.catchpoint.com/auth/Account/Login`);
+            await webActions.navigateToURL(`https://ioappqa.catchpoint.com/auth/Account/Login`);
         }
         else if (ENV === 'stage') {
             await webActions.navigateToURL(`https://iostage.catchpoint.com/auth/Account/Login`);
