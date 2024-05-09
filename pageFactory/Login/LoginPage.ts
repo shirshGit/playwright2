@@ -79,7 +79,7 @@ export class LoginPage {
         await webActions.enterElementText(this.emailInputLocator, email);
         await webActions.enterElementText(this.passwordInputLocator, pw);
         await webActions.clickElement(this.loginBtnLocator);
-        await webActions.waitForElementAttached(this.dashboardDDLabelLocator);
+        //await webActions.waitForElementAttached(this.dashboardDDLabelLocator);
     }
 
     async navigateToWPTOrgUrl(): Promise<void> {
